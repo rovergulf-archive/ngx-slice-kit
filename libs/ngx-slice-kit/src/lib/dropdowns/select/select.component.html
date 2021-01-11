@@ -1,0 +1,40 @@
+<label class="sdk-select-label"
+       [class.active]="!!(currentValue || currentValues?.size)"
+       [class.small]="small">
+    {{label}}
+    <span *ngIf="required" class="sdk-select-label-required-mark">&nbsp;*</span>
+</label>
+
+<div class="sdk-select" #select (click)="showDropdown()">
+    <div class="sdk-select-wrap" [ngClass]="{small: small, active: isOpen, invalid: error}">
+        <span class="sdk-select-icon" *ngIf="icon">
+            <sdk-icon [icon]="icon" [size]="small ? 16 : 24"></sdk-icon>
+        </span>
+        <p class="sdk-select-value" title="{{selected()}}">
+            {{selected()}}
+            <span class="inactive" *ngIf="isInactive()">{{placeholder}}</span>
+        </p>
+        <span class="sdk-select-icon actions">
+            <ng-container *ngIf="!hasValuesToDrop()">
+                <div class="interface-icon-wrap icon-chevron" [class.active]="isOpen">
+                    <sdk-icon icon="chevron_down" [size]="24" [inline]="true"></sdk-icon>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="hasValuesToDrop()">
+                <div class="interface-icon-wrap icon-clear">
+                    <sdk-icon icon="close" [size]="16" [inline]="true" (click)="clearValue($event)"></sdk-icon>
+                </div>
+            </ng-container>
+        </span>
+    </div>
+</div>
+
+<div class="sdk-caption" *ngIf="caption">
+    {{caption}}
+</div>
+<div class="sdk-error" *ngIf="error">
+    <sdk-icon icon="alert" color="var(--warn)" size="12"></sdk-icon>
+    {{error ? error : ''}}
+</div>
+
+

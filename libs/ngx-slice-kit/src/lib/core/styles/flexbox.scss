@@ -1,0 +1,215 @@
+$layout-breakpoint-small: 960px;
+
+.flex, .flex-row, .flex-row-reverse, .flex-column, .flex-column-reverse {
+  position: relative;
+  display: flex;
+}
+
+@each $flex-direction in row, row-reverse, column, column-reverse {
+  .flex-#{$flex-direction} {
+    position: relative;
+    display: flex;
+    flex-direction: $flex-direction;
+  }
+}
+
+.flex-row, .flex-column {
+  -webkit-box-direction: normal;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+/* prefix(layout) - justify-content - align-items/content */
+
+.layout-center-center {
+  align-content: center;
+  align-items: center;
+  justify-content: center
+}
+
+.layout-center-start {
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.layout-center-end {
+  align-content: flex-end;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.layout-center-stretch {
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.layout-space-around-center {
+  align-content: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.layout-space-around-start {
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.layout-space-around-end {
+  align-content: flex-end;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.layout-space-around-stretch {
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+.layout-space-between-center {
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.layout-space-between-start {
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.layout-space-between-end {
+  align-content: flex-end;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.layout-space-between-stretch {
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.layout-start-center {
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.layout-start-start {
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.layout-start-end {
+  align-content: flex-end;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.layout-start-stretch {
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.layout-end-center {
+  align-content: center;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.layout-end-start {
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.layout-end-end {
+  align-content: flex-end;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.layout-end-stretch {
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: flex-end;
+}
+
+/* end of layout */
+
+$flex-grows: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+@each $flex-grow in $flex-grows {
+  .flex-grow-#{$flex-grow} {
+    flex: $flex-grow;
+  }
+}
+
+$grid-literals: s, m, l;
+$grid-sizes: 1, 2, 3, 4;
+@each $literal in $grid-literals {
+  @each $grid-size in $grid-sizes {
+    .sdk-x#{$literal}-#{$grid-size} {
+      width: 100% / $grid-size;
+    }
+    .sdk-x#{$literal}-#{$grid-size} {
+      width: 100% / $grid-size;
+    }
+    .sdk-x#{$literal}-#{$grid-size} {
+      width: 100% / $grid-size;
+    }
+  }
+}
+
+
+@media screen and (max-width: $layout-breakpoint-small) {
+  .flex-row {
+    flex-wrap: wrap;
+  }
+
+  .sdk-xl-2, .sdk-xl-3, .sdk-xm-2 {
+    width: 100%;
+  }
+  .sdk-xl-4, .sdk-xm-3 {
+    width: 50%;
+  }
+  .sdk-xm-4 {
+    width: calc(100% / 3);
+  }
+}
+
+
+@media screen and (max-width: $layout-breakpoint-small * 0.66) {
+  .sdk-xl-4, .sdk-xm-3, .sdk-xs-2 {
+    width: 100%;
+  }
+  .sdk-xm-4, .sdk-xs-3 {
+    width: 50%;
+  }
+  .sdk-xs-4 {
+    width: calc(100% / 3);
+  }
+}
+
+
+@media screen and (max-width: $layout-breakpoint-small / 2) {
+  .sdk-xm-4, .sdk-xs-3 {
+    width: 100%;
+  }
+  .sdk-xs-4 {
+    width: 50%;
+  }
+}
+
+

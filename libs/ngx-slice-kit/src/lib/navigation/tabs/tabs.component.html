@@ -1,0 +1,34 @@
+<div class="sdk-tab-container" #container>
+    <div class="sdk-tab-container__header">
+        <button class="sdk-tab-container__arrow sdk-tab-container__arrow--left" #arrowLeft
+                [disabled]="tabsScrollRect?.left + 1 >= containerRect?.left - arrowWidth"
+                [ngStyle]="{'width': arrowWidth + 'px', 'display': isArrows ? 'flex' : 'none'}">
+            <sdk-icon [icon]="'chevron_left'"></sdk-icon>
+        </button>
+        <div class="sdk-tab-container__tabs-wrapper">
+            <div class="sdk-tab-container__tabs-scroll" #tabs>
+                <ng-container *ngFor="let tab of tabGroup; let i = index">
+                    <div class="sdk-tab-container__tab" [attr.tabIndex]="i"
+                         [attr.disabled]="tab.disabled || null"
+                         [class.sdk-tab-container__tab--active]="tab.active"
+                         [class.sdk-tab-container__tab--fill]="activeTabStyle === 'fill'"
+                         (click)="selectTab(tab, i)">
+                        <span>{{tab.label}}</span>
+                        <div class="sdk-tab__background"></div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="slide" *ngIf="activeTabStyle === 'border'" [ngStyle]="slideMeasure"></div>
+        </div>
+        <button class="sdk-tab-container__arrow sdk-tab-container__arrow--right" #arrowRight
+                [disabled]="tabsScrollRect?.right - 1 <= containerRect?.right - arrowWidth"
+                [ngStyle]="{'width': arrowWidth + 'px', 'display': isArrows ? 'flex' : 'none'}">
+            <sdk-icon [icon]="'chevron_right'"></sdk-icon>
+        </button>
+    </div>
+    <div class="sdk-tab-container__content">
+        <ng-content select="sdk-tab"></ng-content>
+    </div>
+</div>
+
+

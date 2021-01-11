@@ -1,0 +1,41 @@
+<label class="sdk-textarea__label" for="{{textareaId}}"
+       [class.sdk-textarea__label--focused]="focused"
+       [class.sdk-textarea__label--small]="small">
+    {{label}}
+</label>
+<div class="sdk-textarea-wrap" #wrap
+     [class.sdk-textarea-wrap--warn]="error"
+     [class.sdk-textarea-wrap--focused]="focused">
+    <div class="sdk-textarea-inner-wrap">
+        <textarea class="sdk-textarea__textarea" #textarea
+                  id="{{textareaId}}"
+                  [class.sdk-textarea__textarea--small]="small"
+                  [placeholder]="placeholder"
+                  [tabindex]="tabindex"
+                  (focus)="onFocus()"
+                  (blur)="onBlur()"
+                  (keyup)="change($event.target)"
+                  [value]="value ? value : ''"
+                  [rows]="rows"
+                  [style.height.px]="clone.clientHeight + 2"
+                  [disabled]="disabled"
+                  [style.minHeight.px]="minHeight"
+                  [style.maxHeight.px]="maxHeight">
+        </textarea>
+        <div class="sdk-textarea__pull-angle-wrapper">
+            <div class="sdk-textarea__pull-angle">
+                <div class="sdk-textarea__pull-angle-inner"></div>
+            </div>
+        </div>
+        <div class="sdk-textarea__hidden-clone sdk-textarea__textarea" #clone></div>
+    </div>
+</div>
+<small class="sdk-textarea__caption" *ngIf="caption">{{caption}}</small>
+<small class="sdk-textarea__error" *ngIf="error" (click)="textarea.focus()">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M3.41421 0.585786C3.78929 0.210713 4.29799 0 4.82843 0H7.17157C7.70201 0 8.21071 0.210714 8.58579 0.585786L11.4142 3.41421C11.7893 3.78929 12 4.29799 12 4.82843V7.17157C12 7.70201 11.7893 8.21071 11.4142 8.58579L8.58579 11.4142C8.21071 11.7893 7.70201 12 7.17157 12H4.82843C4.29799 12 3.78929 11.7893 3.41421 11.4142L0.585786 8.58579C0.210713 8.21071 0 7.70201 0 7.17157V4.82843C0 4.29799 0.210714 3.78929 0.585786 3.41421L3.41421 0.585786ZM6 2C6.49981 2 6.90499 2.40518 6.90499 2.90499C6.90499 2.93506 6.90349 2.96511 6.9005 2.99504L6.54975 6.50248C6.52151 6.78492 6.28384 7 6 7C5.71616 7 5.47849 6.78492 5.45025 6.50248L5.0995 2.99504C5.04977 2.49771 5.41262 2.05422 5.90995 2.00449C5.93987 2.0015 5.96993 2 6 2ZM7 9C7 8.44771 6.55228 8 6 8C5.44772 8 5 8.44771 5 9C5 9.55229 5.44772 10 6 10C6.55228 10 7 9.55229 7 9Z"
+              fill="var(--warn)"/>
+    </svg>
+    {{error ? error : ''}}
+</small>

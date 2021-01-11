@@ -1,0 +1,34 @@
+<div class="sdk-dropdown-wrap" [class.no-backdrop]="config?.hideBackdrop">
+    <div class="sdk-dropdown-backdrop" *ngIf="!config?.hideBackdrop" (click)="onResult()"></div>
+    <ul class="sdk-dropdown" #dropdown [class.multi]="config?.multi">
+        <ng-container *ngIf="!optionsService.hasOptions">
+            <li class="sdk-dropdown-item">
+                <a>No options.</a>
+            </li>
+        </ng-container>
+        <ng-container *ngIf="optionsService.hasOptions">
+            <ng-container *ngFor="let o of optionsService.optionsObservable | async; index as i">
+                <li class="sdk-dropdown-item" (click)="select($event, o)"
+                    [ngClass]="{
+                        highlighted: o.value === currentOption?.value,
+                        disabled: o.disabled,
+                        active: o.selected && !config?.multi
+                    }"
+                    (mouseenter)="onOptionMouseEnter(o, i)"
+                    (mouseleave)="onOptionMouseLeave()">
+                    <span class="sdk-dropdown-item-checked" *ngIf="config?.multi">
+                        <ng-container *ngIf="o.selected">
+                            <sdk-icon icon="check" size="16"></sdk-icon>
+                        </ng-container>
+                    </span>
+                    <ng-container *ngIf="o.image">
+                        <img class="sdk-dropdown-item-image" [src]="o.image"/>
+                    </ng-container>
+                    <a>{{o.label}}</a>
+                </li>
+            </ng-container>
+        </ng-container>
+    </ul>
+</div>
+
+

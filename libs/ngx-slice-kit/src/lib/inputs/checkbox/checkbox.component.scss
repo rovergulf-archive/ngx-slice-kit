@@ -1,0 +1,69 @@
+:host {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex: none;
+
+  &.disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+}
+
+@keyframes check {
+  from {
+    stroke-dashoffset: 20;
+  }
+}
+
+.sdk-checkbox__indicator-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.sdk-checkbox__indicator {
+  background-color: var(--regular-disabled);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: 1px solid var(--regular-disabled);
+  transition: background-color .2s, border-color .3s;
+
+  &.sdk-checkbox__indicator--active {
+    background-color: var(--primary);
+    border-color: var(--primary);
+  }
+}
+
+.sdk-checkbox__indicator--small {
+  width: 16px;
+  height: 16px;
+}
+
+.sdk-checkbox__indicator-inner {
+  pointer-events: none;
+}
+
+.sdk-checkbox__label {
+  user-select: none;
+
+  &:empty {
+    display: none
+  }
+}
+
+path {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 0;
+  animation: check .5s;
+}
+
+.sdk-checkbox__error {
+  color: var(--warn);
+
+  svg {
+    margin-right: 4px;
+  }
+}

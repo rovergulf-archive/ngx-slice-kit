@@ -1,0 +1,10 @@
+@import "../../core/styles/flexbox";
+
+:host {
+  @extend .flex-row;
+  @extend .layout-start-stretch;
+  z-index: 1;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}

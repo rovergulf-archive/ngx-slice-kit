@@ -1,0 +1,30 @@
+<div class="sdk-alert" [class.sdk-alert--small]="options.small" [@state]="state">
+    <div class="sdk-alert__inner">
+        <div>
+            <ng-container *ngIf="options.type ==='default'">
+                <img class="sdk-custom-icon" *ngIf="options.customIcon" [src]="options.customIcon" alt="alert"/>
+            </ng-container>
+            <ng-container *ngIf="options.type === 'error'">
+                <!-- alert svg -->
+                <sdk-icon icon="alert" [size]="12" [color]="'var(--warn)'"></sdk-icon>
+            </ng-container>
+        </div>
+
+        <div class="sdk-alert-content">
+            <h4 class="sdk-h4 sdk-alert__title" *ngIf="options.title">{{options.title}}</h4>
+            <p class="sdk-p sdk-text">{{options.message}}</p>
+        </div>
+    </div>
+
+    <ng-container *ngIf="options.action">
+        <div class="sdk-alert__interface">
+            <span class="sdk-alert__interface-item" (click)="close(true)">{{options.actionText}}</span>
+        </div>
+    </ng-container>
+
+    <!-- close.svg -->
+    <div class="sdk-alert__close-wrapper">
+        <sdk-icon class="sdk-alert__close" icon="close" [size]="16" [color]="'var(--regular-hover)'"
+                  (click)="close()"></sdk-icon>
+    </div>
+</div>

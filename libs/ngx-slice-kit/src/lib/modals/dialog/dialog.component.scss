@@ -1,0 +1,61 @@
+@keyframes openDialog {
+  0% {
+    transform: scale(.5) translateY(100px);
+    opacity: 0;
+  }
+}
+
+.sdk-dialog-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  .sdk-dialog-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .sdk-dialog-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: rgba(21, 21, 21, 0.6);
+    animation: opacity .2s;
+  }
+
+  .sdk-dialog-content-wrap {
+    position: relative;
+    z-index: 2;
+    min-width: 288px;
+    max-width: 80%;
+    min-height: 80px;
+    max-height: 80%;
+    overflow: hidden;
+    animation: openDialog .3s;
+
+    .sdk-dialog-content {
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      &.disable-scroll {
+        overflow: hidden;
+      }
+    }
+
+  }
+}

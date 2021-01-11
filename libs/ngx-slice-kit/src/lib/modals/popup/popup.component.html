@@ -1,0 +1,15 @@
+<div class="sdk-popup-wrap" [style.zIndex]="id">
+    <div class="sdk-popup-backdrop" (click)="onSuccess(false)"></div>
+    <div class="sdk-popup-content">
+        <header>
+            <h3 class="sdk-h3">{{title}}</h3>
+        </header>
+        <section>
+            <p>{{message}}</p>
+        </section>
+        <footer>
+            <button sdk-button (click)="onSuccess(true)">{{ok}}</button>
+            <button sdk-button color="accent" (click)="onSuccess(false)">{{cancel}}</button>
+        </footer>
+    </div>
+</div>

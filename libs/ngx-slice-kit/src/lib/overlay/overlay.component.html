@@ -1,0 +1,12 @@
+<div class="sdk-overlay-wrap flex-column layout-center-center" [style.zIndex]="options.index" autofocus>
+    <div class="sdk-overlay-container flex-row layout-center-center">
+        <div class="sdk-overlay-backdrop" [class.visible]="options.backdropVisible" (click)="onBackdrop()"></div>
+        <div class="sdk-overlay-content-wrap flex-column" [style.borderRadius]="br">
+            <div class="sdk-overlay-content"
+                 [ngStyle]="options.styles"
+                 [class.disable-scroll]="options.disableScroll">
+                <ng-template sdkOverlay #overlay></ng-template>
+            </div>
+        </div>
+    </div>
+</div>

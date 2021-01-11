@@ -1,0 +1,6 @@
+<ng-container>
+    <ng-content select="sdk-sidenav"></ng-content>
+    <ng-content select="sdk-sidenav-content"></ng-content>
+    <div class="sdk-sidenav-backdrop" (click)="closeSide()"
+         [class.active]="sidenavService.isOpened && hasBackdrop"></div>
+</ng-container>

@@ -1,0 +1,4 @@
+<div class="sdk-dots" [class.sdk-dots--small]="small">
+    <div class="sdk-dots__dot" [class.sdk-dots__dot--active]="activeIndex === i" *ngFor="let dot of dots; let i = index"
+         (click)="clickHandler(i)"></div>
+</div>

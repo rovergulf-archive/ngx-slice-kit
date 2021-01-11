@@ -1,0 +1,16 @@
+<ng-container>
+    <ng-container *ngFor="let options of alerts; index as i">
+        <ng-container *ngIf="i < 5">
+            <div class="sdk-alert__wrapper">
+                <sdk-alert [options]="options" [index]="i" (closed)="onClose($event)"></sdk-alert>
+            </div>
+        </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="alerts?.length > 1">
+        <div class="sdk-alert-close" (click)="closeAll()">
+            <sdk-icon icon="close" size="12" [color]="'var(--regular-hover)'"></sdk-icon>
+            <span>close all</span>
+        </div>
+    </ng-container>
+</ng-container>

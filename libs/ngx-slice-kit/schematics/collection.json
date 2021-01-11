@@ -2,7 +2,7 @@
   "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
     "ng-add": {
-      "description": "Add 'ngx-core-kit' to your project! This is an internal Rovergulf Engineers package.",
+      "description": "Add 'ngx-slice-kit' to your project! View https://slice.rovergulf.net for details.",
       "factory": "./ng-add/index#ngAdd"
     }
   }

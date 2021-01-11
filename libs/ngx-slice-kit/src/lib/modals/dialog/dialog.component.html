@@ -1,0 +1,10 @@
+<div class="sdk-dialog-wrap flex-column layout-center-center" [style.zIndex]="id" autofocus>
+    <div class="sdk-dialog-container flex-row layout-center-center">
+        <div class="sdk-dialog-backdrop" (click)="onBackdrop()"></div>
+        <div class="sdk-dialog-content-wrap flex-column" [style.borderRadius]="br">
+            <div class="sdk-dialog-content" [style.borderRadius]="br" [class.disable-scroll]="disableScroll">
+                <ng-template sdkDialog></ng-template>
+            </div>
+        </div>
+    </div>
+</div>

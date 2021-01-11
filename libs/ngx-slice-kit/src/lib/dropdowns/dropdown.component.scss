@@ -1,0 +1,103 @@
+.sdk-dropdown-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 200; // dialog uses z-index 100+
+  cursor: default;
+
+  &.no-backdrop {
+    width: auto;
+    height: auto;
+  }
+}
+
+.sdk-dropdown-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
+// ul
+.sdk-dropdown {
+  position: absolute;
+  max-height: 240px;
+  min-width: 64px;
+  padding: 8px 0;
+  z-index: 3;
+  animation: sdk-dropdown .2s;
+  transition: transform .2s, opacity .2s;
+  background-color: var(--regular-smooth);
+  box-shadow: 0 1px 0 0 rgba(21, 21, 21, 0.04), 0 1px 2px 0 rgba(21, 21, 21, 0.08);
+  opacity: 0;
+  border-radius: 4px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  scroll-behavior: smooth;
+
+  // if multi-select enabled
+  &.multi .sdk-dropdown-item {
+    padding: 8px 16px 8px 4px;
+  }
+
+  // li
+  .sdk-dropdown-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    width: 100%;
+    padding: 8px 16px;
+    transition: all .2s ease;
+    cursor: pointer;
+
+    &.highlighted {
+      background-color: var(--regular-disabled);
+    }
+
+    &.active {
+      background-color: var(--regular-active);
+    }
+
+    &.disabled {
+      cursor: default;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    a {
+      font-size: 17px;
+      line-height: 24px;
+    }
+
+    .sdk-dropdown-item-checked {
+      display: flex;
+      height: 16px;
+      width: 16px;
+      margin: 0 4px;
+    }
+
+    .sdk-dropdown-item-image {
+      height: 24px;
+      width: 24px;
+      border-radius: 100%;
+    }
+  }
+}
+
+@keyframes sdk-dropdown {
+  0% {
+    opacity: 0;
+    transform: scale(.9);
+  }
+}

@@ -1,0 +1,25 @@
+@import "../../core/styles/flexbox";
+
+:host {
+  @extend .flex-row;
+  @extend .layout-start-stretch;
+  width: 100%;
+  flex-shrink: 0;
+  //min-height: 100%;
+}
+
+.sdk-sidenav-backdrop {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: none;
+  background-color: rgba(21, 21, 21, 0.6);;
+
+  &.active {
+    display: flex;
+  }
+}
+

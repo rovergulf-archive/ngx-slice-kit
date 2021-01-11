@@ -1,0 +1,75 @@
+@import '../../core/styles/flexbox';
+
+@keyframes openPopup {
+  0% {
+    transform: scale(.5) translateY(100px);
+    opacity: 0;
+  }
+}
+
+.sdk-popup-wrap {
+  position: fixed;
+  @extend .flex-column;
+  @extend .layout-center-center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .sdk-popup-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .sdk-popup-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: rgba(21, 21, 21, 0.6);
+    animation: opacity .2s;
+  }
+
+  .sdk-popup-content {
+    @extend .flex-column;
+    @extend .layout-start-start;
+    z-index: 2;
+    min-width: 320px;
+    max-width: 80%;
+    margin: 64px 0;
+    animation: openPopup .3s;
+    background-color: var(--background);
+    border-radius: 8px;
+  }
+
+  header {
+    padding: 16px;
+  }
+
+  section {
+    @extend .flex-grow-1;
+    padding: 16px;
+  }
+
+  footer {
+    display: flex;
+    padding: 16px;
+
+    button:first-of-type {
+      margin-right: 16px;
+    }
+  }
+}
+

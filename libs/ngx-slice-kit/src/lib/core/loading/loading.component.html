@@ -1,0 +1,14 @@
+<ng-container *ngIf="loader === 'text'">
+    <p>Loading...</p>
+</ng-container>
+<ng-container *ngIf="loader === 'circle'">
+    <p>Not implemented</p>
+</ng-container>
+<ng-container *ngIf="loader === 'default'">
+    <div class="loading">
+        <span id="dot_1"></span>
+        <span id="dot_2"></span>
+        <span id="dot_3"></span>
+    </div>
+</ng-container>
+

@@ -1,0 +1,21 @@
+<div class="sdk-slider__wrapper"
+     [class.sdk-slider__wrapper--small]="small"
+     [class.sdk-slider__wrapper--multiple]="multiple">
+    <div class="sdk-slider__track-wrapper" #track (pointerdown)="moveThumb($event)">
+        <div class="sdk-slider__thumb-wrapper sdk-slider__thumb-wrapper--multiple" *ngIf="multiple" #thumbMultiple
+             [style.top]="'-12px'">
+            <div class="sdk-slider__thumb" [class.sdk-slider__thumb--active]="isMultipleDrag"
+                 (pointerdown)="grab('isMultipleDrag')"></div>
+        </div>
+        <div class="sdk-slider__thumb-wrapper" [style.top]="multiple ? '-12px' : (-thumbSize/2) + thumbSize/10 + 'px'"
+             #thumb>
+            <div class="sdk-slider__thumb" [class.sdk-slider__thumb--active]="isDrag"
+                 (pointerdown)="grab('isDrag')"></div>
+        </div>
+        <div class="sdk-slider-track__background"></div>
+        <div class="sdk-slider-track__fill"
+             [ngStyle]="{'background': 'linear-gradient(to right, transparent 0px ' + (gradientLeftOffset || 0) + '%, ' + color + ' 0px ' + gradientSize + '%, transparent ' + gradientSize + 'px)'}"></div>
+    </div>
+    <div class="sdk-slider-track__padding" [style.width]="thumbSize + 'px'"></div>
+</div>
+

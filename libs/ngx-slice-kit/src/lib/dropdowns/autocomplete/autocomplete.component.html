@@ -1,0 +1,47 @@
+<label for="{{uid}}" class="sdk-autocomplete-label"
+       [class.active]="value !== undefined"
+       [class.small]="small">
+    {{label}}
+    <span *ngIf="required" class="sdk-autocomplete-label-required-mark">&nbsp;*</span>
+</label>
+
+<div class="sdk-autocomplete-wrap" #autocomplete>
+    <div class="sdk-autocomplete" (click)="showDropdown()"
+         [ngClass]="{
+            active: isOpen,
+            small: small,
+            invalid: error
+         }">
+        <span class="sdk-autocomplete-icon" *ngIf="icon">
+            <sdk-icon [icon]="icon" [size]="small ? 16 : 24"></sdk-icon>
+        </span>
+        <input class="sdk-autocomplete-input" type="text"
+               value="{{selected()}}"
+               id="{{uid}}"
+               [placeholder]="placeholder"
+               (keyup)="onInput($event)"
+               (focus)="emitFocus()"
+               (blur)="emitBlur()"
+               #input>
+        <span class="sdk-autocomplete-actions">
+            <ng-container *ngIf="!hasValuesToDrop()">
+                <div class="interface-icon-wrap icon-chevron">
+                    <sdk-icon icon="chevron_down" [size]="24"></sdk-icon>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="hasValuesToDrop()">
+                <div class="interface-icon-wrap icon-clear">
+                    <sdk-icon icon="close" [size]="16" [inline]="true" (click)="clearValue($event)"></sdk-icon>
+                </div>
+            </ng-container>
+        </span>
+    </div>
+</div>
+
+<div class="sdk-caption" *ngIf="caption">
+    {{caption}}
+</div>
+<div class="sdk-error" *ngIf="error">
+    <img src="assets/icons/error-caption.svg" alt="">
+    {{error ? error : ''}}
+</div>

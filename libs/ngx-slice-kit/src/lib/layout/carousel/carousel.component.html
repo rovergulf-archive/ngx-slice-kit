@@ -1,0 +1,20 @@
+<div class="sdk-carousel">
+    <div class="sdk-carousel__wrapper" #carouselWrapper>
+        <ng-container *ngIf="arrows">
+            <button sdk-round-button class="sdk-carousel__arrow sdk-carousel__arrow--left" color="basic"
+                    (click)="move('back')">
+                <sdk-icon icon="chevron_left" [size]="24"></sdk-icon>
+            </button>
+            <button sdk-round-button class="sdk-carousel__arrow sdk-carousel__arrow--right" color="basic"
+                    (click)="move('forward')">
+                <sdk-icon icon="chevron_right" [size]="24"></sdk-icon>
+            </button>
+        </ng-container>
+        <div class="sdk-carousel__row" #carouselRow draggable="false">
+            <ng-content select="sdk-slide"></ng-content>
+        </div>
+    </div>
+    <div class="sdk-carousel__dots" *ngIf="dots" [style.bottom.px]="-offset">
+        <sdk-dots [activeIndex]="activeSlideIndex" [count]="dotsCount" (selected)="selectSlide($event)"></sdk-dots>
+    </div>
+</div>

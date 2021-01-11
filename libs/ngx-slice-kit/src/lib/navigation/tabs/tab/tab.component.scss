@@ -1,0 +1,22 @@
+.sdk-tab__content--slide-left {
+  animation: sdk-slide-in-left 0.6s ease-in-out;
+}
+
+.sdk-tab__content--slide-right {
+  animation: sdk-slide-in-right 0.6s ease-in-out;
+}
+
+.sdk-tab__content--hiding {
+  transition: all 0.4s;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+}
+
+.sdk-tab__content--hiding-slide-right {
+  animation: sdk-slide-out-right 0.6s ease-in-out;
+}
+
+.sdk-tab__content--hiding-slide-left {
+  animation: sdk-slide-out-left 0.6s ease-in-out;
+}

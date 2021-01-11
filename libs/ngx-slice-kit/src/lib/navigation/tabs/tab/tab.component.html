@@ -1,0 +1,10 @@
+<ng-container *ngIf="active || hiding">
+    <div class="sdk-tab__content"
+         [class.sdk-tab__content--hiding]="hiding"
+         [class.sdk-tab__content--hiding-slide-right]="hiding && slideDirection === 'slideRight'"
+         [class.sdk-tab__content--hiding-slide-left]="hiding && slideDirection === 'slideLeft'"
+         [class.sdk-tab__content--slide-left]="!hiding && slideDirection === 'slideLeft'"
+         [class.sdk-tab__content--slide-right]="!hiding && slideDirection === 'slideRight'">
+        <ng-content></ng-content>
+    </div>
+</ng-container>
