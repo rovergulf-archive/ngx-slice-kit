@@ -1,0 +1,21 @@
+.container {
+  h1 {
+    padding: 0 16px;
+  }
+}
+
+.icon-layout {
+  padding: 8px;
+  border-radius: 8px;
+  margin: 8px;
+  width: 256px;
+  background: var(--regular-smooth);
+
+  sdk-divider {
+    margin: 8px auto;
+  }
+
+  .big {
+    margin-right: 16px;
+  }
+}

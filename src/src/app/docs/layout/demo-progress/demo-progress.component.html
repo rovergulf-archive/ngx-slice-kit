@@ -1,0 +1,17 @@
+<div>
+    <h2 class="sdk-h2">Progress</h2>
+    <div class="progress-wrapper">
+        <sdk-progress [value]="value"></sdk-progress>
+        <div class="button-wrapper">
+            <button sdk-flat-button color="primary" (click)="valueChange(5)">Increase progress</button>
+            <button sdk-flat-button color="primary" (click)="valueChange(-5)">Decrease progress</button>
+        </div>
+    </div>
+    <div class="progress-wrapper">
+        <sdk-progress [small]="true" [value]="value2"></sdk-progress>
+        <div class="button-wrapper">
+            <button sdk-flat-button color="primary" (click)="smallValueChange(1)">Increase progress</button>
+            <button sdk-flat-button color="primary" (click)="smallValueChange(-1)">Decrease progress</button>
+        </div>
+    </div>
+</div>

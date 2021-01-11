@@ -1,0 +1,43 @@
+<main>
+    <header>
+        <h1>Autocompletes</h1>
+    </header>
+
+    <section>
+        <div>
+            <h3>Default autocomplete</h3>
+            <div class="example flex-row layout-start-center">
+                <div class="autocomplete-container">
+                    <sdk-autocomplete label="Favourite game" [options]="options1"
+                                      (valueChanges)="onValueChange1($event)" [(ngModel)]="val1"
+                                      (result)="checkSelect('val1', $event)"></sdk-autocomplete>
+                </div>
+            </div>
+            <h3>Small with icon (no label)</h3>
+            <div class="example flex-row layout-start-center">
+                <div class="autocomplete-container">
+                    <sdk-autocomplete [options]="options2" (valueChanges)="onValueChange2($event)" icon="star"
+                                      [(ngModel)]="val2" [small]="true"
+                                      (result)="checkSelect('val2', $event)"></sdk-autocomplete>
+                </div>
+            </div>
+            <h3>With Caption</h3>
+            <div class="example flex-row layout-start-center">
+                <div class="autocomplete-container">
+                    <sdk-autocomplete [options]="options4" (valueChanges)="onValueChange4($event)"
+                                      [(ngModel)]="val4" [caption]="'Example caption'" label="Caption example"
+                                      (result)="checkSelect('val4', $event)"></sdk-autocomplete>
+                </div>
+            </div>
+            <h3>With error</h3>
+            <div class="example flex-row layout-start-center">
+                <div class="autocomplete-container">
+                    <sdk-autocomplete [options]="options5" (valueChanges)="onValueChange5($event)"
+                                      [(ngModel)]="val5" error="Error example"
+                                      (result)="checkSelect('val5', $event)"></sdk-autocomplete>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+

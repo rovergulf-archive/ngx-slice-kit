@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.Repo
+
+/tmp
+/out-tsc
+
+node_modules/
+projects/
+scripts/
+

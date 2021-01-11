@@ -1,0 +1,18 @@
+<div sdk-theme id="wrap" #wrap [class]="layoutService.themeName">
+    <app-header></app-header>
+    <sdk-sidenav-container [hasBackdrop]="layoutService.mobileLayout"
+                           [mode]="this.layoutService.mobileLayout ? 'over' : 'side'">
+        <sdk-sidenav [(opened)]="layoutService.sidenavOpened"
+                     [style]="sideNavStyle">
+            <app-sidenav></app-sidenav>
+        </sdk-sidenav>
+        <sdk-sidenav-content>
+            <section class="view flex-grow-1">
+                <router-outlet></router-outlet>
+            </section>
+        </sdk-sidenav-content>
+    </sdk-sidenav-container>
+
+    <app-footer></app-footer>
+</div>
+

@@ -1,0 +1,21 @@
+<section class="flex-column layout-start-stretch">
+    <h2>Чекбоксы</h2>
+    <div class="flex-column layout-start-stretch">
+        <h3>Default / Small </h3>
+        <div class="checkbox-row flex-row flex-wrap layout-start-center">
+            <sdk-checkbox>Test</sdk-checkbox>
+            <sdk-checkbox [small]="true">Test small</sdk-checkbox>
+        </div>
+        <h3>Default + disabled / Small + disabled</h3>
+        <div class="checkbox-row flex-row flex-wrap layout-start-center">
+            <sdk-checkbox [disabled]="true">Test</sdk-checkbox>
+            <sdk-checkbox [small]="true" [disabled]="true">Test small</sdk-checkbox>
+        </div>
+        <h3>Default + error / Small + error</h3>
+        <div class="checkbox-row flex-row flex-wrap layout-start-center">
+            <sdk-checkbox [required]="true" [error]="'Example error caption'">This checkbox is required</sdk-checkbox>
+            <sdk-checkbox [small]="true" [required]="true" [error]="'Example error caption'">This checkbox is required
+            </sdk-checkbox>
+        </div>
+    </div>
+</section>

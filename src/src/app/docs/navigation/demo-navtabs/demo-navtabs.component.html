@@ -1,0 +1,14 @@
+<section class="flex-column layout-start-stretch">
+    <h2>Nav tabs</h2>
+    <div class="example flex-column layout-start-stretch">
+        <sdk-nav-tab-group [animation]="true">
+            <a sdkTabLink *ngFor="let link of links"
+               [disabled]="link.disabled"
+               [routerLinkActive]="'sdk-tab-container__tab--active'"
+               #rla="routerLinkActive"
+               [routerLink]="link.src"
+               [label]="link.label"
+               [active]="rla.isActive"></a>
+        </sdk-nav-tab-group>
+    </div>
+</section>

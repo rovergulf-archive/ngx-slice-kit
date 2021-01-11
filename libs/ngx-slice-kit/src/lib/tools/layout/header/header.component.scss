@@ -1,0 +1,18 @@
+@import "../../../../../../ngx-slice-kit/src/lib/core/styles/flexbox";
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  @extend .flex-row;
+  @extend .layout-space-between-center;
+  height: 64px;
+  width: 100%;
+  padding: 0 20px;
+  //box-shadow: ;
+  &.bg {
+    background-color: var(--background);
+    box-shadow: 0 1px 0 0 rgba(var(--opposite-rgb), 0.04), 0 1px 2px 0 rgba(var(--opposite-rgb), 0.08);
+  }
+}

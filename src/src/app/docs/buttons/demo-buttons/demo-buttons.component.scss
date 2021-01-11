@@ -1,0 +1,21 @@
+.view {
+  padding: 16px;
+
+  h2 {
+    margin-bottom: 24px;
+  }
+}
+
+.buttons-container {
+  button, a {
+    margin: 0 16px 16px 0;
+  }
+
+  &.full-width {
+    button, a {
+      margin: 0 0 16px 0;
+    }
+  }
+
+  margin: 16px 0 24px;
+}

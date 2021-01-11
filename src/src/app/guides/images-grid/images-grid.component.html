@@ -1,0 +1,149 @@
+<div class="flex-column" sdkLoading="{{!loading}}">
+    <h1>Adaptive grid class names</h1>
+
+    <div class="grid-container flex-column layout-start-stretch">
+        <h3>Flex grows are available with values from 1 to 12</h3>
+        <div class="grid-container flex-row">
+            <div class="grid-item flex-row layout-center-center flex-grow-1" [style.backgroundColor]="rows[0].color">
+                <div>flex-grow-1</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center flex-grow-1" [style.backgroundColor]="rows[1].color">
+                <div>flex-grow-1</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center flex-grow-1" [style.backgroundColor]="rows[2].color">
+                <div>flex-grow-1</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center flex-grow-1" [style.backgroundColor]="rows[3].color">
+                <div>flex-grow-1</div>
+            </div>
+        </div>
+        <div class="grid-container flex-row">
+            <div class="grid-item flex-row layout-center-center flex-grow-1" [style.backgroundColor]="rows[4].color">
+                <div>flex-grow-1</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center flex-grow-2" [style.backgroundColor]="rows[5].color">
+                <div>flex-grow-2</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center flex-grow-1" [style.backgroundColor]="rows[6].color">
+                <div>flex-grow-1</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center flex-grow-3" [style.backgroundColor]="rows[7].color">
+                <div>flex-grow-3</div>
+            </div>
+        </div>
+        <div class="grid-container flex-row">
+            <div class="grid-item flex-row layout-center-center flex-grow-2" [style.backgroundColor]="rows[8].color">
+                <div>flex-grow-2</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center flex-grow-4" [style.backgroundColor]="rows[9].color">
+                <div>flex-grow-4</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center flex-grow-8" [style.backgroundColor]="rows[10].color">
+                <div>flex-grow-8</div>
+            </div>
+        </div>
+        <div class="grid-container flex-row">
+            <div class="grid-item flex-row layout-center-center flex-grow-3" [style.backgroundColor]="rows[11].color">
+                <div>flex-grow-3</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center flex-grow-9" [style.backgroundColor]="rows[12].color">
+                <div>flex-grow-9</div>
+            </div>
+        </div>
+        <div class="grid-container flex-row">
+            <div class="grid-item flex-row layout-center-center flex-grow-12" [style.backgroundColor]="rows[13].color">
+                <div>single flex-grow-12</div>
+            </div>
+        </div>
+        <div class="flex-column">
+            <p>But as you can see there s a compatible mathematical grid, you just need right coefficient</p>
+            <div class="grid-container flex-row">
+                <div class="grid-item flex-row layout-center-center flex-grow-3"
+                     [style.backgroundColor]="rows[14].color">
+                    <div>flex-grow-4</div>
+                </div>
+                <div class="grid-item flex-row layout-center-center flex-grow-9"
+                     [style.backgroundColor]="rows[15].color">
+                    <div>flex-grow-12</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-container flex-column">
+        <h3>sdk-xs/xm/xl available with values from 1 to 4, but usage not so different and pretty naive</h3>
+        <div class="grid-container flex-row flex-wrap">
+            <div class="grid-item flex-row layout-center-center sdk-xs-1" [style.backgroundColor]="rows[16].color">
+                <div>sdk-xs-1</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xs-2" [style.backgroundColor]="rows[17].color">
+                <div>sdk-xs-2</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xs-2" [style.backgroundColor]="rows[18].color">
+                <div>sdk-xs-2</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xs-3" [style.backgroundColor]="rows[19].color">
+                <div>sdk-xs-3</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xs-3" [style.backgroundColor]="rows[20].color">
+                <div>sdk-xs-3</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xs-3" [style.backgroundColor]="rows[21].color">
+                <div>sdk-xs-3</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xs-4" [style.backgroundColor]="rows[22].color">
+                <div>sdk-xs-4</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xs-4" [style.backgroundColor]="rows[23].color">
+                <div>sdk-xs-4</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xs-4" [style.backgroundColor]="rows[24].color">
+                <div>sdk-xs-4</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xs-4" [style.backgroundColor]="rows[25].color">
+                <div>sdk-xs-4</div>
+            </div>
+        </div>
+        <div class="grid-container flex-row flex-wrap">
+            <div class="grid-item flex-row layout-center-center sdk-xm-1" [style.backgroundColor]="rows[26].color">
+                <div>sdk-xm-1</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xm-2" [style.backgroundColor]="rows[27].color">
+                <div>sdk-xm-2</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xm-3" [style.backgroundColor]="rows[28].color">
+                <div>sdk-xm-3</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xm-3" [style.backgroundColor]="rows[29].color">
+                <div>sdk-xm-3</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xm-4" [style.backgroundColor]="rows[30].color">
+                <div>sdk-xm-4</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xm-4" [style.backgroundColor]="rows[31].color">
+                <div>sdk-xm-4</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xm-4" [style.backgroundColor]="rows[32].color">
+                <div>sdk-xm-4</div>
+            </div>
+        </div>
+        <div class="grid-container flex-row flex-wrap">
+            <div class="grid-item flex-row layout-center-center sdk-xl-1" [style.backgroundColor]="rows[33].color">
+                <div>sdk-xl-1</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xl-2" [style.backgroundColor]="rows[34].color">
+                <div>sdk-xl-2</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xl-3" [style.backgroundColor]="rows[35].color">
+                <div>sdk-xl-3</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xl-4" [style.backgroundColor]="rows[36].color">
+                <div>sdk-xl-4</div>
+            </div>
+            <div class="grid-item flex-row layout-center-center sdk-xl-4" [style.backgroundColor]="rows[37].color">
+                <div>sdk-xl-4</div>
+            </div>
+        </div>
+    </div>
+
+</div>

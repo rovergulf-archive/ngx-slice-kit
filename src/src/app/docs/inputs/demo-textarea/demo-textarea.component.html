@@ -1,0 +1,32 @@
+<div class="view">
+    <h1 class="h2">Textarea</h1>
+    <div>
+        <h3>Default textarea</h3>
+        <div class="textarea-container flex-row flex-wrap layout-start-start">
+            <sdk-textarea></sdk-textarea>
+        </div>
+        <h3>Textarea with label</h3>
+        <div class="textarea-container flex-row flex-wrap layout-start-start">
+            <sdk-textarea label="Label text"></sdk-textarea>
+            <sdk-textarea label="Label text" [small]="true"></sdk-textarea>
+        </div>
+        <h3>Textarea with label + disabled</h3>
+        <div class="textarea-container flex-row flex-wrap layout-start-start">
+            <sdk-textarea label="Label text" [disabled]="true"></sdk-textarea>
+        </div>
+        <h3>Default + error / Small + error </h3>
+        <div class="textarea-container flex-row flex-wrap layout-start-start">
+            <sdk-textarea error="Error text"></sdk-textarea>
+            <sdk-textarea error="Error text" [small]="true"></sdk-textarea>
+        </div>
+        <h3>Default + caption / Small + caption </h3>
+        <div class="textarea-container flex-row flex-wrap layout-start-start">
+            <sdk-textarea caption="Caption text"></sdk-textarea>
+            <sdk-textarea caption="Caption text" [small]="true"></sdk-textarea>
+        </div>
+        <h3>Full width + caption </h3>
+        <div class="textarea-container flex-row flex-wrap layout-start-start">
+            <sdk-textarea caption="Caption text" [fullWidth]="true"></sdk-textarea>
+        </div>
+    </div>
+</div>

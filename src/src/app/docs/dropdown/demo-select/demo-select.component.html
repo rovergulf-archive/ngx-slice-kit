@@ -1,0 +1,74 @@
+<main>
+    <header>
+        <h1>Dropdown select</h1>
+    </header>
+
+    <section class="flex-column layout-start-stretch">
+        <div class="flex-column layout-start-stretch">
+            <h3>Default select</h3>
+            <div class="example flex-row flex-wrap">
+                <div class="example__item">
+                    <sdk-select [options]="options1" (ngModelChange)="onFirstValueChange($event)"
+                                [(ngModel)]="singleVal1" (result)="checkSelect($event)"></sdk-select>
+                </div>
+            </div>
+
+            <h3>Small with nullable value</h3>
+            <div class="example flex-row flex-wrap">
+                <div class="example__item">
+                    <sdk-select [options]="options2" [(ngModel)]="singleVal2" [small]="true" [enableNullValue]="true"></sdk-select>
+                </div>
+            </div>
+
+            <h3>Multiple choices</h3>
+            <div class="example flex-row flex-wrap">
+                <div class="example__item">
+                    <sdk-select [options]="options3" [(ngModel)]="multiValues1" (result)="checkSelect($event)"
+                                [multi]="true"></sdk-select>
+                </div>
+            </div>
+
+            <h3>Usage with sdk-icon's</h3>
+            <div class="example flex-row flex-wrap">
+                <div class="example__item">
+                    <sdk-select icon="star" [(ngModel)]="singleVal3" [options]="options4"></sdk-select>
+                </div>
+            </div>
+            <div class="example flex-row flex-wrap">
+                <div class="example__item">
+                    <sdk-select icon="star" [small]="true" [(ngModel)]="singleVal3" [options]="options4"></sdk-select>
+                </div>
+            </div>
+
+
+            <h3>With labels specified</h3>
+            <div class="example flex-row flex-wrap">
+                <div class="example__item">
+                    <sdk-select label="Choose your vitamin source" [multi]="true" [(ngModel)]="singleVal4" [options]="options5" enableNullValue="true"></sdk-select>
+                </div>
+            </div>
+
+            <h3>Disabled</h3>
+            <div class="example flex-row flex-wrap">
+                <div class="example__item">
+                    <sdk-select label="Choose your vitamin source" [disabled]="true" [(ngModel)]="singleVal4" [options]="options5" enableNullValue="true"></sdk-select>
+                </div>
+            </div>
+
+            <h3>With caption and error</h3>
+            <div class="example flex-row flex-wrap">
+                <div class="example__item">
+                    <sdk-select caption="Multiple select caption" [multi]="true" [(ngModel)]="multiValues2" [options]="options7"></sdk-select>
+                </div>
+            </div>
+            <div class="example flex-row flex-wrap">
+                <div class="example__item">
+                    <sdk-select [error]="'Example error'" [(ngModel)]="singleVal5" [options]="options6"></sdk-select>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+

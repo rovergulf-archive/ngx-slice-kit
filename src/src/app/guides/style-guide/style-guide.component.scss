@@ -1,0 +1,49 @@
+sdk-divider {
+  margin: 20px 0;
+}
+
+.color {
+  border-radius: 8px;
+  height: 80px;
+  margin: 8px;
+
+  &--primary {
+    background: var(--primary);
+
+    h3 {
+      color: var(--primary-text);
+    }
+  }
+
+  &--secondary {
+    background: var(--secondary);
+
+    h3 {
+      color: var(--secondary-text);
+    }
+  }
+
+  &--accent {
+    background: var(--accent);
+
+    h3 {
+      color: var(--accent-text);
+    }
+  }
+
+  &--success {
+    background: var(--success);
+
+    h3 {
+      color: var(--success-text);
+    }
+  }
+
+  &--warn {
+    background: var(--warn);
+
+    h3 {
+      color: var(--warn-text);
+    }
+  }
+}

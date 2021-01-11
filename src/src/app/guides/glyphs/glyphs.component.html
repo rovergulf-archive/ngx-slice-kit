@@ -1,0 +1,27 @@
+<div class="container flex-column layout-start-stretch">
+    <h1>Icon set</h1>
+    <section class="flex-row flex-wrap layout-center-center">
+        <ng-container *ngFor="let g of glyphs">
+            <div class="icon-layout flex-column layout-center-center sdk-xm-4">
+                <h3 sdkTooltip="add">{{g}}</h3>
+                <sdk-divider></sdk-divider>
+                <div class="flex-row">
+                    <div class="big">
+                        <p>Size 120x120</p>
+                        <sdk-icon icon="{{g}}" [size]="120" [inline]="false"></sdk-icon>
+                    </div>
+                    <div class="flex-column">
+                        <div class="standard">
+                            <p class="sdk-text--small">Standard size</p>
+                            <sdk-icon icon="{{g}}"></sdk-icon>
+                        </div>
+                        <div class="small">
+                            <p class="sdk-text--small">Size 12x12</p>
+                            <sdk-icon icon="{{g}}" [size]="12" [inline]="false"></sdk-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </section>
+</div>

@@ -1,0 +1,13 @@
+.grid-container {
+  width: 100%;
+  overflow: hidden;
+  margin: 4px 0;
+
+  p {
+    line-height: 32px;
+  }
+}
+
+.grid-item {
+  height: 80px;
+}

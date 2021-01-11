@@ -1,0 +1,31 @@
+<header class="flex-row layout-center-center">
+
+    <div class="menu">
+        <button sdk-round-button color="basic" (click)="layoutService.toggleSidenav()">
+            <sdk-icon icon="menu"></sdk-icon>
+        </button>
+    </div>
+    <div class="logo">
+        <a href="/">
+            <img src="assets/core/ngx-slice.svg" height="48px"/>
+        </a>
+    </div>
+
+    <ul class="nav-bar flex-grow-1 flex-row layout-start-center" [class.hidden]="layoutService.mobileLayout">
+        <li>
+            <a routerLink="/guides" routerLinkActive="nav-active">Guides</a>
+        </li>
+        <li>
+            <a routerLink="/docs" routerLinkActive="nav-active">API Docs & Examples</a>
+        </li>
+        <li>
+            <a routerLink="/resources" routerLinkActive="nav-active">Resources</a>
+        </li>
+    </ul>
+
+    <div class="profile flex-row">
+        <label>Night mode</label>
+        <sdk-toggle (click)="toggleTheme()" [isActive]="themeService.darkness"></sdk-toggle>
+    </div>
+
+</header>

@@ -1,0 +1,41 @@
+header {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 64px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--regular-disabled);
+  background-color: var(--background);
+  color: var(--regular-text);
+}
+
+.menu {
+}
+
+.logo {
+  padding: 0 16px;
+}
+
+.nav-bar {
+
+  li {
+    padding-left: 16px;
+  }
+
+  &.hidden a {
+    display: none;
+  }
+}
+
+.profile {
+  padding: 0 0 0 16px;
+
+  sdk-toggle {
+    margin: 0 8px;
+  }
+}
+
+

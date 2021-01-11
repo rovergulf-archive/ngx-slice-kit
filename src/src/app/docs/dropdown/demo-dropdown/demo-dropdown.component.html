@@ -1,0 +1,43 @@
+<main>
+    <header>
+        <h2>Dropdowns</h2>
+    </header>
+
+    <section class="view flex-column layout-start-stretch">
+
+        <div class="example flex-column layout-start-stretch">
+            <h3>First choice</h3>
+            <div class="flex-row layout-start-start">
+                <div class="flex-grow-1"></div>
+                <div class="flex-column layout-start-start">
+                    <p sdkDropdownMenuTrigger [options]="options1" (result)="firstResult($event)">Choose game: {{result1}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="example flex-column layout-start-stretch">
+            <h3>Second choice</h3>
+            <div class="flex-column layout-start-start">
+                <button sdk-flat-button sdkDropdownMenuTrigger
+                        [options]="options2"
+                        (result)="secondResult($event)">Favourite anime: {{result2}}</button>
+            </div>
+        </div>
+
+        <div class="skip-space">
+            <p>And now we skip some screen space to be sure it works on window's bottom</p>
+        </div>
+
+        <div class="example flex-column layout-start-stretch">
+            <h3>And the last one</h3>
+            <div class="flex-column layout-start-start">
+                <p sdkDropdownMenuTrigger [options]="options3"
+                        (result)="thirdResult($event)">Get a book: {{result3}}</p>
+            </div>
+        </div>
+
+    </section>
+
+
+
+</main>

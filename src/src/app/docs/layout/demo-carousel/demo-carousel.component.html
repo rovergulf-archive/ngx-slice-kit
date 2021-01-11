@@ -1,0 +1,119 @@
+<div class="demo-carousel-container">
+    <h2>Carousel</h2>
+    <h3>Slider 9/3 + dots + infinity + offset</h3>
+    <div class="lotr-block">
+        <sdk-carousel [offset]="carousel1Config.offset"
+                      [dots]="true"
+                      [slidesToScroll]="carousel1Config.slidesToScroll"
+                      [slidesToShow]="carousel1Config.slidesToShow"
+                      [pauseByHover]="carousel1Config.pauseByHover"
+                      [infinity]="carousel1Config.infinity"
+                      [timeout]="carousel1Config.timeout">
+            <sdk-slide *ngFor="let url of lotrPostersUrl">
+                <div class="lotr-slide">
+                    <img [src]="url" alt="Lord of the rings: fellowship of the ring">
+                </div>
+            </sdk-slide>
+        </sdk-carousel>
+    </div>
+
+    <h3>Slider 8/3 without timeout + infinity + dots + offset</h3>
+    <div class="lotr-block">
+        <sdk-carousel [offset]="carousel2Config.offset"
+                      [dots]="true"
+                      [slidesToScroll]="carousel2Config.slidesToScroll"
+                      [slidesToShow]="carousel2Config.slidesToShow"
+                      [pauseByHover]="carousel2Config.pauseByHover"
+                      [timeout]="carousel2Config.timeout"
+                      [infinity]="carousel2Config.infinity">
+            <sdk-slide *ngFor="let url of lotrPostersUrl.slice(0, 8)">
+                <div class="lotr-slide">
+                    <img [src]="url" alt="Lord of the rings: fellowship of the ring">
+                </div>
+            </sdk-slide>
+        </sdk-carousel>
+    </div>
+
+    <h3>Slider 8/2 without timeout without dots without arrows + infinity + offset</h3>
+    <div class="lotr-block">
+        <sdk-carousel [offset]="carousel3Config.offset"
+                      [slidesToScroll]="carousel3Config.slidesToScroll"
+                      [arrows]="carousel3Config.arrows"
+                      [slidesToShow]="carousel3Config.slidesToShow"
+                      [pauseByHover]="carousel3Config.pauseByHover"
+                      [timeout]="carousel3Config.timeout"
+                      [infinity]="carousel3Config.infinity">
+            <sdk-slide *ngFor="let url of lotrPostersUrl.slice(0, 8)">
+                <div class="lotr-slide">
+                    <img [src]="url" alt="Lord of the rings: fellowship of the ring">
+                </div>
+            </sdk-slide>
+        </sdk-carousel>
+    </div>
+
+    <h3>Slider 8/2 big without timeout without dots + arrows + infinity + offset</h3>
+    <div class="lotr-block">
+        <sdk-carousel [offset]="carousel4Config.offset"
+                      [slidesToScroll]="carousel4Config.slidesToScroll"
+                      [slidesToShow]="carousel4Config.slidesToShow"
+                      [arrows]="carousel4Config.arrows"
+                      [pauseByHover]="carousel4Config.pauseByHover"
+                      [timeout]="carousel4Config.timeout"
+                      [infinity]="carousel4Config.infinity">
+            <sdk-slide *ngFor="let url of lotrPostersUrl.slice(0, 8)">
+                <div class="lotr-slide">
+                    <img [src]="url" alt="Lord of the rings: fellowship of the ring">
+                </div>
+            </sdk-slide>
+        </sdk-carousel>
+    </div>
+
+    <h3>Slider 6/3 without timeout without infinity without dots without arrows + offset</h3>
+    <div class="lotr-block">
+        <sdk-carousel [offset]="carousel5Config.offset"
+                      [slidesToScroll]="carousel5Config.slidesToScroll"
+                      [slidesToShow]="carousel5Config.slidesToShow"
+                      [arrows]="carousel5Config.arrows"
+                      [pauseByHover]="carousel5Config.pauseByHover"
+                      [timeout]="carousel5Config.timeout"
+                      [infinity]="carousel5Config.infinity">
+            <sdk-slide *ngFor="let url of [1,2,3,4,5,6]">
+                <div>
+                    <h3>Test custom block title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ea tempora veniam?</p>
+                    <h4 style="margin: 16px 0 8px">Subtitle</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus dolor earum error hic id,
+                        laudantium mollitia nobis, non odio optio unde vero voluptatibus.</p>
+                </div>
+            </sdk-slide>
+        </sdk-carousel>
+    </div>
+
+    <h3>Slider 5/1 full width + arrows + dots + infinity + timeout="10000"</h3>
+    <div class="lotr-block">
+        <sdk-carousel [offset]="carousel6Config.offset"
+                      [dots]="true"
+                      [slidesToScroll]="carousel6Config.slidesToScroll"
+                      [slidesToShow]="carousel6Config.slidesToShow"
+                      [arrows]="carousel6Config.arrows"
+                      [pauseByHover]="carousel6Config.pauseByHover"
+                      [timeout]="carousel6Config.timeout"
+                      [infinity]="carousel6Config.infinity">
+            <sdk-slide>
+                <img src="https://onlinepngtools.com/images/examples-onlinepngtools/purple-flowers.png" alt="">
+            </sdk-slide>
+            <sdk-slide>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/600x400_kastra.jpg" alt="">
+            </sdk-slide>
+            <sdk-slide>
+                <img src="https://www.otdihhorvatija.ru/izobrazheniya/apartments/Zelic_6f2a5599bc8b.jpg" alt="">
+            </sdk-slide>
+            <sdk-slide>
+                <img src="https://cdn.flickeringmyth.com/wp-content/uploads/2019/02/star-wars-600x400.jpg" alt="">
+            </sdk-slide>
+            <sdk-slide>
+                <img src="https://pluggedin.ru/images/star-wars-battlefront-02-600x400-file.jpg" alt="">
+            </sdk-slide>
+        </sdk-carousel>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+@import "assets/styles/inter_ui";
+//@import "~ngx-slice-kit/src/lib/core/styles/core";
+//@import "~ngx-slice-kit/src/lib/core/styles/typography";
+
+
+html, body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
+  justify-content: flex-start;
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  width: 100vw;
+  color: #262626;
+  background-color: var(--primary-default);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  scroll-behavior: smooth;
+}
+
+#wrap {
+  position: relative;
+  display: block;
+  z-index: 50;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 64px;
+  //max-height: 100vh;
+  scroll-behavior: smooth;
+
+  app-header {
+    position: relative;
+    z-index: 100;
+  }
+
+  sdk-sidenav-container {
+    min-height: 100%;
+  }
+}
+
+// calculate 64px used by footer
+#content {
+  width: 100%;
+  min-height: calc(100% - 80px);
+}
+
+#wrap.dark {
+  background-color: var(--background);
+  color: var(--regular-text);
+}

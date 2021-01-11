@@ -1,0 +1,112 @@
+<main>
+    <header>
+        <h1>Buttons module</h1>
+    </header>
+
+    <section class="view">
+        <div class="flex-column layout-center-stretch">
+            <h3>Basic Buttons</h3>
+            <div class="example flex-row flex-wrap layout-start-center">
+                <button sdk-button>Primary</button>
+                <button sdk-button color="regular">Regular</button>
+                <button sdk-button color="success">Success</button>
+                <button sdk-button color="accent">Accent</button>
+                <button sdk-button color="warn">Warn</button>
+                <button sdk-button disabled="true">Disabled</button>
+                <a sdk-button routerLink=".">Link</a>
+            </div>
+            <h3>Flat buttons</h3>
+            <div class="example flex-row flex-wrap layout-start-center">
+                <button sdk-flat-button>Primary</button>
+                <button sdk-flat-button color="regular">Regular</button>
+                <button sdk-flat-button color="success">Success</button>
+                <button sdk-flat-button color="accent">Accent</button>
+                <button sdk-flat-button color="warn">Warn</button>
+                <button sdk-flat-button disabled="true">Disabled</button>
+                <a sdk-flat-button routerLink=".">Link</a>
+            </div>
+            <h3>Flat buttons small</h3>
+            <div class="example flex-row flex-wrap layout-start-center">
+                <button sdk-flat-button [small]="true">Primary</button>
+                <button sdk-flat-button color="regular" [small]="true">Regular</button>
+                <button sdk-flat-button color="success" [small]="true">Success</button>
+                <button sdk-flat-button color="accent" [small]="true">Accent</button>
+                <button sdk-flat-button color="warn" [small]="true">Warn</button>
+                <button sdk-flat-button disabled="true" [small]="true">Disabled</button>
+                <a sdk-flat-button routerLink="." [small]="true">Link</a>
+            </div>
+            <h3>Raised buttons</h3>
+            <div class="example flex-row flex-wrap layout-start-center">
+                <button sdk-raised-button>Primary</button>
+                <button sdk-raised-button color="regular">Regular</button>
+                <button sdk-raised-button color="success">Success</button>
+                <button sdk-raised-button color="accent">Accent</button>
+                <button sdk-raised-button color="warn">Warn</button>
+                <button sdk-raised-button disabled="true">Disabled</button>
+                <a sdk-raised-button routerLink=".">Link</a>
+            </div>
+            <h3>Border buttons</h3>
+            <div class="example flex-row flex-wrap layout-start-center">
+                <button sdk-stroked-button>Primary</button>
+                <button sdk-stroked-button color="regular">Regular</button>
+                <button sdk-stroked-button color="success">Success</button>
+                <button sdk-stroked-button color="accent">Accent</button>
+                <button sdk-stroked-button color="warn">Warn</button>
+                <button sdk-stroked-button disabled="true">Disabled</button>
+                <a sdk-stroked-button routerLink=".">Link</a>
+            </div>
+            <h3>Wide raised buttons (min-width: 200px)</h3>
+            <div class="example flex-row flex-wrap layout-start-center">
+                <button sdk-raised-button size="wide">Primary</button>
+                <button sdk-raised-button size="wide" color="regular">Regular</button>
+                <button sdk-raised-button size="wide" color="success">Success</button>
+                <button sdk-raised-button size="wide" color="accent">Accent</button>
+                <button sdk-raised-button size="wide" color="warn">Warn</button>
+                <button sdk-raised-button size="wide" disabled="true">Disabled</button>
+                <a sdk-raised-button size="wide" routerLink=".">Link</a>
+            </div>
+            <h3>Full-width flat buttons</h3>
+            <div class="example full-width flex-row flex-wrap layout-start-center">
+                <button sdk-flat-button size="full-width">Primary</button>
+                <button sdk-flat-button size="full-width" color="regular">Regular</button>
+                <button sdk-flat-button size="full-width" color="success">Success</button>
+                <button sdk-flat-button size="full-width" color="accent">Accent</button>
+                <button sdk-flat-button size="full-width" color="warn">Warn</button>
+                <button sdk-flat-button size="full-width" disabled="true">Disabled</button>
+            </div>
+            <h3>Round buttons</h3>
+            <div class="example flex-row flex-wrap layout-start-center">
+                <button sdk-round-button>Primary</button>
+                <button sdk-round-button color="regular">Regular</button>
+                <button sdk-round-button color="success">Success</button>
+                <button sdk-round-button color="accent">Accent</button>
+                <button sdk-round-button color="warn">Warn</button>
+                <button sdk-round-button disabled="true">Disabled</button>
+                <button sdk-round-button color="regular">
+                    <sdk-icon></sdk-icon>
+                </button>
+                <button sdk-round-button color="basic">
+                    <sdk-icon></sdk-icon>
+                </button>
+            </div>
+            <h3>Button with icon</h3>
+            <div class="example flex-row flex-wrap layout-start-center">
+                <button sdk-flat-button color="regular">
+                    <sdk-icon></sdk-icon>
+                    <span>Primary</span>
+                </button>
+                <button sdk-flat-button color="regular">
+                    <span>Regular</span>
+                    <sdk-icon></sdk-icon>
+                </button>
+                <button sdk-flat-button color="regular" disabled="true">
+                    <sdk-icon></sdk-icon>
+                    <span>Disabled</span>
+                </button>
+                <a sdk-flat-button routerLink=".">Link</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+
