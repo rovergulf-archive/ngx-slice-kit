@@ -58,7 +58,8 @@ export class TabsComponent implements OnInit, AfterContentInit, AfterViewInit, A
     constructor(
         public themeService: ThemeService,
         private cdRef: ChangeDetectorRef
-    ) {}
+    ) {
+    }
 
     selectTab(selectedTab, index) {
         if (selectedTab.active) {
@@ -220,7 +221,7 @@ export class TabsComponent implements OnInit, AfterContentInit, AfterViewInit, A
 
     ngAfterContentInit(): void {
         this.tabs.forEach(tabInstance => this.tabGroup.push(tabInstance));
-        console.log(this.tabGroup, 'dis ins')
+        console.log(this.tabGroup, 'dis ins');
         this.selectTab(this.tabs.first, 0);
     }
 

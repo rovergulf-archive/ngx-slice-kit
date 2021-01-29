@@ -2,103 +2,103 @@
 @import '../../core/styles/flexbox';
 
 .sdk-alert {
-  max-width: 320px;
-  @extend .flex-row;
-  align-items: flex-start;
-  z-index: 9999;
-  border-radius: 6px;
-  background-color: var(--regular-smooth);
-  color: var(--regular-text);
-  padding: 8px;
-  min-width: 256px;
-  animation: modal-top .2s;
-  flex-direction: column;
-  box-shadow: 0 2px 5px rgba(26, 26, 26, 0.14), 0 0 2px rgba(26, 26, 26, 0.1), 0 1px 0 rgba(0, 0, 0, 0.04);
-  margin-bottom: 4px;
+    max-width: 320px;
+    @extend .flex-row;
+    align-items: flex-start;
+    z-index: 9999;
+    border-radius: 6px;
+    background-color: var(--regular-smooth);
+    color: var(--regular-text);
+    padding: 8px;
+    min-width: 256px;
+    animation: modal-top .2s;
+    flex-direction: column;
+    box-shadow: 0 2px 5px rgba(26, 26, 26, 0.14), 0 0 2px rgba(26, 26, 26, 0.1), 0 1px 0 rgba(0, 0, 0, 0.04);
+    margin-bottom: 4px;
 
-  .sdk-alert__close {
-    opacity: 0;
-    transition: all 0.2s;
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    width: 14px;
-    height: 14px;
-    cursor: pointer
-  }
-
-  &:hover .sdk-alert__close {
-    transition: all 0.2s;
-    opacity: 1;
-
-    &:hover {
-      opacity: 0.8;
+    .sdk-alert__close {
+        opacity: 0;
+        transition: all 0.2s;
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        width: 14px;
+        height: 14px;
+        cursor: pointer
     }
-  }
+
+    &:hover .sdk-alert__close {
+        transition: all 0.2s;
+        opacity: 1;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
 }
 
 .sdk-alert-content {
-  @extend .flex-column;
-  @extend .layout-start-stretch;
-  width: 100%;
+    @extend .flex-column;
+    @extend .layout-start-stretch;
+    width: 100%;
 
-  p {
-    display: flex;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
+    p {
+        display: flex;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
 }
 
 .sdk-alert__inner {
-  display: flex;
+    display: flex;
 }
 
 sdk-icon, img {
-  margin-right: 12px;
+    margin-right: 12px;
 }
 
 .sdk-p {
-  font-size: 15px;
+    font-size: 15px;
 }
 
 .sdk-alert--small {
-  padding: 6px 16px;
+    padding: 6px 16px;
 
-  .sdk-h4 {
-    font-size: 15px;
-  }
+    .sdk-h4 {
+        font-size: 15px;
+    }
 
-  .sdk-p {
-    font-size: 13px;
-  }
+    .sdk-p {
+        font-size: 13px;
+    }
 
-  .sdk-custom-icon {
-    height: 16px;
-    width: 16px;
-  }
+    .sdk-custom-icon {
+        height: 16px;
+        width: 16px;
+    }
 }
 
 .sdk-alert__interface {
-  margin-top: 12px;
+    margin-top: 12px;
 
-  .sdk-alert__interface-item {
-    font-size: 15px;
-    margin-right: 12px;
-    cursor: pointer;
-    transition: all 0.2s;
-    opacity: 1;
+    .sdk-alert__interface-item {
+        font-size: 15px;
+        margin-right: 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+        opacity: 1;
 
-    &:hover {
-      opacity: 0.8;
+        &:hover {
+            opacity: 0.8;
+        }
     }
-  }
 }
 
 .sdk-alert__close-wrapper {
-  //position: absolute;
-  padding: 4px;
-  //right: 8px;
-  //top: 4px;
+    //position: absolute;
+    padding: 4px;
+    //right: 8px;
+    //top: 4px;
 }
 
 

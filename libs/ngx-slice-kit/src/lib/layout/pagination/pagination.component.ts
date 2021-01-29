@@ -94,7 +94,7 @@ export class PaginationComponent implements OnInit {
                     {value: this.page + 1},
                     {value: '...', disabled: true},
                     {value: this.pageCount}
-                ]
+                ];
         }
     }
 

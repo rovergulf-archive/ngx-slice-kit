@@ -1,10 +1,10 @@
 import { LoadingDirective } from './loading.directive';
-import { ComponentFactoryResolver, ViewContainerRef } from "@angular/core";
+import { ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 
 describe('LoadingDirective', () => {
     it('should create an instance', () => {
-        let viewRef: ViewContainerRef
-        let resolver: ComponentFactoryResolver
+        let viewRef: ViewContainerRef;
+        let resolver: ComponentFactoryResolver;
         const directive = new LoadingDirective(
             viewRef,
             resolver

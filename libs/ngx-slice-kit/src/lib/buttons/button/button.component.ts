@@ -1,13 +1,4 @@
-import {
-    Component,
-    ElementRef, HostBinding,
-    HostListener,
-    Input,
-    OnDestroy,
-    OnInit,
-    Renderer2,
-    ViewEncapsulation
-} from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 
 const AVAILABLE_SIZE_CLASS_NAMES = [
     'wide',

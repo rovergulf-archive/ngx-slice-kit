@@ -10,30 +10,30 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { SelectComponent } from './select/select.component';
 
 const moduleDirectives = [
-  DropdownMenuTriggerDirective,
+    DropdownMenuTriggerDirective,
 ];
 
 const moduleDeclarations = [
-  AutocompleteComponent,
-  DropdownComponent,
-  SelectComponent,
-  // Directives
-  ...moduleDirectives,
+    AutocompleteComponent,
+    DropdownComponent,
+    SelectComponent,
+    // Directives
+    ...moduleDirectives,
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ButtonsModule,
-    InputsModule,
-  ],
-  declarations: moduleDeclarations,
-  exports: moduleDeclarations,
-  providers: [],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA,
-    NO_ERRORS_SCHEMA,
-  ]
+    imports: [
+        CommonModule,
+        ButtonsModule,
+        InputsModule,
+    ],
+    declarations: moduleDeclarations,
+    exports: moduleDeclarations,
+    providers: [],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
+        NO_ERRORS_SCHEMA,
+    ]
 })
 export class DropdownsModule {
 }

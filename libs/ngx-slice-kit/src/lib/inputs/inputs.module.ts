@@ -13,29 +13,29 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import {WysiwygComponent} from './wysiwyg/wysiwyg.component';
 
 const moduleDeclarations = [
-  CheckboxComponent,
-  DatepickerComponent,
-  InputComponent,
-  RadioComponent,
-  TextareaComponent,
-  ToggleComponent,
-  // WysiwygComponent,
+    CheckboxComponent,
+    DatepickerComponent,
+    InputComponent,
+    RadioComponent,
+    TextareaComponent,
+    ToggleComponent,
+    // WysiwygComponent,
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ButtonsModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  declarations: moduleDeclarations,
-  exports: moduleDeclarations,
-  providers: [],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA,
-    NO_ERRORS_SCHEMA,
-  ]
+    imports: [
+        CommonModule,
+        ButtonsModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
+    declarations: moduleDeclarations,
+    exports: moduleDeclarations,
+    providers: [],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
+        NO_ERRORS_SCHEMA,
+    ]
 })
 export class InputsModule {
 }

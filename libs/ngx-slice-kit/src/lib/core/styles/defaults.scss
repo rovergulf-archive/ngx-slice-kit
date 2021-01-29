@@ -1,52 +1,52 @@
 /* --- DEFAULTS --- */
 * {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-backface-visibility: hidden;
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-backface-visibility: hidden;
 }
 
 input, button, textarea {
-  outline: none;
-  border: none;
+    outline: none;
+    border: none;
 }
 
 input.hidden {
-  position: absolute;
-  z-index: -10;
-  top: -10000 px;
-  left: -10000 px;
-  height: 1px;
-  width: 1px;
-  opacity: 0;
+    position: absolute;
+    z-index: -10;
+    top: -10000 px;
+    left: -10000 px;
+    height: 1px;
+    width: 1px;
+    opacity: 0;
 }
 
 ul, ol {
-  list-style: none;
+    list-style: none;
 }
 
 b, i, strong {
-  font-size: inherit;
-  color: inherit;
+    font-size: inherit;
+    color: inherit;
 }
 
 [hidden], .hide {
-  display: none !important;
+    display: none !important;
 }
 
 [disabled] {
-  pointer-events: none;
-  opacity: 0.5;
+    pointer-events: none;
+    opacity: 0.5;
 }
 
 a, a:hover, a:visited, a:active, a:focus {
-  text-decoration: none;
-  outline: none;
-  color: inherit;
+    text-decoration: none;
+    outline: none;
+    color: inherit;
 }
 
 @function rgba-to-rgb($rgba, $background: #fff) {
-  @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%)
+    @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%)
 }

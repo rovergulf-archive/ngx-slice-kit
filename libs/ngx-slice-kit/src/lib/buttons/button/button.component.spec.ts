@@ -143,4 +143,5 @@ describe('ButtonComponent', () => {
 @Component({
     template: `<button sdk-flat-button [small]="true">Hello World</button>`,
 })
-class TestButtonComponent {}
+class TestButtonComponent {
+}

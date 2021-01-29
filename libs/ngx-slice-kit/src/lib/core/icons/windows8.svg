@@ -1,5 +1,5 @@
 <svg class="windows" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 32 32">
-  <path
-    d="M0.011 16l-0.011-9.752 12-1.63v11.382zM14 4.328l15.996-2.328v14h-15.996zM30 18l-0.004 14-15.996-2.25v-11.75zM12 29.495l-11.99-1.644-0.001-9.851h11.991z"
-    fill="var(--regular-text)" fill-opacity="1"></path>
+    <path
+        d="M0.011 16l-0.011-9.752 12-1.63v11.382zM14 4.328l15.996-2.328v14h-15.996zM30 18l-0.004 14-15.996-2.25v-11.75zM12 29.495l-11.99-1.644-0.001-9.851h11.991z"
+        fill="var(--regular-text)" fill-opacity="1"></path>
 </svg>

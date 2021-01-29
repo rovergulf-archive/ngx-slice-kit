@@ -1,15 +1,4 @@
-import {
-    Component,
-    ElementRef,
-    EventEmitter,
-    forwardRef,
-    HostBinding,
-    Input,
-    OnDestroy,
-    OnInit,
-    Output,
-    ViewChild
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, forwardRef, HostBinding, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ThemeService } from '../../core/theme/theme.service';
 import { LayoutControlService } from '../../core/layout-control/layout-control.service';
@@ -69,7 +58,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
             value: this.value || ''
         };
         this.focused = true;
-        this.focus.emit(event)
+        this.focus.emit(event);
     }
 
     onBlur(): void {
@@ -79,7 +68,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
             value: this.value || ''
         };
         this.focused = false;
-        this.blur.emit(event)
+        this.blur.emit(event);
     }
 
     change(target): void {

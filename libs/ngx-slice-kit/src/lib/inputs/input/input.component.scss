@@ -1,154 +1,154 @@
 @import '../inputs.module';
 
 :host {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .disabled {
-  .sdk-input__label {
-    opacity: 0.6;
-  }
+    .sdk-input__label {
+        opacity: 0.6;
+    }
 }
 
 .sdk-input__label-required-mark {
-  color: var(--warn);
+    color: var(--warn);
 }
 
 .sdk-input__label {
-  color: var(--regular);
-  transition: all 0.2s;
-  font-size: 17px;
-  margin-bottom: 2px;
+    color: var(--regular);
+    transition: all 0.2s;
+    font-size: 17px;
+    margin-bottom: 2px;
 
-  &--small {
-    font-size: 15px;
-  }
+    &--small {
+        font-size: 15px;
+    }
 
-  &--focused {
-    color: var(--regular-text);
-  }
+    &--focused {
+        color: var(--regular-text);
+    }
 
-  &--accent {
-    color: var(--accent);
-  }
+    &--accent {
+        color: var(--accent);
+    }
 
-  &--warn {
-    color: var(--warn);
-  }
+    &--warn {
+        color: var(--warn);
+    }
 }
 
 .sdk-input-wrap {
-  background-color: var(--regular-disabled);
-  border-radius: 6px;
-  border-color: var(--regular-disabled);
-  border-width: 1px;
-  border-style: solid;
-  min-width: 160px;
-  max-width: 288px;
+    background-color: var(--regular-disabled);
+    border-radius: 6px;
+    border-color: var(--regular-disabled);
+    border-width: 1px;
+    border-style: solid;
+    min-width: 160px;
+    max-width: 288px;
 
-  &--wide {
-    min-width: 288px;
-    max-width: none;
-  }
+    &--wide {
+        min-width: 288px;
+        max-width: none;
+    }
 
-  &--full-width {
-    max-width: none;
-    width: 100%;
-  }
+    &--full-width {
+        max-width: none;
+        width: 100%;
+    }
 
-  &--focused {
-    border-color: var(--regular-active);
-    transition: 0.4s;
-  }
+    &--focused {
+        border-color: var(--regular-active);
+        transition: 0.4s;
+    }
 
-  &--warn {
-    border-color: var(--warn);
-    transition: 0.4s;
-  }
+    &--warn {
+        border-color: var(--warn);
+        transition: 0.4s;
+    }
 
-  &--accent {
-    border-color: var(--accent);
-    transition: 0.4s;
-  }
+    &--accent {
+        border-color: var(--accent);
+        transition: 0.4s;
+    }
 }
 
 .sdk-input__input {
-  color: var(--regular-text);
-  background-color: transparent;
-  flex-grow: 1;
-  font-size: 17px;
-  font-weight: normal;
-  line-height: 24px;
-  height: 44px;
-  outline: none;
-  border: none;
-  font-family: 'Inter', sans-serif;
-  padding: 8px 16px;
+    color: var(--regular-text);
+    background-color: transparent;
+    flex-grow: 1;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 24px;
+    height: 44px;
+    outline: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    padding: 8px 16px;
 
-  &--icon-right {
-    background-size: 24px 24px;
-    background-repeat: no-repeat;
-    background-position: right 8px center;
-    padding-right: 40px;
-  }
+    &--icon-right {
+        background-size: 24px 24px;
+        background-repeat: no-repeat;
+        background-position: right 8px center;
+        padding-right: 40px;
+    }
 
-  &--icon-left {
-    background-size: 24px 24px;
-    background-repeat: no-repeat;
-    background-position: left 8px center;
-    padding-left: 40px;
-  }
+    &--icon-left {
+        background-size: 24px 24px;
+        background-repeat: no-repeat;
+        background-position: left 8px center;
+        padding-left: 40px;
+    }
 }
 
 .sdk-input__input.sdk-input__input--small {
-  height: 32px;
-  font-size: 15px;
-  padding: 4px 8px;
+    height: 32px;
+    font-size: 15px;
+    padding: 4px 8px;
 
-  &.sdk-input__input--icon-left {
-    background-position: left 4px center;
-    padding-left: 24px;
-    background-size: 16px 16px;
-  }
+    &.sdk-input__input--icon-left {
+        background-position: left 4px center;
+        padding-left: 24px;
+        background-size: 16px 16px;
+    }
 
-  &.sdk-input__input--icon-right {
-    background-size: 16px 16px;
-    background-position: right 4px center;
-    padding-right: 24px;
-  }
+    &.sdk-input__input--icon-right {
+        background-size: 16px 16px;
+        background-position: right 4px center;
+        padding-right: 24px;
+    }
 }
 
 .sdk-input__input::-webkit-input-placeholder {
-  color: var(--regular-hover);
+    color: var(--regular-hover);
 }
 
 .sdk-input__input::-moz-placeholder {
-  color: var(--regular-hover);
+    color: var(--regular-hover);
 }
 
 .sdk-input__input:-ms-input-placeholder {
-  color: var(--regular-hover);
+    color: var(--regular-hover);
 }
 
 .sdk-input__input:-moz-placeholder {
-  color: var(--regular-hover);
+    color: var(--regular-hover);
 }
 
 .sdk-input__error {
-  @extend .sdk-inputs-caption;
-  color: var(--warn);
+    @extend .sdk-inputs-caption;
+    color: var(--warn);
 
-  svg {
-    margin-right: 4px;
-  }
+    svg {
+        margin-right: 4px;
+    }
 }
 
 .sdk-input__caption {
-  @extend .sdk-inputs-caption;
-  color: var(--regular-hover);
-  cursor: default;
+    @extend .sdk-inputs-caption;
+    color: var(--regular-hover);
+    cursor: default;
 }
 

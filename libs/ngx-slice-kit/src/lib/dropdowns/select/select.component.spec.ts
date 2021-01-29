@@ -365,13 +365,13 @@ describe('SelectComponent', () => {
         });
 
         it('should #showDropdown() be stopped if #isOpen is true', () => {
-           component.isOpen = true;
-           spyOn(component, 'onOpen');
+            component.isOpen = true;
+            spyOn(component, 'onOpen');
 
-           component.showDropdown();
+            component.showDropdown();
 
-           expect(component.showDropdown()).toBeUndefined();
-           expect(component.onOpen).not.toHaveBeenCalled();
+            expect(component.showDropdown()).toBeUndefined();
+            expect(component.onOpen).not.toHaveBeenCalled();
         });
 
         it('should #showDropdown() set open state if #isOpen is false', () => {
@@ -626,9 +626,11 @@ describe('SelectComponent', () => {
         let dropdownService;
 
         beforeEach(() => {
-            TestBed.overrideProvider(DropdownService, {useValue: {
+            TestBed.overrideProvider(DropdownService, {
+                useValue: {
                     showDropdown: () => stubOptionA as Observable<any>
-                }});
+                }
+            });
             fixture = TestBed.createComponent(SelectComponent);
             component = fixture.componentInstance;
             dropdownService = TestBed.inject(DropdownService);

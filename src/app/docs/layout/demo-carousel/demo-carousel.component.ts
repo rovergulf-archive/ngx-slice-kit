@@ -85,7 +85,7 @@ export class DemoCarouselComponent implements OnInit {
     @HostListener('window:resize', ['$event'])
     onWindowResize(event) {
         this.currentWidth = event.target.innerWidth;
-        this.changeCarouselConfig()
+        this.changeCarouselConfig();
     }
 
     changeCarouselConfig() {

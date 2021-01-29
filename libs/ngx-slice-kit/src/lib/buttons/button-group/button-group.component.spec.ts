@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ButtonGroupComponent } from './button-group.component';
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
-import { By } from '@angular/platform-browser';
 
 @Component({
     template: `<sdk-button-group>
@@ -13,7 +12,8 @@ import { By } from '@angular/platform-browser';
                 <button sdk-flat-button>Quatro</button>
             </sdk-button-group>`,
 })
-class TestGroupComponent { }
+class TestGroupComponent {
+}
 
 describe('ButtonGroupComponent', () => {
     let component: ButtonGroupComponent;

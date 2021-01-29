@@ -1,114 +1,114 @@
 .sdk-tab-container {
-  overflow: hidden;
-  min-width: 320px;
-  width: 100%;
-  max-width: 100%;
+    overflow: hidden;
+    min-width: 320px;
+    width: 100%;
+    max-width: 100%;
 }
 
 .sdk-tab-container__header {
-  height: 48px;
-  display: flex;
-  position: relative;
-  border-bottom: 2px solid var(--regular)
+    height: 48px;
+    display: flex;
+    position: relative;
+    border-bottom: 2px solid var(--regular)
 }
 
 .sdk-tab-container__tabs-wrapper {
-  display: flex;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
 }
 
 .sdk-tab-container__tabs-scroll {
-  left: 0;
-  position: absolute;
-  display: flex;
-  width: max-content;
-  transition: all 0.4s;
+    left: 0;
+    position: absolute;
+    display: flex;
+    width: max-content;
+    transition: all 0.4s;
 }
 
 .sdk-tab-container__tab {
-  padding: 0 24px;
-  height: 48px;
-  color: var(--regular-text);
-  display: flex;
-  white-space: nowrap;
-  cursor: pointer;
-  align-items: center;
-  outline: none;
-  transition: all 0.3s;
-  position: relative;
-  //overflow: hidden;
-  span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+    padding: 0 24px;
+    height: 48px;
+    color: var(--regular-text);
+    display: flex;
+    white-space: nowrap;
+    cursor: pointer;
+    align-items: center;
+    outline: none;
+    transition: all 0.3s;
+    position: relative;
+    //overflow: hidden;
+    span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-  &.sdk-tab-container__tab--active {
-    color: var(--primary);
-  }
+    &.sdk-tab-container__tab--active {
+        color: var(--primary);
+    }
 
-  &.sdk-tab-container__tab--oversize {
-    overflow: hidden;
-  }
+    &.sdk-tab-container__tab--oversize {
+        overflow: hidden;
+    }
 }
 
 .slide {
-  position: absolute;
-  height: 2px;
-  left: 0;
-  background-color: var(--primary);
-  bottom: 0;
-  transition: all 0.4s;
+    position: absolute;
+    height: 2px;
+    left: 0;
+    background-color: var(--primary);
+    bottom: 0;
+    transition: all 0.4s;
 }
 
 .sdk-tab-container__content {
-  padding: 24px;
-  position: relative;
+    padding: 24px;
+    position: relative;
 }
 
 .sdk-tab-container__tab--fill .sdk-tab__background {
-  position: absolute;
-  z-index: -1;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 0;
-  background-color: var(--primary);
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: var(--primary);
 }
 
 .sdk-tab-container__tab--active.sdk-tab-container__tab--fill {
-  color: #fff;
+    color: #fff;
 
-  .sdk-tab__background {
-    animation: sdk-painting 0.3s;
-    width: 100%;
-  }
+    .sdk-tab__background {
+        animation: sdk-painting 0.3s;
+        width: 100%;
+    }
 }
 
 .sdk-tab-container__arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: transparent;
 }
 
 .sdk-tab-container__arrow--right {
-  box-shadow: -2px 0 6px 1px var(--regular);
+    box-shadow: -2px 0 6px 1px var(--regular);
 }
 
 .sdk-tab-container__arrow--left {
-  box-shadow: 2px 0 6px 1px var(--regular);
+    box-shadow: 2px 0 6px 1px var(--regular);
 }
 
 .sdk-tab-container__arrow--disabled {
-  opacity: 0.4;
+    opacity: 0.4;
 }
 
 .sdk-tab-container__tab-icon {
-  height: 24px;
-  width: 24px;
-  position: relative;
-  left: -8px;
+    height: 24px;
+    width: 24px;
+    position: relative;
+    left: -8px;
 }

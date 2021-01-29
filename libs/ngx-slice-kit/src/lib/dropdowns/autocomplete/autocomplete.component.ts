@@ -13,15 +13,15 @@ import {
     Renderer2,
     ViewChild
 } from '@angular/core';
-import { DOCUMENT, isPlatformServer } from "@angular/common";
+import { DOCUMENT, isPlatformServer } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BehaviorSubject, fromEvent, Subscription } from "rxjs";
-import { debounceTime } from "rxjs/operators";
+import { BehaviorSubject, fromEvent, Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { OptionModel } from '../dropdown-option.model';
-import { DropdownOptions } from "../dropdown.model";
-import { DropdownService } from "../dropdown.service";
-import { OptionsService } from "../options.service";
-import { LayoutControlService } from "../../core/layout-control/layout-control.service";
+import { DropdownOptions } from '../dropdown.model';
+import { DropdownService } from '../dropdown.service';
+import { OptionsService } from '../options.service';
+import { LayoutControlService } from '../../core/layout-control/layout-control.service';
 
 @Component({
     selector: 'sdk-autocomplete',
@@ -69,6 +69,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     @Output() valueChanges: EventEmitter<any> = new EventEmitter();
 
     @Input() @HostBinding('class.invalid') error: string = undefined;
+
     @Input() @HostBinding('class.disabled') get isDisabled(): boolean {
         return this.disabled;
     }
@@ -89,7 +90,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
         private renderer: Renderer2,
         private layoutControlService: LayoutControlService
     ) {
-        this.uid = layoutControlService.generateLayoutElementHash()
+        this.uid = layoutControlService.generateLayoutElementHash();
     }
 
     getOptions(): OptionModel[] {
@@ -146,16 +147,16 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     onResult(option: OptionModel): void {
         this.onTouched();
         if (this.multi) {
-            this.addValue(option)
+            this.addValue(option);
         } else {
-            this.writeValue(option)
+            this.writeValue(option);
         }
     }
 
     writeValue(val): void {
         if (val?.size > 0) {
             this.currentValues = val;
-            const multipleResult = this.options.filter(o => this.currentValues.has(o))
+            const multipleResult = this.options.filter(o => this.currentValues.has(o));
             this.onChange(multipleResult);
             this.result.emit(multipleResult);
         } else {

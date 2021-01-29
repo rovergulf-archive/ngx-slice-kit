@@ -1,12 +1,13 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[sdkOverlay]'
+    selector: '[sdkOverlay]'
 })
 export class OverlayDirective {
 
-  constructor(
-      public viewContainerRef: ViewContainerRef
-  ) { }
+    constructor(
+        public viewContainerRef: ViewContainerRef
+    ) {
+    }
 
 }

@@ -282,7 +282,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
             if (this.timeout) {
                 this.startInterval();
             }
-        })
+        });
     }
 
     ngOnChanges(changes) {

@@ -1,29 +1,29 @@
 .sdk-button-group-container {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: flex-start;
-  align-content: flex-start;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  width: auto;
-  overflow: hidden;
-  padding: 2px;
-  border-radius: 4px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: auto;
+    overflow: hidden;
+    padding: 2px;
+    border-radius: 4px;
 
-  .active {
-    opacity: 0.5;
-    touch-action: none;
-  }
+    .active {
+        opacity: 0.5;
+        touch-action: none;
+    }
 
-  button.sdk-button {
-    margin: 2px;
-  }
+    button.sdk-button {
+        margin: 2px;
+    }
 
-  &.sdk-button-group-container--primary {
-    background-color: var(--primary);
-  }
+    &.sdk-button-group-container--primary {
+        background-color: var(--primary);
+    }
 
-  &.sdk-button-group-container--regular {
-    background-color: var(--regular);
-  }
+    &.sdk-button-group-container--regular {
+        background-color: var(--regular);
+    }
 }

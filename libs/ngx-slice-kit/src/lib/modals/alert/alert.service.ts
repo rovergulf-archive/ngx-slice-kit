@@ -1,17 +1,9 @@
-import {
-    ApplicationRef,
-    ComponentFactoryResolver,
-    ComponentRef,
-    Inject,
-    Injectable,
-    Injector,
-    PLATFORM_ID
-} from '@angular/core';
+import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Inject, Injectable, Injector, PLATFORM_ID } from '@angular/core';
 import { AlertOptions } from './alert.model';
 import { fromEvent, Observable, of, Subscription } from 'rxjs';
 import { DOCUMENT, isPlatformServer } from '@angular/common';
-import { AlertsComponent } from "./alerts.component";
-import { LayoutControlService } from "../../core/layout-control/layout-control.service";
+import { AlertsComponent } from './alerts.component';
+import { LayoutControlService } from '../../core/layout-control/layout-control.service';
 
 export const DEFAULT_ALERT_LIMIT = 25;
 

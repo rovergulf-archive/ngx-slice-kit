@@ -15,19 +15,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## Released [v0.6.5]
+
+## 29 Jan 2021
+### Added
+- popup message line breaking closes #1
+
 
 ## Released [v0.6.4]
 
 ## 29 Jan 2021
-### Added
 
 ### Changed
-- updated Angular `core` and `cli` versions up to latest 11.1+ 
-
-### Fixed
-
-### Removed
-
+- updated Angular `core` and `cli` versions up to latest 11.1+ closes #3
 
 
 [Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.6.4...main

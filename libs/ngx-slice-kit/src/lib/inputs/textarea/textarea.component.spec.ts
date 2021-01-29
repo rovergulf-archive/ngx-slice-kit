@@ -1,9 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TextareaComponent } from './textarea.component';
-import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { min } from 'rxjs/operators';
 
 describe('TextareaComponent', () => {
     let component: TextareaComponent;

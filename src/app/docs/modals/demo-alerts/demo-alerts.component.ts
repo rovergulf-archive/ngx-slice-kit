@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AlertOptions, AlertService } from "ngx-slice-kit";
+import { AlertOptions, AlertService } from 'ngx-slice-kit';
 
 @Component({
     selector: 'app-demo-alerts',
@@ -44,7 +44,7 @@ export class DemoAlertsComponent implements OnInit, OnDestroy {
     }
 
     showAlert(opts): void {
-        this.alertService.showAlert(opts)
+        this.alertService.showAlert(opts);
     }
 
     firstAction(opts): void {
@@ -69,7 +69,7 @@ export class DemoAlertsComponent implements OnInit, OnDestroy {
     }
 
     showSuccess(opts): void {
-        this.alertService.success(opts)
+        this.alertService.success(opts);
     }
 
     showError(opts): void {

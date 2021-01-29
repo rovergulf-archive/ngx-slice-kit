@@ -1,9 +1,9 @@
 {
-  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
-  "schematics": {
-    "ng-add": {
-      "description": "Add 'ngx-slice-kit' to your project! View https://slice.rovergulf.net for details.",
-      "factory": "./ng-add/index#ngAdd"
+    "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+    "schematics": {
+        "ng-add": {
+            "description": "Add 'ngx-slice-kit' to your project! View https://slice.rovergulf.net for details.",
+            "factory": "./ng-add/index#ngAdd"
+        }
     }
-  }
 }

@@ -2,7 +2,7 @@ import { Inject, Injectable, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
 
-import { GLYPHS } from "./icon.glyphs";
+import { GLYPHS } from './icon.glyphs';
 
 @Injectable({
     providedIn: 'root'

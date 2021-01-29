@@ -1,32 +1,32 @@
 {
-  "name": "ngx-slice-kit",
-  "version": "0.6.4",
-  "schematics": "./schematics/collection.json",
-  "peerDependencies": {
-    "@angular/common": "^11.0.0",
-    "@angular/core": "^11.0.0",
-    "@angular/router": "^11.0.0",
-    "@angular/cdk": "^11.0.0"
-  },
-  "ng-add": {
-    "save": "devDependencies"
-  },
-  "license": "MIT",
-  "homepage": "https://github.com/rovergulf/ngx-slice-kit",
-  "url": "https://github.com/rovergulf/ngx-slice-kit",
-  "email": "disorder@rovergulf.net",
-  "author": "disorder@rovergulf.net",
-  "bugs": {
-    "url": "https://github.com/rovergulf/ngx-slice-kit/issues"
-  },
-  "scripts": {
-    "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
-    "copy:schemas": "cp -r schematics/*/schema.json ../../dist/ngx-slice-kit/ || echo 'schemas not ok'",
-    "copy:files": "cp -r -p schematics/*/files/** ../../dist/ngx-slice-kit/ || echo 'files not ok'",
-    "copy:collection": "cp schematics/collection.json ../../dist/ngx-slice-kit/schematics/collection.json || echo 'collection not ok'",
-    "postbuild": "npm run copy:schemas && npm run copy:files && npm run copy:collection"
-  },
-  "dependencies": {
-    "tslib": "^2.0.0"
-  }
+    "name": "ngx-slice-kit",
+    "version": "0.6.4",
+    "schematics": "./schematics/collection.json",
+    "peerDependencies": {
+        "@angular/common": "^11.0.0",
+        "@angular/core": "^11.0.0",
+        "@angular/router": "^11.0.0",
+        "@angular/cdk": "^11.0.0"
+    },
+    "ng-add": {
+        "save": "devDependencies"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/rovergulf/ngx-slice-kit",
+    "url": "https://github.com/rovergulf/ngx-slice-kit",
+    "email": "disorder@rovergulf.net",
+    "author": "disorder@rovergulf.net",
+    "bugs": {
+        "url": "https://github.com/rovergulf/ngx-slice-kit/issues"
+    },
+    "scripts": {
+        "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
+        "copy:schemas": "cp -r schematics/*/schema.json ../../dist/ngx-slice-kit/ || echo 'schemas not ok'",
+        "copy:files": "cp -r -p schematics/*/files/** ../../dist/ngx-slice-kit/ || echo 'files not ok'",
+        "copy:collection": "cp schematics/collection.json ../../dist/ngx-slice-kit/schematics/collection.json || echo 'collection not ok'",
+        "postbuild": "npm run copy:schemas && npm run copy:files && npm run copy:collection"
+    },
+    "dependencies": {
+        "tslib": "^2.0.0"
+    }
 }

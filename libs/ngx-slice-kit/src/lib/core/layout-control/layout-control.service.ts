@@ -1,10 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import {
-    getSupportedInputTypes,
-    Platform,
-    supportsPassiveEventListeners,
-    supportsScrollBehavior
-} from '@angular/cdk/platform';
+import { getSupportedInputTypes, Platform, supportsPassiveEventListeners, supportsScrollBehavior } from '@angular/cdk/platform';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 

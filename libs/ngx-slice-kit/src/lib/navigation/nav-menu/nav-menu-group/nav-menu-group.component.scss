@@ -1,78 +1,78 @@
 .nav-menu-group__container {
-  display: flex;
-  flex-direction: column;
-  align-content: stretch;
-  align-items: stretch;
-  justify-content: flex-start;
-  transition: all .3s ease;
-  background-color: var(--background);
-  //padding: 8px 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: stretch;
+    justify-content: flex-start;
+    transition: all .3s ease;
+    background-color: var(--background);
+    //padding: 8px 20px;
 
-  &.active > .nav-menu-group__toggle > .nav-menu-group__title {
-    color: var(--primary);
-  }
-
-  &.open {
-    & > .nav-menu-group__toggle > .nav-menu-group__arrow {
-      transform: rotate(90deg);
+    &.active > .nav-menu-group__toggle > .nav-menu-group__title {
+        color: var(--primary);
     }
 
-    & > .nav-menu-group__items {
-      height: auto;
+    &.open {
+        & > .nav-menu-group__toggle > .nav-menu-group__arrow {
+            transform: rotate(90deg);
+        }
+
+        & > .nav-menu-group__items {
+            height: auto;
+        }
     }
-  }
 
 
-  @each $level in 1, 2, 3, 4, 5 {
-    &.level-#{$level} {
-      $left: $level * 12 + 20;
+    @each $level in 1, 2, 3, 4, 5 {
+        &.level-#{$level} {
+            $left: $level * 12 + 20;
 
-      .nav-menu-group__toggle {
-        padding-left: #{$left - 12}px;
-      }
+            .nav-menu-group__toggle {
+                padding-left: #{$left - 12}px;
+            }
 
-      a {
-        padding-left: #{$left}px;
-      }
+            a {
+                padding-left: #{$left}px;
+            }
+        }
     }
-  }
 }
 
 .nav-menu-group__title {
-  font-size: 17px;
-  line-height: 24px;
+    font-size: 17px;
+    line-height: 24px;
 }
 
 .nav-menu-group__toggle {
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 8px 8px 20px;
-  height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 8px 8px 20px;
+    height: 40px;
 
-  &:hover {
-    background-color: var(--regular-smooth);
-    color: var(--primary);
-  }
+    &:hover {
+        background-color: var(--regular-smooth);
+        color: var(--primary);
+    }
 }
 
 .nav-menu-group__items .nav-menu-group__title {
-  color: rgba(var(--opposite-rgb), 0.7);
+    color: rgba(var(--opposite-rgb), 0.7);
 }
 
 .nav-menu-group__arrow {
-  transition: all 0.2s;
-  position: relative;
+    transition: all 0.2s;
+    position: relative;
 }
 
 .nav-menu-group__items {
-  display: flex;
-  flex-direction: column;
-  align-content: stretch;
-  align-items: stretch;
-  justify-content: flex-start;
-  overflow: hidden;
-  height: 0;
-  transition: height .3s ease;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: hidden;
+    height: 0;
+    transition: height .3s ease;
 }
