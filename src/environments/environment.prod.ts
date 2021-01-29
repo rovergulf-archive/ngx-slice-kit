@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+    production: true,
+    domain: 'rovergulf.net',
+    wsUrl: 'wss://api.rovergulf.net/events/ws',
 };

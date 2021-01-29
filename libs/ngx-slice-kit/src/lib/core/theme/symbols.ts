@@ -5,8 +5,8 @@ export const THEMES = new InjectionToken('THEMES');
 export const ACTIVE_THEME = new InjectionToken('ACTIVE_THEME');
 
 export interface ThemeOptions {
-    themes?: Theme[];
-    active: string;
+  themes?: Theme[];
+  active: string;
 }
 
 export const THEME_STORAGE_NAME = 'sdk_theme';

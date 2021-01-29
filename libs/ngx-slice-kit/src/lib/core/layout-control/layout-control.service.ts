@@ -4,7 +4,7 @@ import {
     Platform,
     supportsPassiveEventListeners,
     supportsScrollBehavior
-} from "@angular/cdk/platform";
+} from '@angular/cdk/platform';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 

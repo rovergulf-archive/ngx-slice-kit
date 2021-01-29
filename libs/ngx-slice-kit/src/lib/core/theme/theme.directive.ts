@@ -4,85 +4,85 @@ import { Subscription } from 'rxjs';
 
 import { Theme } from './theme.interface';
 import { ThemeService } from './theme.service';
-import { LayoutControlService } from "../layout-control/layout-control.service";
+import { LayoutControlService } from '../layout-control/layout-control.service';
 
 @Directive({
-    selector: '[sdk-theme]'
+  selector: '[sdk-theme]'
 })
 export class ThemeDirective implements OnInit, OnDestroy {
 
-    /**
-     * Whether the styles are scoped or not.
-     */
-    @Input() scoped = false;
-    /**
-     * specify selected theme or use default.
-     */
-    @Input('sdk-theme') theme: string;
+  /**
+   * Whether the styles are scoped or not.
+   */
+  @Input() scoped = false;
+  /**
+   * specify selected theme or use default.
+   */
+  @Input('sdk-theme') theme: string;
 
-    private sub: Subscription;
+  private sub: Subscription;
 
-    constructor(
-        @Inject(DOCUMENT) private document: any,
-        private elementRef: ElementRef,
-        private renderer: Renderer2,
-        private themeService: ThemeService,
-        private layoutControl: LayoutControlService
-    ) {
+  constructor(
+    @Inject(DOCUMENT) private document: any,
+    private elementRef: ElementRef,
+    private renderer: Renderer2,
+    private themeService: ThemeService,
+    private layoutControl: LayoutControlService
+  ) {
+  }
+
+  /**
+   * Update the theme on the scoped element.
+   */
+  updateTheme(theme: Theme): void {
+    const element = this.getElement();
+
+    element.className = `sdk-${theme.name}-theme`; // probably unsafe
+    if (!this.layoutControl.platform.BLINK) {
+      element.classList.add('sdk-custom-scroll');
+    } else {
+      element.classList.add(this.layoutControl.getPlatformClass());
     }
 
-    /**
-     * Update the theme on the scoped element.
-     */
-    updateTheme(theme: Theme): void {
-        const element = this.getElement();
-
-        element.className = `sdk-${theme.name}-theme`; // probably unsafe
-        if (!this.layoutControl.platform.BLINK) {
-            element.classList.add('sdk-custom-scroll');
-        } else {
-            element.classList.add(this.layoutControl.getPlatformClass())
-        }
-
-        const oldStyles = this.document.head.querySelectorAll('[sdk-theme]');
-        if (oldStyles?.length > 0) {
-            this.document.head.removeChild(oldStyles[0]);
-        }
-        const styles = this.renderer.createElement('style')
-
-        // project properties onto the element
-        styles.innerHTML += `body {`
-        for (const key in theme.properties) {
-            if (theme.properties.hasOwnProperty(key)) {
-                styles.innerHTML += (`${key}: ${theme.properties[key]};`)
-            }
-        }
-        styles.innerHTML += `}`
-        this.renderer.setAttribute(styles, 'sdk-theme', theme.name);
-
-        this.document.head.appendChild(styles);
+    const oldStyles = this.document.head.querySelectorAll('[sdk-theme]');
+    if (oldStyles?.length > 0) {
+      this.document.head.removeChild(oldStyles[0]);
     }
+    const styles = this.renderer.createElement('style');
 
-    /**
-     * Element to attach the styles to.
-     */
-    getElement(): any {
-        return this.scoped ? this.elementRef.nativeElement : this.document.body;
+    // project properties onto the element
+    styles.innerHTML += `body {`;
+    for (const key in theme.properties) {
+      if (theme.properties.hasOwnProperty(key)) {
+        styles.innerHTML += (`${key}: ${theme.properties[key]};`);
+      }
     }
+    styles.innerHTML += `}`;
+    this.renderer.setAttribute(styles, 'sdk-theme', theme.name);
 
-    ngOnInit(): void {
-        this.sub = this.themeService.currentThemeObservable
-            .subscribe((theme: Theme) => this.updateTheme(theme));
+    this.document.head.appendChild(styles);
+  }
 
-        if (this.theme && this.theme.length > 0) {
-            this.themeService.setTheme(this.theme);
-        } else {
-            this.updateTheme(this.themeService.currentTheme);
-        }
+  /**
+   * Element to attach the styles to.
+   */
+  getElement(): any {
+    return this.scoped ? this.elementRef.nativeElement : this.document.body;
+  }
+
+  ngOnInit(): void {
+    this.sub = this.themeService.currentThemeObservable
+      .subscribe((theme: Theme) => this.updateTheme(theme));
+
+    if (this.theme && this.theme.length > 0) {
+      this.themeService.setTheme(this.theme);
+    } else {
+      this.updateTheme(this.themeService.currentTheme);
     }
+  }
 
-    ngOnDestroy(): void {
-        this.sub.unsubscribe();
-    }
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 
 }

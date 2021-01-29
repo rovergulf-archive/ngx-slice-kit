@@ -4,14 +4,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { RouterModule } from '@angular/router';
 // libraries
-import { SliceKitModule } from "ngx-slice-kit";
+import { SliceKitModule } from 'ngx-slice-kit';
 import { BrowserCookiesModule } from 'ngx-cookie-universal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared/shared.module';
-import { CoreModule, environment, ToolsModule } from "ngx-core-kit";
+import { CoreModule, ToolsModule } from '@rovergulf/ngx-engine-kit';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
