@@ -2,70 +2,70 @@
 @import '../../core/styles/flexbox';
 
 :host {
-  @extend .flex-column;
-  position: fixed;
-  z-index: 9999;
+    @extend .flex-column;
+    position: fixed;
+    z-index: 9999;
 
-  &[class*="top-"] {
-    justify-content: flex-start;
-    top: 24px;
+    &[class*="top-"] {
+        justify-content: flex-start;
+        top: 24px;
+
+        .sdk-alert-close {
+            order: 3;
+        }
+    }
+
+    &[class*="bottom-"] {
+        justify-content: flex-end;
+        bottom: 24px;
+
+        .sdk-alert-close {
+            order: 1;
+        }
+    }
+
+    &[class*="-center"] {
+        align-items: center;
+        margin-left: calc(50% - 144px);
+
+    }
+
+    &[class*="-left"] {
+        left: 24px;
+        align-items: flex-start;
+    }
+
+    &[class*="-right"] {
+        right: 24px;
+        align-items: flex-end;
+    }
 
     .sdk-alert-close {
-      order: 3;
+        @extend .flex-row;
+        @extend .layout-start-center;
+        cursor: pointer;
+        padding: 0 4px;
+        border-radius: 4px;
+        transition: all 0.2s;
+        color: var(--regular);
+
+        &:hover {
+            background: var(--background);
+            opacity: 0.6;
+        }
     }
-  }
 
-  &[class*="bottom-"] {
-    justify-content: flex-end;
-    bottom: 24px;
-
-    .sdk-alert-close {
-      order: 1;
+    .sdk-alert__wrapper {
+        order: 2;
+        max-width: 320px;
+        display: flex;
+        justify-content: center;
     }
-  }
-
-  &[class*="-center"] {
-    align-items: center;
-    margin-left: calc(50% - 144px);
-
-  }
-
-  &[class*="-left"] {
-    left: 24px;
-    align-items: flex-start;
-  }
-
-  &[class*="-right"] {
-    right: 24px;
-    align-items: flex-end;
-  }
-
-  .sdk-alert-close {
-    @extend .flex-row;
-    @extend .layout-start-center;
-    cursor: pointer;
-    padding: 0 4px;
-    border-radius: 4px;
-    transition: all 0.2s;
-    color: var(--regular);
-
-    &:hover {
-      background: var(--background);
-      opacity: 0.6;
-    }
-  }
-
-  .sdk-alert__wrapper {
-    order: 2;
-    max-width: 320px;
-    display: flex;
-    justify-content: center;
-  }
 }
 
 
 .sdk-alert__close-wrapper {
-  padding: 4px;
+    padding: 4px;
 }
 
 

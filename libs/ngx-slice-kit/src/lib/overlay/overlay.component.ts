@@ -1,20 +1,23 @@
 import {
     Component,
-    ComponentFactoryResolver, ElementRef,
+    ComponentFactoryResolver,
+    ElementRef,
     EventEmitter,
-    HostBinding, Inject,
+    HostBinding,
+    Inject,
     Input,
     OnDestroy,
     OnInit,
-    Output, Renderer2,
+    Output,
+    Renderer2,
     ViewChild
 } from '@angular/core';
-import { OverlayModel, OverlayOptions } from "./overlay.model";
-import { NavigationEnd, NavigationStart, Router } from "@angular/router";
-import { fromEvent, Subscription } from "rxjs";
-import { filter, take } from "rxjs/operators";
-import { OverlayDirective } from "./overlay.directive";
-import { DOCUMENT } from "@angular/common";
+import { OverlayModel, OverlayOptions } from './overlay.model';
+import { NavigationStart, Router } from '@angular/router';
+import { fromEvent, Subscription } from 'rxjs';
+import { filter, take } from 'rxjs/operators';
+import { OverlayDirective } from './overlay.directive';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
     selector: 'sdk-overlay',

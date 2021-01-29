@@ -1,13 +1,4 @@
-import {
-    AfterContentInit,
-    Component,
-    ElementRef,
-    Input,
-    OnDestroy,
-    OnInit,
-    Renderer2,
-    ViewEncapsulation
-} from '@angular/core';
+import { AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { GLYPHS } from './icon.glyphs';
 import { BehaviorSubject } from 'rxjs';

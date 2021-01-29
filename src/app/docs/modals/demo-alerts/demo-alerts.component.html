@@ -1,82 +1,82 @@
 <main>
-  <header>
-    <h1>Alerts</h1>
-  </header>
+    <header>
+        <h1>Alerts</h1>
+    </header>
 
-  <section class="view">
+    <section class="view">
 
-    <!--    <div class="alert-position-buttons flex-row flex-wrap">-->
-    <!--        <button sdk-flat-button [small]="true" (click)="alertService.moveDefaultPosition()">Set default position</button>-->
-    <!--        <button sdk-flat-button [small]="true" (click)="alertService.moveBottomRight()">Bottom right</button>-->
-    <!--        <button sdk-flat-button [small]="true" (click)="alertService.moveBottomLeft()">Bottom left</button>-->
-    <!--        <button sdk-flat-button [small]="true" (click)="alertService.moveTopLeft()">Top left</button>-->
-    <!--        <button sdk-flat-button [small]="true" (click)="alertService.moveCenter()">Center</button>-->
-    <!--    </div>-->
+        <!--    <div class="alert-position-buttons flex-row flex-wrap">-->
+        <!--        <button sdk-flat-button [small]="true" (click)="alertService.moveDefaultPosition()">Set default position</button>-->
+        <!--        <button sdk-flat-button [small]="true" (click)="alertService.moveBottomRight()">Bottom right</button>-->
+        <!--        <button sdk-flat-button [small]="true" (click)="alertService.moveBottomLeft()">Bottom left</button>-->
+        <!--        <button sdk-flat-button [small]="true" (click)="alertService.moveTopLeft()">Top left</button>-->
+        <!--        <button sdk-flat-button [small]="true" (click)="alertService.moveCenter()">Center</button>-->
+        <!--    </div>-->
 
-    <div>
-      <div>
-        <h3>Default Success and Warn alerts</h3>
-        <div class="example flex-row layout-start-center">
-          <button sdk-flat-button (click)="showSuccess(options[0])">
-            Success alert
-          </button>
-          <button sdk-flat-button (click)="showError(options[1])">
-            Error alert
-          </button>
-        </div>
-        <h3>Customizable alerts</h3>
-        <div class="example flex-row layout-start-center">
-          <button sdk-flat-button
-                  (click)="showCustomAlert(options[2])">
-            Default alert with icon
-          </button>
-        </div>
-        <h3>Custom icons with action</h3>
-        <div class="example flex-row layout-start-center">
-          <button sdk-flat-button
-                  (click)="showCustomAlert(options[3])">
-            Custom alert
-          </button>
-          <button sdk-flat-button
-                  (click)="firstAction(options[4])">
-            Custom alert {{firstCount}}
-          </button>
-        </div>
-        <h3>Small Success / Error</h3>
-        <div class="example flex-row layout-start-center">
-          <button sdk-flat-button (click)="secondAction(options[5])">
-            Success alert {{secondCount}}
-          </button>
-          <button sdk-flat-button (click)="showError(options[6])">
-            Error alert
-          </button>
-        </div>
-        <h3>Small without icons</h3>
-        <div class="example flex-row layout-start-center">
-          <button sdk-flat-button (click)="showCustomAlert(options[7])">
-            Custom alert
-          </button>
-          <button sdk-flat-button (click)="showCustomAlert(options[8])">
-            Custom alert
-          </button>
-        </div>
-        <h3>Small custom icons</h3>
-        <div class="example flex-row layout-start-center">
-          <button sdk-flat-button
-                  (click)="showCustomAlert(options[9])">
-            Custom alert
-          </button>
-          <button sdk-flat-button
-                  (click)="showCustomAlert(options[10])">
-            Custom alert
-          </button>
+        <div>
+            <div>
+                <h3>Default Success and Warn alerts</h3>
+                <div class="example flex-row layout-start-center">
+                    <button sdk-flat-button (click)="showSuccess(options[0])">
+                        Success alert
+                    </button>
+                    <button sdk-flat-button (click)="showError(options[1])">
+                        Error alert
+                    </button>
+                </div>
+                <h3>Customizable alerts</h3>
+                <div class="example flex-row layout-start-center">
+                    <button sdk-flat-button
+                            (click)="showCustomAlert(options[2])">
+                        Default alert with icon
+                    </button>
+                </div>
+                <h3>Custom icons with action</h3>
+                <div class="example flex-row layout-start-center">
+                    <button sdk-flat-button
+                            (click)="showCustomAlert(options[3])">
+                        Custom alert
+                    </button>
+                    <button sdk-flat-button
+                            (click)="firstAction(options[4])">
+                        Custom alert {{firstCount}}
+                    </button>
+                </div>
+                <h3>Small Success / Error</h3>
+                <div class="example flex-row layout-start-center">
+                    <button sdk-flat-button (click)="secondAction(options[5])">
+                        Success alert {{secondCount}}
+                    </button>
+                    <button sdk-flat-button (click)="showError(options[6])">
+                        Error alert
+                    </button>
+                </div>
+                <h3>Small without icons</h3>
+                <div class="example flex-row layout-start-center">
+                    <button sdk-flat-button (click)="showCustomAlert(options[7])">
+                        Custom alert
+                    </button>
+                    <button sdk-flat-button (click)="showCustomAlert(options[8])">
+                        Custom alert
+                    </button>
+                </div>
+                <h3>Small custom icons</h3>
+                <div class="example flex-row layout-start-center">
+                    <button sdk-flat-button
+                            (click)="showCustomAlert(options[9])">
+                        Custom alert
+                    </button>
+                    <button sdk-flat-button
+                            (click)="showCustomAlert(options[10])">
+                        Custom alert
+                    </button>
+                </div>
+
+            </div>
         </div>
 
-      </div>
-    </div>
 
-
-  </section>
+    </section>
 
 </main>
 

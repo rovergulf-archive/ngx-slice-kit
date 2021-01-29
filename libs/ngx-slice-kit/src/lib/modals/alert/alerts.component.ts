@@ -1,20 +1,10 @@
-import {
-    Component,
-    EventEmitter,
-    HostBinding,
-    HostListener,
-    InjectionToken,
-    Input,
-    OnDestroy,
-    OnInit,
-    Output
-} from '@angular/core';
-import { BehaviorSubject, interval } from "rxjs";
-import { AlertOptions } from "./alert.model";
-import { animate, state, style, transition, trigger } from "@angular/animations";
-import { takeWhile } from "rxjs/operators";
+import { Component, EventEmitter, HostBinding, HostListener, InjectionToken, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { BehaviorSubject, interval } from 'rxjs';
+import { AlertOptions } from './alert.model';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { takeWhile } from 'rxjs/operators';
 
-export const ALERTS_CONTAINER_CLASSNAME = new InjectionToken<string>('sdk-alerts-container')
+export const ALERTS_CONTAINER_CLASSNAME = new InjectionToken<string>('sdk-alerts-container');
 
 @Component({
     selector: 'sdk-alert-container',
@@ -42,7 +32,7 @@ export class AlertsComponent implements OnInit, OnDestroy {
     @HostListener('[@state]') state: any = 'closed';
 
     @HostBinding('class') get classNames() {
-        return `${ALERTS_CONTAINER_CLASSNAME} ${ALERTS_CONTAINER_CLASSNAME}--${this.options.refName}`
+        return `${ALERTS_CONTAINER_CLASSNAME} ${ALERTS_CONTAINER_CLASSNAME}--${this.options.refName}`;
     }
 
     get options(): AlertOptions {

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ButtonsModule } from '../buttons/buttons.module';
 
 import { AlertComponent } from './alert/alert.component';
-import { AlertsComponent } from "./alert/alerts.component";
+import { AlertsComponent } from './alert/alerts.component';
 import { PopupComponent } from './popup/popup.component';
 import { DialogComponent } from './dialog/dialog.component';
 // import {BottomSheetComponent} from './bottom-sheet/bottom-sheet.component';
@@ -12,8 +12,8 @@ import { DialogDirective } from './dialog/dialog.directive';
 // import {PopoverComponent} from './popover/popover.component';
 import { PopupDirective } from './popup/popup.directive';
 import { TooltipDirective } from './tooltip/tooltip.directive';
-import { AlertDirective } from "./alert/alert.directive";
-import { OverlayModule } from "../overlay/overlay.module";
+import { AlertDirective } from './alert/alert.directive';
+import { OverlayModule } from '../overlay/overlay.module';
 
 const moduleDirectives = [
     AlertDirective,

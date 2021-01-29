@@ -17,31 +17,31 @@ import { DemoTooltipComponent } from './demo-tooltip/demo-tooltip.component';
 const entryComponents = [];
 
 const moduleDeclarations = [
-  ...entryComponents,
-  DemoAlertsComponent,
-  DemoBottomSheetComponent,
-  DemoDialogComponent,
-  DemoDialogPreviewComponent,
-  DemoDialogPreview2Component,
-  DemoPopoverComponent,
-  DemoPopupComponent,
-  DemoTooltipComponent,
+    ...entryComponents,
+    DemoAlertsComponent,
+    DemoBottomSheetComponent,
+    DemoDialogComponent,
+    DemoDialogPreviewComponent,
+    DemoDialogPreview2Component,
+    DemoPopoverComponent,
+    DemoPopupComponent,
+    DemoTooltipComponent,
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DemoModalsRoutingModule,
-    SliceKitModule,
-  ],
-  declarations: moduleDeclarations,
-  exports: moduleDeclarations,
-  entryComponents,
-  providers: [],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA,
-    NO_ERRORS_SCHEMA
-  ]
+    imports: [
+        CommonModule,
+        DemoModalsRoutingModule,
+        SliceKitModule,
+    ],
+    declarations: moduleDeclarations,
+    exports: moduleDeclarations,
+    entryComponents,
+    providers: [],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
+        NO_ERRORS_SCHEMA
+    ]
 })
 export class DemoModalsModule {
 }

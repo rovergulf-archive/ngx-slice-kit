@@ -1,4 +1,4 @@
-import { EventEmitter } from "@angular/core";
+import { EventEmitter } from '@angular/core';
 
 export class AlertOptions {
     $action?: EventEmitter<any>;
@@ -29,8 +29,8 @@ export class AlertOptions {
             this.message = opts.message ?? 'Well done!';
         }
 
-        this.message = this.message.length > 125 ? `${this.message.substring(0, 128)}...` : this.message
-        this.refName = `${opts?.positionY ?? this.positionY}-${opts?.positionX ?? this.positionX}`
+        this.message = this.message.length > 125 ? `${this.message.substring(0, 128)}...` : this.message;
+        this.refName = `${opts?.positionY ?? this.positionY}-${opts?.positionX ?? this.positionX}`;
     }
 }
 

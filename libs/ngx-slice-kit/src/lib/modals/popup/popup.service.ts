@@ -2,7 +2,7 @@ import { ApplicationRef, ComponentFactoryResolver, Inject, Injectable, Injector,
 import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
 import { PopupComponent } from './popup.component';
 import { PopupInterface } from './popup.interface';
-import { DOCUMENT, isPlatformServer } from "@angular/common";
+import { DOCUMENT, isPlatformServer } from '@angular/common';
 
 @Injectable({
     providedIn: 'root'

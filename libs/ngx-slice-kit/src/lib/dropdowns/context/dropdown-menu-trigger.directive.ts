@@ -1,20 +1,10 @@
-import {
-    Directive,
-    ElementRef,
-    EventEmitter,
-    HostListener,
-    Inject,
-    Input,
-    OnDestroy,
-    OnInit,
-    Output, PLATFORM_ID,
-} from '@angular/core';
-import { DropdownService } from "../dropdown.service";
-import { DropdownOptions } from "../dropdown.model";
-import { OptionModel } from "../dropdown-option.model";
-import { Subscription } from "rxjs";
-import { isPlatformServer } from "@angular/common";
-import { OptionsService } from "../options.service";
+import { Directive, ElementRef, EventEmitter, HostListener, Inject, Input, OnDestroy, OnInit, Output, PLATFORM_ID, } from '@angular/core';
+import { DropdownService } from '../dropdown.service';
+import { DropdownOptions } from '../dropdown.model';
+import { OptionModel } from '../dropdown-option.model';
+import { Subscription } from 'rxjs';
+import { isPlatformServer } from '@angular/common';
+import { OptionsService } from '../options.service';
 
 @Directive({
     selector: '[sdkDropdownMenuTrigger]'

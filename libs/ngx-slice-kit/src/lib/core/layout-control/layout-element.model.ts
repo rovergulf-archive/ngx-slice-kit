@@ -1,4 +1,4 @@
-import { EventEmitter, Output, Directive } from '@angular/core';
+import { Directive, EventEmitter, Output } from '@angular/core';
 
 @Directive()
 export class LayoutElement {

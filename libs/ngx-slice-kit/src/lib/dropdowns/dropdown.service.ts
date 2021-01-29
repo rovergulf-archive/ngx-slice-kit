@@ -1,13 +1,5 @@
-import {
-    ApplicationRef,
-    ComponentFactoryResolver,
-    ElementRef,
-    Inject,
-    Injectable,
-    Injector,
-    PLATFORM_ID
-} from '@angular/core';
-import { BehaviorSubject, fromEvent, Observable, Subject, Subscription } from 'rxjs';
+import { ApplicationRef, ComponentFactoryResolver, Inject, Injectable, Injector, PLATFORM_ID } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { DOCUMENT, isPlatformServer } from '@angular/common';
 
 import { DropdownComponent } from './dropdown.component';

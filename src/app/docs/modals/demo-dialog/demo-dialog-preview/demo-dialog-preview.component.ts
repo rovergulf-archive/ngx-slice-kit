@@ -4,42 +4,42 @@ import { AlertService, DialogService } from 'ngx-slice-kit';
 import { DemoDialogPreview2Component } from '../demo-dialog-preview2/demo-dialog-preview2.component';
 
 @Component({
-  selector: 'app-demo-dialog-preview',
-  templateUrl: './demo-dialog-preview.component.html',
-  styleUrls: ['./demo-dialog-preview.component.scss']
+    selector: 'app-demo-dialog-preview',
+    templateUrl: './demo-dialog-preview.component.html',
+    styleUrls: ['./demo-dialog-preview.component.scss']
 })
 export class DemoDialogPreviewComponent implements OnInit, OnDestroy {
 
-  @Output() result = new EventEmitter();
+    @Output() result = new EventEmitter();
 
-  constructor(
-    private alert: AlertService,
-    private dialog: DialogService,
-  ) {
-  }
+    constructor(
+        private alert: AlertService,
+        private dialog: DialogService,
+    ) {
+    }
 
-  close(result: any): void {
-    this.result.emit(result);
-  }
+    close(result: any): void {
+        this.result.emit(result);
+    }
 
-  openDialog(): void {
-    this.dialog.showDialog(DemoDialogPreview2Component).subscribe(res => {
-      if (res) {
-        this.alert.success({
-          message: 'Inner dialog was resulted with: ' + res
+    openDialog(): void {
+        this.dialog.showDialog(DemoDialogPreview2Component).subscribe(res => {
+            if (res) {
+                this.alert.success({
+                    message: 'Inner dialog was resulted with: ' + res
+                });
+            } else {
+                this.alert.error({
+                    message: 'You have canceled inner dialog',
+                });
+            }
         });
-      } else {
-        this.alert.error({
-          message: 'You have canceled inner dialog',
-        });
-      }
-    });
-  }
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
-  ngOnDestroy(): void {
-  }
+    ngOnDestroy(): void {
+    }
 
 }

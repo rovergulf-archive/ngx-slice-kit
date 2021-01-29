@@ -12,7 +12,7 @@ import { LayoutModule } from './layout/layout.module';
 import { MediaModule } from './media/media.module';
 import { ModalsModule } from './modals/modals.module';
 import { NavigationModule } from './navigation/navigation.module';
-import { OverlayModule } from "./overlay/overlay.module";
+import { OverlayModule } from './overlay/overlay.module';
 // import { themeLight } from './core/theme/lib/theme-light';
 // import { themeDark } from './core/theme/lib/theme-dark';
 import { ThemeModule } from './core/theme/theme.module';

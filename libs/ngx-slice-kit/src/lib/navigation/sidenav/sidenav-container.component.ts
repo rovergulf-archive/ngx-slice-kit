@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { SidenavService } from './sidenav.service';
-import { SidenavMode, SidenavOptions } from "./sidenav.options";
+import { SidenavMode, SidenavOptions } from './sidenav.options';
 
 @Component({
     selector: 'sdk-sidenav-container',

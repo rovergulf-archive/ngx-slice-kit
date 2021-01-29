@@ -1,20 +1,20 @@
 :host {
-  display: flex;
-  min-width: 160px;
-  width: 100%;
-  flex-direction: column;
-  margin-bottom: 10px;
-  position: relative;
+    display: flex;
+    min-width: 160px;
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 10px;
+    position: relative;
 
-  &.invalid {
-    animation: shake .4s;
-  }
+    &.invalid {
+        animation: shake .4s;
+    }
 
-  &.disabled {
-    opacity: 0.6;
-    pointer-events: none;
-    cursor: default;
-  }
+    &.disabled {
+        opacity: 0.6;
+        pointer-events: none;
+        cursor: default;
+    }
 }
 
 
@@ -22,124 +22,124 @@
  * label styles
  */
 .sdk-select-label {
-  color: var(--regular-intensive);
-  transition: all 0.2s;
-  font-size: 17px;
-  margin-bottom: 2px;
+    color: var(--regular-intensive);
+    transition: all 0.2s;
+    font-size: 17px;
+    margin-bottom: 2px;
 
-  &.small {
-    font-size: 15px;
-  }
+    &.small {
+        font-size: 15px;
+    }
 
-  &.active {
-    color: var(--regular-full-color);
-  }
+    &.active {
+        color: var(--regular-full-color);
+    }
 }
 
 .sdk-select-label-required-mark {
-  color: var(--warn);
+    color: var(--warn);
 }
 
 /**
  * select wrap at #9
  */
 .sdk-select {
-  position: relative;
-  background-color: var(--regular-disabled);
-  border-radius: 8px;
-  overflow: hidden;
+    position: relative;
+    background-color: var(--regular-disabled);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .sdk-select-wrap {
-  display: flex;
-  align-items: center;
-  padding: 10px 16px;
-  height: 44px;
-  cursor: pointer;
-  border-radius: 8px;
-  border-color: var(--regular-disabled);
-  border-width: 1px;
-  border-style: solid;
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    height: 44px;
+    cursor: pointer;
+    border-radius: 8px;
+    border-color: var(--regular-disabled);
+    border-width: 1px;
+    border-style: solid;
 
-  &.invalid {
-    transition: all 0.2s ease;
-    border-color: var(--warn);
-    background-color: rgba(var(--warn-rgb), 0.1);
-  }
+    &.invalid {
+        transition: all 0.2s ease;
+        border-color: var(--warn);
+        background-color: rgba(var(--warn-rgb), 0.1);
+    }
 
-  &.small {
-    padding: 5px 12px;
-    height: 32px;
+    &.small {
+        padding: 5px 12px;
+        height: 32px;
 
-    .sdk-select-value {
-      font-size: 15px;
+        .sdk-select-value {
+            font-size: 15px;
+        }
+
+        .sdk-select-icon {
+            margin-right: 4px;
+        }
+    }
+
+    &.active {
+        transition: border-color 0.2s ease;
+        border-color: var(--regular-active);
     }
 
     .sdk-select-icon {
-      margin-right: 4px;
+        margin-right: 8px;
+
+        &.actions {
+            margin-right: 0;
+            margin-left: 8px;
+        }
     }
-  }
-
-  &.active {
-    transition: border-color 0.2s ease;
-    border-color: var(--regular-active);
-  }
-
-  .sdk-select-icon {
-    margin-right: 8px;
-
-    &.actions {
-      margin-right: 0;
-      margin-left: 8px;
-    }
-  }
 }
 
 /**
  * select value styles at #16-#19
  */
 .sdk-select-value {
-  flex-basis: 100%;
-  color: var(--regular-full-color);
-  width: 100%;
-  font-size: 17px;
-  font-weight: normal;
-  line-height: 24px;
-  outline: none;
-  border: none;
-  transition: all 0.4s;
-  font-family: 'Inter', sans-serif;
-  overflow: hidden;
-  white-space: nowrap;
-  -ms-text-overflow: ellipsis;
-  text-overflow: ellipsis;
+    flex-basis: 100%;
+    color: var(--regular-full-color);
+    width: 100%;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 24px;
+    outline: none;
+    border: none;
+    transition: all 0.4s;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
 
-  .inactive {
-    color: var(--regular-placeholder);
-  }
+    .inactive {
+        color: var(--regular-placeholder);
+    }
 }
 
 /**
  * actions icon styles at #20 - #30
  */
 .interface-icon-wrap {
-  transition: all 0.2s;
+    transition: all 0.2s;
 
-  &:hover {
-    opacity: 0.8;
-  }
+    &:hover {
+        opacity: 0.8;
+    }
 
-  &.icon-chevron {
-    height: 24px;
-    width: 24px;
-  }
+    &.icon-chevron {
+        height: 24px;
+        width: 24px;
+    }
 
-  &.active {
-    transform: scaleY(-1);
-  }
+    &.active {
+        transform: scaleY(-1);
+    }
 
-  &.icon-clear {
-    height: 16px;
-    width: 16px;
-  }
+    &.icon-clear {
+        height: 16px;
+        width: 16px;
+    }
 }

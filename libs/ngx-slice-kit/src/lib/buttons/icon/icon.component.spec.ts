@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IconComponent } from './icon.component';
 import { GLYPHS } from './icon.glyphs';
 import { SafeHtml } from '@angular/platform-browser';
-import { tsCreateElement } from '@angular/compiler-cli/src/ngtsc/typecheck/src/ts_util';
 import { Renderer2, Type } from '@angular/core';
 
 describe('IconComponent', () => {

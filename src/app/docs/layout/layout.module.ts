@@ -21,35 +21,35 @@ import { DemoTableComponent } from './demo-table/demo-table.component';
 const entryComponents = [];
 
 const moduleDeclarations = [
-  ...entryComponents,
-  DemoAccordionComponent,
-  DemoBreadcrumbsComponent,
-  DemoCarouselComponent,
-  DemoChartsComponent,
-  DemoCalendarComponent,
-  DemoDividerComponent,
-  DemoDragNDropComponent,
-  DemoListComponent,
-  DemoPaginationComponent,
-  DemoProgressComponent,
-  DemoSlidesComponent,
-  DemoTableComponent
+    ...entryComponents,
+    DemoAccordionComponent,
+    DemoBreadcrumbsComponent,
+    DemoCarouselComponent,
+    DemoChartsComponent,
+    DemoCalendarComponent,
+    DemoDividerComponent,
+    DemoDragNDropComponent,
+    DemoListComponent,
+    DemoPaginationComponent,
+    DemoProgressComponent,
+    DemoSlidesComponent,
+    DemoTableComponent
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DemoLayoutRoutingModule,
-    SliceKitModule,
-  ],
-  declarations: moduleDeclarations,
-  exports: moduleDeclarations,
-  entryComponents,
-  providers: [],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA,
-    NO_ERRORS_SCHEMA,
-  ]
+    imports: [
+        CommonModule,
+        DemoLayoutRoutingModule,
+        SliceKitModule,
+    ],
+    declarations: moduleDeclarations,
+    exports: moduleDeclarations,
+    entryComponents,
+    providers: [],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
+        NO_ERRORS_SCHEMA,
+    ]
 })
 export class DemoLayoutModule {
 }

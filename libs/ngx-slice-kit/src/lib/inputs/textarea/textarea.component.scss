@@ -1,181 +1,182 @@
 @import '../inputs.module';
 
 :host {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
-  &.disabled {
-    opacity: 0.6;
-    pointer-events: none;
-    cursor: default;
-  }
-  &.full-width {
-    width: 100%;
-  }
+    &.disabled {
+        opacity: 0.6;
+        pointer-events: none;
+        cursor: default;
+    }
+
+    &.full-width {
+        width: 100%;
+    }
 }
 
 .sdk-textarea__label {
-  font-weight: 500;
-  color: var(--regular);
-  transition: all 0.2s;
-  font-size: 17px;
-  margin-bottom: 2px;
+    font-weight: 500;
+    color: var(--regular);
+    transition: all 0.2s;
+    font-size: 17px;
+    margin-bottom: 2px;
 
-  &--wide {
-    min-width: 288px;
-    max-width: none;
-  }
+    &--wide {
+        min-width: 288px;
+        max-width: none;
+    }
 
-  &--full-width {
-    width: 100%;
-    max-width: none;
-  }
+    &--full-width {
+        width: 100%;
+        max-width: none;
+    }
 
-  &--focused {
-    color: var(--regular-text);
-  }
+    &--focused {
+        color: var(--regular-text);
+    }
 
-  &--small {
-    font-size: 15px;
-  }
+    &--small {
+        font-size: 15px;
+    }
 
-  &--accent {
-    color: var(--accent)
-  }
+    &--accent {
+        color: var(--accent)
+    }
 
-  &--warn {
-    color: var(--warn)
-  }
+    &--warn {
+        color: var(--warn)
+    }
 }
 
 .sdk-textarea-wrap {
-  border-radius: 6px;
-  display: flex;
-  background-color: var(--regular-disabled);
-  overflow: hidden;
-  border-color: var(--regular-disabled);
-  border-width: 1px;
-  border-style: solid;
-  min-width: 200px;
-  width: 100%;
-  //padding: 8px 16px;
+    border-radius: 6px;
+    display: flex;
+    background-color: var(--regular-disabled);
+    overflow: hidden;
+    border-color: var(--regular-disabled);
+    border-width: 1px;
+    border-style: solid;
+    min-width: 200px;
+    width: 100%;
+    //padding: 8px 16px;
 
-  &--focused {
-    border-color: var(--regular-active);
-    transition: 0.4s;
-  }
+    &--focused {
+        border-color: var(--regular-active);
+        transition: 0.4s;
+    }
 
-  &--warn {
-    border-color: var(--warn);
-    transition: 0.4s;
-  }
+    &--warn {
+        border-color: var(--warn);
+        transition: 0.4s;
+    }
 
-  &--accent {
-    border-color: var(--accent);
-    transition: 0.4s;
-  }
+    &--accent {
+        border-color: var(--accent);
+        transition: 0.4s;
+    }
 }
 
 .sdk-textarea-inner-wrap {
-  position: relative;
-  border-radius: inherit;
-  width: 100%;
+    position: relative;
+    border-radius: inherit;
+    width: 100%;
 }
 
 .sdk-textarea__textarea {
-  color: var(--regular-text);
-  border-radius: inherit;
-  width: 100%;
-  min-width: 200px;
-  font-size: 17px;
-  font-weight: normal;
-  line-height: 24px;
-  padding: 8px 16px;
-  margin: 0;
-  outline: none;
-  border: none;
-  font-family: '', sans-serif;
-  background-color: transparent;
+    color: var(--regular-text);
+    border-radius: inherit;
+    width: 100%;
+    min-width: 200px;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 24px;
+    padding: 8px 16px;
+    margin: 0;
+    outline: none;
+    border: none;
+    font-family: '', sans-serif;
+    background-color: transparent;
 
-  &--small {
-    font-size: 15px;
-  }
+    &--small {
+        font-size: 15px;
+    }
 
-  /**
-   * legacy browser prefixes
-   */
-  &::-webkit-textarea-placeholder {
-    color: var(--regular-hover);
-  }
+    /**
+     * legacy browser prefixes
+     */
+    &::-webkit-textarea-placeholder {
+        color: var(--regular-hover);
+    }
 
-  &::-moz-placeholder {
-    color: var(--regular-hover);
-  }
+    &::-moz-placeholder {
+        color: var(--regular-hover);
+    }
 
-  &:-ms-textarea-placeholder {
-    color: var(--regular-hover);
-  }
+    &:-ms-textarea-placeholder {
+        color: var(--regular-hover);
+    }
 
-  &:-moz-placeholder {
-    color: var(--regular-hover);
-  }
+    &:-moz-placeholder {
+        color: var(--regular-hover);
+    }
 }
 
 .sdk-textarea__hidden-clone {
-  position: absolute;
-  width: 100%;
-  visibility: hidden;
-  word-break: break-word;
+    position: absolute;
+    width: 100%;
+    visibility: hidden;
+    word-break: break-word;
 
-  br {
-    display: block;
-  }
+    br {
+        display: block;
+    }
 }
 
 .sdk-textarea__pull-angle {
-  position: absolute;
-  z-index: 2;
-  bottom: 0;
-  right: 0;
-  background-color: var(--regular-disabled);
-  height: 11px;
-  width: 15px;
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    right: 0;
+    background-color: var(--regular-disabled);
+    height: 11px;
+    width: 15px;
 }
 
 .sdk-textarea__pull-angle-inner {
-  border-top: 8px solid var(--regular-hover);
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-radius: 3px;
-  -webkit-transform: rotate(-45deg);
-  bottom: 0;
-  right: 0;
-  pointer-events: none;
-  z-index: 1;
+    border-top: 8px solid var(--regular-hover);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-radius: 3px;
+    -webkit-transform: rotate(-45deg);
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .sdk-textarea__pull-angle-wrapper {
-  position: absolute;
-  right: 0;
-  bottom: -1px;
-  width: 18px;
-  height: 18px;
-  background: var(--regular-disabled);
-  pointer-events: none;
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    width: 18px;
+    height: 18px;
+    background: var(--regular-disabled);
+    pointer-events: none;
 }
 
 .sdk-textarea__caption {
-  @extend .sdk-inputs-caption;
-  color: var(--regular-hover);
+    @extend .sdk-inputs-caption;
+    color: var(--regular-hover);
 }
 
 .sdk-textarea__error {
-  @extend .sdk-inputs-caption;
-  color: var(--warn);
+    @extend .sdk-inputs-caption;
+    color: var(--warn);
 
-  svg {
-    margin-right: 4px;
-  }
+    svg {
+        margin-right: 4px;
+    }
 }

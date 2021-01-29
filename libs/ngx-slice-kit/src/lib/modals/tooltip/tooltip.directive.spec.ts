@@ -1,5 +1,5 @@
 import { TooltipDirective } from './tooltip.directive';
-import { ElementRef, Renderer2 } from "@angular/core";
+import { ElementRef, Renderer2 } from '@angular/core';
 
 describe('TooltipDirective', () => {
 

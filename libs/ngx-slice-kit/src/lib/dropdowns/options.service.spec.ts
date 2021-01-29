@@ -53,9 +53,9 @@ describe('OptionsService', () => {
     });
 
     it('has', () => {
-       expect(service.hasOptions).toBe(false, 'should be false if service does not have options');
-       service.options = [stubOption1, stubOption2];
-       expect(service.hasOptions).toBe(true, 'should be true if service has options');
+        expect(service.hasOptions).toBe(false, 'should be false if service does not have options');
+        service.options = [stubOption1, stubOption2];
+        expect(service.hasOptions).toBe(true, 'should be true if service has options');
     });
 
     it('loading', () => {
