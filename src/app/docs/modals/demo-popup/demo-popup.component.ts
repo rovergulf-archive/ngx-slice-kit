@@ -18,8 +18,9 @@ export class DemoPopupComponent implements OnInit {
     }
 
     openPopup(): void {
-
-        this.popup.showPopup().subscribe(ok => {
+        this.popup.showPopup({
+            message: `Can contain\nmultiple strings\nseparated by \\n`
+        }).subscribe(ok => {
             ok ? this.alert.success({message: 'Success'}) : this.alert.error({message: 'Unsuccess'});
         });
     }
