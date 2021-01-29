@@ -51,7 +51,7 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "ng-packagr": "^11.0.0",
     "ngx-cookie-universal": "^0.1.1",
-    "prom-client": "^13.0.0",
+    "prom-client": "^13.1.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
