@@ -9,18 +9,18 @@ import { DemoPopupComponent } from './demo-popup/demo-popup.component';
 import { DemoTooltipComponent } from './demo-tooltip/demo-tooltip.component';
 
 const routes: Routes = [
-    {path: 'alert', component: DemoAlertsComponent},
-    {path: 'bottom-sheet', component: DemoBottomSheetComponent},
-    {path: 'dialog', component: DemoDialogComponent},
-    {path: 'popover', component: DemoPopoverComponent},
-    {path: 'popup', component: DemoPopupComponent},
-    {path: 'tooltip', component: DemoTooltipComponent},
-    {path: '', redirectTo: 'alert', pathMatch: 'full'},
+  {path: 'alert', component: DemoAlertsComponent},
+  {path: 'bottom-sheet', component: DemoBottomSheetComponent},
+  {path: 'dialog', component: DemoDialogComponent},
+  {path: 'popover', component: DemoPopoverComponent},
+  {path: 'popup', component: DemoPopupComponent},
+  {path: 'tooltip', component: DemoTooltipComponent},
+  {path: '', redirectTo: 'alert', pathMatch: 'full'},
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class DemoModalsRoutingModule {
 }

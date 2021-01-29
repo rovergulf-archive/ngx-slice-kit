@@ -13,27 +13,27 @@ import { DemoTextCardComponent } from './demo-text-card/demo-text-card.component
 const entryComponents = [];
 
 const moduleDeclarations = [
-    ...entryComponents,
-    DemoDashboardCardComponent,
-    DemoShoppingCardComponent,
-    DemoSocialCardComponent,
-    DemoTextCardComponent
+  ...entryComponents,
+  DemoDashboardCardComponent,
+  DemoShoppingCardComponent,
+  DemoSocialCardComponent,
+  DemoTextCardComponent
 ];
 
 @NgModule({
-    imports: [
-        CommonModule,
-        DemoCardsRoutingModule,
-        SliceKitModule
-    ],
-    declarations: moduleDeclarations,
-    exports: moduleDeclarations,
-    entryComponents,
-    providers: [],
-    schemas: [
-        CUSTOM_ELEMENTS_SCHEMA,
-        NO_ERRORS_SCHEMA,
-    ]
+  imports: [
+    CommonModule,
+    DemoCardsRoutingModule,
+    SliceKitModule
+  ],
+  declarations: moduleDeclarations,
+  exports: moduleDeclarations,
+  entryComponents,
+  providers: [],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA,
+  ]
 })
 export class DemoCardsModule {
 }

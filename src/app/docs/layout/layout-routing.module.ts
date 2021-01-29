@@ -15,24 +15,24 @@ import { DemoSlidesComponent } from './demo-slides/demo-slides.component';
 import { DemoTableComponent } from './demo-table/demo-table.component';
 
 const routes: Routes = [
-    {path: 'accordion', component: DemoAccordionComponent},
-    {path: 'breadcrumbs', component: DemoBreadcrumbsComponent},
-    {path: 'calendar', component: DemoCalendarComponent},
-    {path: 'carousel', component: DemoCarouselComponent},
-    {path: 'charts', component: DemoChartsComponent},
-    {path: 'divider', component: DemoDividerComponent},
-    {path: 'drag-drop', component: DemoDragNDropComponent},
-    {path: 'list', component: DemoListComponent},
-    {path: 'pagination', component: DemoPaginationComponent},
-    {path: 'progress', component: DemoProgressComponent},
-    {path: 'table', component: DemoTableComponent},
-    {path: 'slider', component: DemoSlidesComponent},
-    {path: '', redirectTo: 'accordion', pathMatch: 'full'},
+  {path: 'accordion', component: DemoAccordionComponent},
+  {path: 'breadcrumbs', component: DemoBreadcrumbsComponent},
+  {path: 'calendar', component: DemoCalendarComponent},
+  {path: 'carousel', component: DemoCarouselComponent},
+  {path: 'charts', component: DemoChartsComponent},
+  {path: 'divider', component: DemoDividerComponent},
+  {path: 'drag-drop', component: DemoDragNDropComponent},
+  {path: 'list', component: DemoListComponent},
+  {path: 'pagination', component: DemoPaginationComponent},
+  {path: 'progress', component: DemoProgressComponent},
+  {path: 'table', component: DemoTableComponent},
+  {path: 'slider', component: DemoSlidesComponent},
+  {path: '', redirectTo: 'accordion', pathMatch: 'full'},
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class DemoLayoutRoutingModule {
 }

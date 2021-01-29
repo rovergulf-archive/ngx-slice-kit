@@ -17,31 +17,31 @@ import { FormsModule } from '@angular/forms';
 const entryComponents = [];
 
 const moduleDeclarations = [
-    ...entryComponents,
-    DemoCheckboxComponent,
-    DemoDatepickerComponent,
-    DemoInputsComponent,
-    DemoRadioComponent,
-    DemoSwitchesComponent,
-    DemoTextareaComponent,
-    DemoWysiwygComponent,
+  ...entryComponents,
+  DemoCheckboxComponent,
+  DemoDatepickerComponent,
+  DemoInputsComponent,
+  DemoRadioComponent,
+  DemoSwitchesComponent,
+  DemoTextareaComponent,
+  DemoWysiwygComponent,
 ];
 
 @NgModule({
-    imports: [
-        CommonModule,
-        DemoInputsRoutingModule,
-        FormsModule,
-        SliceKitModule
-    ],
-    declarations: moduleDeclarations,
-    exports: moduleDeclarations,
-    entryComponents,
-    providers: [],
-    schemas: [
-        CUSTOM_ELEMENTS_SCHEMA,
-        NO_ERRORS_SCHEMA,
-    ]
+  imports: [
+    CommonModule,
+    DemoInputsRoutingModule,
+    FormsModule,
+    SliceKitModule
+  ],
+  declarations: moduleDeclarations,
+  exports: moduleDeclarations,
+  entryComponents,
+  providers: [],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA,
+  ]
 })
 export class DemoInputsModule {
 }

@@ -12,26 +12,26 @@ import { DemoVideoPlayerComponent } from './demo-video-player/demo-video-player.
 const entryComponents = [];
 
 const moduleDeclarations = [
-    ...entryComponents,
-    DemoAudioPlayerComponent,
-    DemoFilesComponent,
-    DemoVideoPlayerComponent,
+  ...entryComponents,
+  DemoAudioPlayerComponent,
+  DemoFilesComponent,
+  DemoVideoPlayerComponent,
 ];
 
 @NgModule({
-    imports: [
-        CommonModule,
-        DemoMediaRoutingModule,
-        SliceKitModule
-    ],
-    declarations: moduleDeclarations,
-    exports: moduleDeclarations,
-    entryComponents,
-    providers: [],
-    schemas: [
-        CUSTOM_ELEMENTS_SCHEMA,
-        NO_ERRORS_SCHEMA,
-    ]
+  imports: [
+    CommonModule,
+    DemoMediaRoutingModule,
+    SliceKitModule
+  ],
+  declarations: moduleDeclarations,
+  exports: moduleDeclarations,
+  entryComponents,
+  providers: [],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA,
+  ]
 })
 export class DemoMediaModule {
 }

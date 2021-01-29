@@ -1,37 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-demo-slides',
-    templateUrl: './demo-slides.component.html',
-    styleUrls: ['./demo-slides.component.scss']
+  selector: 'app-demo-slides',
+  templateUrl: './demo-slides.component.html',
+  styleUrls: ['./demo-slides.component.scss']
 })
 export class DemoSlidesComponent implements OnInit {
 
-    firstValue: number = 20;
-    secValue: number = 60;
-    thirValue: number = 3;
-    fourthValue: { min: number, max: number } = {min: 0, max: 20};
+  firstValue: number = 20;
+  secValue: number = 60;
+  thirValue: number = 3;
+  fourthValue: { min: number, max: number } = {min: 0, max: 20};
 
-    constructor() {
-    }
+  constructor() {
+  }
 
-    ngOnInit() {
-    }
+  ngOnInit() {
+  }
 
-    setFirstValue(e) {
-        this.firstValue = e;
-    }
+  setFirstValue(e) {
+    this.firstValue = e;
+  }
 
-    setSecValue(e) {
-        this.secValue = e;
-    }
+  setSecValue(e) {
+    this.secValue = e;
+  }
 
-    setThirdValue(e) {
-        this.thirValue = e;
-    }
+  setThirdValue(e) {
+    this.thirValue = e;
+  }
 
-    setFourthValue(e) {
-        this.fourthValue = e;
-    }
+  setFourthValue(e) {
+    this.fourthValue = e;
+  }
 
 }

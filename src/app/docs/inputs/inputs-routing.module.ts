@@ -10,19 +10,19 @@ import { DemoTextareaComponent } from './demo-textarea/demo-textarea.component';
 import { DemoWysiwygComponent } from './demo-wysiwyg/demo-wysiwyg.component';
 
 const routes: Routes = [
-    {path: 'input', component: DemoInputsComponent},
-    {path: 'checkbox', component: DemoCheckboxComponent},
-    {path: 'datepicker', component: DemoDatepickerComponent},
-    {path: 'textarea', component: DemoTextareaComponent},
-    {path: 'radio', component: DemoRadioComponent},
-    {path: 'switch', component: DemoSwitchesComponent},
-    {path: 'wysiwyg', component: DemoWysiwygComponent},
-    {path: '', redirectTo: 'input', pathMatch: 'full'},
+  {path: 'input', component: DemoInputsComponent},
+  {path: 'checkbox', component: DemoCheckboxComponent},
+  {path: 'datepicker', component: DemoDatepickerComponent},
+  {path: 'textarea', component: DemoTextareaComponent},
+  {path: 'radio', component: DemoRadioComponent},
+  {path: 'switch', component: DemoSwitchesComponent},
+  {path: 'wysiwyg', component: DemoWysiwygComponent},
+  {path: '', redirectTo: 'input', pathMatch: 'full'},
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class DemoInputsRoutingModule {
 }

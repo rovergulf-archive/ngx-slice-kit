@@ -7,16 +7,16 @@ import { DemoSocialCardComponent } from './demo-social-card/demo-social-card.com
 import { DemoTextCardComponent } from './demo-text-card/demo-text-card.component';
 
 const routes: Routes = [
-    {path: 'dashboard', component: DemoDashboardCardComponent},
-    {path: 'social', component: DemoSocialCardComponent},
-    {path: 'shopping', component: DemoShoppingCardComponent},
-    {path: 'text', component: DemoTextCardComponent},
-    {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: 'dashboard', component: DemoDashboardCardComponent},
+  {path: 'social', component: DemoSocialCardComponent},
+  {path: 'shopping', component: DemoShoppingCardComponent},
+  {path: 'text', component: DemoTextCardComponent},
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class DemoCardsRoutingModule {
 }

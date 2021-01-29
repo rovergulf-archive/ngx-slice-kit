@@ -52,6 +52,10 @@
     animation: openPopup .3s;
     background-color: var(--background);
     border-radius: 8px;
+
+    .section {
+      white-space: pre-wrap;
+    }
   }
 
   header {
