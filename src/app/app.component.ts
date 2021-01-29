@@ -1,12 +1,12 @@
 import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
-import { DOCUMENT, isPlatformBrowser } from "@angular/common";
-import { fromEvent, Subscription } from "rxjs";
-import { filter } from "rxjs/operators";
-import { NavigationEnd, Router } from "@angular/router";
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { fromEvent, Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { NavigationEnd, Router } from '@angular/router';
 
 import { ThemeService } from 'ngx-slice-kit';
-import { LayoutService } from "ngx-core-kit";
-import { CookieService } from "ngx-cookie-universal";
+import { LayoutService } from './shared/services';
+import { CookieService } from 'ngx-cookie-universal';
 
 const THEME_NAME = 'slice-theme';
 
@@ -24,35 +24,35 @@ export class AppComponent implements OnInit, OnDestroy {
         @Inject(DOCUMENT) private document: any,
         @Inject(PLATFORM_ID) private platformId: any,
         public themeService: ThemeService,
-        public layoutService: LayoutService,
         private router: Router,
-        private cookieService: CookieService
+        private cookieService: CookieService,
+        public layout: LayoutService
     ) {
     }
 
     sideNavStyle = {
         'border-right': '1px solid var(--regular-disabled)',
         'background-color': 'var(--background)',
-        'width': '320px',
-        'padding': '72px 0 16px 0'
+        width: '320px',
+        padding: '72px 0 16px 0'
     };
 
     ngOnInit(): void {
         if (isPlatformBrowser(this.platformId)) {
-            this.layoutService.cookieName = THEME_NAME;
-            this.layoutService.themeName = this.cookieService.get(THEME_NAME) || 'light';
+            this.layout.cookieName = THEME_NAME;
+            this.layout.themeName = this.cookieService.get(THEME_NAME) || 'light';
 
-            this.layoutService.mobileLayout = this.document.documentElement.clientWidth < 960;
-            this.layoutService.sidenavOpened = !this.layoutService.mobileLayout;
+            this.layout.mobileLayout = this.document.documentElement.clientWidth < 960;
+            this.layout.sidenavOpened = !this.layout.mobileLayout;
             this.sub = fromEvent(window, 'resize').subscribe(() => {
-                this.layoutService.mobileLayout = this.document.documentElement.clientWidth < 960;
+                this.layout.mobileLayout = this.document.documentElement.clientWidth < 960;
             });
 
             const routerSub = this.router.events.pipe(
                 filter(event => event instanceof NavigationEnd)
             ).subscribe(() => {
-                if (this.layoutService.mobileLayout && this.layoutService.sidenavOpened) {
-                    this.layoutService.sidenavOpened = false;
+                if (this.layout.mobileLayout && this.layout.sidenavOpened) {
+                    this.layout.sidenavOpened = false;
                 }
                 this.container.nativeElement.scrollTop = 0;
             });
