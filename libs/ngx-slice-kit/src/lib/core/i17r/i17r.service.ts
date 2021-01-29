@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class I17rService {
 
-    currentLang$: BehaviorSubject<string> = new BehaviorSubject<string>('en');
+  currentLang$: BehaviorSubject<string> = new BehaviorSubject<string>('en');
 
-    get currentLang(): string {
-        return this.currentLang$.getValue();
-    }
+  get currentLang(): string {
+    return this.currentLang$.getValue();
+  }
 
-    set currentLang(lang: string) {
-        this.currentLang$.next(lang);
-    }
+  set currentLang(lang: string) {
+    this.currentLang$.next(lang);
+  }
 
-    constructor() {
-    }
+  constructor() {
+  }
 }

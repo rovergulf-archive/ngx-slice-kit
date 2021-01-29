@@ -1,6 +1,7 @@
-@import "assets/styles/inter_ui";
-//@import "~ngx-slice-kit/src/lib/core/styles/core";
-//@import "~ngx-slice-kit/src/lib/core/styles/typography";
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto&display=swap');
+@import "./libs/ngx-slice-kit/src/lib/core/styles/defaults";
+@import "./libs/ngx-slice-kit/src/lib/core/styles/core";
+@import "./libs/ngx-slice-kit/src/lib/core/styles/typography";
 
 
 html, body {
