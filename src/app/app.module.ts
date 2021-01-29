@@ -11,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared/shared.module';
-import { CoreModule, ToolsModule } from '@rovergulf/ngx-engine-kit';
 import { environment } from '../environments/environment';
 
 
@@ -25,8 +24,6 @@ import { environment } from '../environments/environment';
         BrowserCookiesModule.forRoot(),
         // slice kit
         SliceKitModule,
-        CoreModule,
-        ToolsModule,
         // internal packages
         SharedModule,
         RouterModule,

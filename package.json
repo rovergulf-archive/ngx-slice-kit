@@ -28,7 +28,6 @@
     "@angular/service-worker": "~11.1.1",
     "@nguniversal/express-engine": "^11.1.1",
     "express": "^4.15.2",
-    "ng": "^0.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
@@ -52,7 +51,7 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "ng-packagr": "^11.0.0",
     "ngx-cookie-universal": "^0.1.1",
-    "prom-client": "^13.0.0",
+    "prom-client": "^13.1.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
