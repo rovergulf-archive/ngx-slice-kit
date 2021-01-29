@@ -32,4 +32,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.6.4...main
 [v0.7.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.6.4...v0.7.0
+[v0.6.5]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.6.4...v0.6.5
 [v0.6.4]: https://github.com/rovergulf/ngx-slice-kit/tree/v0.6.4
