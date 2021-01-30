@@ -33,4 +33,4 @@ to create PRs and help us deliver better experience for Angular developers
 
 ---
 
-Authored 
+Maintained by Rovergulf Engineers / team@rovergulf.net
