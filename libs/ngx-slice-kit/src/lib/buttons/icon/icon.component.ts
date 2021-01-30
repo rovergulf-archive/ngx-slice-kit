@@ -78,7 +78,7 @@ export class IconComponent implements OnInit, OnDestroy, AfterContentInit {
         return symbol;
     }
 
-    createIcon(symbol: string) {
+    createIcon(symbol: string): void {
         this.renderer.createElement('svg', symbol);
     }
 
