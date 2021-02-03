@@ -94,7 +94,7 @@ export class DropdownComponent implements OnInit, AfterViewInit, OnDestroy {
         setTimeout(() => this.autoScroll(direction));
     }
 
-    autoScroll(direction: 'up' | 'down') {
+    autoScroll(direction: 'up' | 'down'): void {
         const dropdownPaddingTop = 8;
         /**
          * okay that padding is constant at the top and the bottom of the element,
