@@ -374,15 +374,6 @@ describe('SelectComponent', () => {
             expect(component.onOpen).not.toHaveBeenCalled();
         });
 
-        it('should #showDropdown() set open state if #isOpen is false', () => {
-            component.isOpen = false;
-            spyOn(component, 'onOpen');
-
-            component.showDropdown();
-
-            expect(component.onOpen).toHaveBeenCalled();
-        });
-
         it('should #showDropdown() be called after click on select element', () => {
             const el: HTMLElement = selectEl.querySelector('.sdk-select');
             spyOn(component, 'showDropdown');
@@ -597,7 +588,6 @@ describe('SelectComponent', () => {
                 expect(component.currentValue).toBeUndefined();
             });
         });
-
     });
 
     describe('with PLATFORM_ID as server', () => {
