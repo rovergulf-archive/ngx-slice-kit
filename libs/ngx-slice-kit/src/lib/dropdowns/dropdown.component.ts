@@ -147,7 +147,7 @@ export class DropdownComponent implements OnInit, AfterViewInit, OnDestroy {
         const rects = this.dropdownElement.nativeElement.getBoundingClientRect();
 
         this.inverted = pixelsLeft <= DEFAULT_DROPDOWN_OFFSET;
-        if (pixelsLeft <= DEFAULT_DROPDOWN_OFFSET) {
+        if (this.inverted) {
             this.rects.bottom = windowHeight - this.config.triggerRect.top;
         } else {
             this.rects.top = this.config.triggerRect.bottom;

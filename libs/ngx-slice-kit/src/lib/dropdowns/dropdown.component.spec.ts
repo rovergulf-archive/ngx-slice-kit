@@ -207,4 +207,133 @@ describe('DropdownComponent', () => {
 
         expect(component.onOptionMouseLeave).toHaveBeenCalled();
     });
+
+    it('should outside click call #onResult() without data', () => {
+        const backdropEl = fixture.debugElement.query(By.css('.sdk-dropdown-backdrop'));
+
+        spyOn(component, 'onResult');
+        fixture.detectChanges();
+        component.ngOnInit();
+
+        backdropEl.triggerEventHandler('click', {});
+        expect(component.onResult).toHaveBeenCalledWith();
+    });
+
+    it('should dropdown position be set after view init', () => {
+        spyOn(component, 'getDropdownRects');
+        spyOn(component, 'setDropdownPosition');
+        component.ngAfterViewInit();
+
+        expect(component.getDropdownRects).toHaveBeenCalled();
+        expect(component.setDropdownPosition).toHaveBeenCalled();
+    });
+
+    it('should #setDropdownPosition() correctly set dropdown offset styles', () => {
+        const dropdownEl: HTMLElement = dropdown.querySelector('.sdk-dropdown');
+        const rects = {
+            top: 100,
+            width: 900,
+            left: 10
+        };
+
+        component.rects = rects;
+        fixture.detectChanges();
+        component.setDropdownPosition();
+
+        expect(dropdownEl.style.top).toEqual(`${rects.top}px`);
+        expect(dropdownEl.style.width).toEqual(`${rects.width}px`);
+        expect(dropdownEl.style.left).toEqual(`${rects.left}px`);
+        expect(dropdownEl.style.opacity).toEqual('1');
+    });
+
+    it ('should rects width be equal triggerRect width if #config has #filWidth property as true', () => {
+       component.config.fitWidth = true;
+       fixture.detectChanges();
+
+       expect(component.rects.width).toEqual(component.config.triggerRect.width);
+    });
+
+    describe('Test position with #inverted property as true', () => {
+        beforeEach(() => {
+            const rects = {
+                height: undefined
+            };
+
+            for (const key in component.config.triggerRect) {
+                if (key) {
+                    rects[key] = component.config.triggerRect[key];
+                }
+            }
+            rects.height = window.innerHeight;
+            component.config.triggerRect = rects as ClientRect;
+            component.getDropdownRects();
+            fixture.detectChanges();
+        });
+
+        it('should dropdown be inverted if window have not enough space', () => {
+            expect(component.inverted).toBeTrue();
+        });
+
+        it('should dropdown open to top direction', () => {
+            const windowHeight: number = window.innerHeight;
+            expect(component.rects.bottom).toEqual(windowHeight - component.config.triggerRect.top);
+        });
+    });
+
+    describe('Test position with #inverted property as false', () => {
+        beforeEach(() => {
+            const rects = {
+                height: undefined
+            };
+
+            for (const key in component.config.triggerRect) {
+                if (key) {
+                    rects[key] = component.config.triggerRect[key];
+                }
+            }
+
+            rects.height = 0;
+            component.config.triggerRect = rects as ClientRect;
+            component.getDropdownRects();
+            fixture.detectChanges();
+        });
+
+        it('should dropdown not be inverted if window have enough space', () => {
+            expect(component.inverted).toBeFalse();
+        });
+
+        it('should dropdown open to bottom direction', () => {
+            expect(component.rects.top).toEqual(component.config.triggerRect.bottom);
+        });
+    });
+
+    it('should window scroll event call #onResult() with no data', () => {
+        const event = new MouseEvent('scroll');
+        spyOn(component, 'onResult');
+        window.dispatchEvent(event);
+
+        expect(component.onResult).toHaveBeenCalledWith();
+    });
+
+    it('should window resize event call #onResult() with no data', () => {
+        const event = new Event('resize');
+        spyOn(component, 'onResult');
+        window.dispatchEvent(event);
+
+        expect(component.onResult).toHaveBeenCalledWith();
+    });
+
+    it('should #sub be empty after component was destroyed', () => {
+        component.ngOnInit();
+        expect(component.sub.closed).toBeFalse();
+
+        component.ngOnDestroy();
+        expect(component.sub.closed).toBeTrue();
+    });
+
+    // nextOption() tests
+
+    it('', () => {
+
+    });
 });
