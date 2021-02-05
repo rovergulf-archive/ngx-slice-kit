@@ -4,7 +4,7 @@ import { SelectComponent } from './select.component';
 import { OptionsService } from '../options.service';
 import { DropdownService } from '../dropdown.service';
 import { PLATFORM_ID } from '@angular/core';
-import { OPTIONS1 } from '../../../../../../apps/slice-kit/src/app/shared/values/dropdowns.values';
+import { OPTIONS1 } from '../../../../../../src/app/shared/values/dropdowns.values';
 import { Observable, of } from 'rxjs';
 import { DropdownOptions } from '../dropdown.model';
 
