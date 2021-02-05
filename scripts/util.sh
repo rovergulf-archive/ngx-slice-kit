@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-REPO="github.com/rovergulf/rovergulf-web"
-REGISTRY_IMAGE="registry.digitalocean.com/slice-kit-ssr"
-LOCAL_DOCKERFILE="Dockerfile.local"
-SSR_DOCKERFILE="Dockerfile"
-
 COLOR_RED='\033[0;31m'
 COLOR_ORANGE='\033[0;33m'
 COLOR_GREEN='\033[0;32m'
