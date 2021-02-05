@@ -53,13 +53,14 @@
         ],
         "no-empty": false,
         "no-inferrable-types": [
-            true,
+            false,
             "ignore-params"
         ],
         "no-non-null-assertion": true,
         "no-redundant-jsdoc": true,
         "no-switch-case-fall-through": true,
         "no-var-requires": false,
+        "no-unnecessary-initializer": true,
         "object-literal-key-quotes": [
             true,
             "as-needed"
