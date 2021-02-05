@@ -12,7 +12,7 @@
         <h3>Inputs with labels</h3>
         <div class="input-container flex-row flex-wrap layout-start-start">
             <sdk-input [(ngModel)]="someString" label="Input label"></sdk-input>
-            <sdk-input label="Input label" [small]="true"></sdk-input>
+            <sdk-input [small]="true" label="Input label"></sdk-input>
         </div>
         <h3>Inputs without labels</h3>
         <div class="input-container flex-row flex-wrap layout-start-start">
@@ -22,32 +22,32 @@
         <h3>Inputs with captions</h3>
         <div class="input-container flex-row flex-wrap layout-start-start">
             <sdk-input caption="Text caption" label="Default input's min-width is 160px"></sdk-input>
-            <sdk-input caption="Text caption" [small]="true" label="And max-width – 288px"></sdk-input>
+            <sdk-input [small]="true" caption="Text caption" label="And max-width – 288px"></sdk-input>
         </div>
         <h3>Inputs with error-caption / Small + error-caption </h3>
         <div class="input-container flex-row flex-wrap layout-start-start">
-            <sdk-input error="Error caption" label="Error demonstration" [required]="true" [error]="'Must be filled'">
+            <sdk-input [error]="'Must be filled'" [required]="true" error="Error caption" label="Error demonstration">
                 Text input
             </sdk-input>
-            <sdk-input error="Error caption" label="Small error demo" [small]="true"
-                       [caption]="'Error has separate caption message'" [error]="'Example error caption'">Text input
+            <sdk-input [caption]="'Error has separate caption message'" [error]="'Example error caption'" [small]="true"
+                       error="Error caption" label="Small error demo">Text input
             </sdk-input>
         </div>
         <h3>Inputs with icons</h3>
         <div class="input-container flex-row flex-wrap layout-start-start">
-            <sdk-input label="Input with icon" [icon]="iconUrl1"></sdk-input>
-            <sdk-input label="Small input with icon" [small]="true" icon="{{iconUrl1}}"
-                       [iconPosition]="'right'"></sdk-input>
+            <sdk-input [icon]="iconUrl1" label="Input with icon"></sdk-input>
+            <sdk-input [iconPosition]="'right'" [small]="true" icon="{{iconUrl1}}"
+                       label="Small input with icon"></sdk-input>
         </div>
         <h3>Sized inputs</h3>
         <div class="input-container flex-row flex-wrap layout-start-start">
             <sdk-input label="Default input"></sdk-input>
             <sdk-input label="Wide input" size="wide"></sdk-input>
-            <sdk-input label="Second wide and small input" [small]="true" size="wide"></sdk-input>
-            <sdk-input label="Wide input depends on your label size and its length" size="wide"
-                       caption="Min width for it - 288px"></sdk-input>
-            <sdk-input class="flex-grow-1" label="Full width label" size="full-width"
-                       caption="Full width caption"></sdk-input>
+            <sdk-input [small]="true" label="Second wide and small input" size="wide"></sdk-input>
+            <sdk-input caption="Min width for it - 288px" label="Wide input depends on your label size and its length"
+                       size="wide"></sdk-input>
+            <sdk-input caption="Full width caption" class="flex-grow-1" label="Full width label"
+                       size="full-width"></sdk-input>
         </div>
     </div>
 </div>

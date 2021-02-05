@@ -2,15 +2,15 @@
     <h2 class="sdk-h2">Pagination</h2>
 
     <h3 class="sdk-h3">Pagination regular</h3>
-    <sdk-pagination [count]="count"
-                    [page]="page"
+    <sdk-pagination (changed)="setPage($event)"
+                    [count]="count"
                     [limit]="10"
-                    (changed)="setPage($event)"></sdk-pagination>
+                    [page]="page"></sdk-pagination>
 
     <h3 class="sdk-h3">Pagination small</h3>
-    <sdk-pagination [count]="count"
-                    [page]="page"
+    <sdk-pagination (changed)="setPage($event)"
+                    [count]="count"
                     [limit]="10"
-                    (changed)="setPage($event)"
+                    [page]="page"
                     [small]="true"></sdk-pagination>
 </div>

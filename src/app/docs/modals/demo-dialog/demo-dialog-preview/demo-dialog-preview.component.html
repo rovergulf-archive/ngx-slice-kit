@@ -15,7 +15,7 @@
             Contrasted interested eat alteration pianoforte sympathize was. He families believed if no elegance interest
             surprise an. It abode wrong miles an so delay plate. She relation own put outlived may disposed. </p>
         <div>
-            <button sdk-flat-button (click)="openDialog()">Open inner dialog</button>
+            <button (click)="openDialog()" sdk-flat-button>Open inner dialog</button>
         </div>
         <p>Contented get distrusts certainty nay are frankness concealed ham. On unaffected resolution on considered of.
             No thought me husband or colonel forming effects. End sitting shewing who saw besides son musical adapted.
@@ -51,8 +51,8 @@
     </section>
 
     <footer class="flex-row">
-        <button sdk-flat-button (click)="result.emit('Hello preview component')">Success</button>
-        <button sdk-button (click)="result.emit(null)">Cancel</button>
+        <button (click)="result.emit('Hello preview component')" sdk-flat-button>Success</button>
+        <button (click)="result.emit(null)" sdk-button>Cancel</button>
     </footer>
 
 </main>
