@@ -24,10 +24,10 @@ describe('IconService', () => {
         expect(service).toBeTruthy();
     });
 
-    it('should #getIcon() call #createIcon()', inject([IconService], (service: IconService) => {
+    it('should #getIcon() call #createIcon()', inject([IconService], (srv: IconService) => {
         const icon = 'twitter';
-        spyOn(service, 'createIcon');
-        service.getIcon(icon);
-        expect(service.createIcon).toHaveBeenCalled();
+        spyOn(srv, 'createIcon');
+        srv.getIcon(icon);
+        expect(srv.createIcon).toHaveBeenCalled();
     }));
 });

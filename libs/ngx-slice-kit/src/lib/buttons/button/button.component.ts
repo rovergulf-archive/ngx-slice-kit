@@ -14,10 +14,12 @@ const BUTTON_CLASS_NAMES = [
 ];
 
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: '[sdk-button], [sdk-flat-button], [sdk-raised-button], [sdk-stroked-button], [sdk-round-button]',
     // templateUrl: './button.component.html',
     template: `
-        <ng-content></ng-content>`,
+        <ng-content></ng-content>
+    `,
     styleUrls: ['./button.component.scss'],
     encapsulation: ViewEncapsulation.None
 })

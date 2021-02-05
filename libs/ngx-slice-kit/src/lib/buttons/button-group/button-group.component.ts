@@ -53,7 +53,7 @@ export class ButtonGroupComponent implements OnInit, AfterContentInit {
         });
     }
 
-    removeActiveClass(element) {
+    removeActiveClass(element): void {
         this.renderer.removeClass(element, 'sdk-button--active');
     }
 }

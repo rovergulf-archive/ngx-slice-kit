@@ -40,13 +40,20 @@ export { NavigationScrollDirective } from './lib/core/directives/navigation-scro
 /**
  * Buttons module
  */
+export { GLYPHS } from './lib/buttons/icon/icon.glyphs';
 export { ButtonsModule } from './lib/buttons/buttons.module';
+// export {BadgesModule} from './lib/buttons/badges/badges.module';
+export { ButtonModule } from './lib/buttons/button/button.module';
+export { ButtonGroupModule } from './lib/buttons/button-group/button-group.module';
+// export {ChipsModule} from './lib/buttons/chips/chips.module';
+export { IconModule } from './lib/buttons/icon/icon.module';
+// export {RippleModule} from './lib/buttons/ripple/ripple.module';
+// export {StepperModule} from './lib/buttons/stepper/stepper.module';
 // export {BadgesComponent} from './lib/buttons/badges/badges.component';
 export { ButtonComponent } from './lib/buttons/button/button.component';
 export { ButtonGroupComponent } from './lib/buttons/button-group/button-group.component';
 // export {ChipsComponent} from './lib/buttons/chips/chips.component';
 export { IconComponent } from './lib/buttons/icon/icon.component';
-export { GLYPHS } from './lib/buttons/icon/icon.glyphs';
 // export {RippleComponent} from './lib/buttons/ripple/ripple.component';
 // export {StepperComponent} from './lib/buttons/stepper/stepper.component';
 
