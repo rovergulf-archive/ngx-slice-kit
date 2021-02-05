@@ -246,11 +246,11 @@ describe('DropdownComponent', () => {
         expect(dropdownEl.style.opacity).toEqual('1');
     });
 
-    it ('should rects width be equal triggerRect width if #config has #filWidth property as true', () => {
-       component.config.fitWidth = true;
-       fixture.detectChanges();
+    it('should rects width be equal triggerRect width if #config has #filWidth property as true', () => {
+        component.config.fitWidth = true;
+        fixture.detectChanges();
 
-       expect(component.rects.width).toEqual(component.config.triggerRect.width);
+        expect(component.rects.width).toEqual(component.config.triggerRect.width);
     });
 
     describe('Test position with #inverted property as true', () => {
@@ -277,33 +277,6 @@ describe('DropdownComponent', () => {
         it('should dropdown open to top direction', () => {
             const windowHeight: number = window.innerHeight;
             expect(component.rects.bottom).toEqual(windowHeight - component.config.triggerRect.top);
-        });
-    });
-
-    describe('Test position with #inverted property as false', () => {
-        beforeEach(() => {
-            const rects = {
-                height: undefined
-            };
-
-            for (const key in component.config.triggerRect) {
-                if (key) {
-                    rects[key] = component.config.triggerRect[key];
-                }
-            }
-
-            rects.height = 0;
-            component.config.triggerRect = rects as ClientRect;
-            component.getDropdownRects();
-            fixture.detectChanges();
-        });
-
-        it('should dropdown not be inverted if window have enough space', () => {
-            expect(component.inverted).toBeFalse();
-        });
-
-        it('should dropdown open to bottom direction', () => {
-            expect(component.rects.top).toEqual(component.config.triggerRect.bottom);
         });
     });
 
@@ -335,5 +308,83 @@ describe('DropdownComponent', () => {
 
     it('', () => {
 
+    });
+
+    describe('Test key down subscriptions', () => {
+        beforeEach(() => {
+            component.ngOnInit();
+        });
+
+        it('should be called #nextOption() method by click at arrow down with "down" argument', () => {
+            const event = new KeyboardEvent('keydown', {
+                bubbles: true, cancelable: true, shiftKey: false, key: 'ArrowDown'
+            });
+
+            spyOn(component, 'nextOption');
+            document.dispatchEvent(event);
+
+            expect(component.nextOption).toHaveBeenCalledWith('down');
+        });
+
+        it('should be called #nextOption() method by click at arrow up with "up" argument', () => {
+            const event = new KeyboardEvent('keydown', {
+                bubbles: true, cancelable: true, shiftKey: false, key: 'ArrowUp'
+            });
+
+            spyOn(component, 'nextOption');
+            document.dispatchEvent(event);
+
+            expect(component.nextOption).toHaveBeenCalledWith('up');
+        });
+
+        it('should be called #onResult() method by click at Enter if component has #currentOption property', () => {
+            const event = new KeyboardEvent('keydown', {
+                bubbles: true, cancelable: true, shiftKey: false, key: 'Enter'
+            });
+            component.currentOption = stubOption;
+
+            spyOn(component, 'onResult');
+            document.dispatchEvent(event);
+
+            expect(component.onResult).toHaveBeenCalledWith(stubOption);
+        });
+
+        it('should be called #onResult() method without arguments by click at Esc', () => {
+            const event = new KeyboardEvent('keydown', {
+                bubbles: true, cancelable: true, shiftKey: false, key: 'Escape'
+            });
+
+            spyOn(component, 'onResult');
+            document.dispatchEvent(event);
+
+            expect(component.onResult).toHaveBeenCalledWith();
+        });
+    });
+
+    describe('Test position with #inverted property as false', () => {
+        beforeEach(() => {
+            const rects = {
+                height: undefined
+            };
+
+            for (const key in component.config.triggerRect) {
+                if (key) {
+                    rects[key] = component.config.triggerRect[key];
+                }
+            }
+
+            rects.height = 0;
+            component.config.triggerRect = rects as ClientRect;
+            component.getDropdownRects();
+            fixture.detectChanges();
+        });
+
+        it('should dropdown not be inverted if window have enough space', () => {
+            expect(component.inverted).toBeFalse();
+        });
+
+        it('should dropdown open to bottom direction', () => {
+            expect(component.rects.top).toEqual(component.config.triggerRect.bottom);
+        });
     });
 });
