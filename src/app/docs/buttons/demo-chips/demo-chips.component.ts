@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-demo-chips',
-  templateUrl: './demo-chips.component.html',
-  styleUrls: ['./demo-chips.component.scss']
+    selector: 'app-demo-chips',
+    templateUrl: './demo-chips.component.html',
+    styleUrls: ['./demo-chips.component.scss']
 })
 export class DemoChipsComponent implements OnInit {
 
-  constructor() {
-  }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }

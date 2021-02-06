@@ -1,16 +1,16 @@
 <div>
     <h2 class="sdk-h2">Slider</h2>
     <h3>Regular slider</h3>
-    <sdk-slider [min]="20" [max]="60" [step]="5" (changed)="setFirstValue($event)"></sdk-slider>
+    <sdk-slider (changed)="setFirstValue($event)" [max]="60" [min]="20" [step]="5"></sdk-slider>
     <div>{{firstValue}}</div>
     <h3>Another regular slider</h3>
-    <sdk-slider [value]="60" (changed)="setSecValue($event)"></sdk-slider>
+    <sdk-slider (changed)="setSecValue($event)" [value]="60"></sdk-slider>
     <div>{{secValue}}</div>
     <h3>Small slider</h3>
-    <sdk-slider [min]="0" [max]="10" [value]="3" [step]="2" [small]="true"
-                (changed)="setThirdValue($event)"></sdk-slider>
+    <sdk-slider (changed)="setThirdValue($event)" [max]="10" [min]="0" [small]="true" [step]="2"
+                [value]="3"></sdk-slider>
     <div>{{thirValue}}</div>
     <h3>Multiple slider</h3>
-    <sdk-slider [multiple]="true" [max]="20" (changed)="setFourthValue($event)"></sdk-slider>
+    <sdk-slider (changed)="setFourthValue($event)" [max]="20" [multiple]="true"></sdk-slider>
     <div>min: {{fourthValue.min}}, max: {{fourthValue.max}}</div>
 </div>

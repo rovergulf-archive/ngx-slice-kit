@@ -1,18 +1,13 @@
-FROM registry.digitalocean.com/rovergulf/env/angular-builder as build
+FROM node:latest as build
 
-RUN apk add --no-cache git
+RUN apt-get install -y git
 RUN npm install -g @angular/cli
 
 WORKDIR /app
 ADD . /app
 RUN npm install
-#RUN ng build ngx-slice-kit --prod
-#RUN ng build ngx-cookie-universal --prod
-#RUN cat /app/libs/ngx-core-kit/src/lib/environments/environment.prod.ts > /app/libs/ngx-core-kit/src/lib/environments/environment.ts
-#RUN ng build ngx-core-kit --prod
-RUN npm run slice-kit:build:ssr --prod
-# RUN npm run generate:prerender
-#RUN npm run test:ssr
+RUN ng build ngx-slice-kit --prod
+RUN npm run build:ssr --prod
 
 FROM node:alpine
 
@@ -20,7 +15,7 @@ WORKDIR /app
 COPY --from=build /app/dist /app/dist
 COPY --from=build /app/package.json /app
 # Expose the port the app runs in
-EXPOSE 4201
+EXPOSE 4200
 
 # Serve the app
-CMD ["npm", "run", "slice-kit:serve:ssr"]
+CMD ["npm", "run", "serve:ssr"]

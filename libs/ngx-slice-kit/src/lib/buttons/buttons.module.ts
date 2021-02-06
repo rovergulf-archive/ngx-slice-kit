@@ -1,30 +1,33 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import {BadgesComponent} from './badges/badges.component';
-import { ButtonComponent } from './button/button.component';
-import { ButtonGroupComponent } from './button-group/button-group.component';
-// import {ChipsComponent} from './chips/chips.component';
-import { IconComponent } from './icon/icon.component';
-// import {RippleComponent} from './ripple/ripple.component';
-// import {StepperComponent} from './stepper/stepper.component';
 
+// import { BadgesModule } from './badges/badges.module';
+import { ButtonModule } from './button/button.module';
+import { ButtonGroupModule } from './button-group/button-group.module';
+// import { ChipsModule } from './chips/chips.module';
+import { IconModule } from './icon/icon.module';
+// import { RippleModule } from './ripple/ripple.module';
+// import { StepperModule } from './stepper/stepper.module';
 
-const moduleDeclarations = [
-    // BadgesComponent,
-    ButtonComponent,
-    ButtonGroupComponent,
-    // ChipsComponent,
-    IconComponent,
-    // RippleComponent,
-    // StepperComponent,
+const modules = [
+    // BadgesModule,
+    ButtonModule,
+    ButtonGroupModule,
+    // ChipsModule,
+    IconModule,
+    // RippleModule,
+    // StepperModule,
 ];
 
 @NgModule({
     imports: [
         CommonModule,
+        ...modules
     ],
-    declarations: moduleDeclarations,
-    exports: moduleDeclarations,
+    declarations: [],
+    exports: [
+        ...modules
+    ],
     providers: [],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,

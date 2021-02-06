@@ -9,12 +9,12 @@
         <h3>Default + disabled / Small + disabled</h3>
         <div class="checkbox-row flex-row flex-wrap layout-start-center">
             <sdk-checkbox [disabled]="true">Test</sdk-checkbox>
-            <sdk-checkbox [small]="true" [disabled]="true">Test small</sdk-checkbox>
+            <sdk-checkbox [disabled]="true" [small]="true">Test small</sdk-checkbox>
         </div>
         <h3>Default + error / Small + error</h3>
         <div class="checkbox-row flex-row flex-wrap layout-start-center">
-            <sdk-checkbox [required]="true" [error]="'Example error caption'">This checkbox is required</sdk-checkbox>
-            <sdk-checkbox [small]="true" [required]="true" [error]="'Example error caption'">This checkbox is required
+            <sdk-checkbox [error]="'Example error caption'" [required]="true">This checkbox is required</sdk-checkbox>
+            <sdk-checkbox [error]="'Example error caption'" [required]="true" [small]="true">This checkbox is required
             </sdk-checkbox>
         </div>
     </div>

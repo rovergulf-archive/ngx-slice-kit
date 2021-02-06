@@ -10,7 +10,6 @@
         "component-selector": [
             true,
             "element",
-            "lib",
             "sdk",
             "kebab-case"
         ]

@@ -83,6 +83,15 @@ export function app(): express.Express {
         });
     });
 
+    server.get('/health', (req, res) => {
+        res.set('Content-Type', 'application/json');
+        res.send({
+            healthy: true,
+            timestamp: new Date(),
+            message: `I'm fine, thanks`
+        });
+    });
+
     // Serve static files from /browser
     server.get('*.*', express.static(distFolder, {
         maxAge: '1y'
@@ -105,10 +114,12 @@ export function app(): express.Express {
 
 function run(): void {
     const port = process.env.PORT || 4200;
+    const AppVersion = process.env.VERSION || 'v0.6.5';
 
     // Start up the Node server
     const server = app();
     server.listen(port, () => {
+        console.log(`Running emailia-web ${AppVersion}`);
         console.log(`Node Express server listening on http://localhost:${port}`);
     });
 }

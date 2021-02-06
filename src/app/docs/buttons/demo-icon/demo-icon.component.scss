@@ -1,33 +1,33 @@
 sdk-icon {
-  margin: 8px;
+    margin: 8px;
 
-  &.active {
-    animation: pulse linear 0.5s;
-    -webkit-animation: pulse linear 0.5s;
-    -moz-animation: pulse linear 0.5s;
-    -o-animation: pulse linear 0.5s;
-  }
+    &.active {
+        animation: pulse linear 0.5s;
+        -webkit-animation: pulse linear 0.5s;
+        -moz-animation: pulse linear 0.5s;
+        -o-animation: pulse linear 0.5s;
+    }
 }
 
 .dynamic > div {
-  height: 64px;
-  width: 64px;
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
+    height: 64px;
+    width: 64px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
 }
 
 
 /* pulse animation for likes */
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

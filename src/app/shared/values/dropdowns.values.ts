@@ -1,4 +1,4 @@
-import { OptionModel } from "ngx-slice-kit";
+import { OptionModel } from 'ngx-slice-kit';
 
 export const OPTIONS1: OptionModel[] = [
     {value: 1, label: 'Red Dead Redemption 2'},

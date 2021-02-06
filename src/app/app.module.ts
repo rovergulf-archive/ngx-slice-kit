@@ -3,8 +3,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/cor
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { RouterModule } from '@angular/router';
-// libraries
-import { SliceKitModule } from 'ngx-slice-kit';
+
 import { BrowserCookiesModule } from 'ngx-cookie-universal';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,7 +22,6 @@ import { environment } from '../environments/environment';
         // external
         BrowserCookiesModule.forRoot(),
         // slice kit
-        SliceKitModule,
         // internal packages
         SharedModule,
         RouterModule,
