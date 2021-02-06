@@ -7,8 +7,8 @@ import {DropdownService} from './dropdown.service';
 import {SelectComponent} from './select/select.component';
 import {DropdownOptions} from './dropdown.model';
 import {OPTIONS1} from '../../../../../src/app/shared/values/dropdowns.values';
-import {OptionModel} from './dropdown-option.model';
 import {By} from '@angular/platform-browser';
+import {OptionModel} from './dropdown-option.model';
 
 describe('DropdownComponent', () => {
     let component: DropdownComponent;
@@ -306,7 +306,67 @@ describe('DropdownComponent', () => {
 
     // nextOption() tests
 
-    it('', () => {
+    describe('#nextOption() cases tests', () => {
+        beforeEach(() => {
+            component.highlightedIndex = undefined;
+            component.currentOption = undefined;
+            component.optionsService.options = OPTIONS1.map(o => {
+                o.selected = false;
+                return o;
+            });
+
+            fixture.detectChanges();
+        });
+
+        it('should #nextOption() correctly change #highlightedIndex and #currentOption if options has selected element', () => {
+            const testIdx = 2;
+            const newOpts = OPTIONS1.map((o, i) => {
+                o.selected = i === testIdx ? true : false;
+                return o;
+            });
+
+            component.optionsService.options = [...newOpts];
+
+            component.nextOption('up');
+            expect(component.highlightedIndex).toEqual(testIdx - 1);
+            expect(component.currentOption).toEqual(newOpts[testIdx - 1]);
+
+            component.nextOption('down');
+            expect(component.highlightedIndex).toEqual(testIdx);
+            expect(component.currentOption).toEqual(newOpts[testIdx]);
+        });
+
+        it('should #nextOption("up") highlight last element if list has not selected element', () => {
+            component.nextOption('up');
+            fixture.detectChanges();
+
+            expect(component.highlightedIndex).toEqual(component.optionsService.options.length - 1);
+        });
+
+        it('should #nextOption("down") highlight first element if list has not selected element', () => {
+            component.nextOption('down');
+            fixture.detectChanges();
+
+            expect(component.highlightedIndex).toEqual(0);
+        });
+
+        it('should be set #highlightIndex as 0 and currentOption as options[0] if options.length = 1. By press ArrowUp', () => {
+            component.optionsService.options = [stubOption];
+            fixture.detectChanges();
+            component.nextOption('up');
+
+            expect(component.highlightedIndex).toEqual(0);
+            expect(component.currentOption).toEqual(stubOption);
+        });
+
+        it('should be set #highlightIndex as 0 and currentOption as options[0] if options.length = 1. By press ArrowDown', () => {
+            component.optionsService.options = [stubOption];
+            fixture.detectChanges();
+            component.nextOption('down');
+
+            expect(component.highlightedIndex).toEqual(0);
+            expect(component.currentOption).toEqual(stubOption);
+        });
 
     });
 
