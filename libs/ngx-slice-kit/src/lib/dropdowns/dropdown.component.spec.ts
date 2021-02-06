@@ -59,13 +59,13 @@ describe('DropdownComponent', () => {
     });
 
     it('should #onResult() emit result event with option as argument', () => {
-        let expectedRes;
+        let expectedRes: OptionModel;
         component.result.subscribe(() => {
             expectedRes = stubOption;
+            expect(expectedRes).toEqual(stubOption);
         });
 
         component.onResult(stubOption);
-        expect(expectedRes).toEqual(stubOption);
     });
 
     it('should #onResult() complete result', () => {
@@ -91,7 +91,6 @@ describe('DropdownComponent', () => {
     });
 
     it('should call #select() after dropdown item was clicked', () => {
-        const ev = new MouseEvent('click');
         const item: HTMLElement = dropdown.querySelector('.sdk-dropdown-item');
 
         spyOn(component, 'select');
@@ -321,7 +320,7 @@ describe('DropdownComponent', () => {
         it('should #nextOption() correctly change #highlightedIndex and #currentOption if options has selected element', () => {
             const testIdx = 2;
             const newOpts = OPTIONS1.map((o, i) => {
-                o.selected = i === testIdx ? true : false;
+                o.selected = i === testIdx;
                 return o;
             });
 
