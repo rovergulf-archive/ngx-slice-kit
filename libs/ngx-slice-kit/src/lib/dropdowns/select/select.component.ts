@@ -149,7 +149,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit, OnDestroy 
         this.writeValue(this.currentValues);
     }
 
-    clearValue(e) {
+    clearValue(e): void {
         e.stopPropagation();
         this.multi ? this.currentValues?.clear() : this.currentValue = undefined;
         this.writeValue(undefined);
@@ -200,7 +200,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit, OnDestroy 
         });
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (this.multi) {
             this.enableNullValue = true;
             this.currentValues = new Set<OptionModel>();
