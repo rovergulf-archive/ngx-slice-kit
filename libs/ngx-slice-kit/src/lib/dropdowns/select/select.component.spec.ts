@@ -481,11 +481,11 @@ describe('SelectComponent', () => {
                 expect(component.currentValues.size).toBe(0);
             });
 
-            it('should #isInactive() return "false" if currentValues does not have elements', () => {
+            it('should #isInactive() return "true" if currentValues does not have elements', () => {
                 expect(component.isInactive()).toBeTrue();
             });
 
-            it('should #isInactive() return "true" if currentValues has elements', () => {
+            it('should #isInactive() return "false" if currentValues has elements', () => {
                 component.currentValues.add(stubOptionA);
                 expect(component.isInactive()).toBeFalse();
             });
@@ -539,11 +539,11 @@ describe('SelectComponent', () => {
                 component.ngOnInit();
             });
 
-            it('should #isInactive() return "false" if currentValue does not have value', () => {
+            it('should #isInactive() return "true" if currentValue does not have value', () => {
                 expect(component.isInactive()).toBeTrue();
             });
 
-            it('should #isInactive() return "true" if currentValue has value', () => {
+            it('should #isInactive() return "false" if currentValue has value', () => {
                 component.currentValue = stubOptionA;
                 expect(component.isInactive()).toBeFalse();
             });
