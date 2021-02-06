@@ -44,7 +44,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
         if (this.isOpen) {
             this.optionsService.options = this.getOptions();
         }
-    };
+    }
 
     get options(): OptionModel[] {
         return this.$options.getValue();
@@ -173,7 +173,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
         this.writeValue(this.currentValues);
     }
 
-    clearValue(e) {
+    clearValue(e): void {
         e.stopPropagation();
         this.valueChanges.emit(null);
         this.multi ? this.currentValues?.clear() : this.currentValue = undefined;
@@ -258,7 +258,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
         });
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (this.multi) {
             this.enableNullValue = true;
             this.currentValues = new Set<OptionModel>();
