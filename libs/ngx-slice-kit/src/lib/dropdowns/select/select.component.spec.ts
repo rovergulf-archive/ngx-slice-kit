@@ -222,7 +222,7 @@ describe('SelectComponent', () => {
             expect(component.hasValuesToDrop()).toBe(true);
         });
 
-        it('should .icon-chevron not be displayed if #hasValueToDrop() is false and .icon-clear should do', () => {
+        it('should .icon-chevron not be displayed if #hasValueToDrop() is true and .icon-clear should be', () => {
             component.enableNullValue = true;
             component.currentValue = stubOptionA;
             fixture.detectChanges();
