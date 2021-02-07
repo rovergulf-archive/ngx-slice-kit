@@ -230,15 +230,15 @@ describe('AutocompleteComponent', () => {
             expect(component.hasValuesToDrop()).toBe(false);
         });
 
-        // it('should #small property add .small class to label and autocomplete-wrapper', () => {
-        //     component.small = true;
-        //     fixture.detectChanges();
-        //     const wrapper = autocompleteEl.querySelector('.sdk-autocomplete-wrap');
-        //     const label = autocompleteEl.querySelector('.sdk-autocomplete-label');
-        //
-        //     expect(wrapper.classList.contains('small')).toBeTrue();
-        //     expect(label.classList.contains('small')).toBeTrue();
-        // });
+        it('should #small property add .small class to label and autocomplete-wrapper', () => {
+            component.small = true;
+            fixture.detectChanges();
+            const wrapper = autocompleteEl.querySelector('.sdk-autocomplete');
+            const label = autocompleteEl.querySelector('.sdk-autocomplete-label');
+
+            expect(wrapper.classList.contains('small')).toBeTrue();
+            expect(label.classList.contains('small')).toBeTrue();
+        });
 
         it('should #isOpen as true add .active class for autocomplete-wrapper and icon-wrapper', () => {
             component.isOpen = true;
