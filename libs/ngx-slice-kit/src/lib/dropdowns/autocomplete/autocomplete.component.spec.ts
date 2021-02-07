@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, waitForAsync} from '@angular/core/testing';
 
 import { AutocompleteComponent } from './autocomplete.component';
 import {OPTIONS1} from '../../../../../../src/app/shared/values/dropdowns.values';
@@ -7,6 +7,7 @@ import {OptionsService} from '../options.service';
 import {DropdownService} from '../dropdown.service';
 import {Observable, of} from 'rxjs';
 import {DropdownOptions} from '../dropdown.model';
+import {skip} from 'rxjs/operators';
 
 describe('AutocompleteComponent', () => {
     let component: AutocompleteComponent;
@@ -251,6 +252,76 @@ describe('AutocompleteComponent', () => {
             expect(wrapper.classList.contains('active')).toBeTrue();
             expect(icon.classList.contains('active')).toBeTrue();
         });
+
+        it('should #addValue() add value to #currentValues if they are not already selected', () => {
+            component.options = OPTIONS1;
+            component.currentValues = new Set();
+            fixture.detectChanges();
+            expect(component.currentValues.has(stubOptionA)).toBeFalse();
+
+            component.addValue(stubOptionA);
+            fixture.detectChanges();
+            expect(component.currentValues.has(stubOptionA)).toBeTrue();
+        });
+
+        it('should #addValue() delete value from #currentValues if they are already selected', () => {
+            component.options = OPTIONS1;
+            component.currentValues = new Set();
+            component.addValue(stubOptionA);
+            fixture.detectChanges();
+            expect(component.currentValues.has(stubOptionA)).toBeTrue();
+
+            component.addValue(stubOptionA);
+            fixture.detectChanges();
+            expect(component.currentValues.has(stubOptionA)).toBeFalse();
+        });
+
+        it('should #emitBlur() emit blur event if #focused is true', () => {
+            let expectedResult = '';
+            component.focused = true;
+            component.onBlur.subscribe(() => {
+                expectedResult = 'some result';
+
+                expect(expectedResult).toEqual(expectedResult);
+                expect(component.focused).toBe(false, 'should set #focused value as false');
+            });
+
+            component.onClose();
+        });
+
+        it('should #emitBlur() not emit blur event if #focused is false', fakeAsync(() => {
+            let expectedResult = '';
+            component.focused = false;
+            component.onBlur.subscribe(() => {
+                expectedResult = 'some result';
+            });
+
+            component.onClose();
+            skip(1000);
+
+            expect(expectedResult).toEqual('');
+        }));
+
+        it('should #emitFocus() emit focus event if #focused is false', () => {
+            component.focused = false;
+            component.onFocus.subscribe(() => {
+                expect(component.focused).toBe(true, 'should set #focused value as true');
+            });
+
+            component.onOpen();
+        });
+
+        it('should #emitFocus() not emit focus event if #focused is true', fakeAsync(() => {
+            let expectedResult = '';
+            component.focused = true;
+            component.onFocus.subscribe(() => {
+                expectedResult = 'some result';
+            });
+
+            component.onOpen();
+            skip(1000);
+            expect(expectedResult).toEqual('');
+        }));
 
         /*
          *  Tests with different component.multi value;
