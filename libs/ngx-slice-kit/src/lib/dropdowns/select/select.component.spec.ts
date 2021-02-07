@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, waitForAsync} from '@angular/core/testing';
 
 import { SelectComponent } from './select.component';
 import { OptionsService } from '../options.service';
@@ -7,6 +7,7 @@ import { PLATFORM_ID } from '@angular/core';
 import { OPTIONS1 } from '../../../../../../src/app/shared/values/dropdowns.values';
 import { Observable, of } from 'rxjs';
 import { DropdownOptions } from '../dropdown.model';
+import {skip} from 'rxjs/operators';
 
 describe('SelectComponent', () => {
     let component: SelectComponent;
@@ -297,19 +298,15 @@ describe('SelectComponent', () => {
         });
 
         it('should #emitBlur() emit blur event if #focused is true', () => {
-            let expectedResult = '';
             component.focused = true;
             component.onBlur.subscribe(() => {
-                expectedResult = 'some result';
+                expect(component.focused).toBe(false, 'should set #focused value as false');
             });
 
             component.onClose();
-
-            expect(expectedResult).toEqual(expectedResult);
-            expect(component.focused).toBe(false, 'should set #focused value as false');
         });
 
-        it('should #emitBlur() not emit blur event if #focused is false', () => {
+        it('should #emitBlur() not emit blur event if #focused is false', fakeAsync(() => {
             let expectedResult = '';
             component.focused = false;
             component.onBlur.subscribe(() => {
@@ -317,23 +314,21 @@ describe('SelectComponent', () => {
             });
 
             component.onClose();
+            skip(1000);
 
             expect(expectedResult).toEqual('');
-        });
+        }));
 
         it('should #emitFocus() emit focus event if #focused is false', () => {
-            let expectedResult = '';
             component.focused = false;
             component.onFocus.subscribe(() => {
-                expectedResult = 'some result';
+                expect(component.focused).toBe(true, 'should set #focused value as true');
             });
 
             component.onOpen();
-            expect(expectedResult).toEqual(expectedResult);
-            expect(component.focused).toBe(true, 'should set #focused value as true');
         });
 
-        it('should #emitFocus() not emit focus event if #focused is true', () => {
+        it('should #emitFocus() not emit focus event if #focused is true', fakeAsync(() => {
             let expectedResult = '';
             component.focused = true;
             component.onFocus.subscribe(() => {
@@ -341,8 +336,9 @@ describe('SelectComponent', () => {
             });
 
             component.onOpen();
+            skip(1000);
             expect(expectedResult).toEqual('');
-        });
+        }));
 
         it('should #onClose() set #isOpen as false and call #emitBlur() fn', () => {
             spyOn(component, 'emitBlur');
