@@ -25,7 +25,7 @@
                #input>
         <span class="sdk-autocomplete-actions">
             <ng-container *ngIf="!hasValuesToDrop()">
-                <div class="interface-icon-wrap icon-chevron">
+                <div class="interface-icon-wrap icon-chevron" [class.active]="isOpen">
                     <sdk-icon icon="chevron_down" [size]="24"></sdk-icon>
                 </div>
             </ng-container>

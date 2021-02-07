@@ -56,18 +56,201 @@ describe('AutocompleteComponent', () => {
             expect(showDropdownResult).toBeUndefined('if #isOpen is true dropdown should not be open again');
         });
 
-        // it('should label be displayed if #label property is set', () => {
-        //     const labelEl = autocompleteEl.querySelector('.sdk-select-label');
-        //     let text = labelEl.textContent.trim();
-        //     const textDefault = '';
-        //     const textStub = 'Some text';
-        //     expect(text).toBe(textDefault);
-        //
-        //     component.label = textStub;
+        it('should label be displayed if #label property is set', () => {
+            const labelEl = autocompleteEl.querySelector('.sdk-autocomplete-label');
+            let text = labelEl.textContent.trim();
+            const textDefault = '';
+            const textStub = 'Some text';
+            expect(text).toBe(textDefault);
+
+            component.label = textStub;
+            fixture.detectChanges();
+            text = labelEl.textContent.trim();
+            expect(text).toBe(textStub);
+        });
+
+        it('should required mark be displayed if #required set as true', () => {
+            component.required = true;
+            fixture.detectChanges();
+            const reqMark = autocompleteEl.querySelector('.sdk-autocomplete-label-required-mark');
+            expect(reqMark).toBeTruthy();
+        });
+
+        it('should required mark not be displayed if #required set as false', () => {
+            const reqMark = autocompleteEl.querySelector('.sdk-autocomplete-label-required-mark');
+            expect(reqMark).toBeFalsy();
+        });
+
+        it('should icon be displayed if #icon set as string with icon name', () => {
+            const testIconName = 'star';
+            component.icon = testIconName;
+            fixture.detectChanges();
+
+            const iconEl = autocompleteEl.querySelector('.sdk-autocomplete-icon');
+            expect(iconEl.classList.contains('actions')).not.toBeTruthy('it should not be actions icon');
+        });
+
+        it('should icon not be displayed if #icon does not set', () => {
+            const iconEl = autocompleteEl.querySelector('.sdk-autocomplete-icon');
+            expect(iconEl).toBeNull();
+        });
+
+        it('should caption element be displayed if #caption property has a value', () => {
+            const caption = 'Dont listen to the radio';
+            component.caption = caption;
+            fixture.detectChanges();
+            const captionEl = autocompleteEl.querySelector('.sdk-caption');
+            expect(captionEl).toBeTruthy();
+            expect(captionEl.textContent.trim()).toEqual(caption);
+        });
+
+        it('should caption element not be displayed if #caption property has no value', () => {
+            const captionEl = autocompleteEl.querySelector('.sdk-caption');
+            expect(captionEl).not.toBeTruthy();
+        });
+
+        it('should element has error line and error class if #error property has value', () => {
+            const errorText = 'Don\'t speak upon the telephone';
+            const errorClass = 'invalid';
+
+            component.error = errorText;
+            fixture.detectChanges();
+
+            const autocompleteInnerEl = autocompleteEl.querySelector('.sdk-autocomplete');
+            const errorEl = autocompleteEl.querySelector('.sdk-error');
+            const errorElText = errorEl.textContent.trim();
+
+            expect(autocompleteEl.classList.contains(errorClass)).toBeTrue();
+            expect(autocompleteInnerEl.classList.contains(errorClass)).toBeTrue();
+            expect(errorEl).toBeTruthy('error element should be created');
+            expect(errorElText).toEqual(errorText);
+        });
+
+        it('should element has no error line and no error class if #error property has no value', () => {
+            const errorClass = 'invalid';
+
+            const autocompleteInnerEl = autocompleteEl.querySelector('.sdk-autocomplete');
+            const errorEl = autocompleteEl.querySelector('.sdk-error');
+
+            expect(autocompleteEl.classList.contains(errorClass)).not.toBeTrue();
+            expect(autocompleteInnerEl.classList.contains(errorClass)).not.toBeTrue();
+            expect(errorEl).not.toBeTruthy('element should not be created');
+        });
+
+        it('should host have "disabled" class', () => {
+            component.disabled = true;
+            fixture.detectChanges();
+
+            expect(autocompleteEl.classList.contains('disabled')).toBeTrue();
+            expect(component.isDisabled).toBe(component.disabled);
+        });
+
+        it('should #setDisabledState() set correctly #disabled property as true or false', () => {
+            component.setDisabledState(true);
+            fixture.detectChanges();
+            expect(autocompleteEl.classList.contains('disabled')).toBeTrue();
+
+            component.setDisabledState(false);
+            fixture.detectChanges();
+            expect(autocompleteEl.classList.contains('disabled')).not.toBeTrue();
+        });
+
+        it('should #enableNullValue be false by default"', () => {
+            expect(component.enableNullValue).toBeFalse();
+        });
+
+        it('should #currentValues be undefined by default', () => {
+            expect(component.currentValues).toBeUndefined();
+        });
+
+        it('should placeholder set value by default', () => {
+            const defaultPlaceholder = 'Find option';
+            const placeholderEl = autocompleteEl.querySelector('.sdk-autocomplete-input');
+            const placeholderElText = placeholderEl.placeholder.trim();
+            expect(placeholderElText).toBe(defaultPlaceholder);
+        });
+
+        it('should #selected() set value in .sdk-autocomplete-input', () => {
+            component.currentValue = stubOptionA;
+            fixture.detectChanges();
+            const autocompleteInputEl = autocompleteEl.querySelector('.sdk-autocomplete-input');
+            const autocompleteText = stubOptionA.label;
+
+            expect(component.selected()).toBe(autocompleteText);
+        });
+
+        it('should #onResult() call #onTouched()', () => {
+            spyOn(component, 'onTouched');
+            component.onResult(stubOptionA);
+
+            expect(component.onTouched).toHaveBeenCalled();
+        });
+
+        it('should #clearValue() call #writeValue() with "undefined" as argument', () => {
+            spyOn(component, 'writeValue');
+            component.clearValue(new MouseEvent('click'));
+            expect(component.writeValue).toHaveBeenCalledWith(undefined);
+        });
+
+        it('should #clearValue() emit #valueChanges event with null as argument', () => {
+            component.valueChanges.subscribe(res => {
+                expect(res).toBeNull();
+            });
+
+            component.clearValue(new MouseEvent('click'));
+        });
+
+        it('should #hasValueToDrop() return true if #enableNullValue as true and #isInactive() is false', () => {
+            component.enableNullValue = true;
+            component.currentValue = stubOptionA;
+            fixture.detectChanges();
+            expect(component.hasValuesToDrop()).toBe(true);
+        });
+
+        it('should .icon-chevron not be displayed if #hasValueToDrop() is true and .icon-clear should be', () => {
+            component.enableNullValue = true;
+            component.currentValue = stubOptionA;
+            fixture.detectChanges();
+            const chevronEl = autocompleteEl.querySelector('.icon-chevron');
+            const clearEl = autocompleteEl.querySelector('.icon-clear');
+            expect(clearEl).toBeTruthy();
+            expect(chevronEl).not.toBeTruthy();
+        });
+
+        it('should .icon-chevron be displayed if #hasValueToDrop() is false and .icon-clear not', () => {
+            const chevronEl = autocompleteEl.querySelector('.icon-chevron');
+            const clearEl = autocompleteEl.querySelector('.icon-clear');
+            expect(chevronEl).toBeTruthy();
+            expect(clearEl).not.toBeTruthy();
+        });
+
+        it('should #hasValueToDrop() return false #isInactive() is true', () => {
+            component.currentValue = undefined;
+            fixture.detectChanges();
+            expect(component.hasValuesToDrop()).toBe(false);
+        });
+
+        // it('should #small property add .small class to label and autocomplete-wrapper', () => {
+        //     component.small = true;
         //     fixture.detectChanges();
-        //     text = labelEl.textContent.trim();
-        //     expect(text).toBe(textStub);
+        //     const wrapper = autocompleteEl.querySelector('.sdk-autocomplete-wrap');
+        //     const label = autocompleteEl.querySelector('.sdk-autocomplete-label');
+        //
+        //     expect(wrapper.classList.contains('small')).toBeTrue();
+        //     expect(label.classList.contains('small')).toBeTrue();
         // });
+
+        it('should #isOpen as true add .active class for autocomplete-wrapper and icon-wrapper', () => {
+            component.isOpen = true;
+            component.currentValue = undefined;
+            fixture.detectChanges();
+
+            const wrapper = autocompleteEl.querySelector('.sdk-autocomplete');
+            const icon = autocompleteEl.querySelector('.interface-icon-wrap');
+
+            expect(wrapper.classList.contains('active')).toBeTrue();
+            expect(icon.classList.contains('active')).toBeTrue();
+        });
 
         /*
          *  Tests with different component.multi value;
@@ -88,7 +271,6 @@ describe('AutocompleteComponent', () => {
             });
 
             it('should #isInactive() return "true" if currentValues does not have elements', () => {
-                console.log(component.isInactive(), 'yoyoy', component.multi, component.currentValues)
                 expect(component.isInactive()).toBeTrue();
             });
 
@@ -137,14 +319,6 @@ describe('AutocompleteComponent', () => {
                 component.clearValue(new MouseEvent('click'));
                 fixture.detectChanges();
                 expect(component.currentValues.size).toBe(0);
-            });
-
-            it('should #clearValue() emit #valueChanges event with null as argument', () => {
-                component.valueChanges.subscribe(res => {
-                    expect(res).toBeNull();
-                });
-
-                component.clearValue(new MouseEvent('click'));
             });
         });
 
