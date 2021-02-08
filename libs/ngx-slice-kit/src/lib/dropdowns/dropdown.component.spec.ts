@@ -112,6 +112,39 @@ describe('DropdownComponent', () => {
         expect(component.initKeydownSubscription).toHaveBeenCalled();
     });
 
+    it('should #nextOption() be called with "down" string as argument after ArrowDown was pushed', () => {
+        spyOn(component, 'nextOption');
+        component.ngOnInit();
+
+        document.dispatchEvent(new KeyboardEvent('keydown', {code: 'ArrowDown'}));
+        expect(component.nextOption).toHaveBeenCalledWith('down');
+    });
+
+    it('should #nextOption() be called with "up" string as argument after ArrowUp was pushed', () => {
+        spyOn(component, 'nextOption');
+        component.ngOnInit();
+
+        document.dispatchEvent(new KeyboardEvent('keydown', {code: 'ArrowUp'}));
+        expect(component.nextOption).toHaveBeenCalledWith('up');
+    });
+
+    it('should #onResult() be called with #currentOption as argument if Enter was pushed and #currentOptionis not undefined', () => {
+        spyOn(component, 'onResult');
+        component.ngOnInit();
+        component.currentOption = stubOption;
+
+        document.dispatchEvent(new KeyboardEvent('keydown', {code: 'Enter'}));
+        expect(component.onResult).toHaveBeenCalledWith(stubOption);
+    });
+
+    it('should #onResult() be called without arguments if Escape was pushed', () => {
+        spyOn(component, 'onResult');
+        component.ngOnInit();
+
+        document.dispatchEvent(new KeyboardEvent('keydown', {code: 'Escape'}));
+        expect(component.onResult).toHaveBeenCalledWith();
+    });
+
     it('should #ngOnInit() call #initClickOutsideSub() if #config.hideBackdrop is exists', () => {
         spyOn(component, 'initClickOutsideSub');
         expect(component.initClickOutsideSub).not.toHaveBeenCalled();
@@ -119,6 +152,7 @@ describe('DropdownComponent', () => {
         component.ngOnInit();
         expect(component.initClickOutsideSub).toHaveBeenCalled();
     });
+
 
     it('should #ngOnInit() do not call #initClickOutsideSub() if #config.hideBackdrop is not exists', () => {
         spyOn(component, 'initClickOutsideSub');
