@@ -31,7 +31,7 @@ export class DropdownMenuTriggerDirective implements OnInit, OnDestroy {
     ) {
     }
 
-    @HostListener('click') open() {
+    @HostListener('click') open(): void | undefined {
         if (isPlatformServer(this.platformId)) {
             return;
         }
