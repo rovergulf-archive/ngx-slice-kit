@@ -200,3 +200,12 @@
         width: 16px;
     }
 }
+
+.interface-icon-wrap {
+    transition: all 0.2s;
+    height: 24px;
+
+    &.active {
+        transform: scaleY(-1);
+    }
+}

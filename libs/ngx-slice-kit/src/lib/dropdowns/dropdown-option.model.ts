@@ -1,5 +1,5 @@
 export class OptionModel {
-    value?: number;
+    value?: any;
     label?: any;
     image?: string;
     disabled?: boolean;
