@@ -493,12 +493,11 @@ describe('AutocompleteComponent', () => {
 
                 component.result.subscribe(res => {
                     result = res;
+                    expect(result).toEqual(stubValue);
                 });
 
                 component.writeValue(stubValue);
                 fixture.detectChanges();
-
-                expect(result).toEqual(stubValue);
             });
         });
 
