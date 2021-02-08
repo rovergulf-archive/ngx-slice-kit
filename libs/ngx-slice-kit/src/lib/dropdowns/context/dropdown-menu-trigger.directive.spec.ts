@@ -20,10 +20,7 @@ describe('DropdownMenuTriggerDirective', () => {
     let dropdownDe;
     let dropdownEl;
     let directive;
-    const testIndexA = 0;
-    const testIndexB = 2;
-    const stubOptionA = OPTIONS1[testIndexA];
-    const stubOptionB = OPTIONS1[testIndexB];
+    const stubOptionA = OPTIONS1[0];
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
