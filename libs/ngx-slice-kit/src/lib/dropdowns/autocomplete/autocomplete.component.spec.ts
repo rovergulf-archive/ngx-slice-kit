@@ -323,6 +323,185 @@ describe('AutocompleteComponent', () => {
             expect(expectedResult).toEqual('');
         }));
 
+        it('should #onClose() set #isOpen as false and call #emitBlur() fn', () => {
+            spyOn(component, 'emitBlur');
+            component.isOpen = true;
+            fixture.detectChanges();
+            component.onClose();
+
+            expect(component.isOpen).toBeFalse();
+            expect(component.emitBlur).toHaveBeenCalled();
+        });
+
+        it('should #onOpen() set #isOpen as true and call #emitFocus() fn', () => {
+            spyOn(component, 'emitFocus');
+            component.isOpen = false;
+            fixture.detectChanges();
+            component.onOpen();
+
+            expect(component.isOpen).toBeTrue();
+            expect(component.emitFocus).toHaveBeenCalled();
+        });
+
+        it('should #showDropdown() be stopped if #isOpen is true', () => {
+            component.isOpen = true;
+            spyOn(component, 'onOpen');
+
+            component.showDropdown();
+
+            expect(component.showDropdown()).toBeUndefined();
+            expect(component.onOpen).not.toHaveBeenCalled();
+        });
+
+        it('should #showDropdown() be called after click on select element', () => {
+            const el: HTMLElement = autocompleteEl.querySelector('.sdk-autocomplete');
+            spyOn(component, 'showDropdown');
+            el.click();
+
+            expect(component.showDropdown).toHaveBeenCalled();
+        });
+
+        it('should #onInput() handler do nothing if ArrowDown / ArrowUp / Enter / Escape was pushed', fakeAsync(() => {
+            const inpEl: HTMLInputElement = autocompleteEl.querySelector('.sdk-autocomplete-input');
+            const eventDown = new KeyboardEvent('keyup', {code: 'ArrowDown'});
+            const eventUp = new KeyboardEvent('keyup', {code: 'ArrowUp'});
+            const eventEnter = new KeyboardEvent('keyup', {code: 'Enter'});
+            const eventEsc = new KeyboardEvent('keyup', {code: 'Escape'});
+            let testValue = 'test';
+
+            spyOn(component, 'onInput');
+            fixture.detectChanges();
+            inpEl.dispatchEvent(eventDown);
+            inpEl.dispatchEvent(eventUp);
+            inpEl.dispatchEvent(eventEnter);
+            inpEl.dispatchEvent(eventEsc);
+            skip(1000);
+
+            expect(component.onInput).toHaveBeenCalledWith(eventDown || eventUp || eventEnter || eventEsc);
+
+            component.valueChanges.subscribe(() => {
+                testValue = 'new value';
+            });
+
+            expect(testValue).toBe('test');
+        }));
+
+        it('should input keyboard button emit #valueChange event', () => {
+            const inpEl: HTMLInputElement = autocompleteEl.querySelector('.sdk-autocomplete-input');
+            const testKey = 'a';
+            const event = new KeyboardEvent('keyup', {key: testKey});
+            let testValue = '';
+
+            spyOn(component, 'onInput');
+            fixture.detectChanges();
+            inpEl.dispatchEvent(event);
+            skip(1000);
+
+            expect(component.onInput).toHaveBeenCalledWith(event);
+
+            component.valueChanges.subscribe(res => {
+                testValue = res;
+                expect(testValue).toBe(testKey);
+            });
+        });
+
+        it('should result / valueChanges / onBlur / onFocus be completed after component was destroyed', () => {
+            spyOn(component.valueChanges, 'complete');
+            spyOn(component.onBlur, 'complete');
+            spyOn(component.onFocus, 'complete');
+            spyOn(component.result, 'complete');
+
+            fixture.detectChanges();
+            component.ngOnInit();
+            component.ngOnDestroy();
+
+            expect(component.valueChanges.complete).toHaveBeenCalled();
+            expect(component.onBlur.complete).toHaveBeenCalled();
+            expect(component.onFocus.complete).toHaveBeenCalled();
+            expect(component.result.complete).toHaveBeenCalled();
+        });
+
+        /*
+        *   Test writeValue method with different value types;
+        */
+
+        describe('test writeValue() with value as set of options', () => {
+            let stubValues;
+
+            beforeEach(() => {
+                component.options = OPTIONS1;
+                component.multi = true;
+                stubValues = new Set([stubOptionA, stubOptionB]);
+            });
+
+            it('should #writeValue() set value to #currentValues', () => {
+                component.writeValue(stubValues);
+                fixture.detectChanges();
+
+                expect(component.currentValues).toEqual(stubValues);
+            });
+
+            it('should #writeValue() call #onChange() with value as object', () => {
+                const expectedResult = component.options.filter(o => stubValues.has(o));
+                spyOn(component, 'onChange');
+                component.writeValue(stubValues);
+                fixture.detectChanges();
+
+                expect(component.onChange).toHaveBeenCalledWith(expectedResult);
+            });
+
+            it('should #writeValue() emit result event with value as object', () => {
+                const expectedResult = component.options.filter(o => stubValues.has(o));
+                let result;
+
+                component.result.subscribe(res => {
+                    result = res;
+                });
+
+                component.writeValue(stubValues);
+                fixture.detectChanges();
+
+                expect(result).toEqual(expectedResult);
+            });
+        });
+
+        describe('test writeValue() with value as OptionModel', () => {
+            let stubValue;
+
+            beforeEach(() => {
+                component.options = OPTIONS1;
+                stubValue = stubOptionA;
+            });
+
+            it('should #writeValue() set value to #currentValue', () => {
+                component.writeValue(stubValue);
+                fixture.detectChanges();
+
+                expect(component.currentValue).toEqual(stubValue);
+            });
+
+            it('should #writeValue() call #onChange() with same value', () => {
+                spyOn(component, 'onChange');
+                component.writeValue(stubValue);
+                fixture.detectChanges();
+
+                expect(component.onChange).toHaveBeenCalledWith(stubValue);
+            });
+
+            it('should #writeValue() emit result event with same value', () => {
+                let result;
+
+                component.result.subscribe(res => {
+                    result = res;
+                });
+
+                component.writeValue(stubValue);
+                fixture.detectChanges();
+
+                expect(result).toEqual(stubValue);
+            });
+        });
+
         /*
          *  Tests with different component.multi value;
         */
