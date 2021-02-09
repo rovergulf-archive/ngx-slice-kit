@@ -19,7 +19,7 @@ export class NavMenuComponent implements OnInit, AfterContentInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
     ngAfterContentInit(): void {

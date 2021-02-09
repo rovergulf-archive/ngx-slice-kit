@@ -14,6 +14,7 @@ import {
 import { SidenavService } from './sidenav.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Subscription } from 'rxjs';
+import {SidenavState} from '../../../../../../dist/ngx-slice-kit/lib/navigation/sidenav/sidenav.options';
 
 @Component({
     selector: 'sdk-sidenav',
@@ -44,25 +45,25 @@ export class SidenavComponent implements OnInit, OnDestroy, AfterViewInit {
 
     @Input('style') styles;
 
-    @Input('opened') set opened(state: boolean) {
-        this.sidenavService.isOpened = state;
-    };
+    @Input('opened') set opened(st: boolean) {
+        this.sidenavService.isOpened = st;
+    }
 
     @Output('opened') onOpen = new EventEmitter<boolean>();
 
-    @HostBinding('class') get currentMode() {
+    @HostBinding('class') get currentMode(): string {
         return `sdk-sidenav--${this.sidenavService.options.mode}`;
     }
 
-    @HostBinding(`class.active`) get isOpened() {
+    @HostBinding(`class.active`) get isOpened(): boolean {
         return this.sidenavService.isOpened;
     }
 
-    @HostBinding(`style`) get getExternalStyles() {
+    @HostBinding(`style`) get getExternalStyles(): string {
         return this.styles ?? '';
     }
 
-    @HostBinding('@state') get openClose() {
+    @HostBinding('@state') get openClose(): SidenavState {
         return this.sidenavService.openedState;
     }
 
@@ -73,19 +74,19 @@ export class SidenavComponent implements OnInit, OnDestroy, AfterViewInit {
     ) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
-    ngAfterViewInit() {
-        this.sub = this.sidenavService.openedObservableState.subscribe(state => {
-            this.onOpen.emit(state);
+    ngAfterViewInit(): void {
+        this.sub = this.sidenavService.openedObservableState.subscribe(st => {
+            this.onOpen.emit(st);
             this.sidenavService.updateOptions({
                 width: this.el.nativeElement.clientWidth,
             });
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.sub?.unsubscribe();
     }
 }
