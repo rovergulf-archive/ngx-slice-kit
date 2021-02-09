@@ -14,7 +14,7 @@ import {
 import { SidenavService } from './sidenav.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Subscription } from 'rxjs';
-import {SidenavState} from '../../../../../../dist/ngx-slice-kit/lib/navigation/sidenav/sidenav.options';
+import {SidenavState} from './sidenav.options';
 
 @Component({
     selector: 'sdk-sidenav',
