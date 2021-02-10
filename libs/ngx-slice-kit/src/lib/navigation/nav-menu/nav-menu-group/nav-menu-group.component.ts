@@ -39,7 +39,7 @@ export class NavMenuGroupComponent implements OnInit, AfterContentInit {
     ) {
     }
 
-    toggle() {
+    toggle(): void {
         this.isOpen = !this.isOpen;
     }
 
