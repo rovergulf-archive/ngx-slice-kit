@@ -2,8 +2,6 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {SidenavService} from './sidenav.service';
 import {SidenavMode, SidenavOptions} from './sidenav.options';
-import {Component} from '@angular/core';
-import {NavMenuGroupComponent} from '../nav-menu/nav-menu-group/nav-menu-group.component';
 import {skip} from 'rxjs/operators';
 
 describe('SidenavService', () => {
@@ -61,7 +59,7 @@ describe('SidenavService', () => {
 
     it('should #isOpened correctly change value', () => {
         let counter = 0;
-        service.optionsObservable.subscribe(res => {
+        service.optionsObservable.subscribe(() => {
             switch (counter) {
                 case 0:
                     expect(service.isOpened).toBeTrue(); // by default
@@ -73,7 +71,6 @@ describe('SidenavService', () => {
                     expect(service.isOpened).toBeTrue();
                     break;
             }
-
             ++counter;
         });
         service.isOpened = false;
