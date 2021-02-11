@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
 import {SidenavService} from './sidenav.service';
 import {SidenavMode, SidenavOptions} from './sidenav.options';

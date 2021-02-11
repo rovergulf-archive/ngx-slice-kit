@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OverlayComponent } from './overlay.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('OverlayComponent', () => {
     let component: OverlayComponent;
@@ -8,6 +9,7 @@ describe('OverlayComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
+            imports: [RouterTestingModule],
             declarations: [OverlayComponent]
         })
             .compileComponents();

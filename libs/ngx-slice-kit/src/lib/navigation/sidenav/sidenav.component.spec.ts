@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SidenavComponent } from './sidenav.component';
 import {DebugElement} from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('SidenavComponent', () => {
     let component: SidenavComponent;
@@ -11,6 +12,7 @@ describe('SidenavComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
+            imports: [BrowserAnimationsModule],
             declarations: [SidenavComponent]
         })
             .compileComponents();
