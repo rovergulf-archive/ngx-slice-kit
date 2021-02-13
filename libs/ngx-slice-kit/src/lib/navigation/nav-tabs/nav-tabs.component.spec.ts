@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NavTabsComponent } from './nav-tabs.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('NavTabsComponent', () => {
     let component: NavTabsComponent;
@@ -8,6 +10,10 @@ describe('NavTabsComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
+            imports: [
+                RouterTestingModule,
+                BrowserAnimationsModule
+            ],
             declarations: [NavTabsComponent]
         })
             .compileComponents();

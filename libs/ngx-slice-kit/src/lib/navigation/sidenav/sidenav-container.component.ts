@@ -15,7 +15,7 @@ export class SidenavContainerComponent implements OnInit, OnDestroy {
         this.sidenavService.updateOptions({mode});
     }
 
-    get mode() {
+    get mode(): SidenavMode {
         return this.sidenavService.options.mode;
     }
 
@@ -24,11 +24,11 @@ export class SidenavContainerComponent implements OnInit, OnDestroy {
     ) {
     }
 
-    closeSide() {
+    closeSide(): void {
         this.sidenavService.isOpened = false;
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.sidenavService.options = new SidenavOptions({
             mode: this.mode
         });

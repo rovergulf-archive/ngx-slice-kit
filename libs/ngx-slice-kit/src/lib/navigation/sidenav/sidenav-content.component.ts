@@ -41,10 +41,9 @@ export class SidenavContentComponent implements OnInit, OnDestroy {
 
     constructor(
         public sidenavService: SidenavService
-    ) {
-    }
+    ) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
     ngOnDestroy(): void {
