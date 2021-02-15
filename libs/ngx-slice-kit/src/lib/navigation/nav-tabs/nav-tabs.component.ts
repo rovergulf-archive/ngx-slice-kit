@@ -77,26 +77,27 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
 
         setTimeout(() => {
             this.curTab = this.containerElement.querySelector(`.sdk-tab-container__tab--active`);
-            this.setUnderlineMeasure();
+            this.curTabClientRect = this.curTab.getBoundingClientRect();
 
             // if current element not fully visible
             if (this.isArrows) {
-                if (this.curTabClientRect.left - this.arrowWidth < this.containerRect.left) {
+                if ((this.curTabClientRect.left - this.arrowWidth) < this.containerRect.left) {
                     const visiblePart = this.curTabClientRect.right - this.arrowWidth - this.containerRect.left;
                     const hiddenPart = this.curTabClientRect.width - visiblePart;
                     const additionalPadding = 40;
                     this.scrollLeft(hiddenPart + additionalPadding);
                 }
-                if (this.curTabClientRect.right + this.arrowWidth > this.containerRect.right) {
+                if ((this.curTabClientRect.right + this.arrowWidth) > this.containerRect.right) {
                     const visiblePart = this.containerRect.right - this.arrowWidth - this.curTabClientRect.left;
                     const hiddenPart = this.curTabClientRect.width - visiblePart;
                     const additionalPadding = 40;
                     this.scrollRight(hiddenPart + additionalPadding);
                 }
             }
-            if (!index) {
+            if (index === -1) {
                 this.pageState = `${this.curTab.tabIndex}`;
             }
+            this.setUnderlineMeasure();
         });
     }
 
@@ -108,13 +109,12 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
 
         if (this.tabsScrollRect.right - scrollStep < this.containerRect.right + this.arrowWidth) {
             scrollStep = (this.tabsScrollRect.right - this.containerRect.right) + this.arrowWidth;
-            x -= scrollStep;
         } else {
             scrollStep = step ? step : defaultStep;
-            x -= scrollStep;
         }
 
-        this.slideMeasure.left = `${parseInt(this.slideMeasure.left, 10) - scrollStep}px`;
+        x -= scrollStep;
+
         this.moveContainer(x);
     }
 
@@ -132,22 +132,25 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
             x += scrollStep;
         }
 
-        this.slideMeasure.left = `${parseInt(this.slideMeasure.left, 10) + scrollStep}px`;
         this.moveContainer(x);
     }
 
     moveContainer(x): void {
-        this.tabsWrapperElement.style.left = x + 'px';
+        let newX: number = x;
+        if (Math.abs(x) + this.containerWidth - (this.arrowLeftElement.offsetWidth * 2) > this.allTabsWidth) {
+            newX = this.containerWidth - (this.arrowLeftElement.offsetWidth * 2) - this.allTabsWidth;
+        }
+        this.tabsWrapperElement.style.left = newX + 'px';
         this.containerPosition$.next(true);
     }
 
     setUnderlineMeasure(): void {
         this.curTabClientRect = this.curTab.getBoundingClientRect();
         this.slideMeasure.width = `${this.curTabClientRect.width}px`;
-        this.slideMeasure.left = `${this.curTabClientRect.left - this.containerRect.left - (this.isArrows ? this.arrowWidth : 0)}px`;
+        this.slideMeasure.left = `${this.curTab.offsetLeft}px`;
     }
 
-    setContainerSizes(): void {
+    setSizes(): void {
         this.containerRect = this.containerElement.getBoundingClientRect();
         this.containerWidth = this.containerRect.width;
         this.tabsWrapperWidth = this.containerWidth - (this.isArrows ? (this.arrowWidth * 2) : 0);
@@ -175,26 +178,19 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
         this.tabsWrapperElement = this.tabsWrapperElement.nativeElement;
         this.arrowLeftElement = this.arrowLeftElement.nativeElement;
         this.arrowRightElement = this.arrowRightElement.nativeElement;
-        this.setContainerSizes();
-
-        console.dir({
-            containerRect: this.containerRect,
-            containerWidth: this.containerWidth,
-            tabsWrapperWidth: this.tabsWrapperWidth,
-            arrowWidth: this.arrowWidth
-        });
+        this.setSizes();
 
         this.subscription = this.containerPosition$.pipe(delay(400)).subscribe(() => this.changeRects());
 
         const subResize = fromEvent(window, 'resize')
             .subscribe(() => {
-                this.setContainerSizes();
+                this.setSizes();
                 this.isArrows = this.allTabsWidth > this.containerWidth;
                 if (!this.isArrows) {
                     const x = Math.abs(parseFloat(this.tabsWrapperElement.style.left)) || 0;
-                    this.tabsWrapperElement.style.left = 0 + 'px';
+                    this.tabsWrapperElement.style.left = '0px';
                     if (x !== 0) {
-                        this.slideMeasure.left = parseFloat(this.slideMeasure.left) + x + 'px';
+                        this.slideMeasure.left = `${parseFloat(this.slideMeasure.left) + x}px`;
                     }
                 }
             });

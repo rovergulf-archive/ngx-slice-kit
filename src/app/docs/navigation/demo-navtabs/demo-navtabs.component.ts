@@ -20,5 +20,5 @@ export class DemoNavtabsComponent implements OnInit {
 
     constructor() {}
 
-    ngOnInit() {}
+    ngOnInit(): void {}
 }
