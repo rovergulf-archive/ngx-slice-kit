@@ -67,10 +67,9 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
         private cdRef: ChangeDetectorRef,
         private router: Router,
         private route: ActivatedRoute,
-    ) {
-    }
+    ) { }
 
-    selectTab(src = null, index: string = '') {
+    selectTab(src = null, index: string = ''): void {
         if (src && index) {
             this.pageState = index;
             this.router.navigate([`${src}`], {relativeTo: this.route});
@@ -137,13 +136,12 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
         this.moveContainer(x);
     }
 
-    moveContainer(x) {
+    moveContainer(x): void {
         this.tabsContainer.nativeElement.style.left = x + 'px';
         this.containerPosition$.next(true);
-
     }
 
-    setUnderlineMeasure() {
+    setUnderlineMeasure(): void {
         this.curTabClientRect = this.curTab.getBoundingClientRect();
         this.slideMeasure.width = `${this.curTabClientRect.width}px`;
         this.slideMeasure.left = `${this.curTabClientRect.x - this.containerRect.x - (this.isArrows ? this.arrowWidth : 0)}px`;
@@ -167,12 +165,12 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
         this.tabsScrollRect = this.tabsContainer.nativeElement.getBoundingClientRect();
     }
 
-    changeRects() {
+    changeRects(): void {
         this.tabsScrollRect = this.tabsContainer.nativeElement.getBoundingClientRect();
         this.curTabClientRect = this.curTab.getBoundingClientRect();
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.container = this.parentElement.nativeElement;
         this.setContainerSizes();
 
