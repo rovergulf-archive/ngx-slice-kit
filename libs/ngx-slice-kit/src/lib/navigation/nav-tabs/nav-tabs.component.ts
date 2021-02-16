@@ -11,9 +11,9 @@ import {
     QueryList,
     ViewChild
 } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router, RouterEvent} from '@angular/router';
 import {BehaviorSubject, fromEvent, Subscription} from 'rxjs';
-import {delay, throttleTime} from 'rxjs/operators';
+import {delay, filter, throttleTime} from 'rxjs/operators';
 import {ThemeService} from '../../core/theme/theme.service';
 import {slideInAnimation} from '../../core/animations/slide-in';
 import {TabLinkDirective} from './tab-link.directive';
@@ -199,6 +199,30 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
             .subscribe(() => {
                 this.scrollRight();
             });
+        const subRouter = this.router.events
+            .pipe(
+                delay(1),
+                filter((e: RouterEvent): e is NavigationEnd => e instanceof NavigationEnd)
+            )
+            .subscribe((e: RouterEvent) => {
+                const url = e.url;
+                const curUrl = this.route.snapshot;
+                console.dir({
+                    e,
+                    url,
+                    curUrl
+                });
+
+                let activeTab;
+
+                for (let i = 0; i < this.tabGroup.length; i++) {
+                    if (this.tabGroup[i].active) {
+                        activeTab = {...this.tabGroup[i], index: i};
+                    }
+                }
+                console.log(this.tabGroup, activeTab);
+                this.selectTab(activeTab.routerLink, activeTab.index);
+            });
         const subLeftArrow = fromEvent(this.arrowLeftElement, 'click')
             .pipe(throttleTime(500))
             .subscribe(() => {
@@ -206,6 +230,7 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
             });
 
         this.subscription.add(subResize);
+        this.subscription.add(subRouter);
         this.subscription.add(subRightArrow);
         this.subscription.add(subLeftArrow);
     }
