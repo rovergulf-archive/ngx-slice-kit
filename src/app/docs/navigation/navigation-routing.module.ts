@@ -31,14 +31,14 @@ const routes: Routes = [
         component: DemoNavtabsComponent,
         children: [
             {path: '', redirectTo: 'demo-first', pathMatch: 'full'},
-            {path: 'demo-first', component: DemoPageOneComponent, data: {num: 1}},
-            {path: 'demo-second', component: DemoPageTwoComponent, data: {num: 2}},
-            {path: 'demo-third', component: DemoPageThreeComponent, data: {num: 3}},
-            {path: 'demo-fourth', component: DemoPageFourComponent, data: {num: 4}},
-            {path: 'demo-fifth', component: DemoPageFiveComponent, data: {num: 5}},
-            {path: 'demo-sixth', component: DemoPageOneComponent, data: {num: 6}},
-            {path: 'demo-seventh', component: DemoPageTwoComponent, data: {num: 7}},
-            {path: 'demo-eighth', component: DemoPageThreeComponent, data: {num: 8}},
+            {path: 'demo-first', component: DemoPageOneComponent, data: {index: 1}},
+            {path: 'demo-second', component: DemoPageTwoComponent, data: {index: 2}},
+            {path: 'demo-third', component: DemoPageThreeComponent, data: {index: 3}},
+            {path: 'demo-fourth', component: DemoPageFourComponent, data: {index: 4}},
+            {path: 'demo-fifth', component: DemoPageFiveComponent, data: {index: 5}},
+            {path: 'demo-sixth', component: DemoPageOneComponent, data: {index: 6}},
+            {path: 'demo-seventh', component: DemoPageTwoComponent, data: {index: 7}},
+            {path: 'demo-eighth', component: DemoPageThreeComponent, data: {index: 8}},
         ]
     },
     {path: '', redirectTo: 'menu', pathMatch: 'full'}

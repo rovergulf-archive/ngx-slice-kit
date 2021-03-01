@@ -164,7 +164,7 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
     }
 
     getRouteAnimation(outlet: RouterOutlet): number {
-        return outlet.activatedRouteData.num === undefined ? -1 : outlet.activatedRouteData.num;
+        return outlet.activatedRouteData.index === undefined ? -1 : outlet.activatedRouteData.index;
     }
 
     ngOnInit(): void {
