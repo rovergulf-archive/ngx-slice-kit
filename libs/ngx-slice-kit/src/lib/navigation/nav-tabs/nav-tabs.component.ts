@@ -11,9 +11,9 @@ import {
     QueryList,
     ViewChild
 } from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router, RouterEvent} from '@angular/router';
+import {Router, RouterOutlet} from '@angular/router';
 import {BehaviorSubject, fromEvent, Subscription} from 'rxjs';
-import {delay, filter, throttleTime} from 'rxjs/operators';
+import {delay, throttleTime} from 'rxjs/operators';
 import {ThemeService} from '../../core/theme/theme.service';
 import {slideInAnimation} from '../../core/animations/slide-in';
 import {TabLinkDirective} from './tab-link.directive';
@@ -65,16 +65,10 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
         public themeService: ThemeService,
         private cdRef: ChangeDetectorRef,
         private router: Router,
-        private route: ActivatedRoute,
     ) {
     }
 
-    selectTab(src = null, index: number = -1): void {
-        if (src && (index > -1)) {
-            this.pageState = index;
-            this.router.navigate([`${src}`], {relativeTo: this.route});
-        }
-
+    selectTab(): void {
         setTimeout(() => {
             this.curTab = this.containerElement.querySelector(`.sdk-tab-container__tab--active`);
             this.curTabClientRect = this.curTab.getBoundingClientRect();
@@ -93,9 +87,6 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
                     const additionalPadding = 40;
                     this.scrollRight(hiddenPart + additionalPadding);
                 }
-            }
-            if (index === -1) {
-                this.pageState = `${this.curTab.tabIndex}`;
             }
             this.setUnderlineMeasure();
         });
@@ -125,7 +116,6 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
         this.tabsScrollRect = this.tabsWrapperElement.getBoundingClientRect();
 
         if (this.tabsScrollRect.left + scrollStep > this.containerRect.left + this.arrowWidth) {
-            scrollStep = this.containerRect.left - (this.tabsScrollRect.left - this.arrowWidth);
             x = 0;
         } else {
             scrollStep = step ? step : defaultStep;
@@ -173,6 +163,10 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
         this.curTabClientRect = this.curTab.getBoundingClientRect();
     }
 
+    getRouteAnimation(outlet: RouterOutlet): number {
+        return outlet.activatedRouteData.num === undefined ? -1 : outlet.activatedRouteData.num;
+    }
+
     ngOnInit(): void {
         this.containerElement = this.containerElement.nativeElement;
         this.tabsWrapperElement = this.tabsWrapperElement.nativeElement;
@@ -194,34 +188,14 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
                     }
                 }
             });
+        const subRouter = this.router.events
+            .subscribe(() => {
+                this.selectTab();
+            });
         const subRightArrow = fromEvent(this.arrowRightElement, 'click')
             .pipe(throttleTime(500))
             .subscribe(() => {
                 this.scrollRight();
-            });
-        const subRouter = this.router.events
-            .pipe(
-                delay(1),
-                filter((e: RouterEvent): e is NavigationEnd => e instanceof NavigationEnd)
-            )
-            .subscribe((e: RouterEvent) => {
-                const url = e.url;
-                const curUrl = this.route.snapshot;
-                console.dir({
-                    e,
-                    url,
-                    curUrl
-                });
-
-                let activeTab;
-
-                for (let i = 0; i < this.tabGroup.length; i++) {
-                    if (this.tabGroup[i].active) {
-                        activeTab = {...this.tabGroup[i], index: i};
-                    }
-                }
-                console.log(this.tabGroup, activeTab);
-                this.selectTab(activeTab.routerLink, activeTab.index);
             });
         const subLeftArrow = fromEvent(this.arrowLeftElement, 'click')
             .pipe(throttleTime(500))
