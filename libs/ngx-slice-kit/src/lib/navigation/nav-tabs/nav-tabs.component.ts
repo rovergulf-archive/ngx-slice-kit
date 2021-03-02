@@ -30,7 +30,7 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
 
     @ContentChildren(TabLinkDirective) linkTabs!: QueryList<TabLinkDirective>;
 
-    @Input() activeTabStyle: string = 'border';
+    @Input() activeTabStyle: string = 'border'; // also 'fill' can be used
     @Input() animation: boolean = false;
 
     @ViewChild('parent', {static: true}) containerElement;
@@ -58,8 +58,6 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
         width: 0,
         left: 0
     };
-
-    pageState;
 
     constructor(
         public themeService: ThemeService,
