@@ -9,13 +9,12 @@
         <div class="sdk-tab-container__tabs-wrapper">
             <div class="sdk-tab-container__tabs-scroll" #tabs>
                 <!--<ng-content select="a"></ng-content>-->
-                <ng-container *ngFor="let tab of tabGroup; let i = index">
+                <ng-container *ngFor="let tab of tabGroup">
                     <a class="sdk-tab-container__tab"
-                       [tabIndex]="i"
                        [attr.disabled]="tab.disabled || null"
-                       [class.sdk-tab-container__tab--active]="tab.active"
                        [class.sdk-tab-container__tab--fill]="activeTabStyle === 'fill'"
-                       [routerLink]="tab.routerLink">
+                       [routerLink]="tab.routerLink"
+                       routerLinkActive="sdk-tab-container__tab--active">
                         <span>{{tab.label}}</span>
                         <div class="sdk-tab__background"></div>
                     </a>
