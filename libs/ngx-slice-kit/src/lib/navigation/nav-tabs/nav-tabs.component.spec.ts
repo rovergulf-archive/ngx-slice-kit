@@ -5,23 +5,47 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {Component, DebugElement, ElementRef, ViewChild} from '@angular/core';
 import {TabLinkDirective} from './tab-link.directive';
+import {DemoPageOneComponent} from '../../../../../../src/app/docs/navigation/demos/page-one/page-one.component';
+import {DemoPageTwoComponent} from '../../../../../../src/app/docs/navigation/demos/page-two/page-two.component';
+import {DemoPageThreeComponent} from '../../../../../../src/app/docs/navigation/demos/page-three/page-three.component';
+import {DemoPageFourComponent} from '../../../../../../src/app/docs/navigation/demos/page-four/page-four.component';
+import {DemoPageFiveComponent} from '../../../../../../src/app/docs/navigation/demos/page-five/page-five.component';
+import {Router, Routes} from '@angular/router';
+
+const routes: Routes = [
+    {path: '', redirectTo: 'demo-first', pathMatch: 'full'},
+    {path: 'demo-first', component: DemoPageOneComponent, data: {index: 1}},
+    {path: 'demo-second', component: DemoPageTwoComponent, data: {index: 2}},
+    {path: 'demo-third', component: DemoPageThreeComponent, data: {index: 3}},
+    {path: 'demo-fourth', component: DemoPageFourComponent, data: {index: 4}},
+    {path: 'demo-fifth', component: DemoPageFiveComponent, data: {index: 5}},
+    {path: 'demo-sixth', component: DemoPageOneComponent, data: {index: 6}},
+    {path: 'demo-seventh', component: DemoPageTwoComponent, data: {index: 7}},
+    {path: 'demo-eighth', component: DemoPageThreeComponent, data: {index: 8}},
+];
 
 describe('NavTabsComponent', () => {
     let component: NavTabsComponent;
     let fixture: ComponentFixture<TestComponent>;
     let navTabsDe: DebugElement;
     let navTabsEl: HTMLElement;
+    let router: Router;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [
-                RouterTestingModule,
+                RouterTestingModule.withRoutes(routes),
                 BrowserAnimationsModule
             ],
             declarations: [
                 NavTabsComponent,
                 TestComponent,
-                TabLinkDirective
+                TabLinkDirective,
+                DemoPageOneComponent,
+                DemoPageTwoComponent,
+                DemoPageThreeComponent,
+                DemoPageFourComponent,
+                DemoPageFiveComponent,
             ]
         })
             .compileComponents();
@@ -32,6 +56,8 @@ describe('NavTabsComponent', () => {
         component = fixture.debugElement.children[0].componentInstance;
         navTabsDe = fixture.debugElement;
         navTabsEl = navTabsDe.children[0].nativeElement;
+        router = TestBed.inject(Router);
+        router.navigate(['']);
         fixture.detectChanges();
     });
 
@@ -40,8 +66,6 @@ describe('NavTabsComponent', () => {
     });
 
     it('should animation has correct value', () => {
-        spyOn(component, 'ngOnInit');
-        expect(component.ngOnInit).not.toHaveBeenCalled();
         expect(component.animation).toBeFalse(); // by default;
         component.animation = true;
         fixture.detectChanges();
@@ -51,38 +75,38 @@ describe('NavTabsComponent', () => {
         expect(component.animation).toBeFalse();
     });
 
-    // it('should tabs has .sdk-tab-container__tab--fill class if #activeTabStyle = "fill"', () => {
-    //     const el = navTabsEl.querySelector('.sdk-tab-container__tab');
-    //     component.activeTabStyle = 'fill';
-    //     fixture.detectChanges();
-    //     expect(el).toHaveClass('sdk-tab-container__tab--fill');
-    // });
-    //
-    // it('should be no .slide element inside tabs container if #activeTabStyle = "fill"', () => {
-    //     component.activeTabStyle = 'fill';
-    //     fixture.detectChanges();
-    //     const el = navTabsEl.querySelector('.slide');
-    //     expect(el).toBeFalsy();
-    // });
-    //
-    // it('should tabs has no .sdk-tab-container__tab--fill class if #activeTabStyle = "border"', () => {
-    //     const el = navTabsEl.querySelector('.sdk-tab-container__tab');
-    //     component.activeTabStyle = 'border';
-    //     fixture.detectChanges();
-    //     expect(el).not.toHaveClass('sdk-tab-container__tab--fill');
-    // });
-    //
-    // it('should be .slide element inside tabs container if #activeTabStyle = "border"', () => {
-    //     component.activeTabStyle = 'border';
-    //     fixture.detectChanges();
-    //     const el = navTabsEl.querySelector('.slide');
-    //     expect(el).toBeTruthy();
-    // });
-    //
-    // it('should linkTabs length be equal count of #sdkTabLink\'s inside nav-tabs component', () => {
-    //     const linksCount = new TestComponent().links.length;
-    //     expect(component.linkTabs.length).toEqual(linksCount);
-    // });
+    it('should tabs has .sdk-tab-container__tab--fill class if #activeTabStyle = "fill"', () => {
+        const el = navTabsEl.querySelector('.sdk-tab-container__tab');
+        component.activeTabStyle = 'fill';
+        fixture.detectChanges();
+        expect(el).toHaveClass('sdk-tab-container__tab--fill');
+    });
+
+    it('should be no .slide element inside tabs container if #activeTabStyle = "fill"', () => {
+        component.activeTabStyle = 'fill';
+        fixture.detectChanges();
+        const el = navTabsEl.querySelector('.slide');
+        expect(el).toBeFalsy();
+    });
+
+    it('should tabs has no .sdk-tab-container__tab--fill class if #activeTabStyle = "border"', () => {
+        const el = navTabsEl.querySelector('.sdk-tab-container__tab');
+        component.activeTabStyle = 'border';
+        fixture.detectChanges();
+        expect(el).not.toHaveClass('sdk-tab-container__tab--fill');
+    });
+
+    it('should be .slide element inside tabs container if #activeTabStyle = "border"', () => {
+        component.activeTabStyle = 'border';
+        fixture.detectChanges();
+        const el = navTabsEl.querySelector('.slide');
+        expect(el).toBeTruthy();
+    });
+
+    it('should linkTabs length be equal count of #sdkTabLink\'s inside nav-tabs component', () => {
+        const linksCount = new TestComponent().links.length;
+        expect(component.linkTabs.length).toEqual(linksCount);
+    });
 });
 
 @Component({
