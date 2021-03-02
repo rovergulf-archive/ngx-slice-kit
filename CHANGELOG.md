@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Changed
-- replace `div` tags by `a` tags
+- replace `div` tags to `a` tags
+- replace navigation by `click handler` to `routerLink`
 
 ### Fixed
 - fixed bug when navigation to route with tab from tab outlet was incorrect
