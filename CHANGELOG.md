@@ -6,10 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.7.0
 
-## 30 Jan 2021
+## 01 Mar 2021
 ### Added
 
 ### Changed
+- 'tab html' - replace 'div' tags by 'a' tags
 
 ### Fixed
 
