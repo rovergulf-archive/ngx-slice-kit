@@ -10,9 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Changed
-- 'tab html' - replace 'div' tags by 'a' tags
+- replace `div` tags by `a` tags
 
 ### Fixed
+- fixed bug when navigation to route with tab from tab outlet was incorrect
 
 ### Removed
 
