@@ -14,11 +14,12 @@ export class DemoNavtabsComponent implements OnInit {
         {src: 'demo-fourth', label: 'Why do we should put the long titles'},
         {src: 'demo-fifth', label: 'Tab tab tab tab tab tab tab3 long'},
         {src: 'demo-sixth', label: 'Tab tab tab tab tab tab tab4 long', disabled: true},
-        {src: 'demo-seventh', label: 'Tab tab tab tab tab tab tab5 long'},
+        {src: 'demo-seventh',
+        label: 'Tab tab tab tab tab tab tab5 long'},
         {src: 'demo-eighth', label: 'Double dare you once again'},
     ];
 
     constructor() {}
 
-    ngOnInit() {}
+    ngOnInit(): void {}
 }

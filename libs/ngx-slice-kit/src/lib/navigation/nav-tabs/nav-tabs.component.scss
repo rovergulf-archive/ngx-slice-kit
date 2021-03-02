@@ -8,7 +8,23 @@
     height: 48px;
     display: flex;
     position: relative;
+}
+
+.sdk-tab-container__header::after {
+    content: '';
     border-bottom: 2px solid var(--regular);
+    width: 100%;
+    position: absolute;
+    height: 2px;
+    bottom: 0;
+    z-index: -1;
+}
+
+.sdk-tab-container__tab {
+    transition: 0.4s;
+    &:hover {
+        opacity: 0.7;
+    }
 }
 
 .sdk-tab-container__tabs-wrapper {
@@ -46,6 +62,7 @@
 
     &.sdk-tab-container__tab--active {
         color: var(--primary);
+        opacity: 1;
     }
 
     &.sdk-tab-container__tab--oversize {
@@ -55,7 +72,7 @@
 
 .slide {
     position: absolute;
-    height: 2px;
+    height: 3px;
     left: 0;
     background-color: var(--primary);
     bottom: 0;

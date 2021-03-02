@@ -10,19 +10,21 @@
             <div class="sdk-tab-container__tabs-scroll" #tabs>
                 <!--<ng-content select="a"></ng-content>-->
                 <ng-container *ngFor="let tab of tabGroup; let i = index">
-                    <div class="sdk-tab-container__tab"
-                         [attr.tabIndex]="i"
-                         [attr.disabled]="tab.disabled || null"
-                         [class.sdk-tab-container__tab--active]="tab.active"
-                         [class.sdk-tab-container__tab--fill]="activeTabStyle === 'fill'"
-                         (click)="selectTab(tab.routerLink, i + '')">
+                    <a class="sdk-tab-container__tab"
+                       [tabIndex]="i"
+                       [attr.disabled]="tab.disabled || null"
+                       [class.sdk-tab-container__tab--active]="tab.active"
+                       [class.sdk-tab-container__tab--fill]="activeTabStyle === 'fill'"
+                       [routerLink]="tab.routerLink">
                         <span>{{tab.label}}</span>
                         <div class="sdk-tab__background"></div>
-                    </div>
+                    </a>
                 </ng-container>
+                <div class="slide" *ngIf="activeTabStyle === 'border'" [ngStyle]="slideMeasure"></div>
             </div>
-            <div class="slide" *ngIf="activeTabStyle === 'border'" [ngStyle]="slideMeasure"></div>
+
         </div>
+
         <button class="sdk-tab-container__arrow sdk-tab-container__arrow--right" #arrowRight
                 [disabled]="tabsScrollRect?.right - 1 <= containerRect?.right - arrowWidth"
                 [ngStyle]="{'width': arrowWidth + 'px', 'display': isArrows ? 'flex' : 'none'}">
@@ -30,7 +32,7 @@
         </button>
     </div>
 
-    <section class="sdk-nav-tab__content" [@routeAnimations]="animation && pageState">
-        <router-outlet></router-outlet>
+    <section class="sdk-nav-tab__content" [@routeAnimations]="animation && getRouteAnimation(router)">
+        <router-outlet #router="outlet"></router-outlet>
     </section>
 </div>
