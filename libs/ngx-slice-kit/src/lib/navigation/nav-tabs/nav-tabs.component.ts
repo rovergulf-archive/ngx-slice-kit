@@ -11,9 +11,9 @@ import {
     QueryList,
     ViewChild
 } from '@angular/core';
-import {Router, RouterOutlet} from '@angular/router';
+import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {BehaviorSubject, fromEvent, Subscription} from 'rxjs';
-import {delay, throttleTime} from 'rxjs/operators';
+import {delay, filter, throttleTime} from 'rxjs/operators';
 import {ThemeService} from '../../core/theme/theme.service';
 import {slideInAnimation} from '../../core/animations/slide-in';
 import {TabLinkDirective} from './tab-link.directive';
@@ -187,6 +187,9 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
                 }
             });
         const subRouter = this.router.events
+            .pipe(
+                filter((event: NavigationEnd) => event instanceof NavigationEnd)
+            )
             .subscribe(() => {
                 this.selectTab();
             });
