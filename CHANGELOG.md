@@ -48,6 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - test #1
 
 ## 29 Jan 2021
+
 ### Added
 - popup message line breaking closes #1
 
