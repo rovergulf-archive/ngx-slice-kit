@@ -166,10 +166,10 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
     }
 
     ngOnInit(): void {
-        this.containerElement = this.containerElement.nativeElement;
-        this.tabsWrapperElement = this.tabsWrapperElement.nativeElement;
-        this.arrowLeftElement = this.arrowLeftElement.nativeElement;
-        this.arrowRightElement = this.arrowRightElement.nativeElement;
+        this.containerElement = this.containerElement.nativeElement || this.containerElement;
+        this.tabsWrapperElement = this.tabsWrapperElement.nativeElement || this.tabsWrapperElement;
+        this.arrowLeftElement = this.arrowLeftElement.nativeElement || this.arrowLeftElement;
+        this.arrowRightElement = this.arrowRightElement.nativeElement || this.arrowRightElement;
         this.setSizes();
 
         this.subscription = this.containerPosition$.pipe(delay(400)).subscribe(() => this.changeRects());
@@ -211,6 +211,7 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
     }
 
     ngAfterContentInit(): void {
+        this.tabGroup = [];
         this.linkTabs.forEach(tabInstance => this.tabGroup.push(tabInstance));
         this.selectTab();
     }
