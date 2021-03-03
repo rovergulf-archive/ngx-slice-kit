@@ -8,7 +8,6 @@
 
         <div class="sdk-tab-container__tabs-wrapper">
             <div class="sdk-tab-container__tabs-scroll" #tabs>
-                <!--<ng-content select="a"></ng-content>-->
                 <ng-container *ngFor="let tab of tabGroup">
                     <a class="sdk-tab-container__tab"
                        [attr.disabled]="tab.disabled || null"
