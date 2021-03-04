@@ -60,56 +60,6 @@ export class TabsComponent implements OnInit, AfterContentInit, AfterViewInit, A
     ) {
     }
 
-    // selectTab(selectedTab, index): any {
-    //     if (selectedTab.active) {
-    //         return;
-    //     }
-    //
-    //     // set prev tab "hiding" stat and start hide animation for it
-    //     selectedTab.index = index;
-    //     let prevTabIndex: number;
-    //     for (const tab of this.tabGroup) {
-    //         if (tab.active) {
-    //             tab.hiding = true;
-    //             prevTabIndex = tab.index;
-    //             if (this.animation) {
-    //                 tab.slideDirection = tab.index > index ? 'slideRight' : 'slideLeft';
-    //             }
-    //             setTimeout(() => {
-    //                 tab.hiding = false;
-    //             }, this.animation ? 500 : 0);
-    //         }
-    //         tab.active = false;
-    //     }
-    //
-    //     // set new active tab and start show animation
-    //     selectedTab.active = true;
-    //     if (this.animation) {
-    //         selectedTab.slideDirection = selectedTab.index > prevTabIndex ? 'slideLeft' : 'slideRight';
-    //     }
-    //
-    //     setTimeout(() => {
-    //         this.curTab = this.containerElement.querySelector(`.sdk-tab-container__tab--active`);
-    //         this.setUnderlineMeasure();
-    //
-    //         // if current element not fully visible
-    //         if (this.isArrows) {
-    //             if (this.curTabClientRect.left - this.arrowWidth < this.containerRect.left) {
-    //                 const visiblePart = this.curTabClientRect.right - this.arrowWidth - this.containerRect.left;
-    //                 const hiddenPart = this.curTabClientRect.width - visiblePart;
-    //                 const additionalPadding = 40;
-    //                 this.scrollLeft(hiddenPart + additionalPadding);
-    //             }
-    //             if (this.curTabClientRect.right + this.arrowWidth > this.containerRect.right) {
-    //                 const visiblePart = this.containerRect.right - this.arrowWidth - this.curTabClientRect.left;
-    //                 const hiddenPart = this.curTabClientRect.width - visiblePart;
-    //                 const additionalPadding = 40;
-    //                 this.scrollRight(hiddenPart + additionalPadding);
-    //             }
-    //         }
-    //     });
-    // }
-
     selectTab(selectedTab, index): any {
         if (selectedTab.active) {
             return;
