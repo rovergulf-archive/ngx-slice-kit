@@ -9,7 +9,17 @@
     height: 48px;
     display: flex;
     position: relative;
-    border-bottom: 2px solid var(--regular)
+    //border-bottom: 2px solid var(--regular)
+}
+
+.sdk-tab-container__header::after {
+    content: '';
+    border-bottom: 2px solid var(--regular);
+    width: 100%;
+    position: absolute;
+    height: 2px;
+    bottom: 0;
+    z-index: -1;
 }
 
 .sdk-tab-container__tabs-wrapper {
@@ -39,6 +49,10 @@
     transition: all 0.3s;
     position: relative;
     //overflow: hidden;
+    transition: 0.4s;
+    &:hover {
+        opacity: 0.7;
+    }
     span {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -46,6 +60,7 @@
 
     &.sdk-tab-container__tab--active {
         color: var(--primary);
+        opacity: 1;
     }
 
     &.sdk-tab-container__tab--oversize {
@@ -55,7 +70,7 @@
 
 .slide {
     position: absolute;
-    height: 2px;
+    height: 3px;
     left: 0;
     background-color: var(--primary);
     bottom: 0;
