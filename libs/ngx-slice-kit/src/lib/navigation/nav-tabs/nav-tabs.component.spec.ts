@@ -3,7 +3,7 @@ import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular
 import {NavTabsComponent} from './nav-tabs.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {Component, DebugElement, ElementRef, ViewChild} from '@angular/core';
+import {Component, DebugElement, ViewChild} from '@angular/core';
 import {TabLinkDirective} from './tab-link.directive';
 import {DemoPageOneComponent} from '../../../../../../src/app/docs/navigation/demos/page-one/page-one.component';
 import {DemoPageTwoComponent} from '../../../../../../src/app/docs/navigation/demos/page-two/page-two.component';
@@ -11,6 +11,7 @@ import {DemoPageThreeComponent} from '../../../../../../src/app/docs/navigation/
 import {DemoPageFourComponent} from '../../../../../../src/app/docs/navigation/demos/page-four/page-four.component';
 import {DemoPageFiveComponent} from '../../../../../../src/app/docs/navigation/demos/page-five/page-five.component';
 import {Router, Routes} from '@angular/router';
+import {skip} from 'rxjs/operators';
 
 const routes: Routes = [
     {path: '', redirectTo: 'demo-first', pathMatch: 'full'},
@@ -233,6 +234,176 @@ describe('NavTabsComponent', () => {
         component.containerPosition$.subscribe(() => component.changeRects());
         component.containerPosition$.next(true);
         expect(component.changeRects).toHaveBeenCalled();
+    });
+
+    it('should #setSizes method set correct containers sizes', () => {
+        component.ngOnInit();
+        component.setSizes();
+
+        expect(component.containerRect).toEqual(component.containerElement.getBoundingClientRect());
+        expect(component.containerWidth).toEqual(component.containerRect.width);
+        component.isArrows = true;
+        expect(component.tabsWrapperWidth).toEqual(component.containerWidth - component.arrowWidth * 2);
+        component.isArrows = false;
+        component.setSizes();
+        expect(component.tabsWrapperWidth).toEqual(component.containerWidth);
+    });
+
+    it('should #setTabSize set correctly sizes for #allTabsWidth & #tabsScrollRect', () => {
+        component.ngAfterViewInit();
+        component.setTabSizes();
+        const tabSizesSum = component.tabsViewElements.reduce((acc, cur) => acc += cur.offsetWidth, 0);
+
+        expect(component.allTabsWidth).toEqual(tabSizesSum);
+        expect(component.tabsScrollRect).toEqual(component.tabsWrapperElement.getBoundingClientRect());
+    });
+
+    it('should #setUnderlineMeasure set underline sizes by current tab element', () => {
+        component.ngAfterViewInit();
+        component.curTab = component.containerElement.querySelector('.sdk-tab-container__tab');
+        component.setUnderlineMeasure();
+
+        expect(component.curTabClientRect).toEqual(component.curTab.getBoundingClientRect());
+        expect(component.slideMeasure.width).toEqual(`${component.curTabClientRect.width}px`);
+        expect(component.slideMeasure.left).toEqual(`${component.curTab.offsetLeft}px`);
+
+        component.curTab = document.createElement('div');
+        component.setUnderlineMeasure();
+        expect(component.curTabClientRect).toEqual(component.curTab.getBoundingClientRect());
+        expect(component.slideMeasure.width).toEqual(`0px`);
+        expect(component.slideMeasure.left).toEqual(`0px`);
+    });
+
+    it('should #moveContainer method emit #containerPosition event', () => {
+        component.containerPosition$.pipe(skip(1)).subscribe((res) => {
+            expect(res).toBeTrue();
+        });
+        component.moveContainer(100);
+    });
+
+    it('should #moveContainer set correct left style to #tabsWrapperElement', () => {
+        const superBigNumber = 9999;
+        const smallNumber = 1;
+        component.ngAfterViewInit();
+        component.allTabsWidth = superBigNumber;
+        component.moveContainer(smallNumber);
+
+        expect(component.tabsWrapperElement.style.left).toEqual(`${smallNumber}px`);
+        const otherValue = component.containerWidth - (component.arrowLeftElement.offsetWidth * 2) - component.allTabsWidth;
+        component.moveContainer(superBigNumber);
+        expect(component.tabsWrapperElement.style.left).toEqual(`${otherValue}px`);
+    });
+
+    it('should #scrollLeft method set #tabsScrollRect as #tabsWrapperElement client rect', () => {
+        component.ngAfterViewInit();
+        component.scrollRight();
+        expect(component.tabsScrollRect).toEqual(component.tabsWrapperElement.getBoundingClientRect());
+    });
+
+    it('should #scrollRight method set #tabsScrollRect as #tabsWrapperElement client rect', () => {
+        component.ngAfterViewInit();
+        component.scrollLeft();
+        expect(component.tabsScrollRect).toEqual(component.tabsWrapperElement.getBoundingClientRect());
+    });
+
+    it('should #scrollRight use argument value if element has space to scroll and argument is valid and exists', () => {
+        component.ngAfterViewInit();
+        spyOn(component, 'moveContainer');
+        const stepValue = 100;
+        component.arrowWidth = -32000;
+
+        component.scrollRight(stepValue);
+        expect(component.moveContainer).toHaveBeenCalledWith(-stepValue);
+    });
+
+    it('should #scrollRight use default step value if element has space to scroll and argument is undefined', () => {
+        component.ngAfterViewInit();
+        spyOn(component, 'moveContainer');
+        const defaultStep = component.containerRect.width / 100 * 30;
+        component.arrowWidth = -32000;
+
+        component.scrollRight();
+        expect(component.moveContainer).toHaveBeenCalledWith(-defaultStep);
+    });
+
+    it('should #scrollLeft use argument value if element has space to scroll and argument is valid and exists', () => {
+        component.ngAfterViewInit();
+        spyOn(component, 'moveContainer');
+        const stepValue = 100;
+        component.arrowWidth = 32000;
+
+        component.scrollLeft(stepValue);
+        expect(component.moveContainer).toHaveBeenCalledWith(stepValue);
+    });
+
+    it('should #scrollLeft use default step value if element has space to scroll and argument is undefined', () => {
+        component.ngAfterViewInit();
+        spyOn(component, 'moveContainer');
+        const defaultStep = component.containerRect.width / 100 * 30;
+        component.arrowWidth = 32000;
+
+        component.scrollLeft();
+        expect(component.moveContainer).toHaveBeenCalledWith(defaultStep);
+    });
+
+    it('should #scrollLeft no scroll if not enough space to do it', () => {
+        component.ngAfterViewInit();
+        spyOn(component, 'moveContainer');
+
+        component.arrowWidth = -32000;
+
+        component.scrollLeft();
+        expect(component.moveContainer).toHaveBeenCalledWith(0);
+    });
+
+    it('should #scrollLeft no scroll if not enough space to do it', () => {
+        component.ngAfterViewInit();
+        spyOn(component, 'moveContainer');
+        component.arrowWidth = 32000;
+
+        const step = (component.tabsScrollRect.right - component.containerRect.right) + component.arrowWidth;
+
+        component.scrollRight();
+        expect(component.moveContainer).toHaveBeenCalledWith(-step);
+    });
+
+    describe('#selectTab tests', () => {
+        const link = links[0];
+        beforeEach(() => {
+            component.ngOnInit();
+        });
+
+        it('should #selectTab call #setUnderlineMeasure method', fakeAsync(() => {
+            spyOn(component, 'setUnderlineMeasure');
+            router.navigate([link.src]);
+            component.selectTab();
+            tick(500);
+            fixture.detectChanges();
+            expect(component.setUnderlineMeasure).toHaveBeenCalled();
+        }));
+
+        it('should #selectTab method set #curTab & #curTabClientRect', fakeAsync(() => {
+            router.navigate([link.src]);
+            component.selectTab();
+            tick(500);
+            fixture.detectChanges();
+
+            expect(component.curTab.innerText).toEqual(link.label);
+            expect(component.curTabClientRect).toEqual(component.curTab.getBoundingClientRect());
+        }));
+
+        it('should #selectTab method do not call #scrollLeft or #scrollRight methods if #isArrows false', fakeAsync(() => {
+            spyOn(component, 'scrollRight');
+            spyOn(component, 'scrollLeft');
+            router.navigate([link.src]);
+            component.isArrows = false;
+            component.selectTab();
+            tick(500);
+            fixture.detectChanges();
+
+            expect(component.scrollRight).not.toHaveBeenCalled();
+            expect(component.scrollLeft).not.toHaveBeenCalled();
+        }));
     });
 
     describe('Test after component was init', () => {

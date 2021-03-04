@@ -145,6 +145,7 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
     }
 
     setTabSizes(): void {
+        this.allTabsWidth = 0;
         this.tabsViewElements.forEach(tab => {
             const tabWidth = tab.offsetWidth;
             this.allTabsWidth += tabWidth;
