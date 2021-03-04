@@ -11,9 +11,9 @@ import {
     QueryList,
     ViewChild
 } from '@angular/core';
-import {Router, RouterOutlet} from '@angular/router';
+import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {BehaviorSubject, fromEvent, Subscription} from 'rxjs';
-import {delay, throttleTime} from 'rxjs/operators';
+import {delay, filter, throttleTime} from 'rxjs/operators';
 import {ThemeService} from '../../core/theme/theme.service';
 import {slideInAnimation} from '../../core/animations/slide-in';
 import {TabLinkDirective} from './tab-link.directive';
@@ -30,7 +30,7 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
 
     @ContentChildren(TabLinkDirective) linkTabs!: QueryList<TabLinkDirective>;
 
-    @Input() activeTabStyle: string = 'border';
+    @Input() activeTabStyle: string = 'border'; // also 'fill' can be used
     @Input() animation: boolean = false;
 
     @ViewChild('parent', {static: true}) containerElement;
@@ -58,8 +58,6 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
         width: 0,
         left: 0
     };
-
-    pageState;
 
     constructor(
         public themeService: ThemeService,
@@ -147,8 +145,9 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
     }
 
     setTabSizes(): void {
+        this.allTabsWidth = 0;
         this.tabsViewElements.forEach(tab => {
-            const tabWidth = tab.getBoundingClientRect().width;
+            const tabWidth = tab.offsetWidth;
             this.allTabsWidth += tabWidth;
             if (tabWidth > this.tabsWrapperWidth) {
                 tab.classList.add('sdk-tab-container__tab--oversize');
@@ -168,10 +167,10 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
     }
 
     ngOnInit(): void {
-        this.containerElement = this.containerElement.nativeElement;
-        this.tabsWrapperElement = this.tabsWrapperElement.nativeElement;
-        this.arrowLeftElement = this.arrowLeftElement.nativeElement;
-        this.arrowRightElement = this.arrowRightElement.nativeElement;
+        this.containerElement = this.containerElement.nativeElement || this.containerElement;
+        this.tabsWrapperElement = this.tabsWrapperElement.nativeElement || this.tabsWrapperElement;
+        this.arrowLeftElement = this.arrowLeftElement.nativeElement || this.arrowLeftElement;
+        this.arrowRightElement = this.arrowRightElement.nativeElement || this.arrowRightElement;
         this.setSizes();
 
         this.subscription = this.containerPosition$.pipe(delay(400)).subscribe(() => this.changeRects());
@@ -189,6 +188,9 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
                 }
             });
         const subRouter = this.router.events
+            .pipe(
+                filter((event: NavigationEnd) => event instanceof NavigationEnd)
+            )
             .subscribe(() => {
                 this.selectTab();
             });
@@ -210,6 +212,7 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
     }
 
     ngAfterContentInit(): void {
+        this.tabGroup = [];
         this.linkTabs.forEach(tabInstance => this.tabGroup.push(tabInstance));
         this.selectTab();
     }
