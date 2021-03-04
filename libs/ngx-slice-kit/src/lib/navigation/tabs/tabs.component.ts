@@ -61,7 +61,7 @@ export class TabsComponent implements OnInit, AfterContentInit, AfterViewInit, A
     ) {
     }
 
-    selectTab(selectedTab, index) {
+    selectTab(selectedTab, index): any {
         if (selectedTab.active) {
             return;
         }
@@ -147,12 +147,12 @@ export class TabsComponent implements OnInit, AfterContentInit, AfterViewInit, A
         this.moveContainer(x);
     }
 
-    moveContainer(x) {
+    moveContainer(x): void {
         this.tabsContainer.nativeElement.style.left = x + 'px';
         this.containerPosition$.next(true);
     }
 
-    changeRects() {
+    changeRects(): void {
         this.tabsScrollRect = this.tabsContainer.nativeElement.getBoundingClientRect();
         this.curTabClientRect = this.curTab.getBoundingClientRect();
     }
@@ -175,7 +175,7 @@ export class TabsComponent implements OnInit, AfterContentInit, AfterViewInit, A
         this.tabsScrollRect = this.tabsContainer.nativeElement.getBoundingClientRect();
     }
 
-    setUnderlineMeasure() {
+    setUnderlineMeasure(): void {
         // this.curTabClientRect = this.curTab.getBoundingClientRect();
         this.slideMeasure.width = `${this.curTab.offsetWidth}px`;
         const tabsContainerOffset = (parseFloat(this.tabsContainer.nativeElement.style.left) || 0);
