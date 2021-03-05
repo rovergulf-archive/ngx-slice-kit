@@ -19,7 +19,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 05 Mar 2021
 
 ### Added
-- `nav-tabs` component tests
 - `tab` component tests
 - `tabs` component tests
 
@@ -27,6 +26,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 Fix scroll issue in `tabs` component
+
+### Removed
+
+## 04 Mar 2021
+
+### Added
+- `nav-tabs` component tests
+
+### Changed
+
+### Fixed
 
 ### Removed
 
