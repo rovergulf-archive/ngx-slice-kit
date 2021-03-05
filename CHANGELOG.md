@@ -25,7 +25,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 ### Fixed
-Fix scroll issue in `tabs` component
 
 ### Removed
 
@@ -37,6 +36,7 @@ Fix scroll issue in `tabs` component
 ### Changed
 
 ### Fixed
+Fix scroll issue in `tabs` component
 
 ### Removed
 
