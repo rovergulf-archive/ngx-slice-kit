@@ -19,11 +19,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 05 Mar 2021
 
 ### Added
-- `nav-tabs` tests
+- `nav-tabs` component tests
+- `tab` component tests
+- `tabs` component tests
 
 ### Changed
 
 ### Fixed
+Fix scroll issue in `tabs` component
 
 ### Removed
 
