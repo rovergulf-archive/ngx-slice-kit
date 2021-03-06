@@ -26,12 +26,12 @@ export class AlertsComponent implements OnInit, OnDestroy {
     @Input() set options(options: AlertOptions) {
         const refs = [...this.$alerts.getValue(), options];
         this.$alerts.next(refs);
-    };
+    }
 
     @Output() closed = new EventEmitter<any>();
     @HostListener('[@state]') state: any = 'closed';
 
-    @HostBinding('class') get classNames() {
+    @HostBinding('class') get classNames(): string {
         return `${ALERTS_CONTAINER_CLASSNAME} ${ALERTS_CONTAINER_CLASSNAME}--${this.options.refName}`;
     }
 
@@ -42,7 +42,7 @@ export class AlertsComponent implements OnInit, OnDestroy {
 
     get alerts(): AlertOptions[] {
         return this.$alerts.getValue();
-    };
+    }
 
     set alerts(alerts: AlertOptions[]) {
         this.$alerts.next(alerts);
@@ -61,7 +61,7 @@ export class AlertsComponent implements OnInit, OnDestroy {
         }
     }
 
-    closeAll() {
+    closeAll(): void {
         interval(10).pipe(
             takeWhile(() => this.alerts.length > 0, false)
         ).subscribe(

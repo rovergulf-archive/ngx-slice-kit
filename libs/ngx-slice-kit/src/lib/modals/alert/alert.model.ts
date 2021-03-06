@@ -24,7 +24,7 @@ export class AlertOptions {
             this.$action = new EventEmitter<any>();
         }
 
-        if (opts.type == 'success') {
+        if (opts.type === 'success') {
             this.title = opts.title ?? 'Success';
             this.message = opts.message ?? 'Well done!';
         }
