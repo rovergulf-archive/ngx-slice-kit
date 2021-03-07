@@ -75,15 +75,5 @@ describe('AlertService', () => {
             service.showAlert(opts);
             expect(service.alertIndex).toEqual(1);
         });
-        // it('should', () => {});
-        // it('should', () => {});
-        // it('should', () => {});
-        // it('should', () => {});
-        // it('should', () => {});
-        // it('should', () => {});
-        // it('should', () => {});
-        // it('should', () => {});
-        // it('should', () => {});
-        // it('should', () => {});
     });
 });
