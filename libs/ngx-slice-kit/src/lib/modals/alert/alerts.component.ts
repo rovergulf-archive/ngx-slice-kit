@@ -24,7 +24,7 @@ export class AlertsComponent implements OnInit, OnDestroy {
     $alerts: BehaviorSubject<AlertOptions[]> = new BehaviorSubject<AlertOptions[]>([]);
 
     @Input() set options(options: AlertOptions) {
-        const refs = [...this.$alerts.getValue(), options];
+        const refs = [...this.$alerts.getValue(), new AlertOptions(options)];
         this.$alerts.next(refs);
     }
 
