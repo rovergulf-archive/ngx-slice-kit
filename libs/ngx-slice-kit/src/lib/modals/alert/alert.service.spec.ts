@@ -1,12 +1,13 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { AlertService } from './alert.service';
+import {AlertService} from './alert.service';
 import {AlertOptions} from './alert.model';
 import {PLATFORM_ID} from '@angular/core';
+import {of} from 'rxjs';
 
 const options: AlertOptions[] = [
     {title: 'Event was successful', message: 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default.'},
-    {title: 'Fout', message: 'Veel desktop publishing-pakketten en webpagina-editors gebruiken Lorem Ipsum nu als hun standaard.' },
+    {title: 'Fout', message: 'Veel desktop publishing-pakketten en webpagina-editors gebruiken Lorem Ipsum nu als hun standaard.'},
 ];
 
 describe('AlertService', () => {
@@ -47,11 +48,42 @@ describe('AlertService', () => {
         it('should be created', () => {
             expect(service).toBeTruthy();
         });
+
+        it('should #error method call #showAlert with option and type = "error"', () => {
+            spyOn(service, 'showAlert');
+            service.error(opts);
+
+            expect(service.showAlert).toHaveBeenCalledWith({...opts, type: 'error'});
+        });
+
+        it('should #success method call #showAlert with option and type = "success"', () => {
+            spyOn(service, 'showAlert');
+            service.success(opts);
+
+            expect(service.showAlert).toHaveBeenCalledWith({...opts, type: 'success'});
+        });
+
+        it('should #showAlert call #checkoutLayout method', () => {
+            spyOn(service, 'checkoutLayout');
+            service.showAlert(opts);
+
+            expect(service.checkoutLayout).toHaveBeenCalled();
+        });
+
+        it('should #showALert increase #alertIndex', () => {
+            service.alertIndex = 0;
+            service.showAlert(opts);
+            expect(service.alertIndex).toEqual(1);
+        });
+        // it('should', () => {});
+        // it('should', () => {});
+        // it('should', () => {});
+        // it('should', () => {});
+        // it('should', () => {});
+        // it('should', () => {});
+        // it('should', () => {});
+        // it('should', () => {});
+        // it('should', () => {});
+        // it('should', () => {});
     });
-
-
-    // it('should be created', () => {
-    //     const service: AlertService = TestBed.get(AlertService);
-    //     expect(service).toBeTruthy();
-    // });
 });
