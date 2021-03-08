@@ -1,4 +1,4 @@
-import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, discardPeriodicTasks, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 
 import {AlertsComponent} from './alerts.component';
 import {AlertOptions} from './alert.model';
@@ -160,7 +160,7 @@ describe('AlertsComponent', () => {
         expect(component.closeAll).toHaveBeenCalled();
     });
 
-    it('should', () => {
+    it('should #closeAll call #onClose method', fakeAsync(() => {
         const stubOptionsA = new AlertOptions(optsA);
         const stubOptionsB = new AlertOptions(optsB);
         const stubAlerts = [stubOptionsA, stubOptionsB];
@@ -171,5 +171,47 @@ describe('AlertsComponent', () => {
 
         component.closeAll();
         fixture.detectChanges();
+        tick(5000);
+        expect(component.onClose).toHaveBeenCalled();
+        discardPeriodicTasks();
+    }));
+
+    it('should #onClose method rewrite #alerts prop', () => {
+        const stubOptionsA = new AlertOptions(optsA);
+        const stubOptionsB = new AlertOptions(optsB);
+        const stubAlerts = [stubOptionsA, stubOptionsB, stubOptionsB, stubOptionsB];
+        const expectedALerts = stubAlerts.slice(1);
+        component.alerts = stubAlerts;
+
+        component.onClose(0);
+
+        expect(component.alerts).toEqual(expectedALerts);
+    });
+
+    it('should not emit #closed event if alerts still exists', () => {
+        const stubOptionsA = new AlertOptions(optsA);
+        const stubOptionsB = new AlertOptions(optsB);
+        const stubAlerts = [stubOptionsA, stubOptionsB];
+
+        spyOn(component.closed, 'emit');
+
+        component.alerts = stubAlerts;
+        component.onClose(0);
+
+        expect(component.closed.emit).not.toHaveBeenCalled();
+    });
+
+    it('should #closed event emit if all alerts was deleted', () => {
+        const stubOptionsA = new AlertOptions(optsA);
+        const stubOptionsB = new AlertOptions(optsB);
+        const stubAlerts = [stubOptionsA, stubOptionsB];
+
+        spyOn(component.closed, 'emit');
+
+        component.alerts = stubAlerts;
+        component.onClose(0);
+        component.onClose(0);
+
+        expect(component.closed.emit).toHaveBeenCalled();
     });
 });
