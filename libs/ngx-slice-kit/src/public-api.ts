@@ -136,7 +136,6 @@ export {
 export { ModalsModule } from './lib/modals/modals.module';
 export { AlertComponent } from './lib/modals/alert/alert.component';
 export { AlertsComponent } from './lib/modals/alert/alerts.component';
-export { AlertDirective } from './lib/modals/alert/alert.directive';
 export { AlertService } from './lib/modals/alert/alert.service';
 export { AlertOptions } from './lib/modals/alert/alert.model';
 export { DialogComponent } from './lib/modals/dialog/dialog.component';

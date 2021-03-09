@@ -12,11 +12,9 @@ import { DialogDirective } from './dialog/dialog.directive';
 // import {PopoverComponent} from './popover/popover.component';
 import { PopupDirective } from './popup/popup.directive';
 import { TooltipDirective } from './tooltip/tooltip.directive';
-import { AlertDirective } from './alert/alert.directive';
 import { OverlayModule } from '../overlay/overlay.module';
 
 const moduleDirectives = [
-    AlertDirective,
     DialogDirective,
     PopupDirective,
     TooltipDirective,
