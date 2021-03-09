@@ -6,9 +6,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.8.0
 
-## 06 Mar 2021
+## 10 Mar 2021
 
 ### Added
+
+### Changed
+
+### Fixed
+
+### Removed
+
+## 9 Mar 2021
+
+### Added
+
+-`alert.component` tests
+-`alerts.component` tests
+-`alert.service` tests
 
 ### Changed
 
