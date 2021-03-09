@@ -19,10 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 9 Mar 2021
 
 ### Added
-
--`alert.component` tests
--`alerts.component` tests
--`alert.service` tests
+- `alert.component` tests
+- `alerts.component` tests
+- `alert.service` tests
 
 ### Changed
 
