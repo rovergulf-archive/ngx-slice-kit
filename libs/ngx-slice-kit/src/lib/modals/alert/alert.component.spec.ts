@@ -1,11 +1,8 @@
 import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 import { AlertComponent } from './alert.component';
-import {AlertsComponent} from './alerts.component';
 import {DebugElement, EventEmitter} from '@angular/core';
 import {AlertOptions} from './alert.model';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {timer} from 'rxjs';
-import {skip} from 'rxjs/operators';
 
 const options: AlertOptions[] = [
     {title: 'Event was successful', message: 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default.'},
@@ -23,7 +20,6 @@ describe('AlertComponent', () => {
     let alertDe: DebugElement;
     let alertEl: HTMLElement;
     const optsA: AlertOptions = options[0];
-    const optsB: AlertOptions = options[1];
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
