@@ -61,14 +61,5 @@ describe('PopupService', () => {
 
             expect(service.opened).toBeTrue();
         });
-
-        // it('should', () => {});
-
-        // it('should', () => {});
-
-        // it('should', () => {});
-
-        // it('should', () => {});
-
     });
 });
