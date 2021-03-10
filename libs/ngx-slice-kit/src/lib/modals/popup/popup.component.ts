@@ -18,11 +18,11 @@ export class PopupComponent implements OnInit, OnDestroy {
     @Input() id: number = 1000;
     @Input() title;
     @Input() message;
-    @Input() ok = 'Ок';
-    @Input() cancel = 'Отмена';
+    @Input() ok = 'Ok';
+    @Input() cancel = 'Cancel';
     @Output() closed = new EventEmitter();
 
-    onSuccess(bool: boolean) {
+    onSuccess(bool: boolean): void {
         this.closed.emit(bool);
     }
 
