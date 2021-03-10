@@ -142,7 +142,6 @@ export { DialogComponent } from './lib/modals/dialog/dialog.component';
 export { DialogDirective } from './lib/modals/dialog/dialog.directive';
 export { DialogService } from './lib/modals/dialog/dialog.service';
 export { PopupComponent } from './lib/modals/popup/popup.component';
-export { PopupDirective } from './lib/modals/popup/popup.directive';
 export { PopupService } from './lib/modals/popup/popup.service';
 export { TooltipDirective } from './lib/modals/tooltip/tooltip.directive';
 // export {BottomSheetComponent} from './lib/modals/bottom-sheet/bottom-sheet.component';
