@@ -10,13 +10,11 @@ import { DialogComponent } from './dialog/dialog.component';
 // import {BottomSheetComponent} from './bottom-sheet/bottom-sheet.component';
 import { DialogDirective } from './dialog/dialog.directive';
 // import {PopoverComponent} from './popover/popover.component';
-import { PopupDirective } from './popup/popup.directive';
 import { TooltipDirective } from './tooltip/tooltip.directive';
 import { OverlayModule } from '../overlay/overlay.module';
 
 const moduleDirectives = [
     DialogDirective,
-    PopupDirective,
     TooltipDirective,
 ];
 
