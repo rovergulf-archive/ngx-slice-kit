@@ -1,6 +1,6 @@
 import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 import { AlertComponent } from './alert.component';
-import {DebugElement, EventEmitter} from '@angular/core';
+import {DebugElement} from '@angular/core';
 import {AlertOptions} from './alert.model';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
