@@ -33,6 +33,10 @@ describe('DialogComponent', () => {
         component.component = TestComponent;
     });
 
+    afterAll(() => {
+        document.querySelectorAll('sdk-dialog').forEach(el => el.remove());
+    });
+
     it('should create', () => {
         fixture.detectChanges();
         expect(component).toBeTruthy();

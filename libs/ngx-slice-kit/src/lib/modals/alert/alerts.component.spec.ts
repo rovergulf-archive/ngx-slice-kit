@@ -45,6 +45,10 @@ describe('AlertsComponent', () => {
         alertsEl = alertsDe.nativeElement;
     });
 
+    afterAll(() => {
+        document.querySelectorAll('sdk-alert-container').forEach(el => el.remove());
+    });
+
     it('should create', () => {
         component.options = optsA;
         fixture.detectChanges();

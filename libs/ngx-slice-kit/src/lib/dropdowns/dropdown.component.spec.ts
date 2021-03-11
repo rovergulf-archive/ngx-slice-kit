@@ -59,6 +59,10 @@ describe('DropdownComponent', () => {
         fixture.detectChanges();
     });
 
+    afterAll(() => {
+        document.querySelectorAll('sdk-dropdown').forEach(el => el.remove());
+    });
+
     it('should create', () => {
         expect(component).toBeTruthy();
     });
