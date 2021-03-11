@@ -22,14 +22,14 @@ export class TooltipDirective {
     }
 
     @HostListener('mouseenter')
-    onMouseEnter() {
+    onMouseEnter(): void {
         if (!this.tooltip && !this.showOnClick) {
             this.show();
         }
     }
 
     @HostListener('click')
-    onClick() {
+    onClick(): void {
         if (!this.tooltip && this.showOnClick) {
             this.show();
         }
@@ -37,7 +37,7 @@ export class TooltipDirective {
 
     @HostListener('mousewheel')
     @HostListener('mouseleave')
-    onMouseLeave() {
+    onMouseLeave(): void {
         if (this.tooltip) {
             this.hide();
         } else {
@@ -45,7 +45,7 @@ export class TooltipDirective {
         }
     }
 
-    show() {
+    show(): void {
         this.showTimeout = window.setTimeout(() => {
             this.create();
             this.setPosition();
@@ -53,7 +53,7 @@ export class TooltipDirective {
         }, Number(this.delay));
     }
 
-    hide() {
+    hide(): void {
         this.renderer.removeClass(this.tooltip, 'sdk-tooltip-show');
         this.renderer.removeChild(document.body, this.tooltip);
         this.tooltip = null;
@@ -63,7 +63,7 @@ export class TooltipDirective {
         // }, Number(this.delay));
     }
 
-    create() {
+    create(): void {
         this.tooltip = this.renderer.createElement('div');
         this.tooltipContent = this.renderer.createElement('p');
 
@@ -80,14 +80,16 @@ export class TooltipDirective {
         this.renderer.addClass(this.tooltipContent, 'sdk-tooltip__content');
     }
 
-    setPosition() {
+    setPosition(): void {
         const hostPos = this.el.nativeElement.getBoundingClientRect();
         const tooltipPos = this.tooltip.getBoundingClientRect();
         const tooltipHeight = this.tooltip.offsetHeight;
         const tooltipWidth = this.tooltip.offsetWidth;
         const scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
-        let top, left;
+        let top;
+        let left;
+
         this.offset = Number(this.offset);
 
         if (this.position === 'top') {
@@ -154,13 +156,13 @@ export class TooltipDirective {
         this.renderer.setStyle(this.tooltip, 'left', `${left}px`);
     }
 
-    changePosition(oldPosition, newPosition) {
+    changePosition(oldPosition, newPosition): void {
         this.position = newPosition;
         this.renderer.removeClass(this.tooltip, `sdk-tooltip--${oldPosition}`);
         this.renderer.addClass(this.tooltip, `sdk-tooltip--${newPosition}`);
     }
 
-    checkOversize(options, dimension, isDirectionForward = true) {
+    checkOversize(options, dimension, isDirectionForward = true): boolean {
         const documentPos = document.body.getBoundingClientRect();
         if (isDirectionForward) {
             return options.hostPosition + options.hostSize + options.tooltipSize + this.offset <= documentPos[dimension];
