@@ -6,9 +6,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.8.0
 
+## 12 Mar 2021
+
+### Added
+
+### Changed
+
+### Fixed
+
+### Removed
+
 ## 11 Mar 2021
 
 ### Added
+- `dialog.service` tests
+- `dialog.component` tests
 
 ### Changed
 
