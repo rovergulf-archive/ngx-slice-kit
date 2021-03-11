@@ -17,7 +17,7 @@ export class NavigationScrollDirective implements OnInit, OnDestroy {
     ) {
     }
 
-    initNavSub() {
+    initNavSub(): void {
         /**
          * Init router event subscription
          */
