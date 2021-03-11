@@ -5,7 +5,8 @@
             true,
             "attribute",
             "lib",
-            "camelCase"
+            "camelCase",
+            "sdk"
         ],
         "component-selector": [
             true,
