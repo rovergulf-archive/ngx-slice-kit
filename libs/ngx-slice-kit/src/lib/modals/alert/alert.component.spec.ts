@@ -3,6 +3,7 @@ import { AlertComponent } from './alert.component';
 import {DebugElement} from '@angular/core';
 import {AlertOptions} from './alert.model';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {IconComponent} from '../../buttons/icon/icon.component';
 
 const options: AlertOptions[] = [
     {title: 'Event was successful', message: 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default.'},
@@ -26,7 +27,10 @@ describe('AlertComponent', () => {
             imports: [
                 BrowserAnimationsModule,
             ],
-            declarations: [AlertComponent]
+            declarations: [
+                AlertComponent,
+                IconComponent
+            ]
         })
             .compileComponents();
     }));

@@ -4,6 +4,9 @@ import {AlertsComponent} from './alerts.component';
 import {AlertOptions} from './alert.model';
 import {DebugElement} from '@angular/core';
 import {skip} from 'rxjs/operators';
+import {IconComponent} from '../../buttons/icon/icon.component';
+import {AlertComponent} from '../../../public-api';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const options: AlertOptions[] = [
     {title: 'Event was successful', message: 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default.'},
@@ -25,7 +28,12 @@ describe('AlertsComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [AlertsComponent]
+            imports: [BrowserAnimationsModule],
+            declarations: [
+                AlertComponent,
+                AlertsComponent,
+                IconComponent,
+            ]
         })
             .compileComponents();
     }));
@@ -35,6 +43,10 @@ describe('AlertsComponent', () => {
         component = fixture.componentInstance;
         alertsDe = fixture.debugElement;
         alertsEl = alertsDe.nativeElement;
+    });
+
+    afterAll(() => {
+        document.querySelectorAll('sdk-alert-container').forEach(el => el.remove());
     });
 
     it('should create', () => {

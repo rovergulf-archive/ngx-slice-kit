@@ -47,7 +47,7 @@ describe('PopupService', () => {
         it('should render popup component if PLATFORM_ID is browser', () => {
             service.showPopup(stubOpts);
             const dropdownEl = document.querySelector('sdk-popup');
-            expect(dropdownEl).toBeTruthy('if platform is browser then service must render the dropdown element');
+            expect(dropdownEl).toBeTruthy('if platform is browser then service must render the popup element');
             dropdownEl.remove();
         });
 
@@ -61,14 +61,5 @@ describe('PopupService', () => {
 
             expect(service.opened).toBeTrue();
         });
-
-        // it('should', () => {});
-
-        // it('should', () => {});
-
-        // it('should', () => {});
-
-        // it('should', () => {});
-
     });
 });

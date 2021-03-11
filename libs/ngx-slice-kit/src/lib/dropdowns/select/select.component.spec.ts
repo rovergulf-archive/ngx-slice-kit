@@ -8,6 +8,7 @@ import { OPTIONS1 } from '../../../../../../src/app/shared/values/dropdowns.valu
 import { Observable, of } from 'rxjs';
 import { DropdownOptions } from '../dropdown.model';
 import {skip} from 'rxjs/operators';
+import {IconComponent} from '../../buttons/icon/icon.component';
 
 describe('SelectComponent', () => {
     let component: SelectComponent;
@@ -23,7 +24,10 @@ describe('SelectComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [SelectComponent],
+            declarations: [
+                SelectComponent,
+                IconComponent
+            ],
             providers: [
                 // DOCUMENT,
                 {provide: PLATFORM_ID, useValue: PLATFORM_BROWSER_ID},

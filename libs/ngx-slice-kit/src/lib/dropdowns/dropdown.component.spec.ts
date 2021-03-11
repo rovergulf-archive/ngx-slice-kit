@@ -9,6 +9,7 @@ import {DropdownOptions} from './dropdown.model';
 import {OPTIONS1} from '../../../../../src/app/shared/values/dropdowns.values';
 import {By} from '@angular/platform-browser';
 import {OptionModel} from './dropdown-option.model';
+import {IconComponent} from '../buttons/icon/icon.component';
 
 describe('DropdownComponent', () => {
     let component: DropdownComponent;
@@ -23,7 +24,11 @@ describe('DropdownComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [DropdownComponent, SelectComponent],
+            declarations: [
+                DropdownComponent,
+                IconComponent,
+                SelectComponent
+            ],
             providers: [
                 // DOCUMENT,
                 OptionsService,
@@ -52,6 +57,10 @@ describe('DropdownComponent', () => {
         component.config = opts;
 
         fixture.detectChanges();
+    });
+
+    afterAll(() => {
+        document.querySelectorAll('sdk-dropdown').forEach(el => el.remove());
     });
 
     it('should create', () => {

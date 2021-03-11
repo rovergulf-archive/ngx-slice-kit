@@ -12,6 +12,7 @@ import {DemoPageFourComponent} from '../../../../../../src/app/docs/navigation/d
 import {DemoPageFiveComponent} from '../../../../../../src/app/docs/navigation/demos/page-five/page-five.component';
 import {Router, Routes} from '@angular/router';
 import {skip} from 'rxjs/operators';
+import {IconComponent} from '../../buttons/icon/icon.component';
 
 const routes: Routes = [
     {path: '', redirectTo: 'demo-first', pathMatch: 'full'},
@@ -58,6 +59,7 @@ describe('NavTabsComponent', () => {
                 DemoPageThreeComponent,
                 DemoPageFourComponent,
                 DemoPageFiveComponent,
+                IconComponent
             ]
         })
             .compileComponents();

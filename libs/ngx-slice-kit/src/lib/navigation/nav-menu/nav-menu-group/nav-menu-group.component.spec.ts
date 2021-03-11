@@ -5,6 +5,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {Component, DebugElement} from '@angular/core';
 import {NavMenuItemComponent} from '../nav-menu-item/nav-menu-item.component';
+import {IconComponent} from '../../../buttons/icon/icon.component';
 
 describe('NavMenuGroupComponent', () => {
     let component: NavMenuGroupComponent;
@@ -22,6 +23,7 @@ describe('NavMenuGroupComponent', () => {
                 NavMenuGroupComponent,
                 NavMenuItemComponent,
                 TestComponent,
+                IconComponent
             ]
         })
             .compileComponents();

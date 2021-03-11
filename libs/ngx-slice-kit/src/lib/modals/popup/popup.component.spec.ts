@@ -26,6 +26,10 @@ describe('PopupComponent', () => {
         fixture.detectChanges();
     });
 
+    afterAll(() => {
+        document.querySelectorAll('sdk-popup').forEach(el => el.remove());
+    });
+
     it('should create', () => {
         expect(component).toBeTruthy();
     });
