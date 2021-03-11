@@ -8,6 +8,7 @@ import {DropdownService} from '../dropdown.service';
 import {Observable, of} from 'rxjs';
 import {DropdownOptions} from '../dropdown.model';
 import {skip} from 'rxjs/operators';
+import {IconComponent} from '../../buttons/icon/icon.component';
 
 describe('AutocompleteComponent', () => {
     let component: AutocompleteComponent;
@@ -23,7 +24,10 @@ describe('AutocompleteComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [AutocompleteComponent],
+            declarations: [
+                AutocompleteComponent,
+                IconComponent
+            ],
             providers: [
                 // DOCUMENT,
                 {provide: PLATFORM_ID, useValue: PLATFORM_BROWSER_ID},

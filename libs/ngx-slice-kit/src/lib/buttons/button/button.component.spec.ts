@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ButtonComponent } from './button.component';
 import { Component } from '@angular/core';
+import {IconComponent} from '../icon/icon.component';
 
 describe('ButtonComponent', () => {
     let component: ButtonComponent;
@@ -10,7 +11,11 @@ describe('ButtonComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [ButtonComponent, TestButtonComponent]
+            declarations: [
+                ButtonComponent,
+                TestButtonComponent,
+                IconComponent
+            ]
         })
             .compileComponents();
     }));

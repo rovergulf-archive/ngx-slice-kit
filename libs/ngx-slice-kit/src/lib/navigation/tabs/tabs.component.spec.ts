@@ -5,6 +5,7 @@ import {Component, DebugElement} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TabComponent} from './tab/tab.component';
 import {skip} from 'rxjs/operators';
+import {IconComponent} from '../../buttons/icon/icon.component';
 
 describe('TabsComponent', () => {
     let component: TabsComponent;
@@ -18,7 +19,8 @@ describe('TabsComponent', () => {
             declarations: [
                 TabsComponent,
                 TabComponent,
-                TestComponent
+                TestComponent,
+                IconComponent
             ]
         })
             .compileComponents();
