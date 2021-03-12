@@ -1,0 +1,62 @@
+.sdk-tooltip {
+    padding: 5px 12px;
+    max-width: 312px;
+    display: inline-block;
+    border-radius: 6px;
+    background-color: var(--regular-smooth);
+    box-shadow: 0 1px 3px rgba(var(--base-rgb), 0.9), 0 0 0 rgba(var(--base-rgb), 0.9);
+    color: var(--regular-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    animation: sdk-menu-more .2s;
+
+    .sdk-tooltip__content {
+        line-height: 22px;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 6px solid black;
+        transform-origin: 0 0;
+    }
+}
+
+.sdk-tooltip--bottom:after {
+    margin-left: -0.5em;
+    top: 1px;
+    left: 50%;
+    border-color: var(--regular-smooth) var(--regular-smooth) transparent transparent;
+    transform: rotate(-45deg);
+    box-shadow: 1px -1px 2px -1px rgba(var(--base-rgb), 0.9), 0 0 0 rgba(var(--base-rgb), 0.9)
+}
+
+.sdk-tooltip--top:after {
+    margin-left: -0.5em;
+    bottom: -11px;
+    left: 50%;
+    border-color: transparent transparent var(--regular-smooth) var(--regular-smooth);
+    transform: rotate(-45deg);
+    box-shadow: -2px 2px 2px -1px rgba(var(--base-rgb), 0.9), 0 0 0 rgba(var(--base-rgb), 0.9);
+}
+
+.sdk-tooltip--right:after {
+    top: 50%;
+    left: -7px;
+    border-color: var(--regular) transparent transparent var(--regular);
+    transform: rotate(-45deg);
+    box-shadow: -1px -1px 2px -1px rgba(var(--base-rgb), 0.9), 0 0 0 rgba(var(--base-rgb), 0.9)
+}
+
+.sdk-tooltip--left:after {
+    top: 50%;
+    right: -3px;
+    border-color: transparent var(--regular-smooth) var(--regular-smooth) transparent;
+    transform: rotate(-45deg);
+    box-shadow: 1px 1px 2px -1px rgba(var(--base-rgb), 0.9), 0 0 0 rgba(var(--base-rgb), 0.9)
+}
+
