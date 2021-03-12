@@ -1,4 +1,5 @@
 import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
+import {Subscription, timer} from 'rxjs';
 
 @Directive({
     selector: '[sdkTooltip]'
@@ -14,6 +15,8 @@ export class TooltipDirective {
     tooltipContent: HTMLElement;
 
     showTimeout;
+
+    sub: Subscription;
 
     constructor(
         private el: ElementRef,
@@ -41,16 +44,18 @@ export class TooltipDirective {
         if (this.tooltip) {
             this.hide();
         } else {
-            clearTimeout(this.showTimeout);
+            this.sub.unsubscribe();
         }
     }
 
     show(): void {
-        this.showTimeout = window.setTimeout(() => {
+        const t = timer(Number(this.delay));
+
+        this.sub = t.subscribe(() => {
             this.create();
             this.setPosition();
             this.renderer.addClass(this.tooltip, 'sdk-tooltip-show');
-        }, Number(this.delay));
+        });
     }
 
     hide(): void {
