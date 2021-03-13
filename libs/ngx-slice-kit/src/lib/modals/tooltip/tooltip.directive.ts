@@ -1,10 +1,11 @@
-import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
+import {Directive, ElementRef, HostListener, Input, OnInit, Renderer2} from '@angular/core';
 import {Subscription, timer} from 'rxjs';
+import {first, take} from 'rxjs/operators';
 
 @Directive({
     selector: '[sdkTooltip]'
 })
-export class TooltipDirective {
+export class TooltipDirective implements OnInit {
     @Input() showOnClick: boolean = false;
     @Input() delay: string | number;
     @Input('sdkTooltip') message: string;
@@ -13,6 +14,7 @@ export class TooltipDirective {
 
     tooltip: HTMLElement;
     tooltipContent: HTMLElement;
+    triggerElement: HTMLElement;
 
     showTimeout;
 
@@ -44,17 +46,20 @@ export class TooltipDirective {
         if (this.tooltip) {
             this.hide();
         } else {
-            this.sub.unsubscribe();
+            if (this.sub && !this.sub.closed) {
+                this.sub.unsubscribe();
+            }
         }
     }
 
     show(): void {
-        const t = timer(Number(this.delay));
+        this.showTimeout = timer(Number(this.delay));
 
-        this.sub = t.subscribe(() => {
+        this.sub = this.showTimeout.pipe(first()).subscribe(() => {
             this.create();
             this.setPosition();
             this.renderer.addClass(this.tooltip, 'sdk-tooltip-show');
+            this.showTimeout = null;
         });
     }
 
@@ -71,7 +76,6 @@ export class TooltipDirective {
     create(): void {
         this.tooltip = this.renderer.createElement('div');
         this.tooltipContent = this.renderer.createElement('p');
-
         this.renderer.appendChild(
             this.tooltipContent,
             this.renderer.createText(this.message)
@@ -86,7 +90,7 @@ export class TooltipDirective {
     }
 
     setPosition(): void {
-        const hostPos = this.el.nativeElement.getBoundingClientRect();
+        const hostPos = this.triggerElement.getBoundingClientRect();
         const tooltipPos = this.tooltip.getBoundingClientRect();
         const tooltipHeight = this.tooltip.offsetHeight;
         const tooltipWidth = this.tooltip.offsetWidth;
@@ -174,6 +178,9 @@ export class TooltipDirective {
         } else {
             return options.hostPosition - options.hostSize - options.tooltipSize - this.offset > 0;
         }
+    }
 
+    ngOnInit(): void {
+        this.triggerElement = this.el.nativeElement || this.el;
     }
 }

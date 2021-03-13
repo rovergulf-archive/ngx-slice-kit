@@ -1,8 +1,9 @@
 import {TooltipDirective} from './tooltip.directive';
 import {Component, Renderer2} from '@angular/core';
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {async, ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {Subscription} from 'rxjs';
+import {interval, Subscription} from 'rxjs';
+import {delay, last} from 'rxjs/operators';
 
 describe('TooltipDirective', () => {
     let component: TestComponent;
@@ -47,7 +48,6 @@ describe('TooltipDirective', () => {
 
     it('should #offset be 12 by default', () => {
         expect(directive.offset).toEqual(12);
-        console.log(tooltipHolderEl, 'el');
     });
 
     it('should "mouse enter" trigger #show method if tooltip does not exist yet and #showOnClick is false', () => {
@@ -240,40 +240,39 @@ describe('TooltipDirective', () => {
         expect(directive.tooltip).not.toHaveClass('sdk-tooltip--left');
     });
 
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    it('should', () => {
+    it('should #show method call #create & #setPosition and add .sdk-tooltip-show class', fakeAsync(() => {
+        directive.create();
         spyOn(directive, 'create');
-        directive.el = tooltipHolderEl;
+        spyOn(directive, 'setPosition');
         directive.delay = 500;
         directive.show();
 
-        // tick(1000);
+        tick(1000);
+        fixture.detectChanges();
+        expect(directive.create).toHaveBeenCalled();
+        expect(directive.setPosition).toHaveBeenCalled();
+        expect(directive.tooltip).toHaveClass('sdk-tooltip-show');
+    }));
 
-        // directive.showTimeout.pipe(delay(1000)).subscribe(() => {
-        //     console.log(directive.tooltip, 'asdasd');
-        // });
+    // it('should', () => {});
 
-    });
+    // it('should', () => {});
 
+    // it('should', () => {});
+
+    // it('should', () => {});
+
+    // it('should', () => {});
+
+    // it('should', () => {});
+
+    // it('should', () => {});
+
+    // it('should', () => {});
+
+    // it('should', () => {});
+
+    // it('should', () => {});
 });
 
 @Component({
