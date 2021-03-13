@@ -1,9 +1,8 @@
 import {TooltipDirective} from './tooltip.directive';
-import {Component, ElementRef, PLATFORM_ID, Renderer2} from '@angular/core';
-import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
+import {Component, Renderer2} from '@angular/core';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {Subscription} from 'rxjs';
-import {delay} from 'rxjs/operators';
 
 describe('TooltipDirective', () => {
     let component: TestComponent;
@@ -23,9 +22,12 @@ describe('TooltipDirective', () => {
         tooltipHolderDe = fixture.debugElement.query(By.directive(TooltipDirective));
         tooltipHolderEl = tooltipHolderDe.nativeElement;
         directive = tooltipHolderDe.injector.get(TooltipDirective);
-
         fixture.detectChanges();
     }));
+
+    afterEach(() => {
+        document.querySelectorAll('.sdk-tooltip').forEach(el => el.remove());
+    });
 
 
     it('should create an instance', () => {
@@ -176,18 +178,66 @@ describe('TooltipDirective', () => {
             expect(directive.sub.closed).toBeFalse();
         });
 
-    it('should', () => {
-        spyOn(directive, 'create');
-        directive.el = tooltipHolderEl;
-        directive.delay = 500;
-        directive.show();
+    it('should delete tooltip element after #hide was called', () => {
+        directive.create();
+        fixture.detectChanges();
+        directive.hide();
 
-        // tick(1000);
+        const el: HTMLElement = document.querySelector('.sdk-tooltip');
 
-        // directive.showTimeout.pipe(delay(1000)).subscribe(() => {
-        //     console.log(directive.tooltip, 'asdasd');
-        // });
+        expect(directive.tooltip).toBeNull();
+        expect(el).toBeNull();
+    });
 
+    it('should #create method set #tooltip and #tooltipContent', () => {
+        directive.create();
+
+        expect(directive.tooltip).toBeTruthy();
+        expect(directive.tooltipContent).toBeTruthy();
+    });
+
+    it('should #create set #message text to #tooltipContent', () => {
+        const stubText = 'リライト';
+        directive.message = stubText;
+        directive.create();
+
+        expect(directive.tooltipContent.textContent).toEqual(stubText);
+        const el: HTMLElement = directive.tooltip.querySelector('.sdk-tooltip__content');
+    });
+
+    it('should #create put #tooltipContent in #tooltip', () => {
+        const stubText = '触れたい 確かめたい';
+        directive.message = stubText;
+        directive.create();
+        const el: HTMLElement = directive.tooltip.querySelector('.sdk-tooltip__content');
+        expect(el).not.toBeNull();
+    });
+
+    it('should #create add #tooltip in document', () => {
+        directive.create();
+        const el: HTMLElement = document.querySelector('.sdk-tooltip');
+        expect(el).not.toBeNull();
+    });
+
+    it('should #create add classes for #tooltip', () => {
+        directive.create();
+
+        expect(directive.tooltip).toHaveClass('sdk-tooltip');
+        expect(directive.tooltip).toHaveClass('sdk-tooltip--top');
+        expect(directive.tooltipContent).toHaveClass('sdk-tooltip__content');
+    });
+
+    it('should #changePosition change #tooltip classes', () => {
+        directive.create();
+        directive.changePosition(directive.position, 'left');
+
+        expect(directive.tooltip).toHaveClass('sdk-tooltip--left');
+        expect(directive.tooltip).not.toHaveClass('sdk-tooltip--top');
+
+        directive.changePosition(directive.position, 'right');
+
+        expect(directive.tooltip).toHaveClass('sdk-tooltip--right');
+        expect(directive.tooltip).not.toHaveClass('sdk-tooltip--left');
     });
 
     // it('should', () => {});
@@ -210,9 +260,19 @@ describe('TooltipDirective', () => {
 
     // it('should', () => {});
 
-    // it('should', () => {});
+    it('should', () => {
+        spyOn(directive, 'create');
+        directive.el = tooltipHolderEl;
+        directive.delay = 500;
+        directive.show();
 
-    // it('should', () => {});
+        // tick(1000);
+
+        // directive.showTimeout.pipe(delay(1000)).subscribe(() => {
+        //     console.log(directive.tooltip, 'asdasd');
+        // });
+
+    });
 
 });
 
