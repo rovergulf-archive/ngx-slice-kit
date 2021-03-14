@@ -79,7 +79,7 @@
     &:after {
         top: 50%;
         left: -7px;
-        border-color: var(--regular) transparent transparent var(--regular);
+        border-color: var(--regular-smooth) transparent transparent var(--regular-smooth);
         transform: rotate(-45deg);
         box-shadow: -1px -1px 2px -1px rgba(var(--base-rgb), 0.9), 0 0 0 rgba(var(--base-rgb), 0.9)
     }
