@@ -1,16 +1,40 @@
-import { TestBed } from '@angular/core/testing';
-
-import { LayoutControlService } from './layout-control.service';
+import {TestBed} from '@angular/core/testing';
+import {LayoutControlService} from './layout-control.service';
+import {DropdownService} from '../../dropdowns/dropdown.service';
+import {PLATFORM_ID} from '@angular/core';
 
 describe('LayoutControlService', () => {
     let service: LayoutControlService;
+    const PLATFORM_SERVER_ID = 'server';
+    const PLATFORM_BROWSER_ID = 'browser';
 
     beforeEach(() => {
-        TestBed.configureTestingModule({});
-        service = TestBed.inject(LayoutControlService);
+        TestBed.configureTestingModule({
+            providers: [
+                LayoutControlService
+            ]
+        });
     });
 
-    it('should be created', () => {
-        expect(service).toBeTruthy();
+    describe('with PLATFORM_ID as server', () => {
+        beforeEach(() => {
+            TestBed.overrideProvider(PLATFORM_ID, {useValue: PLATFORM_SERVER_ID});
+            service = TestBed.inject(LayoutControlService);
+        });
+
+        it('should be created', () => {
+            expect(service).toBeTruthy();
+        });
+    });
+
+    describe('with PLATFORM_ID as browser', () => {
+        beforeEach(() => {
+            TestBed.overrideProvider(PLATFORM_ID, {useValue: PLATFORM_BROWSER_ID});
+            service = TestBed.inject(LayoutControlService);
+        });
+
+        it('should be created', () => {
+            expect(service).toBeTruthy();
+        });
     });
 });
