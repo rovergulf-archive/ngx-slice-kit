@@ -25,6 +25,18 @@ describe('LayoutControlService', () => {
         it('should be created', () => {
             expect(service).toBeTruthy();
         });
+
+        it('should #getViewport() stops immediately if platform id is not browser', () => {
+            expect(service.getViewport()).toBeUndefined();
+        });
+
+        it('should #getWindowScrollTop() stops immediately if platform id is not browser', () => {
+            expect(service.getWindowScrollTop()).toBeUndefined();
+        });
+
+        it('should #getWindowScrollLeft() stops immediately if platform id is not browser', () => {
+            expect(service.getWindowScrollLeft()).toBeUndefined();
+        });
     });
 
     describe('with PLATFORM_ID as browser', () => {
@@ -36,5 +48,25 @@ describe('LayoutControlService', () => {
         it('should be created', () => {
             expect(service).toBeTruthy();
         });
+
+        // it('should', () => {});
+
+        // it('should', () => {});
+
+        // it('should', () => {});
+
+        // it('should', () => {});
+
+        // it('should', () => {});
+
+        // it('should', () => {});
+
+        // it('should', () => {});
+
+        // it('should', () => {});
+
+        // it('should', () => {});
+
+        // it('should', () => {});
     });
 });
