@@ -254,25 +254,87 @@ describe('TooltipDirective', () => {
         expect(directive.tooltip).toHaveClass('sdk-tooltip-show');
     }));
 
-    // it('should', () => {});
+    it('should #checkOversize return true if no enough space for tooltip & isDirectionForward arg is true', () => {
+        const options = {
+            hostPosition: 0,
+            hostSize: 0,
+            tooltipSize: 0
+        };
 
-    // it('should', () => {});
+        const res = directive.checkOversize(options, 'width', true);
+        expect(res).toBeTrue();
+    });
 
-    // it('should', () => {});
+    it('should #checkOversize return false if tooltip has enough space and isDirectionForward arg is true', () => {
+        const options = {
+            hostPosition: 32000,
+            hostSize: 32000,
+            tooltipSize: 32000
+        };
 
-    // it('should', () => {});
+        const res = directive.checkOversize(options, 'width', true);
+        expect(res).toBeFalse();
+    });
 
-    // it('should', () => {});
+    it('should #checkOversize return false if tooltip has enough space & isDirectionForward arg is false', () => {
+        const options = {
+            hostPosition: 0,
+            hostSize: 0,
+            tooltipSize: 0
+        };
 
-    // it('should', () => {});
+        const res = directive.checkOversize(options, 'width', false);
+        expect(res).toBeFalse();
+    });
 
-    // it('should', () => {});
+    it('should #checkOversize return true if no enough space for tooltip & isDirectionForward arg is false', () => {
+        const options = {
+            hostPosition: 64,
+            hostSize: 0,
+            tooltipSize: 0
+        };
 
-    // it('should', () => {});
+        const res = directive.checkOversize(options, 'width', false);
+        expect(res).toBeTrue();
+    });
 
-    // it('should', () => {});
+    it('should tooltip do not change position if #checkOversize is true', () => {
+        directive.create();
+        const hostPos = directive.triggerElement.getBoundingClientRect();
+        const tooltipHeight = directive.tooltip.offsetHeight;
+        fixture.detectChanges();
+        directive.position = 'top';
+        directive.offset = -32000;
 
-    // it('should', () => {});
+        const options = {
+            hostPosition: hostPos.top,
+            hostSize: hostPos.height,
+            tooltipSize: tooltipHeight
+        };
+        spyOn(directive, 'changePosition');
+        directive.setPosition();
+
+        expect(directive.checkOversize(options, 'height', false)).toBeTrue();
+        expect(directive.changePosition).not.toHaveBeenCalled();
+
+        directive.position = 'bottom';
+        fixture.detectChanges();
+        directive.setPosition();
+        expect(directive.changePosition).not.toHaveBeenCalled();
+
+        directive.position = 'left';
+        fixture.detectChanges();
+        directive.setPosition();
+        expect(directive.changePosition).not.toHaveBeenCalled();
+
+        directive.position = 'right';
+        fixture.detectChanges();
+        directive.setPosition();
+        expect(directive.changePosition).not.toHaveBeenCalled();
+
+        directive.offset = 32000;
+        expect(directive.checkOversize(options, 'height', false)).toBeFalse();
+    });
 });
 
 @Component({
