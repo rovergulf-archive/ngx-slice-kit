@@ -1,6 +1,6 @@
 import {Directive, ElementRef, HostListener, Input, OnInit, Renderer2} from '@angular/core';
 import {Subscription, timer} from 'rxjs';
-import {first, take} from 'rxjs/operators';
+import {first} from 'rxjs/operators';
 
 @Directive({
     selector: '[sdkTooltip]'
@@ -103,10 +103,12 @@ export class TooltipDirective implements OnInit {
 
         if (this.position === 'top') {
             const options = {
-                hostPosition: hostPos.y,
+                hostPosition: hostPos.top,
                 hostSize: hostPos.height,
                 tooltipSize: tooltipHeight
             };
+            console.log(options, this.offset, this.checkOversize(options, 'height', false), '222');
+
             left = hostPos.left + (hostPos.width - tooltipPos.width) / 2;
             if (this.checkOversize(options, 'height', false)) {
                 top = hostPos.top - tooltipHeight - this.offset;
@@ -118,7 +120,7 @@ export class TooltipDirective implements OnInit {
 
         if (this.position === 'bottom') {
             const options = {
-                hostPosition: hostPos.y,
+                hostPosition: hostPos.top,
                 hostSize: hostPos.height,
                 tooltipSize: tooltipHeight
             };
@@ -133,7 +135,7 @@ export class TooltipDirective implements OnInit {
 
         if (this.position === 'left') {
             const options = {
-                hostPosition: hostPos.x,
+                hostPosition: hostPos.left,
                 hostSize: hostPos.width,
                 tooltipSize: tooltipWidth
             };
@@ -148,7 +150,7 @@ export class TooltipDirective implements OnInit {
 
         if (this.position === 'right') {
             const options = {
-                hostPosition: hostPos.x,
+                hostPosition: hostPos.left,
                 hostSize: hostPos.width,
                 tooltipSize: tooltipWidth
             };
