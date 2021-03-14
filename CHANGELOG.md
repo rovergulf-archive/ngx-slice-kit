@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.8.0
 
-## 12 Mar 2021
+## 15 Mar 2021
 
 ### Added
 
@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### Removed
+
+## 14 Mar 2021
+
+### Added
+- `tooltip.directive` tests
 
 ## 11 Mar 2021
 
@@ -23,23 +28,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `dialog.component` tests
 - `navigation-scroll.directive` tests
 
-### Changed
-
-### Fixed
-
-### Removed
-
 ## 10 Mar 2021
 
 ### Added
 - `popup.service` tests
 - `popup.component` tests
-
-### Changed
-
-### Fixed
-
-### Removed
 
 ## 9 Mar 2021
 
@@ -48,23 +41,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `alerts.component` tests
 - `alert.service` tests
 
-### Changed
-
-### Fixed
-
-### Removed
-
 ## 05 Mar 2021
 
 ### Added
 - `tab` component tests
 - `tabs` component tests
-
-### Changed
-
-### Fixed
-
-### Removed
 
 ## 04 Mar 2021
 
