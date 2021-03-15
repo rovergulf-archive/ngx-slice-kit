@@ -15,7 +15,7 @@ export class DemoPaginationComponent implements OnInit, OnDestroy {
     constructor() {
     }
 
-    setPage(page) {
+    setPage(page): void {
         this.offset = this.limit * (page - 1);
         this.page = page;
     }
