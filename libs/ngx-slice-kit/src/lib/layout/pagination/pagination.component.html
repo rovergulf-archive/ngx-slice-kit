@@ -3,6 +3,8 @@
      [class.sdk-paginator--small]="small">
     <div class="sdk-paginator__wrapper">
         <button class="sdk-paginator__btn sdk-paginator__arrow sdk-paginator__arrow--left"
+                (mouseenter)="leftArrowHovered = true"
+                (mouseleave)="leftArrowHovered = false"
                 [disabled]="page <= 1"
                 (click)="pageChange(page - 1)">
             <sdk-icon [icon]="'chevron_left'" size="24"
@@ -15,6 +17,8 @@
             </button>
         </div>
         <button class="sdk-paginator__btn sdk-paginator__arrow sdk-paginator__arrow--right"
+                (mouseenter)="rightArrowHovered = true"
+                (mouseleave)="rightArrowHovered = false"
                 [disabled]="(page + 1) > pageCount"
                 (click)="pageChange(page + 1)">
             <sdk-icon [icon]="'chevron_right'" size="24"
