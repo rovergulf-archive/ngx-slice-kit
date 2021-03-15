@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.8.0
 
-## 15 Mar 2021
+## 16 Mar 2021
 
 ### Added
 
@@ -15,6 +15,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### Removed
+
+## 15 Mar 2021
+
+### Added
+- `layout-control.service` add some tests
+- `dots.component` tests
+- `pagination.component` tests
+
+### Fixed
+`dots.component` fix dots generation moment and click handler
 
 ## 14 Mar 2021
 
