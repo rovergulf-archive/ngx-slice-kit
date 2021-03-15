@@ -28,10 +28,6 @@ describe('TabLinkDirective', () => {
         expect(directive).toBeTruthy();
     });
 
-    it('should #active be false by default', () => {
-        expect(directive.active).toBeFalse();
-    });
-
     it('should #disabled be false by default', () => {
         expect(directive.disabled).toBeFalse();
     });

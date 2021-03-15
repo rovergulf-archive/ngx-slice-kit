@@ -6,13 +6,66 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.8.0
 
-## 02 Mar 2021
+## 16 Mar 2021
 
 ### Added
 
 ### Changed
 
 ### Fixed
+
+### Removed
+
+## 15 Mar 2021
+
+### Added
+- `layout-control.service` add some tests
+- `dots.component` tests
+- `pagination.component` tests
+
+### Fixed
+`dots.component` fix dots generation moment and click handler
+
+## 14 Mar 2021
+
+### Added
+- `tooltip.directive` tests
+
+## 11 Mar 2021
+
+### Added
+- `dialog.service` tests
+- `dialog.component` tests
+- `navigation-scroll.directive` tests
+
+## 10 Mar 2021
+
+### Added
+- `popup.service` tests
+- `popup.component` tests
+
+## 9 Mar 2021
+
+### Added
+- `alert.component` tests
+- `alerts.component` tests
+- `alert.service` tests
+
+## 05 Mar 2021
+
+### Added
+- `tab` component tests
+- `tabs` component tests
+
+## 04 Mar 2021
+
+### Added
+- `nav-tabs` component tests
+
+### Changed
+
+### Fixed
+Fix scroll issue in `tabs` component
 
 ### Removed
 

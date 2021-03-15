@@ -17,8 +17,8 @@
                         <div class="sdk-tab__background"></div>
                     </div>
                 </ng-container>
+                <div class="slide" *ngIf="activeTabStyle === 'border'" [ngStyle]="slideMeasure"></div>
             </div>
-            <div class="slide" *ngIf="activeTabStyle === 'border'" [ngStyle]="slideMeasure"></div>
         </div>
         <button class="sdk-tab-container__arrow sdk-tab-container__arrow--right" #arrowRight
                 [disabled]="tabsScrollRect?.right - 1 <= containerRect?.right - arrowWidth"

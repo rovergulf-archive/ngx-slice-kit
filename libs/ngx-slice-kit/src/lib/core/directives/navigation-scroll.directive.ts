@@ -17,7 +17,7 @@ export class NavigationScrollDirective implements OnInit, OnDestroy {
     ) {
     }
 
-    initNavSub() {
+    initNavSub(): void {
         /**
          * Init router event subscription
          */
@@ -28,7 +28,6 @@ export class NavigationScrollDirective implements OnInit, OnDestroy {
             }
         });
     }
-
 
     ngOnInit(): void {
         if (isPlatformBrowser(this.platformId)) {
@@ -41,5 +40,4 @@ export class NavigationScrollDirective implements OnInit, OnDestroy {
             this.sub.unsubscribe();
         }
     }
-
 }

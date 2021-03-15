@@ -21,7 +21,7 @@ export class PaginationComponent implements OnInit {
     constructor() {
     }
 
-    pageChange(page) {
+    pageChange(page): void {
         if (this.page === page) {
             return;
         }
@@ -116,7 +116,7 @@ export class PaginationComponent implements OnInit {
         return pages;
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.pageCount = this.getPageCount();
     }
 }

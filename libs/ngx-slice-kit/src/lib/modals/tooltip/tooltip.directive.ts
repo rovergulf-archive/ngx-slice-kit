@@ -1,9 +1,11 @@
-import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
+import {Directive, ElementRef, HostListener, Input, OnInit, Renderer2} from '@angular/core';
+import {Subscription, timer} from 'rxjs';
+import {first} from 'rxjs/operators';
 
 @Directive({
     selector: '[sdkTooltip]'
 })
-export class TooltipDirective {
+export class TooltipDirective implements OnInit {
     @Input() showOnClick: boolean = false;
     @Input() delay: string | number;
     @Input('sdkTooltip') message: string;
@@ -12,8 +14,11 @@ export class TooltipDirective {
 
     tooltip: HTMLElement;
     tooltipContent: HTMLElement;
+    triggerElement: HTMLElement;
 
     showTimeout;
+
+    sub: Subscription;
 
     constructor(
         private el: ElementRef,
@@ -22,14 +27,14 @@ export class TooltipDirective {
     }
 
     @HostListener('mouseenter')
-    onMouseEnter() {
+    onMouseEnter(): void {
         if (!this.tooltip && !this.showOnClick) {
             this.show();
         }
     }
 
     @HostListener('click')
-    onClick() {
+    onClick(): void {
         if (!this.tooltip && this.showOnClick) {
             this.show();
         }
@@ -37,23 +42,28 @@ export class TooltipDirective {
 
     @HostListener('mousewheel')
     @HostListener('mouseleave')
-    onMouseLeave() {
+    onMouseLeave(): void {
         if (this.tooltip) {
             this.hide();
         } else {
-            clearTimeout(this.showTimeout);
+            if (this.sub && !this.sub.closed) {
+                this.sub.unsubscribe();
+            }
         }
     }
 
-    show() {
-        this.showTimeout = window.setTimeout(() => {
+    show(): void {
+        this.showTimeout = timer(Number(this.delay));
+
+        this.sub = this.showTimeout.pipe(first()).subscribe(() => {
             this.create();
             this.setPosition();
             this.renderer.addClass(this.tooltip, 'sdk-tooltip-show');
-        }, Number(this.delay));
+            this.showTimeout = null;
+        });
     }
 
-    hide() {
+    hide(): void {
         this.renderer.removeClass(this.tooltip, 'sdk-tooltip-show');
         this.renderer.removeChild(document.body, this.tooltip);
         this.tooltip = null;
@@ -63,10 +73,9 @@ export class TooltipDirective {
         // }, Number(this.delay));
     }
 
-    create() {
+    create(): void {
         this.tooltip = this.renderer.createElement('div');
         this.tooltipContent = this.renderer.createElement('p');
-
         this.renderer.appendChild(
             this.tooltipContent,
             this.renderer.createText(this.message)
@@ -80,22 +89,26 @@ export class TooltipDirective {
         this.renderer.addClass(this.tooltipContent, 'sdk-tooltip__content');
     }
 
-    setPosition() {
-        const hostPos = this.el.nativeElement.getBoundingClientRect();
+    setPosition(): void {
+        const hostPos = this.triggerElement.getBoundingClientRect();
         const tooltipPos = this.tooltip.getBoundingClientRect();
         const tooltipHeight = this.tooltip.offsetHeight;
         const tooltipWidth = this.tooltip.offsetWidth;
         const scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
-        let top, left;
+        let top;
+        let left;
+
         this.offset = Number(this.offset);
 
         if (this.position === 'top') {
             const options = {
-                hostPosition: hostPos.y,
+                hostPosition: hostPos.top,
                 hostSize: hostPos.height,
                 tooltipSize: tooltipHeight
             };
+            console.log(options, this.offset, this.checkOversize(options, 'height', false), '222');
+
             left = hostPos.left + (hostPos.width - tooltipPos.width) / 2;
             if (this.checkOversize(options, 'height', false)) {
                 top = hostPos.top - tooltipHeight - this.offset;
@@ -107,7 +120,7 @@ export class TooltipDirective {
 
         if (this.position === 'bottom') {
             const options = {
-                hostPosition: hostPos.y,
+                hostPosition: hostPos.top,
                 hostSize: hostPos.height,
                 tooltipSize: tooltipHeight
             };
@@ -122,7 +135,7 @@ export class TooltipDirective {
 
         if (this.position === 'left') {
             const options = {
-                hostPosition: hostPos.x,
+                hostPosition: hostPos.left,
                 hostSize: hostPos.width,
                 tooltipSize: tooltipWidth
             };
@@ -137,7 +150,7 @@ export class TooltipDirective {
 
         if (this.position === 'right') {
             const options = {
-                hostPosition: hostPos.x,
+                hostPosition: hostPos.left,
                 hostSize: hostPos.width,
                 tooltipSize: tooltipWidth
             };
@@ -154,19 +167,22 @@ export class TooltipDirective {
         this.renderer.setStyle(this.tooltip, 'left', `${left}px`);
     }
 
-    changePosition(oldPosition, newPosition) {
+    changePosition(oldPosition, newPosition): void {
         this.position = newPosition;
         this.renderer.removeClass(this.tooltip, `sdk-tooltip--${oldPosition}`);
         this.renderer.addClass(this.tooltip, `sdk-tooltip--${newPosition}`);
     }
 
-    checkOversize(options, dimension, isDirectionForward = true) {
+    checkOversize(options, dimension, isDirectionForward = true): boolean {
         const documentPos = document.body.getBoundingClientRect();
         if (isDirectionForward) {
             return options.hostPosition + options.hostSize + options.tooltipSize + this.offset <= documentPos[dimension];
         } else {
             return options.hostPosition - options.hostSize - options.tooltipSize - this.offset > 0;
         }
+    }
 
+    ngOnInit(): void {
+        this.triggerElement = this.el.nativeElement || this.el;
     }
 }

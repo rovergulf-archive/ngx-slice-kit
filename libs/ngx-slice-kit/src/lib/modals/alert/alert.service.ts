@@ -49,7 +49,7 @@ export class AlertService {
         }
     }
 
-    showAlert(options?: AlertOptions) {
+    showAlert(options?: AlertOptions): void {
         if (isPlatformServer(this.platformId)) {
             return;
         }

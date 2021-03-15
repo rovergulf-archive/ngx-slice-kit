@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CarouselComponent } from './carousel.component';
+import {IconComponent} from '../../buttons/icon/icon.component';
 
 describe('CarouselComponent', () => {
     let component: CarouselComponent;
@@ -8,7 +9,10 @@ describe('CarouselComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [CarouselComponent]
+            declarations: [
+                CarouselComponent,
+                IconComponent,
+            ]
         })
             .compileComponents();
     }));
