@@ -38,6 +38,7 @@ import { LayoutControlService } from '../../core/layout-control/layout-control.s
 export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDestroy {
 
     private $options: BehaviorSubject<OptionModel[]> = new BehaviorSubject<OptionModel[]>(null);
+    private req: boolean;
 
     @Input() set options(o: OptionModel[]) {
         this.$options.next(o);
@@ -50,10 +51,17 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
         return this.$options.getValue();
     }
 
+    @Input() set required(val: any) {
+        this.req = val === '' || val === true;
+    }
+
+    get required(): any {
+        return this.req;
+    }
+
     sub: Subscription;
     @ViewChild('autocomplete', {static: true}) autocomplete: ElementRef;
     @ViewChild('input', {static: true}) inputElementRef: ElementRef;
-    @Input() required;
     @Input() label = '';
     @Input() placeholder = 'Find option';
     @Input() disabled: boolean;
