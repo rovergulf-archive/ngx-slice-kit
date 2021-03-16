@@ -13,14 +13,20 @@ export class DemoProgressComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
-    valueChange(n: number) {
+    valueChange(n: number): void {
+        if (this.value + n < 0) {
+            return;
+        }
         this.value += n;
     }
 
-    smallValueChange(n: number) {
+    smallValueChange(n: number): void {
+        if (this.value2 + n < 0) {
+            return;
+        }
         this.value2 += n;
     }
 }
