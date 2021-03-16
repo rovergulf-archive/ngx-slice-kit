@@ -1,17 +1,23 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonGroupComponent } from './button-group.component';
+import { TooltipDirective } from './tooltip.directive';
+
 
 @NgModule({
     declarations: [
-        ButtonGroupComponent
+        TooltipDirective
     ],
     exports: [
-        ButtonGroupComponent
+        TooltipDirective
     ],
     imports: [
         CommonModule
+    ],
+    providers: [],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
+        NO_ERRORS_SCHEMA,
     ]
 })
-export class ButtonGroupModule {
+export class TooltipModule {
 }

@@ -1,17 +1,23 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonGroupComponent } from './button-group.component';
+import { PopoverComponent } from './popover.component';
+
+
 
 @NgModule({
     declarations: [
-        ButtonGroupComponent
+        PopoverComponent
     ],
     exports: [
-        ButtonGroupComponent
+        PopoverComponent
     ],
     imports: [
         CommonModule
+    ],
+    providers: [],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
+        NO_ERRORS_SCHEMA,
     ]
 })
-export class ButtonGroupModule {
-}
+export class PopoverModule { }

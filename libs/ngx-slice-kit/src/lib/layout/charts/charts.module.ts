@@ -1,17 +1,23 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonGroupComponent } from './button-group.component';
+import { ChartsComponent } from './charts.component';
+
 
 @NgModule({
     declarations: [
-        ButtonGroupComponent
+        ChartsComponent
     ],
     exports: [
-        ButtonGroupComponent
+        ChartsComponent
     ],
     imports: [
         CommonModule
+    ],
+    providers: [],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
+        NO_ERRORS_SCHEMA,
     ]
 })
-export class ButtonGroupModule {
+export class ChartsModule {
 }

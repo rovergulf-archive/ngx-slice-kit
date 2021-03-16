@@ -132,6 +132,19 @@ export { LayoutModule } from './lib/layout/layout.module';
 /**
  * modules
  */
+// export {AccordionModule} from './lib/layout/accordion/accordion.module';
+// export {BreadcrumbsModule} from './lib/layout/breadcrumbs/breadcrumbs.module';
+// export {CalendarModule} from './lib/layout/calendar/calendar.module';
+export { CarouselModule } from './lib/layout/carousel/carousel.module';
+// export {ChartsModule} from './lib/layout/charts/charts.module';
+export { DividerModule } from './lib/layout/divider/divider.module';
+export { DotsModule } from './lib/layout/dots/dots.module';
+// export {DragNDropModule} from './lib/layout/drag-n-drop/drag-n-drop.module';
+export { ListModule } from './lib/layout/list/list.module';
+export { PaginationModule } from './lib/layout/pagination/pagination.module';
+export { ProgressModule } from './lib/layout/progress/progress.module';
+export { SliderModule } from './lib/layout/slider/slider.module';
+export { TableModule } from './lib/layout/table/table.module';
 /**
  * components
  */
@@ -188,6 +201,12 @@ export { ModalsModule } from './lib/modals/modals.module';
 /**
  * modules
  */
+export { AlertModule } from './lib/modals/alert/alert.module';
+// export {BottomSheetModule} from './lib/modals/bottom-sheet/bottom-sheet.module';
+export { DialogModule } from './lib/modals/dialog/dialog.module';
+// export {PopoverModule} from './lib/modals/popover/popover.module';
+export { PopupModule } from './lib/modals/popup/popup.module';
+export { TooltipModule } from './lib/modals/tooltip/tooltip.module';
 /**
  * components
  */
@@ -211,6 +230,10 @@ export { NavigationModule } from './lib/navigation/navigation.module';
 /**
  * modules
  */
+export { NavMenuModule } from './lib/navigation/nav-menu/nav-menu.module';
+export { NavTabsModule } from './lib/navigation/nav-tabs/nav-tabs.module';
+export { SidenavModule } from './lib/navigation/sidenav/sidenav.module';
+export { TabsModule } from './lib/navigation/tabs/tabs.module';
 /**
  * components
  */
