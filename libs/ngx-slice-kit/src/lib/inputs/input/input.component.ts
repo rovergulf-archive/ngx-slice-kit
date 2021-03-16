@@ -32,6 +32,14 @@ import { LayoutControlService } from '../../core/layout-control/layout-control.s
 export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, AfterContentInit {
     private req: boolean;
 
+    @Input() set required(val: any) {
+        this.req = val === '' || val === true;
+    }
+
+    get required(): any {
+        return this.req;
+    }
+
     @Input() type: string = 'text';
     @Input() autocomplete: string = 'off';
     @Input() placeholder: string = 'Empty placeholder';
@@ -46,14 +54,6 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
     @Input() size: 'wide' | 'full-width';
     @Input() caption: string;
     @Input() label: string;
-
-    @Input() set required(val: any) {
-        this.req = val === '' || val === true;
-    }
-
-    get required(): any {
-        return this.req;
-    }
 
     @Input() @HostBinding('class.sdk-input--warn') error: string = undefined;
     @Input() @HostBinding('class.disabled') disabled: boolean = false;
