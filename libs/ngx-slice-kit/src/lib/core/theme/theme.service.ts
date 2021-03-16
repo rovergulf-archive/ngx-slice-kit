@@ -92,7 +92,7 @@ export class ThemeService {
     getProperty(propName: string): string {
         const theme = this.currentTheme;
         if (theme.hasOwnProperty(propName)) {
-            return this.currentTheme.properties[propName];
+            return this.currentTheme[propName];
         } else {
             return '';
         }
@@ -110,42 +110,11 @@ export class ThemeService {
         this.themes.push(new Theme(theme));
     }
 
-    updateTheme(name: string, properties: { [key: string]: string; }): void {
-        const theme = this.findTheme(name);
-        theme.properties = {
-            ...theme.properties,
-            ...properties
-        };
-        if (this.currentTheme.name === name) {
-            this.currentTheme = theme;
+    updateTheme(t: Theme): void {
+        const theme = this.findTheme(t.name);
+        if (!!theme) {
+            this.currentTheme = new Theme(t);
         }
-    }
-
-    /**
-     * Converts rgb or rgba color to hex value
-     *
-     * @param src may contain, for example: rgb(255, 155, 10) or rgba(255, 55, 25, 0.5)
-     */
-    rgbToHex(src: string): string {
-        const sep = src.indexOf(',') > -1 ? ',' : ' ';
-        // Turn "rgb(r,g,b)" into [r,g,b]
-        const rgb = src.substr(4).split(')')[0].split(sep);
-
-        let r = (+rgb[0]).toString(16);
-        let g = (+rgb[1]).toString(16);
-        let b = (+rgb[2]).toString(16);
-
-        if (r.length === 1) {
-            r = '0' + r;
-        }
-        if (g.length === 1) {
-            g = '0' + g;
-        }
-        if (b.length === 1) {
-            b = '0' + b;
-        }
-
-        return '#' + r + g + b;
     }
 
 }

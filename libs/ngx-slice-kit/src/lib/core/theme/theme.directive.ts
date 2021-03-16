@@ -53,8 +53,12 @@ export class ThemeDirective implements OnInit, OnDestroy {
         // project properties onto the element
         styles.innerHTML += `body {`;
         for (const prop of theme.props()) {
-            const name = prop.name.indexOf('-rgb') > 2 ? prop.name.substring(0, prop.name.length - 4) : prop.name;
-            styles.innerHTML += (`${name}: ${prop.rgba};`);
+            if (!!prop.rgba) {
+                styles.innerHTML += (`${prop.name}: ${prop.rgba};`);
+                if (!!prop.hex) {
+                    styles.innerHTML += (`${prop.name}-hex: ${prop.hex};`);
+                }
+            }
         }
         styles.innerHTML += `}`;
         this.renderer.setAttribute(styles, 'sdk-theme', theme.name);

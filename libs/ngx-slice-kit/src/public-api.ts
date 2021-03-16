@@ -166,7 +166,7 @@ export { TableComponent } from './lib/layout/table/table.component';
 /**
  * Media module
  */
-export { MediaModule } from './lib/media/media.module';
+// export { MediaModule } from './lib/media/media.module';
 /**
  * modules
  */
@@ -250,3 +250,5 @@ export { SidenavContentComponent } from './lib/navigation/sidenav/sidenav-conten
 export { TabComponent } from './lib/navigation/tabs/tab/tab.component';
 export { TabsComponent } from './lib/navigation/tabs/tabs.component';
 export { TabLinkDirective } from './lib/navigation/nav-tabs/tab-link.directive';
+
+// end of public-api.ts
