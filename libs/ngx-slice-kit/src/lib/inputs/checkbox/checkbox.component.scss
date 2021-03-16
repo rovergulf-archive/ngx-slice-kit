@@ -27,7 +27,6 @@
     height: 24px;
     display: flex;
     border-radius: 5px;
-    margin-right: 10px;
     border: 1px solid var(--regular-disabled);
     transition: background-color .2s, border-color .3s;
 
@@ -48,6 +47,7 @@
 
 .sdk-checkbox__label {
     user-select: none;
+    margin-left: 8px;
 
     &:empty {
         display: none
