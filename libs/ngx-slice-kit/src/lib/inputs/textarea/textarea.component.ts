@@ -16,15 +16,23 @@ import { LayoutControlService } from '../../core/layout-control/layout-control.s
     ]
 })
 export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestroy {
+    private req: boolean;
 
     @Input() placeholder: string = 'Empty placeholder';
-    @Input() required: boolean;
     @Input() tabindex: number = undefined;
     @Input() minHeight: number = 76;
     @Input() maxHeight: number = 280;
     @Input() small: boolean;
     @Input() label: string;
     @Input() caption: string;
+
+    @Input() set required(val: any) {
+        this.req = val === '' || val === true;
+    }
+
+    get required(): any {
+        return this.req;
+    }
 
     @Input() @HostBinding('class.sdk-textarea--warn') error: string;
     @Input() @HostBinding('class.disabled') disabled: boolean;
