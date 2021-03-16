@@ -2,17 +2,17 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/cor
 import { CommonModule } from '@angular/common';
 
 import { AlertModule } from './alert/alert.module';
-import { BottomSheetModule } from './bottom-sheet/bottom-sheet.module';
+// import { BottomSheetModule } from './bottom-sheet/bottom-sheet.module';
 import { DialogModule } from './dialog/dialog.module';
-import { PopoverModule } from './popover/popover.module';
+// import { PopoverModule } from './popover/popover.module';
 import { PopupModule } from './popup/popup.module';
 import { TooltipModule } from './tooltip/tooltip.module';
 
 const modules = [
     AlertModule,
-    BottomSheetModule,
+    // BottomSheetModule,
     DialogModule,
-    PopoverModule,
+    // PopoverModule,
     PopupModule,
     TooltipModule,
 ];

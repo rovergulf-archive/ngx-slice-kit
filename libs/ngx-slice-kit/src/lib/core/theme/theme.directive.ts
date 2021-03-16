@@ -53,7 +53,8 @@ export class ThemeDirective implements OnInit, OnDestroy {
         // project properties onto the element
         styles.innerHTML += `body {`;
         for (const prop of theme.props()) {
-            styles.innerHTML += (`${prop.name}: ${prop.value};`);
+            const name = prop.name.indexOf('-rgb') > 2 ? prop.name.substring(0, prop.name.length - 4) : prop.name;
+            styles.innerHTML += (`${name}: ${prop.rgba};`);
         }
         styles.innerHTML += `}`;
         this.renderer.setAttribute(styles, 'sdk-theme', theme.name);
@@ -72,7 +73,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
         this.sub = this.themeService.currentThemeObservable
             .subscribe((theme: Theme) => this.updateTheme(theme));
 
-        if (this.theme && this.theme.length > 0) {
+        if (this.theme && this.theme?.length > 0) {
             this.themeService.setTheme(this.theme);
         } else {
             this.updateTheme(this.themeService.currentTheme);
