@@ -30,11 +30,11 @@ import { LayoutControlService } from '../../core/layout-control/layout-control.s
     encapsulation: ViewEncapsulation.None,
 })
 export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, AfterContentInit {
+    private req: boolean;
 
     @Input() type: string = 'text';
     @Input() autocomplete: string = 'off';
     @Input() placeholder: string = 'Empty placeholder';
-    @Input() required: boolean = false;
     @Input() tabindex: number = undefined;
     // @Input() valueMask: string = undefined;
     @Input() autofocus: boolean = false;
@@ -46,6 +46,14 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
     @Input() size: 'wide' | 'full-width';
     @Input() caption: string;
     @Input() label: string;
+
+    @Input() set required(val: any) {
+        this.req = val === '' || val === true;
+    }
+
+    get required(): any {
+        return this.req;
+    }
 
     @Input() @HostBinding('class.sdk-input--warn') error: string = undefined;
     @Input() @HostBinding('class.disabled') disabled: boolean = false;
@@ -91,16 +99,16 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
         this.onBlur.emit(event);
     }
 
-    get iconUrl() {
+    get iconUrl(): string {
         return this.icon ? `url(${this.icon})` : '';
     }
 
-    focus() {
+    focus(): void {
         this.focused = true;
         this.inputElementRef.nativeElement.focus();
     }
 
-    blur() {
+    blur(): void {
         this.focused = false;
         this.inputElementRef.nativeElement.blur();
     }
@@ -153,7 +161,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
         }
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         if (this.autofocus && !this.disabled) {
             this.inputElementRef.nativeElement.focus();
         }
