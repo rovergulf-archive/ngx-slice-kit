@@ -1,3 +1,3 @@
-<svg class="pause" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 32 32">
+<svg class="pause" height="24px" viewBox="0 0 32 32" width="24px" xmlns="http://www.w3.org/2000/svg">
     <path d="M4 4h10v24h-10zM18 4h10v24h-10z"></path>
 </svg>

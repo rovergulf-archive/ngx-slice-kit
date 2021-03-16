@@ -5,13 +5,13 @@ import { LoadingComponent } from './loading.component';
     selector: '[sdkLoading]'
 })
 export class LoadingDirective {
+    @Input() loader: string;
+
     constructor(
         private vcRef: ViewContainerRef,
         private resolver: ComponentFactoryResolver
     ) {
     }
-
-    @Input() loader: string;
 
     @Input('sdkLoading') set ngIf(val: any) {
         if (!val) {
