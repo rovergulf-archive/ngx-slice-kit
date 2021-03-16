@@ -11,10 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Changed
+ngx-slice-kit:
+- Formatted core module
 
 ### Fixed
+ngx-slice-kit:
+- removed tooltip component unexpected debug log
 
 ### Removed
+
 
 ## 15 Mar 2021
 
@@ -24,12 +29,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `pagination.component` tests
 
 ### Fixed
-`dots.component` fix dots generation moment and click handler
+- `dots.component` fix dots generation moment and click handler
+
 
 ## 14 Mar 2021
 
 ### Added
 - `tooltip.directive` tests
+
 
 ## 11 Mar 2021
 
@@ -38,11 +45,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `dialog.component` tests
 - `navigation-scroll.directive` tests
 
+
 ## 10 Mar 2021
 
 ### Added
 - `popup.service` tests
 - `popup.component` tests
+
 
 ## 9 Mar 2021
 
@@ -51,23 +60,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `alerts.component` tests
 - `alert.service` tests
 
+
 ## 05 Mar 2021
 
 ### Added
 - `tab` component tests
 - `tabs` component tests
 
+
 ## 04 Mar 2021
 
 ### Added
 - `nav-tabs` component tests
 
-### Changed
-
 ### Fixed
 Fix scroll issue in `tabs` component
-
-### Removed
 
 
 ## Released [v0.7.0]
@@ -82,8 +89,6 @@ Fix scroll issue in `tabs` component
 
 ## 01 Mar 2021
 
-### Added
-
 ### Changed
 - nav-tabs: replace `div` tags to `a` tags
 - nav-tabs: replace navigation by `click handler` to `routerLink`
@@ -91,7 +96,6 @@ Fix scroll issue in `tabs` component
 ### Fixed
 - nav-tabs: fixed bug when navigation to route with tab from tab outlet was incorrect
 
-### Removed
 
 ## Released [v0.6.5]
 
