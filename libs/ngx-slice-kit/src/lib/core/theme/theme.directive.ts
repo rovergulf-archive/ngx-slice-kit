@@ -54,10 +54,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
         styles.innerHTML += `body {`;
         for (const prop of theme.props()) {
             if (!!prop.rgba) {
-                styles.innerHTML += (`${prop.name}: ${prop.rgba};`);
-                if (!!prop.hex) {
-                    styles.innerHTML += (`${prop.name}-hex: ${prop.hex};`);
-                }
+                styles.innerHTML += (`${prop.prop}: ${prop.rgba};`);
             }
         }
         styles.innerHTML += `}`;

@@ -1,7 +1,18 @@
-@import 'defaults';
-@import 'animations';
-@import 'flexbox';
-@import 'grid';
+@use 'defaults';
+@use 'animations';
+@use 'flexbox';
+
+/**
+ * slice-kit
+ */
+
+/**
+ * slice kit colors
+ */
+[class$='--primary'] {
+    color: var(--background);
+    background: var(--primary-deep);
+}
 
 /**
  * on hover opacity
@@ -191,7 +202,9 @@
     margin-top: 4px;
 }
 
-//Scrollbar
+/**
+ * Scrollbar
+ */
 
 .sdk-custom-scroll {
     *::-webkit-scrollbar {
