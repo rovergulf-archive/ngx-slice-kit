@@ -28,9 +28,9 @@ export { CoreModule } from './lib/core/core.module';
 export { I17rService } from './lib/core/i17r/i17r.service';
 export { I17rPipe } from './lib/core/i17r/i17r.pipe';
 export { LayoutControlService } from './lib/core/layout-control/layout-control.service';
-export { LoadingComponent } from './lib/core/loading/loading.component';
-export { LoadingDirective } from './lib/core/loading/loading.directive';
-export { LoadingService } from './lib/core/loading/loading.service';
+export { LoadingComponent } from './lib/layout/loading/loading.component';
+export { LoadingDirective } from './lib/layout/loading/loading.directive';
+export { LoadingService } from './lib/layout/loading/loading.service';
 export { MarkdownComponent } from './lib/core/markdown/markdown.component';
 export { MarkdownDirective } from './lib/core/markdown/markdown.directive';
 export { MarkdownPipe } from './lib/core/markdown/markdown.pipe';
@@ -42,6 +42,9 @@ export { NavigationScrollDirective } from './lib/core/directives/navigation-scro
  */
 export { GLYPHS } from './lib/buttons/icon/icon.glyphs';
 export { ButtonsModule } from './lib/buttons/buttons.module';
+/**
+ * modules
+ */
 // export {BadgesModule} from './lib/buttons/badges/badges.module';
 export { ButtonModule } from './lib/buttons/button/button.module';
 export { ButtonGroupModule } from './lib/buttons/button-group/button-group.module';
@@ -49,6 +52,9 @@ export { ButtonGroupModule } from './lib/buttons/button-group/button-group.modul
 export { IconModule } from './lib/buttons/icon/icon.module';
 // export {RippleModule} from './lib/buttons/ripple/ripple.module';
 // export {StepperModule} from './lib/buttons/stepper/stepper.module';
+/**
+ * components
+ */
 // export {BadgesComponent} from './lib/buttons/badges/badges.component';
 export { ButtonComponent } from './lib/buttons/button/button.component';
 export { ButtonGroupComponent } from './lib/buttons/button-group/button-group.component';
@@ -61,6 +67,13 @@ export { IconComponent } from './lib/buttons/icon/icon.component';
  * Cards module
  */
 export { CardsModule } from './lib/cards/cards.module';
+/**
+ * modules
+ */
+// TBD
+/**
+ * components
+ */
 // export {CardComponent} from './lib/cards/card/card.component';
 // export {DashboardCardComponent} from './lib/cards/dashboard-card/dashboard-card.component';
 // export {ShoppingCardComponent} from './lib/cards/shopping-card/shopping-card.component';
@@ -71,6 +84,13 @@ export { CardsModule } from './lib/cards/cards.module';
  * Dropdowns module
  */
 export { DropdownsModule } from './lib/dropdowns/dropdowns.module';
+/**
+ * modules
+ */
+// TBD
+/**
+ * components
+ */
 export { DropdownComponent } from './lib/dropdowns/dropdown.component';
 export { DropdownOptions } from './lib/dropdowns/dropdown.model';
 export { OptionModel } from './lib/dropdowns/dropdown-option.model';
@@ -84,8 +104,21 @@ export { SelectComponent } from './lib/dropdowns/select/select.component';
  * Forms module
  */
 export { InputsModule } from './lib/inputs/inputs.module';
+/**
+ * modules
+ */
+export { CheckboxModule } from './lib/inputs/checkbox/checkbox.module';
+// export { DatepickerModule } from './lib/inputs/datepicker/datepicker.module';
+export { InputModule } from './lib/inputs/input/input.module';
+export { RadioModule } from './lib/inputs/radio/radio.module';
+export { TextareaModule } from './lib/inputs/textarea/textarea.module';
+export { ToggleModule } from './lib/inputs/toggle/toggle.module';
+// export {WysiwygModule} from './lib/inputs/wysiwyg/wysiwyg.module';
+/**
+ * components
+ */
 export { CheckboxComponent } from './lib/inputs/checkbox/checkbox.component';
-export { DatepickerComponent } from './lib/inputs/datepicker/datepicker.component';
+// export { DatepickerComponent } from './lib/inputs/datepicker/datepicker.component';
 export { InputComponent } from './lib/inputs/input/input.component';
 export { RadioComponent } from './lib/inputs/radio/radio.component';
 export { TextareaComponent } from './lib/inputs/textarea/textarea.component';
@@ -96,6 +129,12 @@ export { ToggleComponent } from './lib/inputs/toggle/toggle.component';
  * Layout module
  */
 export { LayoutModule } from './lib/layout/layout.module';
+/**
+ * modules
+ */
+/**
+ * components
+ */
 // export {AccordionComponent} from './lib/layout/accordion/accordion.component';
 // export {BreadcrumbsComponent} from './lib/layout/breadcrumbs/breadcrumbs.component';
 // export {CalendarComponent} from './lib/layout/calendar/calendar.component';
@@ -115,6 +154,12 @@ export { TableComponent } from './lib/layout/table/table.component';
  * Media module
  */
 export { MediaModule } from './lib/media/media.module';
+/**
+ * modules
+ */
+/**
+ * components
+ */
 // export {AudioPlayerComponent} from './lib/media/audio-player/audio-player.component';
 // export {VideoPlayerComponent} from './lib/media/video-player/video-player.component';
 // export {FileComponent} from './lib/media/file/file.component';
@@ -123,6 +168,12 @@ export { MediaModule } from './lib/media/media.module';
  * Overlay module
  */
 export { OverlayModule } from './lib/overlay/overlay.module';
+/**
+ * modules
+ */
+/**
+ * components
+ */
 export { OverlayComponent } from './lib/overlay/overlay.component';
 export { OverlayDirective } from './lib/overlay/overlay.directive';
 export { OverlayService } from './lib/overlay/overlay.service';
@@ -134,6 +185,12 @@ export {
  * Modals module
  */
 export { ModalsModule } from './lib/modals/modals.module';
+/**
+ * modules
+ */
+/**
+ * components
+ */
 export { AlertComponent } from './lib/modals/alert/alert.component';
 export { AlertsComponent } from './lib/modals/alert/alerts.component';
 export { AlertService } from './lib/modals/alert/alert.service';
@@ -151,6 +208,12 @@ export { TooltipDirective } from './lib/modals/tooltip/tooltip.directive';
  * Navigation module
  */
 export { NavigationModule } from './lib/navigation/navigation.module';
+/**
+ * modules
+ */
+/**
+ * components
+ */
 export { NavMenuComponent } from './lib/navigation/nav-menu/nav-menu.component';
 export { NavMenuItemComponent } from './lib/navigation/nav-menu/nav-menu-item/nav-menu-item.component';
 export { NavMenuGroupComponent } from './lib/navigation/nav-menu/nav-menu-group/nav-menu-group.component';

@@ -2,35 +2,34 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/cor
 import { CommonModule } from '@angular/common';
 
 import { ButtonsModule } from '../buttons/buttons.module';
+import { CheckboxModule } from './checkbox/checkbox.module';
+// import { DatepickerModule } from './datepicker/datepicker.module';
+import { InputModule } from './input/input.module';
+import { RadioModule } from './radio/radio.module';
+import { TextareaModule } from './textarea/textarea.module';
+import { ToggleModule } from './toggle/toggle.module';
+// import { WysiwygModule } from './wysiwyg/wysiwyg.module';
 
-import { CheckboxComponent } from './checkbox/checkbox.component';
-import { DatepickerComponent } from './datepicker/datepicker.component';
-import { InputComponent } from './input/input.component';
-import { RadioComponent } from './radio/radio.component';
-import { TextareaComponent } from './textarea/textarea.component';
-import { ToggleComponent } from './toggle/toggle.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import {WysiwygComponent} from './wysiwyg/wysiwyg.component';
-
-const moduleDeclarations = [
-    CheckboxComponent,
-    DatepickerComponent,
-    InputComponent,
-    RadioComponent,
-    TextareaComponent,
-    ToggleComponent,
-    // WysiwygComponent,
+const modules = [
+    CheckboxModule,
+    // DatepickerModule,
+    InputModule,
+    RadioModule,
+    TextareaModule,
+    ToggleModule,
+    // WysiwygModule,
 ];
 
 @NgModule({
     imports: [
         CommonModule,
         ButtonsModule,
-        FormsModule,
-        ReactiveFormsModule
+        ...modules,
     ],
-    declarations: moduleDeclarations,
-    exports: moduleDeclarations,
+    declarations: [],
+    exports: [
+        ...modules,
+    ],
     providers: [],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,
