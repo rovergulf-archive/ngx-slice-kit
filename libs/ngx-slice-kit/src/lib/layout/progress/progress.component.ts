@@ -28,7 +28,7 @@ export class ProgressComponent implements OnInit {
         }
     }
 
-    get value() {
+    get value(): number {
         return this.val;
     }
 
@@ -37,7 +37,7 @@ export class ProgressComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }
