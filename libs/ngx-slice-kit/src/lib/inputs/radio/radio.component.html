@@ -8,7 +8,7 @@
         <div class="sdk-radio__indicator" [class.sdk-radio__indicator--selected]='item.value == value'>
             <div class="sdk-radio__indicator-inner"></div>
         </div>
-        {{item.name}}
+        <span class="sdk-radio__text">{{item.name}}</span>
     </div>
 </div>
 <div class="sdk-radio__error" *ngIf="error">
