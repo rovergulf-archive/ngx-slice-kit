@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.8.0
 
-## 16 Mar 2021
+## 17 Mar 2021
 
 ### Added
 
@@ -15,6 +15,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### Removed
+
+## 16 Mar 2021
+
+### Added
+`progress.component` tests.
+
+### Fixed
+- Now you can add attr `required` without value (like false/true) to set it as true for `autocomplete`/`select`/`input`/`textarea` components.
+- `Checkbox` and `Radio` components do not have margin anymore if they do not contain text.
 
 ## 15 Mar 2021
 
