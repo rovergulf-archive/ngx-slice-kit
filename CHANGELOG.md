@@ -18,6 +18,9 @@ ngx-slice-kit:
 ngx-slice-kit:
 - removed tooltip component unexpected debug log
 
+web:
+- closed #73
+
 ### Removed
 
 
