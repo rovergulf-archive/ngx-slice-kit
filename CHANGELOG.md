@@ -13,10 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 ngx-slice-kit:
 - Formatted core module
+  `progress.component` tests.
 
 ### Fixed
 ngx-slice-kit:
 - removed tooltip component unexpected debug log
+- Now you can add attr `required` without value (like false/true) to set it as true for `autocomplete`/`select`/`input`/`textarea` components.
+- `Checkbox` and `Radio` components do not have margin anymore if they do not contain text.
 
 web:
 - closed #73

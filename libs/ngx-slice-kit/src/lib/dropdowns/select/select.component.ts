@@ -32,11 +32,19 @@ import { OptionsService } from '../options.service';
     ]
 })
 export class SelectComponent implements ControlValueAccessor, OnInit, OnDestroy {
+    private req: boolean;
+
+    @Input() set required(val: any) {
+        this.req = val === '' || val === true;
+    }
+
+    get required(): any {
+        return this.req;
+    }
 
     @ViewChild('select', {static: true}) selectElem: ElementRef;
 
     @Input() options: OptionModel[] = [];
-    @Input() required: boolean;
     @Input() label = '';
     @Input() placeholder = 'Select option';
     @Input() disabled: boolean;
