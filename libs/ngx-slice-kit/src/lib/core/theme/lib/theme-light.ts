@@ -1,4 +1,4 @@
-import { Theme } from '../theme.interface';
+import { Theme } from '../theme.model';
 
 export const themeLight: Theme = {
     name: 'light',
@@ -59,8 +59,8 @@ export const themeLight: Theme = {
         /**
          * those defaults needed to correct contrast a11y
          */
-        'background': 'var(--background)',
-        'color': 'var(--regular-text)',
+        background: 'var(--background)',
+        color: 'var(--regular-text)',
     }
 };
 

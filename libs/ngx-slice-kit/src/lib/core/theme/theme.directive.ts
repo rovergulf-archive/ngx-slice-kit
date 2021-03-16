@@ -2,7 +2,7 @@ import { Directive, ElementRef, Inject, Input, OnDestroy, OnInit, Renderer2 } fr
 import { DOCUMENT } from '@angular/common';
 import { Subscription } from 'rxjs';
 
-import { Theme } from './theme.interface';
+import { Theme } from './theme.model';
 import { ThemeService } from './theme.service';
 import { LayoutControlService } from '../layout-control/layout-control.service';
 
@@ -52,10 +52,8 @@ export class ThemeDirective implements OnInit, OnDestroy {
 
         // project properties onto the element
         styles.innerHTML += `body {`;
-        for (const key in theme.properties) {
-            if (theme.properties.hasOwnProperty(key)) {
-                styles.innerHTML += (`${key}: ${theme.properties[key]};`);
-            }
+        for (const prop of theme.props()) {
+            styles.innerHTML += (`${prop.name}: ${prop.value};`);
         }
         styles.innerHTML += `}`;
         this.renderer.setAttribute(styles, 'sdk-theme', theme.name);
