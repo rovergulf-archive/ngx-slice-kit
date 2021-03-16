@@ -35,7 +35,6 @@
     border: 1px solid var(--regular-disabled);
     background-color: var(--regular-disabled);
     border-radius: 50%;
-    margin-right: 10px;
     transition: background-image .2s;
 
     &.sdk-radio__indicator--selected {
@@ -72,6 +71,10 @@
 
 .sdk-radio__label {
     color: var(--regular);
+}
+
+.sdk-radio__text {
+    margin-left: 8px;
 }
 
 .sdk-radio__label--small {
