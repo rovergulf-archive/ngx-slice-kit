@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DARK_THEME } from './symbols';
 
-import { Theme } from './theme.interface';
+import { Theme } from './theme.model';
 import { themeLight } from './lib/theme-light';
 import { themeDark } from './lib/theme-dark';
 
@@ -89,7 +89,7 @@ export class ThemeService {
      *
      * @param propName is required
      */
-    getProperty(propName: string) {
+    getProperty(propName: string): string {
         const theme = this.currentTheme;
         if (theme.hasOwnProperty(propName)) {
             return this.currentTheme.properties[propName];
@@ -98,11 +98,19 @@ export class ThemeService {
         }
     }
 
-    registerTheme(theme: Theme) {
-        this.themes.push(theme);
+    /**
+     * Registers new theme in service memory
+     * @param theme contains new Theme references
+     * cannot be named as `light`, `dark` or any default themes
+     */
+    registerTheme(theme: Theme): void {
+        if (!!this.themes.find(t => t.name === theme.name)) {
+            theme.name = `custom_${theme.name}_${this.themes.length + 1}`;
+        }
+        this.themes.push(new Theme(theme));
     }
 
-    updateTheme(name: string, properties: { [key: string]: string; }) {
+    updateTheme(name: string, properties: { [key: string]: string; }): void {
         const theme = this.findTheme(name);
         theme.properties = {
             ...theme.properties,
@@ -113,7 +121,31 @@ export class ThemeService {
         }
     }
 
-    rgbaToRgb(rgba: string, background: string = '#fff') {
+    /**
+     * Converts rgb or rgba color to hex value
+     *
+     * @param src may contain, for example: rgb(255, 155, 10) or rgba(255, 55, 25, 0.5)
+     */
+    rgbToHex(src: string): string {
+        const sep = src.indexOf(',') > -1 ? ',' : ' ';
+        // Turn "rgb(r,g,b)" into [r,g,b]
+        const rgb = src.substr(4).split(')')[0].split(sep);
+
+        let r = (+rgb[0]).toString(16);
+        let g = (+rgb[1]).toString(16);
+        let b = (+rgb[2]).toString(16);
+
+        if (r.length === 1) {
+            r = '0' + r;
+        }
+        if (g.length === 1) {
+            g = '0' + g;
+        }
+        if (b.length === 1) {
+            b = '0' + b;
+        }
+
+        return '#' + r + g + b;
     }
 
 }

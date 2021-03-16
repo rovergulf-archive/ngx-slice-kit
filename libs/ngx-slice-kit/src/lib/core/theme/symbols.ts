@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import { Theme } from './theme.interface';
+import { Theme } from './theme.model';
 
 export const THEMES = new InjectionToken('THEMES');
 export const ACTIVE_THEME = new InjectionToken('ACTIVE_THEME');
@@ -9,7 +9,7 @@ export interface ThemeOptions {
     active: string;
 }
 
-export const THEME_STORAGE_NAME = 'sdk_theme';
+export const THEME_STORAGE_NAME = '_sdk_theme';
 export const LIGHT_THEME = 'light';
 export const DARK_THEME = 'dark';
 export const GREEN_THEME = 'green';
