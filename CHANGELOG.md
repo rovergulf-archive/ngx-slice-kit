@@ -25,6 +25,8 @@ ngx-slice-kit:
 ## 16 Mar 2021
 
 ### Added
+ngx-slice-kit:
+- Now you can add attr `required` without value (like false/true) to set it as true for `autocomplete`/`select`/`input`/`textarea` components.
 
 ### Changed
 ngx-slice-kit:
@@ -36,7 +38,6 @@ ngx-slice-kit:
 ### Fixed
 ngx-slice-kit:
 - removed tooltip component unexpected debug log
-- Now you can add attr `required` without value (like false/true) to set it as true for `autocomplete`/`select`/`input`/`textarea` components.
 - `Checkbox` and `Radio` components do not have margin anymore if they do not contain text.
 
 web:
