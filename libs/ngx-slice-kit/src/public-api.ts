@@ -18,6 +18,7 @@ export { SliceKitModule } from './lib/slice-kit.module';
 export { ThemeModule } from './lib/core/theme/theme.module';
 export { ThemeService } from './lib/core/theme/theme.service';
 export { ThemeDirective } from './lib/core/theme/theme.directive';
+export { ThemeBaseColors, ThemeColors } from './lib/core/theme/theme.model';
 export { themeDark } from './lib/core/theme/lib/theme-dark';
 export { themeLight } from './lib/core/theme/lib/theme-light';
 
@@ -146,6 +147,7 @@ export { DividerModule } from './lib/layout/divider/divider.module';
 export { DotsModule } from './lib/layout/dots/dots.module';
 // export {DragNDropModule} from './lib/layout/drag-n-drop/drag-n-drop.module';
 export { ListModule } from './lib/layout/list/list.module';
+// export { LoadingModule } from './lib/layout/loading/loading.module';
 export { PaginationModule } from './lib/layout/pagination/pagination.module';
 export { ProgressModule } from './lib/layout/progress/progress.module';
 export { SliderModule } from './lib/layout/slider/slider.module';

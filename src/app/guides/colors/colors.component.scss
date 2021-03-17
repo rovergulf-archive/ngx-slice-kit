@@ -1,67 +1,65 @@
-.container {
-  .h2 {
-    margin-top: 16px;
-  }
+main {
+
 }
 
 .color {
-  border-radius: 8px;
-  height: 80px;
-  margin: 8px;
-  transition: all .3s ease;
-  border: 1px solid transparent;
+    border-radius: 8px;
+    height: 80px;
+    margin: 8px;
+    transition: all .3s ease;
+    border: 1px solid transparent;
 
-  &--basic {
-    background-color: var(--base-rgb);
+    &--basic {
+        background-color: var(--base-rgb);
 
-    h3 {
-      color: #rgba-to-rgb (rgba(var(--base-rgb), 0.4), #fff);
+        h3 {
+            color: #rgba-to-rgb (rgba(var(--base-rgb), 0.4), #fff);
+        }
+
+        border: 1px solid var(--regular);
     }
 
-    border: 1px solid var(--regular);
-  }
+    &--primary {
+        background-color: var(--primary);
 
-  &--primary {
-    background-color: var(--primary);
+        h3 {
+            color: var(--primary-text);
+        }
 
-    h3 {
-      color: var(--primary-text);
+        &:hover {
+            background-color: var(--primary-hover);
+        }
     }
 
-    &:hover {
-      background-color: var(--primary-hover);
+    &--regular {
+        background-color: var(--regular);
+
+        h3 {
+            color: var(--regular-text);
+        }
     }
-  }
 
-  &--regular {
-    background-color: var(--regular);
+    &--accent {
+        background-color: var(--accent);
 
-    h3 {
-      color: var(--regular-text);
+        h3 {
+            color: var(--accent-text);
+        }
     }
-  }
 
-  &--accent {
-    background-color: var(--accent);
+    &--success {
+        background-color: var(--success);
 
-    h3 {
-      color: var(--accent-text);
+        h3 {
+            color: var(--success-text);
+        }
     }
-  }
 
-  &--success {
-    background-color: var(--success);
+    &--warn {
+        background-color: var(--warn);
 
-    h3 {
-      color: var(--success-text);
+        h3 {
+            color: var(--warn-text);
+        }
     }
-  }
-
-  &--warn {
-    background-color: var(--warn);
-
-    h3 {
-      color: var(--warn-text);
-    }
-  }
 }

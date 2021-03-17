@@ -31,7 +31,7 @@ const modules = [
     DotsModule,
     // DragNDropModule,
     ListModule,
-    LoadingModule,
+    // LoadingModule,
     PaginationModule,
     ProgressModule,
     SliderModule,

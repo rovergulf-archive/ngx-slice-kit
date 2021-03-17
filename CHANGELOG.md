@@ -9,10 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 17 Mar 2021
 
 ### Added
+ngx-slice-kit:
+- background and color default body variables
 
 ### Changed
 
 ### Fixed
+ngx-slice-kit:
+- public api imports to prevent errors like:
+  `Unsupported private class LoadingModule. This class is visible to consumers via SliceKitModule -> LayoutModule -> LoadingModule, but is not exported from the top-level library entrypoint.`
 
 ### Removed
 
@@ -20,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 16 Mar 2021
 
 ### Added
+ngx-slice-kit:
+- Now you can add attr `required` without value (like false/true) to set it as true for `autocomplete`/`select`/`input`/`textarea` components.
 
 ### Changed
 ngx-slice-kit:
@@ -31,7 +38,6 @@ ngx-slice-kit:
 ### Fixed
 ngx-slice-kit:
 - removed tooltip component unexpected debug log
-- Now you can add attr `required` without value (like false/true) to set it as true for `autocomplete`/`select`/`input`/`textarea` components.
 - `Checkbox` and `Radio` components do not have margin anymore if they do not contain text.
 
 web:

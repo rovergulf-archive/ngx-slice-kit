@@ -1,8 +1,9 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+// internals
+import { IconModule } from '../../buttons/icon/icon.module';
+// pagination
 import { PaginationComponent } from './pagination.component';
-
-
 
 @NgModule({
     declarations: [
@@ -12,7 +13,8 @@ import { PaginationComponent } from './pagination.component';
         PaginationComponent,
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        IconModule
     ],
     providers: [],
     schemas: [
@@ -20,4 +22,5 @@ import { PaginationComponent } from './pagination.component';
         NO_ERRORS_SCHEMA,
     ]
 })
-export class PaginationModule { }
+export class PaginationModule {
+}

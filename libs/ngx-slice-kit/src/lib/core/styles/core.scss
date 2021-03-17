@@ -2,6 +2,7 @@
 @import 'defaults';
 @import 'animations';
 @import 'flexbox';
+@import 'typography';
 
 $levels: 'rgb', 'hover', 'deep', 'active', 'disabled', 'smooth';
 $textLevels: 'text', 'placeholder';
@@ -17,48 +18,74 @@ $baseColors: 'base', 'background';
     background: rgba($color, $opacity);
 }
 
+@mixin disabled-state() {
+    &.disabled, &[disabled], &--disabled {
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.5;
+    }
+}
+
 /**
  * slice-kit colors
  */
 
 body {
-    color: var(--base-a100);
+    color: var(--base-a95);
     background-color: var(--background-a100);
+    --color: var(--base-a95);
+    --background: var(--background-a100);
+    --regular: var(--regular-a95);
+    --primary: var(--primary-a95);
+    --success: var(--success-a95);
+    --accent: var(--accent-a95);
+    --warn: var(--warn-a95);
+}
 
-    @each $color in $colors {
-        .sdk-#{$color}-text {
-            color: var(--#{$color}-a80);
+@each $color in $colors {
+    .sdk-#{$color}-color {
+        color: var(--#{$color}-rgb);
 
-            &:hover {
-                color: var(--#{$color}-a100);
-            }
+        &:hover {
+            color: var(--#{$color}-hover);
         }
 
-        .sdk-#{$color}-background {
-            background-color: var(--#{$color}-a80);
-            color: var(--base-a80);
-
-            &:hover {
-                background-color: var(--#{$color}-a100);
-                color: var(--base-a100);
-            }
-
-            &.disabled, &[disabled] {
-                //background-color: var(--#{$color}-a40);
-                //color: var(--#{$color}-a40);
-                pointer-events: none;
-                cursor: default;
-                opacity: 0.5;
-            }
+        &.active, &--active {
+            color: var(--#{$color}-active);
         }
 
-        .sdk-#{$color}-border {
-            border-color: var(--#{$color}-a80);
+        @include disabled-state;
+    }
 
-            &:hover {
-                border-color: var(--#{$color}-a100);
-            }
+    .sdk-#{$color}-background {
+        background-color: var(--#{$color}-rgb);
+        color: var(--#{$color}-rgb-text);
+
+        &:hover {
+            background-color: var(--#{$color}-hover);
+            color: var(--#{$color}-hover-text);
         }
+
+        &.active, &--active {
+            background-color: var(--#{$color}-deep);
+            color: var(--#{$color}-deep-text);
+        }
+
+        @include disabled-state;
+    }
+
+    .sdk-#{$color}-border {
+        border-color: var(--#{$color}-rgb);
+
+        &:hover {
+            border-color: var(--#{$color}-hover);
+        }
+
+        &.active, &--active {
+            border-color: var(--#{$color}-hover);
+        }
+
+        @include disabled-state;
     }
 }
 
@@ -74,9 +101,7 @@ body {
     .on-hover-opacity:hover {
         opacity: 0.75;
 
-        &[disabled], &.disabled {
-            opacity: 0.5 !important;
-        }
+        @include disabled-state;
     }
 }
 

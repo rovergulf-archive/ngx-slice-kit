@@ -6,6 +6,9 @@ const defaultSuccessRgb = `39, 174, 96`; // `39, 174, 96`;
 const defaultAccentRgb = `241, 201, 79`; // `255, 168, 38`;
 const defaultWarnRgb = `211, 50, 39`; // `238, 112, 112`;
 
+export type ThemeBaseColors = 'base' | 'background';
+export type ThemeColors = 'regular' | 'primary' | 'success' | 'accent' | 'warn';
+
 export const defaultColors = {
     base: defaultBaseRgb,
     background: defaultBackgroundRgb,
@@ -24,12 +27,11 @@ export const baseColors = [
     `base`, `background`,
 ];
 
-export const rgbDepth = `rgb`;
-
 export const colors = [
     `regular`, `primary`, `success`, `accent`, `warn`,
 ];
 
+export const rgbDepth = `rgb`;
 export const emptyDepth = ``;
 
 class Depth {
@@ -48,8 +50,8 @@ export const colorsDepth = {
 };
 
 export const textDepth = {
-    placeholder: {color: 'background', alpha: 30, background: 'background'},
-    text: {color: 'background', alpha: 80, background: 'background'},
+    placeholder: {color: 'background', alpha: 75, background: 'base'},
+    text: {color: 'background', alpha: 5, background: 'base'},
 };
 
 const alphaLimit = 100;
@@ -76,13 +78,16 @@ export class ColorProperty {
             this.prop = `--${this.name}-a${this.alpha}`;
         }
 
-        this.hex = rgbaToHex(this.rgba);
         if (this.value) {
             const alpha = this.alpha / alphaLimit;
             const rgbaVal = `${this.value}, ${alpha}`;
 
             this.rgba = `rgba(${rgbaVal})`;
             this.rgb = `rgb(${this.value})`;
+        }
+
+        if (this.alpha === alphaLimit) {
+            this.hex = rgbaToHex(this.rgba);
         }
     }
 }
@@ -125,7 +130,6 @@ export class Theme {
 
             if (colors.indexOf(color) >= 0) {
                 results.push(...this.objectToColorProperties(colorsDepth, color));
-                results.push(...this.objectToColorProperties(textDepth, color));
             }
         }
 
@@ -140,13 +144,20 @@ export class Theme {
                 const depth = srcObj[key];
                 const value = this[color];
 
-                const prop: ColorProperty = {
+                results.push(new ColorProperty({
                     name: `${color}-${key}`,
                     alpha: depth.alpha,
                     value,
-                };
+                }));
 
-                results.push(new ColorProperty(prop));
+                const textRef = this[`${color}_text`];
+                if (textRef?.length > 0) {
+                    results.push(new ColorProperty({
+                        name: `${color}-${key}-text`,
+                        alpha: depth.alpha,
+                        value: textRef,
+                    }));
+                }
             }
         }
 

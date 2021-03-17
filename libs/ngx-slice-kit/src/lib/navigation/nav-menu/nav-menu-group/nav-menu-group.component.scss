@@ -1,3 +1,5 @@
+@import '../../../core/styles/core';
+
 .nav-menu-group__container {
     display: flex;
     flex-direction: column;
@@ -5,11 +7,11 @@
     align-items: stretch;
     justify-content: flex-start;
     transition: all .3s ease;
-    background-color: var(--background);
+    background-color: var(--background-rgb);
     //padding: 8px 20px;
 
     &.active > .nav-menu-group__toggle > .nav-menu-group__title {
-        color: var(--primary);
+        color: var(--primary-a95);
     }
 
     &.open {
@@ -58,7 +60,7 @@
 }
 
 .nav-menu-group__items .nav-menu-group__title {
-    color: rgba(var(--opposite-rgb), 0.7);
+    color: rgba(var(--background-rgb), 0.7);
 }
 
 .nav-menu-group__arrow {

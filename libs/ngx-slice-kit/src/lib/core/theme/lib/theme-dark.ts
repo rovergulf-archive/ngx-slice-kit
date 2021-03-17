@@ -9,7 +9,6 @@ export const themeDark: Theme = {
     base: defaultBaseRgb,
     background: defaultBackgroundRgb,
     regular: defaultRegularRgb,
-    regular_text: defaultRegularRgb,
     primary: defaultColors.primary,
     primary_text: defaultBaseRgb,
     success: defaultColors.success,
@@ -19,4 +18,3 @@ export const themeDark: Theme = {
     warn: defaultColors.warn,
     warn_text: defaultBaseRgb,
 };
-
