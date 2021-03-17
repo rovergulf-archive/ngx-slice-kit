@@ -1,5 +1,5 @@
 import {
-    AfterContentInit,
+    AfterContentInit, AfterViewInit,
     Component,
     ElementRef,
     EventEmitter,
@@ -29,7 +29,7 @@ import { LayoutControlService } from '../../core/layout-control/layout-control.s
     ],
     encapsulation: ViewEncapsulation.None,
 })
-export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, AfterContentInit {
+export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, AfterContentInit, AfterViewInit {
     private req: boolean;
 
     @Input() set required(val: any) {
@@ -165,6 +165,9 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
         if (this.autofocus && !this.disabled) {
             this.inputElementRef.nativeElement.focus();
         }
+    }
+
+    ngAfterViewInit() {
     }
 
     ngOnDestroy(): void {

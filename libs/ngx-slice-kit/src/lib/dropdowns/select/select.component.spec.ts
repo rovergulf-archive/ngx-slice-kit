@@ -166,8 +166,8 @@ describe('SelectComponent', () => {
             expect(component.currentValues).toBeUndefined();
         });
 
-        it('should placeholder set value by default', () => {
-            const defaultPlaceholder = 'Select option';
+        it('should placeholder set value as empty string by default', () => {
+            const defaultPlaceholder = '';
             const placeholderEl = selectEl.querySelector('.inactive');
             const placeholderElText = placeholderEl.textContent.trim();
             expect(placeholderElText).toBe(defaultPlaceholder);

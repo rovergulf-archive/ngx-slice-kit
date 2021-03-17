@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 
 import { InputComponent } from './input.component';
 import { Component } from '@angular/core';
@@ -29,14 +29,16 @@ describe('InputComponent', () => {
 
     it('should the state be small if property #small set as #true', () => {
         component.small = true;
-        const smallHeightSize = 40;
+        const smallHeightSize = 32;
         const smallFontSize = 15;
 
         fixture.detectChanges();
 
-        expect(input.querySelector('.sdk-input__input--small')).toBeTruthy();
+        const el: HTMLElement = input.querySelector('.sdk-input__input--small');
+
+        expect(el).toBeTruthy();
         expect(input.querySelector('.sdk-input__label--small')).toBeTruthy();
-        expect(input.querySelector('.sdk-input__input--small').clientHeight).toEqual(smallHeightSize);
+        expect(el.offsetHeight).toEqual(smallHeightSize);
         expect(getComputedStyle(input.querySelector('.sdk-input__input--small')).fontSize).toEqual(smallFontSize + 'px');
         expect(getComputedStyle(input.querySelector('.sdk-input__label--small')).fontSize).toEqual(smallFontSize + 'px');
     });
@@ -63,7 +65,7 @@ describe('InputComponent', () => {
     });
 
     it('should placeholder will be correct if it set', () => {
-        expect(component.placeholder).toEqual('Empty placeholder', 'it should be default value if placeholder is not set');
+        expect(component.placeholder).toEqual('', 'it should be default value as empty string if placeholder is not set');
 
         const newPlaceholder = 'Some new placeholder';
         component.placeholder = newPlaceholder;
@@ -314,14 +316,19 @@ describe('InputComponent', () => {
 
     it('should autocomplete set #focused as true and add focused classes', () => {
         component.autofocus = true;
-
         fixture.detectChanges();
+        component.ngOnInit();
         component.ngAfterContentInit();
+        component.ngAfterViewInit();
         fixture.detectChanges();
+
+
+        const label: HTMLElement = input.querySelector('.sdk-input__label');
+        const wrapper: HTMLElement = input.querySelector('.sdk-input-wrap');
 
         expect(component.focused).toEqual(true, 'should be focused after #focus()');
-        expect(input.querySelector('.sdk-input__label--focused')).toBeTruthy();
-        expect(input.querySelector('.sdk-input-wrap--focused')).toBeTruthy();
+        expect(label).toHaveClass('sdk-input__label--focused');
+        expect(wrapper).toHaveClass('sdk-input-wrap--focused');
     });
 });
 

@@ -168,8 +168,8 @@ describe('AutocompleteComponent', () => {
             expect(component.currentValues).toBeUndefined();
         });
 
-        it('should placeholder set value by default', () => {
-            const defaultPlaceholder = 'Find option';
+        it('should placeholder set value as empty string by default', () => {
+            const defaultPlaceholder = '';
             const placeholderEl = autocompleteEl.querySelector('.sdk-autocomplete-input');
             const placeholderElText = placeholderEl.placeholder.trim();
             expect(placeholderElText).toBe(defaultPlaceholder);

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ButtonGroupComponent } from './button-group.component';
-import { Component } from '@angular/core';
+import {Component, DebugElement} from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
@@ -18,7 +18,8 @@ class TestGroupComponent {
 describe('ButtonGroupComponent', () => {
     let component: ButtonGroupComponent;
     let fixture: ComponentFixture<TestGroupComponent>;
-    let group: HTMLElement;
+    let groupDe: DebugElement;
+    let groupEl: HTMLElement;
     let groupContainer: HTMLElement;
 
     beforeEach(waitForAsync(() => {
@@ -31,9 +32,10 @@ describe('ButtonGroupComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestGroupComponent);
         component = fixture.debugElement.children[0].componentInstance;
-        group = fixture.debugElement.nativeElement;
-        groupContainer = group.querySelector('.sdk-button-group-container');
+        groupDe = fixture.debugElement;
+        groupEl = groupDe.nativeElement;
         fixture.detectChanges();
+        groupContainer = groupEl.querySelector('.sdk-button-group-container');
     });
 
     it('should create', () => {
@@ -98,12 +100,20 @@ describe('ButtonGroupComponent', () => {
 
         component.clicked.subscribe(e => {
             eventBody = e;
+
+            expect(eventBody.element).toEqual(expectedEventBody.element);
+            expect(eventBody.index).toEqual(expectedEventBody.index);
         });
 
         component.onClick({target: element});
-        fixture.detectChanges();
-        expect(eventBody.element).toEqual(expectedEventBody.element);
-        expect(eventBody.index).toEqual(expectedEventBody.index);
+    });
+
+    it('click on button should do not emmit event if tag name is not "BUTTON"', () => {
+        const element: HTMLElement = document.createElement('div');
+        spyOn(component.clicked, 'emit');
+
+        component.onClick({target: element});
+        expect(component.clicked.emit).not.toHaveBeenCalled();
     });
 
     it('should #removeActiveClass(el) remove class', () => {
