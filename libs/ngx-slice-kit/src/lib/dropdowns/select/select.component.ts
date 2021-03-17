@@ -46,7 +46,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit, OnDestroy 
 
     @Input() options: OptionModel[] = [];
     @Input() label = '';
-    @Input() placeholder = 'Select option';
+    @Input() placeholder = '';
     @Input() disabled: boolean;
     @Input() small: boolean = false;
     @Input() multi: boolean = false;

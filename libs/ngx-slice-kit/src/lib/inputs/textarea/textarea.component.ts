@@ -17,6 +17,7 @@ import { LayoutControlService } from '../../core/layout-control/layout-control.s
 })
 export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestroy {
     private req: boolean;
+    private res: boolean;
 
     @Input() set required(val: any) {
         this.req = val === '' || val === true;
@@ -26,13 +27,14 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
         return this.req;
     }
 
-    @Input() placeholder: string = 'Empty placeholder';
+    @Input() placeholder: string = '';
     @Input() tabindex: number = undefined;
     @Input() minHeight: number = 76;
     @Input() maxHeight: number = 280;
     @Input() small: boolean;
     @Input() label: string;
     @Input() caption: string;
+    @Input() resizable: boolean = true;
 
     @Input() @HostBinding('class.sdk-textarea--warn') error: string;
     @Input() @HostBinding('class.disabled') disabled: boolean;
@@ -57,6 +59,9 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
     }
 
     ngOnInit(): void {
+        if (this.disabled && this.resizable) {
+            this.resizable = false;
+        }
     }
 
     onFocus(): void {

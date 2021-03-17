@@ -20,10 +20,11 @@
                   [required]="required"
                   [style.height.px]="clone.clientHeight + 2"
                   [disabled]="disabled"
+                  [style.resize]="resizable ? 'both' : 'none'"
                   [style.minHeight.px]="minHeight"
                   [style.maxHeight.px]="maxHeight">
         </textarea>
-        <div class="sdk-textarea__pull-angle-wrapper">
+        <div class="sdk-textarea__pull-angle-wrapper" *ngIf="resizable">
             <div class="sdk-textarea__pull-angle">
                 <div class="sdk-textarea__pull-angle-inner"></div>
             </div>
