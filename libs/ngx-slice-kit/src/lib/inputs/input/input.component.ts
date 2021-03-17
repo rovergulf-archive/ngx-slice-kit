@@ -42,7 +42,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
 
     @Input() type: string = 'text';
     @Input() autocomplete: string = 'off';
-    @Input() placeholder: string = 'Empty placeholder';
+    @Input() placeholder: string = '';
     @Input() tabindex: number = undefined;
     // @Input() valueMask: string = undefined;
     @Input() autofocus: boolean = false;

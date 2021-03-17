@@ -26,7 +26,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
         return this.req;
     }
 
-    @Input() placeholder: string = 'Empty placeholder';
+    @Input() placeholder: string = '';
     @Input() tabindex: number = undefined;
     @Input() minHeight: number = 76;
     @Input() maxHeight: number = 280;

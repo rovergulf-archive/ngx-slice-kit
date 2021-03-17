@@ -63,7 +63,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     @ViewChild('autocomplete', {static: true}) autocomplete: ElementRef;
     @ViewChild('input', {static: true}) inputElementRef: ElementRef;
     @Input() label = '';
-    @Input() placeholder = 'Find option';
+    @Input() placeholder = '';
     @Input() disabled: boolean;
     @Input() small: boolean = false;
     @Input() multi: boolean = false;
