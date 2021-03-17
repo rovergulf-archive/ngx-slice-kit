@@ -91,7 +91,8 @@ export { DropdownsModule } from './lib/dropdowns/dropdowns.module';
 /**
  * modules
  */
-// TBD
+export { AutocompleteModule } from './lib/dropdowns/autocomplete/autocomplete.module';
+export { SelectModule } from './lib/dropdowns/select/select.module';
 /**
  * components
  */
