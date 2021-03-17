@@ -76,13 +76,16 @@ export class ColorProperty {
             this.prop = `--${this.name}-a${this.alpha}`;
         }
 
-        this.hex = rgbaToHex(this.rgba);
         if (this.value) {
             const alpha = this.alpha / alphaLimit;
             const rgbaVal = `${this.value}, ${alpha}`;
 
             this.rgba = `rgba(${rgbaVal})`;
             this.rgb = `rgb(${this.value})`;
+        }
+
+        if (this.alpha === alphaLimit) {
+            this.hex = rgbaToHex(this.rgba);
         }
     }
 }
@@ -144,16 +147,16 @@ export class Theme {
                     alpha: depth.alpha,
                     value,
                 }));
-            }
-        }
 
-        const textRef = this[`${color}_text`];
-        if (textRef?.length > 0) {
-            results.push(new ColorProperty({
-                name: `${color}-text`,
-                alpha: 95,
-                value: textRef,
-            }));
+                const textRef = this[`${color}_text`];
+                if (textRef?.length > 0) {
+                    results.push(new ColorProperty({
+                        name: `${color}-${key}-text`,
+                        alpha: depth.alpha,
+                        value: textRef,
+                    }));
+                }
+            }
         }
 
         return results;

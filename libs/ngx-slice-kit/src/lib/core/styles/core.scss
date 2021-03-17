@@ -34,30 +34,36 @@ body {
     --warn: var(--warn-a95);
 }
 
+@mixin disabled-state() {
+    &.disabled, &[disabled] {
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.5;
+    }
+}
+
+
 @each $color in $colors {
-    .sdk-#{$color}-text {
+    .sdk-#{$color}-color {
         color: var(--#{$color}-rgb);
 
         &:hover {
             color: var(--#{$color}-hover);
         }
+
+        @include disabled-state;
     }
 
     .sdk-#{$color}-background {
         background-color: var(--#{$color}-rgb);
-        color: var(--#{$color}-text);
+        color: var(--#{$color}-rgb-text);
 
         &:hover {
             background-color: var(--#{$color}-hover);
+            color: var(--#{$color}-hover-text);
         }
 
-        &.disabled, &[disabled] {
-            //background-color: var(--#{$color}-a40);
-            //color: var(--#{$color}-a40);
-            pointer-events: none;
-            cursor: default;
-            opacity: 0.5;
-        }
+        @include disabled-state;
     }
 
     .sdk-#{$color}-border {
@@ -66,6 +72,8 @@ body {
         &:hover {
             border-color: var(--#{$color}-hover);
         }
+
+        @include disabled-state;
     }
 }
 

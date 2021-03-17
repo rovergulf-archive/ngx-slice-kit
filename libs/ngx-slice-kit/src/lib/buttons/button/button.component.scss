@@ -89,7 +89,6 @@ button.sdk-button, a.sdk-button {
         &--#{$color} {
             &.sdk-round-button, &.sdk-raised-button, &.sdk-flat-button {
                 @extend .sdk-#{$color}-background;
-                color: var(--#{$color}-text);
             }
 
             &.sdk-stroked-button {
@@ -97,7 +96,7 @@ button.sdk-button, a.sdk-button {
             }
 
             &.sdk-stroked-button, &.sdk-button {
-                @extend .sdk-#{$color}-text;
+                @extend .sdk-#{$color}-color;
             }
         }
     }
