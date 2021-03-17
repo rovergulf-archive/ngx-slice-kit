@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { I17rPipe } from './i17r/i17r.pipe';
-import { LoadingComponent } from './loading/loading.component';
-import { LoadingDirective } from './loading/loading.directive';
 import { MarkdownComponent } from './markdown/markdown.component';
 import { MarkdownDirective } from './markdown/markdown.directive';
 import { MarkdownPipe } from './markdown/markdown.pipe';
@@ -12,8 +10,6 @@ import { NavigationScrollDirective } from './directives/navigation-scroll.direct
 
 const moduleDeclarations = [
     I17rPipe,
-    LoadingComponent,
-    LoadingDirective,
     MarkdownComponent,
     MarkdownDirective,
     MarkdownPipe,

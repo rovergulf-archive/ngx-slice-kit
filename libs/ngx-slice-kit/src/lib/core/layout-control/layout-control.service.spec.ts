@@ -1,8 +1,7 @@
-import {fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {LayoutControlService} from './layout-control.service';
-import {DropdownService} from '../../dropdowns/dropdown.service';
-import {PLATFORM_ID} from '@angular/core';
-import {getSupportedInputTypes, supportsPassiveEventListeners, supportsScrollBehavior} from '@angular/cdk/platform';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { LayoutControlService } from './layout-control.service';
+import { PLATFORM_ID } from '@angular/core';
+import { getSupportedInputTypes, supportsPassiveEventListeners, supportsScrollBehavior } from '@angular/cdk/platform';
 
 describe('LayoutControlService', () => {
     let service: LayoutControlService;

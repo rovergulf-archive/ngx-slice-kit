@@ -107,7 +107,6 @@ export class TooltipDirective implements OnInit {
                 hostSize: hostPos.height,
                 tooltipSize: tooltipHeight
             };
-            console.log(options, this.offset, this.checkOversize(options, 'height', false), '222');
 
             left = hostPos.left + (hostPos.width - tooltipPos.width) / 2;
             if (this.checkOversize(options, 'height', false)) {

@@ -16,14 +16,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+
 ## 16 Mar 2021
 
 ### Added
-`progress.component` tests.
+
+### Changed
+ngx-slice-kit:
+- Formatted core module
+- `progress.component` tests.
+- closed #34
+- closed #31
 
 ### Fixed
+ngx-slice-kit:
+- removed tooltip component unexpected debug log
 - Now you can add attr `required` without value (like false/true) to set it as true for `autocomplete`/`select`/`input`/`textarea` components.
 - `Checkbox` and `Radio` components do not have margin anymore if they do not contain text.
+
+web:
+- closed #73
+
+### Removed
+
 
 ## 15 Mar 2021
 
@@ -33,12 +48,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `pagination.component` tests
 
 ### Fixed
-`dots.component` fix dots generation moment and click handler
+- `dots.component` fix dots generation moment and click handler
+
 
 ## 14 Mar 2021
 
 ### Added
 - `tooltip.directive` tests
+
 
 ## 11 Mar 2021
 
@@ -47,11 +64,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `dialog.component` tests
 - `navigation-scroll.directive` tests
 
+
 ## 10 Mar 2021
 
 ### Added
 - `popup.service` tests
 - `popup.component` tests
+
 
 ## 9 Mar 2021
 
@@ -60,23 +79,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `alerts.component` tests
 - `alert.service` tests
 
+
 ## 05 Mar 2021
 
 ### Added
 - `tab` component tests
 - `tabs` component tests
 
+
 ## 04 Mar 2021
 
 ### Added
 - `nav-tabs` component tests
 
-### Changed
-
 ### Fixed
 Fix scroll issue in `tabs` component
-
-### Removed
 
 
 ## Released [v0.7.0]
@@ -91,8 +108,6 @@ Fix scroll issue in `tabs` component
 
 ## 01 Mar 2021
 
-### Added
-
 ### Changed
 - nav-tabs: replace `div` tags to `a` tags
 - nav-tabs: replace navigation by `click handler` to `routerLink`
@@ -100,7 +115,6 @@ Fix scroll issue in `tabs` component
 ### Fixed
 - nav-tabs: fixed bug when navigation to route with tab from tab outlet was incorrect
 
-### Removed
 
 ## Released [v0.6.5]
 
@@ -110,6 +124,7 @@ Fix scroll issue in `tabs` component
 - test #1
 
 ## 29 Jan 2021
+
 ### Added
 - popup message line breaking closes #1
 

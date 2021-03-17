@@ -1,41 +1,30 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ButtonsModule } from '../buttons/buttons.module';
+import { AlertModule } from './alert/alert.module';
+// import { BottomSheetModule } from './bottom-sheet/bottom-sheet.module';
+import { DialogModule } from './dialog/dialog.module';
+// import { PopoverModule } from './popover/popover.module';
+import { PopupModule } from './popup/popup.module';
+import { TooltipModule } from './tooltip/tooltip.module';
 
-import { AlertComponent } from './alert/alert.component';
-import { AlertsComponent } from './alert/alerts.component';
-import { PopupComponent } from './popup/popup.component';
-import { DialogComponent } from './dialog/dialog.component';
-// import {BottomSheetComponent} from './bottom-sheet/bottom-sheet.component';
-import { DialogDirective } from './dialog/dialog.directive';
-// import {PopoverComponent} from './popover/popover.component';
-import { TooltipDirective } from './tooltip/tooltip.directive';
-import { OverlayModule } from '../overlay/overlay.module';
-
-const moduleDirectives = [
-    DialogDirective,
-    TooltipDirective,
-];
-
-const moduleDeclarations = [
-    AlertComponent,
-    AlertsComponent,
-    // BottomSheetComponent,
-    DialogComponent,
-    // PopoverComponent,
-    PopupComponent,
-    ...moduleDirectives,
+const modules = [
+    AlertModule,
+    // BottomSheetModule,
+    DialogModule,
+    // PopoverModule,
+    PopupModule,
+    TooltipModule,
 ];
 
 @NgModule({
     imports: [
         CommonModule,
-        ButtonsModule,
-        OverlayModule
     ],
-    declarations: moduleDeclarations,
-    exports: moduleDeclarations,
+    declarations: [],
+    exports: [
+        ...modules,
+    ],
     providers: [],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,

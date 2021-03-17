@@ -1,7 +1,66 @@
+//@use "sass:color";
 @import 'defaults';
 @import 'animations';
 @import 'flexbox';
-@import 'grid';
+
+$levels: 'rgb', 'hover', 'deep', 'active', 'disabled', 'smooth';
+$textLevels: 'text', 'placeholder';
+$colors: 'regular', 'primary', 'success', 'accent', 'warn';
+$baseColors: 'base', 'background';
+
+@function rgba-to-rgb($rgba, $background: #fff) {
+    @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%)
+}
+
+@mixin background-opacity($color, $opacity: 1) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
+
+/**
+ * slice-kit colors
+ */
+
+body {
+    color: var(--base-a100);
+    background-color: var(--background-a100);
+
+    @each $color in $colors {
+        .sdk-#{$color}-text {
+            color: var(--#{$color}-a80);
+
+            &:hover {
+                color: var(--#{$color}-a100);
+            }
+        }
+
+        .sdk-#{$color}-background {
+            background-color: var(--#{$color}-a80);
+            color: var(--base-a80);
+
+            &:hover {
+                background-color: var(--#{$color}-a100);
+                color: var(--base-a100);
+            }
+
+            &.disabled, &[disabled] {
+                //background-color: var(--#{$color}-a40);
+                //color: var(--#{$color}-a40);
+                pointer-events: none;
+                cursor: default;
+                opacity: 0.5;
+            }
+        }
+
+        .sdk-#{$color}-border {
+            border-color: var(--#{$color}-a80);
+
+            &:hover {
+                border-color: var(--#{$color}-a100);
+            }
+        }
+    }
+}
 
 /**
  * on hover opacity
@@ -31,7 +90,7 @@
     display: inline-block;
     border-radius: 6px;
     background-color: var(--regular-smooth);
-    box-shadow: 0 1px 3px rgba(var(--base-rgb), 0.9), 0 0 0 rgba(var(--base-rgb), 0.9);
+    box-shadow: 0 1px 3px var(--base-rgb), 0 0 0 var(--base-rgb);
     color: var(--regular-text);
     position: absolute;
     top: 0;
@@ -105,7 +164,7 @@
     background-color: var(--regular-full-color-gray);
     border-radius: 6px;
     padding: 0;
-    box-shadow: 0px 6px 14px rgba(26, 26, 26, 0.16), 0px 0px 2px rgba(26, 26, 26, 0.16), 0px 0px 0px rgba(26, 26, 26, 0.08);
+    box-shadow: 0 6px 14px rgba(26, 26, 26, 0.16), 0 0 2px rgba(26, 26, 26, 0.16), 0 0 0 rgba(26, 26, 26, 0.08);
 }
 
 .sdk-dropdown__body-inner {
@@ -191,7 +250,9 @@
     margin-top: 4px;
 }
 
-//Scrollbar
+/**
+ * Scrollbar
+ */
 
 .sdk-custom-scroll {
     *::-webkit-scrollbar {
