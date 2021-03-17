@@ -99,6 +99,7 @@
     border: none;
     font-family: '', sans-serif;
     background-color: transparent;
+    box-sizing: border-box;
 
     &--small {
         font-size: 15px;

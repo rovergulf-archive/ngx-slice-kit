@@ -146,34 +146,33 @@ describe('TextareaComponent', () => {
 
     it('textarea element cant have height value less then #minHeight', () => {
         const minHeight = 76;
-        const padding = 16;
         const textarea: HTMLElement = textareaEl.querySelector('.sdk-textarea__textarea');
         component.minHeight = minHeight;
 
         textarea.style.height = `20px`;
         fixture.detectChanges();
-        expect(textarea.offsetHeight).toEqual(minHeight + padding, 'should use #minHeight value if height is less');
+        expect(textarea.offsetHeight).toEqual(minHeight, 'should use #minHeight value if height is less');
 
         const validHeight = 100;
         textarea.style.height = `${validHeight}px`;
         fixture.detectChanges();
-        expect(textarea.offsetHeight).toEqual(validHeight + padding, 'can be that height');
+        expect(textarea.offsetHeight).toEqual(validHeight, 'can be that height');
     });
 
     it('textarea element cant have height value more then #maxHeight', () => {
         const maxHeight = 280;
-        const padding = 16;
         const textarea: HTMLElement = textareaEl.querySelector('.sdk-textarea__textarea');
         component.maxHeight = maxHeight;
 
         textarea.style.height = `300px`;
+
         fixture.detectChanges();
-        expect(textarea.offsetHeight).toEqual(maxHeight + padding, 'should use #maxHeight value if height is more');
+        expect(textarea.offsetHeight).toEqual(maxHeight, 'should use #maxHeight value if height is more');
 
         const validHeight = 100;
         textarea.style.height = `${validHeight}px`;
         fixture.detectChanges();
-        expect(textarea.offsetHeight).toEqual(validHeight + padding, 'can be that height');
+        expect(textarea.offsetHeight).toEqual(validHeight, 'can be that height');
     });
 
     it('should add special class .full-width if #fullWidth is true', () => {
