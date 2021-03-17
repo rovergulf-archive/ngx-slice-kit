@@ -1,3 +1,5 @@
+@import '../../core/styles/core';
+
 .sdk-tab-container {
     overflow: hidden;
     min-width: 320px;
@@ -14,7 +16,7 @@
 
 .sdk-tab-container__header::after {
     content: '';
-    border-bottom: 2px solid var(--regular);
+    border-bottom: 2px solid var(--regular-rgb);
     width: 100%;
     position: absolute;
     height: 2px;
@@ -40,30 +42,26 @@
 .sdk-tab-container__tab {
     padding: 0 24px;
     height: 48px;
-    color: var(--regular-text);
     display: flex;
     white-space: nowrap;
     cursor: pointer;
     align-items: center;
     outline: none;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     position: relative;
     //overflow: hidden;
-    transition: 0.4s;
-    &:hover {
-        opacity: 0.7;
-    }
+    @extend .sdk-base-color !optional;
+
     span {
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
-    &.sdk-tab-container__tab--active {
-        color: var(--primary);
-        opacity: 1;
+    &--active {
+        @extend .sdk-primary-color !optional;
     }
 
-    &.sdk-tab-container__tab--oversize {
+    &--oversize {
         overflow: hidden;
     }
 }
@@ -72,7 +70,7 @@
     position: absolute;
     height: 3px;
     left: 0;
-    background-color: var(--primary);
+    @extend .sdk-primary-background !optional;
     bottom: 0;
     transition: all 0.4s;
 }
@@ -89,7 +87,7 @@
     top: 0;
     height: 100%;
     width: 0;
-    background-color: var(--primary);
+    @extend .sdk-regular-background !optional;
 }
 
 .sdk-tab-container__tab--active.sdk-tab-container__tab--fill {

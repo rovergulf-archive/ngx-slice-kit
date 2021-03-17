@@ -48,8 +48,8 @@ export const colorsDepth = {
 };
 
 export const textDepth = {
-    placeholder: {color: 'background', alpha: 30, background: 'background'},
-    text: {color: 'background', alpha: 80, background: 'background'},
+    placeholder: {color: 'background', alpha: 75, background: 'base'},
+    text: {color: 'background', alpha: 5, background: 'base'},
 };
 
 const alphaLimit = 100;
@@ -125,7 +125,6 @@ export class Theme {
 
             if (colors.indexOf(color) >= 0) {
                 results.push(...this.objectToColorProperties(colorsDepth, color));
-                results.push(...this.objectToColorProperties(textDepth, color));
             }
         }
 
@@ -140,14 +139,21 @@ export class Theme {
                 const depth = srcObj[key];
                 const value = this[color];
 
-                const prop: ColorProperty = {
+                results.push(new ColorProperty({
                     name: `${color}-${key}`,
                     alpha: depth.alpha,
                     value,
-                };
-
-                results.push(new ColorProperty(prop));
+                }));
             }
+        }
+
+        const textRef = this[`${color}_text`];
+        if (textRef?.length > 0) {
+            results.push(new ColorProperty({
+                name: `${color}-text`,
+                alpha: 95,
+                value: textRef,
+            }));
         }
 
         return results;

@@ -1,20 +1,17 @@
 import { defaultColors, Theme } from '../theme.model';
-import { defaultBackgroundRgb } from './theme-dark';
 
 export const themeLight: Theme = {
     name: 'light',
     base: defaultColors.base,
     background: defaultColors.background,
     regular: defaultColors.regular,
-    regular_text: defaultBackgroundRgb,
+    regular_text: defaultColors.base,
     primary: defaultColors.primary,
-    primary_text: defaultBackgroundRgb,
+    primary_text: defaultColors.background,
     success: defaultColors.success,
-    success_text: defaultBackgroundRgb,
+    success_text: defaultColors.background,
     accent: defaultColors.accent,
-    accent_text: defaultBackgroundRgb,
+    accent_text: defaultColors.background,
     warn: defaultColors.warn,
-    warn_text: defaultBackgroundRgb,
+    warn_text: defaultColors.background
 };
-
-

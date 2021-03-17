@@ -1,4 +1,4 @@
-@import '../../core/styles/core';
+@import '../../core/styles/core.scss';
 //Buttons
 
 button.sdk-button, a.sdk-button {
@@ -16,6 +16,7 @@ button.sdk-button, a.sdk-button {
     position: relative;
     white-space: nowrap;
     overflow: hidden;
+    background: transparent;
 
     sdk-icon:first-child {
         margin-right: 8px;
@@ -88,6 +89,7 @@ button.sdk-button, a.sdk-button {
         &--#{$color} {
             &.sdk-round-button, &.sdk-raised-button, &.sdk-flat-button {
                 @extend .sdk-#{$color}-background;
+                color: var(--#{$color}-text);
             }
 
             &.sdk-stroked-button {
@@ -95,66 +97,11 @@ button.sdk-button, a.sdk-button {
             }
 
             &.sdk-stroked-button, &.sdk-button {
-                color: var(--#{$color}-text);
-                background: transparent;
+                @extend .sdk-#{$color}-text;
             }
         }
     }
-    //    background-color: var(--background);
-    //    color: var(--regular);
-    //
-    //    &:hover {
-    //        color: var(--regular-hover);
-    //    }
-    //
-    //    &:active {
-    //        color: var(--regular-active);
-    //    }
-    //
-    //    &[disabled] {
-    //        color: var(--regular-text-disabled);
-    //    }
-    //
-    //    &.sdk-raised-button, &.sdk-flat-button, &.sdk-round-button {
-    //        background-color: var(--regular-deep);
-    //        color: var(--background-deep);
-    //
-    //        &:hover {
-    //            background-color: var(--regular-hover);
-    //            color: var(--background-hover);
-    //        }
-    //
-    //        &:active {
-    //            background-color: var(--regular-active);
-    //            color: var(--background-active);
-    //        }
-    //
-    //        &[disabled] {
-    //            background-color: var(--regular-disabled);
-    //            color: var(--base-rgb);
-    //        }
-    //    }
-    //
-    //    &.sdk-stroked-button {
-    //        border-color: var(--regular-deep);
-    //
-    //        &:hover:not(disabled) {
-    //            border-color: var(--regular-rgb);
-    //        }
-    //
-    //        &:active {
-    //            border-color: var(--regular-active);
-    //        }
-    //
-    //        &[disabled] {
-    //            border-color: var(--regular-disabled);
-    //        }
-    //    }
-    //
-    //    &.sdk-button--active {
-    //        background-color: var(--regular-hover);
-    //    }
-    //}
+
 }
 
 

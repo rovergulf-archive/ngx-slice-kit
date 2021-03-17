@@ -22,42 +22,43 @@ $baseColors: 'base', 'background';
  */
 
 body {
-    color: var(--base-a100);
+    color: var(--base-a95);
     background-color: var(--background-a100);
+    --color: var(--base-a95);
+    --background: var(--background-a100);
+}
 
-    @each $color in $colors {
-        .sdk-#{$color}-text {
-            color: var(--#{$color}-a80);
+@each $color in $colors {
+    .sdk-#{$color}-text {
+        color: var(--#{$color}-rgb);
 
-            &:hover {
-                color: var(--#{$color}-a100);
-            }
+        &:hover {
+            color: var(--#{$color}-hover);
+        }
+    }
+
+    .sdk-#{$color}-background {
+        background-color: var(--#{$color}-rgb);
+        color: var(--#{$color}-text);
+
+        &:hover {
+            background-color: var(--#{$color}-hover);
         }
 
-        .sdk-#{$color}-background {
-            background-color: var(--#{$color}-a80);
-            color: var(--base-a80);
-
-            &:hover {
-                background-color: var(--#{$color}-a100);
-                color: var(--base-a100);
-            }
-
-            &.disabled, &[disabled] {
-                //background-color: var(--#{$color}-a40);
-                //color: var(--#{$color}-a40);
-                pointer-events: none;
-                cursor: default;
-                opacity: 0.5;
-            }
+        &.disabled, &[disabled] {
+            //background-color: var(--#{$color}-a40);
+            //color: var(--#{$color}-a40);
+            pointer-events: none;
+            cursor: default;
+            opacity: 0.5;
         }
+    }
 
-        .sdk-#{$color}-border {
-            border-color: var(--#{$color}-a80);
+    .sdk-#{$color}-border {
+        border-color: var(--#{$color}-rgb);
 
-            &:hover {
-                border-color: var(--#{$color}-a100);
-            }
+        &:hover {
+            border-color: var(--#{$color}-hover);
         }
     }
 }
