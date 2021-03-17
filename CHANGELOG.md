@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 ### Fixed
+- public api imports to prevent errors like:
+  `Unsupported private class LoadingModule. This class is visible to consumers via SliceKitModule -> LayoutModule -> LoadingModule, but is not exported from the top-level library entrypoint.`
 
 ### Removed
 
