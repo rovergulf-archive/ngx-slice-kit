@@ -24,7 +24,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 ngx-slice-kit:
 - Formatted core module
-  `progress.component` tests.
+- `progress.component` tests.
+- closed #34
+- closed #31
 
 ### Fixed
 ngx-slice-kit:

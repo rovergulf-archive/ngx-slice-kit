@@ -3,6 +3,11 @@
 @import 'animations';
 @import 'flexbox';
 
+$levels: 'rgb', 'hover', 'deep', 'active', 'disabled', 'smooth';
+$textLevels: 'text', 'placeholder';
+$colors: 'regular', 'primary', 'success', 'accent', 'warn';
+$baseColors: 'base', 'background';
+
 @function rgba-to-rgb($rgba, $background: #fff) {
     @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%)
 }
@@ -17,41 +22,43 @@
  */
 
 body {
-    color: var(--base-a95);
-    background-color: var(--background-a95);
-}
+    color: var(--base-a100);
+    background-color: var(--background-a100);
 
-@each $color in $colors {
-    .sdk-color-#{$color} {
-        background-color: var(--base-a80);
-        color: var(--#{$color}-a100);
+    @each $color in $colors {
+        .sdk-#{$color}-text {
+            color: var(--#{$color}-a80);
 
-        &:hover {
-            //background-color: var(--#{$color}-a100);
-            //color: var(--background-a100);
-        }
-    }
-
-    .sdk-background-#{$color} {
-        position: relative;
-        background-color: var(--#{$color}-a80);
-        color: var(--base-a80);
-
-        &:hover {
-            color: var(--base-a100);
+            &:hover {
+                color: var(--#{$color}-a100);
+            }
         }
 
-        &.disabled, &[disabled] {
-            //background-color: var(--#{$color}-a40);
-            //color: var(--#{$color}-a40);
-            pointer-events: none;
-            cursor: default;
-            opacity: 0.5;
-        }
-    }
+        .sdk-#{$color}-background {
+            background-color: var(--#{$color}-a80);
+            color: var(--base-a80);
 
-    .sdk-border-#{$color} {
-        border-color: var(--#{$color}-rgb);
+            &:hover {
+                background-color: var(--#{$color}-a100);
+                color: var(--base-a100);
+            }
+
+            &.disabled, &[disabled] {
+                //background-color: var(--#{$color}-a40);
+                //color: var(--#{$color}-a40);
+                pointer-events: none;
+                cursor: default;
+                opacity: 0.5;
+            }
+        }
+
+        .sdk-#{$color}-border {
+            border-color: var(--#{$color}-a80);
+
+            &:hover {
+                border-color: var(--#{$color}-a100);
+            }
+        }
     }
 }
 

@@ -16,8 +16,6 @@ button.sdk-button, a.sdk-button {
     position: relative;
     white-space: nowrap;
     overflow: hidden;
-    background: var(--background);
-    color: var(--color);
 
     sdk-icon:first-child {
         margin-right: 8px;
@@ -81,8 +79,27 @@ button.sdk-button, a.sdk-button {
         font-size: 12px;
     }
 
+    sdk-icon {
+        font-size: 0;
+    }
+
     // Regular colors
-    //&--regular {
+    @each $color in $colors {
+        &--#{$color} {
+            &.sdk-round-button, &.sdk-raised-button, &.sdk-flat-button {
+                @extend .sdk-#{$color}-background;
+            }
+
+            &.sdk-stroked-button {
+                @extend .sdk-#{$color}-border;
+            }
+
+            &.sdk-stroked-button, &.sdk-button {
+                color: var(--#{$color}-text);
+                background: transparent;
+            }
+        }
+    }
     //    background-color: var(--background);
     //    color: var(--regular);
     //

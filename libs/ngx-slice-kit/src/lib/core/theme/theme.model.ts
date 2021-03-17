@@ -1,6 +1,6 @@
 const defaultBaseRgb = `25, 25, 25`;
 const defaultBackgroundRgb = `255, 255, 255`;
-const defaultRegularRgb = `66, 66, 66`;
+const defaultRegularRgb = `186, 186, 186`; // `66, 66, 66`;
 const defaultPrimaryRgb = `0, 85, 255`; // `0, 85, 255`;
 const defaultSuccessRgb = `39, 174, 96`; // `39, 174, 96`;
 const defaultAccentRgb = `241, 201, 79`; // `255, 168, 38`;
