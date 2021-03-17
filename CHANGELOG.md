@@ -6,14 +6,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.8.0
 
+## 18 Mar 2021
+
+### Added
+
+### Changed
+
+### Fixed
+
+### Removed
+
 ## 17 Mar 2021
 
 ### Added
 ngx-slice-kit:
 - implemented new color palette for #80 issue
 - background and color default body variables
+- few more components tests
 
 ### Changed
+ngx-slice-kit:
+- now `placeholder` for `input`/`textarea`/`select`/`autocomplete` components is empty by default
+- `textarea` component has `resizable` input property now, to forbid resize possibility
 
 ### Fixed
 ngx-slice-kit:
