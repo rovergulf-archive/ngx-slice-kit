@@ -27,7 +27,7 @@ describe('TextareaComponent', () => {
     });
 
     it('should placeholder will be correct if it set', () => {
-        expect(component.placeholder).toEqual('Empty placeholder', 'it should be default value if placeholder is not set');
+        expect(component.placeholder).toEqual('', 'it should be default value if placeholder is not set');
 
         const newPlaceholder = 'Some new placeholder';
         component.placeholder = newPlaceholder;
@@ -215,13 +215,13 @@ describe('TextareaComponent', () => {
         component.writeValue(newValue);
         component.focus.subscribe(e => {
             eventBody = e;
+
+            expect(eventBody.value).toEqual(expectedEventBody.value);
+            expect(eventBody.eventName).toEqual(expectedEventBody.eventName);
+            expect(eventBody.target).toEqual(expectedEventBody.target);
         });
         textareaEl.triggerEventHandler('focus', null);
         fixture.detectChanges();
-
-        expect(eventBody.value).toEqual(expectedEventBody.value);
-        expect(eventBody.eventName).toEqual(expectedEventBody.eventName);
-        expect(eventBody.target).toEqual(expectedEventBody.target);
     });
 
     it('should #onBlur() emit correct event', () => {
@@ -237,12 +237,42 @@ describe('TextareaComponent', () => {
         component.writeValue(newValue);
         component.blur.subscribe(e => {
             eventBody = e;
+
+            expect(eventBody.value).toEqual(expectedEventBody.value);
+            expect(eventBody.eventName).toEqual(expectedEventBody.eventName);
+            expect(eventBody.target).toEqual(expectedEventBody.target);
         });
         textareaEl.triggerEventHandler('blur', null);
         fixture.detectChanges();
+    });
 
-        expect(eventBody.value).toEqual(expectedEventBody.value);
-        expect(eventBody.eventName).toEqual(expectedEventBody.eventName);
-        expect(eventBody.target).toEqual(expectedEventBody.target);
+    it('should be .sdk-textarea__pull-angle-wrapper element if #resizable is true', () => {
+        component.resizable = true;
+        component.ngOnInit();
+        fixture.detectChanges();
+
+        const el: HTMLElement = textarea.querySelector('.sdk-textarea__pull-angle-wrapper');
+
+        expect(el).toBeTruthy();
+    });
+
+    it('should be no .sdk-textarea__pull-angle-wrapper element if #disabled is true', () => {
+        component.resizable = false;
+        component.ngOnInit();
+        fixture.detectChanges();
+
+        const el: HTMLElement = textarea.querySelector('.sdk-textarea__pull-angle-wrapper');
+
+        expect(el).toBeNull();
+    });
+
+    it('should be no .sdk-textarea__pull-angle-wrapper element if #resizable is false', () => {
+        component.disabled = true;
+        component.ngOnInit();
+        fixture.detectChanges();
+
+        const el: HTMLElement = textarea.querySelector('.sdk-textarea__pull-angle-wrapper');
+
+        expect(el).toBeNull();
     });
 });
