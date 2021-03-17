@@ -100,12 +100,20 @@ describe('ButtonGroupComponent', () => {
 
         component.clicked.subscribe(e => {
             eventBody = e;
+
+            expect(eventBody.element).toEqual(expectedEventBody.element);
+            expect(eventBody.index).toEqual(expectedEventBody.index);
         });
 
         component.onClick({target: element});
-        fixture.detectChanges();
-        expect(eventBody.element).toEqual(expectedEventBody.element);
-        expect(eventBody.index).toEqual(expectedEventBody.index);
+    });
+
+    it('click on button should do not emmit event if tag name is not "BUTTON"', () => {
+        const element: HTMLElement = document.createElement('div');
+        spyOn(component.clicked, 'emit');
+
+        component.onClick({target: element});
+        expect(component.clicked.emit).not.toHaveBeenCalled();
     });
 
     it('should #removeActiveClass(el) remove class', () => {
