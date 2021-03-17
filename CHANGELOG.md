@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 ngx-slice-kit:
+- implemented new color palette for #80 issue
 - background and color default body variables
 
 ### Changed
