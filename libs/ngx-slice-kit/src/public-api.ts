@@ -146,6 +146,7 @@ export { DividerModule } from './lib/layout/divider/divider.module';
 export { DotsModule } from './lib/layout/dots/dots.module';
 // export {DragNDropModule} from './lib/layout/drag-n-drop/drag-n-drop.module';
 export { ListModule } from './lib/layout/list/list.module';
+// export { LoadingModule } from './lib/layout/loading/loading.module';
 export { PaginationModule } from './lib/layout/pagination/pagination.module';
 export { ProgressModule } from './lib/layout/progress/progress.module';
 export { SliderModule } from './lib/layout/slider/slider.module';
