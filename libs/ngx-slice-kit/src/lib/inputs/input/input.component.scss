@@ -78,6 +78,7 @@
 .sdk-input__input {
     color: var(--regular-text);
     background-color: transparent;
+    box-sizing: border-box;
     flex-grow: 1;
     font-size: 17px;
     font-weight: normal;
