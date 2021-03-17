@@ -1,0 +1,68 @@
+$levels: 'rgb', 'hover', 'deep', 'active', 'disabled', 'smooth';
+$textLevels: 'text', 'placeholder';
+$colors: 'regular', 'primary', 'success', 'accent', 'warn';
+$baseColors: 'base', 'background';
+
+@function rgba-to-rgb($rgba, $background: #fff) {
+    @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%);
+}
+
+@mixin background-opacity($color, $opacity: 1) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
+
+@mixin disabled-state() {
+    &.disabled, &[disabled], &--disabled {
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.5;
+    }
+}
+
+@each $color in $colors {
+    .sdk-#{$color}-color {
+        color: var(--#{$color}-deep);
+
+        &:hover {
+            color: var(--#{$color}-hover);
+        }
+
+        &.active, &--active {
+            color: var(--#{$color}-active);
+        }
+
+        @include disabled-state;
+    }
+
+    .sdk-#{$color}-background {
+        background-color: var(--#{$color}-rgb);
+        color: var(--#{$color}-deep-text);
+
+        &:hover {
+            background-color: var(--#{$color}-hover);
+            color: var(--#{$color}-hover-text);
+        }
+
+        &.active, &--active {
+            background-color: var(--#{$color}-deep);
+            color: var(--#{$color}-active-text);
+        }
+
+        @include disabled-state;
+    }
+
+    .sdk-#{$color}-border {
+        border-color: var(--#{$color}-rgb);
+
+        &:hover {
+            border-color: var(--#{$color}-hover);
+        }
+
+        &.active, &--active {
+            border-color: var(--#{$color}-hover);
+        }
+
+        @include disabled-state;
+    }
+}
