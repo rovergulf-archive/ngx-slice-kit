@@ -1,6 +1,4 @@
-<div class="sdk-button-group-container"
-     [class.sdk-button-group-container--primary]="color === 'primary'"
-     [class.sdk-button-group-container--regular]="color === 'regular'">
+<div class="sdk-button-group-container sdk-button-group-container--{{color}}">
     <ng-content select="[sdk-button]"></ng-content>
     <ng-content select="[sdk-raised-button]"></ng-content>
     <ng-content select="[sdk-flat-button]"></ng-content>

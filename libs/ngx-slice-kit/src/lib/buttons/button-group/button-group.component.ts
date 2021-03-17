@@ -12,6 +12,7 @@ import {
     Renderer2,
 } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
+import { ThemeColors } from '../../core/theme/theme.model';
 
 @Component({
     selector: 'sdk-button-group',
@@ -22,7 +23,7 @@ export class ButtonGroupComponent implements OnInit, AfterContentInit {
 
     @ContentChildren(ButtonComponent, {read: ElementRef}) btnGroup!: QueryList<ElementRef>;
 
-    @Input() color: 'primary' | 'regular' = 'primary';
+    @Input() color: ThemeColors = 'primary';
 
     @Output() clicked: EventEmitter<any> = new EventEmitter();
 
@@ -45,6 +46,7 @@ export class ButtonGroupComponent implements OnInit, AfterContentInit {
     }
 
     ngOnInit(): void {
+        console.log(this.color);
     }
 
     ngAfterContentInit(): void {

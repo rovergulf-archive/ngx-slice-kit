@@ -2,7 +2,7 @@ import { Directive, ElementRef, Inject, Input, OnDestroy, OnInit, Renderer2 } fr
 import { DOCUMENT } from '@angular/common';
 import { Subscription } from 'rxjs';
 
-import { Theme } from './theme.interface';
+import { Theme } from './theme.model';
 import { ThemeService } from './theme.service';
 import { LayoutControlService } from '../layout-control/layout-control.service';
 
@@ -37,7 +37,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
     updateTheme(theme: Theme): void {
         const element = this.getElement();
 
-        element.className = `sdk-${theme.name}-theme`; // probably unsafe
+        element.className = `sdk-theme-${theme.name}`; // probably unsafe
         if (!this.layoutControl.platform.BLINK) {
             element.classList.add('sdk-custom-scroll');
         } else {
@@ -52,9 +52,9 @@ export class ThemeDirective implements OnInit, OnDestroy {
 
         // project properties onto the element
         styles.innerHTML += `body {`;
-        for (const key in theme.properties) {
-            if (theme.properties.hasOwnProperty(key)) {
-                styles.innerHTML += (`${key}: ${theme.properties[key]};`);
+        for (const prop of theme.props()) {
+            if (!!prop.rgba) {
+                styles.innerHTML += (`${prop.prop}: ${prop.rgba};`);
             }
         }
         styles.innerHTML += `}`;
@@ -74,7 +74,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
         this.sub = this.themeService.currentThemeObservable
             .subscribe((theme: Theme) => this.updateTheme(theme));
 
-        if (this.theme && this.theme.length > 0) {
+        if (this.theme && this.theme?.length > 0) {
             this.themeService.setTheme(this.theme);
         } else {
             this.updateTheme(this.themeService.currentTheme);

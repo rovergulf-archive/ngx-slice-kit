@@ -1,8 +1,8 @@
-<svg class="rovergulf" xmlns="http://www.w3.org/2000/svg"
-     width="200.000000pt" height="200.000000pt" viewBox="0 0 200.000000 200.000000"
-     preserveAspectRatio="xMidYMid meet">
-    <g transform="translate(0.000000,200.000000) scale(0.100000,-0.100000)"
-       fill="var(--regular-text)" stroke="none">
+<svg class="rovergulf" height="200.000000pt"
+     preserveAspectRatio="xMidYMid meet" viewBox="0 0 200.000000 200.000000" width="200.000000pt"
+     xmlns="http://www.w3.org/2000/svg">
+    <g fill="var(--regular-text)"
+       stroke="none" transform="translate(0.000000,200.000000) scale(0.100000,-0.100000)">
         <path d="M940 1984 c-14 -10 -74 -66 -135 -126 l-110 -108 -175 0 c-263 0
 -270 -7 -270 -277 l0 -168 -115 -115 c-178 -179 -178 -196 -5 -373 l120 -122
 0 -171 c0 -267 7 -274 270 -274 l175 -1 122 -118 c178 -174 189 -174 367 0

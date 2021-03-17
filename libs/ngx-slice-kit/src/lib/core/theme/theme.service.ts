@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DARK_THEME } from './symbols';
 
-import { Theme } from './theme.interface';
+import { Theme } from './theme.model';
 import { themeLight } from './lib/theme-light';
 import { themeDark } from './lib/theme-dark';
 
@@ -24,7 +24,7 @@ export class ThemeService {
     }
 
     set currentTheme(t: Theme) {
-        this.$currentTheme.next(t);
+        this.$currentTheme.next(new Theme(t));
     }
 
     get themeName(): string {
@@ -89,31 +89,32 @@ export class ThemeService {
      *
      * @param propName is required
      */
-    getProperty(propName: string) {
+    getProperty(propName: string): string {
         const theme = this.currentTheme;
         if (theme.hasOwnProperty(propName)) {
-            return this.currentTheme.properties[propName];
+            return this.currentTheme[propName];
         } else {
             return '';
         }
     }
 
-    registerTheme(theme: Theme) {
-        this.themes.push(theme);
-    }
-
-    updateTheme(name: string, properties: { [key: string]: string; }) {
-        const theme = this.findTheme(name);
-        theme.properties = {
-            ...theme.properties,
-            ...properties
-        };
-        if (this.currentTheme.name === name) {
-            this.currentTheme = theme;
+    /**
+     * Registers new theme in service memory
+     * @param theme contains new Theme references
+     * cannot be named as `light`, `dark` or any default themes
+     */
+    registerTheme(theme: Theme): void {
+        if (!!this.themes.find(t => t.name === theme.name)) {
+            theme.name = `custom_${theme.name}_${this.themes.length + 1}`;
         }
+        this.themes.push(new Theme(theme));
     }
 
-    rgbaToRgb(rgba: string, background: string = '#fff') {
+    updateTheme(t: Theme): void {
+        const theme = this.findTheme(t.name);
+        if (!!theme) {
+            this.currentTheme = new Theme(t);
+        }
     }
 
 }

@@ -1,17 +1,22 @@
-import { Directive, EventEmitter, Output } from '@angular/core';
+import { EventEmitter, OnInit, Output } from '@angular/core';
+import { LayoutControlService } from './layout-control.service';
 
-@Directive()
-export class LayoutElement {
+export class LayoutElement implements OnInit {
     hash?: string;
     state?: 'opened' | 'closed' | 'active' | 'overlay' = 'closed';
 
     @Output() closed = new EventEmitter<any>();
 
+    constructor(
+        private layoutControl: LayoutControlService
+    ) {
+    }
+
     get elementHash(): string {
         return this.hash;
     }
 
-    getOuterHeight(el, margin?) {
+    getOuterHeight(el, margin?): number {
         let height = el.offsetHeight;
 
         if (margin) {
@@ -42,7 +47,7 @@ export class LayoutElement {
         return width;
     }
 
-    getInnerHeight(el) {
+    getInnerHeight(el): number {
         let height = el.offsetHeight;
         const style = getComputedStyle(el);
 
@@ -50,13 +55,21 @@ export class LayoutElement {
         return height;
     }
 
-    getOffset(el) {
-        const rect = el.getBoundingClientRect();
+    getOffset(el): {
+        top: number,
+        left: number
+    } {
+        const {top, left} = el.getBoundingClientRect();
 
         return {
-            top: rect.top + document.body.scrollTop,
-            left: rect.left + document.body.scrollLeft
+            top: (top || 0) + document.body.scrollTop,
+            left: (left || 0) + document.body.scrollLeft
         };
+    }
+
+
+    ngOnInit(): void {
+        this.hash = this.layoutControl.generateLayoutElementHash();
     }
 
 }

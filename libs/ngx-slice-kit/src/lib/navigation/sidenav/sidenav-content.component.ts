@@ -4,8 +4,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 
 @Component({
     selector: 'sdk-sidenav-content',
-    template: `
-        <ng-content></ng-content>`,
+    template: `<ng-content></ng-content>`,
     styleUrls: ['./sidenav-content.component.scss'],
     animations: [
         trigger('state', [
@@ -26,7 +25,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class SidenavContentComponent implements OnInit, OnDestroy {
 
-    @HostBinding('@state') get state() {
+    @HostBinding('@state') get state(): any {
         return {
             value: this.sidenavService.openedState,
             params: {

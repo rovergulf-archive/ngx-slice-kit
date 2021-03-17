@@ -1,8 +1,8 @@
 import { NavigationScrollDirective } from './navigation-scroll.directive';
-import {ElementRef, PLATFORM_ID} from '@angular/core';
-import {TestBed} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
-import {Router} from '@angular/router';
+import { ElementRef, PLATFORM_ID } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
 
 describe('NavigationScrollDirective', () => {
     const UNIX_PLATFORM_ID = 4;

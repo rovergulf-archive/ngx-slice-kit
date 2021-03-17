@@ -4,33 +4,38 @@ import { CommonModule } from '@angular/common';
 // import {BreadcrumbsComponent} from './breadcrumbs/breadcrumbs.component';
 // import {CalendarComponent} from './calendar/calendar.component';
 // import {ChartsComponent} from './charts/charts.component';
-import { CarouselComponent } from './carousel/carousel.component';
-import { DividerComponent } from './divider/divider.component';
 // import {DragNDropComponent} from './drag-n-drop/drag-n-drop.component';
-import { ListComponent } from './list/list.component';
-import { PaginationComponent } from './pagination/pagination.component';
-import { ProgressComponent } from './progress/progress.component';
-import { SlideComponent } from './carousel/slide/slide.component';
-import { SliderComponent } from './slider/slider.component';
-import { TableComponent } from './table/table.component';
 import { ButtonsModule } from '../buttons/buttons.module';
-import { DotsComponent } from './dots/dots.component';
+// import { AccordionModule } from './accordion/accordion.module';
+// import { BreadcrumbsModule } from './breadcrumbs/breadcrumbs.module';
+// import { CalendarModule } from './calendar/calendar.module';
+import { CarouselModule } from './carousel/carousel.module';
+// import { ChartsModule } from './charts/charts.module';
+import { DividerModule } from './divider/divider.module';
+import { DotsModule } from './dots/dots.module';
+// import { DragNDropModule } from './drag-n-drop/drag-n-drop.module';
+import { ListModule } from './list/list.module';
+import { LoadingModule } from './loading/loading.module';
+import { PaginationModule } from './pagination/pagination.module';
+import { ProgressModule } from './progress/progress.module';
+import { SliderModule } from './slider/slider.module';
+// import { TableModule } from './table/table.module';
 
-const moduleDeclarations = [
-    // AccordionComponent,
-    // BreadcrumbsComponent,
-    // CalendarComponent,
-    CarouselComponent,
-    // ChartsComponent,
-    DividerComponent,
-    DotsComponent,
-    // DragNDropComponent,
-    ListComponent,
-    PaginationComponent,
-    ProgressComponent,
-    SlideComponent,
-    SliderComponent,
-    TableComponent,
+const modules = [
+    // AccordionModule,
+    // BreadcrumbsModule,
+    // CalendarModule,
+    CarouselModule,
+    // ChartsModule,
+    DividerModule,
+    DotsModule,
+    // DragNDropModule,
+    ListModule,
+    // LoadingModule,
+    PaginationModule,
+    ProgressModule,
+    SliderModule,
+    // TableModule,
 ];
 
 @NgModule({
@@ -38,8 +43,10 @@ const moduleDeclarations = [
         CommonModule,
         ButtonsModule,
     ],
-    declarations: moduleDeclarations,
-    exports: moduleDeclarations,
+    declarations: [],
+    exports: [
+        ...modules,
+    ],
     providers: [],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,

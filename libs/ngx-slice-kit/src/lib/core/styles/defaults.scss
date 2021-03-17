@@ -46,7 +46,3 @@ a, a:hover, a:visited, a:active, a:focus {
     outline: none;
     color: inherit;
 }
-
-@function rgba-to-rgb($rgba, $background: #fff) {
-    @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%)
-}

@@ -22,7 +22,6 @@ const modules = [
 @NgModule({
     imports: [
         CommonModule,
-        ...modules
     ],
     declarations: [],
     exports: [

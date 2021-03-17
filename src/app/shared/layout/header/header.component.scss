@@ -1,6 +1,8 @@
+//@import '~ngx-slice-kit/lib/core/styles/core';
+
 header {
   position: fixed;
-  z-index: 1;
+  z-index: 100;
   top: 0;
   left: 0;
   right: 0;
@@ -8,7 +10,7 @@ header {
   height: 64px;
   padding: 8px 16px;
   border-bottom: 1px solid var(--regular-disabled);
-  background-color: var(--background);
+  background-color: var(--background-a95);
   color: var(--regular-text);
 }
 
