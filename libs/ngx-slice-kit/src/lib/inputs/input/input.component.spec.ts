@@ -63,7 +63,7 @@ describe('InputComponent', () => {
     });
 
     it('should placeholder will be correct if it set', () => {
-        expect(component.placeholder).toEqual('Empty placeholder', 'it should be default value if placeholder is not set');
+        expect(component.placeholder).toEqual('', 'it should be default value as empty string if placeholder is not set');
 
         const newPlaceholder = 'Some new placeholder';
         component.placeholder = newPlaceholder;
