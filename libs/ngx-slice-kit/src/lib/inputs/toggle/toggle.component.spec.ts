@@ -74,7 +74,7 @@ describe('ToggleComponent', () => {
     });
 
     it('should the state be small if property #small set as #true', () => {
-        const smallHeightSize = 18;
+        const smallHeightSize = 16;
         component.small = true;
 
         fixture.detectChanges();
@@ -110,5 +110,33 @@ describe('ToggleComponent', () => {
         spyOn(component, 'onclick');
         toggle.dispatchEvent(event);
         expect(component.onclick).toHaveBeenCalled();
+    });
+
+    it('should #onclick() be immediately closed if #disabled is true', () => {
+        spyOn(component, 'writeValue');
+        spyOn(component, 'onChange');
+        spyOn(component, 'onTouched');
+        component.disabled = true;
+        fixture.detectChanges();
+
+        component.onclick();
+
+        expect(component.writeValue).not.toHaveBeenCalled();
+        expect(component.onChange).not.toHaveBeenCalled();
+        expect(component.onTouched).not.toHaveBeenCalled();
+    });
+
+    it('should #onclick() call #writeValue/#onCHange/#onTouched methods if #disabled is false', () => {
+        spyOn(component, 'writeValue');
+        spyOn(component, 'onChange');
+        spyOn(component, 'onTouched');
+        component.disabled = false;
+        fixture.detectChanges();
+
+        component.onclick();
+
+        expect(component.writeValue).toHaveBeenCalled();
+        expect(component.onChange).toHaveBeenCalled();
+        expect(component.onTouched).toHaveBeenCalled();
     });
 });
