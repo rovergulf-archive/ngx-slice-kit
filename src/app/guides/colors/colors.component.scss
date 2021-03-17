@@ -1,14 +1,5 @@
-.container {
-    @extend .flex-column !optional;
-    @extend .layout-start-stretch !optional;
+main {
 
-    & > * {
-        margin-bottom: 16px;
-    }
-
-    .h2 {
-        margin-top: 16px;
-    }
 }
 
 .color {

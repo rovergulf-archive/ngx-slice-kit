@@ -20,7 +20,7 @@ export class IconComponent implements OnInit, OnDestroy {
 
     svg: SafeHtml;
     @Input() icon: string = `ngx-slice`;
-    @Input() color: string = `var(--regular-text)`;
+    @Input() color: string = `var(--color)`;
     @Input() inline: boolean = true;
     @Input() size: number = 24;
 

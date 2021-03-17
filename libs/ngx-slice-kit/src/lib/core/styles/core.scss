@@ -18,6 +18,14 @@ $baseColors: 'base', 'background';
     background: rgba($color, $opacity);
 }
 
+@mixin disabled-state() {
+    &.disabled, &[disabled], &--disabled {
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.5;
+    }
+}
+
 /**
  * slice-kit colors
  */
@@ -34,21 +42,16 @@ body {
     --warn: var(--warn-a95);
 }
 
-@mixin disabled-state() {
-    &.disabled, &[disabled] {
-        pointer-events: none;
-        cursor: default;
-        opacity: 0.5;
-    }
-}
-
-
 @each $color in $colors {
     .sdk-#{$color}-color {
         color: var(--#{$color}-rgb);
 
         &:hover {
             color: var(--#{$color}-hover);
+        }
+
+        &.active, &--active {
+            color: var(--#{$color}-active);
         }
 
         @include disabled-state;
@@ -63,6 +66,11 @@ body {
             color: var(--#{$color}-hover-text);
         }
 
+        &.active, &--active {
+            background-color: var(--#{$color}-deep);
+            color: var(--#{$color}-deep-text);
+        }
+
         @include disabled-state;
     }
 
@@ -70,6 +78,10 @@ body {
         border-color: var(--#{$color}-rgb);
 
         &:hover {
+            border-color: var(--#{$color}-hover);
+        }
+
+        &.active, &--active {
             border-color: var(--#{$color}-hover);
         }
 
@@ -89,9 +101,7 @@ body {
     .on-hover-opacity:hover {
         opacity: 0.75;
 
-        &[disabled], &.disabled {
-            opacity: 0.5 !important;
-        }
+        @include disabled-state;
     }
 }
 

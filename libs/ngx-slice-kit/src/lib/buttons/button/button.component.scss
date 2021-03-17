@@ -87,16 +87,16 @@ button.sdk-button, a.sdk-button {
     // Regular colors
     @each $color in $colors {
         &--#{$color} {
+            &.sdk-stroked-button, &.sdk-button {
+                @extend .sdk-#{$color}-color;
+            }
+
             &.sdk-round-button, &.sdk-raised-button, &.sdk-flat-button {
                 @extend .sdk-#{$color}-background;
             }
 
             &.sdk-stroked-button {
                 @extend .sdk-#{$color}-border;
-            }
-
-            &.sdk-stroked-button, &.sdk-button {
-                @extend .sdk-#{$color}-color;
             }
         }
     }

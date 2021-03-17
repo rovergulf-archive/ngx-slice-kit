@@ -6,6 +6,9 @@ const defaultSuccessRgb = `39, 174, 96`; // `39, 174, 96`;
 const defaultAccentRgb = `241, 201, 79`; // `255, 168, 38`;
 const defaultWarnRgb = `211, 50, 39`; // `238, 112, 112`;
 
+export type ThemeBaseColors = 'base' | 'background';
+export type ThemeColors = 'regular' | 'primary' | 'success' | 'accent' | 'warn';
+
 export const defaultColors = {
     base: defaultBaseRgb,
     background: defaultBackgroundRgb,
@@ -24,12 +27,11 @@ export const baseColors = [
     `base`, `background`,
 ];
 
-export const rgbDepth = `rgb`;
-
 export const colors = [
     `regular`, `primary`, `success`, `accent`, `warn`,
 ];
 
+export const rgbDepth = `rgb`;
 export const emptyDepth = ``;
 
 class Depth {

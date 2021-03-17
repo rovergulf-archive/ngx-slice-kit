@@ -10,11 +10,6 @@
     padding: 2px;
     border-radius: 4px;
 
-    .active {
-        opacity: 0.5;
-        touch-action: none;
-    }
-
     [sdk-button] {
         margin: 2px;
     }
@@ -22,7 +17,7 @@
     // Regular colors
     @each $color in $colors {
         &--#{$color} {
-            @extend .sdk-#{$color}-background;
+            background-color: var(--#{$color}-a95);
         }
     }
 }
