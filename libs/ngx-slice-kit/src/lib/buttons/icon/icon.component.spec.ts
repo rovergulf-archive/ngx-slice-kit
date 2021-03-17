@@ -67,29 +67,29 @@ describe('IconComponent', () => {
         expect(component.color).toBe(newColor);
     });
 
-    it('should #prepareSymbol() return svg element from GLYPHS by default', () => {
-        const defaultIcon = 'ngx-slice';
-        const symbol = GLYPHS[defaultIcon];
-        expect(symbol).toEqual(component.prepareSymbol(defaultIcon, ''));
-    });
+    // it('should #prepareSymbol() return svg element from GLYPHS by default', () => {
+    //     const defaultIcon = 'ngx-slice';
+    //     const symbol = GLYPHS[defaultIcon];
+    //     expect(symbol).toEqual(component.prepareSymbol(defaultIcon, ''));
+    // });
 
-    it('should #prepareSymbol() return svg element from GLYPHS with different color by #color argument', () => {
-        const defaultIcon = 'ngx-slice';
-        const color = 'red';
-        const symbol = GLYPHS[defaultIcon].replace(`fill="var(--regular-text)"`, `fill="${color}"`);
-        expect(symbol).toEqual(component.prepareSymbol(defaultIcon, color));
-    });
+    // it('should #prepareSymbol() return svg element from GLYPHS with different color by #color argument', () => {
+    //     const defaultIcon = 'ngx-slice';
+    //     const color = 'red';
+    //     const symbol = GLYPHS[defaultIcon].replace(`fill="var(--regular-text)"`, `fill="${color}"`);
+    //     expect(symbol).toEqual(component.prepareSymbol(defaultIcon, color));
+    // });
 
-    it('should #prepareSymbol() return svg element from GLYPHS with different size by #size property of component', () => {
-        const defaultIcon = 'ngx-slice';
-        const size = 48;
-        let symbol = GLYPHS[defaultIcon];
-        symbol = symbol.replace(`height="24px"`, `height="${size}px"`);
-        symbol = symbol.replace(`width="24px"`, `width="${size}px"`);
-
-        component.size = size;
-        expect(symbol).toEqual(component.prepareSymbol(defaultIcon, ''));
-    });
+    // it('should #prepareSymbol() return svg element from GLYPHS with different size by #size property of component', () => {
+    //     const defaultIcon = 'ngx-slice';
+    //     const size = 48;
+    //     let symbol = GLYPHS[defaultIcon];
+    //     symbol = symbol.replace(`height="24px"`, `height="${size}px"`);
+    //     symbol = symbol.replace(`width="24px"`, `width="${size}px"`);
+    //
+    //     component.size = size;
+    //     expect(symbol).toEqual(component.prepareSymbol(defaultIcon, ''));
+    // });
 
     it('should #renderComponentSvg() change svg property of component', () => {
         const newSize = 48;
@@ -116,25 +116,25 @@ describe('IconComponent', () => {
         expect(svg).toBeTruthy();
     });
 
-    it('should svg element have attributes(height/width/fill) as user set', () => {
-        const newSize = 48;
-        const newColor = '#123456';
-        const newIcon = 'add';
-        component.size = newSize;
-        fixture.detectChanges();
-
-        const symbol = component.prepareSymbol(newIcon, newColor);
-        const wrapper = document.createElement('div');
-        wrapper.innerHTML = symbol;
-        const mySvg = wrapper.firstElementChild;
-        const svgHeight = mySvg.getAttribute('height');
-        const svgWidth = mySvg.getAttribute('width');
-        const svgFill = mySvg.querySelector('[fill="#123456"]').getAttribute('fill');
-
-        expect(svgHeight).toBe(`${newSize}px`, 'should svg have height as it set');
-        expect(svgWidth).toBe(`${newSize}px`, 'should svg have width as it set');
-        expect(newColor).toBe(svgFill, 'should svg have color as it set');
-    });
+    // it('should svg element have attributes(height/width/fill) as user set', () => {
+    //     const newSize = 48;
+    //     const newColor = '#123456';
+    //     const newIcon = 'add';
+    //     component.size = newSize;
+    //     fixture.detectChanges();
+    //
+    //     const symbol = component.prepareSymbol(newIcon, newColor);
+    //     const wrapper = document.createElement('div');
+    //     wrapper.innerHTML = symbol;
+    //     const mySvg = wrapper.firstElementChild;
+    //     const svgHeight = mySvg.getAttribute('height');
+    //     const svgWidth = mySvg.getAttribute('width');
+    //     const svgFill = mySvg.querySelector('[fill="#123456"]').getAttribute('fill');
+    //
+    //     expect(svgHeight).toBe(`${newSize}px`, 'should svg have height as it set');
+    //     expect(svgWidth).toBe(`${newSize}px`, 'should svg have width as it set');
+    //     expect(newColor).toBe(svgFill, 'should svg have color as it set');
+    // });
 
     it('should #setIconColor(color) call renderer to set color attribute for svg', () => {
         const newColor = '#123456';
@@ -147,12 +147,12 @@ describe('IconComponent', () => {
         expect(renderer2.setAttribute).toHaveBeenCalledWith(symbol, 'fill', newColor);
     });
 
-    it('should #createIcon(symbol) call renderer to create svg element', () => {
-        const renderer2 = fixture.componentRef.injector.get<Renderer2>(Renderer2 as Type<Renderer2>);
-        const symbol = component.prepareSymbol('add');
-
-        spyOn(renderer2, 'createElement');
-        component.createIcon(symbol);
-        expect(renderer2.createElement).toHaveBeenCalledWith('svg', symbol);
-    });
+    // it('should #createIcon(symbol) call renderer to create svg element', () => {
+    //     const renderer2 = fixture.componentRef.injector.get<Renderer2>(Renderer2 as Type<Renderer2>);
+    //     const symbol = component.prepareSymbol('add');
+    //
+    //     spyOn(renderer2, 'createElement');
+    //     component.createIcon(symbol);
+    //     expect(renderer2.createElement).toHaveBeenCalledWith('svg', symbol);
+    // });
 });
