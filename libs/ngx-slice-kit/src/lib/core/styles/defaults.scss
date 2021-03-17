@@ -47,16 +47,7 @@ a, a:hover, a:visited, a:active, a:focus {
     color: inherit;
 }
 
-@function rgba-to-rgb($rgba, $background: #fff) {
-    @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%)
-}
-
-@mixin background-opacity($color, $opacity: 1) {
-    background: $color; /* The Fallback */
-    background: rgba($color, $opacity);
-}
-
 $levels: 'rgb', 'hover', 'deep', 'active', 'disabled', 'smooth';
 $textLevels: 'text', 'text-placeholder';
 $colors: 'regular', 'primary', 'success', 'accent', 'warn';
-$baseColors: 'base', 'opposite';
+$baseColors: 'base', 'background';

@@ -1,17 +1,22 @@
 import { defaultColors, Theme } from '../theme.model';
 
-export const defaultBaseRgb = `26, 26, 26`;
-export const defaultOppositeRgb = `255, 255, 255`;
+export const defaultBaseRgb = `255, 255, 255`;
+export const defaultBackgroundRgb = `26, 26, 26`;
 export const defaultRegularRgb = `186, 186, 186`;
 
 export const themeDark: Theme = {
     name: 'dark',
-    baseRgb: defaultBaseRgb,
-    oppositeRgb: defaultOppositeRgb,
-    regularRgb: defaultRegularRgb,
-    primaryRgb: defaultColors.primary,
-    successRgb: defaultColors.success,
-    accentRgb: defaultColors.accent,
-    warnRgb: defaultColors.warn,
+    base: defaultBaseRgb,
+    background: defaultBackgroundRgb,
+    regular: defaultRegularRgb,
+    regular_text: defaultRegularRgb,
+    primary: defaultColors.primary,
+    primary_text: defaultBaseRgb,
+    success: defaultColors.success,
+    success_text: defaultBaseRgb,
+    accent: defaultColors.accent,
+    accent_text: defaultBaseRgb,
+    warn: defaultColors.warn,
+    warn_text: defaultBaseRgb,
 };
 

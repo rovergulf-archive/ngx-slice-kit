@@ -1,17 +1,58 @@
-@use 'defaults';
-@use 'animations';
-@use 'flexbox';
+//@use "sass:color";
+@import 'defaults';
+@import 'animations';
+@import 'flexbox';
+
+@function rgba-to-rgb($rgba, $background: #fff) {
+    @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%)
+}
+
+@mixin background-opacity($color, $opacity: 1) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
 
 /**
- * slice-kit
+ * slice-kit colors
  */
 
-/**
- * slice kit colors
- */
-[class$='--primary'] {
-    color: var(--background);
-    background: var(--primary-deep);
+body {
+    color: var(--base-a80);
+    background-color: var(--background-a100);
+}
+
+@each $color in $colors {
+    .sdk-color-#{$color} {
+        background-color: var(--base-a80);
+        color: var(--#{$color}-a100);
+
+        &:hover {
+            //background-color: var(--#{$color}-a100);
+            //color: var(--background-a100);
+        }
+    }
+
+    .sdk-background-#{$color} {
+        position: relative;
+        background-color: var(--#{$color}-a80);
+        color: var(--base-a80);
+
+        &:hover {
+            color: var(--base-a100);
+        }
+
+        &.disabled, &[disabled] {
+            //background-color: var(--#{$color}-a40);
+            //color: var(--#{$color}-a40);
+            pointer-events: none;
+            cursor: default;
+            opacity: 0.5;
+        }
+    }
+
+    .sdk-border-#{$color} {
+        border-color: var(--#{$color}-rgb);
+    }
 }
 
 /**

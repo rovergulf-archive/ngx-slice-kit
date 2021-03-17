@@ -65,7 +65,7 @@ button.sdk-button, a.sdk-button {
 
     // set 'box-shadow' for raised button
     &.sdk-raised-button:not(disabled) {
-        box-shadow: 0 2px 4px rgba(var(--opposite-rgb), 0.25);
+        box-shadow: 0 2px 4px rgba(var(--background-rgb), 0.25);
     }
 
     // set 'border' for stroked button
@@ -100,16 +100,16 @@ button.sdk-button, a.sdk-button {
     //
     //    &.sdk-raised-button, &.sdk-flat-button, &.sdk-round-button {
     //        background-color: var(--regular-deep);
-    //        color: var(--opposite-deep);
+    //        color: var(--background-deep);
     //
     //        &:hover {
     //            background-color: var(--regular-hover);
-    //            color: var(--opposite-hover);
+    //            color: var(--background-hover);
     //        }
     //
     //        &:active {
     //            background-color: var(--regular-active);
-    //            color: var(--opposite-active);
+    //            color: var(--background-active);
     //        }
     //
     //        &[disabled] {

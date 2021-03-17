@@ -1,29 +1,33 @@
-const defaultBaseRgb = `26, 26, 26`;
-const defaultOppositeRgb = `255, 255, 255`;
-const defaultRegularRgb = `95, 95, 95`;
-const defaultPrimaryRgb = `0, 85, 255`;
-const defaultSuccessRgb = `39, 174, 96`;
-const defaultAccentRgb = `255, 168, 38`;
-const defaultWarnRgb = `238, 112, 112`;
+const defaultBaseRgb = `25, 25, 25`;
+const defaultBackgroundRgb = `255, 255, 255`;
+const defaultRegularRgb = `66, 66, 66`;
+const defaultPrimaryRgb = `0, 85, 255`; // `0, 85, 255`;
+const defaultSuccessRgb = `39, 174, 96`; // `39, 174, 96`;
+const defaultAccentRgb = `241, 201, 79`; // `255, 168, 38`;
+const defaultWarnRgb = `211, 50, 39`; // `238, 112, 112`;
 
 export const defaultColors = {
     base: defaultBaseRgb,
-    opposite: defaultOppositeRgb,
+    background: defaultBackgroundRgb,
     regular: defaultRegularRgb,
     primary: defaultPrimaryRgb,
+    primaryText: defaultBackgroundRgb,
     success: defaultSuccessRgb,
+    successText: defaultBackgroundRgb,
     accent: defaultAccentRgb,
+    accentText: defaultBackgroundRgb,
     warn: defaultWarnRgb,
+    warnText: defaultBackgroundRgb,
 };
 
 export const baseColors = [
-    `base`, `opposite`,
+    `base`, `background`,
 ];
 
 export const rgbDepth = `rgb`;
 
 export const colors = [
-    ...baseColors, `regular`, `primary`, `success`, `accent`, `warn`,
+    `regular`, `primary`, `success`, `accent`, `warn`,
 ];
 
 export const emptyDepth = ``;
@@ -31,6 +35,7 @@ export const emptyDepth = ``;
 class Depth {
     color: string;
     alpha: number = 1;
+    background?: string;
 }
 
 export const colorsDepth = {
@@ -43,8 +48,8 @@ export const colorsDepth = {
 };
 
 export const textDepth = {
-    placeholder: {color: 'opposite', alpha: 1},
-    text: {color: 'base', alpha: 1},
+    placeholder: {color: 'background', alpha: 30, background: 'background'},
+    text: {color: 'background', alpha: 80, background: 'background'},
 };
 
 const alphaLimit = 100;
@@ -59,37 +64,26 @@ export class ColorProperty {
     rgb?: string;
     rgba?: string;
     hex?: string;
-    mixin?: string;
 
     constructor(cp?: ColorProperty) {
         Object.assign(this, cp);
 
         if (this.name.indexOf('-') > 0) {
             this.prop = `--${this.name}`;
+        } else if (this.name.indexOf('-') === 0) {
+            this.prop = this.name;
         } else {
             this.prop = `--${this.name}-a${this.alpha}`;
         }
 
         this.hex = rgbaToHex(this.rgba);
         if (this.value) {
+            const alpha = this.alpha / alphaLimit;
+            const rgbaVal = `${this.value}, ${alpha}`;
+
+            this.rgba = `rgba(${rgbaVal})`;
             this.rgb = `rgb(${this.value})`;
-            this.rgba = `rgba(${this.value}, ${this.alpha / alphaLimit})`;
-
-            const rgba = this.rgba?.split(sep(this.rgba)).map((rgb, i) => {
-                if (i === 0) {
-                    return parseInt(rgb.substring(5, rgb.length), 10);
-                } else {
-                    return parseInt(rgb, 10);
-                }
-            });
-            if (rgba.length > 2) {
-                this.mixin = mixinRgba([...rgba, 1], [rgba[0], rgba[1], rgba[2], this.alpha]);
-            }
         }
-
-        // if (this.alpha === 50 || this.alpha === 35 || this.alpha === 95) {
-        //     console.log(this);
-        // }
     }
 }
 
@@ -97,54 +91,31 @@ export class Theme {
     name: string;
 
     // there goes RGB colors palette string values
-    baseRgb?: string;
-    oppositeRgb?: string;
-    regularRgb?: string;
-    primaryRgb?: string;
-    successRgb?: string;
-    accentRgb?: string;
-    warnRgb?: string;
+    base?: string;
+    background?: string;
+    regular?: string;
+    primary?: string;
+    success?: string;
+    accent?: string;
+    warn?: string;
+    // text keys
+    regular_text?: string;
+    primary_text?: string;
+    success_text?: string;
+    accent_text?: string;
+    warn_text?: string;
 
     constructor(t?: Theme) {
-        Object.assign(this, t);
-
-        if (this.baseRgb === '') {
-            this.baseRgb = defaultColors.base;
-        }
-
-        if (this.oppositeRgb === '') {
-            this.oppositeRgb = defaultColors.opposite;
-        }
-
-        if (this.regularRgb === '') {
-            this.regularRgb = defaultColors.regular;
-        }
-
-        if (this.primaryRgb === '') {
-            this.primaryRgb = defaultColors.primary;
-        }
-
-        if (this.successRgb === '') {
-            this.successRgb = defaultColors.success;
-        }
-
-        if (this.accentRgb === '') {
-            this.accentRgb = defaultColors.accent;
-        }
-
-        if (this.warnRgb === '') {
-            this.warnRgb = defaultColors.warn;
-        }
+        Object.assign(this, defaultColors, t);
     }
 
     public props?(): ColorProperty[] {
         const results = [];
 
-        for (const color of colors) {
-            const cKey = `${color}Rgb`;
-            const rgb = this[cKey];
+        for (const color of [...baseColors, ...colors]) {
+            const rgb = this[color];
 
-            for (let ind = alphaStep; ind <= alphaLimit; ind += alphaStep) {
+            for (let ind = 0; ind <= alphaLimit; ind += alphaStep) {
                 results.push(new ColorProperty({
                     name: color,
                     value: rgb,
@@ -152,41 +123,30 @@ export class Theme {
                 }));
             }
 
-            if (colors.indexOf(color) > 1) {
+            if (colors.indexOf(color) >= 0) {
                 results.push(...this.objectToColorProperties(colorsDepth, color));
+                results.push(...this.objectToColorProperties(textDepth, color));
             }
         }
-
-        results.push({
-            name: '--background',
-            value: 'rgb(var(--opposite-deep))',
-            rgb: 'rgb(var(--opposite-deep))',
-            rgba: 'rgb(var(--opposite-deep))'
-        }, {
-            name: '--color',
-            value: 'var(--regular-deep)',
-            rgb: 'rgb(var(--regular-deep))',
-            rgba: 'rgb(var(--regular-deep))'
-        });
 
         return results;
     }
 
-    private objectToColorProperties?(srcObj: any, colorName?: string, background?: string): ColorProperty[] {
+    private objectToColorProperties?(srcObj: any, color: string): ColorProperty[] {
         const results: ColorProperty[] = [];
 
         for (const key of Object.keys(srcObj)) {
             if (srcObj.hasOwnProperty(key)) {
-                const {alpha, color = colorName} = srcObj[key];
-                const value = this[`${color}Rgb`];
+                const depth = srcObj[key];
+                const value = this[color];
 
-                const prop: ColorProperty = new ColorProperty({
+                const prop: ColorProperty = {
                     name: `${color}-${key}`,
-                    alpha,
+                    alpha: depth.alpha,
                     value,
-                });
+                };
 
-                results.push(prop as ColorProperty);
+                results.push(new ColorProperty(prop));
             }
         }
 
@@ -225,8 +185,19 @@ export const rgbaToHex = (rgba: string): string => {
     return ('#' + outParts.join(''));
 };
 
+const toNumArray = (str: string): number[] => {
+    const separator = sep(str);
+    return str?.split(separator).map((rgb, i) => {
+        if (i === 0) {
+            return parseInt(rgb.substring(5, rgb.length), 10);
+        } else {
+            return parseInt(rgb, 10);
+        }
+    });
+};
+
 const sep = (str: string): string => {
-    return str.indexOf(',') > -1 ? (str.indexOf(', ') > -1 ? ' ' : ', ') : ',';
+    return str.indexOf(',') < 0 ? (str.indexOf(', ') < 0 ? ' ' : ', ') : ',';
 };
 
 const trim = (str: string): string => {
@@ -235,13 +206,6 @@ const trim = (str: string): string => {
 
 export const mixinRgba = (base: number[], added: number[]): string => {
     const mix = [];
-    if (!added.length) {
-        const opposite = defaultColors.opposite;
-        const result = [...opposite.split(sep(opposite)).map(a => parseInt(a, 10))];
-        if (result.length === 3) {
-            result.push(1);
-        }
-    }
 
     mix[3] = 1 - (1 - added[3]) * (1 - base[3]); // alpha
     mix[0] = Math.round((added[0] * added[3] / mix[3]) + (base[0] * base[3] * (1 - added[3]) / mix[3])); // red
@@ -249,4 +213,11 @@ export const mixinRgba = (base: number[], added: number[]): string => {
     mix[2] = Math.round((added[2] * added[3] / mix[3]) + (base[2] * base[3] * (1 - added[3]) / mix[3])); // blue
 
     return `rgba(${base.join(',')})`;
+};
+
+export const rgbaToRgb = (r, g, b, a, r2, g2, b2: number): string => {
+    const r3 = Math.round(((1 - a) * r2) + (a * r));
+    const g3 = Math.round(((1 - a) * g2) + (a * g));
+    const b3 = Math.round(((1 - a) * b2) + (a * b));
+    return `rgb(${r3},${g3},${b3})`;
 };

@@ -5,14 +5,14 @@ import { CommonModule } from '@angular/common';
 import { CoreModule } from './core/core.module';
 // components
 import { ButtonsModule } from './buttons/buttons.module';
-import { CardsModule } from './cards/cards.module';
+// import { CardsModule } from './cards/cards.module';
 import { DropdownsModule } from './dropdowns/dropdowns.module';
 import { InputsModule } from './inputs/inputs.module';
 import { LayoutModule } from './layout/layout.module';
-import { MediaModule } from './media/media.module';
+// import { MediaModule } from './media/media.module';
 import { ModalsModule } from './modals/modals.module';
 import { NavigationModule } from './navigation/navigation.module';
-import { OverlayModule } from './overlay/overlay.module';
+// import { OverlayModule } from './overlay/overlay.module';
 // import { themeLight } from './core/theme/lib/theme-light';
 // import { themeDark } from './core/theme/lib/theme-dark';
 import { ThemeModule } from './core/theme/theme.module';
@@ -20,15 +20,15 @@ import { ACTIVE_THEME, ThemeOptions, THEMES } from './core/theme/symbols';
 
 const kitExports = [
     ButtonsModule,
-    CardsModule,
+    // CardsModule,
     CoreModule,
     DropdownsModule,
     InputsModule,
     LayoutModule,
-    MediaModule,
+    // MediaModule,
     ModalsModule,
     NavigationModule,
-    OverlayModule,
+    // OverlayModule,
     ThemeModule,
 ];
 

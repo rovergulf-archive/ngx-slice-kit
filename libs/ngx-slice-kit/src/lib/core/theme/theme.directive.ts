@@ -37,7 +37,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
     updateTheme(theme: Theme): void {
         const element = this.getElement();
 
-        element.className = `sdk-${theme.name}-theme`; // probably unsafe
+        element.className = `sdk-theme-${theme.name}`; // probably unsafe
         if (!this.layoutControl.platform.BLINK) {
             element.classList.add('sdk-custom-scroll');
         } else {

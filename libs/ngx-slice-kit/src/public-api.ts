@@ -66,11 +66,15 @@ export { IconComponent } from './lib/buttons/icon/icon.component';
 /**
  * Cards module
  */
-export { CardsModule } from './lib/cards/cards.module';
+// export { CardsModule } from './lib/cards/cards.module';
 /**
  * modules
  */
-// TBD
+// export {CardModule} from './lib/cards/card/card.module';
+// export {DashboardCardModule} from './lib/cards/dashboard-card/dashboard-card.module';
+// export {ShoppingCardModule} from './lib/cards/shopping-card/shopping-card.module';
+// export {SocialCardModule} from './lib/cards/social-card/social-card.module';
+// export {TextCardModule} from './lib/cards/text-card/text-card.module';
 /**
  * components
  */
