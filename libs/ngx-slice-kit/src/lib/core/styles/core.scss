@@ -44,7 +44,7 @@ body {
 
 @each $color in $colors {
     .sdk-#{$color}-color {
-        color: var(--#{$color}-rgb);
+        color: var(--#{$color}-deep);
 
         &:hover {
             color: var(--#{$color}-hover);
@@ -59,7 +59,7 @@ body {
 
     .sdk-#{$color}-background {
         background-color: var(--#{$color}-rgb);
-        color: var(--#{$color}-rgb-text);
+        color: var(--#{$color}-deep-text);
 
         &:hover {
             background-color: var(--#{$color}-hover);
@@ -68,7 +68,7 @@ body {
 
         &.active, &--active {
             background-color: var(--#{$color}-deep);
-            color: var(--#{$color}-deep-text);
+            color: var(--#{$color}-active-text);
         }
 
         @include disabled-state;

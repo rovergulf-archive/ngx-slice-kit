@@ -11,7 +11,7 @@ export const themeLight: Theme = {
     success: defaultColors.success,
     success_text: defaultColors.background,
     accent: defaultColors.accent,
-    accent_text: defaultColors.background,
+    accent_text: defaultColors.base,
     warn: defaultColors.warn,
     warn_text: defaultColors.background
 };
