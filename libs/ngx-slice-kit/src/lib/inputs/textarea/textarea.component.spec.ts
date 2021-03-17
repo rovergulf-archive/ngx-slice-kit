@@ -193,14 +193,11 @@ describe('TextareaComponent', () => {
         });
 
         textarea.value = newValue;
-        fixture.detectChanges();
 
-        textareaEl.dispatchEvent(event);
-        console.log(textarea, 'test')
+        textarea.dispatchEvent(event);
         expect(component.value).toEqual(newValue, 'should be equal new value');
 
         newValue = 'Another value';
-        fixture.detectChanges();
         textarea.value = newValue;
         textarea.dispatchEvent(event);
         expect(component.value).toEqual(newValue, 'should be equal updated new value');
