@@ -46,7 +46,6 @@ export class ButtonGroupComponent implements OnInit, AfterContentInit {
     }
 
     ngOnInit(): void {
-        console.log(this.color);
     }
 
     ngAfterContentInit(): void {
