@@ -126,8 +126,6 @@ describe('LayoutControlService', () => {
             const res = service.isMobileLayout;
             const {width = 0} = service.getViewport();
 
-            console.log(service.mobileLayoutWidth, width);
-
             expect(res).toEqual(width <= service.mobileLayoutWidth);
         });
 
