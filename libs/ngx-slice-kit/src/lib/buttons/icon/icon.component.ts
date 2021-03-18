@@ -20,7 +20,6 @@ export class IconComponent implements OnInit, OnDestroy {
 
     svg: SafeHtml;
     @Input() icon: string = `ngx-slice`;
-    @Input() color: string = `var(--color)`;
     @Input() inline: boolean = true;
     @Input() size: number = 24;
 
@@ -31,9 +30,9 @@ export class IconComponent implements OnInit, OnDestroy {
     ) {
     }
 
-    // @Input('color') set color(color: string) {
-    //     this.setIconColor(color);
-    // }
+    @Input('color') set color(color: string) {
+        this.setIconColor(color);
+    }
 
     /**
      * So this solution came to me during google css-hacks
@@ -46,8 +45,10 @@ export class IconComponent implements OnInit, OnDestroy {
 
     setIconColor(color: string): void {
         if (color && color.length > 0) {
-            const symbol = this.elementRef.nativeElement.querySelector(`[class="icon"]`);
-            this.render2.setAttribute(symbol, 'fill', color);
+            const symbol = this.elementRef.nativeElement.querySelector(`[class=${this.icon}]`);
+            if (symbol) {
+                this.render2.setAttribute(symbol, 'fill', color);
+            }
         }
     }
 
