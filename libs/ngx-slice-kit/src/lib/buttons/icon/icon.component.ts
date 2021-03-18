@@ -1,62 +1,118 @@
 import { AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { GLYPHS } from './icon.glyphs';
+import { BehaviorSubject } from 'rxjs';
 
 const DEFAULT_SIZE = 24;
-const DEFAULT_COLOR = 'var(--regular-text)';
+const DEFAULT_COLOR = 'var(--color)';
 const DEFAULT_ICON = 'ngx-slice';
 const INKBE_ICON = 'inkbe';
 const INKBE_COEFF = 70 / 32;
 
 @Component({
     selector: 'sdk-icon',
-    templateUrl: './icon.component.html',
-    // template: `
-    //     <span [innerHTML]="svg"></span>
-    // `,
+    template: `
+        <span [innerHTML]="svg"></span>
+    `,
     styleUrls: ['./icon.component.scss'],
     encapsulation: ViewEncapsulation.None,
 })
-export class IconComponent implements OnInit, OnDestroy {
+export class IconComponent implements OnInit, OnDestroy, AfterContentInit {
 
+    private $color: BehaviorSubject<string> = new BehaviorSubject<string>(DEFAULT_COLOR);
+    private $size: BehaviorSubject<number> = new BehaviorSubject<number>(DEFAULT_SIZE);
     svg: SafeHtml;
-    @Input() icon: string = `ngx-slice`;
-    @Input() color: string = `var(--color)`;
+    private preparing: boolean;
+
+    @Input() icon: string = DEFAULT_ICON;
+    @Input() image: string;
     @Input() inline: boolean = true;
-    @Input() size: number = 24;
+
+    @Input() set size(size: number) {
+        this.$size.next(size);
+        this.renderComponentSvg(); // is it even good?
+    }
+
+    @Input('color') set color(c: string) {
+        this.$color.next(c);
+        this.renderComponentSvg();
+    }
+
+    get size(): number {
+        return this.$size.getValue();
+    }
+
+    get color(): string {
+        return this.$color.getValue();
+    }
 
     constructor(
         private elementRef: ElementRef,
         private sanitizer: DomSanitizer,
-        private render2: Renderer2
+        private renderer: Renderer2
     ) {
     }
 
-    // @Input('color') set color(color: string) {
-    //     this.setIconColor(color);
-    // }
+    prepareSymbol(name: string, color?: string): string {
+        if (this.preparing) {
+            return;
+        }
 
-    /**
-     * So this solution came to me during google css-hacks
-     * and got this one: https://css-tricks.com/svg-symbol-good-choice-icons/
-     * so i used new one scheme and it seems pretty simple nice, and easy scalable
-     */
-    renderIcon(name: string): void {
-        this.svg = this.sanitizer.bypassSecurityTrustHtml(`<use xlink:href="#${name}"/>`);
+        this.preparing = true;
+
+        let symbol = GLYPHS[name] || DEFAULT_ICON;
+        if (color?.length > 0) {
+            symbol = symbol.replace(`fill="var(--regular-text)"`, `fill="${color}"`);
+        }
+
+        if (this.size > DEFAULT_SIZE || this.size < DEFAULT_SIZE) {
+            symbol = symbol.replace(`height="24px"`, `height="${this.size}px"`);
+            if (name === INKBE_ICON) {
+                symbol = symbol.replace(`width="52.5px"`, `width="${this.size * INKBE_COEFF}px"`);
+            } else {
+                symbol = symbol.replace(`width="24px"`, `width="${this.size}px"`);
+            }
+        }
+
+        this.preparing = false;
+        return symbol;
+    }
+
+    createIcon(symbol: string): void {
+        this.renderer.createElement('svg', symbol);
+    }
+
+    createSafeHtml(symbol: string): SafeHtml {
+        return this.sanitizer.bypassSecurityTrustHtml(symbol);
+    }
+
+    renderComponentSvg(): void {
+        this.svg = this.createSafeHtml(this.prepareSymbol(this.icon, this.color));
     }
 
     setIconColor(color: string): void {
         if (color && color.length > 0) {
             const symbol = this.elementRef.nativeElement.querySelector(`[class="icon"]`);
-            this.render2.setAttribute(symbol, 'fill', color);
+            this.renderer.setAttribute(symbol, 'fill', color);
+        }
+    }
+
+    ngAfterContentInit(): void {
+        const svg = this.elementRef.nativeElement.querySelector(`[fill="var(--regular-text)"]`);
+        if (svg) {
+            this.renderer.setAttribute(svg, 'height', `${this.size}px`);
+            this.renderer.setAttribute(svg, 'width', `${this.size}px`);
+            this.renderer.setAttribute(svg, `fill`, this.color);
         }
     }
 
     ngOnInit(): void {
-        this.renderIcon(this.icon);
+        if (!this.icon) {
+            this.icon = 'ngx-slice';
+        }
+        this.svg = this.createSafeHtml(this.prepareSymbol(this.icon, this.color));
     }
 
     ngOnDestroy(): void {
     }
-
 }
-

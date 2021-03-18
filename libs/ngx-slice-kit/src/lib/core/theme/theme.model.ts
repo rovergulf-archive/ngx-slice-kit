@@ -41,9 +41,9 @@ class Depth {
 }
 
 export const colorsDepth = {
-    rgb: {alpha: 75},
-    deep: {alpha: 100},
-    hover: {alpha: 90},
+    rgb: {alpha: 100},
+    deep: {alpha: 90},
+    hover: {alpha: 75},
     active: {alpha: 60},
     disabled: {alpha: 45},
     smooth: {alpha: 10},
@@ -168,7 +168,7 @@ export class Theme {
 
 export const rgbaToHex = (rgba: string): string => {
     if (!rgba) {
-        return '#fff';
+        return '';
     }
 
     const inParts = rgba.substring(rgba.indexOf('(')).split(sep(rgba));

@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-demo-icon',
     templateUrl: './demo-icon.component.html',
     styleUrls: ['./demo-icon.component.scss']
 })
-export class DemoIconComponent implements OnInit {
+export class DemoIconComponent implements OnInit, OnDestroy {
 
     toggle: boolean;
     size: boolean;
@@ -21,7 +21,10 @@ export class DemoIconComponent implements OnInit {
         this.size = !this.size;
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
+    }
+
+    ngOnDestroy(): void {
     }
 
 }

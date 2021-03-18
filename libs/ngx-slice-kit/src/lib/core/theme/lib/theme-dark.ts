@@ -14,7 +14,7 @@ export const themeDark: Theme = {
     success: defaultColors.success,
     success_text: defaultBaseRgb,
     accent: defaultColors.accent,
-    accent_text: defaultBaseRgb,
+    accent_text: defaultBackgroundRgb,
     warn: defaultColors.warn,
     warn_text: defaultBaseRgb,
 };

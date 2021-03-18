@@ -38,6 +38,7 @@ html, body {
 
     sdk-sidenav-container {
         min-height: 100%;
+        z-index: 99;
     }
 }
 
@@ -45,11 +46,6 @@ html, body {
 #content {
     width: 100%;
     min-height: calc(100% - 80px);
-}
-
-#wrap.dark {
-    background-color: var(--background);
-    color: var(--regular-text);
 }
 
 p, span, h1, h2, h3, h4 {

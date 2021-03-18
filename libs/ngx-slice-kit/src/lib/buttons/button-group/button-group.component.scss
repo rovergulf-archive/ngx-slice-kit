@@ -1,4 +1,4 @@
-@import '../../core/styles/core';
+@import '../../core/styles/core.scss';
 
 .sdk-button-group-container {
     @extend .layout-start-center;
@@ -12,6 +12,11 @@
 
     [sdk-button] {
         margin: 2px;
+    }
+
+    .sdk-button--active {
+        opacity: 0.5;
+        touch-action: none;
     }
 
     // Regular colors
