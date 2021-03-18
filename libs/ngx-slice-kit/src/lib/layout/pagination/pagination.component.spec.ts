@@ -103,8 +103,8 @@ describe('PaginationComponent', () => {
         const attrLeft = elLeft.getAttribute('ng-reflect-color');
         const attrRight = elRight.getAttribute('ng-reflect-color');
 
-        expect(attrLeft).toEqual('var(--primary)');
-        expect(attrRight).toEqual('var(--primary)');
+        expect(attrLeft).toEqual('var(--primary-rgb)');
+        expect(attrRight).toEqual('var(--primary-rgb)');
     });
 
     it('should left/right button icons have #fff color if they are hovered', () => {
@@ -116,8 +116,8 @@ describe('PaginationComponent', () => {
         const attrLeft = elLeft.getAttribute('ng-reflect-color');
         const attrRight = elRight.getAttribute('ng-reflect-color');
 
-        expect(attrLeft).toEqual('#fff');
-        expect(attrRight).toEqual('#fff');
+        expect(attrLeft).toEqual('var(--primary-rgb-text)');
+        expect(attrRight).toEqual('var(--primary-rgb-text)');
     });
 
     it('should #pageChange do nothing if page argument is equal current #page property', () => {
