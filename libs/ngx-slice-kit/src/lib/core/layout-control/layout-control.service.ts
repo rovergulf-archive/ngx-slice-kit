@@ -40,7 +40,7 @@ export class LayoutControlService {
 
     public get isMobileLayout(): boolean {
         const {width = 0} = this.getViewport();
-        return width > this.mobileLayoutWidth;
+        return width <= this.mobileLayoutWidth;
     }
 
     public get mobileLayoutObservable(): Observable<boolean> {
@@ -59,7 +59,7 @@ export class LayoutControlService {
         this.$mobileLayoutWidth.next(w);
     }
 
-    focus(elem: any) {
+    focus(elem: any): void {
         this.$focusTrap.next([elem, ...this.$focusTrap.getValue()]);
     }
 
