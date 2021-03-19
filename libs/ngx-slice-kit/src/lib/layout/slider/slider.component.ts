@@ -10,7 +10,7 @@ import {
     Renderer2,
     ViewChild
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'sdk-slider',
@@ -54,44 +54,6 @@ export class SliderComponent implements OnInit, AfterViewInit {
     constructor(
         private renderer: Renderer2,
     ) {
-    }
-
-    ngOnInit(): void {
-        this.trackRects = this.track.nativeElement.getBoundingClientRect();
-        this.thumbSize = this.multiple ? 12 : this.small ? 24 : 32;
-
-        if (this.min > this.max) {
-            [this.max, this.min] = [this.min, this.max];
-        }
-
-        if (!this.multiple) {
-            if (this.value < this.min) {
-                this.value = this.min;
-            }
-            if (this.value > this.max) {
-                this.value = this.max;
-            }
-        } else {
-            if (this.value && this.value.min < this.min) {
-                this.value.min = this.min;
-            }
-            if (this.value && this.value.max > this.max) {
-                this.value.max = this.max;
-            }
-        }
-
-        this.value = this.value || (this.multiple ? {max: this.max, min: this.min} : this.min);
-
-        if (this.value && this.value !== this.min) {
-            this.setInitialThumbCoords();
-        }
-    }
-
-    ngAfterViewInit(): void {
-        this.thumbCoords = this.getCoords(this.thumb.nativeElement.getBoundingClientRect().left + this.thumbSize);
-        if (this.multiple) {
-            this.multiThumbCoords = this.getCoords(this.thumbMultiple.nativeElement.getBoundingClientRect().left);
-        }
     }
 
     grab(prop, event): void {
@@ -211,7 +173,6 @@ export class SliderComponent implements OnInit, AfterViewInit {
     }
 
     calcValue(thumbCoords: number, rangeSide?: 'min' | 'max'): void {
-        // const padding = this.thumbSize;
         const diff = this.max - this.min;
 
         this.interValue = Math.round(diff / 100 * thumbCoords);
@@ -219,19 +180,6 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
         this.setValue(newValue, rangeSide);
     }
-
-    // test and delete
-    // calcValue(thumbCoords) {
-    //     const padding = this.small ? 24 : 32;
-    //     const diff = this.max - this.min;
-    //
-    //     this.interValue = Math.round((thumbCoords + (padding * (this.interValue / diff))) / (this.trackRects.width / diff));
-    //
-    //     if (Math.abs(this.interValue % this.step) === 0) {
-    //         this.prevValue = this.interValue;
-    //         this.setValue(this.min + this.interValue);
-    //     }
-    // }
 
     setValue(newValue: number, rangeSide?: 'max' | 'min'): void {
         if (this.multiple) {
@@ -274,5 +222,43 @@ export class SliderComponent implements OnInit, AfterViewInit {
         this.thumbCoords = valuePercent;
         this.setGradient(valuePercent);
         this.renderer.setStyle(this.thumb.nativeElement, 'left', valuePercent + '%');
+    }
+
+    ngOnInit(): void {
+        this.trackRects = this.track.nativeElement.getBoundingClientRect();
+        this.thumbSize = this.multiple ? 12 : this.small ? 24 : 32;
+
+        if (this.min > this.max) {
+            [this.max, this.min] = [this.min, this.max];
+        }
+
+        if (!this.multiple) {
+            if (this.value < this.min) {
+                this.value = this.min;
+            }
+            if (this.value > this.max) {
+                this.value = this.max;
+            }
+        } else {
+            if (this.value && this.value.min < this.min) {
+                this.value.min = this.min;
+            }
+            if (this.value && this.value.max > this.max) {
+                this.value.max = this.max;
+            }
+        }
+
+        this.value = this.value || (this.multiple ? {max: this.max, min: this.min} : this.min);
+
+        if (this.value && this.value !== this.min) {
+            this.setInitialThumbCoords();
+        }
+    }
+
+    ngAfterViewInit(): void {
+        this.thumbCoords = this.getCoords(this.thumb.nativeElement.getBoundingClientRect().left + this.thumbSize);
+        if (this.multiple) {
+            this.multiThumbCoords = this.getCoords(this.thumbMultiple.nativeElement.getBoundingClientRect().left);
+        }
     }
 }
