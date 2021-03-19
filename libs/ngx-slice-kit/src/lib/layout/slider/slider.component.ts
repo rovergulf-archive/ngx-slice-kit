@@ -45,6 +45,8 @@ export class SliderComponent implements OnInit, AfterViewInit {
     subscription: Subscription = new Subscription();
 
     thumbSize: number;
+    thumbClickOffset: number;
+    multiThumbClickOffset: number;
 
     @Output() changed = new EventEmitter();
     @Output() moved = new EventEmitter();
@@ -92,8 +94,14 @@ export class SliderComponent implements OnInit, AfterViewInit {
         }
     }
 
-    grab(prop): void {
+    grab(prop, event): void {
         this[prop] = true;
+        if (prop === 'isDrag') {
+            this.thumbClickOffset = event.layerX;
+        }
+        if (prop === 'isMultipleDrag') {
+            this.multiThumbClickOffset = event.layerX;
+        }
     }
 
     @HostListener('document:pointerup')
@@ -105,7 +113,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
     @HostListener('document:pointermove', ['$event'])
     pointerMove(e: PointerEvent): void {
         if (this.isDrag) {
-            this.thumbCoords = this.getCoords(e.clientX);
+            this.thumbCoords = this.getCoords(e.clientX - this.thumbClickOffset);
             if (this.thumbCoords < this.multiThumbCoords + (this.thumbSize / this.trackRects.width * 100)) {
                 return;
             }
@@ -118,7 +126,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
         }
 
         if (this.isMultipleDrag) {
-            this.multiThumbCoords = this.getCoords(e.clientX);
+            this.multiThumbCoords = this.getCoords(e.clientX - this.multiThumbClickOffset);
 
             if (this.multiThumbCoords + (this.thumbSize / this.trackRects.width * 100) > this.thumbCoords) {
                 return;
@@ -148,6 +156,12 @@ export class SliderComponent implements OnInit, AfterViewInit {
     }
 
     moveThumb(e: MouseEvent): void {
+        const target: HTMLElement = e.target as HTMLElement;
+
+        if (target.classList.contains('sdk-slider__thumb')) {
+            return;
+        }
+
         const coords = this.getCoords(e.clientX);
         if (this.multiple) {
             const firstThumb = {
