@@ -400,7 +400,21 @@ describe('SliderComponent', () => {
         expect(component.interValue).toEqual(expectVal);
     });
 
-    // it('should', () => {});
+    it('should #setGradient(coords, left: false) set #gradientSize equal coords arg', () => {
+        const coords = 10;
+        component.setGradient(coords, false);
+
+        expect(component.gradientLeftOffset).toBeUndefined(coords);
+        expect(component.gradientSize).toEqual(coords);
+    });
+
+    it('should #setGradient(coords, left: true) set #gradientLeftOffset equal coords arg', () => {
+        const coords = 10;
+        component.setGradient(coords, true);
+
+        expect(component.gradientLeftOffset).toEqual(coords);
+        expect(component.gradientSize).toBeUndefined();
+    });
 
     // it('should', () => {});
 
