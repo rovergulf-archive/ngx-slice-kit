@@ -184,7 +184,45 @@ describe('SliderComponent', () => {
         expect(component.setInitialThumbCoords).not.toHaveBeenCalled();
     });
 
-    // it('should', () => {});
+    it('should #thumb has correct coords after view was init', () => {
+        component.multiple = false;
+        component.ngOnInit();
+        component.ngAfterViewInit();
+        component.thumbSize = 32;
+        const expCoords = component.getCoords(component.thumb.nativeElement.getBoundingClientRect().left + 32);
+
+        expect(component.thumbCoords).toEqual(expCoords);
+    });
+
+    it('should #thumbCoords has correct value after view was init. #multiple = true;', () => {
+        component.multiple = true;
+        fixture.detectChanges();
+        component.ngOnInit();
+        component.ngAfterViewInit();
+        const expCoords = component.getCoords(component.thumbMultiple.nativeElement.getBoundingClientRect().left);
+
+        expect(component.multiThumbCoords).toEqual(expCoords);
+    });
+
+    it('should #multiThumbCoords has correct value after view was init if #multiple = true;', () => {
+        component.multiple = true;
+        fixture.detectChanges();
+        component.ngOnInit();
+        component.ngAfterViewInit();
+        const expCoords = component.getCoords(component.thumbMultiple.nativeElement.getBoundingClientRect().left);
+
+        expect(component.multiThumbCoords).toEqual(expCoords);
+    });
+
+    it('should #multiThumbCoords be undefined after view was init if #multiple = false;', () => {
+        component.multiple = false;
+        component.ngOnInit();
+        component.ngAfterViewInit();
+
+        expect(component.multiThumbCoords).toBeUndefined();
+    });
+
+
 
     // it('should', () => {});
 
