@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 
 import { SliderComponent } from './slider.component';
 import {DebugElement, Input} from '@angular/core';
@@ -222,15 +222,102 @@ describe('SliderComponent', () => {
         expect(component.multiThumbCoords).toBeUndefined();
     });
 
+    it('should #setInitialThumbCoords call #setGradient method', () => {
+        spyOn(component, 'setGradient');
+        component.multiple = false;
+        component.min = 10;
+        component.max = 50;
+        component.value = 25;
+        fixture.detectChanges();
 
+        const expectedValue = (25 - 10) * 100 / (50 - 10);
+        fixture.detectChanges();
+        component.setInitialThumbCoords();
 
-    // it('should', () => {});
+        expect(component.setGradient).toHaveBeenCalledWith(expectedValue);
+    });
 
-    // it('should', () => {});
+    it('should #trackRects be equal #track rects after #setInitialThumbCoords was called', () => {
+        fixture.detectChanges();
+        const expTracks = component.track.nativeElement.getBoundingClientRect();
+        component.setInitialThumbCoords();
+        fixture.detectChanges();
 
-    // it('should', () => {});
+        expect(component.trackRects).toEqual(expTracks);
+    });
 
-    // it('should', () => {});
+    it('should #setInitialThumbCoords set #thumbCoords and left style for #thumb element', () => {
+        component.multiple = false;
+        component.min = 10;
+        component.max = 50;
+        component.value = 25;
+        fixture.detectChanges();
+
+        const expectedValue = (25 - 10) * 100 / (50 - 10);
+        component.setInitialThumbCoords();
+        fixture.detectChanges();
+
+        expect(component.thumbCoords).toEqual(expectedValue);
+        expect(component.thumb.nativeElement.style.left).toEqual(`${expectedValue}%`);
+    });
+
+    it('should #setInitialThumbCoords set #thumbCoords and left style for #thumb element. #multiple = true', () => {
+        component.multiple = true;
+        component.max = 50;
+        component.min = 10;
+        component.value = { min: 10, max: 50 };
+        fixture.detectChanges();
+
+        const expectedValue = (50 - 10) * 100 / (50 - 10);
+        component.setInitialThumbCoords();
+        fixture.detectChanges();
+
+        expect(component.thumbCoords).toEqual(expectedValue);
+        expect(component.thumb.nativeElement.style.left).toEqual(`${expectedValue}%`);
+    });
+
+    it('should #setInitialThumbCoords set #multiThumbCoords and left style for #thumbMultiple element. #multiple = true', fakeAsync(() => {
+        component.multiple = true;
+        component.max = 50;
+        component.min = 10;
+        component.value = { min: 10, max: 50 };
+        fixture.detectChanges();
+
+        const expectedValue = (10 - 10) * 100 / (50 - 10);
+        component.setInitialThumbCoords();
+        tick(1000);
+        fixture.detectChanges();
+
+        expect(component.multiThumbCoords).toEqual(expectedValue);
+        expect(component.thumbMultiple.nativeElement.style.left).toEqual(`${expectedValue}%`);
+    }));
+
+    it('should #setValue overwrite #value if it does not equal & #multiple = false', () => {
+        const newVal = 40;
+        component.value = 50;
+        fixture.detectChanges();
+
+        component.setValue(newVal);
+        expect(component.value).toEqual(newVal);
+    });
+
+    it('should #setValue emit #changed event with new value as argument if it does not equal to old value & #multiple = false', () => {
+        component.value = 50;
+        spyOn(component.changed, 'emit');
+        fixture.detectChanges();
+
+        component.setValue(20);
+        expect(component.changed.emit).toHaveBeenCalledWith(20);
+    });
+
+    it('should #setValue do not emit #changed event if it equal to old value & #multiple = false', () => {
+        component.value = 50;
+        spyOn(component.changed, 'emit');
+        fixture.detectChanges();
+
+        component.setValue(component.value);
+        expect(component.changed.emit).not.toHaveBeenCalled();
+    });
 
     // it('should', () => {});
 
