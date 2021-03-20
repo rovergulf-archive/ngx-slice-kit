@@ -379,7 +379,26 @@ describe('SliderComponent', () => {
         expect(component.changed.emit).not.toHaveBeenCalled();
     });
 
-    // it('should', () => {});
+    it('should #calcValue set #interValue call #setValue with new value and same rangeSide', () => {
+        spyOn(component, 'setValue');
+        const range = 'min';
+        const diff = 100;
+        const coords = 50;
+        const expectVal = Math.round(diff / 100 * coords);
+        const newVal = expectVal; // component.step * Math.ceil(component.interValue / component.step) + component.min
+
+        component.calcValue(coords, range);
+        expect(component.setValue).toHaveBeenCalledWith(newVal, range);
+    });
+
+    it('should #calcValue set #interValue', () => {
+        const diff = 100;
+        const coords = 50;
+        const expectVal = Math.round(diff / 100 * coords);
+
+        component.calcValue(coords);
+        expect(component.interValue).toEqual(expectVal);
+    });
 
     // it('should', () => {});
 
