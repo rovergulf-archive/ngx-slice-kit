@@ -2,6 +2,7 @@ import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular
 
 import {SliderComponent} from './slider.component';
 import {DebugElement, Input} from '@angular/core';
+import {Point} from '@angular/cdk/drag-drop';
 
 describe('SliderComponent', () => {
     let component: SliderComponent;
@@ -437,11 +438,57 @@ describe('SliderComponent', () => {
 
     });
 
-    // it('should', () => {});
+    it('should click on thumb element call #grab method', () => {
+        const event = new PointerEvent('pointerdown');
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__thumb-wrapper .sdk-slider__thumb');
+        spyOn(component, 'grab');
 
-    // it('should', () => {});
+        el.dispatchEvent(event);
+        expect(component.grab).toHaveBeenCalledWith('isDrag', event);
+    });
 
-    // it('should', () => {});
+    it('should click on thumbMultiple element call #grab method', () => {
+        const event = new PointerEvent('pointerdown');
+        component.multiple = true;
+        fixture.detectChanges();
+        component.ngOnInit();
+        component.ngAfterViewInit();
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__thumb-wrapper--multiple .sdk-slider__thumb');
+        spyOn(component, 'grab');
+
+        el.dispatchEvent(event);
+        expect(component.grab).toHaveBeenCalledWith('isMultipleDrag', event);
+    });
+
+    it('should #drag("isDrag") set set property from prop argument as true', () => {
+        const event = new PointerEvent('pointerdown');
+        component.grab('isDrag', event);
+
+        expect(component.isDrag).toEqual(true);
+        expect(component.isMultipleDrag).toEqual(false);
+    });
+
+    it('should #drag("isMultipleDrag") set set property from prop argument as true', () => {
+        const event = new PointerEvent('pointerdown');
+        component.grab('isMultipleDrag', event);
+
+        expect(component.isDrag).toEqual(false);
+        expect(component.isMultipleDrag).toEqual(true);
+    });
+
+    it('should #grab with "isMultipleDrag" as prop argument set #multiThumbClickOffset from event.layerX value', () => {
+        const event = {layerX: 10};
+        component.grab('isMultipleDrag', event);
+
+        expect(component.multiThumbClickOffset).toEqual(event.layerX);
+    });
+
+    it('should #grab with "isDrag" as prop argument set #thumbClickOffset from event.layerX value', () => {
+        const event = {layerX: 10};
+        component.grab('isDrag', event);
+
+        expect(component.thumbClickOffset).toEqual(event.layerX);
+    });
 
     // it('should', () => {});
 
