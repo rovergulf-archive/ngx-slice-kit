@@ -1,6 +1,6 @@
 import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 
-import { SliderComponent } from './slider.component';
+import {SliderComponent} from './slider.component';
 import {DebugElement, Input} from '@angular/core';
 
 describe('SliderComponent', () => {
@@ -265,7 +265,7 @@ describe('SliderComponent', () => {
         component.multiple = true;
         component.max = 50;
         component.min = 10;
-        component.value = { min: 10, max: 50 };
+        component.value = {min: 10, max: 50};
         fixture.detectChanges();
 
         const expectedValue = (50 - 10) * 100 / (50 - 10);
@@ -280,7 +280,7 @@ describe('SliderComponent', () => {
         component.multiple = true;
         component.max = 50;
         component.min = 10;
-        component.value = { min: 10, max: 50 };
+        component.value = {min: 10, max: 50};
         fixture.detectChanges();
 
         const expectedValue = (10 - 10) * 100 / (50 - 10);
@@ -319,7 +319,65 @@ describe('SliderComponent', () => {
         expect(component.changed.emit).not.toHaveBeenCalled();
     });
 
-    // it('should', () => {});
+    it('should #setValue(val, "max") overwrite #value.max if it does not equal & #multiple = true', () => {
+        component.multiple = true;
+        const newVal = 40;
+        component.value = {min: 10, max: 50};
+        fixture.detectChanges();
+
+        component.setValue(newVal, 'max');
+        expect(component.value.max).toEqual(newVal);
+    });
+
+    it('should #setValue(val, "max") emit #changed event with new value as argument if it does not equal to old value & #multiple = true',
+        () => {
+            component.multiple = true;
+            component.value = {min: 10, max: 50};
+            spyOn(component.changed, 'emit');
+            fixture.detectChanges();
+
+            component.setValue(40, 'max');
+            expect(component.changed.emit).toHaveBeenCalledWith({min: 10, max: 40});
+        });
+
+    it('should #setValue(val, "max") do not emit #changed event if it equal to old value & #multiple = true', () => {
+        component.value = {min: 10, max: 50};
+        spyOn(component.changed, 'emit');
+        fixture.detectChanges();
+
+        component.setValue(component.value, 'min');
+        expect(component.changed.emit).not.toHaveBeenCalled();
+    });
+
+    it('should #setValue(val, "min") overwrite #value.max if it does not equal & #multiple = true', () => {
+        component.multiple = true;
+        const newVal = 40;
+        component.value = {min: 10, max: 50};
+        fixture.detectChanges();
+
+        component.setValue(newVal, 'min');
+        expect(component.value.min).toEqual(newVal);
+    });
+
+    it('should #setValue(val, "min") emit #changed event with new value as argument if it does not equal to old value & #multiple = true',
+        () => {
+            component.multiple = true;
+            component.value = {min: 10, max: 50};
+            spyOn(component.changed, 'emit');
+            fixture.detectChanges();
+
+            component.setValue(40, 'min');
+            expect(component.changed.emit).toHaveBeenCalledWith({min: 40, max: 50});
+        });
+
+    it('should #setValue(val, "min") do not emit #changed event if it equal to old value & #multiple = true', () => {
+        component.value = {min: 10, max: 50};
+        spyOn(component.changed, 'emit');
+        fixture.detectChanges();
+
+        component.setValue(component.value, 'min');
+        expect(component.changed.emit).not.toHaveBeenCalled();
+    });
 
     // it('should', () => {});
 
