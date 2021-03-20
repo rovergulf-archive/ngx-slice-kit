@@ -416,9 +416,26 @@ describe('SliderComponent', () => {
         expect(component.gradientSize).toBeUndefined();
     });
 
-    // it('should', () => {});
+    it('should #drop method set #isDrag & #isMultipleDrag as false', () => {
+        component.isDrag = false;
+        component.isMultipleDrag = false;
+        fixture.detectChanges();
 
-    // it('should', () => {});
+        component.drop();
+
+        expect(component.isDrag).toBeFalse();
+        expect(component.isMultipleDrag).toBeFalse();
+    });
+
+    it('should #pointerup event on document trigger #drop method', () => {
+        spyOn(component, 'drop');
+        const event = new PointerEvent('pointerup');
+
+        document.dispatchEvent(event);
+
+        expect(component.drop).toHaveBeenCalled();
+
+    });
 
     // it('should', () => {});
 
