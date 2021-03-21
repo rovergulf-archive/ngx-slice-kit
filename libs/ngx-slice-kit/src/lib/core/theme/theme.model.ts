@@ -1,10 +1,10 @@
-const defaultBaseRgb = `25, 25, 25`;
-const defaultBackgroundRgb = `255, 255, 255`;
-const defaultRegularRgb = `186, 186, 186`; // `66, 66, 66`;
-const defaultPrimaryRgb = `0, 85, 255`; // `0, 85, 255`;
-const defaultSuccessRgb = `39, 174, 96`; // `39, 174, 96`;
-const defaultAccentRgb = `241, 201, 79`; // `255, 168, 38`;
-const defaultWarnRgb = `211, 50, 39`; // `238, 112, 112`;
+const defaultBaseRgb = `25,25,25`;
+const defaultBackgroundRgb = `255,255,255`;
+const defaultRegularRgb = `186,186,186`; // `66,66,66`;
+const defaultPrimaryRgb = `0,85,255`; // `0,85,255`;
+const defaultSuccessRgb = `39,174,96`; // `39,174,96`;
+const defaultAccentRgb = `241,201,79`; // `255,168,38`;
+const defaultWarnRgb = `211,50,39`; // `238,112,112`;
 
 export type ThemeBaseColors = 'base' | 'background';
 export type ThemeColors = 'regular' | 'primary' | 'success' | 'accent' | 'warn';
@@ -55,39 +55,29 @@ export const textDepth = {
 };
 
 const alphaLimit = 100;
-const alphaStep = 5;
+const alphaStep = 10;
 
 export class ColorProperty {
     value?: string;
     background?: string;
     name?: string;
     prop?: string;
-    alpha?: number = alphaLimit;
+    alpha?: number;
     rgb?: string;
-    rgba?: string;
     hex?: string;
 
     constructor(cp?: ColorProperty) {
         Object.assign(this, cp);
 
-        if (this.name.indexOf('-') > 0) {
-            this.prop = `--${this.name}`;
-        } else if (this.name.indexOf('-') === 0) {
-            this.prop = this.name;
-        } else {
-            this.prop = `--${this.name}-a${this.alpha}`;
-        }
+        this.prop = `--${this.name}`;
+        const rgbVal = this.value.split(sep(this.value)).map(i => parseInt(i, 10));
+        const bgVal = this.background.split(sep(this.background)).map(i => parseInt(i, 10));
+        this.rgb = rgbaToRgb(rgbVal[0], rgbVal[1], rgbVal[2], this.alpha / 100, bgVal[0], bgVal[1], bgVal[2]);
+        this.hex = rgbaToHex(this.rgb);
+        this.background = rgbaToRgb(bgVal[0], bgVal[1], bgVal[2], this.alpha / 100, rgbVal[0], rgbVal[1], rgbVal[2]);
 
-        if (this.value) {
-            const alpha = this.alpha / alphaLimit;
-            const rgbaVal = `${this.value}, ${alpha}`;
-
-            this.rgba = `rgba(${rgbaVal})`;
-            this.rgb = `rgb(${this.value})`;
-        }
-
-        if (this.alpha === alphaLimit) {
-            this.hex = rgbaToHex(this.rgba);
+        if (this.alpha % 40 === 0) {
+            console.log(this);
         }
     }
 }
@@ -120,50 +110,28 @@ export class Theme {
         for (const color of [...baseColors, ...colors]) {
             const rgb = this[color];
 
-            for (let ind = 0; ind <= alphaLimit; ind += alphaStep) {
+            const colorProp = {
+                name: color,
+                alpha: 100,
+                value: rgb,
+                background: rgb === this.background ? this.base : this.background,
+            };
+            results.push(new ColorProperty(colorProp));
+
+            for (let alpha = alphaStep; alpha <= alphaLimit; alpha += alphaStep) {
                 results.push(new ColorProperty({
-                    name: color,
+                    name: `${color}-a${alpha}`,
+                    alpha,
                     value: rgb,
-                    alpha: ind,
+                    background: rgb === this.background ? this.base : this.background,
                 }));
             }
 
-            if (colors.indexOf(color) >= 0) {
-                results.push(...this.objectToColorProperties(colorsDepth, color));
-            }
+
         }
 
         return results;
     }
-
-    private objectToColorProperties?(srcObj: any, color: string): ColorProperty[] {
-        const results: ColorProperty[] = [];
-
-        for (const key of Object.keys(srcObj)) {
-            if (srcObj.hasOwnProperty(key)) {
-                const depth = srcObj[key];
-                const value = this[color];
-
-                results.push(new ColorProperty({
-                    name: `${color}-${key}`,
-                    alpha: depth.alpha,
-                    value,
-                }));
-
-                const textRef = this[`${color}_text`];
-                if (textRef?.length > 0) {
-                    results.push(new ColorProperty({
-                        name: `${color}-${key}-text`,
-                        alpha: depth.alpha,
-                        value: textRef,
-                    }));
-                }
-            }
-        }
-
-        return results;
-    }
-
 }
 
 export const rgbaToHex = (rgba: string): string => {
@@ -196,19 +164,8 @@ export const rgbaToHex = (rgba: string): string => {
     return ('#' + outParts.join(''));
 };
 
-const toNumArray = (str: string): number[] => {
-    const separator = sep(str);
-    return str?.split(separator).map((rgb, i) => {
-        if (i === 0) {
-            return parseInt(rgb.substring(5, rgb.length), 10);
-        } else {
-            return parseInt(rgb, 10);
-        }
-    });
-};
-
 const sep = (str: string): string => {
-    return str.indexOf(',') < 0 ? (str.indexOf(', ') < 0 ? ' ' : ', ') : ',';
+    return str?.indexOf(',') < 0 ? (str?.indexOf(', ') < 0 ? ' ' : ', ') : ',';
 };
 
 const trim = (str: string): string => {

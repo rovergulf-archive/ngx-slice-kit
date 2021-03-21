@@ -109,19 +109,19 @@
      * legacy browser prefixes
      */
     &::-webkit-textarea-placeholder {
-        color: var(--regular-hover);
+        color: transparent;
     }
 
     &::-moz-placeholder {
-        color: var(--regular-hover);
+        color: transparent;
     }
 
     &:-ms-textarea-placeholder {
-        color: var(--regular-hover);
+        color: transparent;
     }
 
     &:-moz-placeholder {
-        color: var(--regular-hover);
+        color: transparent;
     }
 }
 
@@ -141,7 +141,7 @@
     z-index: 2;
     bottom: 0;
     right: 0;
-    background-color: var(--regular-disabled);
+    background-color: transparent;
     height: 11px;
     width: 15px;
 }
@@ -164,7 +164,7 @@
     bottom: -1px;
     width: 18px;
     height: 18px;
-    background: var(--regular-disabled);
+    background: transparent;
     pointer-events: none;
 }
 
