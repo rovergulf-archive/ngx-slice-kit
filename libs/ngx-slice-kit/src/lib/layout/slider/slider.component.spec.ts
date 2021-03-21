@@ -621,6 +621,113 @@ describe('SliderComponent', () => {
         expect(el.style.width).toEqual('32px');
     });
 
+    it('should pointermove event trigger #pointerMove handler', () => {
+        spyOn(component, 'pointerMove');
+        const event = new PointerEvent('pointermove');
+
+        document.dispatchEvent(event);
+        expect(component.pointerMove).toHaveBeenCalledWith(event);
+    });
+
+    it('should #pointerMove correctly set #thumbCoords if #isDrug', () => {
+        const event = new PointerEvent('pointermove', {clientX: 10});
+        component.isDrag = true;
+        component.isMultipleDrag = false;
+        component.thumbClickOffset = 10;
+        fixture.detectChanges();
+        component.pointerMove(event);
+        expect(component.thumbCoords).toEqual(component.getCoords(event.clientX - 10));
+        expect(component.thumb.nativeElement.style.left).toEqual(`${component.thumbCoords}%`);
+    });
+
+    it('should #movePointer call #setGradient with #thumbsCoords if #isDrag', () => {
+        spyOn(component, 'setGradient');
+        const event = new PointerEvent('pointermove', {clientX: 10});
+        component.isDrag = true;
+        component.pointerMove(event);
+
+        expect(component.setGradient).toHaveBeenCalledWith(component.thumbCoords);
+    });
+
+    it('should #movePointer call #calcValue with #thumbsCoords if #isDrag', () => {
+        spyOn(component, 'calcValue');
+        const event = new PointerEvent('pointermove', {clientX: 10});
+        component.isDrag = true;
+        component.pointerMove(event);
+
+        expect(component.calcValue).toHaveBeenCalledWith(component.thumbCoords, null);
+    });
+
+    it('should #movePointer #movePointer emit #moved event if #isDrag', () => {
+        spyOn(component.moved, 'emit');
+        const event = new PointerEvent('pointermove', {clientX: 10});
+        component.isDrag = true;
+        component.pointerMove(event);
+
+        expect(component.moved.emit).toHaveBeenCalled();
+    });
+
+
+
+
+
+    it('should #pointerMove correctly set #multiThumbCoords if #isMultipleDrugisMultipleDrag', () => {
+        const event = new PointerEvent('pointermove', {clientX: 10});
+        component.isDrag = false;
+        component.multiple = true;
+        component.isMultipleDrag = true;
+        component.multiThumbClickOffset = 10;
+        fixture.detectChanges();
+        component.ngOnInit();
+        component.ngAfterViewInit();
+        component.pointerMove(event);
+        expect(component.multiThumbCoords).toEqual(component.getCoords(event.clientX - 10));
+        expect(component.thumbMultiple.nativeElement.style.left).toEqual(`${component.multiThumbCoords}%`);
+    });
+
+    it('should #movePointer call #setGradient with #multiThumbCoords if #isMultipleDrag', () => {
+        spyOn(component, 'setGradient');
+        const event = new PointerEvent('pointermove', {clientX: 10});
+        component.multiple = true;
+        component.isMultipleDrag = true;
+        fixture.detectChanges();
+        component.ngOnInit();
+        component.ngAfterViewInit();
+        component.pointerMove(event);
+
+        expect(component.setGradient).toHaveBeenCalledWith(component.multiThumbCoords, true);
+    });
+
+    it('should #movePointer call #calcValue with #multiThumbCoords if #isMultipleDrag', () => {
+        spyOn(component, 'calcValue');
+        const event = new PointerEvent('pointermove', {clientX: 10});
+        component.multiple = true;
+        component.isMultipleDrag = true;
+        fixture.detectChanges();
+        component.ngOnInit();
+        component.ngAfterViewInit();
+        component.pointerMove(event);
+
+        expect(component.calcValue).toHaveBeenCalledWith(component.multiThumbCoords, 'min');
+    });
+
+    it('should #movePointer #movePointer emit #moved event if #isMultipleDrag', () => {
+        spyOn(component.moved, 'emit');
+        const event = new PointerEvent('pointermove', {clientX: 10});
+        component.multiple = true;
+        component.isMultipleDrag = true;
+        fixture.detectChanges();
+        component.ngOnInit();
+        component.ngAfterViewInit();
+        component.pointerMove(event);
+
+        expect(component.moved.emit).toHaveBeenCalled();
+    });
+
+    // it('should', () => {});
+
+    // it('should', () => {});
+
     // it('should', () => {});
 
     // it('should', () => {});
@@ -628,5 +735,10 @@ describe('SliderComponent', () => {
     // it('should', () => {});
 
     // it('should', () => {});
+
+    // it('should', () => {});
+
+    // it('should', () => {});
+
 
 });
