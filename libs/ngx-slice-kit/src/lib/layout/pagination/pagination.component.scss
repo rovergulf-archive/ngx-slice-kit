@@ -24,12 +24,12 @@
 
     &--active {
         background-color: var(--primary-deep);
-        color: var(--primary-text);
+        color: var(--primary-rgb-text);
     }
 
     &:hover {
         background-color: var(--primary-hover);
-        color: var(--primary-text);
+        color: var(--primary-rgb-text);
     }
 }
 

@@ -122,16 +122,18 @@ describe('LayoutControlService', () => {
             expect(service.mobileLayoutWidth).toEqual(320);
         }));
 
-        it('should #isMobileLayout equal true', () => {
+        it('should #isMobileLayout equal true if viewport is <= 1024 and false if greater', () => {
             const res = service.isMobileLayout;
+            const {width = 0} = service.getViewport();
 
-            expect(res).toEqual(true);
+            expect(res).toEqual(width <= service.mobileLayoutWidth);
         });
 
-        it('should #mobileLayoutDetectionEnabled be equal true', () => {
+        it('should #mobileLayoutDetectionEnabled be equal #isMobileLayout if it is not equal null', () => {
+            const isMobile = service.isMobileLayout;
             const res = service.mobileLayoutDetectionEnabled;
 
-            expect(res).toEqual(true);
+            expect(res).toEqual(isMobile);
         });
     });
 });

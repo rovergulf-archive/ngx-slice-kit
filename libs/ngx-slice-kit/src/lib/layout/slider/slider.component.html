@@ -5,12 +5,12 @@
         <div class="sdk-slider__thumb-wrapper sdk-slider__thumb-wrapper--multiple" *ngIf="multiple" #thumbMultiple
              [style.top]="'-12px'">
             <div class="sdk-slider__thumb" [class.sdk-slider__thumb--active]="isMultipleDrag"
-                 (pointerdown)="grab('isMultipleDrag')"></div>
+                 (pointerdown)="grab('isMultipleDrag', $event)"></div>
         </div>
         <div class="sdk-slider__thumb-wrapper" [style.top]="multiple ? '-12px' : (-thumbSize/2) + thumbSize/10 + 'px'"
              #thumb>
             <div class="sdk-slider__thumb" [class.sdk-slider__thumb--active]="isDrag"
-                 (pointerdown)="grab('isDrag')"></div>
+                 (pointerdown)="grab('isDrag', $event)"></div>
         </div>
         <div class="sdk-slider-track__background"></div>
         <div class="sdk-slider-track__fill"
