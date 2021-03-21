@@ -724,9 +724,59 @@ describe('SliderComponent', () => {
         expect(component.moved.emit).toHaveBeenCalled();
     });
 
-    // it('should', () => {});
+    it('should #moveThumb emit #moved event if click was on track', () => {
+        spyOn(component.moved, 'emit');
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__track-wrapper');
+        const event = new PointerEvent('pointerdown');
+        el.dispatchEvent(event);
+        expect(component.moved.emit).toHaveBeenCalled();
+    });
 
-    // it('should', () => {});
+    it('should #moveThumb do not emit #moved event if click was on thumb', () => {
+        spyOn(component.moved, 'emit');
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__thumb');
+        const event = new PointerEvent('pointerdown');
+        el.dispatchEvent(event);
+        expect(component.moved.emit).not.toHaveBeenCalled();
+    });
+
+    it('should #moveThumb call #setGradient method', () => {
+        spyOn(component, 'setGradient');
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__track-wrapper');
+        const event = new PointerEvent('pointerdown', {clientX: 10});
+        el.dispatchEvent(event);
+
+        expect(component.setGradient).toHaveBeenCalledWith(component.getCoords(10));
+    });
+
+    it('should #moveThumb call #calcValue method', () => {
+        spyOn(component, 'calcValue');
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__track-wrapper');
+        const event = new PointerEvent('pointerdown', {clientX: 10});
+        el.dispatchEvent(event);
+
+        expect(component.calcValue).toHaveBeenCalledWith(component.getCoords(10));
+    });
+
+    it('should #moveThumb call #setGradient method. #multiple = true', () => {
+        spyOn(component, 'setGradient');
+        component.multiple = true;
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__track-wrapper');
+        const event = new PointerEvent('pointerdown', {clientX: 10});
+        el.dispatchEvent(event);
+
+        expect(component.setGradient).toHaveBeenCalled();
+    });
+
+    it('should #moveThumb call #calcValue method. #multiple = true', () => {
+        spyOn(component, 'calcValue');
+        component.multiple = true;
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__track-wrapper');
+        const event = new PointerEvent('pointerdown', {clientX: 10});
+        el.dispatchEvent(event);
+
+        expect(component.calcValue).toHaveBeenCalled();
+    });
 
     // it('should', () => {});
 
