@@ -9,7 +9,6 @@ import { ThemeService } from 'ngx-slice-kit';
 })
 export class DemoInputsComponent implements OnInit {
 
-    iconUrl1 = `url(assets/icons/theme-${this.themeService.themeName}/star.svg)`;
     inputStyle1 = {
         'background-image': `url(assets/icons/theme-${this.themeService.themeName}/star.svg)`,
         'background-position': '8px center',
@@ -25,7 +24,11 @@ export class DemoInputsComponent implements OnInit {
     ) {
     }
 
-    ngOnInit() {
+    getIconUrl1(): string {
+        return `url(assets/icons/theme-${this.themeService.themeName}/star.svg)`;
+    }
+
+    ngOnInit(): void {
     }
 
 }

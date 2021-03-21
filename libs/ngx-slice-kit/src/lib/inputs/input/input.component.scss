@@ -18,7 +18,7 @@
 }
 
 .sdk-input__label {
-    color: var(--regular);
+    color: var(--regular-hover-text);
     transition: all 0.2s;
     font-size: 17px;
     margin-bottom: 2px;
@@ -41,9 +41,9 @@
 }
 
 .sdk-input-wrap {
-    background-color: var(--regular-disabled);
+    background-color: var(--regular-a25);
     border-radius: 6px;
-    border-color: var(--regular-disabled);
+    border-color: var(--regular-active);
     border-width: 1px;
     border-style: solid;
     min-width: 160px;
@@ -60,7 +60,7 @@
     }
 
     &--focused {
-        border-color: var(--regular-active);
+        border-color: var(--regular-rgb);
         transition: 0.4s;
     }
 
@@ -102,45 +102,33 @@
         background-position: left 8px center;
         padding-left: 40px;
     }
-}
 
-.sdk-input__input.sdk-input__input--small {
-    height: 32px;
-    font-size: 15px;
-    padding: 4px 8px;
+    &.sdk-input__input--small {
+        height: 32px;
+        font-size: 15px;
+        padding: 4px 8px;
 
-    &.sdk-input__input--icon-left {
-        background-position: left 4px center;
-        padding-left: 24px;
-        background-size: 16px 16px;
+        &.sdk-input__input--icon-left {
+            background-position: left 4px center;
+            padding-left: 24px;
+            background-size: 16px 16px;
+        }
+
+        &.sdk-input__input--icon-right {
+            background-size: 16px 16px;
+            background-position: right 4px center;
+            padding-right: 24px;
+        }
     }
 
-    &.sdk-input__input--icon-right {
-        background-size: 16px 16px;
-        background-position: right 4px center;
-        padding-right: 24px;
+    &::-webkit-input-placeholder, &::-moz-placeholder, &:-ms-input-placeholder, &:-moz-placeholder {
+        color: var(--base-50);
     }
-}
-
-.sdk-input__input::-webkit-input-placeholder {
-    color: var(--regular-hover);
-}
-
-.sdk-input__input::-moz-placeholder {
-    color: var(--regular-hover);
-}
-
-.sdk-input__input:-ms-input-placeholder {
-    color: var(--regular-hover);
-}
-
-.sdk-input__input:-moz-placeholder {
-    color: var(--regular-hover);
 }
 
 .sdk-input__error {
     @extend .sdk-inputs-caption;
-    color: var(--warn);
+    color: var(--warn-a85);
 
     svg {
         margin-right: 4px;
@@ -149,7 +137,7 @@
 
 .sdk-input__caption {
     @extend .sdk-inputs-caption;
-    color: var(--regular-hover);
+    color: var(--base-a70);
     cursor: default;
 }
 
