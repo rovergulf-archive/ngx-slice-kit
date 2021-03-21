@@ -56,7 +56,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     firstPageClones: SlideComponent[];
     lastPageClones: SlideComponent[];
 
-    get dotsCount() {
+    get dotsCount(): number {
         return Math.ceil(this.slidesArr.length / this.slidesToScroll);
     }
 
@@ -83,7 +83,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
         this.scrollOffset = 0;
     }
 
-    @HostListener('window:resize') windowResizeHandler() {
+    @HostListener('window:resize') windowResizeHandler(): void {
         if (this.carouselWrapper.nativeElement.offsetWidth !== this.carouselWrapperRects.width) {
             this.updateSlider();
         }
@@ -106,7 +106,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
         }
     }
 
-    animate(newPosition) {
+    animate(newPosition): void {
         this.scrolling = true;
         this.renderer.setStyle(this.carouselRow.nativeElement, 'transition', `400ms`);
         this.renderer.setStyle(this.carouselRow.nativeElement, 'transform', `translateX(${newPosition}px)`);
@@ -148,9 +148,10 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
         clearInterval(this.scrollinterval);
     }
 
-    move(direction: 'forward' | 'back') {
+    move(direction: 'forward' | 'back'): void {
         this.carouselWrapperRects = this.carouselWrapper.nativeElement.getBoundingClientRect();
-        const widthPenalty = (this.activeSlideIndex === 0 ? this.slideWidth * (this.dotsCount * this.slidesToScroll - this.slidesArr.length) : 0);
+        const widthPenalty = (this.activeSlideIndex === 0 ?
+            this.slideWidth * (this.dotsCount * this.slidesToScroll - this.slidesArr.length) : 0);
 
         if (this.scrolling) {
             return;
@@ -176,7 +177,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
         this.animate(this.curCarouselPosition);
     }
 
-    selectSlide(slideIndex: number) {
+    selectSlide(slideIndex: number): void {
         this.activeSlideIndex = slideIndex;
 
         let notMultipleDif = 0;
@@ -196,7 +197,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
         }, 500);
     }
 
-    setSlideStyles() {
+    setSlideStyles(): void {
         this.slidesArr.forEach(slide => {
             if (this.offset) {
                 this.renderer.setStyle(slide.el.nativeElement, 'padding', this.offset + 'px');
@@ -205,24 +206,24 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
         });
     }
 
-    checkSlidesToScroll() {
+    checkSlidesToScroll(): void {
         if (this.slidesToScroll > this.slidesArr.length) {
             this.slidesToScroll = this.slidesArr.length;
         }
     }
 
-    createClones() {
+    createClones(): void {
         this.lastPageClones = [...this.slidesArr].slice(-this.slidesToShow).map(this.cloneNode.bind(this)).reverse() as SlideComponent[];
         this.firstPageClones = [...this.slidesArr].slice(0, this.slidesToShow).map(this.cloneNode.bind(this));
     }
 
-    cloneNode(node) {
-        const clone = node.el.nativeElement.cloneNode(true);
+    cloneNode(node): HTMLElement {
+        const clone: HTMLElement = node.el.nativeElement.cloneNode(true);
         this.renderer.addClass(clone, 'sdk-slide--clone');
         return clone;
     }
 
-    insertClones() {
+    insertClones(): void {
         for (const clone of this.lastPageClones) {
             this.renderer.insertBefore(this.carouselRow.nativeElement, clone, this.carouselRow.nativeElement.firstChild);
         }
@@ -231,7 +232,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
         }
     }
 
-    removeClones() {
+    removeClones(): void {
         for (const clone of this.firstPageClones) {
             this.renderer.removeChild(this.carouselRow.nativeElement, clone);
         }
@@ -240,7 +241,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
         }
     }
 
-    updateSlider() {
+    updateSlider(): void {
         this.carouselWrapperRects = this.carouselWrapper.nativeElement.getBoundingClientRect();
         this.slideWidth = this.carouselWrapper.nativeElement.offsetWidth / this.slidesToShow;
         this.scrollStep = this.slidesToScroll * this.slideWidth;
@@ -285,7 +286,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
         });
     }
 
-    ngOnChanges(changes) {
+    ngOnChanges(changes): void {
         if (this.isViewInited) {
             if (changes.slidesToScroll || changes.slidesToShow) {
                 this.updateSlider();

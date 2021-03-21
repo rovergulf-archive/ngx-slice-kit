@@ -1,8 +1,7 @@
 import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
 
 import {SliderComponent} from './slider.component';
-import {DebugElement, Input} from '@angular/core';
-import {Point} from '@angular/cdk/drag-drop';
+import {DebugElement} from '@angular/core';
 
 describe('SliderComponent', () => {
     let component: SliderComponent;
@@ -777,18 +776,4 @@ describe('SliderComponent', () => {
 
         expect(component.calcValue).toHaveBeenCalled();
     });
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-
 });
