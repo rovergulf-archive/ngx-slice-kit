@@ -6,11 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.8.0
 
-## 18 Mar 2021
+## 21 Mar 2021
 
 ### Added
 
 ### Changed
+- theme color palette regenerated and does not uses alpha color anymore
 
 ### Fixed
 

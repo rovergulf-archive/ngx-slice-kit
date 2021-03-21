@@ -1,8 +1,8 @@
 import { defaultColors, Theme } from '../theme.model';
 
-export const defaultBaseRgb = `255, 255, 255`;
-export const defaultBackgroundRgb = `26, 26, 26`;
-export const defaultRegularRgb = `66, 66, 66`;
+export const defaultBaseRgb = `250,250,250`;
+export const defaultBackgroundRgb = `26,26,26`;
+export const defaultRegularRgb = `66,66,66`;
 
 export const themeDark: Theme = {
     name: 'dark',
