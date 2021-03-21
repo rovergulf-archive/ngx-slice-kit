@@ -60,6 +60,47 @@ describe('SliderComponent', () => {
         expect(component.thumbSize).toEqual(24);
     });
 
+    it('should wrapper element has class with --small modificator if #small is true', () => {
+        component.small = true;
+        fixture.detectChanges();
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__wrapper');
+
+        expect(el).toHaveClass('sdk-slider__wrapper--small');
+    });
+
+    it('should wrapper element has no class with --small modificator if #small is false', () => {
+        component.small = false;
+        fixture.detectChanges();
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__wrapper');
+
+        expect(el).not.toHaveClass('sdk-slider__wrapper--small');
+    });
+
+    it('should wrapper element has class with --multiple modificator if #multiple is true', () => {
+        component.multiple = true;
+        fixture.detectChanges();
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__wrapper');
+
+        expect(el).toHaveClass('sdk-slider__wrapper--multiple');
+    });
+
+    it('should wrapper element has no class with --multiple modificator if #multiple is false', () => {
+        component.multiple = false;
+        fixture.detectChanges();
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__wrapper');
+
+        expect(el).not.toHaveClass('sdk-slider__wrapper--multiple');
+    });
+
+    // it('should', () => {});
+
+    // it('should', () => {});
+
+    // it('should', () => {});
+
+    // it('should', () => {});
+
+
     it('should #thumbSize be equal 12 if component is multiple', () => {
         component.multiple = true;
         component.ngOnInit();
@@ -490,9 +531,36 @@ describe('SliderComponent', () => {
         expect(component.thumbClickOffset).toEqual(event.layerX);
     });
 
-    // it('should', () => {});
+    it('should #getCoords call #setValue method with #min as argument if mouseX prop is less than #track left rect', () => {
+        spyOn(component, 'setValue');
+        const dArg = -10;
 
-    // it('should', () => {});
+        component.getCoords(dArg);
+        expect(component.setValue).toHaveBeenCalledWith(component.min);
+    });
+
+    it('should #getCoords call #setValue method with #max as argument if mouseX prop is greater than #track right rect', () => {
+        spyOn(component, 'setValue');
+        const dArg = 64000;
+
+        component.getCoords(dArg);
+        expect(component.setValue).toHaveBeenCalledWith(component.max);
+    });
+
+    it('should #getCoords return correct coords. Argument less then track left rect', () => {
+        const dArg = -10;
+        const dRects = component.track.nativeElement.getBoundingClientRect();
+
+        expect(component.getCoords(dArg)).toEqual(0); // (dRects.left - dRects.left) / dRects.width * 100;
+    });
+
+    it('should #getCoords return correct coords. Argument greater then track left right', () => {
+        const dArg = 64000;
+        const dRects = component.track.nativeElement.getBoundingClientRect();
+
+        expect(component.getCoords(dArg)).toEqual(100); // (dRects.right - dRects.left) / dRects.width * 100;
+    });
+
 
     // it('should', () => {});
 
