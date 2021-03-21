@@ -92,15 +92,6 @@ describe('SliderComponent', () => {
         expect(el).not.toHaveClass('sdk-slider__wrapper--multiple');
     });
 
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-    // it('should', () => {});
-
-
     it('should #thumbSize be equal 12 if component is multiple', () => {
         component.multiple = true;
         component.ngOnInit();
@@ -561,6 +552,76 @@ describe('SliderComponent', () => {
         expect(component.getCoords(dArg)).toEqual(100); // (dRects.right - dRects.left) / dRects.width * 100;
     });
 
+    it('should #moveThumb be called by #pointerdown event on track-wrapper element', () => {
+        fixture.detectChanges();
+        spyOn(component, 'moveThumb');
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__track-wrapper');
+        const event = new PointerEvent('pointerdown');
+        el.dispatchEvent(event);
+
+        expect(component.moveThumb).toHaveBeenCalled();
+    });
+
+    it('should no be multiple element if #multiple is false', () => {
+        component.multiple = false;
+        fixture.detectChanges();
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__thumb-wrapper--multiple');
+
+        expect(el).toBeNull();
+        expect(component.thumbMultiple).toBeUndefined();
+    });
+
+    it('should be multiple element if #multiple is true', () => {
+        component.multiple = true;
+        fixture.detectChanges();
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__thumb-wrapper--multiple');
+
+        expect(el).toBeTruthy();
+        expect(component.thumbMultiple).not.toBeUndefined();
+    });
+
+    it('should multythumb has class with --active modificator if #isMultipleDrag is true', () => {
+        component.multiple = true;
+        component.isMultipleDrag = true;
+        fixture.detectChanges();
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__thumb-wrapper--multiple .sdk-slider__thumb');
+
+        expect(el).toHaveClass('sdk-slider__thumb--active');
+    });
+
+    it('should multythumb has no class with --active modificator if #isMultipleDrag is false', () => {
+        component.multiple = true;
+        component.isMultipleDrag = false;
+        fixture.detectChanges();
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__thumb-wrapper--multiple .sdk-slider__thumb');
+
+        expect(el).not.toHaveClass('sdk-slider__thumb--active');
+    });
+
+    it('should thumb has class with --active modificator if #isDrag is true', () => {
+        component.isDrag = true;
+        fixture.detectChanges();
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__track-wrapper .sdk-slider__thumb');
+
+        expect(el).toHaveClass('sdk-slider__thumb--active');
+    });
+
+    it('should thumb has no class with --active modificator if #isDrag is false', () => {
+        component.isDrag = false;
+        fixture.detectChanges();
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__track-wrapper .sdk-slider__thumb');
+
+        expect(el).not.toHaveClass('sdk-slider__thumb--active');
+    });
+
+    it('should .sdk-slider-track__padding has size equal #thumbSize', () => {
+        fixture.detectChanges();
+        const el: HTMLElement = sliderEl.querySelector('.sdk-slider-track__padding');
+
+        expect(el.style.width).toEqual('32px');
+    });
+
+    // it('should', () => {});
 
     // it('should', () => {});
 
