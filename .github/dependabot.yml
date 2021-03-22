@@ -9,3 +9,6 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    assignees:
+      - "rovergulf/ng-engineers"
+    open-pull-requests-limit: 20
