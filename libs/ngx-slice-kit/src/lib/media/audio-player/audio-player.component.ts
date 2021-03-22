@@ -10,7 +10,7 @@ export class AudioPlayerComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

@@ -167,7 +167,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
         }
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
     }
 
     ngOnDestroy(): void {

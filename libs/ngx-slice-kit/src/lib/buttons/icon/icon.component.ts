@@ -33,13 +33,13 @@ export class IconComponent implements OnInit, OnDestroy, AfterContentInit {
         this.renderComponentSvg(); // is it even good?
     }
 
+    get size(): number {
+        return this.$size.getValue();
+    }
+
     @Input('color') set color(c: string) {
         this.$color.next(c);
         this.renderComponentSvg();
-    }
-
-    get size(): number {
-        return this.$size.getValue();
     }
 
     get color(): string {

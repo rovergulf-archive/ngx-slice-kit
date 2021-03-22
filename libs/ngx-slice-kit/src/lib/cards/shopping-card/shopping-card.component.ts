@@ -10,7 +10,7 @@ export class ShoppingCardComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

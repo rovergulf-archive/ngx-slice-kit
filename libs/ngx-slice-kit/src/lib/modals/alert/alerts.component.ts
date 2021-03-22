@@ -28,16 +28,16 @@ export class AlertsComponent implements OnInit, OnDestroy {
         this.$alerts.next(refs);
     }
 
+    get options(): AlertOptions {
+        const alertRefs = this.$alerts.getValue();
+        return alertRefs[0];
+    }
+
     @Output() closed = new EventEmitter<any>();
     @HostListener('[@state]') state: any = 'closed';
 
     @HostBinding('class') get classNames(): string {
         return `${ALERTS_CONTAINER_CLASSNAME} ${ALERTS_CONTAINER_CLASSNAME}--${this.options.refName}`;
-    }
-
-    get options(): AlertOptions {
-        const alertRefs = this.$alerts.getValue();
-        return alertRefs[0];
     }
 
     get alerts(): AlertOptions[] {
