@@ -23,4 +23,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run lint ngx-slice-kit
-    - run: npm test:ci ngx-slice-kit
+    - run: npm run test:ci ngx-slice-kit
