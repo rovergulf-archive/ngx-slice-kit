@@ -1,5 +1,5 @@
 [![npm version](https://badge.fury.io/js/ngx-slice-kit.svg)](https://badge.fury.io/js/ngx-slice-kit)
-
+[![Node.js CI](https://github.com/rovergulf/ngx-slice-kit/actions/workflows/main.yml/badge.svg)](https://github.com/rovergulf/ngx-slice-kit/actions/workflows/main.yml)
 # NGX Slice Design Kit
 
 ### npm package
