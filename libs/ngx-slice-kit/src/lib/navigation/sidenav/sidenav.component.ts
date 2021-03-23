@@ -49,8 +49,6 @@ export class SidenavComponent implements OnInit, OnDestroy, AfterViewInit {
         this.sidenavService.isOpened = st;
     }
 
-    @Output('opened') onOpen = new EventEmitter<boolean>();
-
     @HostBinding('class') get currentMode(): string {
         return `sdk-sidenav--${this.sidenavService.options.mode}`;
     }
@@ -79,7 +77,6 @@ export class SidenavComponent implements OnInit, OnDestroy, AfterViewInit {
 
     ngAfterViewInit(): void {
         this.sub = this.sidenavService.openedObservableState.subscribe(st => {
-            this.onOpen.emit(st);
             this.sidenavService.updateOptions({
                 width: this.el.nativeElement.clientWidth,
             });

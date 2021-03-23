@@ -119,16 +119,6 @@ describe('SidenavComponent', () => {
         expect(component.sidenavService.updateOptions).toHaveBeenCalledWith({width: sidenavEl.clientWidth});
     });
 
-    it('should #onOpen emit event with state', () => {
-        spyOn(component.onOpen, 'emit');
-        component.ngAfterViewInit();
-
-        component.sidenavService.isOpened = false;
-        fixture.detectChanges();
-
-        expect(component.onOpen.emit).toHaveBeenCalledWith(false);
-    });
-
     it('should component subscription be closed after component was destroyed', () => {
         component.ngAfterViewInit();
         component.ngOnDestroy();
