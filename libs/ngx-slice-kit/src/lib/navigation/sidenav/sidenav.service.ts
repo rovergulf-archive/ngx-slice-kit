@@ -30,12 +30,12 @@ export class SidenavService {
         return this.sidenavOpened$.getValue();
     }
 
-    get openedState(): SidenavState {
-        return this.isOpened ? 'opened' : 'closed';
-    }
-
     set isOpened(value: boolean) {
         this.sidenavOpened$.next(value);
+    }
+
+    get openedState(): SidenavState {
+        return this.isOpened ? 'opened' : 'closed';
     }
 
     get openedObservableState(): Observable<boolean> {
