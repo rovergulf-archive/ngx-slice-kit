@@ -4,10 +4,10 @@ import {DropdownService} from '../dropdown.service';
 import {OptionsService} from '../options.service';
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {OPTIONS1} from '../../../../../../src/app/shared/values/dropdowns.values';
-import {OptionModel} from 'ngx-slice-kit';
 import {By} from '@angular/platform-browser';
 import {of} from 'rxjs';
 import {DropdownOptions} from '../dropdown.model';
+import {OptionModel} from '../dropdown-option.model';
 
 describe('DropdownMenuTriggerDirective', () => {
     const PLATFORM_SERVER_ID = 'server';
