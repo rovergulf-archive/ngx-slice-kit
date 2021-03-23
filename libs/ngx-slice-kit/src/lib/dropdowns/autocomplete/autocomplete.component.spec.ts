@@ -283,7 +283,7 @@ describe('AutocompleteComponent', () => {
         it('should #emitBlur() emit blur event if #focused is true', () => {
             let expectedResult = '';
             component.focused = true;
-            component.onBlur.subscribe(() => {
+            component.blurEvent.subscribe(() => {
                 expectedResult = 'some result';
 
                 expect(expectedResult).toEqual(expectedResult);
@@ -296,7 +296,7 @@ describe('AutocompleteComponent', () => {
         it('should #emitBlur() not emit blur event if #focused is false', fakeAsync(() => {
             let expectedResult = '';
             component.focused = false;
-            component.onBlur.subscribe(() => {
+            component.blurEvent.subscribe(() => {
                 expectedResult = 'some result';
             });
 
@@ -308,7 +308,7 @@ describe('AutocompleteComponent', () => {
 
         it('should #emitFocus() emit focus event if #focused is false', () => {
             component.focused = false;
-            component.onFocus.subscribe(() => {
+            component.focusEvent.subscribe(() => {
                 expect(component.focused).toBe(true, 'should set #focused value as true');
             });
 
@@ -318,7 +318,7 @@ describe('AutocompleteComponent', () => {
         it('should #emitFocus() not emit focus event if #focused is true', fakeAsync(() => {
             let expectedResult = '';
             component.focused = true;
-            component.onFocus.subscribe(() => {
+            component.focusEvent.subscribe(() => {
                 expectedResult = 'some result';
             });
 
@@ -411,18 +411,18 @@ describe('AutocompleteComponent', () => {
 
         it('should result / valueChanges / onBlur / onFocus be completed after component was destroyed', () => {
             spyOn(component.valueChanges, 'complete');
-            spyOn(component.onBlur, 'complete');
-            spyOn(component.onFocus, 'complete');
-            spyOn(component.result, 'complete');
+            spyOn(component.blurEvent, 'complete');
+            spyOn(component.focusEvent, 'complete');
+            spyOn(component.resultEvent, 'complete');
 
             fixture.detectChanges();
             component.ngOnInit();
             component.ngOnDestroy();
 
             expect(component.valueChanges.complete).toHaveBeenCalled();
-            expect(component.onBlur.complete).toHaveBeenCalled();
-            expect(component.onFocus.complete).toHaveBeenCalled();
-            expect(component.result.complete).toHaveBeenCalled();
+            expect(component.blurEvent.complete).toHaveBeenCalled();
+            expect(component.focusEvent.complete).toHaveBeenCalled();
+            expect(component.resultEvent.complete).toHaveBeenCalled();
         });
 
         /*
@@ -458,7 +458,7 @@ describe('AutocompleteComponent', () => {
                 const expectedResult = component.options.filter(o => stubValues.has(o));
                 let result;
 
-                component.result.subscribe(res => {
+                component.resultEvent.subscribe(res => {
                     result = res;
                 });
 
@@ -495,7 +495,7 @@ describe('AutocompleteComponent', () => {
             it('should #writeValue() emit result event with same value', () => {
                 let result;
 
-                component.result.subscribe(res => {
+                component.resultEvent.subscribe(res => {
                     result = res;
                     expect(result).toEqual(stubValue);
                 });

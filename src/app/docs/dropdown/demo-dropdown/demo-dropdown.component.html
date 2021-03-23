@@ -10,7 +10,7 @@
             <div class="flex-row layout-start-start">
                 <div class="flex-grow-1"></div>
                 <div class="flex-column layout-start-start">
-                    <p sdkDropdownMenuTrigger [options]="options1" (result)="firstResult($event)">Choose game: {{result1}}</p>
+                    <p sdkDropdownMenuTrigger [options]="options1" (resultEvent)="firstResult($event)">Choose game: {{result1}}</p>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
             <div class="flex-column layout-start-start">
                 <button sdk-flat-button sdkDropdownMenuTrigger
                         [options]="options2"
-                        (result)="secondResult($event)">Favourite anime: {{result2}}</button>
+                        (resultEvent)="secondResult($event)">Favourite anime: {{result2}}</button>
             </div>
         </div>
 
@@ -32,7 +32,7 @@
             <h3>And the last one</h3>
             <div class="flex-column layout-start-start">
                 <p sdkDropdownMenuTrigger [options]="options3"
-                        (result)="thirdResult($event)">Get a book: {{result3}}</p>
+                        (resultEvent)="thirdResult($event)">Get a book: {{result3}}</p>
             </div>
         </div>
 

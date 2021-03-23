@@ -60,14 +60,14 @@ export class DemoAutocompleteComponent implements OnInit {
         }) : OPTIONS5;
     }
 
-    checkSelect(target: string, val: any) {
+    checkSelect(target: string, val: any): void {
         if (val) {
             console.log(target, val);
-            val ? this[target] = val : val
+            val ? this[target] = val : val;
         }
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         // this.val1 = this.options1[0];
     }
 

@@ -51,7 +51,7 @@ export class DialogComponent implements OnInit, OnDestroy {
 
         const componentRef = viewRef.createComponent(componentFactory);
         (componentRef.instance as Dialog).data = this.data;
-        (componentRef.instance as Dialog).result.subscribe(res => {
+        (componentRef.instance as Dialog).resultEvent.subscribe(res => {
             this.closed.next(res);
             this.closed.complete();
         });

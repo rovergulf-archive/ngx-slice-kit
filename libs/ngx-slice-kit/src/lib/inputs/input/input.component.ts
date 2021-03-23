@@ -58,8 +58,8 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
     @Input() @HostBinding('class.sdk-input--warn') error: string = undefined;
     @Input() @HostBinding('class.disabled') disabled: boolean = false;
 
-    @Output() onFocus: EventEmitter<any> = new EventEmitter();
-    @Output() onBlur: EventEmitter<any> = new EventEmitter();
+    @Output() focusEvent: EventEmitter<any> = new EventEmitter();
+    @Output() blurEvent: EventEmitter<any> = new EventEmitter();
 
     @ViewChild('input', {static: true}) inputElementRef: ElementRef;
     value: any = undefined;
@@ -86,7 +86,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
             value: this.value || ''
         };
         this.focused = true;
-        this.onFocus.emit(event);
+        this.focusEvent.emit(event);
     }
 
     emitBlur(): void {
@@ -96,7 +96,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
             value: this.value || ''
         };
         this.focused = false;
-        this.onBlur.emit(event);
+        this.blurEvent.emit(event);
     }
 
     get iconUrl(): string {
@@ -171,7 +171,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
     }
 
     ngOnDestroy(): void {
-        this.onFocus.complete();
-        this.onBlur.complete();
+        this.focusEvent.complete();
+        this.blurEvent.complete();
     }
 }

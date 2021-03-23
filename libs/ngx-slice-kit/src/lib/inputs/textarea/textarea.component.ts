@@ -40,8 +40,8 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
     @Input() @HostBinding('class.disabled') disabled: boolean;
     @Input() @HostBinding('class.full-width') fullWidth: boolean = false;
 
-    @Output() focus: EventEmitter<any> = new EventEmitter();
-    @Output() blur: EventEmitter<any> = new EventEmitter();
+    @Output() focusEvent: EventEmitter<any> = new EventEmitter();
+    @Output() blurEvent: EventEmitter<any> = new EventEmitter();
 
     @ViewChild('clone', {static: false}) elementClone: ElementRef;
 
@@ -71,7 +71,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
             value: this.value || ''
         };
         this.focused = true;
-        this.focus.emit(event);
+        this.focusEvent.emit(event);
     }
 
     onBlur(): void {
@@ -81,7 +81,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
             value: this.value || ''
         };
         this.focused = false;
-        this.blur.emit(event);
+        this.blurEvent.emit(event);
     }
 
     change(target): void {
@@ -118,8 +118,8 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
     }
 
     ngOnDestroy(): void {
-        this.focus.complete();
-        this.blur.complete();
+        this.focusEvent.complete();
+        this.blurEvent.complete();
     }
 
 }

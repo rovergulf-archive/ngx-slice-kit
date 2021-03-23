@@ -281,7 +281,7 @@ describe('InputComponent', () => {
         let eventBody;
 
         component.writeValue(newValue);
-        component.onFocus.subscribe(e => {
+        component.focusEvent.subscribe(e => {
             eventBody = e;
         });
         inputEl.triggerEventHandler('focus', null);
@@ -303,7 +303,7 @@ describe('InputComponent', () => {
         let eventBody;
 
         component.writeValue(newValue);
-        component.onBlur.subscribe(e => {
+        component.blurEvent.subscribe(e => {
             eventBody = e;
         });
         inputEl.triggerEventHandler('blur', null);

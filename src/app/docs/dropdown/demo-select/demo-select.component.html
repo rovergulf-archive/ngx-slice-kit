@@ -9,7 +9,7 @@
             <div class="example flex-row flex-wrap">
                 <div class="example__item">
                     <sdk-select [options]="options1" (ngModelChange)="onFirstValueChange($event)"
-                                [(ngModel)]="singleVal1" (result)="checkSelect($event)"></sdk-select>
+                                [(ngModel)]="singleVal1" (resultEvent)="checkSelect($event)"></sdk-select>
                 </div>
             </div>
 
@@ -23,7 +23,7 @@
             <h3>Multiple choices</h3>
             <div class="example flex-row flex-wrap">
                 <div class="example__item">
-                    <sdk-select [options]="options3" [(ngModel)]="multiValues1" (result)="checkSelect($event)"
+                    <sdk-select [options]="options3" [(ngModel)]="multiValues1" (resultEvent)="checkSelect($event)"
                                 [multi]="true"></sdk-select>
                 </div>
             </div>

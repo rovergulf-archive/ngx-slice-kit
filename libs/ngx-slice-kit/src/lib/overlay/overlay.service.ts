@@ -54,7 +54,7 @@ export class OverlayService {
         this.document.body.appendChild(overlay);
 
         const result = new Subject();
-        overlayRef.instance.result.subscribe((res: any) => {
+        overlayRef.instance.resultEvent.subscribe((res: any) => {
             result.next(res);
             result.complete();
             this.refs.pop();

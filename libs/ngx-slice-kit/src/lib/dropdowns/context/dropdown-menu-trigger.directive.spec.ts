@@ -1,5 +1,5 @@
 import {DropdownMenuTriggerDirective} from './dropdown-menu-trigger.directive';
-import {Component, ElementRef, PLATFORM_ID} from '@angular/core';
+import {Component, PLATFORM_ID} from '@angular/core';
 import {DropdownService} from '../dropdown.service';
 import {OptionsService} from '../options.service';
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
@@ -56,7 +56,7 @@ describe('DropdownMenuTriggerDirective', () => {
     it('should result / closed / opened be completed after component was destroyed', () => {
         spyOn(directive.closed, 'complete');
         spyOn(directive.opened, 'complete');
-        spyOn(directive.result, 'complete');
+        spyOn(directive.resultEvent, 'complete');
 
         fixture.detectChanges();
         directive.ngOnInit();
@@ -64,7 +64,7 @@ describe('DropdownMenuTriggerDirective', () => {
 
         expect(directive.closed.complete).toHaveBeenCalled();
         expect(directive.opened.complete).toHaveBeenCalled();
-        expect(directive.result.complete).toHaveBeenCalled();
+        expect(directive.resultEvent.complete).toHaveBeenCalled();
     });
 
     it('should create an instance', () => {
@@ -132,7 +132,7 @@ describe('DropdownMenuTriggerDirective', () => {
            [multi]="false"
            (opened)="openHandler()"
            (closed)="closedHandler()"
-           (result)="firstResult($event)">Choose game: {{result1}}</p>>`
+           (resultEvent)="firstResult($event)">Choose game: {{result1}}</p>>`
 })
 class TestComponent {
     result1: any = '';

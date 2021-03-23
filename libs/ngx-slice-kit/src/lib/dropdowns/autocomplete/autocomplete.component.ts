@@ -71,9 +71,9 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     @Input() icon: string;
     @Input() caption: string = '';
 
-    @Output() onFocus: EventEmitter<any> = new EventEmitter();
-    @Output() onBlur: EventEmitter<any> = new EventEmitter();
-    @Output() result: EventEmitter<any> = new EventEmitter();
+    @Output() focusEvent: EventEmitter<any> = new EventEmitter();
+    @Output() blurEvent: EventEmitter<any> = new EventEmitter();
+    @Output() resultEvent: EventEmitter<any> = new EventEmitter();
     @Output() valueChanges: EventEmitter<any> = new EventEmitter();
 
     @Input() @HostBinding('class.invalid') error: string = undefined;
@@ -129,14 +129,14 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     emitBlur(): void {
         if (this.focused) {
             this.focused = false;
-            this.onBlur.emit();
+            this.blurEvent.emit();
         }
     }
 
     emitFocus(): void {
         if (!this.focused) {
             this.focused = true;
-            this.onFocus.emit();
+            this.focusEvent.emit();
         }
     }
 
@@ -166,11 +166,11 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
             this.currentValues = val;
             const multipleResult = this.options.filter(o => this.currentValues.has(o));
             this.onChange(multipleResult);
-            this.result.emit(multipleResult);
+            this.resultEvent.emit(multipleResult);
         } else {
             this.currentValue = val;
             this.onChange(val);
-            this.result.emit(this.currentValue);
+            this.resultEvent.emit(this.currentValue);
         }
     }
 
@@ -277,9 +277,9 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
 
     ngOnDestroy(): void {
         this.sub?.unsubscribe();
-        this.onBlur.complete();
-        this.onFocus.complete();
-        this.result.complete();
+        this.blurEvent.complete();
+        this.focusEvent.complete();
+        this.resultEvent.complete();
         this.valueChanges.complete();
     }
 }

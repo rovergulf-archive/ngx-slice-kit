@@ -43,7 +43,7 @@ export class SidenavComponent implements OnInit, OnDestroy, AfterViewInit {
 
     sub = new Subscription();
 
-    @Input('style') styles;
+    @Input() styles;
 
     @Input('opened') set opened(st: boolean) {
         this.sidenavService.isOpened = st;

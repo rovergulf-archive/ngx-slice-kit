@@ -10,7 +10,7 @@
                 <div class="autocomplete-container">
                     <sdk-autocomplete label="Favourite game" [options]="options1"
                                       (valueChanges)="onValueChange1($event)" [(ngModel)]="val1" placeholder="Find option"
-                                      (result)="checkSelect('val1', $event)"></sdk-autocomplete>
+                                      (resultEvent)="checkSelect('val1', $event)"></sdk-autocomplete>
                 </div>
             </div>
             <h3>Small with icon (no label)</h3>
@@ -19,7 +19,7 @@
                     <sdk-autocomplete [options]="options2" (valueChanges)="onValueChange2($event)" icon="star"
                                       placeholder="Find option"
                                       [(ngModel)]="val2" [small]="true"
-                                      (result)="checkSelect('val2', $event)"></sdk-autocomplete>
+                                      (resultEvent)="checkSelect('val2', $event)"></sdk-autocomplete>
                 </div>
             </div>
             <h3>With Caption</h3>
@@ -28,7 +28,7 @@
                     <sdk-autocomplete [options]="options4" (valueChanges)="onValueChange4($event)"
                                       placeholder="Find option"
                                       [(ngModel)]="val4" [caption]="'Example caption'" label="Caption example"
-                                      (result)="checkSelect('val4', $event)"></sdk-autocomplete>
+                                      (resultEvent)="checkSelect('val4', $event)"></sdk-autocomplete>
                 </div>
             </div>
             <h3>With error</h3>
@@ -37,7 +37,7 @@
                     <sdk-autocomplete [options]="options5" (valueChanges)="onValueChange5($event)"
                                       placeholder="Find option"
                                       [(ngModel)]="val5" error="Error example"
-                                      (result)="checkSelect('val5', $event)"></sdk-autocomplete>
+                                      (resultEvent)="checkSelect('val5', $event)"></sdk-autocomplete>
                 </div>
             </div>
         </div>
