@@ -6,10 +6,19 @@ import {Renderer2} from '@angular/core';
 import {DropdownService} from './dropdown.service';
 import {SelectComponent} from './select/select.component';
 import {DropdownOptions} from './dropdown.model';
-import {OPTIONS1} from '../../../../../src/app/shared/values/dropdowns.values';
 import {By} from '@angular/platform-browser';
 import {OptionModel} from './dropdown-option.model';
 import {IconComponent} from '../buttons/icon/icon.component';
+
+const options: OptionModel[] = [
+    {value: 1, label: 'Red Dead Redemption 2'},
+    {value: 2, label: 'Death Stranding'},
+    {value: 3, label: 'Bloodborne'},
+    {value: 4, label: 'Witcher 3'},
+    {value: 5, label: 'Cyberpunk 2077'},
+    {value: 6, label: 'Assassins Creed: Valhalla'},
+    {value: 7, label: 'Mortal Kombat 11'}
+];
 
 describe('DropdownComponent', () => {
     let component: DropdownComponent;
@@ -20,7 +29,7 @@ describe('DropdownComponent', () => {
     let optionsService: OptionsService;
     let dropdown: HTMLElement;
     const stubOptionIndex = 0;
-    const stubOption = OPTIONS1[stubOptionIndex];
+    const stubOption = options[stubOptionIndex];
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
@@ -46,7 +55,7 @@ describe('DropdownComponent', () => {
         selectFixture = TestBed.createComponent(SelectComponent);
         selectComponent = selectFixture.componentInstance;
         dropdown = fixture.debugElement.nativeElement;
-        optionsService.options = OPTIONS1;
+        optionsService.options = options;
 
         opts = {
             triggerRect: selectComponent.selectElem.nativeElement.getBoundingClientRect(),
@@ -352,7 +361,7 @@ describe('DropdownComponent', () => {
         beforeEach(() => {
             component.highlightedIndex = undefined;
             component.currentOption = undefined;
-            component.optionsService.options = OPTIONS1.map(o => {
+            component.optionsService.options = options.map(o => {
                 o.selected = false;
                 return o;
             });
@@ -362,7 +371,7 @@ describe('DropdownComponent', () => {
 
         it('should #nextOption() correctly change #highlightedIndex and #currentOption if options has selected element', () => {
             const testIdx = 2;
-            const newOpts = OPTIONS1.map((o, i) => {
+            const newOpts = options.map((o, i) => {
                 o.selected = i === testIdx;
                 return o;
             });

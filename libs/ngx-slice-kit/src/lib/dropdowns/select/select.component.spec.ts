@@ -4,11 +4,21 @@ import { SelectComponent } from './select.component';
 import { OptionsService } from '../options.service';
 import { DropdownService } from '../dropdown.service';
 import { PLATFORM_ID } from '@angular/core';
-import { OPTIONS1 } from '../../../../../../src/app/shared/values/dropdowns.values';
 import { Observable, of } from 'rxjs';
 import { DropdownOptions } from '../dropdown.model';
 import {skip} from 'rxjs/operators';
 import {IconComponent} from '../../buttons/icon/icon.component';
+import {OptionModel} from 'ngx-slice-kit';
+
+const options: OptionModel[] = [
+    {value: 1, label: 'Red Dead Redemption 2'},
+    {value: 2, label: 'Death Stranding'},
+    {value: 3, label: 'Bloodborne'},
+    {value: 4, label: 'Witcher 3'},
+    {value: 5, label: 'Cyberpunk 2077'},
+    {value: 6, label: 'Assassins Creed: Valhalla'},
+    {value: 7, label: 'Mortal Kombat 11'}
+];
 
 describe('SelectComponent', () => {
     let component: SelectComponent;
@@ -19,8 +29,8 @@ describe('SelectComponent', () => {
     const PLATFORM_BROWSER_ID = 'browser';
     const testIndexA = 0;
     const testIndexB = 2;
-    const stubOptionA = OPTIONS1[testIndexA];
-    const stubOptionB = OPTIONS1[testIndexB];
+    const stubOptionA = options[testIndexA];
+    const stubOptionB = options[testIndexB];
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
@@ -279,7 +289,7 @@ describe('SelectComponent', () => {
         });
 
         it('should #addValue() add value to #currentValues if they are not already selected', () => {
-            component.options = OPTIONS1;
+            component.options = options;
             component.currentValues = new Set();
             fixture.detectChanges();
             expect(component.currentValues.has(stubOptionA)).toBeFalse();
@@ -290,7 +300,7 @@ describe('SelectComponent', () => {
         });
 
         it('should #addValue() delete value from #currentValues if they are already selected', () => {
-            component.options = OPTIONS1;
+            component.options = options;
             component.currentValues = new Set();
             component.addValue(stubOptionA);
             fixture.detectChanges();
@@ -390,7 +400,7 @@ describe('SelectComponent', () => {
             let stubValues;
 
             beforeEach(() => {
-                component.options = OPTIONS1;
+                component.options = options;
                 component.multi = true;
                 stubValues = new Set([stubOptionA, stubOptionB]);
             });
@@ -430,7 +440,7 @@ describe('SelectComponent', () => {
             let stubValue;
 
             beforeEach(() => {
-                component.options = OPTIONS1;
+                component.options = options;
                 stubValue = stubOptionA;
             });
 
@@ -491,8 +501,8 @@ describe('SelectComponent', () => {
             });
 
             it('should #getOptions() return options with correct selected property', () => {
-                component.options = OPTIONS1;
-                const expectedOptionsList = [...OPTIONS1].map((el, index) => {
+                component.options = options;
+                const expectedOptionsList = [...options].map((el, index) => {
                     el.selected = index === testIndexA || index === testIndexB;
                     return el;
                 });
@@ -549,8 +559,8 @@ describe('SelectComponent', () => {
             });
 
             it('should #getOptions() return options with correct selected property', () => {
-                component.options = OPTIONS1;
-                const expectedOptionsList = [...OPTIONS1].map((el, index) => {
+                component.options = options;
+                const expectedOptionsList = [...options].map((el, index) => {
                     el.selected = index === testIndexA;
                     return el;
                 });
@@ -631,7 +641,7 @@ describe('SelectComponent', () => {
 
         beforeEach(() => {
             component.isOpen = false;
-            component.options = OPTIONS1;
+            component.options = options;
         });
 
         it('should #showDropdown() call #onClose() after get date', () => {

@@ -3,11 +3,20 @@ import {Component, PLATFORM_ID} from '@angular/core';
 import {DropdownService} from '../dropdown.service';
 import {OptionsService} from '../options.service';
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {OPTIONS1} from '../../../../../../src/app/shared/values/dropdowns.values';
 import {By} from '@angular/platform-browser';
 import {of} from 'rxjs';
 import {DropdownOptions} from '../dropdown.model';
 import {OptionModel} from '../dropdown-option.model';
+
+const options: OptionModel[] = [
+    {value: 1, label: 'Red Dead Redemption 2'},
+    {value: 2, label: 'Death Stranding'},
+    {value: 3, label: 'Bloodborne'},
+    {value: 4, label: 'Witcher 3'},
+    {value: 5, label: 'Cyberpunk 2077'},
+    {value: 6, label: 'Assassins Creed: Valhalla'},
+    {value: 7, label: 'Mortal Kombat 11'}
+];
 
 describe('DropdownMenuTriggerDirective', () => {
     const PLATFORM_SERVER_ID = 'server';
@@ -20,7 +29,7 @@ describe('DropdownMenuTriggerDirective', () => {
     let dropdownDe;
     let dropdownEl;
     let directive;
-    const stubOptionA = OPTIONS1[0];
+    const stubOptionA = options;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
@@ -136,7 +145,7 @@ describe('DropdownMenuTriggerDirective', () => {
 })
 class TestComponent {
     result1: any = '';
-    options1: OptionModel[] = OPTIONS1;
+    options1: OptionModel[] = options;
 
     constructor() {
     }
