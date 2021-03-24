@@ -8,7 +8,7 @@ import { Observable, of } from 'rxjs';
 import { DropdownOptions } from '../dropdown.model';
 import {skip} from 'rxjs/operators';
 import {IconComponent} from '../../buttons/icon/icon.component';
-import {OptionModel} from 'ngx-slice-kit';
+import {OptionModel} from '../dropdown-option.model';
 
 const options: OptionModel[] = [
     {value: 1, label: 'Red Dead Redemption 2'},
