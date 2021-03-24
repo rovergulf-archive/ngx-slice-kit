@@ -16,7 +16,7 @@ export class DropdownMenuTriggerDirective implements OnInit, OnDestroy {
     @Input() fitWidth: boolean;
     @Input() multi: boolean;
 
-    @Output() result: EventEmitter<any> = new EventEmitter<any>();
+    @Output() resultEvent: EventEmitter<any> = new EventEmitter<any>();
     @Output() opened: EventEmitter<any> = new EventEmitter<any>();
     @Output() closed: EventEmitter<any> = new EventEmitter<any>();
 
@@ -56,7 +56,7 @@ export class DropdownMenuTriggerDirective implements OnInit, OnDestroy {
             // this.optionsService.options = null;
 
             if (res) {
-                this.result.emit(res);
+                this.resultEvent.emit(res);
             }
         });
     }
@@ -65,7 +65,7 @@ export class DropdownMenuTriggerDirective implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.result.complete();
+        this.resultEvent.complete();
         this.opened.complete();
         this.closed.complete();
         this.sub?.unsubscribe();

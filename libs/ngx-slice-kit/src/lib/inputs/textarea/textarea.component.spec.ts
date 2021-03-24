@@ -213,7 +213,7 @@ describe('TextareaComponent', () => {
         let eventBody;
 
         component.writeValue(newValue);
-        component.focus.subscribe(e => {
+        component.focusEvent.subscribe(e => {
             eventBody = e;
 
             expect(eventBody.value).toEqual(expectedEventBody.value);
@@ -235,7 +235,7 @@ describe('TextareaComponent', () => {
         let eventBody;
 
         component.writeValue(newValue);
-        component.blur.subscribe(e => {
+        component.blurEvent.subscribe(e => {
             eventBody = e;
 
             expect(eventBody.value).toEqual(expectedEventBody.value);

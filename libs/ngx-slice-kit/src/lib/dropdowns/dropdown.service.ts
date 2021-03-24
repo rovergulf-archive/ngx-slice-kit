@@ -41,7 +41,7 @@ export class DropdownService {
         this.document.body.appendChild(dropdown);
 
         const result = new Subject();
-        dropdownRef.instance.result.subscribe((res: any) => {
+        dropdownRef.instance.resultEvent.subscribe((res: any) => {
             result.next(res);
             result.complete();
             this.document.body.removeChild(dropdown);

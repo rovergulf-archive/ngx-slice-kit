@@ -58,7 +58,7 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
         this.disabled = isDisabled;
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

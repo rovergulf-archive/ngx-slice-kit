@@ -10,7 +10,7 @@ export class VideoPlayerComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

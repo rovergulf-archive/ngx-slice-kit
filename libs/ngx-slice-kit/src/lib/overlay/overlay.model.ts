@@ -1,7 +1,7 @@
 import { EventEmitter } from '@angular/core';
 
 export class OverlayModel {
-    result: EventEmitter<any>;
+    resultEvent: EventEmitter<any>;
     options?: OverlayOptions;
 }
 

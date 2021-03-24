@@ -2,7 +2,6 @@ import { NavigationScrollDirective } from './navigation-scroll.directive';
 import { ElementRef, PLATFORM_ID } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
 
 describe('NavigationScrollDirective', () => {
     const UNIX_PLATFORM_ID = 4;
@@ -63,13 +62,6 @@ describe('NavigationScrollDirective', () => {
         it('should be created', () => {
             expect(service).toBeTruthy();
         });
-    });
-
-    it('should create an instance', () => {
-        let el: ElementRef;
-        let router: Router;
-        const directive = new NavigationScrollDirective(UNIX_PLATFORM_ID, el, router);
-        expect(directive).toBeTruthy();
     });
 });
 

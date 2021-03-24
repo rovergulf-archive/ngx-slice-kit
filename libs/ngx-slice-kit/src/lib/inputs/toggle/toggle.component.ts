@@ -54,7 +54,7 @@ export class ToggleComponent implements OnInit {
         this.onTouched = fn;
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.on = this.isActive;
     }
 

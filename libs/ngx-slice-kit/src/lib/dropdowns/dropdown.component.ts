@@ -30,7 +30,7 @@ const DEFAULT_DROPDOWN_OFFSET = 256;
 export class DropdownComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @ViewChild('dropdown', {static: false}) dropdownElement: ElementRef;
-    @Output() result: EventEmitter<any> = new EventEmitter<any>();
+    @Output() resultEvent: EventEmitter<any> = new EventEmitter<any>();
     @Input() config: DropdownOptions;
 
     sub: Subscription;
@@ -62,8 +62,8 @@ export class DropdownComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     onResult(res?: OptionModel): void {
-        this.result.emit(res);
-        this.result.complete();
+        this.resultEvent.emit(res);
+        this.resultEvent.complete();
         this.sub?.unsubscribe();
     }
 

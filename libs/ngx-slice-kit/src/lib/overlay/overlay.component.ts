@@ -35,7 +35,7 @@ export class OverlayComponent implements OnInit, OnDestroy, OverlayModel {
     @ViewChild(OverlayDirective, {static: true}) modalDirective: OverlayDirective;
     @ViewChild('overlay', {static: true}) overlayElem: ElementRef;
     @HostBinding('attr.state') state: 'opened' | 'closed' = 'closed';
-    @Output() result: EventEmitter<any> = new EventEmitter<any>();
+    @Output() resultEvent: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(
         @Inject(DOCUMENT) private document: any,
@@ -53,14 +53,14 @@ export class OverlayComponent implements OnInit, OnDestroy, OverlayModel {
 
         const componentRef = viewRef.createComponent(componentFactory);
         (componentRef.instance as OverlayModel).options = this.options;
-        (componentRef.instance as OverlayModel).result.subscribe(res => {
+        (componentRef.instance as OverlayModel).resultEvent.subscribe(res => {
             this.onResult(res);
         });
     }
 
     onResult(res?: any): void {
-        this.result.next(res);
-        this.result.complete();
+        this.resultEvent.next(res);
+        this.resultEvent.complete();
     }
 
     onBackdrop(): void {
@@ -155,7 +155,7 @@ export class OverlayComponent implements OnInit, OnDestroy, OverlayModel {
     }
 
     ngOnDestroy(): void {
-        this.result?.complete();
+        this.resultEvent?.complete();
         this.sub?.unsubscribe();
     }
 

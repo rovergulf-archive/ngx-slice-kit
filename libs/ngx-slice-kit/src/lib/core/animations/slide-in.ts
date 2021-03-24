@@ -1,6 +1,6 @@
-import { animate, group, query as q, style, transition, trigger } from '@angular/animations';
+import {animate, AnimationQueryMetadata, group, query as q, style, transition, trigger} from '@angular/animations';
 
-export function query(s, a) {
+export function query(s, a): AnimationQueryMetadata {
     return q(s, a, {optional: true});
 }
 

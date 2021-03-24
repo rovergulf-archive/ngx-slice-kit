@@ -10,7 +10,7 @@ export class WysiwygComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

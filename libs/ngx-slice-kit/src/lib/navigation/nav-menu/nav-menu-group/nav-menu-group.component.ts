@@ -64,7 +64,8 @@ export class NavMenuGroupComponent implements OnInit, AfterContentInit {
         this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((e: RouterEvent) => {
             // oh i'm not really sure if it is a good way
             // but it is the only and simplest I can afford today -_-
-            this.checkIsActive(e['urlAfterRedirects']);
+            const key = 'urlAfterRedirects';
+            this.checkIsActive(e[key]);
         });
     }
 

@@ -10,7 +10,7 @@ export class DashboardCardComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

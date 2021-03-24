@@ -8,6 +8,6 @@ export class DropdownOptions {
     hideBackdrop?: boolean;
     parentElem?: any;
     filterFunc?: () => OptionModel[]; // TBD v2
-    returnFunc?: Function; // TBD v2
+    returnFunc?: () => any; // TBD v2
 }
 

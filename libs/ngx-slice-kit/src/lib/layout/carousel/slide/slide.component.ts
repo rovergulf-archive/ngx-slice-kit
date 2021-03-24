@@ -15,7 +15,7 @@ export class SlideComponent implements OnInit {
 
     @HostBinding('class') slide = 'sdk-slide';
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

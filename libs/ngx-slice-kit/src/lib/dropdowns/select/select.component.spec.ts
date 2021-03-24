@@ -303,7 +303,7 @@ describe('SelectComponent', () => {
 
         it('should #emitBlur() emit blur event if #focused is true', () => {
             component.focused = true;
-            component.onBlur.subscribe(() => {
+            component.blurEvent.subscribe(() => {
                 expect(component.focused).toBe(false, 'should set #focused value as false');
             });
 
@@ -313,7 +313,7 @@ describe('SelectComponent', () => {
         it('should #emitBlur() not emit blur event if #focused is false', fakeAsync(() => {
             let expectedResult = '';
             component.focused = false;
-            component.onBlur.subscribe(() => {
+            component.blurEvent.subscribe(() => {
                 expectedResult = 'some result';
             });
 
@@ -325,7 +325,7 @@ describe('SelectComponent', () => {
 
         it('should #emitFocus() emit focus event if #focused is false', () => {
             component.focused = false;
-            component.onFocus.subscribe(() => {
+            component.focusEvent.subscribe(() => {
                 expect(component.focused).toBe(true, 'should set #focused value as true');
             });
 
@@ -335,7 +335,7 @@ describe('SelectComponent', () => {
         it('should #emitFocus() not emit focus event if #focused is true', fakeAsync(() => {
             let expectedResult = '';
             component.focused = true;
-            component.onFocus.subscribe(() => {
+            component.focusEvent.subscribe(() => {
                 expectedResult = 'some result';
             });
 
@@ -415,7 +415,7 @@ describe('SelectComponent', () => {
                 const expectedResult = component.options.filter(o => stubValues.has(o));
                 let result;
 
-                component.result.subscribe(res => {
+                component.resultEvent.subscribe(res => {
                     result = res;
                 });
 
@@ -452,7 +452,7 @@ describe('SelectComponent', () => {
             it('should #writeValue() emit result event with same value', () => {
                 let result;
 
-                component.result.subscribe(res => {
+                component.resultEvent.subscribe(res => {
                     result = res;
                 });
 

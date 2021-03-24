@@ -69,7 +69,7 @@ describe('DropdownComponent', () => {
 
     it('should #onResult() emit result event with option as argument', () => {
         let expectedRes: OptionModel;
-        component.result.subscribe(() => {
+        component.resultEvent.subscribe(() => {
             expectedRes = stubOption;
             expect(expectedRes).toEqual(stubOption);
         });
@@ -78,10 +78,10 @@ describe('DropdownComponent', () => {
     });
 
     it('should #onResult() complete result', () => {
-        spyOn(component.result, 'complete');
+        spyOn(component.resultEvent, 'complete');
         component.onResult(stubOption);
 
-        expect(component.result.complete).toHaveBeenCalled();
+        expect(component.resultEvent.complete).toHaveBeenCalled();
     });
 
     it('should #onResult() unsubscribe from #sub', () => {

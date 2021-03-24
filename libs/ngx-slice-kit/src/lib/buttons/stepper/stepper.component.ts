@@ -10,7 +10,7 @@ export class StepperComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }
