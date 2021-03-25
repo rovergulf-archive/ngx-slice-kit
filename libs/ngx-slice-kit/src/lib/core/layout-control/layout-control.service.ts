@@ -112,5 +112,4 @@ export class LayoutControlService {
         const doc = this.document.documentElement;
         return (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
     }
-
 }

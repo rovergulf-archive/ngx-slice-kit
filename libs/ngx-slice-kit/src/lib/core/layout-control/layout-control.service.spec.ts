@@ -1,6 +1,6 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { LayoutControlService } from './layout-control.service';
-import { PLATFORM_ID } from '@angular/core';
+import {PLATFORM_ID} from '@angular/core';
 import { getSupportedInputTypes, supportsPassiveEventListeners, supportsScrollBehavior } from '@angular/cdk/platform';
 
 describe('LayoutControlService', () => {
@@ -11,7 +11,7 @@ describe('LayoutControlService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
-                LayoutControlService
+                LayoutControlService,
             ]
         });
     });
@@ -135,5 +135,18 @@ describe('LayoutControlService', () => {
 
             expect(res).toEqual(isMobile);
         });
+
+        it('should #focus change #focusTrap', fakeAsync(() => {
+           const el: HTMLElement = document.createElement('p');
+           const el2: HTMLElement = document.createElement('a');
+
+           service.focus(el);
+           service.focus(el2);
+           tick(1000);
+
+           expect(service.focusTrap.length).toEqual(2);
+           expect(service.focusTrap[0].nodeName).toEqual('A');
+           expect(service.focusTrap[1].nodeName).toEqual('P');
+        }));
     });
 });
