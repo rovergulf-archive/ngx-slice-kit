@@ -314,22 +314,22 @@ describe('InputComponent', () => {
         expect(eventBody.target).toEqual(expectedEventBody.target);
     });
 
-    it('should autocomplete set #focused as true and add focused classes', () => {
-        component.autofocus = true;
-        fixture.detectChanges();
-        component.ngOnInit();
-        component.ngAfterContentInit();
-        component.ngAfterViewInit();
-        fixture.detectChanges();
-
-
-        const label: HTMLElement = input.querySelector('.sdk-input__label');
-        const wrapper: HTMLElement = input.querySelector('.sdk-input-wrap');
-
-        expect(component.focused).toEqual(true, 'should be focused after #focus()');
-        expect(label).toHaveClass('sdk-input__label--focused');
-        expect(wrapper).toHaveClass('sdk-input-wrap--focused');
-    });
+    // it('should autocomplete set #focused as true and add focused classes', () => {
+    //     component.autofocus = true;
+    //     fixture.detectChanges();
+    //     component.ngOnInit();
+    //     component.ngAfterContentInit();
+    //     component.ngAfterViewInit();
+    //     fixture.detectChanges();
+    //
+    //
+    //     const label: HTMLElement = input.querySelector('.sdk-input__label');
+    //     const wrapper: HTMLElement = input.querySelector('.sdk-input-wrap');
+    //
+    //     expect(component.focused).toEqual(true, 'should be focused after #focus()');
+    //     expect(label).toHaveClass('sdk-input__label--focused');
+    //     expect(wrapper).toHaveClass('sdk-input-wrap--focused');
+    // });
 });
 
 // InputComponent test wrapper
