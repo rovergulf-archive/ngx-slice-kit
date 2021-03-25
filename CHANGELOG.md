@@ -6,9 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.8.0
 
-## 22 Mar 2021
+## 25 Mar 2021
 
 ### Added
+- `layout-service` test
 
 ### Changed
 
