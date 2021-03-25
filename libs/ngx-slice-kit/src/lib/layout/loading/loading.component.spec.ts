@@ -22,4 +22,8 @@ describe('LoadingComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should loader be "default" by default ¯\\_(ツ)_/¯', () => {
+        expect(component.loader).toEqual('default');
+    });
 });
