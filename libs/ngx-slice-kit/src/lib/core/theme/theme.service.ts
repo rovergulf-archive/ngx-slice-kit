@@ -58,7 +58,7 @@ export class ThemeService {
      * returns current theme index
      */
     getCurrentThemeIndex(): number {
-        return this.themes.indexOf(this.currentTheme);
+        return this.themes.findIndex(t => t.name === this.currentTheme.name);
     }
 
     /**
