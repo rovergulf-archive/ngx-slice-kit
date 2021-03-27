@@ -30,6 +30,9 @@ const renderer2Mock = jasmine.createSpyObj('renderer2Mock', [
 
 const rootRendererMock =  {
     createElement: () => {
+        return document.createElement('style');
+    },
+    setAttribute: () => {
         return renderer2Mock;
     }
 };
@@ -125,7 +128,14 @@ describe('ThemeDirective', () => {
         expect(themeService.setTheme).toHaveBeenCalledWith(t);
     });
 
-    // it('should', () => {});
+    it('should #setTheme do not be called if #theme is undefined', () => {
+        spyOn(themeService, 'setTheme');
+        spyOn(directive, 'updateTheme');
+
+        directive.ngOnInit();
+        expect(themeService.setTheme).not.toHaveBeenCalled();
+        expect(directive.updateTheme).toHaveBeenCalled();
+    });
 
     // it('should', () => {});
 
