@@ -58,7 +58,7 @@ export class ThemeService {
      * returns current theme index
      */
     getCurrentThemeIndex(): number {
-        return this.themes.indexOf(this.currentTheme);
+        return this.themes.findIndex(t => t.name === this.currentTheme.name);
     }
 
     /**
@@ -78,7 +78,7 @@ export class ThemeService {
      */
     setTheme(name: string): void {
         const t = this.findTheme(name);
-        if (!t) {
+        if (t.name !== name) {
             console.warn('Specified theme name not found: ', name);
         }
         this.currentTheme = t;
@@ -112,7 +112,7 @@ export class ThemeService {
 
     updateTheme(t: Theme): void {
         const theme = this.findTheme(t.name);
-        if (!!theme) {
+        if (theme.name === t.name) {
             this.currentTheme = new Theme(t);
         }
     }

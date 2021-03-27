@@ -14,13 +14,13 @@ export const defaultColors = {
     background: defaultBackgroundRgb,
     regular: defaultRegularRgb,
     primary: defaultPrimaryRgb,
-    primaryText: defaultBackgroundRgb,
+    primary_text: defaultBackgroundRgb,
     success: defaultSuccessRgb,
-    successText: defaultBackgroundRgb,
+    success_text: defaultBackgroundRgb,
     accent: defaultAccentRgb,
-    accentText: defaultBackgroundRgb,
+    accent_text: defaultBackgroundRgb,
     warn: defaultWarnRgb,
-    warnText: defaultBackgroundRgb,
+    warn_text: defaultBackgroundRgb,
 };
 
 export const baseColors = [

@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.8.0
 
+## 27 Mar 2021
+
+### Added
+- `theme.service` tests
+
+### Changed
+
+### Fixed
+
+### Removed
+
 ## 25 Mar 2021
 
 ### Added
