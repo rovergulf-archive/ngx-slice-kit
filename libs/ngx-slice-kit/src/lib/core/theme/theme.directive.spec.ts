@@ -12,6 +12,11 @@ describe('ThemeDirective', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [BrowserDynamicTestingModule],
+            declarations: [
+                TestComponent,
+                // ThemeService,
+                // layoutControl
+            ],
             providers: [
                 ThemeDirective,
                 Renderer2,
@@ -40,4 +45,13 @@ describe('ThemeDirective', () => {
 
 export class MockElementRef extends ElementRef {
     nativeElement = {};
+}
+
+@Component({
+    template: `
+        <div sdk-theme>
+            <p>acca dacca</p>
+        </div>>`
+})
+class TestComponent {
 }
