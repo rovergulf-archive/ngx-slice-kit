@@ -6,30 +6,7 @@ import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/tes
 import {Component, DebugElement, ElementRef, OnInit, Renderer2} from '@angular/core';
 import {Theme} from './theme.model';
 
-const renderer2Mock = jasmine.createSpyObj('renderer2Mock', [
-    'destroy',
-    'createElement',
-    'createComment',
-    'createText',
-    'destroyNode',
-    'appendChild',
-    'insertBefore',
-    'removeChild',
-    'selectRootElement',
-    'parentNode',
-    'nextSibling',
-    'setAttribute',
-    'removeAttribute',
-    'addClass',
-    'removeClass',
-    'setStyle',
-    'removeStyle',
-    'setProperty',
-    'setValue',
-    'listen'
-]);
-
-const rootRendererMock =  {
+const rendererMock =  {
     createElement: () => {
         return document.createElement('style');
     },
@@ -53,13 +30,10 @@ describe('ThemeDirective', () => {
             declarations: [
                 TestComponent,
                 ThemeDirective,
-                // ThemeService,
-                // layoutControl
             ],
             providers: [
                 ThemeDirective,
-                // Renderer2,
-                {provide: Renderer2, useValue: rootRendererMock},
+                {provide: Renderer2, useValue: rendererMock},
                 {provide: ElementRef, useValue: new MockElementRef({})}
             ]
         });
