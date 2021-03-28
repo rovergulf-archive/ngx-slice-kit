@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.8.0
 
+## 28 Mar 2021
+
+### Added
+- `theme.directive` tests
+
 ## 27 Mar 2021
 
 ### Added
