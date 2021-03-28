@@ -10,7 +10,7 @@ import { themeDark } from './lib/theme-dark';
     providedIn: 'root'
 })
 export class ThemeService {
-    themes: Theme[] = [themeLight, themeDark];
+    themes: Theme[] = [new Theme(themeLight), new Theme(themeDark)];
     private $currentTheme = new BehaviorSubject<Theme>(this.getDefaultTheme());
 
     constructor(
