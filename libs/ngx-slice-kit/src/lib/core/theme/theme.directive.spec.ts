@@ -4,6 +4,7 @@ import { LayoutControlService } from '../layout-control/layout-control.service';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/testing';
 import {Component, DebugElement, ElementRef, OnInit, Renderer2} from '@angular/core';
+import {Theme} from './theme.model';
 
 const renderer2Mock = jasmine.createSpyObj('renderer2Mock', [
     'destroy',
@@ -32,8 +33,8 @@ const rootRendererMock =  {
     createElement: () => {
         return document.createElement('style');
     },
-    setAttribute: () => {
-        return renderer2Mock;
+    setAttribute: (el, attr, value) => {
+        return el.setAttribute(attr, value);
     }
 };
 
@@ -73,17 +74,6 @@ describe('ThemeDirective', () => {
     });
 
     it('should create an instance', () => {
-        // let document: Document;
-        // let el: ElementRef;
-        // let renderer: Renderer2;
-        // const directive = new ThemeDirective(
-        //     document,
-        //     el,
-        //     renderer,
-        //     themeService,
-        //     layoutControl,
-        // );
-
         expect(directive).toBeTruthy();
     });
 
@@ -137,22 +127,44 @@ describe('ThemeDirective', () => {
         expect(directive.updateTheme).toHaveBeenCalled();
     });
 
-    // it('should', () => {});
+    it('should element has .sdk-theme-$name class with name of theme', () => {
+        const theme = new Theme({...themeService.themes[0], name: 'olive'});
 
-    // it('should', () => {});
+        directive.updateTheme(theme);
+        expect(directive.getElement()).toHaveClass('sdk-theme-olive');
+    });
 
-    // it('should', () => {});
+    it('should element has class .sdk-custom-scroll if layout #platform.BLINK is false', () => {
+        const theme = new Theme({...themeService.themes[0], name: 'olive'});
+        layoutControl.platform.BLINK = false;
 
-    // it('should', () => {});
+        directive.updateTheme(theme);
+        expect(directive.getElement()).toHaveClass('sdk-custom-scroll');
+    });
 
-    // it('should', () => {});
+    it('should element has no class .sdk-custom-scroll if layout #platform.BLINK is true, and has platform class', () => {
+        const theme = new Theme({...themeService.themes[0], name: 'blackolive'});
+        layoutControl.platform.BLINK = true;
 
-    // it('should', () => {});
+        directive.updateTheme(theme);
+        expect(directive.getElement()).toHaveClass('browser');
+        expect(directive.getElement()).not.toHaveClass('sdk-custom-scroll');
+    });
 
-    // it('should', () => {});
+    it('should styles has correct attribute by current theme', () => {
+        const apricotTheme = new Theme({...themeService.themes[0], name: 'apricot'});
+        const mangoTheme = new Theme({...themeService.themes[0], name: 'mango'});
 
-    // it('should', () => {});
+        directive.updateTheme(apricotTheme);
+        const apricotStyles = document.head.querySelectorAll('[sdk-theme]')[0];
+        expect(apricotStyles.getAttribute('sdk-theme')).toEqual('apricot');
 
+        directive.updateTheme(mangoTheme);
+        const mangoStyles = document.head.querySelectorAll('[sdk-theme]')[0];
+        expect(mangoStyles.getAttribute('sdk-theme')).toEqual('mango');
+
+        expect(document.head.querySelectorAll('[sdk-theme]').length).toEqual(1);
+    });
 });
 
 export class MockElementRef extends ElementRef {
