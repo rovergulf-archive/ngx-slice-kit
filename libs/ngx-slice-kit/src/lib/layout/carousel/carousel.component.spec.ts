@@ -26,4 +26,11 @@ describe('CarouselComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should', () => {
+        spyOn(window, 'clearInterval');
+
+        component.ngOnDestroy();
+        expect(window.clearInterval).toHaveBeenCalledWith(component.scrollinterval);
+    });
 });
