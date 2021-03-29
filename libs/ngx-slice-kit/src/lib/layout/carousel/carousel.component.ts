@@ -22,7 +22,7 @@ import {filter, repeatWhen, takeUntil} from 'rxjs/operators';
     templateUrl: './carousel.component.html',
     styleUrls: ['./carousel.component.scss'],
 })
-export class CarouselComponent implements OnInit, AfterContentInit, AfterViewInit, OnChanges, OnDestroy {
+export class CarouselComponent implements OnInit, AfterContentInit, AfterViewInit, OnDestroy {
 
     @ContentChildren(SlideComponent) carouselSlides: QueryList<SlideComponent>;
 
@@ -261,14 +261,12 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     ngAfterViewInit(): void {
         const pointerEnter$ = fromEvent(this.el.nativeElement, 'pointerenter').pipe(filter(() => this.pauseByHover));
         const pointerLeave$ = fromEvent(this.el.nativeElement, 'pointerleave');
-
-        this.isViewInit = true;
-        this.updateSlider();
-
         const pointerLeave = pointerLeave$.subscribe(() => {
             this.pointerUpHandler();
         });
 
+        this.isViewInit = true;
+        this.updateSlider();
         this.sub.add(pointerLeave);
 
         if (this.timeout) {
@@ -285,13 +283,13 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
         }
     }
 
-    ngOnChanges(changes): void {
-        if (this.isViewInit) {
-            if (changes.slidesToScroll || changes.slidesToShow) {
-                this.updateSlider();
-            }
-        }
-    }
+    // ngOnChanges(changes): void {
+    //     if (this.isViewInit) {
+    //         if (changes.slidesToScroll || changes.slidesToShow) {
+    //             this.updateSlider();
+    //         }
+    //     }
+    // }
 
     ngOnDestroy(): void {
         this.sub.unsubscribe();
