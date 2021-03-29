@@ -2,7 +2,7 @@ import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular
 
 import {CarouselComponent} from './carousel.component';
 import {IconComponent} from '../../buttons/icon/icon.component';
-import {Component, DebugElement, Input} from '@angular/core';
+import {Component, DebugElement} from '@angular/core';
 import {SlideComponent} from './slide/slide.component';
 
 describe('CarouselComponent', () => {
@@ -18,7 +18,7 @@ describe('CarouselComponent', () => {
                 CarouselComponent,
                 SlideComponent,
                 IconComponent,
-            ]
+            ],
         })
             .compileComponents();
     }));
@@ -127,9 +127,46 @@ describe('CarouselComponent', () => {
         expect(component.firstPageClones.length).toEqual(1);
     });
 
-    // it('should', () => {});
+    it('should #setSlideStyles set each slide width', () => {
+        fixture.detectChanges();
+        component.setSlideStyles();
+        const el = component.slidesArr[0].el.nativeElement;
 
-    // it('should', () => {});
+        expect(el.style.padding).toEqual(``);
+        expect(el.style.width).toEqual(`${component.carouselWrapper.nativeElement.offsetWidth}px`);
+    });
+
+    it('should #setSlideStyles set each slide padding if #offset is truthy', () => {
+        component.offset = 12;
+        fixture.detectChanges();
+        component.setSlideStyles();
+        const el = component.slidesArr[0].el.nativeElement;
+
+        expect(el.style.padding).toEqual(`${12}px`);
+    });
+
+    it('should last clones be insert before and first clones be insert after', () => {
+        fixture.detectChanges();
+        component.createClones();
+        component.insertClones();
+
+        const firstClone = component.carouselRow.nativeElement.children[0];
+        const lastClone = component.carouselRow.nativeElement.children[3];
+
+        expect(lastClone.textContent).toEqual('Acca');
+        expect(lastClone).toHaveClass('sdk-slide--clone');
+        expect(firstClone.textContent).toEqual('Dacca');
+        expect(firstClone).toHaveClass('sdk-slide--clone');
+    });
+
+    it('should be deleted all clone slides after #removeClones', () => {
+        fixture.detectChanges();
+        component.createClones();
+        component.insertClones();
+        component.removeClones();
+
+        expect(component.carouselRow.nativeElement.children.length).toEqual(2); // 2 slides
+    });
 
     // it('should', () => {});
 
@@ -164,16 +201,8 @@ describe('CarouselComponent', () => {
 @Component({
     template: `
         <sdk-carousel>
-            <sdk-slide>
-                <div>
-                    Acca
-                </div>
-            </sdk-slide>
-            <sdk-slide>
-                <div>
-                    Dacca
-                </div>
-            </sdk-slide>
+            <sdk-slide>Acca</sdk-slide>
+            <sdk-slide>Dacca</sdk-slide>
         </sdk-carousel>`,
 })
 class TestComponent {
