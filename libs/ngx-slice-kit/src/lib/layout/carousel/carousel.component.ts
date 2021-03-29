@@ -13,7 +13,9 @@ import {
     Renderer2,
     ViewChild
 } from '@angular/core';
-import { SlideComponent } from './slide/slide.component';
+import {SlideComponent} from './slide/slide.component';
+import {fromEvent, interval, Subscription} from 'rxjs';
+import {filter, repeatWhen, takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'sdk-carousel',
@@ -47,8 +49,6 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     scrollStep: number;
     scrollStartX: number;
     scrollOffset: number;
-    scrollInterval: any;
-
 
     isScrolling: boolean;
     isGrabbed: boolean = false;
@@ -57,6 +57,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     carouselWrapperRects: ClientRect;
     carouselRowRects: ClientRect;
 
+    sub: Subscription;
 
     get dotsCount(): number {
         return Math.ceil(this.slidesArr.length / this.slidesToScroll);
@@ -66,6 +67,12 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
         private el: ElementRef,
         private renderer: Renderer2,
     ) {
+    }
+
+    @HostListener('window:resize') windowResizeHandler(): void {
+        if (this.carouselWrapper.nativeElement.offsetWidth !== this.carouselWrapperRects.width) {
+            this.updateSlider();
+        }
     }
 
     @HostListener('pointerup') pointerUpHandler(): void {
@@ -85,26 +92,10 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
         this.scrollOffset = 0;
     }
 
-    @HostListener('window:resize') windowResizeHandler(): void {
-        if (this.carouselWrapper.nativeElement.offsetWidth !== this.carouselWrapperRects.width) {
-            this.updateSlider();
-        }
-    }
-
     @HostListener('pointermove', ['$event']) pointerMoveHandler(event: PointerEvent): void {
         if (this.isGrabbed) {
             this.scrollOffset = this.curCarouselPosition + event.clientX - this.scrollStartX;
             this.renderer.setStyle(this.carouselRow.nativeElement, 'transform', `translateX(${this.scrollOffset}px)`);
-        }
-    }
-
-    @HostListener('pointerleave') pointerLeaveHandler(): void {
-        if (this.pauseByHover && this.timeout) {
-            this.startInterval();
-        }
-
-        if (this.isGrabbed) {
-            this.pointerUpHandler();
         }
     }
 
@@ -138,16 +129,6 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
 
         this.isGrabbed = true;
         this.scrollStartX = event.clientX;
-    }
-
-    startInterval(): void {
-        this.scrollInterval = setInterval(() => {
-            this.move('forward');
-        }, this.timeout);
-    }
-
-    pause(): void {
-        clearInterval(this.scrollInterval);
     }
 
     move(direction: 'forward' | 'back'): void {
@@ -267,10 +248,9 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     }
 
     ngOnInit(): void {
-        this.carouselRow.nativeElement.addEventListener('pointerdown', this.grab.bind(this));
-        if (this.pauseByHover && this.timeout) {
-            this.el.nativeElement.addEventListener('pointerenter', this.pause.bind(this));
-        }
+        this.sub = fromEvent(this.carouselRow.nativeElement, 'pointerdown').subscribe(pointerEvent => {
+            this.grab(pointerEvent as PointerEvent);
+        });
     }
 
     ngAfterContentInit(): void {
@@ -279,13 +259,30 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     }
 
     ngAfterViewInit(): void {
+        const pointerEnter$ = fromEvent(this.el.nativeElement, 'pointerenter').pipe(filter(() => this.pauseByHover));
+        const pointerLeave$ = fromEvent(this.el.nativeElement, 'pointerleave');
+
         this.isViewInit = true;
-        setTimeout(() => {
-            this.updateSlider();
-            if (this.timeout) {
-                this.startInterval();
-            }
+        this.updateSlider();
+
+        const pointerLeave = pointerLeave$.subscribe(() => {
+            this.pointerUpHandler();
         });
+
+        this.sub.add(pointerLeave);
+
+        if (this.timeout) {
+            const slideTimeout = interval(this.timeout)
+                .pipe(
+                    takeUntil(pointerEnter$),
+                    repeatWhen(() => pointerLeave$)
+                )
+                .subscribe(() => {
+                    this.move('forward');
+                });
+
+            this.sub.add(slideTimeout);
+        }
     }
 
     ngOnChanges(changes): void {
@@ -297,6 +294,6 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     }
 
     ngOnDestroy(): void {
-        clearInterval(this.scrollInterval);
+        this.sub.unsubscribe();
     }
 }
