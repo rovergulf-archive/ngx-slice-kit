@@ -23,8 +23,9 @@ import { SlideComponent } from './slide/slide.component';
 export class CarouselComponent implements OnInit, AfterContentInit, AfterViewInit, OnChanges, OnDestroy {
 
     @ContentChildren(SlideComponent) carouselSlides: QueryList<SlideComponent>;
-    @ViewChild('carouselRow', {static: true}) carouselRow: ElementRef;
+
     @ViewChild('carouselWrapper', {static: true}) carouselWrapper: ElementRef;
+    @ViewChild('carouselRow', {static: true}) carouselRow: ElementRef;
 
     @Input() dots: boolean = false;
     @Input() infinity: boolean = false;
@@ -36,25 +37,26 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     @Input() offset: number = 0;
 
     slidesArr: SlideComponent[] = [];
-    activeSlideIndex: number = 0;
-    curCarouselPosition: number = 0;
-    slideWidth: number;
-    scrollStep: number;
-    carouselWrapperRects: ClientRect;
-    carouselRowRects: ClientRect;
-    scrolling: boolean;
-
-    scrollinterval: any;
-
-    carouselRowGrabbed: boolean = false;
-    scrollStartX: number;
-    scrollOffset: number;
-
-    pagePenalty: number = 0;
-    isViewInited: boolean = false;
-
     firstPageClones: SlideComponent[];
     lastPageClones: SlideComponent[];
+
+    activeSlideIndex: number = 0;
+    curCarouselPosition: number = 0;
+    pagePenalty: number = 0;
+    slideWidth: number;
+    scrollStep: number;
+    scrollStartX: number;
+    scrollOffset: number;
+    scrollInterval: any;
+
+
+    isScrolling: boolean;
+    isGrabbed: boolean = false;
+    isViewInit: boolean = false;
+
+    carouselWrapperRects: ClientRect;
+    carouselRowRects: ClientRect;
+
 
     get dotsCount(): number {
         return Math.ceil(this.slidesArr.length / this.slidesToScroll);
@@ -67,11 +69,11 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     }
 
     @HostListener('pointerup') pointerUpHandler(): void {
-        if (!this.carouselRowGrabbed) {
+        if (!this.isGrabbed) {
             return;
         }
 
-        this.carouselRowGrabbed = false;
+        this.isGrabbed = false;
 
         if (this.scrollOffset < this.curCarouselPosition - 100) {
             this.move('forward');
@@ -90,7 +92,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     }
 
     @HostListener('pointermove', ['$event']) pointerMoveHandler(event: PointerEvent): void {
-        if (this.carouselRowGrabbed) {
+        if (this.isGrabbed) {
             this.scrollOffset = this.curCarouselPosition + event.clientX - this.scrollStartX;
             this.renderer.setStyle(this.carouselRow.nativeElement, 'transform', `translateX(${this.scrollOffset}px)`);
         }
@@ -101,13 +103,13 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
             this.startInterval();
         }
 
-        if (this.carouselRowGrabbed) {
+        if (this.isGrabbed) {
             this.pointerUpHandler();
         }
     }
 
     animate(newPosition): void {
-        this.scrolling = true;
+        this.isScrolling = true;
         this.renderer.setStyle(this.carouselRow.nativeElement, 'transition', `400ms`);
         this.renderer.setStyle(this.carouselRow.nativeElement, 'transform', `translateX(${newPosition}px)`);
         this.updatePosition();
@@ -134,18 +136,18 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     grab(event: PointerEvent): void {
         event.preventDefault();
 
-        this.carouselRowGrabbed = true;
+        this.isGrabbed = true;
         this.scrollStartX = event.clientX;
     }
 
     startInterval(): void {
-        this.scrollinterval = setInterval(() => {
+        this.scrollInterval = setInterval(() => {
             this.move('forward');
         }, this.timeout);
     }
 
     pause(): void {
-        clearInterval(this.scrollinterval);
+        clearInterval(this.scrollInterval);
     }
 
     move(direction: 'forward' | 'back'): void {
@@ -153,7 +155,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
         const widthPenalty = (this.activeSlideIndex === 0 ?
             this.slideWidth * (this.dotsCount * this.slidesToScroll - this.slidesArr.length) : 0);
 
-        if (this.scrolling) {
+        if (this.isScrolling) {
             return;
         }
         switch (direction) {
@@ -193,7 +195,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
         setTimeout(() => {
             this.carouselRowRects = this.carouselRow.nativeElement.getBoundingClientRect();
             this.renderer.removeStyle(this.carouselRow.nativeElement, 'transition');
-            this.scrolling = false;
+            this.isScrolling = false;
         }, 500);
     }
 
@@ -277,7 +279,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     }
 
     ngAfterViewInit(): void {
-        this.isViewInited = true;
+        this.isViewInit = true;
         setTimeout(() => {
             this.updateSlider();
             if (this.timeout) {
@@ -287,7 +289,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     }
 
     ngOnChanges(changes): void {
-        if (this.isViewInited) {
+        if (this.isViewInit) {
             if (changes.slidesToScroll || changes.slidesToShow) {
                 this.updateSlider();
             }
@@ -295,6 +297,6 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     }
 
     ngOnDestroy(): void {
-        clearInterval(this.scrollinterval);
+        clearInterval(this.scrollInterval);
     }
 }
