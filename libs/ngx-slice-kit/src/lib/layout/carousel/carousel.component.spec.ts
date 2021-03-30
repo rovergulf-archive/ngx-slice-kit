@@ -494,6 +494,137 @@ describe('CarouselComponent', () => {
         expect(component.curCarouselPosition).toEqual(-2); // -(activeSlideIndex(1) * slideWidth(1) * slidesToScroll(1) - 0) - pagePenalty(1)
     });
 
+    it('should #animation set #isScrolling as true', () => {
+        const position = 999;
+        fixture.detectChanges();
+        component.animate(position);
+
+        expect(component.isScrolling).toBeTrue();
+    });
+
+    it('should #animation set carouselRow transition & transform styles', () => {
+        const position = 999;
+        fixture.detectChanges();
+        component.animate(position);
+
+        expect(component.carouselRow.nativeElement.style.transition).toEqual('all 400ms ease 0s');
+        expect(component.carouselRow.nativeElement.style.transform).toEqual(`translateX(${position}px)`);
+    });
+
+    it('should #animation call #updatePosition method', () => {
+        spyOn(component, 'updatePosition');
+        const position = 999;
+        fixture.detectChanges();
+        component.animate(position);
+
+        expect(component.updatePosition).toHaveBeenCalled();
+    });
+
+    it('should #animation set #activeSlideIndex as 0 if #activeSlideIndex + 1 is greater then #dotsCount', () => {
+        const position = 999;
+        component.activeSlideIndex = 2;
+        fixture.detectChanges();
+        component.animate(position);
+
+        expect(component.activeSlideIndex).toEqual(0);
+    });
+
+    it('should #animation set #curCarouselPosition & carouselRow transform style. if #activeSlideIndex + 1 > #dotsCount', (done) => {
+        fixture.detectChanges();
+        const position = 999;
+        component.activeSlideIndex = 2;
+        component.slideWidth = 1;
+        component.animate(position);
+
+        setTimeout(() => {
+            expect(component.curCarouselPosition).toEqual(-1); // -(slidesToScroll(1) * slideWidth(1))
+            expect(component.carouselRow.nativeElement.style.transform).toEqual(`translateX(-1px)`);
+            done();
+        }, 550);
+    });
+
+    it('should #animation set #activeSlideIndex as (this.dotsCount - 1) if #activeSlideIndexi === -1', () => {
+        const position = 999;
+        component.activeSlideIndex = -1;
+        fixture.detectChanges();
+        component.animate(position);
+
+        expect(component.activeSlideIndex).toEqual(1);
+    });
+
+    it('should #animation set #curCarouselPosition & carouselRow transform style. if #activeSlideIndex === -1', (done) => {
+        fixture.detectChanges();
+        const position = 999;
+        component.activeSlideIndex = -1;
+        component.slideWidth = 1;
+        component.animate(position);
+
+        setTimeout(() => {
+            expect(component.curCarouselPosition).toEqual(-2); // -(slidesToScroll(1) * slideWidth(1)) * dotsCount(2)
+            expect(component.carouselRow.nativeElement.style.transform).toEqual(`translateX(-2px)`);
+            done();
+        }, 550);
+    });
+
+    it('should #move quit if #isScrolling is true', () => {
+        fixture.detectChanges();
+        spyOn(component, 'animate');
+        component.isScrolling = true;
+
+        component.move('forward');
+
+        expect(component.animate).not.toHaveBeenCalled();
+    });
+
+    it('should #move call #animate method if #isScrolling is false', () => {
+        fixture.detectChanges();
+        spyOn(component, 'animate');
+        component.isScrolling = false;
+
+        component.move('forward');
+
+        expect(component.animate).toHaveBeenCalled();
+    });
+
+    it('should #move method set #curCarouselPosition. with "forward" as argument', () => {
+        fixture.detectChanges();
+        spyOn(component, 'animate');
+        component.isScrolling = false;
+
+        component.move('forward');
+
+        expect(component.curCarouselPosition)
+            .toEqual(component.carouselRowRects.right - component.scrollStep < component.carouselWrapperRects.right ?
+            -(component.carouselRowRects.right - component.carouselWrapperRects.right) : -component.scrollStep);
+    });
+
+    it('should #move method set #curCarouselPosition. with "back" as argument. index = 0', () => {
+        fixture.detectChanges();
+        spyOn(component, 'animate');
+        component.isScrolling = false;
+        component.activeSlideIndex = 0;
+        const widthPenalty = component.slideWidth * (component.dotsCount * component.slidesToScroll - component.slidesArr.length);
+
+        component.move('back');
+
+        expect(component.curCarouselPosition)
+            .toEqual(component.curCarouselPosition += component.carouselRowRects.left + component.scrollStep > component.carouselWrapperRects.left ?
+            component.carouselWrapperRects.left - component.carouselRowRects.left : component.scrollStep - widthPenalty);
+    });
+
+    it('should #move method set #curCarouselPosition. with "back" as argument. index = 1', () => {
+        fixture.detectChanges();
+        spyOn(component, 'animate');
+        component.isScrolling = false;
+        component.activeSlideIndex = 1;
+        const widthPenalty = 0;
+
+        component.move('back');
+
+        expect(component.curCarouselPosition)
+            .toEqual(component.curCarouselPosition += component.carouselRowRects.left + component.scrollStep > component.carouselWrapperRects.left ?
+            component.carouselWrapperRects.left - component.carouselRowRects.left : component.scrollStep - widthPenalty);
+    });
 });
 
 @Component({
