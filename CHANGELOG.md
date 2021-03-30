@@ -6,28 +6,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.8.0
 
-## 27 Mar 2021
+## 31 Mar 2021
 
 ### Added
-- `theme.service` tests
 
 ### Changed
 
 ### Fixed
 
 ### Removed
+
+## 30 Mar 2021
+
+### Added
+- `carousel.component` tests
+
+## 29 Mar 2021
+
+### Added
+- `carousel.component` tests
+
+### Changed
+- Change `setInterval` in `carousel.component` to `RxJs streams`
+
+## 28 Mar 2021
+
+### Added
+- `theme.directive` tests
+
+## 27 Mar 2021
+
+### Added
+- `theme.service` tests
 
 ## 25 Mar 2021
 
 ### Added
 - `layout-service` test
 - `Loading.(directive/service/component)` tests
-
-### Changed
-
-### Fixed
-
-### Removed
 
 ## 21 Mar 2021
 

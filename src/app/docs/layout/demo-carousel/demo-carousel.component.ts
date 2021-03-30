@@ -83,12 +83,12 @@ export class DemoCarouselComponent implements OnInit {
     }
 
     @HostListener('window:resize', ['$event'])
-    onWindowResize(event) {
+    onWindowResize(event): void {
         this.currentWidth = event.target.innerWidth;
         this.changeCarouselConfig();
     }
 
-    changeCarouselConfig() {
+    changeCarouselConfig(): void {
         if (this.currentWidth >= 1800) {
             this.carousel4Config = {...this.carousel4Config, slidesToShow: 8, slidesToScroll: 2};
         } else if (this.currentWidth >= 1600) {
@@ -116,7 +116,7 @@ export class DemoCarouselComponent implements OnInit {
         }
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.currentWidth = window.innerWidth;
         this.changeCarouselConfig();
     }
