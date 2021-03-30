@@ -444,9 +444,55 @@ describe('CarouselComponent', () => {
         expect(component.pointerMoveHandler).toHaveBeenCalled();
     });
 
-    // it('should', () => {});
+    it('should #updatePosition set #isScrolling as false, remove transition style from carouselRow element, set #carouselRowRects', (done) => {
+        fixture.detectChanges();
+        component.updatePosition();
 
-    // it('should', () => {});
+        setTimeout(() => {
+            expect(component.carouselRowRects).toEqual(component.carouselRow.nativeElement.getBoundingClientRect());
+            expect(component.carouselRow.nativeElement.style.transition).toBeFalsy();
+            expect(component.isScrolling).toBeFalse();
+            done();
+        }, 600);
+    });
+
+    it('should #selectSlide set #activeSlideIndex', () => {
+        fixture.detectChanges();
+
+        component.selectSlide(0);
+        expect(component.activeSlideIndex).toEqual(0);
+
+        component.selectSlide(1);
+        expect(component.activeSlideIndex).toEqual(1);
+    });
+
+    it('should #selectSlide call #animate with #curCarouselPosition', () => {
+        fixture.detectChanges();
+        spyOn(component, 'animate');
+        component.selectSlide(0);
+
+        expect(component.animate).toHaveBeenCalledWith(component.curCarouselPosition);
+    });
+
+    it('should #selectSlide set #curCarouselPosition', () => {
+        component.slideWidth = 1;
+        component.slidesToScroll = 1;
+        component.pagePenalty = 1;
+        fixture.detectChanges();
+        component.selectSlide(0);
+
+        expect(component.curCarouselPosition).toEqual(-1); // -(activeSlideIndex(0) * slideWidth(1) * slidesToScroll(1) - 0) - pagePenalty(1)
+    });
+
+    it('should #selectSlide set #curCarouselPosition. If dotsCount === (activeSlideIndex + 1)', () => {
+        fixture.detectChanges();
+        component.slideWidth = 1;
+        component.slidesToScroll = 1;
+        component.pagePenalty = 1;
+        component.selectSlide(1);
+
+        expect(component.curCarouselPosition).toEqual(-2); // -(activeSlideIndex(1) * slideWidth(1) * slidesToScroll(1) - 0) - pagePenalty(1)
+    });
 
 });
 
