@@ -168,29 +168,281 @@ describe('CarouselComponent', () => {
         expect(component.carouselRow.nativeElement.children.length).toEqual(2); // 2 slides
     });
 
-    // it('should', () => {});
+    it('should #updateSlider call #setSlideStyles & #checkSLidesToScroll', () => {
+        spyOn(component, 'setSlideStyles');
+        spyOn(component, 'checkSlidesToScroll');
+        component.updateSlider();
 
-    // it('should', () => {});
+        expect(component.setSlideStyles).toHaveBeenCalled();
+        expect(component.checkSlidesToScroll).toHaveBeenCalled();
+    });
 
-    // it('should', () => {});
+    it('should #updateSlider set #carouserWrapperRects/slideWidth/scrollStep/carouselRowRects properties', () => {
+        fixture.detectChanges();
+        component.ngAfterViewInit();
+        component.updateSlider();
 
-    // it('should', () => {});
+        expect(component.carouselWrapperRects).toEqual(component.carouselWrapper.nativeElement.getBoundingClientRect());
+        expect(component.slideWidth).toEqual(component.carouselWrapper.nativeElement.offsetWidth);
+        expect(component.scrollStep).toEqual(component.slideWidth);
+        expect(component.carouselRowRects).toEqual(component.carouselRow.nativeElement.getBoundingClientRect());
+    });
 
-    // it('should', () => {});
+    it('should not be created slide clones if #infinity is false', () => {
+        component.infinity = false;
+        spyOn(component, 'removeClones');
+        spyOn(component, 'createClones');
+        spyOn(component, 'insertClones');
+        spyOn(component, 'updatePosition');
 
-    // it('should', () => {});
+        fixture.detectChanges();
+        component.updateSlider();
 
-    // it('should', () => {});
+        expect(component.removeClones).not.toHaveBeenCalled();
+        expect(component.createClones).not.toHaveBeenCalled();
+        expect(component.insertClones).not.toHaveBeenCalled();
+        expect(component.updatePosition).not.toHaveBeenCalled();
+    });
 
-    // it('should', () => {});
+    it('should be created slide clones if #infinity is true', () => {
+        component.infinity = true;
+        spyOn(component, 'createClones');
+        spyOn(component, 'insertClones');
+        spyOn(component, 'updatePosition');
 
-    // it('should', () => {});
+        fixture.detectChanges();
+        component.updateSlider();
 
-    // it('should', () => {});
+        expect(component.createClones).toHaveBeenCalled();
+        expect(component.insertClones).toHaveBeenCalled();
+        expect(component.updatePosition).toHaveBeenCalled();
+    });
 
-    // it('should', () => {});
+    it('should clones be deleted if they are exist before they will be recreate', () => {
+        component.infinity = true;
+        spyOn(component, 'removeClones');
 
-    // it('should', () => {});
+        fixture.detectChanges();
+        component.createClones();
+        component.updateSlider();
+
+        expect(component.removeClones).toHaveBeenCalled();
+    });
+
+    it('should #pagePenalty be equal #scrollStep after #updateSlider was called and if #infinity is true', () => {
+        component.infinity = true;
+        fixture.detectChanges();
+        component.updateSlider();
+
+        expect(component.pagePenalty).toEqual(component.scrollStep);
+    });
+
+    it('should #carouselRow element has transform style equal translateX with #curCarouselPosition px', () => {
+        component.infinity = true;
+        fixture.detectChanges();
+        component.updateSlider();
+
+        expect(component.carouselRow.nativeElement.style.transform).toEqual(`translateX(${component.curCarouselPosition}px)`);
+    });
+
+    it('should be called #windowResizeHandler on window resize event', () => {
+        spyOn(component, 'windowResizeHandler');
+        const event = new Event('resize');
+        fixture.detectChanges();
+
+        window.dispatchEvent(event);
+
+        expect(component.windowResizeHandler).toHaveBeenCalled();
+    });
+
+    it('should #windowResizeHandler call #updateSlider if #carouselWrapper width is not equal #carouselWrapperRects width', () => {
+        fixture.detectChanges();
+        component.updateSlider();
+        component.carouselWrapper.nativeElement.style.width = '50px';
+        fixture.detectChanges();
+        spyOn(component, 'updateSlider');
+
+        component.windowResizeHandler();
+
+        expect(component.updateSlider).toHaveBeenCalled();
+    });
+
+    it('should #windowResizeHandler do not call #updateSlider if #carouselWrapper width is equal #carouselWrapperRects width', () => {
+        fixture.detectChanges();
+        component.updateSlider();
+        fixture.detectChanges();
+        spyOn(component, 'updateSlider');
+
+        component.windowResizeHandler();
+
+        expect(component.updateSlider).not.toHaveBeenCalled();
+    });
+
+    it('should be arrows elements if #arrows is true', () => {
+        component.arrows = true;
+        fixture.detectChanges();
+
+        const arrows: NodeList = carouselEl.querySelectorAll('.sdk-carousel__arrow');
+
+        expect(arrows.length).toEqual(2);
+    });
+
+    it('should be no arrows elements if #arrows is true', () => {
+        component.arrows = false;
+        fixture.detectChanges();
+
+        const arrows: NodeList = carouselEl.querySelectorAll('.sdk-carousel__arrow');
+
+        expect(arrows.length).toEqual(0);
+    });
+
+    it('should click on left arrow call #move method with "back" as argument', () => {
+        component.arrows = true;
+        spyOn(component, 'move');
+        fixture.detectChanges();
+
+        const arrow: HTMLElement = carouselEl.querySelector('.sdk-carousel__arrow--left');
+        arrow.click();
+
+        expect(component.move).toHaveBeenCalledWith('back');
+    });
+
+    it('should click on right arrow call #move method with "forward" as argument', () => {
+        component.arrows = true;
+        spyOn(component, 'move');
+        fixture.detectChanges();
+
+        const arrow: HTMLElement = carouselEl.querySelector('.sdk-carousel__arrow--right');
+        arrow.click();
+
+        expect(component.move).toHaveBeenCalledWith('forward');
+    });
+
+    it('should be no dots element if #dots is false', () => {
+        component.dots = false;
+        fixture.detectChanges();
+
+        const dots: HTMLElement = carouselEl.querySelector('.sdk-carousel__dots');
+
+        expect(dots).toBeFalsy();
+    });
+
+    it('should be dots element if #dots is true', () => {
+        component.dots = true;
+        fixture.detectChanges();
+
+        const dots: HTMLElement = carouselEl.querySelector('.sdk-carousel__dots');
+
+        expect(dots).toBeTruthy();
+    });
+
+    it('should #pointerUpHandler do nothing if #isGrabbed is false', () => {
+        spyOn(component, 'pointerUpHandler');
+        spyOn(component, 'move');
+        spyOn(component, 'animate');
+        component.isGrabbed = false;
+        fixture.detectChanges();
+
+        const event = new MouseEvent('pointerup');
+
+        carouselEl.dispatchEvent(event);
+        expect(component.pointerUpHandler).toHaveBeenCalled();
+        expect(component.move).not.toHaveBeenCalled();
+        expect(component.animate).not.toHaveBeenCalled();
+    });
+
+    it('should #isGrabbed be false after #pointerUpHandler', () => {
+        component.isGrabbed = true;
+        fixture.detectChanges();
+
+        const event = new MouseEvent('pointerup');
+
+        carouselEl.dispatchEvent(event);
+        expect(component.isGrabbed).toBeFalse();
+    });
+
+    it('should #pointerUpHandler call #move method with "forward" as argument if #scrollOffset is less then (#curCarouselPosition - 100)', () => {
+        spyOn(component, 'move');
+        component.isGrabbed = true;
+        component.scrollOffset = -32000;
+        fixture.detectChanges();
+
+        const event = new MouseEvent('pointerup');
+
+        carouselEl.dispatchEvent(event);
+        expect(component.move).toHaveBeenCalledWith('forward');
+    });
+
+    it('should #pointerUpHandler call #move method with "back" as argument if #scrollOffset is greater then (#curCarouselPosition + 100)', () => {
+        spyOn(component, 'move');
+        component.isGrabbed = true;
+        component.scrollOffset = 32000;
+        fixture.detectChanges();
+
+        const event = new MouseEvent('pointerup');
+
+        carouselEl.dispatchEvent(event);
+        expect(component.move).toHaveBeenCalledWith('back');
+    });
+
+    it(`should #pointerUpHandler call #animate method with #curCarouselPosition as argument if
+    #scrollOffset >= (curCarouselPosition - 100) or
+    #scrollOffset <= (curCarouselPosition + 100)`, () => {
+        spyOn(component, 'animate');
+        component.isGrabbed = true;
+        component.scrollOffset = 0;
+        component.curCarouselPosition = 0;
+        fixture.detectChanges();
+
+        const event = new MouseEvent('pointerup');
+
+        carouselEl.dispatchEvent(event);
+        expect(component.animate).toHaveBeenCalledWith(component.curCarouselPosition);
+    });
+
+    it('should #grab method set #isGrabbed as true and set #scrollStartX as event.clientX', () => {
+        component.isGrabbed = false;
+        const event = new PointerEvent('pointerdown', {clientX: 777});
+        fixture.detectChanges();
+
+        component.grab(event);
+        expect(component.isGrabbed).toBeTrue();
+        expect(component.scrollStartX).toEqual(777);
+    });
+
+    it('should #pointerMoveHandler set #scrollOffset and carouselRow transform style if #isGrabbed is true', () => {
+        const event = new PointerEvent('pointermove', {clientX: 777});
+        component.isGrabbed = true;
+        component.curCarouselPosition = 0;
+        component.scrollStartX = 0;
+        fixture.detectChanges();
+
+        component.pointerMoveHandler(event);
+        expect(component.scrollOffset).toEqual(777);
+        expect(component.carouselRow.nativeElement.style.transform).toEqual(`translateX(${777}px)`);
+
+    });
+
+    it('should #pointerMoveHandler do not set #scrollOffset and carouselRow transform style if #isGrabbed is false', () => {
+        const event = new PointerEvent('pointermove', {clientX: 777});
+        component.isGrabbed = false;
+        component.curCarouselPosition = 0;
+        component.scrollStartX = 0;
+        fixture.detectChanges();
+
+        component.pointerMoveHandler(event);
+        expect(component.scrollOffset).not.toEqual(777);
+        expect(component.carouselRow.nativeElement.style.transform).not.toEqual(`translateX(${777}px)`);
+    });
+
+    it('should #pointerMoveHandler to have been called on pointermove event', () => {
+        const event = new PointerEvent('pointermove', {clientX: 777});
+        spyOn(component, 'pointerMoveHandler');
+        fixture.detectChanges();
+
+        carouselEl.dispatchEvent(event);
+        expect(component.pointerMoveHandler).toHaveBeenCalled();
+    });
 
     // it('should', () => {});
 

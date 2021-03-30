@@ -6,7 +6,6 @@ import {
     ElementRef,
     HostListener,
     Input,
-    OnChanges,
     OnDestroy,
     OnInit,
     QueryList,
