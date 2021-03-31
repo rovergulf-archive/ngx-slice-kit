@@ -116,6 +116,14 @@ describe('ButtonGroupComponent', () => {
         expect(component.clicked.emit).not.toHaveBeenCalled();
     });
 
+    it('click on button should do emmit event if tag name is "BUTTON"', () => {
+        const element: HTMLElement = document.createElement('button');
+        spyOn(component.clicked, 'emit');
+
+        component.onClick({target: element});
+        expect(component.clicked.emit).toHaveBeenCalled();
+    });
+
     it('should #removeActiveClass(el) remove class', () => {
         const btn: HTMLElement = groupContainer.children[0] as HTMLElement;
         btn.click();
