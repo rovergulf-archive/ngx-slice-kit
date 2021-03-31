@@ -77,6 +77,13 @@ describe('ButtonComponent', () => {
         expect(getComputedStyle(stubBtn.querySelector('.sdk-button--small')).fontSize).toEqual(smallFontSize + 'px');
     });
 
+    it('should button element has no .sdk-button--small class if #small is false', () => {
+        component.small = false;
+        component.ngOnInit();
+
+        expect(btn).not.toHaveClass('sdk-button--small');
+    });
+
     it('should be added primary class by default if #color is not set', () => {
         const searchedClass = 'sdk-button--primary';
         fixture.detectChanges();

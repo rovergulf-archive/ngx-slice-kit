@@ -45,6 +45,10 @@ export class ButtonGroupComponent implements OnInit, AfterContentInit {
         this.clicked.emit({element: event.target, index: target.getAttribute('btn-group-index')});
     }
 
+    removeActiveClass(element): void {
+        this.renderer.removeClass(element, 'sdk-button--active');
+    }
+
     ngOnInit(): void {
     }
 
@@ -52,9 +56,5 @@ export class ButtonGroupComponent implements OnInit, AfterContentInit {
         this.btnGroup.forEach((btn, index) => {
             this.renderer.setAttribute(btn.nativeElement, 'btn-group-index', `${index}`);
         });
-    }
-
-    removeActiveClass(element): void {
-        this.renderer.removeClass(element, 'sdk-button--active');
     }
 }
