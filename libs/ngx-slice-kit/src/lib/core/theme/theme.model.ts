@@ -126,8 +126,6 @@ export class Theme {
                     background: rgb === this.background ? this.base : this.background,
                 }));
             }
-
-
         }
 
         return results;

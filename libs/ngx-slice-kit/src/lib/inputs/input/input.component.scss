@@ -18,7 +18,7 @@
 }
 
 .sdk-input__label {
-    color: var(--regular-hover-text);
+    color: var(--regular-a90);
     transition: all 0.2s;
     font-size: 17px;
     margin-bottom: 2px;
@@ -28,7 +28,7 @@
     }
 
     &--focused {
-        color: var(--regular-text);
+        color: var(--regular-a100);
     }
 
     &--accent {
@@ -41,9 +41,9 @@
 }
 
 .sdk-input-wrap {
-    background-color: var(--regular-a25);
+    background-color: var(--regular-a20);
     border-radius: 6px;
-    border-color: var(--regular-active);
+    border-color: var(--regular-a80);
     border-width: 1px;
     border-style: solid;
     min-width: 160px;
@@ -60,7 +60,7 @@
     }
 
     &--focused {
-        border-color: var(--regular-rgb);
+        border-color: var(--regular-a100);
         transition: 0.4s;
     }
 
