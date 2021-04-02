@@ -60,6 +60,10 @@ export class NavMenuGroupComponent implements OnInit, AfterContentInit {
         this.isOpen = this.isOpen || this.isActive;
     }
 
+    getIconColor(): string {
+        return this.isActive ? 'var(--primary)' : 'var(--base)';
+    }
+
     ngOnInit(): void {
         this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((e: RouterEvent) => {
             // oh i'm not really sure if it is a good way

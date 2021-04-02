@@ -4,7 +4,7 @@ import { GLYPHS } from './icon.glyphs';
 import { BehaviorSubject } from 'rxjs';
 
 const DEFAULT_SIZE = 24;
-const DEFAULT_COLOR = 'var(--color)';
+const DEFAULT_COLOR = 'var(--base)';
 const DEFAULT_ICON = 'ngx-slice';
 const INKBE_ICON = 'inkbe';
 const INKBE_COEFF = 70 / 32;
