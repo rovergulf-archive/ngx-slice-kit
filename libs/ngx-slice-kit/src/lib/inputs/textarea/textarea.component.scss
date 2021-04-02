@@ -13,13 +13,13 @@
     }
 
     &.full-width {
-        width: 100%;
+        //max-width: 100%;
     }
 }
 
 .sdk-textarea__label {
     font-weight: 500;
-    color: var(--regular);
+    color: var(--base-a50);
     transition: all 0.2s;
     font-size: 17px;
     margin-bottom: 2px;
@@ -35,7 +35,7 @@
     }
 
     &--focused {
-        color: var(--regular-text);
+        color: var(--base-a90);
     }
 
     &--small {
@@ -54,28 +54,26 @@
 .sdk-textarea-wrap {
     border-radius: 6px;
     display: flex;
-    background-color: var(--regular-disabled);
+    background-color: var(--regular-a20);
     overflow: hidden;
-    border-color: var(--regular-disabled);
+    border-color: var(--regular-a50);
     border-width: 1px;
     border-style: solid;
     min-width: 200px;
     width: 100%;
+    transition: 0.4s;
     //padding: 8px 16px;
 
     &--focused {
-        border-color: var(--regular-active);
-        transition: 0.4s;
+        border-color: var(--regular-a100);
     }
 
     &--warn {
         border-color: var(--warn);
-        transition: 0.4s;
     }
 
     &--accent {
         border-color: var(--accent);
-        transition: 0.4s;
     }
 }
 
@@ -86,7 +84,7 @@
 }
 
 .sdk-textarea__textarea {
-    color: var(--regular-text);
+    color: var(--base-a90);
     border-radius: inherit;
     width: 100%;
     min-width: 200px;
@@ -108,7 +106,7 @@
     /**
      * legacy browser prefixes
      */
-    &::-webkit-textarea-placeholder {
+    &::-webkit-input-placeholder {
         color: transparent;
     }
 
@@ -116,7 +114,7 @@
         color: transparent;
     }
 
-    &:-ms-textarea-placeholder {
+    &:-ms-input-placeholder {
         color: transparent;
     }
 
@@ -147,7 +145,7 @@
 }
 
 .sdk-textarea__pull-angle-inner {
-    border-top: 8px solid var(--regular-hover);
+    border-top: 8px solid var(--regular-a100);
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-radius: 3px;
@@ -160,22 +158,22 @@
 
 .sdk-textarea__pull-angle-wrapper {
     position: absolute;
-    right: 0;
-    bottom: -1px;
+    right: 1px;
+    bottom: 1px;
     width: 18px;
     height: 18px;
-    background: transparent;
+    background: var(--regular-a20);
     pointer-events: none;
 }
 
 .sdk-textarea__caption {
     @extend .sdk-inputs-caption;
-    color: var(--regular-hover);
+    color: var(--base-a70);
 }
 
 .sdk-textarea__error {
     @extend .sdk-inputs-caption;
-    color: var(--warn);
+    color: var(--warn-a85);
 
     svg {
         margin-right: 4px;
