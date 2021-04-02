@@ -6,19 +6,19 @@ a[sdk-nav-menu-item] {
     transition: all 0.1s;
     padding: 8px 0 8px 20px;
     line-height: 24px;
-    color: var(--base-rgb);
+    color: var(--base-a90);
 
     &:hover {
-        background: var(--regular-smooth);
-        color: var(--base-hover);
+        background: var(--regular-a20);
+        color: var(--primary);
     }
 
     &.active {
-        color: var(--primary-deep);
+        color: var(--primary-a80);
     }
 
     &[disabled] {
-        color: var(--base-disabled);
+        color: var(--base-a50);
     }
 }
 
