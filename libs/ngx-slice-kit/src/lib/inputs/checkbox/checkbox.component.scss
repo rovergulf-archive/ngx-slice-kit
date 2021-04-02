@@ -22,12 +22,12 @@
 }
 
 .sdk-checkbox__indicator {
-    background-color: var(--regular-disabled);
+    background-color: var(--base-a20);
     width: 24px;
     height: 24px;
     display: flex;
     border-radius: 5px;
-    border: 1px solid var(--regular-disabled);
+    border: 1px solid var(--base-a20);
     transition: background-color .2s, border-color .3s;
 
     &.sdk-checkbox__indicator--active {
