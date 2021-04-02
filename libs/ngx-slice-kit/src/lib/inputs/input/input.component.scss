@@ -18,7 +18,7 @@
 }
 
 .sdk-input__label {
-    color: var(--regular-a90);
+    color: var(--base-a50);
     transition: all 0.2s;
     font-size: 17px;
     margin-bottom: 2px;
@@ -28,7 +28,7 @@
     }
 
     &--focused {
-        color: var(--regular-a100);
+        color: var(--base-a90);
     }
 
     &--accent {
@@ -43,11 +43,12 @@
 .sdk-input-wrap {
     background-color: var(--regular-a20);
     border-radius: 6px;
-    border-color: var(--regular-a80);
+    border-color: var(--regular-a50);
     border-width: 1px;
     border-style: solid;
     min-width: 160px;
     max-width: 288px;
+    transition: 0.4s;
 
     &--wide {
         min-width: 288px;
@@ -61,22 +62,19 @@
 
     &--focused {
         border-color: var(--regular-a100);
-        transition: 0.4s;
     }
 
     &--warn {
-        border-color: var(--warn);
-        transition: 0.4s;
+        border-color: var(--warn-a100);
     }
 
     &--accent {
         border-color: var(--accent);
-        transition: 0.4s;
     }
 }
 
 .sdk-input__input {
-    color: var(--regular-text);
+    color: var(--base-a90);
     background-color: transparent;
     box-sizing: border-box;
     flex-grow: 1;
@@ -88,6 +86,7 @@
     border: none;
     font-family: 'Inter', sans-serif;
     padding: 8px 16px;
+    width: 100%;
 
     &--icon-right {
         background-size: 24px 24px;
@@ -121,8 +120,12 @@
         }
     }
 
-    &::-webkit-input-placeholder, &::-moz-placeholder, &:-ms-input-placeholder, &:-moz-placeholder {
-        color: var(--base-50);
+    //&::-webkit-input-placeholder, &::-moz-placeholder, &:-ms-input-placeholder, &:-moz-placeholder {
+    //    color: var(--base-a50);
+    //}
+
+    &::placeholder {
+        color: var(--base-a50);
     }
 }
 
