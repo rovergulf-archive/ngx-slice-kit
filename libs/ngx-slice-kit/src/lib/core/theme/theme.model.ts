@@ -58,9 +58,9 @@ const alphaLimit = 100;
 const alphaStep = 10;
 
 export class ColorProperty {
-    value?: string;
-    background?: string;
-    name?: string;
+    value: string;
+    background: string;
+    name: string;
     prop?: string;
     alpha?: number;
     rgb?: string;
