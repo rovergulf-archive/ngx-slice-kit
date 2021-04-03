@@ -22,7 +22,7 @@
  * label styles
  */
 .sdk-select-label {
-    color: var(--regular-intensive);
+    color: var(--base-a50);
     transition: all 0.2s;
     font-size: 17px;
     margin-bottom: 2px;
@@ -32,7 +32,7 @@
     }
 
     &.active {
-        color: var(--regular-full-color);
+        color: var(--base-a90);
     }
 }
 
@@ -45,7 +45,7 @@
  */
 .sdk-select {
     position: relative;
-    background-color: var(--regular-disabled);
+    background-color: var(--background-a90);
     border-radius: 8px;
     overflow: hidden;
 }
@@ -57,14 +57,14 @@
     height: 44px;
     cursor: pointer;
     border-radius: 8px;
-    border-color: var(--regular-disabled);
+    border-color: var(--regular-a50);
     border-width: 1px;
     border-style: solid;
 
     &.invalid {
         transition: all 0.2s ease;
         border-color: var(--warn);
-        background-color: rgba(var(--warn-rgb), 0.1);
+        background-color: var(--warn-a20-rgb);
     }
 
     &.small {
@@ -82,7 +82,7 @@
 
     &.active {
         transition: border-color 0.2s ease;
-        border-color: var(--regular-active);
+        border-color: var(--regular-a100);
     }
 
     .sdk-select-icon {
@@ -100,7 +100,7 @@
  */
 .sdk-select-value {
     flex-basis: 100%;
-    color: var(--regular-full-color);
+    color: var(--base-a90);
     width: 100%;
     font-size: 17px;
     font-weight: normal;
@@ -115,7 +115,7 @@
     text-overflow: ellipsis;
 
     .inactive {
-        color: var(--regular-placeholder);
+        color: var(--base-a50);
     }
 }
 

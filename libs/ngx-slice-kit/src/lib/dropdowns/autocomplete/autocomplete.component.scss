@@ -24,7 +24,7 @@
 }
 
 .sdk-autocomplete-label {
-    color: var(--regular-intensive);
+    color: var(--base-a50);
     transition: all 0.2s;
     font-size: 17px;
     margin-bottom: 2px;
@@ -34,7 +34,7 @@
     }
 
     &.active {
-        color: var(--regular-text);
+        color: var(--base-a90);
     }
 }
 
@@ -44,7 +44,7 @@
 
 .sdk-autocomplete-wrap {
     position: relative;
-    background-color: var(--regular-disabled);
+    background-color: var(--background-a90);
     border-radius: 8px;
     overflow: hidden;
 }
@@ -62,14 +62,15 @@
     cursor: pointer;
     position: relative;
     z-index: 3;
-    border-color: var(--regular-disabled);
+    border-color: var(--regular-a50);
     border-width: 1px;
     border-style: solid;
+    transition: 0.4s;
 
     &.invalid {
         transition: all 0.2s ease;
         border-color: var(--warn);
-        background-color: rgba(var(--warn-rgb), 0.1);
+        background-color: var(--warn-a20-rgb);
     }
 
     &.full-width {
@@ -89,6 +90,10 @@
             margin-right: 4px;
         }
     }
+    &.active {
+        z-index: 23;
+        border-color: var(--regular-a100);
+    }
 
     .sdk-autocomplete-icon {
         margin-right: 8px;
@@ -96,7 +101,7 @@
 
     .sdk-autocomplete-input, .sdk-autocomplete-value {
         flex-basis: 100%;
-        color: var(--regular-full-color);
+        color: var(--base-a90);
         background-color: transparent;
         max-width: 100%;
         font-size: 17px;
@@ -112,13 +117,6 @@
         text-overflow: ellipsis;
     }
 }
-
-.sdk-autocomplete__wrapper--active {
-    z-index: 23;
-    border-color: var(--regular-active);
-    transition: 0.4s;
-}
-
 
 .sdk-menu-more__item-icon {
     height: 16px;
@@ -180,7 +178,7 @@
 }
 
 .inactive {
-    color: var(--regular-placeholder);
+    color: var(--base-a50);
 }
 
 .sdk-autocomplete__interface-icon {
@@ -203,7 +201,7 @@
 
 .interface-icon-wrap {
     transition: all 0.2s;
-    height: 24px;
+    //height: 24px;
 
     &.active {
         transform: scaleY(-1);

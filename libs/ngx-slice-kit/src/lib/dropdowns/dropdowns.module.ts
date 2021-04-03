@@ -5,14 +5,21 @@ import { ButtonsModule } from '../buttons/buttons.module';
 import { AutocompleteModule } from './autocomplete/autocomplete.module';
 import { SelectModule } from './select/select.module';
 import { DropdownMenuTriggerDirective } from './context/dropdown-menu-trigger.directive';
+import {DropdownComponent} from './dropdown.component';
 
 const moduleDirectives = [
     DropdownMenuTriggerDirective,
 ];
 
+const moduleComponents = [
+    DropdownComponent,
+];
+
 const moduleDeclarations = [
     // Directives
     ...moduleDirectives,
+    // Components
+    ...moduleComponents,
 ];
 
 const modules = [
