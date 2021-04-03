@@ -7,13 +7,14 @@
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        background-color: var(--regular-active);
+        //background-color: var(--regular-active);
+        background-color: var(--regular-a80);
         margin: 0 6px;
         cursor: pointer;
         transition: all 0.4s;
 
         &:hover {
-            background-color: var(--regular-hover);
+            background-color: var(--regular-a100);
         }
     }
 
