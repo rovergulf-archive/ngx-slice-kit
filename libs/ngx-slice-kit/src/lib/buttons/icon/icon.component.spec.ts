@@ -47,7 +47,7 @@ describe('IconComponent', () => {
     });
 
     it('should be #color equal default value', () => {
-        const defaultColor = 'var(--color)';
+        const defaultColor = 'var(--base)';
         expect(component.color).toBe(defaultColor);
     });
 
