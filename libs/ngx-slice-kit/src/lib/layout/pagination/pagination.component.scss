@@ -5,7 +5,8 @@
 .sdk-paginator__wrapper {
     margin: auto;
     display: inline-flex;
-    border: 1px solid var(--regular-active);
+    //border: 1px solid var(--regular-active);
+    border: 1px solid var(--base-a20);
     border-radius: 6px;
 }
 
@@ -13,7 +14,8 @@
     color: var(--primary);
     background-color: transparent;
     border-right: none;
-    border-right: 1px solid var(--regular-active);
+    //border-right: 1px solid var(--regular-active);
+    border-right: 1px solid var(--base-a20);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,13 +25,13 @@
     transition: all 0.4s;
 
     &--active {
-        background-color: var(--primary-deep);
-        color: var(--primary-rgb-text);
+        background-color: var(--primary-a80);
+        color: var(--primary-opposite);
     }
 
     &:hover {
-        background-color: var(--primary-hover);
-        color: var(--primary-rgb-text);
+        background-color: var(--primary-a100);
+        color: var(--primary-opposite);
     }
 }
 
