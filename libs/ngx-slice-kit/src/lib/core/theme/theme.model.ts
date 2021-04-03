@@ -31,6 +31,10 @@ export const colors = [
     `regular`, `primary`, `success`, `accent`, `warn`,
 ];
 
+// export const textColors = [
+//     'primary_text', 'success_text', 'accent_text', 'warn_text',
+// ];
+
 export const rgbDepth = `rgb`;
 export const emptyDepth = ``;
 
