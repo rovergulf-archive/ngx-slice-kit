@@ -14,11 +14,6 @@
         margin: 2px;
     }
 
-    .sdk-button--active {
-        opacity: 0.5;
-        touch-action: none;
-    }
-
     // Regular colors
     @each $color in $colors {
         &--#{$color} {
