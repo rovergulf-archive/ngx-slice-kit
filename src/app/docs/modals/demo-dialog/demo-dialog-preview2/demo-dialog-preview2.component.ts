@@ -7,13 +7,13 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 })
 export class DemoDialogPreview2Component implements OnInit, OnDestroy {
 
-    @Output() result = new EventEmitter();
+    @Output() resultEvent = new EventEmitter();
 
     constructor() {
     }
 
     close(result: any): void {
-        this.result.emit(result);
+        this.resultEvent.emit(result);
     }
 
     ngOnInit(): void {

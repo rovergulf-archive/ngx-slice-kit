@@ -94,7 +94,7 @@ export class DialogComponent implements OnInit, OnDestroy {
         this.closed.complete();
         if (this.escapeSub) {
             console.log('esc sub is on');
-            // this.escapeSub.unsubscribe();
+            this.escapeSub.unsubscribe();
         }
         this.state = 'closed';
     }
