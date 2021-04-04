@@ -69,7 +69,7 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     }
 
     @HostListener('window:resize') windowResizeHandler(): void {
-        if (this.carouselWrapper.nativeElement.offsetWidth !== this.carouselWrapperRects.width) {
+        if (this.carouselWrapper.nativeElement.offsetWidth !== this.carouselWrapperRects?.width) {
             this.updateSlider();
         }
     }
@@ -291,6 +291,6 @@ export class CarouselComponent implements OnInit, AfterContentInit, AfterViewIni
     // }
 
     ngOnDestroy(): void {
-        this.sub.unsubscribe();
+        this.sub?.unsubscribe();
     }
 }
