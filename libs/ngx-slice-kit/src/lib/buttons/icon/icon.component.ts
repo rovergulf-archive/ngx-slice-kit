@@ -62,7 +62,7 @@ export class IconComponent implements OnInit, OnDestroy, AfterContentInit {
 
         let symbol = GLYPHS[name] || DEFAULT_ICON;
         if (color?.length > 0) {
-            symbol = symbol.replace(`fill="var(--regular-text)"`, `fill="${color}"`);
+            symbol = symbol.replace(`fill="var(--base)"`, `fill="${color}"`);
         }
 
         if (this.size > DEFAULT_SIZE || this.size < DEFAULT_SIZE) {
