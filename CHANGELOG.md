@@ -9,10 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 5 Apr 2021
 
 ### Added
+- [murhafsousli/ngx-highlightjs](https://github.com/murhafsousli/ngx-highlightjs) package usage to code highlighting, [highlight.js](https://github.com/highlightjs/highlight.js) included
 
 ### Changed
 
 ### Fixed
+- sdk-buttons unexpected animation
 
 ### Removed
 
