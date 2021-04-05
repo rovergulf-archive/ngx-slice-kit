@@ -9,7 +9,8 @@ button.sdk-button, a.sdk-button {
     height: 44px;
     font-size: 17px;
     cursor: pointer;
-    transition: all 0.4s;
+    transition: background-color 0.4s,
+                color 0.4s;
     display: flex;
     align-items: center;
     justify-content: center;
