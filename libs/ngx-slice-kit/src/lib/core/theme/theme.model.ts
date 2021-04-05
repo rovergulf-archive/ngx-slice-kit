@@ -31,29 +31,6 @@ export const colors = [
     `regular`, `primary`, `success`, `accent`, `warn`,
 ];
 
-export const rgbDepth = `rgb`;
-export const emptyDepth = ``;
-
-class Depth {
-    color: string;
-    alpha: number = 1;
-    background?: string;
-}
-
-export const colorsDepth = {
-    rgb: {alpha: 100},
-    deep: {alpha: 90},
-    hover: {alpha: 75},
-    active: {alpha: 60},
-    disabled: {alpha: 45},
-    smooth: {alpha: 10},
-};
-
-export const textDepth = {
-    placeholder: {color: 'background', alpha: 75, background: 'base'},
-    text: {color: 'background', alpha: 5, background: 'base'},
-};
-
 const alphaLimit = 100;
 const alphaStep = 10;
 
@@ -61,6 +38,7 @@ export class ColorProperty {
     value: string;
     background: string;
     name: string;
+    text?: string;
     prop?: string;
     alpha?: number;
     rgb?: string;
@@ -72,9 +50,13 @@ export class ColorProperty {
         this.prop = `--${this.name}`;
         const rgbVal = this.value.split(sep(this.value)).map(i => parseInt(i, 10));
         const bgVal = this.background.split(sep(this.background)).map(i => parseInt(i, 10));
-        this.rgb = rgbaToRgb(rgbVal[0], rgbVal[1], rgbVal[2], this.alpha / 100, bgVal[0], bgVal[1], bgVal[2]);
+        this.rgb = mixinRgba(rgbVal, bgVal, this.alpha / 100);
         this.hex = rgbaToHex(this.rgb);
-        this.background = rgbaToRgb(bgVal[0], bgVal[1], bgVal[2], this.alpha / 100, rgbVal[0], rgbVal[1], rgbVal[2]);
+        this.background = mixinRgba(bgVal, rgbVal, this.alpha / 100);
+        if (this.text?.length > 0) {
+            const textVal = this.text.split(sep(this.background)).map(i => parseInt(i, 10));
+            this.text = mixinRgba(textVal, bgVal, this.alpha / 90);
+        }
     }
 }
 
@@ -90,6 +72,7 @@ export class Theme {
     accent?: string;
     warn?: string;
     // text keys
+    base_text?: string;
     regular_text?: string;
     primary_text?: string;
     success_text?: string;
@@ -106,8 +89,10 @@ export class Theme {
         for (const color of [...baseColors, ...colors]) {
             const rgb = this[color];
 
+            const textColor = `${color}_text`;
             const colorProp = {
                 name: color,
+                text: this[textColor],
                 alpha: 100,
                 value: rgb,
                 background: rgb === this.background ? this.base : this.background,
@@ -166,20 +151,10 @@ const trim = (str: string): string => {
     return str?.replace(/^\s+|\s+$/gm, '');
 };
 
-export const mixinRgba = (base: number[], added: number[]): string => {
-    const mix = [];
-
-    mix[3] = 1 - (1 - added[3]) * (1 - base[3]); // alpha
-    mix[0] = Math.round((added[0] * added[3] / mix[3]) + (base[0] * base[3] * (1 - added[3]) / mix[3])); // red
-    mix[1] = Math.round((added[1] * added[3] / mix[3]) + (base[1] * base[3] * (1 - added[3]) / mix[3])); // green
-    mix[2] = Math.round((added[2] * added[3] / mix[3]) + (base[2] * base[3] * (1 - added[3]) / mix[3])); // blue
-
-    return `rgba(${base.join(',')})`;
-};
-
-export const rgbaToRgb = (r, g, b, a, r2, g2, b2: number): string => {
-    const r3 = Math.round(((1 - a) * r2) + (a * r));
-    const g3 = Math.round(((1 - a) * g2) + (a * g));
-    const b3 = Math.round(((1 - a) * b2) + (a * b));
+export const mixinRgba = (base: number[], added: number[], alpha: number): string => {
+    const r3 = Math.round(((1 - alpha) * added[0]) + (alpha * base[0]));
+    const g3 = Math.round(((1 - alpha) * added[1]) + (alpha * base[1]));
+    const b3 = Math.round(((1 - alpha) * added[2]) + (alpha * base[2]));
     return `rgb(${r3},${g3},${b3})`;
 };
+
