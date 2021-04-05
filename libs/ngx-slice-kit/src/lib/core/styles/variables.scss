@@ -38,16 +38,16 @@ $alphas: 10, 20, 30, 40, 50, 60, 70, 80, 90 100;
 
     .sdk-#{$color}-background {
         background-color: var(--#{$color}-a90-rgb);
-        color: var(--#{$color}-a90-opposite);
+        color: var(--#{$color}-text);
 
         &:hover {
             background-color: var(--#{$color}-a100-rgb);
-            color: var(--#{$color}-a100-opposite);
+            color: var(--#{$color}-text);
         }
 
         &.active, &--active {
             background-color: var(--#{$color}-a80-rgb);
-            color: var(--#{$color}-a80-opposite);
+            color: var(--#{$color}-text);
         }
 
         @include disabled-state;

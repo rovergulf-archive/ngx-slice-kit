@@ -1,5 +1,8 @@
 [![npm version](https://badge.fury.io/js/ngx-slice-kit.svg)](https://badge.fury.io/js/ngx-slice-kit)
-[![Node.js CI](https://github.com/rovergulf/ngx-slice-kit/actions/workflows/main.yml/badge.svg)](https://github.com/rovergulf/ngx-slice-kit/actions/workflows/main.yml)
+[![Node.js CI](https://github.com/rovergulf/ngx-slice-kit/actions/workflows/main.yml/badge.svg)](https://github.com/rovergulf/ngx-slice-kit/actions/workflows/main.yml)  
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rovergulf/ngx-slice-kit/@angular/core)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rovergulf/ngx-slice-kit/@angular/cdk)
+
 # NGX Slice Design Kit
 
 ### npm package

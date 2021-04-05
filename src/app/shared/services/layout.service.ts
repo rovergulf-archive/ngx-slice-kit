@@ -1,7 +1,7 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { LayoutControlService, ThemeService } from 'ngx-slice-kit';
-import { CookieService } from 'ngx-cookie-universal';
+import { CookieService } from 'ngx-cookie';
 
 const DEFAULT_THEME_NAME = 'light';
 const DARK_THEME_NAME = 'dark';

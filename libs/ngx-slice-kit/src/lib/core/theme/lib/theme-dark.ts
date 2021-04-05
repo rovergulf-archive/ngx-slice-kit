@@ -7,6 +7,7 @@ export const defaultRegularRgb = `66,66,66`;
 export const themeDark: Theme = {
     name: 'dark',
     base: defaultBaseRgb,
+    base_text: defaultBackgroundRgb,
     background: defaultBackgroundRgb,
     regular: defaultRegularRgb,
     primary: defaultColors.primary,

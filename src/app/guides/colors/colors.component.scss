@@ -1,3 +1,5 @@
+@import './libs/ngx-slice-kit/src/lib/core/styles/core';
+
 main {
 
 }
@@ -10,56 +12,28 @@ main {
     border: 1px solid transparent;
 
     &--basic {
-        background-color: var(--base-rgb);
-
-        h3 {
-            color: #rgba-to-rgb (rgba(var(--base-rgb), 0.4), #fff);
-        }
-
+        background-color: var(--background);
+        color: var(--base-text);
         border: 1px solid var(--regular);
     }
 
     &--primary {
-        background-color: var(--primary);
-
-        h3 {
-            color: var(--primary-text);
-        }
-
-        &:hover {
-            background-color: var(--primary-hover);
-        }
+        @extend .sdk-primary-background;
     }
 
     &--regular {
-        background-color: var(--regular);
-
-        h3 {
-            color: var(--regular-text);
-        }
+        @extend .sdk-regular-background;
     }
 
     &--accent {
-        background-color: var(--accent);
-
-        h3 {
-            color: var(--accent-text);
-        }
+        @extend .sdk-accent-background;
     }
 
     &--success {
-        background-color: var(--success);
-
-        h3 {
-            color: var(--success-text);
-        }
+        @extend .sdk-success-background;
     }
 
     &--warn {
-        background-color: var(--warn);
-
-        h3 {
-            color: var(--warn-text);
-        }
+        @extend .sdk-warn-background;
     }
 }

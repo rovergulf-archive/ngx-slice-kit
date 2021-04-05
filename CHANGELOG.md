@@ -6,15 +6,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.8.0
 
-## 4 Apr 2021
+## 5 Apr 2021
 
 ### Added
+- text color variables for theme palettes with suffix `-text`
+- GitHub workflows for npm package and gcr image
+- [ngx-cookie](https://github.com/salemdar/ngx-cookie) package installed, as well `"ngx-cookie-backend"` for SSR supporting
 
 ### Changed
+- ❕IMPORTANT: Angular version updated up to 11.2.8
+- ❗BREAKING: `sdk-button` tag was changed to `sdk-base-button` to make color handling more easy
 
 ### Fixed
+- buttons color usage
+- segmented buttons background color
 
 ### Removed
+- `ngx-cookie-universal` package usage
 
 ## 3 Apr 2021
 

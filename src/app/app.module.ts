@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { RouterModule } from '@angular/router';
 
-import { BrowserCookiesModule } from 'ngx-cookie-universal';
+import { CookieModule } from 'ngx-cookie';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +20,7 @@ import { environment } from '../environments/environment';
         BrowserAnimationsModule,
         AppRoutingModule,
         // external
-        BrowserCookiesModule.forRoot(),
+        CookieModule.forRoot(),
         // slice kit
         // internal packages
         SharedModule,
