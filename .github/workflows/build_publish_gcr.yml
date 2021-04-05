@@ -4,8 +4,8 @@ name: Build and Publish to GCR
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
 
 on:
-    release:
-        types: [created]
+  release:
+    types: [created]
 
 env:
   IMAGE: ${{ secrets.OCI_REGISTRY_IMAGE }}
@@ -13,7 +13,7 @@ env:
 jobs:
   setup-build-publish:
     name: Setup, Build, and Publish
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     environment: production
     steps:
       - name: Checkout
