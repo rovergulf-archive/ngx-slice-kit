@@ -32,3 +32,8 @@ jobs:
     - run: npm install
     - run: npm run lint ngx-slice-kit
     - run: npm run test:ci ngx-slice-kit
+    - uses: actions/checkout@master
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        directory: ./coverage # optional
