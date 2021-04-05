@@ -1,19 +1,29 @@
 <div class="view flex-column layout-start-start">
-    <h1 class="h2">Switch examples</h1>
+    <h1 class="h2">Toggle examples</h1>
     <div class="flex-column layout-start-start">
         <h3>Default</h3>
         <div class="toggle-container flex-row">
+            <p>Toggle</p>
+            <p>Simple </p>
             <sdk-toggle></sdk-toggle>
+            <span class="spacer"></span>
+            <noscript>
+                    <pre>
+                        <sdk-toggle></sdk-toggle>
+                    </pre>
+            </noscript>
         </div>
 
         <h3>Small one</h3>
         <div class="toggle-container flex-row">
             <sdk-toggle [small]="true"></sdk-toggle>
+            <span class="spacer"></span>
         </div>
 
         <h3>Disabled</h3>
         <div class="toggle-container flex-row">
             <sdk-toggle [disabled]="true"></sdk-toggle>
+            <span class="spacer"></span>
         </div>
     </div>
 </div>
