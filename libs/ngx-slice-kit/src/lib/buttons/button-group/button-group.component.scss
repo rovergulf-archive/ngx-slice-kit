@@ -17,7 +17,7 @@
     // Regular colors
     @each $color in $colors {
         &--#{$color} {
-            background-color: var(--#{$color}-a95);
+            background-color: var(--#{$color}-a80);
         }
     }
 }
