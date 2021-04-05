@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { DemoSwitchesComponent } from './demo-switches.component';
+import { DemoToggleComponent } from './demo-toggle.component';
 
-describe('DemoSwitchesComponent', () => {
-    let component: DemoSwitchesComponent;
-    let fixture: ComponentFixture<DemoSwitchesComponent>;
+describe('DemoToggleComponent', () => {
+    let component: DemoToggleComponent;
+    let fixture: ComponentFixture<DemoToggleComponent>;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [DemoSwitchesComponent]
+            declarations: [DemoToggleComponent]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(DemoSwitchesComponent);
+        fixture = TestBed.createComponent(DemoToggleComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

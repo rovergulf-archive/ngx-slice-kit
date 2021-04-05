@@ -8,7 +8,7 @@ on:
     types: [created]
 
 env:
-  IMAGE: ${{ secrets.OCI_REGISTRY_IMAGE }}
+    VERSION: $(git describe --abbrev=0)
 
 jobs:
   setup-build-publish:
@@ -31,10 +31,7 @@ jobs:
 
       # Build the Docker image
       - name: Build
-        run: |-
-          VERSION=$(cat libs/ngx-slice-kit/package.json | grep version | awk '{print $2}' | tr -d \"\,)
-          docker build --no-cache \
-            -t $IMAGE:$VERSION -t $IMAGE:latest .
+        run: docker build --no-cache -t $IMAGE:$VERSION -t $IMAGE:latest .
 
       # Push the Docker image to Google Container Registry
       - name: Publish

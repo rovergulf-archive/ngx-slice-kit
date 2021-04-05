@@ -1,0 +1,33 @@
+<main class="view">
+    <h2>Toggle examples</h2>
+    <h3>Default</h3>
+    <p>Toggle is an on/off control that can be toggled via clicking.</p>
+    <div class="toggle-container">
+        <sdk-toggle></sdk-toggle>
+        <span class="spacer"></span>
+        <p>Usage:</p>
+        <pre class="example">
+            <code [highlight]="examples.default"></code>
+        </pre>
+    </div>
+
+    <h3>Small one</h3>
+    <div class="toggle-container">
+        <sdk-toggle [small]="true"></sdk-toggle>
+        <span class="spacer"></span>
+        <p>Usage:</p>
+        <pre class="example">
+            <code [highlight]="examples.small"></code>
+        </pre>
+    </div>
+
+    <h3>Disabled</h3>
+    <div class="toggle-container">
+        <sdk-toggle [disabled]="true"></sdk-toggle>
+        <span class="spacer"></span>
+        <p>Usage:</p>
+        <pre class="example">
+            <code [highlight]="examples.disabled"></code>
+        </pre>
+    </div>
+</main>

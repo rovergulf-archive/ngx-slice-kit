@@ -5,7 +5,7 @@ import { DemoCheckboxComponent } from './demo-checkbox/demo-checkbox.component';
 import { DemoDatepickerComponent } from './demo-datepicker/demo-datepicker.component';
 import { DemoInputsComponent } from './demo-inputs/demo-inputs.component';
 import { DemoRadioComponent } from './demo-radio/demo-radio.component';
-import { DemoSwitchesComponent } from './demo-switches/demo-switches.component';
+import { DemoToggleComponent } from './demo-toggle/demo-toggle.component';
 import { DemoTextareaComponent } from './demo-textarea/demo-textarea.component';
 import { DemoWysiwygComponent } from './demo-wysiwyg/demo-wysiwyg.component';
 
@@ -15,7 +15,7 @@ const routes: Routes = [
     {path: 'datepicker', component: DemoDatepickerComponent},
     {path: 'textarea', component: DemoTextareaComponent},
     {path: 'radio', component: DemoRadioComponent},
-    {path: 'switch', component: DemoSwitchesComponent},
+    {path: 'toggle', component: DemoToggleComponent},
     {path: 'wysiwyg', component: DemoWysiwygComponent},
     {path: '', redirectTo: 'input', pathMatch: 'full'},
 ];

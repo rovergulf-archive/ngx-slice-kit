@@ -1,0 +1,9 @@
+@import './libs/ngx-slice-kit/src/lib/core/styles/core';
+
+main {
+    .toggle-container {
+        @extend .flex-column;
+        @extend .layout-start-start;
+        min-width: 200px;
+    }
+}

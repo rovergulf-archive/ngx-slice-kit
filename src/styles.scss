@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import '~highlight.js/styles/github.css';
 @import './libs/ngx-slice-kit/src/lib/core/styles/core';
 
 
@@ -55,4 +56,31 @@ p, span, h1, h2, h3, h4 {
             color: var(--primary-a100);
         }
     }
+}
+
+pre.example {
+    position: relative;
+    min-width: 288px;
+    code {
+        padding: 8px;
+    }
+
+    .example-copy {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        color: #212121;
+        font-size: 12px;
+        width: 80px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    pre.example {
+        min-width: 480px;
+    }
+}
+
+span.spacer {
+    padding: 8px;
 }
