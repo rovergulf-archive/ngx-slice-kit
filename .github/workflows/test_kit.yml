@@ -15,7 +15,7 @@ on:
     branches:
         - main
     paths:
-        - ./libs/ngx-slice-kit/**
+        - libs/ngx-slice-kit/**
 
 jobs:
   test-kit:
