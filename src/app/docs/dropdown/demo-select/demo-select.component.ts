@@ -45,7 +45,7 @@ export class DemoSelectComponent implements OnInit {
         // console.log('selected values: ', e);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.options1 = OPTIONS1;
         this.options2 = OPTIONS2;
         this.options3 = OPTIONS4;

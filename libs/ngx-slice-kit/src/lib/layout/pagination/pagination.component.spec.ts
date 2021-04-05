@@ -116,8 +116,8 @@ describe('PaginationComponent', () => {
         const attrLeft = elLeft.getAttribute('ng-reflect-color');
         const attrRight = elRight.getAttribute('ng-reflect-color');
 
-        expect(attrLeft).toEqual('var(--primary-rgb-text)');
-        expect(attrRight).toEqual('var(--primary-rgb-text)');
+        expect(attrLeft).toEqual('var(--primary-opposite)');
+        expect(attrRight).toEqual('var(--primary-opposite)');
     });
 
     it('should #pageChange do nothing if page argument is equal current #page property', () => {
