@@ -19,6 +19,12 @@ jobs:
                   node-version: '12.x'
                   registry-url: 'https://registry.npmjs.org'
             - run: npm install
-            - run: ./scripts/publish_npm_package.sh
+            - run: npm run build ngx-slice-kit --prod
+            - run: -|
+                  mkdir -p dist/ngx-slice-kit/lib/core/styles
+                  mkdir -p dist/ngx-slice-kit/schematics
+                  cp -a libs/ngx-slice-kit/src/lib/core/styles/. dist/ngx-slice-kit/lib/core/styles
+            - run: npm run build --prefix libs/ngx-slice-kit
+            - run: cd dist/ngx-slice-kit && npm publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
