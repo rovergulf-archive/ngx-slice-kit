@@ -3,7 +3,6 @@
 cat angular.json > /dev/null 2>&1 || (echo "Must be run from repository root" && exit 1)
 
 RUN_START=$(date)
-REGISTRY_IMAGE="eu.gcr.io/rovergulf/slice-kit"
 VERSION=$(cat libs/ngx-slice-kit/package.json | grep version | awk '{print $2}' | tr -d \"\,)
 
 set -e
