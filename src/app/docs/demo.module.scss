@@ -1,0 +1,17 @@
+//@import '~highlight.js/styles/github.css';
+@use './libs/ngx-slice-kit/src/lib/core/styles/core';
+
+main {
+    @extend .flex-column;
+    @extend .layout-start-stretch;
+
+    &>* {
+        margin: 16px auto 24px;
+        width: 100%;
+    }
+
+    .demo-container {
+        @extend .flex-row;
+        @extend .layout-start-start;
+    }
+}

@@ -13,6 +13,7 @@ import { DemoToggleComponent } from './demo-toggle/demo-toggle.component';
 import { DemoTextareaComponent } from './demo-textarea/demo-textarea.component';
 import { DemoWysiwygComponent } from './demo-wysiwyg/demo-wysiwyg.component';
 import { FormsModule } from '@angular/forms';
+import { HighlightModule } from 'ngx-highlightjs';
 
 const entryComponents = [];
 
@@ -32,7 +33,8 @@ const moduleDeclarations = [
         CommonModule,
         DemoInputsRoutingModule,
         FormsModule,
-        SliceKitModule
+        HighlightModule,
+        SliceKitModule,
     ],
     declarations: moduleDeclarations,
     exports: moduleDeclarations,
