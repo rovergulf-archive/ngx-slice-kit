@@ -25,5 +25,5 @@ jobs:
     - run: cp -a libs/ngx-slice-kit/src/lib/core/styles/. dist/ngx-slice-kit/lib/core/styles
     - run: npm run build --prefix libs/ngx-slice-kit
     - run: cd dist/ngx-slice-kit && npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
