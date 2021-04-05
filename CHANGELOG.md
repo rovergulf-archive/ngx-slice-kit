@@ -4,7 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] v0.8.0
+## [Unreleased] v0.9.0
+
+## 5 Apr 2021
+
+### Added
+
+### Changed
+
+### Fixed
+
+### Removed
+
+
+## Released [v0.8.0]
 
 ## 5 Apr 2021
 
@@ -24,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - `ngx-cookie-universal` package usage
 
+
 ## 3 Apr 2021
 
 ### Fixed
@@ -37,10 +51,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - hover/active colors in `sidenav`
 - colors for `input`/`textarea`/`toggle`/`tabs`/`nav-tabs`/`radio`/`checkbox` components
 
+
 ## 30 Mar 2021
 
 ### Added
 - `carousel.component` tests
+
 
 ## 29 Mar 2021
 
@@ -50,10 +66,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Change `setInterval` in `carousel.component` to `RxJs streams`
 
+
 ## 28 Mar 2021
 
 ### Added
 - `theme.directive` tests
+
 
 ## 27 Mar 2021
 
@@ -220,7 +238,9 @@ Fix scroll issue in `tabs` component
 - updated Angular `core` and `cli` versions up to latest 11.1+ closes #3
 
 
-[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.7.0...main
+[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.8.0...main
+[v0.8.1]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.0...v0.8.1
+[v0.8.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.0...v0.8.0
 [v0.7.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.6.5...v0.7.0
 [v0.6.5]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.6.4...v0.6.5
 [v0.6.4]: https://github.com/rovergulf/ngx-slice-kit/tree/v0.6.4

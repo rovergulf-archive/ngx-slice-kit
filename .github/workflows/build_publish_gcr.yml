@@ -4,8 +4,8 @@ name: Build and Publish to GCR
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
 
 on:
-    release:
-        types: [created]
+  release:
+    types: [created]
 
 env:
   IMAGE: ${{ secrets.OCI_REGISTRY_IMAGE }}
@@ -13,8 +13,8 @@ env:
 jobs:
   setup-build-publish:
     name: Setup, Build, and Publish
-    runs-on: self-hosted
-    environment: production
+    runs-on: ubuntu-latest
+    environment: gcr
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -27,13 +27,12 @@ jobs:
 
       # Configure Docker to use the gcloud command-line tool as a credential
       # helper for authentication
-      - run: |-
-          gcloud --quiet auth configure-docker
+      - run: gcloud --quiet auth configure-docker
 
       # Build the Docker image
       - name: Build
         run: |-
-          VERSION=$(git describe --abbrev=0)
+          VERSION=$(cat libs/ngx-slice-kit/package.json | grep version | awk '{print $2}' | tr -d \"\,)
           docker build --no-cache \
             -t $IMAGE:$VERSION -t $IMAGE:latest .
 
