@@ -2,7 +2,7 @@ import {ComponentFixture, fakeAsync, TestBed, tick, waitForAsync} from '@angular
 
 import {CarouselComponent} from './carousel.component';
 import {IconComponent} from '../../buttons/icon/icon.component';
-import {Component, DebugElement} from '@angular/core';
+import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {SlideComponent} from './slide/slide.component';
 
 describe('CarouselComponent', () => {
@@ -19,6 +19,7 @@ describe('CarouselComponent', () => {
                 SlideComponent,
                 IconComponent,
             ],
+            schemas: [NO_ERRORS_SCHEMA]
         })
             .compileComponents();
     }));
