@@ -12,18 +12,18 @@ jobs:
     environment: npmjs
     runs-on: ubuntu-latest
     steps:
-        - uses: actions/checkout@v2
-        # Setup .npmrc file to publish to npm
-    - uses: actions/setup-node@v1
+    - uses: actions/checkout@v2
+    # Setup .npmrc file to publish to npm
+    - uses: actions/setup-node@v2
       with:
-        node-version: 12
-        registry-url: https://registry.npmjs.org/
-      - run: npm install
-      - run: npm run build ngx-slice-kit --prod
-      - run: mkdir -p dist/ngx-slice-kit/lib/core/styles
-      - run: mkdir -p dist/ngx-slice-kit/schematics
-      - run: cp -a libs/ngx-slice-kit/src/lib/core/styles/. dist/ngx-slice-kit/lib/core/styles
-      - run: npm run build --prefix libs/ngx-slice-kit
-      - run: cd dist/ngx-slice-kit && npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org/'
+    - run: npm install
+    - run: npm run build ngx-slice-kit --prod
+    - run: mkdir -p dist/ngx-slice-kit/lib/core/styles
+    - run: mkdir -p dist/ngx-slice-kit/schematics
+    - run: cp -a libs/ngx-slice-kit/src/lib/core/styles/. dist/ngx-slice-kit/lib/core/styles
+    - run: npm run build --prefix libs/ngx-slice-kit
+    - run: cd dist/ngx-slice-kit && npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
