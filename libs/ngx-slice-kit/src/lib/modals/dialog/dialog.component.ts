@@ -1,4 +1,16 @@
-import { Component, ComponentFactoryResolver, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import {
+    Component,
+    ComponentFactoryResolver,
+    EventEmitter,
+    HostBinding,
+    Inject,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+    PLATFORM_ID,
+    ViewChild
+} from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Subscription } from 'rxjs';
 // internal
@@ -6,6 +18,7 @@ import { DialogDirective } from './dialog.directive';
 import { Dialog } from './dialog.model';
 import { NavigationStart, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { DOCUMENT, isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 @Component({
     selector: 'sdk-dialog',
@@ -38,6 +51,8 @@ export class DialogComponent implements OnInit, OnDestroy {
     escapeSub: Subscription;
 
     constructor(
+        @Inject(DOCUMENT) private document: any,
+        @Inject(PLATFORM_ID) private platformId: any,
         private cfResolver: ComponentFactoryResolver,
         private router: Router
     ) {
@@ -79,14 +94,16 @@ export class DialogComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.state = 'opened';
-        if (this.borderRadius > 0) {
-            this.br = `${this.borderRadius}px`;
+        if (isPlatformBrowser(this.platformId)) {
+            this.state = 'opened';
+            if (this.borderRadius > 0) {
+                this.br = `${this.borderRadius}px`;
+            }
+
+            this.loadComponent();
+
+            this.hideOnRouterEvents();
         }
-
-        this.loadComponent();
-
-        this.hideOnRouterEvents();
     }
 
     ngOnDestroy(): void {
