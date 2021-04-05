@@ -111,22 +111,6 @@ body {
  * Dropdown menu
  */
 
-.sdk-dropdown__body {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--regular-full-color-gray);
-    border-radius: 6px;
-    padding: 0;
-    box-shadow: 0 6px 14px rgba(26, 26, 26, 0.16), 0 0 2px rgba(26, 26, 26, 0.16), 0 0 0 rgba(26, 26, 26, 0.08);
-}
-
-.sdk-dropdown__body-inner {
-    border-radius: 6px;
-    padding: 4px 0;
-    background-color: var(--regular-disabled);
-}
-
-
 .sdk-menu-more__item,
 .sdk-dropdown-menu-item {
     text-align: left;

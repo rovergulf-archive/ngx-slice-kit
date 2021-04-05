@@ -147,30 +147,6 @@
     z-index: 20;
 }
 
-
-.sdk-autocomplete__body {
-    position: absolute;
-    overflow: hidden;
-    border-radius: 6px;
-    top: calc(100% + 2px);
-    left: 0;
-    z-index: 23;
-    transform-origin: top left;
-    animation: sdk-menu-more .2s;
-    transition: transform .2s, opacity .2s;
-}
-
-.sdk-dropdown__body {
-    width: 100%;
-}
-
-.sdk-dropdown__body-inner {
-    max-height: 100%;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-}
-
 .select__arrow-button--open {
     img {
         transform: rotate(180deg)
