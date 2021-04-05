@@ -80,9 +80,9 @@ export class ColorProperty {
         this.hex = rgbaToHex(this.rgb);
         this.background = rgbaToRgb(bgVal[0], bgVal[1], bgVal[2], this.alpha / 100, rgbVal[0], rgbVal[1], rgbVal[2]);
 
-        if (this.alpha % 40 === 0) {
-            console.log(this);
-        }
+        // if (this.alpha % 40 === 0) {
+        //     console.log(this);
+        // }
     }
 }
 
