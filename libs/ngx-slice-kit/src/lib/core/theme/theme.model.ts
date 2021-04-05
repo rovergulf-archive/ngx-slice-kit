@@ -31,10 +31,6 @@ export const colors = [
     `regular`, `primary`, `success`, `accent`, `warn`,
 ];
 
-// export const textColors = [
-//     'primary_text', 'success_text', 'accent_text', 'warn_text',
-// ];
-
 export const rgbDepth = `rgb`;
 export const emptyDepth = ``;
 
@@ -79,10 +75,6 @@ export class ColorProperty {
         this.rgb = rgbaToRgb(rgbVal[0], rgbVal[1], rgbVal[2], this.alpha / 100, bgVal[0], bgVal[1], bgVal[2]);
         this.hex = rgbaToHex(this.rgb);
         this.background = rgbaToRgb(bgVal[0], bgVal[1], bgVal[2], this.alpha / 100, rgbVal[0], rgbVal[1], rgbVal[2]);
-
-        // if (this.alpha % 40 === 0) {
-        //     console.log(this);
-        // }
     }
 }
 
