@@ -58,9 +58,9 @@ const alphaLimit = 100;
 const alphaStep = 10;
 
 export class ColorProperty {
-    value?: string;
-    background?: string;
-    name?: string;
+    value: string;
+    background: string;
+    name: string;
     prop?: string;
     alpha?: number;
     rgb?: string;
@@ -75,10 +75,6 @@ export class ColorProperty {
         this.rgb = rgbaToRgb(rgbVal[0], rgbVal[1], rgbVal[2], this.alpha / 100, bgVal[0], bgVal[1], bgVal[2]);
         this.hex = rgbaToHex(this.rgb);
         this.background = rgbaToRgb(bgVal[0], bgVal[1], bgVal[2], this.alpha / 100, rgbVal[0], rgbVal[1], rgbVal[2]);
-
-        if (this.alpha % 40 === 0) {
-            console.log(this);
-        }
     }
 }
 
@@ -126,8 +122,6 @@ export class Theme {
                     background: rgb === this.background ? this.base : this.background,
                 }));
             }
-
-
         }
 
         return results;

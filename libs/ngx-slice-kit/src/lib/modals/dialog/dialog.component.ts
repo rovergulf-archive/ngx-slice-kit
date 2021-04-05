@@ -58,7 +58,6 @@ export class DialogComponent implements OnInit, OnDestroy {
     }
 
     onSuccess(result: any): void {
-        // console.log('Complete dialog with result: ', result);
         this.closed.next(result);
         this.closed.complete();
     }
@@ -93,8 +92,7 @@ export class DialogComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.closed.complete();
         if (this.escapeSub) {
-            console.log('esc sub is on');
-            // this.escapeSub.unsubscribe();
+            this.escapeSub.unsubscribe();
         }
         this.state = 'closed';
     }

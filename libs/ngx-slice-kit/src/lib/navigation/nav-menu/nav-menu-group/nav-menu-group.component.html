@@ -3,7 +3,7 @@
     <div class="nav-menu-group__toggle" (click)="toggle()">
         <p class="nav-menu-group__title">{{label}}</p>
         <div class="nav-menu-group__arrow">
-            <sdk-icon icon="chevron_right" [size]="24" [inline]="true"></sdk-icon>
+            <sdk-icon icon="chevron_right" [size]="24" [inline]="true" [color]="getIconColor()"></sdk-icon>
         </div>
     </div>
     <div class="nav-menu-group__items" [@test]="isOpen ? 'open' : 'closed'" [attr.deeplvl]="deepLvl">

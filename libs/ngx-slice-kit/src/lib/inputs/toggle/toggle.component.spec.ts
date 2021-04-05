@@ -49,9 +49,10 @@ describe('ToggleComponent', () => {
 
     it('should element have .sdk-switch--on class if #isActive is true', () => {
         const activeClass = 'sdk-switch--on';
-        component.on = true;
+        component.isActive = true;
+        component.ngOnInit();
         fixture.detectChanges();
-        expect(toggle.classList.contains(activeClass)).toEqual(true);
+        expect(toggle).toHaveClass(activeClass);
     });
 
     it('should element have no .sdk-switch--on class if #isActive is false', () => {

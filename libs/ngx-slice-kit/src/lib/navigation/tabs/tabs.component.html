@@ -21,7 +21,7 @@
             </div>
         </div>
         <button class="sdk-tab-container__arrow sdk-tab-container__arrow--right" #arrowRight
-                [disabled]="tabsScrollRect?.right - 1 <= containerRect?.right - arrowWidth"
+                [disabled]="tabsScrollRect?.right - 3 <= containerRect?.right - arrowWidth"
                 [ngStyle]="{'width': arrowWidth + 'px', 'display': isArrows ? 'flex' : 'none'}">
             <sdk-icon [icon]="'chevron_right'"></sdk-icon>
         </button>

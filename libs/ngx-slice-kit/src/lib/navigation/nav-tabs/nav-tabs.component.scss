@@ -23,7 +23,7 @@
 .sdk-tab-container__tab {
     transition: 0.4s;
     &:hover {
-        opacity: 0.7;
+        color: var(--base-a100);
     }
 }
 
@@ -46,7 +46,7 @@
 .sdk-tab-container__tab {
     padding: 0 24px;
     height: 48px;
-    color: var(--regular-text);
+    color: var(--base-a90);
     display: flex;
     white-space: nowrap;
     cursor: pointer;
@@ -112,11 +112,11 @@
 }
 
 .sdk-tab-container__arrow--right {
-    box-shadow: -2px 0 6px 1px var(--regular-active);
+    box-shadow: -2px 0 6px 1px var(--base-a10);
 }
 
 .sdk-tab-container__arrow--left {
-    box-shadow: 2px 0 6px 1px var(--regular-active);
+    box-shadow: 2px 0 6px 1px var(--base-a10);
 }
 
 .sdk-tab-container__arrow--disabled {

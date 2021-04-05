@@ -10,7 +10,7 @@ import { DemoDialogPreview2Component } from '../demo-dialog-preview2/demo-dialog
 })
 export class DemoDialogPreviewComponent implements OnInit, OnDestroy {
 
-    @Output() result = new EventEmitter();
+    @Output() resultEvent = new EventEmitter();
 
     constructor(
         private alert: AlertService,
@@ -19,7 +19,7 @@ export class DemoDialogPreviewComponent implements OnInit, OnDestroy {
     }
 
     close(result: any): void {
-        this.result.emit(result);
+        this.resultEvent.emit(result);
     }
 
     openDialog(): void {

@@ -757,23 +757,15 @@ describe('SliderComponent', () => {
         expect(component.calcValue).toHaveBeenCalledWith(component.getCoords(10));
     });
 
-    it('should #moveThumb call #setGradient method. #multiple = true', () => {
+    it('should #moveThumb call #calcValue & #setGradient methods. #multiple = true', () => {
         spyOn(component, 'setGradient');
-        component.multiple = true;
-        const el: HTMLElement = sliderEl.querySelector('.sdk-slider__track-wrapper');
-        const event = new PointerEvent('pointerdown', {clientX: 10});
-        el.dispatchEvent(event);
-
-        expect(component.setGradient).toHaveBeenCalled();
-    });
-
-    it('should #moveThumb call #calcValue method. #multiple = true', () => {
         spyOn(component, 'calcValue');
         component.multiple = true;
         const el: HTMLElement = sliderEl.querySelector('.sdk-slider__track-wrapper');
         const event = new PointerEvent('pointerdown', {clientX: 10});
         el.dispatchEvent(event);
 
+        expect(component.setGradient).toHaveBeenCalled();
         expect(component.calcValue).toHaveBeenCalled();
     });
 });

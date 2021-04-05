@@ -7,8 +7,9 @@
     align-items: flex-start;
     z-index: 9999;
     border-radius: 6px;
-    background-color: var(--regular-smooth);
-    color: var(--regular-text);
+    background-color: var(--background-a90);
+    //color: var(--regular-text);
+    color: var(--base);
     padding: 8px;
     min-width: 256px;
     animation: modal-top .2s;
@@ -32,7 +33,7 @@
         opacity: 1;
 
         &:hover {
-            opacity: 0.8;
+            color: var(--base-a100);
         }
     }
 }
@@ -86,10 +87,9 @@ sdk-icon, img {
         margin-right: 12px;
         cursor: pointer;
         transition: all 0.2s;
-        opacity: 1;
 
         &:hover {
-            opacity: 0.8;
+            color: var(--base-a100);
         }
     }
 }

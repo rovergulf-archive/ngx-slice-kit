@@ -151,11 +151,9 @@ class TestComponent {
     }
 
     openHandler(): void {
-        console.log('was opened');
     }
 
     closedHandler(): void {
-        console.log('was closed');
     }
 
     firstResult(ev: any): void {

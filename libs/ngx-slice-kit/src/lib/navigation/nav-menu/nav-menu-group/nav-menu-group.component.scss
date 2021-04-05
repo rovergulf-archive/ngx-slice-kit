@@ -11,7 +11,7 @@
     //padding: 8px 20px;
 
     &.active > .nav-menu-group__toggle > .nav-menu-group__title {
-        color: var(--primary-a95);
+        color: var(--primary-a90);
     }
 
     &.open {
@@ -43,6 +43,7 @@
 .nav-menu-group__title {
     font-size: 17px;
     line-height: 24px;
+    color: var(--base-a90-rgb);
 }
 
 .nav-menu-group__toggle {
@@ -54,13 +55,12 @@
     height: 40px;
 
     &:hover {
-        background-color: var(--regular-smooth);
-        color: var(--primary);
-    }
-}
+        background-color: var(--regular-a20);
 
-.nav-menu-group__items .nav-menu-group__title {
-    color: rgba(var(--background-rgb), 0.7);
+        & .nav-menu-group__title {
+            color: var(--primary);
+        }
+    }
 }
 
 .nav-menu-group__arrow {

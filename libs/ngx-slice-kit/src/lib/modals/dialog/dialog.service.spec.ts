@@ -49,11 +49,11 @@ describe('DialogService', () => {
             expect(service).toBeTruthy();
         });
 
-        it('should render dialog component if PLATFORM_ID is browser', () => {
+        it('should render dialog component', () => {
             service.showDialog(TestComponent);
             const dropdownEl = document.querySelector('sdk-dialog');
             expect(dropdownEl).toBeTruthy('if platform is browser then service must render the dialog element');
-            dropdownEl.remove();
+            // dropdownEl.remove();
         });
 
         it('should be called #escapeListener method if #options.hideOnEscape is true', () => {

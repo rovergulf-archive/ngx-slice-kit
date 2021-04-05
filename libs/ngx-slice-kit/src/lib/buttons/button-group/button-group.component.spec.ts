@@ -75,13 +75,13 @@ describe('ButtonGroupComponent', () => {
 
         btn0.click();
         fixture.detectChanges();
-        expect(btn0.classList.contains('sdk-button--active')).toBe(true, 'should add active class after click');
-        expect(btn1.classList.contains('sdk-button--active')).not.toBe(true, 'other buttons does not have active class');
+        expect(btn0.classList.contains('active')).toBe(true, 'should add active class after click');
+        expect(btn1.classList.contains('active')).not.toBe(true, 'other buttons does not have active class');
 
         btn1.click();
         fixture.detectChanges();
-        expect(btn1.classList.contains('sdk-button--active')).toBe(true, 'should add active class after click');
-        expect(btn0.classList.contains('sdk-button--active')).not.toBe(true, 'other buttons does not have active class');
+        expect(btn1.classList.contains('active')).toBe(true, 'should add active class after click');
+        expect(btn0.classList.contains('active')).not.toBe(true, 'other buttons does not have active class');
     });
 
     it('should #onClick() be called by click event', () => {
@@ -128,9 +128,9 @@ describe('ButtonGroupComponent', () => {
         const btn: HTMLElement = groupContainer.children[0] as HTMLElement;
         btn.click();
         fixture.detectChanges();
-        expect(btn.classList.contains('sdk-button--active')).toBe(true, 'should add active class after click');
+        expect(btn.classList.contains('active')).toBe(true, 'should add active class after click');
         component.removeActiveClass(btn);
-        expect(btn.classList.contains('sdk-button--active')).not.toBe(true, 'function should remove .sdk-button--active class');
+        expect(btn.classList.contains('active')).not.toBe(true, 'function should remove .active class');
     });
 
     it('buttons should be rendered', () => {

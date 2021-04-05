@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.8.0
 
-## 31 Mar 2021
+## 4 Apr 2021
 
 ### Added
 
@@ -15,6 +15,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### Removed
+
+## 3 Apr 2021
+
+### Fixed
+- colors for `dots`/`carousel`/`dropdowns`/`select`/`autocomplete`/`tab-group`/`alert`/`tooltip`/`slider`/`progress`
+- dropdown declaration error
+
+## 2 Apr 2021
+
+### Fixed
+- `icons` in `sidenav`
+- hover/active colors in `sidenav`
+- colors for `input`/`textarea`/`toggle`/`tabs`/`nav-tabs`/`radio`/`checkbox` components
 
 ## 30 Mar 2021
 

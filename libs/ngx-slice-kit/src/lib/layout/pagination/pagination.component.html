@@ -8,7 +8,7 @@
                 [disabled]="page <= 1"
                 (click)="pageChange(page - 1)">
             <sdk-icon [icon]="'chevron_left'" size="24"
-                      [color]="leftArrowHovered ? 'var(--primary-rgb-text)' : 'var(--primary-rgb)'"></sdk-icon>
+                      [color]="leftArrowHovered ? 'var(--primary-opposite)' : 'var(--primary-rgb)'"></sdk-icon>
         </button>
         <div class="sdk-paginator__page" *ngFor="let p of getPages()">
             <button class="sdk-paginator__btn sdk-paginator__page" [disabled]="p.disabled"
@@ -22,7 +22,7 @@
                 [disabled]="(page + 1) > pageCount"
                 (click)="pageChange(page + 1)">
             <sdk-icon [icon]="'chevron_right'" size="24"
-                      [color]="rightArrowHovered ? 'var(--primary-rgb-text)' : 'var(--primary-rgb)'"></sdk-icon>
+                      [color]="rightArrowHovered ? 'var(--primary-opposite)' : 'var(--primary-rgb)'"></sdk-icon>
         </button>
     </div>
 </div>

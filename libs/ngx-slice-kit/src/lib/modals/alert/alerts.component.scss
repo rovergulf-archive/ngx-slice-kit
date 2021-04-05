@@ -47,11 +47,11 @@
         padding: 0 4px;
         border-radius: 4px;
         transition: all 0.2s;
-        color: var(--regular);
+        color: var(--base-a90);
 
         &:hover {
             background: var(--background);
-            opacity: 0.6;
+            color: var(--base-a100)
         }
     }
 

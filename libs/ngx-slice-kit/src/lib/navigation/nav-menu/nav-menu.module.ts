@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NavMenuComponent } from './nav-menu.component';
 import { NavMenuGroupComponent } from './nav-menu-group/nav-menu-group.component';
 import { NavMenuItemComponent } from './nav-menu-item/nav-menu-item.component';
+import {IconModule} from '../../buttons/icon/icon.module';
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import { NavMenuItemComponent } from './nav-menu-item/nav-menu-item.component';
     imports: [
         CommonModule,
         RouterModule,
+        IconModule,
     ],
     providers: [],
     schemas: [

@@ -23,45 +23,45 @@ $alphas: 10, 20, 30, 40, 50, 60, 70, 80, 90 100;
 
 @each $color in $colors {
     .sdk-#{$color}-color {
-        color: var(--#{$color}-rgb);
+        color: var(--#{$color}-a90-rgb);
 
         &:hover {
-            color: var(--#{$color}-hover);
+            color: var(--#{$color}-a100-rgb);
         }
 
         &.active, &--active {
-            color: var(--#{$color}-active);
+            color: var(--#{$color}-a80-rgb);
         }
 
         @include disabled-state;
     }
 
     .sdk-#{$color}-background {
-        background-color: var(--#{$color}-rgb);
-        color: var(--#{$color}-rgb-text);
+        background-color: var(--#{$color}-a90-rgb);
+        color: var(--#{$color}-a90-opposite);
 
         &:hover {
-            background-color: var(--#{$color}-hover);
-            color: var(--#{$color}-hover-text);
+            background-color: var(--#{$color}-a100-rgb);
+            color: var(--#{$color}-a100-opposite);
         }
 
         &.active, &--active {
-            background-color: var(--#{$color}-active);
-            color: var(--#{$color}-active-text);
+            background-color: var(--#{$color}-a80-rgb);
+            color: var(--#{$color}-a80-opposite);
         }
 
         @include disabled-state;
     }
 
     .sdk-#{$color}-border {
-        border-color: var(--#{$color}-rgb);
+        border-color: var(--#{$color}-a90-rgb);
 
         &:hover {
-            border-color: var(--#{$color}-hover);
+            border-color: var(--#{$color}-a100-rgb);
         }
 
         &.active, &--active {
-            border-color: var(--#{$color}-active);
+            border-color: var(--#{$color}-a80-rgb);
         }
 
         @include disabled-state;

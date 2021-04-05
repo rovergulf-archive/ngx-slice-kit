@@ -40,13 +40,13 @@ export class ButtonGroupComponent implements OnInit, AfterContentInit {
         }
 
         this.btnGroup.forEach(btn => this.removeActiveClass(btn.nativeElement));
-        this.renderer.addClass(target, 'sdk-button--active');
+        this.renderer.addClass(target, 'active');
 
         this.clicked.emit({element: event.target, index: target.getAttribute('btn-group-index')});
     }
 
     removeActiveClass(element): void {
-        this.renderer.removeClass(element, 'sdk-button--active');
+        this.renderer.removeClass(element, 'active');
     }
 
     ngOnInit(): void {

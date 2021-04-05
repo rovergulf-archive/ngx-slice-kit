@@ -44,6 +44,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
     @Output() blurEvent: EventEmitter<any> = new EventEmitter();
 
     @ViewChild('clone', {static: false}) elementClone: ElementRef;
+    @ViewChild('textarea', {static: true}) textarea: ElementRef;
 
     value: string = undefined;
     focused: boolean = false;
@@ -61,6 +62,11 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
     ngOnInit(): void {
         if (this.disabled && this.resizable) {
             this.resizable = false;
+        }
+
+        if (this.fullWidth) {
+            const parentElWidth = this.elementRef.nativeElement.parentElement.offsetWidth;
+            this.textarea.nativeElement.style.width = `${parentElWidth}px`;
         }
     }
 

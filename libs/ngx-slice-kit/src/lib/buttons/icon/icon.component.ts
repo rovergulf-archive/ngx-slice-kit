@@ -4,7 +4,7 @@ import { GLYPHS } from './icon.glyphs';
 import { BehaviorSubject } from 'rxjs';
 
 const DEFAULT_SIZE = 24;
-const DEFAULT_COLOR = 'var(--color)';
+const DEFAULT_COLOR = 'var(--base)';
 const DEFAULT_ICON = 'ngx-slice';
 const INKBE_ICON = 'inkbe';
 const INKBE_COEFF = 70 / 32;
@@ -62,7 +62,7 @@ export class IconComponent implements OnInit, OnDestroy, AfterContentInit {
 
         let symbol = GLYPHS[name] || DEFAULT_ICON;
         if (color?.length > 0) {
-            symbol = symbol.replace(`fill="var(--regular-text)"`, `fill="${color}"`);
+            symbol = symbol.replace(`fill="var(--base)"`, `fill="${color}"`);
         }
 
         if (this.size > DEFAULT_SIZE || this.size < DEFAULT_SIZE) {
