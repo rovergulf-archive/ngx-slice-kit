@@ -98,7 +98,7 @@ export class IconComponent implements OnInit, OnDestroy, AfterContentInit {
     }
 
     ngAfterContentInit(): void {
-        const svg = this.elementRef.nativeElement.querySelector(`[fill="var(--regular-text)"]`);
+        const svg = this.elementRef.nativeElement.querySelector(`[fill="var(--base)"]`);
         if (svg) {
             this.renderer.setAttribute(svg, 'height', `${this.size}px`);
             this.renderer.setAttribute(svg, 'width', `${this.size}px`);
