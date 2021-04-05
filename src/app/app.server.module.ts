@@ -2,7 +2,8 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/cor
 import { ServerModule } from '@angular/platform-server';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ServerCookiesModule } from "ngx-cookie-universal";
+import { CookieBackendModule } from 'ngx-cookie-backend';
+
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
@@ -14,7 +15,7 @@ const routes: Routes = [];
         AppModule,
         ServerModule,
         RouterModule.forRoot(routes),
-        ServerCookiesModule.forRoot(),
+        CookieBackendModule.forRoot(),
     ],
     bootstrap: [AppComponent],
     declarations: [],

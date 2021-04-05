@@ -6,7 +6,7 @@ import { NavigationEnd, Router } from '@angular/router';
 
 import { ThemeService } from 'ngx-slice-kit';
 import { LayoutService } from './shared/services';
-import { CookieService } from 'ngx-cookie-universal';
+import { CookieService } from 'ngx-cookie';
 
 const THEME_NAME = 'slice-theme';
 
