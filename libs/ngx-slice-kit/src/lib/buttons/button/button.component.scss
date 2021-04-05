@@ -87,7 +87,7 @@ button.sdk-button, a.sdk-button {
     // Regular colors
     @each $color in $colors {
         &--#{$color} {
-            &.sdk-stroked-button, &.sdk-button {
+            &.sdk-stroked-button, &.sdk-base-button {
                 @extend .sdk-#{$color}-color;
             }
 

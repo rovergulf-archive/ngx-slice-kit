@@ -36,6 +36,7 @@ const alphaStep = 10;
 
 export class ColorProperty {
     value: string;
+    text_value?: string;
     background: string;
     name: string;
     text?: string;
@@ -46,16 +47,24 @@ export class ColorProperty {
 
     constructor(cp?: ColorProperty) {
         Object.assign(this, cp);
-
         this.prop = `--${this.name}`;
+
+        // find color values
         const rgbVal = this.value.split(sep(this.value)).map(i => parseInt(i, 10));
         const bgVal = this.background.split(sep(this.background)).map(i => parseInt(i, 10));
-        this.rgb = mixinRgba(rgbVal, bgVal, this.alpha / 100);
+        const rgbMixin = mixinRgba(rgbVal, bgVal, this.alpha / 100);
+        const bgMixin = mixinRgba(bgVal, rgbVal, this.alpha / 100);
+
+        // declare rgb values
+        this.rgb = numArrayToRgbString(rgbMixin);
         this.hex = rgbaToHex(this.rgb);
-        this.background = mixinRgba(bgVal, rgbVal, this.alpha / 100);
-        if (this.text?.length > 0) {
-            const textVal = this.text.split(sep(this.background)).map(i => parseInt(i, 10));
-            this.text = mixinRgba(textVal, bgVal, this.alpha / 90);
+        this.background = numArrayToRgbString(bgMixin);
+
+        // check if text value is available
+        if (this.text_value?.length > 0) {
+            const textVal = this.text_value.split(sep(this.text_value)).map(i => parseInt(i, 10));
+            const textMixin = mixinRgba(textVal, bgVal, 0.9);
+            this.text = numArrayToRgbString(textMixin);
         }
     }
 }
@@ -92,7 +101,7 @@ export class Theme {
             const textColor = `${color}_text`;
             const colorProp = {
                 name: color,
-                text: this[textColor],
+                text_value: this[textColor],
                 alpha: 100,
                 value: rgb,
                 background: rgb === this.background ? this.base : this.background,
@@ -112,6 +121,25 @@ export class Theme {
         return results;
     }
 }
+
+const sep = (str: string): string => {
+    return str?.indexOf(',') < 0 ? (str?.indexOf(', ') < 0 ? ' ' : ', ') : ',';
+};
+
+const trim = (str: string): string => {
+    return str?.replace(/^\s+|\s+$/gm, '');
+};
+
+export const mixinRgba = (base: number[], added: number[], alpha: number): number[] => {
+    const r3 = Math.round(((1 - alpha) * added[0]) + (alpha * base[0]));
+    const g3 = Math.round(((1 - alpha) * added[1]) + (alpha * base[1]));
+    const b3 = Math.round(((1 - alpha) * added[2]) + (alpha * base[2]));
+    return [r3, g3, b3];
+};
+
+export const numArrayToRgbString = (rgb: number[]): string => {
+    return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+};
 
 export const rgbaToHex = (rgba: string): string => {
     if (!rgba) {
@@ -141,20 +169,5 @@ export const rgbaToHex = (rgba: string): string => {
     });
 
     return ('#' + outParts.join(''));
-};
-
-const sep = (str: string): string => {
-    return str?.indexOf(',') < 0 ? (str?.indexOf(', ') < 0 ? ' ' : ', ') : ',';
-};
-
-const trim = (str: string): string => {
-    return str?.replace(/^\s+|\s+$/gm, '');
-};
-
-export const mixinRgba = (base: number[], added: number[], alpha: number): string => {
-    const r3 = Math.round(((1 - alpha) * added[0]) + (alpha * base[0]));
-    const g3 = Math.round(((1 - alpha) * added[1]) + (alpha * base[1]));
-    const b3 = Math.round(((1 - alpha) * added[2]) + (alpha * base[2]));
-    return `rgb(${r3},${g3},${b3})`;
 };
 

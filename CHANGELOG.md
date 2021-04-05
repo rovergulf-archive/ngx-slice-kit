@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - ❕IMPORTANT: Angular version updated up to 11.2.8
-
+- ❗BREAKING: `sdk-button` tag was changed to `sdk-base-button` to make color handling more easy
 
 ### Fixed
 - buttons color usage

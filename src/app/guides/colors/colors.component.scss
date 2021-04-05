@@ -1,3 +1,5 @@
+@import './libs/ngx-slice-kit/src/lib/core/styles/core';
+
 main {
 
 }
@@ -17,36 +19,21 @@ main {
 
     &--primary {
         @extend .sdk-primary-background;
-
-        &:hover {
-            background-color: var(--primary-hover);
-        }
     }
 
     &--regular {
         @extend .sdk-regular-background;
-
-        h3 {
-            color: var(--regular-text);
-        }
     }
 
     &--accent {
-        background-color: var(--accent);
-
-        h3 {
-            color: var(--accent-text);
-        }
+        @extend .sdk-accent-background;
     }
 
     &--success {
-        background-color: var(--success);
-
-        h3 {
-            color: var(--success-text);
-        }
+        @extend .sdk-success-background;
     }
 
     &--warn {
+        @extend .sdk-warn-background;
     }
 }
