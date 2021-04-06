@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
 import { SliceKitModule } from 'ngx-slice-kit';
 
 import { FooterComponent } from './layout/footer/footer.component';
@@ -29,6 +30,7 @@ const sharedModuleDeclarations = [
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
+        HighlightModule,
         SliceKitModule,
     ],
     declarations: sharedModuleDeclarations,
@@ -37,7 +39,19 @@ const sharedModuleDeclarations = [
         SliceKitModule
     ],
     entryComponents,
-    providers: [],
+    providers: [
+        {
+            provide: HIGHLIGHT_OPTIONS,
+            useValue: {
+                coreLibraryLoader: () => import('highlight.js/lib/core'),
+                languages: {
+                    typescript: () => import('highlight.js/lib/languages/typescript'),
+                    scss: () => import('highlight.js/lib/languages/scss'),
+                    css: () => import('highlight.js/lib/languages/css'),
+                }
+            }
+        }
+    ],
     schemas: [
         NO_ERRORS_SCHEMA,
         CUSTOM_ELEMENTS_SCHEMA

@@ -7,9 +7,6 @@ on:
   release:
     types: [created]
 
-env:
-    VERSION: $(git describe --abbrev=0)
-
 jobs:
   setup-build-publish:
     name: Setup, Build, and Publish
@@ -31,10 +28,13 @@ jobs:
 
       # Build the Docker image
       - name: Build
-        run: docker build --no-cache -t $IMAGE:$VERSION -t $IMAGE:latest .
+        run: |-
+          VERSION=$(git describe --abbrev=0)
+          docker build --no-cache -t $IMAGE:$VERSION -t $IMAGE:latest .
 
       # Push the Docker image to Google Container Registry
       - name: Publish
         run: |-
+          VERSION=$(git describe --abbrev=0)
           docker push $IMAGE:$VERSION
           docker push $IMAGE:latest
