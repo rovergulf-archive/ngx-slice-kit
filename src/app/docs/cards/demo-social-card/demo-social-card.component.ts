@@ -10,7 +10,7 @@ export class DemoSocialCardComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

@@ -10,7 +10,7 @@ export class DemoChartsComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

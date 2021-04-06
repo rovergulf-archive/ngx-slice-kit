@@ -10,7 +10,7 @@ export class DemoMenuComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

@@ -10,7 +10,7 @@ export class RoadmapComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

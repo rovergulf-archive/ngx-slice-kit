@@ -10,7 +10,7 @@ export class DocumentsComponent implements OnInit, OnDestroy {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
     ngOnDestroy(): void {

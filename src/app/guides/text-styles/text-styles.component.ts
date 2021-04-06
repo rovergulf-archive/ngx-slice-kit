@@ -10,7 +10,7 @@ export class TextStylesComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

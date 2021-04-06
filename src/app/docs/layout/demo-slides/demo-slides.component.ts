@@ -15,7 +15,7 @@ export class DemoSlidesComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
     setFirstValue(e) {

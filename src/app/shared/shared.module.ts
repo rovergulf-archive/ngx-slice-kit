@@ -9,14 +9,18 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { SidenavComponent } from './layout/sidenav/sidenav.component';
 
+import { DemoComponent } from './components/demo/demo.component';
+
 const entryComponents = [];
 
 const sharedModuleDeclarations = [
     ...entryComponents,
-    // components
+    // layout
     FooterComponent,
     HeaderComponent,
-    SidenavComponent
+    SidenavComponent,
+    // components
+    DemoComponent,
 ];
 
 @NgModule({

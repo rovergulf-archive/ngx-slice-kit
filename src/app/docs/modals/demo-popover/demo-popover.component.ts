@@ -10,7 +10,7 @@ export class DemoPopoverComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

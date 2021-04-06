@@ -10,7 +10,7 @@ export class MdUsageComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

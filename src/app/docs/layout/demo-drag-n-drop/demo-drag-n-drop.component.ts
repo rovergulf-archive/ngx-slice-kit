@@ -10,7 +10,7 @@ export class DemoDragNDropComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

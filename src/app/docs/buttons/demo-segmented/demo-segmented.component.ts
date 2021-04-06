@@ -10,7 +10,7 @@ export class DemoSegmentedComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

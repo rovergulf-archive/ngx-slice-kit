@@ -10,7 +10,7 @@ export class ResourcesComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

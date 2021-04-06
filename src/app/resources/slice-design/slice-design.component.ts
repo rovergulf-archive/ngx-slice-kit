@@ -10,7 +10,7 @@ export class SliceDesignComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

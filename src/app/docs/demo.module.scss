@@ -11,11 +11,12 @@ main {
     }
 
     .demo-container {
-        @extend .flex-row;
+        @extend .flex-column;
         @extend .layout-start-start;
+        min-width: 200px;
     }
 
-    table.example-api {
+    table.demo-api-definition {
         width: 100%;
         padding: 0;
         border: none;

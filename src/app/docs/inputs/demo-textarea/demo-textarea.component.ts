@@ -10,7 +10,7 @@ export class DemoTextareaComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

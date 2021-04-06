@@ -10,7 +10,7 @@ export class DemoAccordionComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

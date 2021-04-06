@@ -10,7 +10,7 @@ export class DemoWysiwygComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

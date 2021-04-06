@@ -10,7 +10,7 @@ export class DemoAudioPlayerComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }
