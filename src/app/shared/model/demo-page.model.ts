@@ -4,6 +4,7 @@ import { ApiDefinition } from './api-definition.model';
 export class DemoPageModel {
     title: string;
     subtitle?: string;
+    demo_name?: string;
 
     demos?: DemoExample[];
     apis?: ApiDefinition[];

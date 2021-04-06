@@ -5,14 +5,15 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
+        "build:kit": "ng build ngx-slice-kit --prod",
         "test": "ng test",
+        "test:kit": "ng test --watch=false --code-coverage --browsers=ChromeHeadless ngx-slice-kit",
         "lint": "ng lint",
         "e2e": "ng e2e",
         "dev:ssr": "ng run slice-kit:serve-ssr",
         "serve:ssr": "node dist/slice-kit/server/main.js",
         "build:ssr": "ng build --prod && ng run slice-kit:server:production",
-        "prerender": "ng run slice-kit:prerender",
-        "test:ci": "ng test --watch=false --code-coverage --browsers=ChromeHeadless"
+        "prerender": "ng run slice-kit:prerender"
     },
     "private": true,
     "dependencies": {

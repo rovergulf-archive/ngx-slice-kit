@@ -1,1 +1,84 @@
-<p>demo works!</p>
+<main>
+    <h2 class="title">{{page.title}}</h2>
+
+    <ng-container *ngIf="page.subtitle">
+        <p class="subtitle">{{page.subtitle}}</p>
+    </ng-container>
+
+    <!-- Usage demos -->
+    <ng-container *ngIf="page.demos?.length > 0">
+        <ng-container *ngFor="let d of page.demos">
+            <h3>{{d.title}}</h3>
+
+            <div class="demo-container">
+
+                <!-- ng template ref -->
+                <ng-container *ngIf="d.templateRef">
+                    <ng-container [ngTemplateOutlet]="d.templateRef"></ng-container>
+                </ng-container>
+                <span class="spacer"></span>
+
+                <!-- Source code -->
+                <p>Source code:</p>
+                <sdk-tab-group>
+                    <sdk-tab label="app.component.html">
+                            <pre class="example">
+                                <code [highlight]="d.values.html"></code>
+                            </pre>
+                    </sdk-tab>
+<!--                    <ng-container *ngFor="let v of getValues(d)">-->
+<!--                        <sdk-tab label="{{getValueTabName(v)}}">-->
+<!--                            <pre class="example">-->
+<!--                                <code [highlight]="d.values[v]"></code>-->
+<!--                            </pre>-->
+<!--                        </sdk-tab>-->
+<!--                    </ng-container>-->
+                </sdk-tab-group>
+            </div>
+        </ng-container>
+    </ng-container>
+
+    <!-- API Definitions -->
+    <ng-container *ngIf="page.apis?.length > 0">
+        <h3>{{page.demo_name}} API</h3>
+        <div class="radio-example">
+            <table class="demo-api-definition">
+                <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Description</th>
+                    <th class="type">Type</th>
+                </tr>
+                </thead>
+                <tbody>
+                <ng-container *ngFor="let a of page.apis">
+                    <tr>
+                        <td class="attr">
+                            <p>
+                                <b>{{a.label}}</b>
+                                <span class="required-mark" *ngIf="a.required">*</span>
+                            </p>
+                        </td>
+                        <td class="desc">
+                            <div class="flex-column">
+                                <p>{{a.description}}</p>
+                                <ng-container *ngIf="a.default_value">
+                                    <span class="spacer"></span>
+                                    <small>Default value: {{a.default_value}}</small>
+                                </ng-container>
+                            </div>
+                        </td>
+                        <td class="type">
+                            <p>{{a.type}}</p>
+                        </td>
+                    </tr>
+                </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </ng-container>
+</main>
+
+<!-- include ng template refs -->
+<ng-content>
+</ng-content>

@@ -1,10 +1,12 @@
 export class DemoExample {
     title: string;
     description: string;
-    ts_component_val: string;
-    ts_module_val?: string;
-    html_val?: string;
-    styles_val?: string;
+    values: {
+        html: string,
+        component?: string,
+        module?: string,
+        styles?: string,
+    };
 
     templateRef: any;
 

@@ -1,20 +1,4 @@
-<main class="view">
-    <h2>Toggle examples</h2>
-    <h3>Default</h3>
-    <p>Toggle is an on/off control that can be toggled via clicking.</p>
-
-    <ng-container *ngFor="let d of demos">
-        <div class="demo-container">
-            <ng-container *ngIf="d.templateRef">
-                <ng-container [ngTemplateOutlet]="d.templateRef"></ng-container>
-            </ng-container>
-            <span class="spacer"></span>
-            <p>Usage:</p>
-            <pre class="example">
-            <code [highlight]="d.ts_component_val"></code>
-        </pre>
-        </div>
-    </ng-container>
+<lib-demo [page]="page">
 
     <ng-template #defaultRef>
         <sdk-toggle></sdk-toggle>
@@ -28,28 +12,5 @@
         <sdk-toggle [disabled]="true"></sdk-toggle>
     </ng-template>
 
-    <h3>Radio Component API</h3>
-    <div class="radio-example">
-        <table class="demo-api-definition">
-            <thead>
-            <tr>
-                <th>Attribute</th>
-                <th>Description</th>
-                <th class="no-wrap">Type</th>
-                <th>Required</th>
-            </tr>
-            </thead>
-            <tbody>
-            <ng-container *ngFor="let a of apis">
-                <tr>
-                    <td>[{{a.label}}]: {{a.type}}</td>
-                    <td>{{a.description}}</td>
-                    <td>{{a.type}}</td>
-                    <td></td>
-                </tr>
-            </ng-container>
-            </tbody>
-        </table>
-    </div>
 
-</main>
+</lib-demo>
