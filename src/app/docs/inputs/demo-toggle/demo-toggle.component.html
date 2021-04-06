@@ -4,38 +4,29 @@
     <p>Toggle is an on/off control that can be toggled via clicking.</p>
 
     <ng-container *ngFor="let d of demos">
-
+        <div class="demo-container">
+            <ng-container *ngIf="d.templateRef">
+                <ng-container [ngTemplateOutlet]="d.templateRef"></ng-container>
+            </ng-container>
+            <span class="spacer"></span>
+            <p>Usage:</p>
+            <pre class="example">
+            <code [highlight]="d.ts_component_val"></code>
+        </pre>
+        </div>
     </ng-container>
 
-    <div class="demo-container">
+    <ng-template #defaultRef>
         <sdk-toggle></sdk-toggle>
-        <span class="spacer"></span>
-        <p>Usage:</p>
-        <pre class="example">
-            <code [highlight]="examples.default"></code>
-        </pre>
-    </div>
+    </ng-template>
 
-    <h3>Small one</h3>
-    <div class="demo-container">
+    <ng-template #smallRef>
         <sdk-toggle [small]="true"></sdk-toggle>
-        <span class="spacer"></span>
-        <p>Usage:</p>
-        <pre class="example">
-            <code [highlight]="examples.small"></code>
-        </pre>
-    </div>
+    </ng-template>
 
-    <h3>Disabled</h3>
-    <div class="demo-container">
+    <ng-template #disabledRef>
         <sdk-toggle [disabled]="true"></sdk-toggle>
-        <span class="spacer"></span>
-        <p>Usage:</p>
-        <pre class="example">
-            <code [highlight]="examples.disabled"></code>
-        </pre>
-    </div>
-
+    </ng-template>
 
     <h3>Radio Component API</h3>
     <div class="radio-example">
@@ -44,27 +35,19 @@
             <tr>
                 <th>Attribute</th>
                 <th>Description</th>
+                <th class="no-wrap">Type</th>
+                <th>Required</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>[isActive]: boolean</td>
-                <td>
-                    <p>To be described</p>
-                </td>
-            </tr>
-            <tr>
-                <td>[small]: boolean</td>
-                <td>
-                    <p>To be described</p>
-                </td>
-            </tr>
-            <tr>
-                <td>[disabled]: boolean</td>
-                <td>
-                    <p>To be described</p>
-                </td>
-            </tr>
+            <ng-container *ngFor="let a of apis">
+                <tr>
+                    <td>[{{a.label}}]: {{a.type}}</td>
+                    <td>{{a.description}}</td>
+                    <td>{{a.type}}</td>
+                    <td></td>
+                </tr>
+            </ng-container>
             </tbody>
         </table>
     </div>

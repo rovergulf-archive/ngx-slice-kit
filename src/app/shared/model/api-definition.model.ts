@@ -1,5 +1,6 @@
 export class ApiDefinition {
-    title: string;
+    label: string;
+    type: string;
     description?: string;
     values?: string[];
     required?: boolean;

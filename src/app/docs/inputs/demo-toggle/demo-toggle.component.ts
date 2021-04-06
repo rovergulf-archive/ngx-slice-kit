@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DemoExample } from '../../../shared/model';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ApiDefinition, DemoExample } from '../../../shared/model';
 
 @Component({
     selector: 'app-demo-switches',
@@ -8,33 +8,57 @@ import { DemoExample } from '../../../shared/model';
 })
 export class DemoToggleComponent implements OnInit, OnDestroy {
 
-    demos: DemoExample[] = [
+    @ViewChild('defaultRef', {static: true}) defaultRef: any;
+    @ViewChild('smallRef', {static: true}) smallRef: any;
+    @ViewChild('disabledRef', {static: true}) disabledRef: any;
+
+    demos: DemoExample[] = [];
+
+    apis: ApiDefinition[] = [
         {
-            title: 'Default',
+            label: 'isActive',
+            type: 'boolean',
             description: '',
-            ts_component_val: `<sdk-toggle></sdk-toggle>`
+            required: false,
         },
         {
-            title: 'Small',
+            label: 'required',
+            type: 'boolean',
             description: '',
-            ts_component_val: `<sdk-toggle [small]="true"></sdk-toggle>`
+            required: false,
         },
         {
-            title: 'Disabled',
+            label: 'disabled',
+            type: 'boolean',
             description: '',
-            ts_component_val: `<sdk-toggle [disabled]="true"></sdk-toggle>`
-        }
+            required: false,
+        },
     ];
-    examples: any = {
-        default: `<sdk-toggle></sdk-toggle>`,
-        small: `<sdk-toggle [small]="true"></sdk-toggle>`,
-        disabled: `<sdk-toggle [disabled]="true"></sdk-toggle>`,
-    };
 
     constructor() {
     }
 
     ngOnInit(): void {
+        this.demos = [
+            {
+                title: 'Default',
+                description: '',
+                templateRef: this.defaultRef,
+                ts_component_val: `<sdk-toggle></sdk-toggle>`
+            },
+            {
+                title: 'Small',
+                description: '',
+                templateRef: this.smallRef,
+                ts_component_val: `<sdk-toggle [small]="true"></sdk-toggle>`
+            },
+            {
+                title: 'Disabled',
+                description: '',
+                templateRef: this.disabledRef,
+                ts_component_val: `<sdk-toggle [disabled]="true"></sdk-toggle>`
+            }
+        ];
     }
 
     ngOnDestroy(): void {

@@ -6,7 +6,7 @@ export class DemoExample {
     html_val?: string;
     styles_val?: string;
 
-    templateRef?: string;
+    templateRef: any;
 
     constructor(src: DemoExample) {
         Object.assign(this, src);
