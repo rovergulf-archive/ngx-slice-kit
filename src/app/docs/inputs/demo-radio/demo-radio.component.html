@@ -1,25 +1,61 @@
-<section class="flex-column layout-start-stretch">
+<main>
     <h2>Radio examples</h2>
-    <div>
-        <h3>Default / Small </h3>
-        <div style="display: flex; justify-content: space-between; width: 600px; margin: 24px 0 32px">
+    <h3>Default / Small </h3>
+    <p>Radio provides the same functionality as a native <i>&#60;input type="radio"&#62;</i> enhanced with Material Design styling and animations.</p>
+    <div class="radio-example">
+        <div class="flex-row layout-start-start">
             <sdk-radio [data]="radioData" [required]="true"></sdk-radio>
             <sdk-radio [data]="radioData" [small]="true"></sdk-radio>
         </div>
-        <h3>Default + Header / Small + Header </h3>
-        <div style="display: flex; justify-content: space-between; width: 600px; margin: 24px 0 32px">
+        <span class="spacer"></span>
+        <p>Usage:</p>
+        <pre class="example">
+            <ng-container *ngFor="let e of examples.default">
+                <code [highlight]="e"></code>
+            </ng-container>
+        </pre>
+    </div>
+    <h3>Default + Header / Small + Header </h3>
+    <div class="radio-example">
+        <div class="flex-row layout-start-start">
             <sdk-radio [data]="radioData" label="Radio"></sdk-radio>
             <sdk-radio [data]="radioData" [small]="true" label="Radio"></sdk-radio>
         </div>
-        <h3>Default + Error / Small + Error </h3>
-        <div style="display: flex; justify-content: space-between; width: 600px; margin: 24px 0 32px">
+        <span class="spacer"></span>
+        <p>Usage:</p>
+        <pre class="example">
+            <ng-container *ngFor="let e of examples.header">
+                <code [highlight]="e"></code>
+            </ng-container>
+        </pre>
+    </div>
+    <h3>Default + Error / Small + Error </h3>
+    <div class="radio-example">
+        <div class="flex-row layout-start-start">
             <sdk-radio [data]="radioData" error="Error radio"></sdk-radio>
             <sdk-radio [data]="radioData" [small]="true" error="Error radio"></sdk-radio>
         </div>
-        <h3>Default disabled / Small disabled </h3>
-        <div style="display: flex; justify-content: space-between; width: 600px; margin: 24px 0 32px">
+        <span class="spacer"></span>
+        <p>Usage:</p>
+        <pre class="example">
+            <ng-container *ngFor="let e of examples.error">
+                <code [highlight]="e"></code>
+            </ng-container>
+        </pre>
+    </div>
+    <h3>Default disabled / Small disabled </h3>
+    <div class="radio-example">
+        <div class="flex-row layout-start-start">
             <sdk-radio [data]="radioData" [disabled]="true"></sdk-radio>
             <sdk-radio [data]="radioData" [disabled]="true" [small]="true"></sdk-radio>
         </div>
+        <span class="spacer"></span>
+        <p>Usage:</p>
+        <pre class="example">
+            <ng-container *ngFor="let e of examples.disabled">
+                <code [highlight]="e"></code>
+            </ng-container>
+        </pre>
     </div>
-</section>
+
+</main>
