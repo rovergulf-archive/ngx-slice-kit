@@ -9,13 +9,8 @@ name: Node.js CI
 on:
   push:
     branches: [ main ]
-    paths:
-        - ./libs/ngx-slice-kit/**
   pull_request:
-    branches:
-        - main
-    paths:
-        - libs/ngx-slice-kit/**
+    branches: [ main ]
 
 jobs:
   test-kit:

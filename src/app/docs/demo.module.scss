@@ -14,4 +14,50 @@ main {
         @extend .flex-row;
         @extend .layout-start-start;
     }
+
+    table.example-api {
+        width: 100%;
+        padding: 0;
+        border: none;
+        border-collapse: collapse;
+        border-spacing: 0;
+        border-radius: 4px;
+
+        td, th {
+            padding: 8px;
+            border-right: 1px solid var(--background-a90);
+
+            &:last-child {
+                border-right: none;
+            }
+
+            &:first-child {
+                white-space: nowrap;
+            }
+
+            &.wide {
+                width: 100%;
+            }
+
+            &.no-wrap {
+                white-space: nowrap;
+            }
+        }
+
+        tr {
+            border-bottom: 1px solid var(--background-a90);
+        }
+
+        thead {
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        tbody {
+
+            tr:last-child {
+                border-bottom: none;
+            }
+        }
+    }
 }
