@@ -13,7 +13,7 @@
         "dev:ssr": "ng run slice-kit:serve-ssr",
         "serve:ssr": "node dist/slice-kit/server/main.js",
         "build:ssr": "ng build --prod && ng run slice-kit:server:production",
-        "prerender": "ng run slice-kit:prerender",
+        "prerender": "ng run slice-kit:prerender"
     },
     "private": true,
     "dependencies": {
