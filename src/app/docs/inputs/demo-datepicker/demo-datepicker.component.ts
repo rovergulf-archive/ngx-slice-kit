@@ -10,7 +10,7 @@ export class DemoDatepickerComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

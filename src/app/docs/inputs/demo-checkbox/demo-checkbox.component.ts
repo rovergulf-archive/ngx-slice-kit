@@ -10,7 +10,7 @@ export class DemoCheckboxComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

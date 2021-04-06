@@ -2,7 +2,12 @@
     <h2>Toggle examples</h2>
     <h3>Default</h3>
     <p>Toggle is an on/off control that can be toggled via clicking.</p>
-    <div class="toggle-container">
+
+    <ng-container *ngFor="let d of demos">
+
+    </ng-container>
+
+    <div class="demo-container">
         <sdk-toggle></sdk-toggle>
         <span class="spacer"></span>
         <p>Usage:</p>
@@ -12,7 +17,7 @@
     </div>
 
     <h3>Small one</h3>
-    <div class="toggle-container">
+    <div class="demo-container">
         <sdk-toggle [small]="true"></sdk-toggle>
         <span class="spacer"></span>
         <p>Usage:</p>
@@ -22,7 +27,7 @@
     </div>
 
     <h3>Disabled</h3>
-    <div class="toggle-container">
+    <div class="demo-container">
         <sdk-toggle [disabled]="true"></sdk-toggle>
         <span class="spacer"></span>
         <p>Usage:</p>
@@ -34,7 +39,7 @@
 
     <h3>Radio Component API</h3>
     <div class="radio-example">
-        <table class="example-api">
+        <table class="demo-api-definition">
             <thead>
             <tr>
                 <th>Attribute</th>

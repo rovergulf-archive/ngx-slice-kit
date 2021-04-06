@@ -10,7 +10,7 @@ export class DemoTextCardComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

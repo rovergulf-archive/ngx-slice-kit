@@ -10,7 +10,7 @@ export class DemoSidenavComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

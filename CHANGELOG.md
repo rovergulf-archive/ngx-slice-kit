@@ -6,17 +6,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.9.0
 
-## 5 Apr 2021
+## Released [v0.8.1]
+
+## 6 Apr 2021
 
 ### Added
-- [murhafsousli/ngx-highlightjs](https://github.com/murhafsousli/ngx-highlightjs) package usage to code highlighting, [highlight.js](https://github.com/highlightjs/highlight.js) included
+web:
+- `ApiDefinition` and `DemoExample` models
 
 ### Changed
 
 ### Fixed
-- sdk-buttons unexpected animation
+engine-kit:
+- `sdk-button` legacy references
 
 ### Removed
+web:
+- unnecessary test components
+
+
+## 5 Apr 2021
+
+### Added
+web:
+- [murhafsousli/ngx-highlightjs](https://github.com/murhafsousli/ngx-highlightjs) package usage to code highlighting, [highlight.js](https://github.com/highlightjs/highlight.js) included
+
+### Fixed
+engine-kit:
+- sdk-buttons unexpected animation
 
 
 ## Released [v0.8.0]
@@ -24,8 +41,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 5 Apr 2021
 
 ### Added
+engine-kit:
 - text color variables for theme palettes with suffix `-text`
 - GitHub workflows for npm package and gcr image
+
+web:
 - [ngx-cookie](https://github.com/salemdar/ngx-cookie) package installed, as well `"ngx-cookie-backend"` for SSR supporting
 
 ### Changed
@@ -240,9 +260,10 @@ Fix scroll issue in `tabs` component
 - updated Angular `core` and `cli` versions up to latest 11.1+ closes #3
 
 
-[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.8.0...main
+[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.8.1...main
+[v0.8.1]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.1...v0.8.2
 [v0.8.1]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.0...v0.8.1
-[v0.8.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.0...v0.8.0
+[v0.8.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.6.5...v0.7.0
 [v0.6.5]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.6.4...v0.6.5
 [v0.6.4]: https://github.com/rovergulf/ngx-slice-kit/tree/v0.6.4

@@ -10,7 +10,7 @@ export class DemoTableComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

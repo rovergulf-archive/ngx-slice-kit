@@ -10,7 +10,7 @@ export class DemoChipsComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

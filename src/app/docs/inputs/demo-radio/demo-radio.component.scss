@@ -2,6 +2,8 @@
 
 main {
     .radio-example {
-
+        @extend .flex-column;
+        @extend .layout-start-start;
+        min-width: 200px;
     }
 }

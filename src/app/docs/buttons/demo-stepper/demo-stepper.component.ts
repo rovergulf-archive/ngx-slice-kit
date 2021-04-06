@@ -10,7 +10,7 @@ export class DemoStepperComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

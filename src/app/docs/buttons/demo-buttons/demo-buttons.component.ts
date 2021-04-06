@@ -10,7 +10,7 @@ export class DemoButtonsComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }
