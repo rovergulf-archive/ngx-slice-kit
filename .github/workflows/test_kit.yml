@@ -26,7 +26,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run lint ngx-slice-kit
-    - run: npm run test:ci ngx-slice-kit
+    - run: npm run test:kit
     - uses: actions/checkout@v2
     - uses: codecov/codecov-action@v1
       with:
