@@ -27,9 +27,6 @@ jobs:
     - run: npm install
     - run: npm run lint ngx-slice-kit
     - run: npm run test:ci ngx-slice-kit
-
-  codecov:
-      runs-on: ubuntu-latest
     - uses: actions/checkout@v2
     - uses: codecov/codecov-action@v1
       with:
