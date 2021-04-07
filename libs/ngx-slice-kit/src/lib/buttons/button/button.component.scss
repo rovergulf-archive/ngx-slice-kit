@@ -65,7 +65,7 @@ button.sdk-button, a.sdk-button {
 
     // set 'box-shadow' for raised button
     &.sdk-raised-button:not(disabled) {
-        box-shadow: 0 2px 4px rgba(var(--background-rgb), 0.25);
+        box-shadow: 0 2px 4px rgba(var(--base-raw), 0.4);
     }
 
     // set 'border' for stroked button
