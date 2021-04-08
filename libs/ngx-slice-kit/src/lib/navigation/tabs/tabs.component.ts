@@ -224,6 +224,7 @@ export class TabsComponent implements OnInit, AfterContentInit, AfterViewInit, A
         this.tabGroup = [];
         this.tabs.forEach(tabInstance => this.tabGroup.push(tabInstance));
         this.selectTab(this.tabs.first, 0);
+        this.cdRef.detectChanges();
     }
 
     ngAfterViewInit(): void {

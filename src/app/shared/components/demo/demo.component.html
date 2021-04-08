@@ -21,18 +21,16 @@
                 <!-- Source code -->
                 <p>Source code:</p>
                 <sdk-tab-group>
-                    <sdk-tab label="app.component.html">
-                            <pre class="example">
-                                <code [highlight]="d.values.html"></code>
-                            </pre>
-                    </sdk-tab>
-<!--                    <ng-container *ngFor="let v of getValues(d)">-->
-<!--                        <sdk-tab label="{{getValueTabName(v)}}">-->
+<!--                    <sdk-tab label="app.component.html">-->
 <!--                            <pre class="example">-->
-<!--                                <code [highlight]="d.values[v]"></code>-->
+<!--                                <code [highlight]="d.values.html"></code>-->
 <!--                            </pre>-->
-<!--                        </sdk-tab>-->
-<!--                    </ng-container>-->
+<!--                    </sdk-tab>-->
+                        <sdk-tab label="{{getValueTabName(v)}}" *ngFor="let v of getValues(d)">
+                            <pre class="example">
+                                <code [highlight]="d.values[v]"></code>
+                            </pre>
+                        </sdk-tab>
                 </sdk-tab-group>
             </div>
         </ng-container>
