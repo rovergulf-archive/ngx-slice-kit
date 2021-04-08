@@ -11,6 +11,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { SidenavComponent } from './layout/sidenav/sidenav.component';
 
 import { DemoComponent } from './components/demo/demo.component';
+import { CodeSnippetComponent } from './components/code-snippet/code-snippet.component';
 
 const entryComponents = [];
 
@@ -22,6 +23,7 @@ const sharedModuleDeclarations = [
     SidenavComponent,
     // components
     DemoComponent,
+    CodeSnippetComponent,
 ];
 
 @NgModule({
@@ -40,19 +42,7 @@ const sharedModuleDeclarations = [
         HighlightModule,
     ],
     entryComponents,
-    providers: [
-        {
-            provide: HIGHLIGHT_OPTIONS,
-            useValue: {
-                coreLibraryLoader: () => import('highlight.js/lib/core'),
-                languages: {
-                    typescript: () => import('highlight.js/lib/languages/typescript'),
-                    scss: () => import('highlight.js/lib/languages/scss'),
-                    css: () => import('highlight.js/lib/languages/css'),
-                }
-            }
-        }
-    ],
+    providers: [],
     schemas: [
         NO_ERRORS_SCHEMA,
         CUSTOM_ELEMENTS_SCHEMA

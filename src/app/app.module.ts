@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared/shared.module';
 import { environment } from '../environments/environment';
+import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 
 @NgModule({
@@ -33,7 +34,19 @@ import { environment } from '../environments/environment';
     declarations: [
         AppComponent,
     ],
-    providers: [],
+    providers: [
+        {
+            provide: HIGHLIGHT_OPTIONS,
+            useValue: {
+                coreLibraryLoader: () => import('highlight.js/lib/core'),
+                languages: {
+                    typescript: () => import('highlight.js/lib/languages/typescript'),
+                    scss: () => import('highlight.js/lib/languages/scss'),
+                    css: () => import('highlight.js/lib/languages/css'),
+                }
+            }
+        }
+    ],
     bootstrap: [AppComponent],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,

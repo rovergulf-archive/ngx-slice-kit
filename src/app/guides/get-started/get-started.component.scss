@@ -1,6 +1,14 @@
 @use './libs/ngx-slice-kit/src/lib/core/styles/core';
 
+main {
+    width: 100%;
+    //overflow-x: hidden;
 
-code {
-    padding: 8px;
+    pre {
+    }
+
+    code {
+        padding: 16px;
+    }
+
 }

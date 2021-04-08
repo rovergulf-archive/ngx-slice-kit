@@ -1,0 +1,8 @@
+<div class="source-code">
+    <span class="copy" (click)="copyToClipboard(value)">
+            <sdk-icon size="12" icon="check"
+                      [color]="copied ? 'var(--success-rgb)' : 'transparent'"></sdk-icon>
+        <ng-container>Copy snippet</ng-container>
+    </span>
+    <code [highlight]="value"></code>
+</div>
