@@ -18,19 +18,19 @@ export class DemoSlidesComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    setFirstValue(e) {
+    setFirstValue(e): void {
         this.firstValue = e;
     }
 
-    setSecValue(e) {
+    setSecValue(e): void {
         this.secValue = e;
     }
 
-    setThirdValue(e) {
+    setThirdValue(e): void {
         this.thirValue = e;
     }
 
-    setFourthValue(e) {
+    setFourthValue(e): void {
         this.fourthValue = e;
     }
 

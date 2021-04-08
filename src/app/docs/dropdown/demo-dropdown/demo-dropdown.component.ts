@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OptionModel } from "ngx-slice-kit";
-import { OPTIONS1, OPTIONS2, OPTIONS3 } from "../../../shared/values/dropdowns.values";
+import { OptionModel } from 'ngx-slice-kit';
+import { OPTIONS1, OPTIONS2, OPTIONS3 } from '../../../shared/values/dropdowns.values';
 
 @Component({
     selector: 'app-demo-dropdown',

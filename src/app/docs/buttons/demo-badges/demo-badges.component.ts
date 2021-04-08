@@ -10,7 +10,7 @@ export class DemoBadgesComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

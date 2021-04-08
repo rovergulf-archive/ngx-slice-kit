@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OptionModel } from "ngx-slice-kit";
-import { OPTIONS1, OPTIONS2, OPTIONS3, OPTIONS4, OPTIONS5 } from "../../../shared/values/dropdowns.values";
-import { debounceTime } from "rxjs/operators";
+import { OptionModel } from 'ngx-slice-kit';
+import { OPTIONS1, OPTIONS2, OPTIONS3, OPTIONS4, OPTIONS5 } from '../../../shared/values/dropdowns.values';
 
 @Component({
     selector: 'app-demo-autocomplete',
@@ -26,35 +25,30 @@ export class DemoAutocompleteComponent implements OnInit {
     }
 
     onValueChange1(ev: any): void {
-        console.log('onvalue change 1', ev);
         this.options1 = ev?.length > 0 ? OPTIONS1.filter(o => {
             return o.label.toLowerCase().includes(ev.toLowerCase());
         }) : OPTIONS1;
     }
 
     onValueChange2(ev: any): void {
-        console.log('onvalue change 2', ev);
         this.options2 = ev?.length > 0 ? OPTIONS2.filter(o => {
             return o.label.toLowerCase().includes(ev.toLowerCase());
         }) : OPTIONS2;
     }
 
     onValueChange3(ev: any): void {
-        console.log('onvalue change 3', ev);
         this.options3 = ev?.length > 0 ? OPTIONS3.filter(o => {
             return o.label.toLowerCase().includes(ev.toLowerCase());
         }) : OPTIONS3;
     }
 
     onValueChange4(ev: any): void {
-        console.log('onvalue change 4', ev);
         this.options4 = ev?.length > 0 ? OPTIONS4.filter(o => {
             return o.label.toLowerCase().includes(ev.toLowerCase());
         }) : OPTIONS4;
     }
 
     onValueChange5(ev: any): void {
-        console.log('onvalue change 5', ev);
         this.options5 = ev?.length > 0 ? OPTIONS5.filter(o => {
             return o.label.toLowerCase().includes(ev.toLowerCase());
         }) : OPTIONS5;
@@ -62,8 +56,7 @@ export class DemoAutocompleteComponent implements OnInit {
 
     checkSelect(target: string, val: any): void {
         if (val) {
-            console.log(target, val);
-            val ? this[target] = val : val;
+            this[target] = val;
         }
     }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { GLYPHS } from 'ngx-slice-kit';
 
-const NOT_PUBLIC = ['inkbe', 'ambassador', 'notifications_tear', 'verified']
+const NOT_PUBLIC = ['inkbe', 'ambassador', 'notifications_tear', 'verified'];
 
 @Component({
     selector: 'app-glyphs',
@@ -16,8 +16,8 @@ export class GlyphsComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
-        for (let key in GLYPHS) {
+    ngOnInit(): void {
+        for (const key in GLYPHS) {
             if (GLYPHS.hasOwnProperty(key)) {
                 if (NOT_PUBLIC.indexOf(key) < 0) {
                     this.glyphs.push(key);
