@@ -116,6 +116,6 @@ describe('CheckboxComponent', () => {
         expect(component.writeValue).not.toHaveBeenCalled();
         expect(component.onTouched).not.toHaveBeenCalled();
         expect(component.onChange).not.toHaveBeenCalled();
-    })
+    });
 
 });
