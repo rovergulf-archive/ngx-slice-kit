@@ -38,6 +38,22 @@ Design styling and animations.`,
     <sdk-radio [data]="radioData" [required]="true"></sdk-radio>
     <sdk-radio [data]="radioData" [small]="true"></sdk-radio>
 </div>`,
+                        component: `import { Component } from '@angular/core';
+
+@Component({
+    selector: 'app-component',
+    templateUrl: './app.component.html'
+})
+export class DemoRadioComponent implements OnInit {
+
+    radioData = [
+        {value: 1, name: 'Chiki'},
+        {value: 2, name: 'Briki'}
+    ];
+
+    constructor() {
+    }
+}`,
                         module: `import { ToggleModule } from 'ngx-slice-kit';
 
 @NgModule({
@@ -92,13 +108,13 @@ export class DemoToggleModule {
                 {
                     label: 'data',
                     type: 'any[]',
-                    description: '',
+                    description: 'Array of values',
                     required: true,
                 },
                 {
                     label: 'small',
                     type: 'boolean',
-                    description: '',
+                    description: 'Small sized radio',
                 },
                 {
                     label: 'error',
@@ -113,7 +129,7 @@ export class DemoToggleModule {
                 {
                     label: 'disabled',
                     type: 'boolean',
-                    description: '',
+                    description: 'Disable component interaction',
                 },
             ],
         };
