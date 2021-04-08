@@ -18,7 +18,7 @@ module.exports = function (config) {
         coverageReporter: {
             type: 'lcov',
             dir: require('path').join(__dirname, '../../coverage/ngx-slice-kit'),
-            file: "coverage.xml",
+            file: "coverage.txt",
             check: {
                 global: {
                     statements: 85,
@@ -43,7 +43,7 @@ module.exports = function (config) {
                 {type: 'html', dir:'../../coverage/ngx-slice-kit'},
                 {type: 'lcovonly'},
                 {type: 'text-summary'},
-                {type: 'json'}
+                {type: 'lcov'}
             ],
         },
         reporters: ['progress', 'kjhtml', 'coverage'],
