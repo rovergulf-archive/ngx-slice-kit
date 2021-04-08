@@ -13,9 +13,10 @@
             <div class="demo-container">
 
                 <!-- ng template ref -->
-                <ng-container *ngIf="d.templateRef">
+                <div class="example" *ngIf="d.templateRef">
                     <ng-container [ngTemplateOutlet]="d.templateRef"></ng-container>
-                </ng-container>
+                </div>
+
                 <span class="spacer"></span>
 
                 <!-- Source code -->
@@ -28,7 +29,7 @@
                     </sdk-tab>
 <!--                    <ng-container *ngFor="let v of getValues(d)">-->
 <!--                        <sdk-tab label="{{getValueTabName(v)}}">-->
-<!--                            <pre class="example">-->
+<!--                            <pre class="source">-->
 <!--                                <code [highlight]="d.values[v]"></code>-->
 <!--                            </pre>-->
 <!--                        </sdk-tab>-->
