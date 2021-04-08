@@ -18,6 +18,7 @@ import { StyleGuideComponent } from './style-guide/style-guide.component';
 import { TextStylesComponent } from './text-styles/text-styles.component';
 import { ThemingComponent } from './theming/theming.component';
 import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
+import { SharedModule } from '../shared/shared.module';
 
 const entryComponents = [];
 
@@ -40,26 +41,14 @@ const moduleDeclarations = [
 @NgModule({
     imports: [
         CommonModule,
-        SliceKitModule,
         HighlightModule,
         GuidesRoutingModule,
+        SharedModule,
     ],
     declarations: moduleDeclarations,
     exports: moduleDeclarations,
     entryComponents,
-    providers: [
-        {
-            provide: HIGHLIGHT_OPTIONS,
-            useValue: {
-                coreLibraryLoader: () => import('highlight.js/lib/core'),
-                languages: {
-                    typescript: () => import('highlight.js/lib/languages/typescript'),
-                    scss: () => import('highlight.js/lib/languages/scss'),
-                    css: () => import('highlight.js/lib/languages/css'),
-                }
-            }
-        }
-    ],
+    providers: [],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,
         NO_ERRORS_SCHEMA,
