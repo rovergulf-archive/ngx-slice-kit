@@ -98,4 +98,11 @@ describe('ProgressComponent', () => {
         fixture.detectChanges();
         expect(component.value).toEqual(20);
     });
+
+    it('should #value be equal #max if #value > #max', () => {
+        component.max = 100;
+        component.value = 200;
+
+        expect(component.value).toEqual(100);
+    })
 });
