@@ -135,4 +135,23 @@ describe('RadioComponent', () => {
         component.setDisabledState(false);
         expect(component.disabled).toEqual(false);
     });
+
+    it('should #registerOnTouched set #onTouched', () => {
+        const fn = () => 'test';
+        component.registerOnTouched(fn);
+        expect(component.onTouched).toEqual(fn);
+    });
+
+    it('should #regiserOnChange set #onChange', () => {
+        const fn = () => 'test';
+        component.registerOnChange(fn);
+        expect(component.onChange).toEqual(fn);
+    });
+
+    it('should do not write value if it does not exists', () => {
+        component.data = [{value: 1}];
+        component.writeValue(2);
+
+        expect(component.value).not.toEqual(1);
+    });
 });
