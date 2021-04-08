@@ -4,37 +4,38 @@ name: Build and Publish to GCR
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
 
 on:
-  release:
-    types: [created]
-
+    push:
+        tags: [ '*' ]
+env:
+    IMAGE: ${{ secrets.OCI_REGISTRY_IMAGE }}
 jobs:
-  setup-build-publish:
-    name: Setup, Build, and Publish
-    runs-on: ubuntu-latest
-    environment: gcr
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+    setup-build-publish:
+        name: Setup, Build, and Publish
+        runs-on: ubuntu-latest
+        environment: gcr
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v2
 
-      # Setup gcloud CLI
-      - uses: google-github-actions/setup-gcloud@v0.2.0
-        with:
-          service_account_key: ${{ secrets.GCR_ACCESS_CREDENTIALS }}
-          project_id: ${{ secrets.GKE_PROJECT }}
+            # Setup gcloud CLI
+            -   uses: google-github-actions/setup-gcloud@v0.2.0
+                with:
+                    service_account_key: ${{ secrets.GCR_ACCESS_CREDENTIALS }}
+                    project_id: ${{ secrets.GKE_PROJECT }}
 
-      # Configure Docker to use the gcloud command-line tool as a credential
-      # helper for authentication
-      - run: gcloud --quiet auth configure-docker
+            # Configure Docker to use the gcloud command-line tool as a credential
+            # helper for authentication
+            -   run: gcloud --quiet auth configure-docker
 
-      # Build the Docker image
-      - name: Build
-        run: |-
-          VERSION=$(git describe --abbrev=0)
-          docker build --no-cache -t $IMAGE:$VERSION -t $IMAGE:latest .
+            # Build the Docker image
+            -   name: Build
+                run: |-
+                    VERSION=$(git describe --abbrev=0)
+                    docker build --no-cache -t $IMAGE:$VERSION -t $IMAGE:latest .
 
-      # Push the Docker image to Google Container Registry
-      - name: Publish
-        run: |-
-          VERSION=$(git describe --abbrev=0)
-          docker push $IMAGE:$VERSION
-          docker push $IMAGE:latest
+            # Push the Docker image to Google Container Registry
+            -   name: Publish
+                run: |-
+                    VERSION=$(git describe --abbrev=0)
+                    docker push $IMAGE:$VERSION
+                    docker push $IMAGE:latest
