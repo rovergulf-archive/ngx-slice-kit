@@ -140,4 +140,16 @@ describe('ToggleComponent', () => {
         expect(component.onChange).toHaveBeenCalled();
         expect(component.onTouched).toHaveBeenCalled();
     });
+
+    it('should #registerOnTouched set #onTouched', () => {
+        const fn = () => 'test';
+        component.registerOnTouched(fn);
+        expect(component.onTouched).toEqual(fn);
+    });
+
+    it('should #regiserOnChange set #onChange', () => {
+        const fn = () => 'test';
+        component.registerOnChange(fn);
+        expect(component.onChange).toEqual(fn);
+    });
 });
