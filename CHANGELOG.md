@@ -20,7 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 web:
-- updated demo component 
+- updated demo component
+- demo component copy snippet method
 
 slice-kit:
 - `Icon-button` completely round button 
