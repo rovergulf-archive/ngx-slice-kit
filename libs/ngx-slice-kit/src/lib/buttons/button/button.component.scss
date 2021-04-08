@@ -73,12 +73,24 @@ button.sdk-button, a.sdk-button {
         border: 1px solid;
     }
 
-    // set sizes for round / icon button
-    &.sdk-round-button {
-        padding: 0;
+    // set radius for icon button
+    &.sdk-icon-button {
+        border-radius: 100% ;
         width: 44px;
-        border-radius: 100%;
-        font-size: 12px;
+        padding: 0;
+    }
+
+    &.sdk-icon-button.sdk-button--small {
+        width: 32px;
+    }
+
+    // set sizes for round button
+    &.sdk-round-button {
+        border-radius: 22px;
+    }
+    &.sdk-round-button.sdk-button--small {
+        border-radius: 16px;
+        font-size: 14px;
     }
 
     sdk-icon {
@@ -92,7 +104,7 @@ button.sdk-button, a.sdk-button {
                 @extend .sdk-#{$color}-color;
             }
 
-            &.sdk-round-button, &.sdk-raised-button, &.sdk-flat-button {
+            &.sdk-round-button, &.sdk-raised-button, &.sdk-flat-button, &.sdk-icon-button {
                 @extend .sdk-#{$color}-background;
             }
 

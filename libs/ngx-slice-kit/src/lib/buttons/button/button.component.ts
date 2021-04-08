@@ -11,11 +11,12 @@ const BUTTON_CLASS_NAMES = [
     'sdk-raised-button',
     'sdk-stroked-button',
     'sdk-round-button',
+    'sdk-icon-button',
 ];
 
 @Component({
     // tslint:disable-next-line:component-selector
-    selector: '[sdk-base-button], [sdk-flat-button], [sdk-raised-button], [sdk-stroked-button], [sdk-round-button]',
+    selector: '[sdk-base-button], [sdk-flat-button], [sdk-raised-button], [sdk-stroked-button], [sdk-round-button], [sdk-icon-button]',
     // templateUrl: './button.component.html',
     template: `
         <ng-content></ng-content>

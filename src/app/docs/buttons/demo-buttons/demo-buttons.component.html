@@ -82,11 +82,56 @@
                 <button sdk-round-button color="accent">Accent</button>
                 <button sdk-round-button color="warn">Warn</button>
                 <button sdk-round-button disabled>Disabled</button>
-                <button sdk-round-button color="regular">
+            </div>
+            <h3>Round buttons small</h3>
+            <div class="example flex-row flex-wrap layout-start-center">
+                <button sdk-round-button [small]="true">Primary</button>
+                <button sdk-round-button [small]="true" color="regular">Regular</button>
+                <button sdk-round-button [small]="true" color="success">Success</button>
+                <button sdk-round-button [small]="true" color="accent">Accent</button>
+                <button sdk-round-button [small]="true" color="warn">Warn</button>
+                <button sdk-round-button [small]="true" disabled>Disabled</button>
+            </div>
+            <h3>Icon buttons</h3>
+            <div class="example flex-row flex-wrap layout-start-center">
+                <button sdk-icon-button>
                     <sdk-icon></sdk-icon>
                 </button>
-                <button sdk-round-button color="basic">
-                    <sdk-icon></sdk-icon>
+                <button sdk-icon-button color="regular">
+                    <sdk-icon icon="android"></sdk-icon>
+                </button>
+                <button sdk-icon-button color="success">
+                    <sdk-icon icon="github"></sdk-icon>
+                </button>
+                <button sdk-icon-button color="accent">
+                    <sdk-icon icon="rovergulf"></sdk-icon>
+                </button>
+                <button sdk-icon-button color="warn">
+                    <sdk-icon icon="telegram"></sdk-icon>
+                </button>
+                <button sdk-icon-button color="basic">
+                    <sdk-icon icon="linkedin"></sdk-icon>
+                </button>
+            </div>
+            <h3>Icon buttons small</h3>
+            <div class="example flex-row flex-wrap layout-start-center">
+                <button sdk-icon-button [small]="true">
+                    <sdk-icon size="16"></sdk-icon>
+                </button>
+                <button sdk-icon-button [small]="true" color="regular">
+                    <sdk-icon size="16" icon="android"></sdk-icon>
+                </button>
+                <button sdk-icon-button [small]="true" color="success">
+                    <sdk-icon size="16" icon="github"></sdk-icon>
+                </button>
+                <button sdk-icon-button [small]="true" color="accent">
+                    <sdk-icon size="16" icon="rovergulf"></sdk-icon>
+                </button>
+                <button sdk-icon-button [small]="true" color="warn">
+                    <sdk-icon size="16" icon="telegram"></sdk-icon>
+                </button>
+                <button sdk-icon-button [small]="true" color="basic">
+                    <sdk-icon size="16" icon="linkedin"></sdk-icon>
                 </button>
             </div>
             <h3>Button with icon</h3>
