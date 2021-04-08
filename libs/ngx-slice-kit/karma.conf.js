@@ -16,7 +16,7 @@ module.exports = function (config) {
             clearContext: false // leave Jasmine Spec Runner output visible in browser
         },
         coverageReporter: {
-            type: 'text',
+            type: 'lcov',
             dir: require('path').join(__dirname, '../../coverage/ngx-slice-kit'),
             file: "coverage.txt",
             check: {
@@ -42,10 +42,11 @@ module.exports = function (config) {
             reporters:[
                 {type: 'html', dir:'../../coverage/ngx-slice-kit'},
                 {type: 'lcovonly'},
-                {type: 'text-summary'}
+                {type: 'text-summary'},
+                {type: 'lcov'}
             ],
         },
-        reporters: ['progress', 'kjhtml'],
+        reporters: ['progress', 'kjhtml', 'coverage'],
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,

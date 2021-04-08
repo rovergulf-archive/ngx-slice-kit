@@ -112,7 +112,8 @@
                             "tsconfig.server.json"
                         ],
                         "exclude": [
-                            "**/node_modules/**"
+                            "**/node_modules/**",
+                            "server.ts"
                         ]
                     }
                 },

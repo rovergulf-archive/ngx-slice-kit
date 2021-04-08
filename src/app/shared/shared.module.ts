@@ -36,7 +36,8 @@ const sharedModuleDeclarations = [
     declarations: sharedModuleDeclarations,
     exports: [
         ...sharedModuleDeclarations,
-        SliceKitModule
+        SliceKitModule,
+        HighlightModule,
     ],
     entryComponents,
     providers: [

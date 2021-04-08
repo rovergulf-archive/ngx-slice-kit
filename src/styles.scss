@@ -58,29 +58,6 @@ p, span, h1, h2, h3, h4 {
     }
 }
 
-pre.example {
-    position: relative;
-    min-width: 288px;
-    code {
-        padding: 8px;
-    }
-
-    .example-copy {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        color: #212121;
-        font-size: 12px;
-        width: 80px;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    pre.example {
-        min-width: 480px;
-    }
-}
-
 span.spacer {
     padding: 8px;
 }

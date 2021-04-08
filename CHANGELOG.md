@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] v0.9.0
+## [Unreleased] v0.10.0
 
 ## 9 Apr 2021
 
@@ -16,18 +16,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## Released [v0.9.0]
+
 ## 8 Apr 2021
 
 ### Added
+web:
+- updated demo component
+- demo component copy snippet method
+
+slice-kit:
 - `Icon-button` completely round button 
 
 ### Changed
+slice-kit:
 - `Round-button` is now not completely round, but has rounded edges
+- peer dependencies up to 11.2
 
 ### Fixed
+slice-kit:
 - `Raised-button` now has shadows
 - `sdk-tabs-group` change detection
 - `sdk-tab` can work with *ngFor now
+- `sdk-divider` color
 
 ### Removed
 
@@ -285,8 +296,10 @@ Fix scroll issue in `tabs` component
 - updated Angular `core` and `cli` versions up to latest 11.1+ closes #3
 
 
-[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.8.1...main
-[v0.8.1]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.1...v0.8.2
+[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.9.0...main
+[v0.10.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.0...v0.10.0
+[v0.9.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.2...v0.9.0
+[v0.8.2]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.1...v0.8.2
 [v0.8.1]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.0...v0.8.1
 [v0.8.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.6.5...v0.7.0

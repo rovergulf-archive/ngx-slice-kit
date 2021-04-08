@@ -13,24 +13,26 @@
             <div class="demo-container">
 
                 <!-- ng template ref -->
-                <ng-container *ngIf="d.templateRef">
+                <p>Demo:</p>
+                <div class="example" *ngIf="d.templateRef">
                     <ng-container [ngTemplateOutlet]="d.templateRef"></ng-container>
-                </ng-container>
+                </div>
+
                 <span class="spacer"></span>
 
                 <!-- Source code -->
                 <p>Source code:</p>
                 <sdk-tab-group>
-<!--                    <sdk-tab label="app.component.html">-->
-<!--                            <pre class="example">-->
-<!--                                <code [highlight]="d.values.html"></code>-->
-<!--                            </pre>-->
-<!--                    </sdk-tab>-->
-                        <sdk-tab label="{{getValueTabName(v)}}" *ngFor="let v of getValues(d)">
-                            <pre class="example">
-                                <code [highlight]="d.values[v]"></code>
-                            </pre>
-                        </sdk-tab>
+                    <sdk-tab *ngFor="let v of getValues(d)" label="{{getValueTabName(v)}}">
+                        <pre class="source">
+                            <span class="copy" (click)="copyToClipboard(d.values[v])">
+                                    <sdk-icon size="12" icon="check"
+                                              [color]="copied ? 'var(--success-rgb)' : 'transparent'"></sdk-icon>
+                                <ng-container>Copy snippet</ng-container>
+                            </span>
+                            <code [highlight]="d.values[v]"></code>
+                        </pre>
+                    </sdk-tab>
                 </sdk-tab-group>
             </div>
         </ng-container>

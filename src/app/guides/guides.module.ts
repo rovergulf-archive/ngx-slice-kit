@@ -17,6 +17,7 @@ import { SchematicsComponent } from './schematics/schematics.component';
 import { StyleGuideComponent } from './style-guide/style-guide.component';
 import { TextStylesComponent } from './text-styles/text-styles.component';
 import { ThemingComponent } from './theming/theming.component';
+import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
 
 const entryComponents = [];
 
@@ -40,12 +41,25 @@ const moduleDeclarations = [
     imports: [
         CommonModule,
         SliceKitModule,
+        HighlightModule,
         GuidesRoutingModule,
     ],
     declarations: moduleDeclarations,
     exports: moduleDeclarations,
     entryComponents,
-    providers: [],
+    providers: [
+        {
+            provide: HIGHLIGHT_OPTIONS,
+            useValue: {
+                coreLibraryLoader: () => import('highlight.js/lib/core'),
+                languages: {
+                    typescript: () => import('highlight.js/lib/languages/typescript'),
+                    scss: () => import('highlight.js/lib/languages/scss'),
+                    css: () => import('highlight.js/lib/languages/css'),
+                }
+            }
+        }
+    ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,
         NO_ERRORS_SCHEMA,

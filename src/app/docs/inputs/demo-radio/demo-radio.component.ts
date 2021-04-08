@@ -38,6 +38,18 @@ Design styling and animations.`,
     <sdk-radio [data]="radioData" [required]="true"></sdk-radio>
     <sdk-radio [data]="radioData" [small]="true"></sdk-radio>
 </div>`,
+                        module: `import { ToggleModule } from 'ngx-slice-kit';
+
+@NgModule({
+    imports: [
+        CommonModule,
+        FormsModule,
+        // add ToggleModule export
+        RadioModule,
+    ],
+})
+export class DemoToggleModule {
+}`,
                     },
                 },
                 {

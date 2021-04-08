@@ -3,10 +3,10 @@
     "version": "0.9.0",
     "schematics": "./schematics/collection.json",
     "peerDependencies": {
-        "@angular/common": "^11.1.0",
-        "@angular/core": "^11.1.0",
-        "@angular/router": "^11.1.0",
-        "@angular/cdk": "^11.1.0"
+        "@angular/common": "^11.2.0",
+        "@angular/core": "^11.2.0",
+        "@angular/router": "^11.2.0",
+        "@angular/cdk": "^11.2.0"
     },
     "ng-add": {
         "save": "devDependencies"
@@ -14,8 +14,21 @@
     "license": "MIT",
     "homepage": "https://github.com/rovergulf/ngx-slice-kit",
     "url": "https://github.com/rovergulf/ngx-slice-kit",
-    "email": "disorder@rovergulf.net",
-    "author": "disorder@rovergulf.net",
+    "email": "support@rovergulf.net",
+    "author": {
+        "name": "Dmitrii Limonov",
+        "email": "d@rovergulf.net"
+    },
+    "maintainers": [
+        {
+            "name": "Dmitrii Limonov",
+            "email": "d@rovergulf.net"
+        },
+        {
+            "name": "Anton Sukhov",
+            "email": "helloguis@rovergulf.net"
+        }
+    ],
     "bugs": {
         "url": "https://github.com/rovergulf/ngx-slice-kit/issues"
     },

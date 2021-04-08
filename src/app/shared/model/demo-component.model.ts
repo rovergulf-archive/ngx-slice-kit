@@ -2,13 +2,13 @@ export class DemoExample {
     title: string;
     description: string;
     values: {
-        html: string,
+        html?: string,
         component?: string,
         module?: string,
         styles?: string,
     };
 
-    templateRef: any;
+    templateRef?: any;
 
     constructor(src: DemoExample) {
         Object.assign(this, src);

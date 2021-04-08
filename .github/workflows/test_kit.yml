@@ -15,19 +15,15 @@ on:
 jobs:
   test-kit:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 15.x]
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm run lint ngx-slice-kit
-    - run: npm run test:kit
-    - uses: actions/checkout@v2
-    - uses: codecov/codecov-action@v1
-      with:
-        directory: ./coverage
+      - uses: actions/checkout@v2
+      - name: Use Node.js 15.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '15.x'
+      - run: npm install
+      - run: npm run lint
+      - run: npm run test:kit
+      - run: npm run codecov
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

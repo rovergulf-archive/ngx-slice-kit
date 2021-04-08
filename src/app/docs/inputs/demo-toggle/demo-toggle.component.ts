@@ -67,7 +67,7 @@ export class DemoToggleModule {
                     required: false,
                 },
                 {
-                    label: 'required',
+                    label: 'small',
                     type: 'boolean',
                     description: '',
                     required: false,
