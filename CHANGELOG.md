@@ -25,8 +25,10 @@ web:
 - updated demo component
 - demo component copy snippet method
 
+
 slice-kit:
 - `Icon-button` completely round button 
+- several tests for `radio`/`checkbox`/`input`/`textarea`/`progress`/`toggle`/`slider`/`popup`
 
 ### Changed
 slice-kit:
