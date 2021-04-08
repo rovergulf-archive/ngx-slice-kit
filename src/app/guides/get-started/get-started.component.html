@@ -1,17 +1,38 @@
 <main>
     <h1>Get started</h1>
-    <section class="flex-column layout-start-start">
-        <h3>1. Install Angular CDK and ngx-slice-kit</h3>
-        <code>
-            ng add @angular/cdk
-            ng add ngx-slice-kit
-        </code>
-        <p>or</p>
-        <code>
-            npm install @angular/cdk ngx-slice-kit --save
-        </code>
 
-        <h3>2. Read <a routerLink="/docs">Docs</a> and go on!</h3>
-        <a sdk-flat-button routerLink="/docs">Go to API Documentation</a>
-    </section>
+    <span class="spacer"></span>
+
+    <h3>1. Install Angular CDK and ngx-slice-kit</h3>
+    <sdk-tab-group>
+        <sdk-tab label="npm install">
+                <pre class="source">
+                    <code [highlight]="npmExample"></code>
+                </pre>
+        </sdk-tab>
+        <sdk-tab label="ng add">
+                <pre class="source">
+                    <code [highlight]="ngExample"></code>
+                </pre>
+        </sdk-tab>
+    </sdk-tab-group>
+
+    <span class="spacer"></span>
+
+    <h3>2. Import ngx-slice-kit to your app</h3>
+    <pre class="source">
+        <code [highlight]="appModuleExample"></code>
+    </pre>
+
+    <span class="spacer"></span>
+
+    <h3>3. Apply sdk-theme to your app:</h3>
+    <pre class="source">
+        <code [highlight]="themeExample"></code>
+    </pre>
+
+    <span class="spacer"></span>
+
+    <h3>4. Read <a routerLink="/docs">docs</a> and go on!</h3>
+    <a sdk-flat-button routerLink="/docs">Go to API Documentation</a>
 </main>
