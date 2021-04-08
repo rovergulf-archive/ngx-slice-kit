@@ -104,5 +104,5 @@ describe('ProgressComponent', () => {
         component.value = 200;
 
         expect(component.value).toEqual(100);
-    })
+    });
 });

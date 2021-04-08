@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TextareaComponent } from './textarea.component';
 import { By } from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
-import {fromEvent} from 'rxjs';
 
 describe('TextareaComponent', () => {
     let component: TextareaComponent;
