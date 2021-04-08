@@ -1,6 +1,6 @@
 [![npm version](https://badge.fury.io/js/ngx-slice-kit.svg)](https://badge.fury.io/js/ngx-slice-kit)
 [![Node.js CI](https://github.com/rovergulf/ngx-slice-kit/actions/workflows/test_kit.yml/badge.svg)](https://github.com/rovergulf/ngx-slice-kit/actions/workflows/test_kit.yml)
-![Gitlab code coverage](https://img.shields.io/gitlab/coverage/rovergulf/ngx-slice-kit/main)  
+[![codecov](https://codecov.io/gh/rovergulf/ngx-slice-kit/branch/main/graph/badge.svg?token=4GYI7CCLN5)](https://codecov.io/gh/rovergulf/ngx-slice-kit)  
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rovergulf/ngx-slice-kit/@angular/core)
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rovergulf/ngx-slice-kit/@angular/cdk)
 
