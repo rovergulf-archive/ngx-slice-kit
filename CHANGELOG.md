@@ -6,6 +6,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.9.0
 
+## 9 Apr 2021
+
+### Added
+
+### Changed
+
+### Fixed
+
+### Removed
+
+## 8 Apr 2021
+
+### Added
+- `Icon-button` completely round button 
+
+### Changed
+- `Round-button` is now not completely round, but has rounded edges
+
+### Fixed
+- `Raised-button` now has shadows
+
+### Removed
+
 ## Released [v0.8.1]
 
 ## 6 Apr 2021
