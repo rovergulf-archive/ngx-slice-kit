@@ -305,13 +305,53 @@ describe('InputComponent', () => {
         component.writeValue(newValue);
         component.blurEvent.subscribe(e => {
             eventBody = e;
+
+            expect(eventBody.value).toEqual(expectedEventBody.value);
+            expect(eventBody.eventName).toEqual(expectedEventBody.eventName);
+            expect(eventBody.target).toEqual(expectedEventBody.target);
         });
         inputEl.triggerEventHandler('blur', null);
         fixture.detectChanges();
 
-        expect(eventBody.value).toEqual(expectedEventBody.value);
-        expect(eventBody.eventName).toEqual(expectedEventBody.eventName);
-        expect(eventBody.target).toEqual(expectedEventBody.target);
+
+    });
+
+    it('should #setDisabled set #disabled property equal his argument', () => {
+        component.setDisabledState(true);
+        expect(component.disabled).toEqual(true);
+
+        component.setDisabledState(false);
+        expect(component.disabled).toEqual(false);
+    });
+
+    it('should #registerOnTouched set #onTouched', () => {
+        const fn = () => 'test';
+        component.registerOnTouched(fn);
+        expect(component.onTouched).toEqual(fn);
+    });
+
+    it('should #regiserOnChange set #onChange', () => {
+        const fn = () => 'test';
+        component.registerOnChange(fn);
+        expect(component.onChange).toEqual(fn);
+    });
+
+    it('should input native element be focused if #autofocus is true and #disabled is false after content was init', () => {
+        spyOn(component.inputElementRef.nativeElement, 'focus');
+        component.autofocus = true;
+        component.disabled = false;
+        component.ngAfterContentInit();
+
+        expect(component.inputElementRef.nativeElement.focus).toHaveBeenCalled();
+    });
+
+    it('should input native element do not be focused if #autofocus is false or #disabled is true after content was init', () => {
+        spyOn(component.inputElementRef.nativeElement, 'focus');
+        component.autofocus = false;
+        component.disabled = true;
+        component.ngAfterContentInit();
+
+        expect(component.inputElementRef.nativeElement.focus).not.toHaveBeenCalled();
     });
 
     // it('should autocomplete set #focused as true and add focused classes', () => {

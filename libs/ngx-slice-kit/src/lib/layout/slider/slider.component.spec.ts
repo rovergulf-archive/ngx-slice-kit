@@ -548,7 +548,7 @@ describe('SliderComponent', () => {
         const dArg = 64000;
         const dRects = component.track.nativeElement.getBoundingClientRect();
 
-        expect(component.getCoords(dArg)).toEqual(100); // (dRects.right - dRects.left) / dRects.width * 100;
+        expect(component.getCoords(dArg)).toEqual(100); // (dRects.right - dRects.left) / dRects.width * 100;s
     });
 
     it('should #moveThumb be called by #pointerdown event on track-wrapper element', () => {
@@ -666,10 +666,6 @@ describe('SliderComponent', () => {
         expect(component.moved.emit).toHaveBeenCalled();
     });
 
-
-
-
-
     it('should #pointerMove correctly set #multiThumbCoords if #isMultipleDrugisMultipleDrag', () => {
         const event = new PointerEvent('pointermove', {clientX: 10});
         component.isDrag = false;
@@ -737,6 +733,7 @@ describe('SliderComponent', () => {
         const event = new PointerEvent('pointerdown');
         el.dispatchEvent(event);
         expect(component.moved.emit).not.toHaveBeenCalled();
+        expect(component.moveThumb(event)).toBeUndefined();
     });
 
     it('should #moveThumb call #setGradient method', () => {

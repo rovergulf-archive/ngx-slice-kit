@@ -84,4 +84,38 @@ describe('CheckboxComponent', () => {
         expect(checkbox.querySelector('.sdk-checkbox__error')).toBeTruthy();
         expect(checkbox.querySelector('.sdk-checkbox__error').textContent.trim()).toEqual(errorText);
     });
+
+    it('should #setDisabled set #disabled property equal his argument', () => {
+        component.setDisabledState(true);
+        expect(component.disabled).toEqual(true);
+
+        component.setDisabledState(false);
+        expect(component.disabled).toEqual(false);
+    });
+
+    it('should #registerOnTouched set #onTouched', () => {
+        const fn = () => 'test';
+        component.registerOnTouched(fn);
+        expect(component.onTouched).toEqual(fn);
+    });
+
+    it('should #regiserOnChange set #onChange', () => {
+        const fn = () => 'test';
+        component.registerOnChange(fn);
+        expect(component.onChange).toEqual(fn);
+    });
+
+    it('should #onclick() do nothing if #disabled is true', () => {
+        spyOn(component, 'writeValue');
+        spyOn(component, 'onTouched');
+        spyOn(component, 'onChange');
+        component.disabled = true;
+
+        component.onclick();
+
+        expect(component.writeValue).not.toHaveBeenCalled();
+        expect(component.onTouched).not.toHaveBeenCalled();
+        expect(component.onChange).not.toHaveBeenCalled();
+    });
+
 });

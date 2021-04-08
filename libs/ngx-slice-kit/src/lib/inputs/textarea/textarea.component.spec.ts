@@ -275,4 +275,32 @@ describe('TextareaComponent', () => {
 
         expect(el).toBeNull();
     });
+
+    it('should #setDisabled set #disabled property equal his argument', () => {
+        component.setDisabledState(true);
+        expect(component.disabled).toEqual(true);
+
+        component.setDisabledState(false);
+        expect(component.disabled).toEqual(false);
+    });
+
+    it('should #registerOnTouched set #onTouched', () => {
+        const fn = () => 'test';
+        component.registerOnTouched(fn);
+        expect(component.onTouched).toEqual(fn);
+    });
+
+    it('should #regiserOnChange set #onChange', () => {
+        const fn = () => 'test';
+        component.registerOnChange(fn);
+        expect(component.onChange).toEqual(fn);
+    });
+
+    it('should textarea element has correct size if #fullWidth is true', () => {
+        component.fullWidth = true;
+        component.ngOnInit();
+
+        const parentElWidth = textareaEl.parentElement.offsetWidth;
+        expect(component.textarea.nativeElement.style.width).toEqual(`${parentElWidth}px`);
+    });
 });
