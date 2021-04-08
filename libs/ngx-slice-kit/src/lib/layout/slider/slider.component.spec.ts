@@ -765,8 +765,4 @@ describe('SliderComponent', () => {
         expect(component.setGradient).toHaveBeenCalled();
         expect(component.calcValue).toHaveBeenCalled();
     });
-
-    it('should', () => {
-
-    });
 });

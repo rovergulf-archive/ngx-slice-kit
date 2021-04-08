@@ -3,6 +3,8 @@ import {PopupService} from './popup.service';
 import {PLATFORM_ID} from '@angular/core';
 import {PopupInterface} from './popup.interface';
 import {DropdownService} from '../../dropdowns/dropdown.service';
+import {combineAll} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 
 describe('PopupService', () => {
@@ -60,6 +62,10 @@ describe('PopupService', () => {
             service.showPopup(stubOpts);
 
             expect(service.opened).toBeTrue();
+        });
+
+        it('should #showPopup return instance of Observable', () => {
+            expect(service.showPopup()).toBeInstanceOf(Observable);
         });
     });
 });
