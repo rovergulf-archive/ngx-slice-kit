@@ -3,7 +3,7 @@
 
 main {
     @extend .flex-column;
-    @extend .layout-start-stretch;
+    @extend .layout-start-start;
 
     & > * {
         margin: 16px auto 8px;
@@ -29,8 +29,14 @@ main {
         }
 
         .example {
+            @extend .flex-column;
+            @extend .layout-start-start;
             padding: 16px;
             background-color: rgba(var(--regular-raw), 0.1);
+
+            &>* {
+                margin-bottom: 8px;
+            }
         }
     }
 

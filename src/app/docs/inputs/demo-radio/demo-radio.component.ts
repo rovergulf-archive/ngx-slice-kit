@@ -60,7 +60,7 @@ export class DemoRadioComponent implements OnInit {
     imports: [
         CommonModule,
         FormsModule,
-        // add ToggleModule export
+        // add RadioModule export
         RadioModule,
     ],
 })
@@ -101,33 +101,33 @@ export class DemoToggleModule {
             ],
             apis: [
                 {
-                    label: 'label',
+                    label: '[label]',
                     type: 'string',
                     description: 'Label value',
                 },
                 {
-                    label: 'data',
+                    label: '[data]',
                     type: 'any[]',
                     description: 'Array of values',
                     required: true,
                 },
                 {
-                    label: 'small',
+                    label: '[small]',
                     type: 'boolean',
                     description: 'Small sized radio',
                 },
                 {
-                    label: 'error',
+                    label: '[error]',
                     type: 'string',
                     description: 'Error caption text value',
                 },
                 {
-                    label: 'required',
+                    label: '[required]',
                     type: 'boolean',
                     description: 'Defines if form value is required',
                 },
                 {
-                    label: 'disabled',
+                    label: '[disabled]',
                     type: 'boolean',
                     description: 'Disable component interaction',
                 },

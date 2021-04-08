@@ -1,36 +1,26 @@
-<div class="view">
-    <h1 class="h2">Textarea</h1>
-    <div>
-        <h3>Default textarea</h3>
-        <div class="textarea-container flex-row flex-wrap layout-start-start">
-            <sdk-textarea></sdk-textarea>
-        </div>
-        <h3>Not resizable textarea</h3>
-        <div class="textarea-container flex-row flex-wrap layout-start-start">
-            <sdk-textarea [resizable]="false" placeholder="Placeholder text"></sdk-textarea>
-        </div>
-        <h3>Textarea with label</h3>
-        <div class="textarea-container flex-row flex-wrap layout-start-start">
-            <sdk-textarea label="Label text" placeholder="Placeholder text"></sdk-textarea>
-            <sdk-textarea [small]="true" label="Label text" placeholder="Placeholder text"></sdk-textarea>
-        </div>
-        <h3>Textarea with label + disabled</h3>
-        <div class="textarea-container flex-row flex-wrap layout-start-start">
-            <sdk-textarea [disabled]="true" label="Label text" placeholder="Placeholder text"></sdk-textarea>
-        </div>
-        <h3>Default + error / Small + error </h3>
-        <div class="textarea-container flex-row flex-wrap layout-start-start">
-            <sdk-textarea error="Error text" placeholder="Placeholder text"></sdk-textarea>
-            <sdk-textarea [small]="true" error="Error text"></sdk-textarea>
-        </div>
-        <h3>Default + caption / Small + caption </h3>
-        <div class="textarea-container flex-row flex-wrap layout-start-start">
-            <sdk-textarea caption="Caption text"></sdk-textarea>
-            <sdk-textarea [small]="true" caption="Caption text"></sdk-textarea>
-        </div>
-        <h3>Full width + caption </h3>
-        <div class="textarea-container flex-row flex-wrap layout-start-start">
-            <sdk-textarea [fullWidth]="true" caption="Caption text"></sdk-textarea>
-        </div>
-    </div>
-</div>
+<lib-demo [page]="page">
+
+    <!-- default -->
+    <ng-template #defaultRef>
+        <sdk-textarea></sdk-textarea>
+    </ng-template>
+    <!-- label and placeholder -->
+    <ng-template #labelRef>
+        <sdk-textarea label="Label text" placeholder="Placeholder text"></sdk-textarea>
+    </ng-template>
+    <!-- no resize -->
+    <ng-template #noResizeRef>
+        <sdk-textarea [resizable]="false" placeholder="Placeholder text"></sdk-textarea>
+    </ng-template>
+    <!-- caption & error -->
+    <ng-template #captionsRef>
+        <sdk-textarea error="Error text" placeholder="Placeholder text"></sdk-textarea>
+        <span class="spacer"></span>
+        <sdk-textarea [small]="true" caption="Caption text"></sdk-textarea>
+    </ng-template>
+    <!-- full width -->
+    <ng-template #fullWidthRef>
+        <sdk-textarea [fullWidth]="true" Label="Full width caption"></sdk-textarea>
+    </ng-template>
+
+</lib-demo>
