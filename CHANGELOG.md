@@ -32,6 +32,8 @@ slice-kit:
 ### Fixed
 slice-kit:
 - `Raised-button` now has shadows
+- `sdk-tabs-group` change detection
+- `sdk-tab` can work with *ngFor now
 
 ### Removed
 
