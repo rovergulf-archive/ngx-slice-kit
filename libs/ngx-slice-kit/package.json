@@ -14,8 +14,21 @@
     "license": "MIT",
     "homepage": "https://github.com/rovergulf/ngx-slice-kit",
     "url": "https://github.com/rovergulf/ngx-slice-kit",
-    "email": "disorder@rovergulf.net",
-    "author": "disorder@rovergulf.net",
+    "email": "support@rovergulf.net",
+    "author": {
+        "name": "Dmitrii Limonov",
+        "email": "d@rovergulf.net"
+    },
+    "maintainers": [
+        {
+            "name": "Dmitrii Limonov",
+            "email": "d@rovergulf.net"
+        },
+        {
+            "name": "Anton Sukhov",
+            "email": "helloguis@rovergulf.net"
+        }
+    ],
     "bugs": {
         "url": "https://github.com/rovergulf/ngx-slice-kit/issues"
     },
