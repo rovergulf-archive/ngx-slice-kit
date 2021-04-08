@@ -19,12 +19,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 8 Apr 2021
 
 ### Added
+web:
+- udpated demo component 
+
+slice-kit:
 - `Icon-button` completely round button 
 
 ### Changed
+slice-kit:
 - `Round-button` is now not completely round, but has rounded edges
 
 ### Fixed
+slice-kit:
 - `Raised-button` now has shadows
 
 ### Removed
