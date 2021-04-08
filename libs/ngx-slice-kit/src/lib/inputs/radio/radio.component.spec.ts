@@ -127,4 +127,12 @@ describe('RadioComponent', () => {
         expect(radio.querySelector('.sdk-radio__error')).toBeTruthy();
         expect(radio.querySelector('.sdk-radio__error').textContent.trim()).toEqual(errorText);
     });
+
+    it('should #setDisabled set #disabled property equal his argument', () => {
+        component.setDisabledState(true);
+        expect(component.disabled).toEqual(true);
+
+        component.setDisabledState(false);
+        expect(component.disabled).toEqual(false);
+    });
 });
