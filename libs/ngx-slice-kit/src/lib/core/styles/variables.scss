@@ -27,6 +27,7 @@ $alphas: 10, 20, 30, 40, 50, 60, 70, 80, 90 100;
 
         &:hover {
             color: var(--#{$color}-a100-rgb);
+            background-color: var(--#{$color}-a10-rgb);
         }
 
         &.active, &--active {

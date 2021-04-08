@@ -65,7 +65,7 @@ button.sdk-button, a.sdk-button {
 
     // set 'box-shadow' for raised button
     &.sdk-raised-button:not(disabled) {
-        box-shadow: 0 2px 4px rgba(var(--base-raw), 0.4);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     // set 'border' for stroked button
@@ -111,6 +111,25 @@ button.sdk-button, a.sdk-button {
             &.sdk-stroked-button {
                 @extend .sdk-#{$color}-border;
             }
+        }
+    }
+
+    // override by specific styles for regular buttons
+    &--regular {
+        &.sdk-base-button, &.sdk-stroked-button {
+            color: var(--regular-text);
+
+            &:hover {
+                color: var(--regular-text);
+            }
+
+            &.active, &--active {
+                color: var(--regular-text);
+            }
+        }
+
+        &.sdk-stroked-button {
+            border-color: var(--regular-a90-rgb);
         }
     }
 
