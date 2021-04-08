@@ -1,0 +1,10 @@
+@use './libs/ngx-slice-kit/src/lib/core/styles/core';
+
+main {
+    @extend .flex-column;
+    @extend .layout-start-start;
+
+    .gets {
+        color: var(--primary-a80);
+    }
+}

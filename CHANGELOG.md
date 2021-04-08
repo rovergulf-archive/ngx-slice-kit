@@ -31,6 +31,7 @@ slice-kit:
 ### Changed
 slice-kit:
 - `Round-button` is now not completely round, but has rounded edges
+- peer dependencies up to 11.2
 
 ### Fixed
 slice-kit:
