@@ -27,6 +27,7 @@ jobs:
       - run: npm install
       - run: npm run lint ngx-slice-kit
       - run: npm run test:kit
-      - run: npm run codecov
+      - name: Codecov Report
+        run: npm run codecov
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
