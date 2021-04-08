@@ -32,12 +32,12 @@ jobs:
       # Build the Docker image
       - name: Build
         run: |-
-          VERSION=$(git describe --abbrev=0)
+          VERSION=$(cat package.json | grep version | awk '{print $2}' | tr -d \"\,)
           docker build --no-cache -t $IMAGE:$VERSION -t $IMAGE:latest .
 
       # Push the Docker image to Google Container Registry
       - name: Publish
         run: |-
-          VERSION=$(git describe --abbrev=0)
+          VERSION=$(cat package.json | grep version | awk '{print $2}' | tr -d \"\,)
           docker push $IMAGE:$VERSION
           docker push $IMAGE:latest
