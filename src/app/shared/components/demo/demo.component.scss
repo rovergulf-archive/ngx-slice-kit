@@ -3,7 +3,7 @@
 
 main {
     @extend .flex-column;
-    @extend .layout-start-stretch;
+    @extend .layout-start-start;
 
     & > * {
         margin: 16px auto 8px;
@@ -20,10 +20,23 @@ main {
     .demo-container {
         @extend .flex-column;
         @extend .layout-start-stretch;
+        width: 100%;
+        overflow: hidden;
+
+        .source-wrap {
+            width: 100%;
+            overflow-x: auto;
+        }
 
         .example {
+            @extend .flex-column;
+            @extend .layout-start-start;
             padding: 16px;
             background-color: rgba(var(--regular-raw), 0.1);
+
+            &>* {
+                margin-bottom: 8px;
+            }
         }
     }
 
@@ -87,48 +100,5 @@ main {
                 }
             }
         }
-    }
-}
-
-pre.source {
-    position: relative;
-    min-width: 288px;
-    padding: 0;
-
-    code {
-        padding: 8px;
-    }
-
-    .copy {
-        position: absolute;
-        background: rgba(var(--base-raw), 0.1);
-        z-index: 1;
-        top: 16px;
-        right: 4px;
-        font-size: 12px;
-        padding: 4px 8px;
-        border-radius: 2px;
-        cursor: pointer;
-        opacity: 0;
-        transition: all .3s ease;
-        white-space: nowrap;
-        width: 120px;
-        text-align: right;
-
-        &:hover {
-            opacity: 0.75;
-        }
-    }
-
-    &:hover {
-        .copy {
-            opacity: 1;
-        }
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    pre.source {
-        min-width: 480px;
     }
 }

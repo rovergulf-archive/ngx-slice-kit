@@ -61,21 +61,21 @@ export class DemoToggleModule {
             ],
             apis: [
                 {
-                    label: 'isActive',
+                    label: '[isActive]',
                     type: 'boolean',
-                    description: '',
+                    description: 'Component state value',
                     required: false,
                 },
                 {
-                    label: 'small',
+                    label: '[small]',
                     type: 'boolean',
-                    description: '',
+                    description: 'Small sized toggle',
                     required: false,
                 },
                 {
-                    label: 'disabled',
+                    label: '[disabled]',
                     type: 'boolean',
-                    description: '',
+                    description: 'Disable component interaction',
                     required: false,
                 },
             ],

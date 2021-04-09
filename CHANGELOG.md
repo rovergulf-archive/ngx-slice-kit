@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## Released [v0.9.1]
+
 ## 9 Apr 2021
 
 ### Added
@@ -32,6 +34,22 @@ slice-kit:
 
 ### Removed
 
+## 8 Apr 2021
+
+### Added
+slice-kit:
+- several tests for `radio`/`checkbox`/`input`/`textarea`/`progress`/`toggle`/`slider`/`popup`
+
+web:
+- `lib-code-snippet` component for code highlighted examples
+
+### Changed
+
+### Fixed
+- adaptive view for demos, closes #169
+
+### Removed
+
 ## Released [v0.9.0]
 
 ## 8 Apr 2021
@@ -43,8 +61,7 @@ web:
 
 
 slice-kit:
-- `Icon-button` completely round button 
-- several tests for `radio`/`checkbox`/`input`/`textarea`/`progress`/`toggle`/`slider`/`popup`
+- `Icon-button` completely round button
 
 ### Changed
 slice-kit:
@@ -58,6 +75,8 @@ slice-kit:
 - `sdk-tab` can work with *ngFor now
 - `sdk-divider` color
 
+### Removed
+
 ## Released [v0.8.1]
 
 ## 6 Apr 2021
@@ -65,6 +84,8 @@ slice-kit:
 ### Added
 web:
 - `ApiDefinition` and `DemoExample` models
+
+### Changed
 
 ### Fixed
 engine-kit:

@@ -37,13 +37,29 @@ export class DemoRadioComponent implements OnInit, OnDestroy {
     <sdk-radio [data]="radioData" [required]="true"></sdk-radio>
     <sdk-radio [data]="radioData" [small]="true"></sdk-radio>
 </div>`,
+                        component: `import { Component } from '@angular/core';
+
+@Component({
+    selector: 'app-component',
+    templateUrl: './app.component.html'
+})
+export class DemoRadioComponent implements OnInit {
+
+    radioData = [
+        {value: 1, name: 'Chiki'},
+        {value: 2, name: 'Briki'}
+    ];
+
+    constructor() {
+    }
+}`,
                         module: `import { ToggleModule } from 'ngx-slice-kit';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        // add ToggleModule export
+        // add RadioModule export
         RadioModule,
     ],
 })
@@ -84,35 +100,35 @@ export class DemoToggleModule {
             ],
             apis: [
                 {
-                    label: 'label',
+                    label: '[label]',
                     type: 'string',
                     description: 'Label value',
                 },
                 {
-                    label: 'data',
+                    label: '[data]',
                     type: 'any[]',
-                    description: '',
+                    description: 'Array of values',
                     required: true,
                 },
                 {
-                    label: 'small',
+                    label: '[small]',
                     type: 'boolean',
-                    description: '',
+                    description: 'Small sized radio',
                 },
                 {
-                    label: 'error',
+                    label: '[error]',
                     type: 'string',
                     description: 'Error caption text value',
                 },
                 {
-                    label: 'required',
+                    label: '[required]',
                     type: 'boolean',
                     description: 'Defines if form value is required',
                 },
                 {
-                    label: 'disabled',
+                    label: '[disabled]',
                     type: 'boolean',
-                    description: '',
+                    description: 'Disable component interaction',
                 },
             ],
         };
