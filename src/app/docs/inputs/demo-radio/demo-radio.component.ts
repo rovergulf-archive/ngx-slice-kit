@@ -26,8 +26,7 @@ export class DemoRadioComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.page = {
             title: 'Radio component examples',
-            subtitle: `Radio provides the same functionality as a native <i>&#60;input type="radio"&#62;</i> enhanced with Material
-Design styling and animations.`,
+            subtitle: `Radio provides the same functionality as a native <input type="radio" /> enhanced with our styles and animations.`,
             demos: [
                 {
                     title: 'Default',

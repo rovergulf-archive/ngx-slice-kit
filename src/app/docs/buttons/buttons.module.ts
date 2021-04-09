@@ -12,6 +12,7 @@ import { DemoIconComponent } from './demo-icon/demo-icon.component';
 import { DemoRippleComponent } from './demo-ripple/demo-ripple.component';
 import { DemoSegmentedComponent } from './demo-segmented/demo-segmented.component';
 import { DemoStepperComponent } from './demo-stepper/demo-stepper.component';
+import {SharedModule} from '../../shared/shared.module';
 
 const entryComponents = [];
 
@@ -30,7 +31,8 @@ const moduleDeclarations = [
     imports: [
         CommonModule,
         DemoButtonsRoutingModule,
-        SliceKitModule
+        SliceKitModule,
+        SharedModule
     ],
     declarations: moduleDeclarations,
     exports: moduleDeclarations,

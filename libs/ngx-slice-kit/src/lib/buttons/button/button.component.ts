@@ -30,9 +30,8 @@ export class ButtonComponent implements OnInit, OnDestroy {
     @Input() size: 'wide' | 'full-width';
     @Input() @HostBinding('class.disabled') disabled: boolean;
     @Input() small: boolean;
-    @Input() style: any;
-    @Input() autofocus: boolean;
-    @Input() className: string;
+    // @Input() style: any;
+    // @Input() className: string;
 
     constructor(
         private elementRef: ElementRef,
