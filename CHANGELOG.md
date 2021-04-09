@@ -6,11 +6,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.10.0
 
-## 9 Apr 2021
+## 10 Apr 2021
 
 ### Added
 
 ### Changed
+
+### Fixed
+
+### Removed
+
+## 9 Apr 2021
+
+### Added
+web:
+- buttons demo
+
+### Changed
+slice-kit:
+- theme dark background & regular-text colors
+- button shadows with dark theme is black now
+- `base-button` and `stroked-button` has background by hover
 
 ### Fixed
 
@@ -42,8 +58,6 @@ slice-kit:
 - `sdk-tab` can work with *ngFor now
 - `sdk-divider` color
 
-### Removed
-
 ## Released [v0.8.1]
 
 ## 6 Apr 2021
@@ -51,8 +65,6 @@ slice-kit:
 ### Added
 web:
 - `ApiDefinition` and `DemoExample` models
-
-### Changed
 
 ### Fixed
 engine-kit:

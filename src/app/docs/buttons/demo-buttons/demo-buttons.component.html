@@ -1,11 +1,6 @@
-<main>
-    <header>
-        <h1>Buttons module</h1>
-    </header>
-
-    <section class="view">
-        <div class="flex-column layout-center-stretch">
-            <h3>Basic Buttons</h3>
+<lib-demo [page]="page">
+    <ng-template #basicRef>
+        <div class="flex-column">
             <div class="example flex-row flex-wrap layout-start-center">
                 <button sdk-base-button>Primary</button>
                 <button sdk-base-button color="regular">Regular</button>
@@ -15,7 +10,11 @@
                 <button sdk-base-button disabled>Disabled</button>
                 <a sdk-base-button routerLink=".">Link</a>
             </div>
-            <h3>Flat buttons</h3>
+        </div>
+    </ng-template>
+
+    <ng-template #flatRef>
+        <div class="flex-column">
             <div class="example flex-row flex-wrap layout-start-center">
                 <button sdk-flat-button>Primary</button>
                 <button sdk-flat-button color="regular">Regular</button>
@@ -25,7 +24,11 @@
                 <button sdk-flat-button disabled>Disabled</button>
                 <a sdk-flat-button routerLink=".">Link</a>
             </div>
-            <h3>Flat buttons small</h3>
+        </div>
+    </ng-template>
+
+    <ng-template #flatSmallRef>
+        <div class="flex-column">
             <div class="example flex-row flex-wrap layout-start-center">
                 <button sdk-flat-button [small]="true">Primary</button>
                 <button sdk-flat-button color="regular" [small]="true">Regular</button>
@@ -35,7 +38,11 @@
                 <button sdk-flat-button disabled [small]="true">Disabled</button>
                 <a sdk-flat-button routerLink="." [small]="true">Link</a>
             </div>
-            <h3>Raised buttons</h3>
+        </div>
+    </ng-template>
+
+    <ng-template #raisedRef>
+        <div class="flex-column">
             <div class="example flex-row flex-wrap layout-start-center">
                 <button sdk-raised-button>Primary</button>
                 <button sdk-raised-button color="regular">Regular</button>
@@ -45,7 +52,11 @@
                 <button sdk-raised-button disabled>Disabled</button>
                 <a sdk-raised-button routerLink=".">Link</a>
             </div>
-            <h3>Border buttons</h3>
+        </div>
+    </ng-template>
+
+    <ng-template #borderRef>
+        <div class="flex-column">
             <div class="example flex-row flex-wrap layout-start-center">
                 <button sdk-stroked-button>Primary</button>
                 <button sdk-stroked-button color="regular">Regular</button>
@@ -55,7 +66,11 @@
                 <button sdk-stroked-button disabled>Disabled</button>
                 <a sdk-stroked-button routerLink=".">Link</a>
             </div>
-            <h3>Wide raised buttons (min-width: 200px)</h3>
+        </div>
+    </ng-template>
+
+    <ng-template #wideRaisedRef>
+        <div class="flex-column">
             <div class="example flex-row flex-wrap layout-start-center">
                 <button sdk-raised-button size="wide">Primary</button>
                 <button sdk-raised-button size="wide" color="regular">Regular</button>
@@ -65,7 +80,11 @@
                 <button sdk-raised-button size="wide" disabled>Disabled</button>
                 <a sdk-raised-button size="wide" routerLink=".">Link</a>
             </div>
-            <h3>Full-width flat buttons</h3>
+        </div>
+    </ng-template>
+
+    <ng-template #fullWidthRef>
+        <div class="flex-column">
             <div class="example full-width flex-row flex-wrap layout-start-center">
                 <button sdk-flat-button size="full-width">Primary</button>
                 <button sdk-flat-button size="full-width" color="regular">Regular</button>
@@ -74,7 +93,11 @@
                 <button sdk-flat-button size="full-width" color="warn">Warn</button>
                 <button sdk-flat-button size="full-width" disabled>Disabled</button>
             </div>
-            <h3>Round buttons</h3>
+        </div>
+    </ng-template>
+
+    <ng-template #roundRef>
+        <div class="flex-column">
             <div class="example flex-row flex-wrap layout-start-center">
                 <button sdk-round-button>Primary</button>
                 <button sdk-round-button color="regular">Regular</button>
@@ -83,7 +106,11 @@
                 <button sdk-round-button color="warn">Warn</button>
                 <button sdk-round-button disabled>Disabled</button>
             </div>
-            <h3>Round buttons small</h3>
+        </div>
+    </ng-template>
+
+    <ng-template #roundSmallRef>
+        <div class="flex-column">
             <div class="example flex-row flex-wrap layout-start-center">
                 <button sdk-round-button [small]="true">Primary</button>
                 <button sdk-round-button [small]="true" color="regular">Regular</button>
@@ -92,7 +119,11 @@
                 <button sdk-round-button [small]="true" color="warn">Warn</button>
                 <button sdk-round-button [small]="true" disabled>Disabled</button>
             </div>
-            <h3>Icon buttons</h3>
+        </div>
+    </ng-template>
+
+    <ng-template #iconRef>
+        <div class="flex-column">
             <div class="example flex-row flex-wrap layout-start-center">
                 <button sdk-icon-button>
                     <sdk-icon></sdk-icon>
@@ -113,7 +144,11 @@
                     <sdk-icon icon="linkedin"></sdk-icon>
                 </button>
             </div>
-            <h3>Icon buttons small</h3>
+        </div>
+    </ng-template>
+
+    <ng-template #iconSmallRef>
+        <div class="flex-column">
             <div class="example flex-row flex-wrap layout-start-center">
                 <button sdk-icon-button [small]="true">
                     <sdk-icon size="16"></sdk-icon>
@@ -134,7 +169,11 @@
                     <sdk-icon size="16" icon="linkedin"></sdk-icon>
                 </button>
             </div>
-            <h3>Button with icon</h3>
+        </div>
+    </ng-template>
+
+    <ng-template #withIconRef>
+        <div class="flex-column">
             <div class="example flex-row flex-wrap layout-start-center">
                 <button sdk-flat-button color="regular">
                     <sdk-icon></sdk-icon>
@@ -151,7 +190,5 @@
                 <a sdk-flat-button routerLink=".">Link</a>
             </div>
         </div>
-    </section>
-</main>
-
-
+    </ng-template>
+</lib-demo>
