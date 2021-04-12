@@ -1,8 +1,16 @@
 @use './libs/ngx-slice-kit/src/lib/core/styles/core';
 
 main {
+    @extend .flex-column;
+    @extend .layout-start-stretch;
     width: 100%;
+    padding: 16px;
     //overflow-x: hidden;
+
+    &>* {
+        margin: 0 auto 16px auto;
+        width: 100%;
+    }
 
     pre {
     }

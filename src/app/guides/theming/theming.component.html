@@ -5,38 +5,44 @@
 
     <p class="gh-url">Check <a href="https://github.com/rovergulf/ngx-slice-kit/issues/80" target="_blank">original Github issue</a> to see available CSS variables</p>
 
+    <ng-container *ngTemplateOutlet="colorsExampleRef"></ng-container>
+
+
+    <h2>Fonts</h2>
+
+
 </main>
 
 <ng-template #colorsExampleRef>
-    <div class="colors flex-row flex-wrap layout-center-center">
+    <div class="theme-colors flex-row flex-wrap layout-center-center">
         <!-- var(--basic) -->
-        <div class="color sdk-base-background flex-column layout-center-center sdk-xm-3">
+        <div class="theme-color sdk-base-background flex-column layout-center-center sdk-xm-3">
             <h3>Basic</h3>
         </div>
 
         <!-- var(--regular) -->
-        <div class="color sdk-regular-background flex-column layout-center-center sdk-xm-3">
-            <div class="color__inner flex-row layout-center-stretch"></div>
+        <div class="theme-color sdk-regular-background flex-column layout-center-center sdk-xm-3">
+            <div class="theme-color__inner flex-row layout-center-stretch"></div>
             <h3>Regular</h3>
         </div>
 
         <!-- var(--primary) -->
-        <div class="color sdk-primary-background flex-column layout-center-center sdk-xm-3">
+        <div class="theme-color sdk-primary-background flex-column layout-center-center sdk-xm-3">
             <h3>Primary</h3>
         </div>
 
         <!-- var(--accent) -->
-        <div class="color sdk-accent-background flex-column layout-center-center sdk-xm-3">
+        <div class="theme-color sdk-accent-background flex-column layout-center-center sdk-xm-3">
             <h3>Accent</h3>
         </div>
 
         <!-- var(--success) -->
-        <div class="color sdk-success-background flex-column layout-center-center sdk-xm-3">
+        <div class="theme-color sdk-success-background flex-column layout-center-center sdk-xm-3">
             <h3>Success</h3>
         </div>
 
         <!-- var(--warn) -->
-        <div class="color sdk-warn-background flex-column layout-center-center sdk-xm-3">
+        <div class="theme-color sdk-warn-background flex-column layout-center-center sdk-xm-3">
             <h3>Warn</h3>
         </div>
     </div>
