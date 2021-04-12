@@ -4,7 +4,7 @@ import { DemoPageModel } from '../../../shared/model';
 @Component({
     selector: 'app-demo-divider',
     templateUrl: './demo-divider.component.html',
-    styleUrls: ['./demo-divider.component.scss']
+    styleUrls: ['../../demo.module.scss']
 })
 export class DemoDividerComponent implements OnInit {
 

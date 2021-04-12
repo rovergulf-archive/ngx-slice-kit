@@ -28,11 +28,12 @@ main {
             overflow-x: auto;
         }
 
-        .example {
+        .code-example {
             @extend .flex-column;
             @extend .layout-start-start;
             padding: 16px;
             background-color: rgba(var(--regular-raw), 0.1);
+            min-height: 48px;
 
             &>* {
                 margin-bottom: 8px;

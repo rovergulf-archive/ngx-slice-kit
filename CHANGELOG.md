@@ -8,11 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 web:
-- demos for divider, refers to [#32](https://github.com/rovergulf/ngx-slice-kit/issues/32) and [#148](https://github.com/rovergulf/ngx-slice-kit/issues/148)
+- demos for divider and checkbox, refers to [#32](https://github.com/rovergulf/ngx-slice-kit/issues/32) and [#148](https://github.com/rovergulf/ngx-slice-kit/issues/148)
 
 ### Changed
+web:
+- toggle component demo enhanced
 
 ### Fixed
+web:
+- some source code namings
+
 
 ### Removed
 

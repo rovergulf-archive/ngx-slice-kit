@@ -1,21 +1,18 @@
-<section class="flex-column layout-start-stretch">
-    <h2>Чекбоксы</h2>
-    <div class="flex-column layout-start-stretch">
-        <h3>Default / Small </h3>
-        <div class="checkbox-row flex-row flex-wrap layout-start-center">
-            <sdk-checkbox>Test</sdk-checkbox>
-            <sdk-checkbox [small]="true">Test small</sdk-checkbox>
-        </div>
-        <h3>Default + disabled / Small + disabled</h3>
-        <div class="checkbox-row flex-row flex-wrap layout-start-center">
-            <sdk-checkbox [disabled]="true">Test</sdk-checkbox>
-            <sdk-checkbox [disabled]="true" [small]="true">Test small</sdk-checkbox>
-        </div>
-        <h3>Default + error / Small + error</h3>
-        <div class="checkbox-row flex-row flex-wrap layout-start-center">
-            <sdk-checkbox [error]="'Example error caption'" [required]="true">This checkbox is required</sdk-checkbox>
-            <sdk-checkbox [error]="'Example error caption'" [required]="true" [small]="true">This checkbox is required
-            </sdk-checkbox>
-        </div>
-    </div>
-</section>
+<lib-demo [page]="page">
+
+    <!-- Default and small demos -->
+    <ng-template #defaultRef>
+        <sdk-checkbox [(ngModel)]="active" (ngModelChange)="showState($event)">Test</sdk-checkbox>
+        <span class="spacer"></span>
+        <sdk-checkbox [small]="true">Test small</sdk-checkbox>
+    </ng-template>
+    <!-- error caption and disabled states -->
+    <ng-template #statesRef>
+        <sdk-checkbox [error]="'Example error caption'" [required]="true">This checkbox is required</sdk-checkbox>
+        <span class="spacer"></span>
+        <sdk-checkbox [error]="'Example error caption'"  [required]="true" [small]="true">This checkbox is required</sdk-checkbox>
+        <span class="spacer"></span>
+        <sdk-checkbox [disabled]="true">Test</sdk-checkbox>
+    </ng-template>
+
+</lib-demo>

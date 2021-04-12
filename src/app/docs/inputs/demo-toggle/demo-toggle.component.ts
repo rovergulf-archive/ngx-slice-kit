@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DemoPageModel } from '../../../shared/model';
+import { AlertService } from '../../../../../libs/ngx-slice-kit/src/lib/modals/alert/alert.service';
 
 @Component({
     selector: 'app-demo-switches',
@@ -14,7 +15,22 @@ export class DemoToggleComponent implements OnInit, OnDestroy {
 
     page: DemoPageModel;
 
-    constructor() {
+    active: boolean = true;
+
+    constructor(
+        private alerts: AlertService
+    ) {
+    }
+
+    toggleActive(): void {
+        this.active = !this.active;
+    }
+
+    showState(ev: any): void {
+        this.alerts.success({
+            message: `DemoCheckboxComponent.active = ${ev}`,
+            positionY: 'bottom'
+        });
     }
 
     ngOnInit(): void {
@@ -27,7 +43,7 @@ export class DemoToggleComponent implements OnInit, OnDestroy {
                     description: '',
                     templateRef: this.defaultRef,
                     values: {
-                        html: `<sdk-toggle></sdk-toggle>`,
+                        html: `<sdk-toggle [(ngModel)]="active"></sdk-toggle>`,
                         module: `import { ToggleModule } from 'ngx-slice-kit';
 
 @NgModule({
@@ -39,6 +55,21 @@ export class DemoToggleComponent implements OnInit, OnDestroy {
     ],
 })
 export class DemoToggleModule {
+}`,
+                        component: `import { Component } from '@angular/core';
+
+@Component({
+    selector: 'app-demo-toggle',
+    templateUrl: './demo-toggle.component.html',
+    styleUrls: ['./demo-toggle.component.scss']
+})
+export class DemoToggleComponent {
+
+    active: boolean = true;
+
+    constructor() {
+    }
+
 }`,
                     },
                 },
