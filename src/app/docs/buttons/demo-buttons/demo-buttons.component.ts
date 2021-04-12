@@ -60,17 +60,9 @@ export class DemoButtonsComponent implements OnInit {
 export class DemoButtonModule {
 }`,
                         styles: `.example {
-  button, a {
-    margin:0 16px 16px 0;
-  }
-
-  &.full-width {
     button, a {
-      margin: 0 0 16px 0;
+        margin: 8px;
     }
-  }
-
-  margin: 16px;
 }`
                     },
                 },
