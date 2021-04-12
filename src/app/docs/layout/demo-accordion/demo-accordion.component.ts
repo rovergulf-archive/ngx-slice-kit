@@ -18,14 +18,14 @@ export class DemoAccordionComponent implements OnInit {
     ngOnInit(): void {
         this.page = {
             title: 'Accordion component example',
-            subtitle: '',
+            subtitle: ``,
             demos: [
                 {
                     title: 'Default usage',
                     description: '',
                     templateRef: this.defaultRef,
                     values: {
-                        html: '',
+                        html: ``,
                         module: `import { AccordionModule } from 'ngx-slice-kit';
 
 @NgModule({
@@ -52,11 +52,11 @@ export class DemoAccordionComponent {
 
 }`,
                     },
-                }
+                },
             ],
             api_groups: [
                 {
-                    name: '',
+                    name: 'AccordionComponent',
                     apis: [
                         {
                             label: '',
@@ -64,7 +64,7 @@ export class DemoAccordionComponent {
                             description: '',
                         }
                     ],
-                }
+                },
             ],
         };
     }

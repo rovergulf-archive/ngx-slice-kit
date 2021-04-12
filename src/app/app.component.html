@@ -1,7 +1,7 @@
 <div sdk-theme id="wrap" #wrap [class]="layout.themeName">
     <app-header></app-header>
     <sdk-sidenav-container [hasBackdrop]="layout.mobileLayout"
-                           [mode]="this.layout.mobileLayout ? 'over' : 'side'">
+                           [mode]="layout.mobileLayout ? 'over' : 'side'">
         <sdk-sidenav [opened]="layout.sidenavOpened" [styles]="sideNavStyle">
             <app-sidenav></app-sidenav>
         </sdk-sidenav>
