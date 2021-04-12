@@ -63,7 +63,7 @@ export class DemoRadioComponent implements OnInit {
         RadioModule,
     ],
 })
-export class DemoToggleModule {
+export class DemoRadioModule {
 }`,
                     },
                 },

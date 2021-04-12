@@ -53,7 +53,7 @@ export class DemoButtonsComponent implements OnInit {
     imports: [
         CommonModule,
         FormsModule,
-        // add ButtonModule export
+        // add ButtonModule to app imports
         ButtonModule,
     ],
 })

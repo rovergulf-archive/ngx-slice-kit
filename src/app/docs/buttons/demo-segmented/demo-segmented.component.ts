@@ -37,7 +37,7 @@ export class DemoSegmentedComponent implements OnInit {
     imports: [
         CommonModule,
         FormsModule,
-        // add ButtonGroupModule export
+        // add ButtonGroupModule to app imports
         ButtonGroupModule,
     ],
 })

@@ -76,11 +76,11 @@ export class DemoIconComponent {
     imports: [
         CommonModule,
         FormsModule,
-        // add IconModule export
+        // add IconModule to app imports
         IconModule,
     ],
 })
-export class DemoButtonGroupModule {
+export class DemoIconModule {
 }`,
                         styles: `sdk-icon {
     margin: 8px;

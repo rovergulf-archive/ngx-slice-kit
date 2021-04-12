@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.10.0
 
+### Added
+web:
+- demos for divider, refers to [#32](https://github.com/rovergulf/ngx-slice-kit/issues/32) and [#148](https://github.com/rovergulf/ngx-slice-kit/issues/148)
+
+### Changed
+
+### Fixed
+
+### Removed
+
+
 ## Released [v0.9.2]
 
 ## 12 Apr 2021
