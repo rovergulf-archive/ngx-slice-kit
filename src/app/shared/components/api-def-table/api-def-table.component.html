@@ -1,9 +1,10 @@
 <table class="demo-api-definition">
     <thead>
     <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th class="type">Type</th>
+        <th class="attr">Attribute</th>
+        <th *ngIf="typeVisible" class="type">Type</th>
+        <th *ngIf="descVisible" class="desc">Description</th>
+        <th *ngIf="valueVisible" class="value">Value</th>
     </tr>
     </thead>
     <tbody>
@@ -15,7 +16,10 @@
                     <span class="required-mark" *ngIf="a.required">*</span>
                 </p>
             </td>
-            <td class="desc">
+            <td *ngIf="typeVisible" class="type">
+                <p>{{a.type}}</p>
+            </td>
+            <td *ngIf="descVisible" class="desc">
                 <div class="flex-column">
                     <p>{{a.description || '-'}}</p>
                     <ng-container *ngIf="a.default_value?.toString().length">
@@ -24,8 +28,8 @@
                     </ng-container>
                 </div>
             </td>
-            <td class="type">
-                <p>{{a.type}}</p>
+            <td *ngIf="valueVisible" class="value">
+                <p>{{a.value}}</p>
             </td>
         </tr>
     </ng-container>

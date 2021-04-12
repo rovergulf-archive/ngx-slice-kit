@@ -31,6 +31,35 @@ table.demo-api-definition {
         .required-mark {
             color: var(--warn-rgb);
         }
+
+        &.title {
+            padding: 16px;
+            background: rgba(var(--background-raw), 0.05);
+            alignment: center;
+        }
+
+        &.attr {
+            background-color: rgba(var(--primary-raw), 0.05);
+            min-width: 20%;
+        }
+
+        &.desc {
+            width: 66%;
+
+            small {
+                color: var(--base-a70);
+            }
+        }
+
+        &.type {
+            white-space: nowrap;
+            color: var(--base-a70);
+        }
+
+        &.value {
+            width: 50%;
+            text-align: center;
+        }
     }
 
     tr {
@@ -46,31 +75,6 @@ table.demo-api-definition {
 
         tr:last-child {
             border-bottom: none;
-        }
-
-        td {
-            &.title {
-                padding: 16px;
-                background: rgba(var(--background-raw), 0.05);
-                alignment: center;
-            }
-
-            &.attr {
-                background-color: rgba(var(--primary-raw), 0.05);
-                min-width: 33%;
-            }
-
-            &.desc {
-                width: 66%;
-
-                small {
-                    color: var(--base-a70);
-                }
-            }
-
-            &.type {
-                color: var(--base-a70);
-            }
         }
     }
 }

@@ -14,15 +14,10 @@
 
     <ng-container *ngTemplateOutlet="colorsExampleRef"></ng-container>
 
-    <p>Default colors</p>
-    <sdk-tab-group>
-        <sdk-tab label="Light theme">
-            <lib-api-definitions-table [apis]="colorPaletteDefinitions"></lib-api-definitions-table>
-        </sdk-tab>
-        <sdk-tab label="Dark theme">
-            <lib-api-definitions-table [apis]="colorPaletteDefinitions"></lib-api-definitions-table>
-        </sdk-tab>
-    </sdk-tab-group>
+    <p>Theme color values</p>
+
+    <lib-api-definitions-table [apis]="getCurrentThemesDefs()" [valueVisible]="true"
+                               [descVisible]="false" [typeVisible]="false"></lib-api-definitions-table>
 
 </main>
 

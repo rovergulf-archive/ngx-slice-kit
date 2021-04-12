@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiDefinition } from '../../shared/model';
+import { ThemeService } from '../../../../libs/ngx-slice-kit/src/lib/core/theme/theme.service';
+import { LayoutService } from '../../shared/services';
 
 @Component({
     selector: 'app-theming',
@@ -22,18 +24,30 @@ export class ThemingComponent implements OnInit {
     hex?: string;
 }`;
 
-    colorPaletteDefinitions: ApiDefinition[];
+    themesDefinitions: ApiDefinition[];
 
-    constructor() {
+    constructor(
+        private themeService: ThemeService,
+        private layoutService: LayoutService,
+    ) {
+    }
+
+    getCurrentThemesDefs(): ApiDefinition[] {
+        const currentTheme = this.themeService.themes.find(t => t.name === this.layoutService.themeName);
+        const themesDefinitions = [];
+        Object.keys(currentTheme).forEach(k => {
+            if (k !== 'name') {
+                themesDefinitions.push(new ApiDefinition({
+                    label: k,
+                    type: 'rgb-raw value',
+                    value: currentTheme[k],
+                }));
+            }
+        });
+        return themesDefinitions;
     }
 
     ngOnInit(): void {
-        this.colorPaletteDefinitions = [
-            {
-                label: 'name',
-                type: 'string',
-            },
-        ].map(src => new ApiDefinition(src));
     }
 
 }

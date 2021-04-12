@@ -19,7 +19,7 @@ export class ApiDefinition {
     type: string;
     description?: string = '';
     args?: any[];
-    values?: any[];
+    value?: any;
     required?: boolean = false;
     default_value?: any = undefined;
 
