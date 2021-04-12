@@ -1,11 +1,16 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { DemoPageModel } from '../../../shared/model';
 
 @Component({
     selector: 'app-demo-carousel',
     templateUrl: './demo-carousel.component.html',
-    styleUrls: ['./demo-carousel.component.scss']
+    styleUrls: ['./demo-carousel.component.scss', '../../demo.module.scss']
 })
 export class DemoCarouselComponent implements OnInit {
+
+    @ViewChild('defaultRef', {static: true}) defaultRef: any;
+
+    page: DemoPageModel;
 
     lotrPostersUrl = [
         'https://i.pinimg.com/originals/c4/2d/ba/c42dba6ca462fa8be128de279b90df12.jpg',
@@ -117,6 +122,35 @@ export class DemoCarouselComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.page = {
+            title: 'Carousel component example',
+            subtitle: 'It may seem useless, but still usable',
+            demos: [
+                {
+                    title: 'Default usage',
+                    description: '',
+                    templateRef: this.defaultRef,
+                    values: {
+                        html: '<sdk-divider></sdk-divider>',
+                        module: `import { CarouselModule } from 'ngx-slice-kit';
+
+@NgModule({
+    imports: [
+        CommonModule,
+        FormsModule,
+        // add CarouselModule to app imports
+        CarouselModule,
+    ],
+})
+export class DemoCarouselModule {
+}`,
+                        component: '',
+                    },
+                }
+            ],
+            apis: [],
+        };
+
         this.currentWidth = window.innerWidth;
         this.changeCarouselConfig();
     }

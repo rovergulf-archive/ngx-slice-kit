@@ -1,12 +1,7 @@
 export class DemoExample {
     title: string;
     description: string;
-    values: {
-        html?: string,
-        component?: string,
-        module?: string,
-        styles?: string,
-    };
+    values: any;
 
     templateRef?: any;
 

@@ -1,6 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { SharedModule } from '../../shared/shared.module';
+
 import { DemoInputsRoutingModule } from './inputs-routing.module';
 
 import { DemoCheckboxComponent } from './demo-checkbox/demo-checkbox.component';
@@ -11,7 +13,6 @@ import { DemoToggleComponent } from './demo-toggle/demo-toggle.component';
 import { DemoTextareaComponent } from './demo-textarea/demo-textarea.component';
 import { DemoWysiwygComponent } from './demo-wysiwyg/demo-wysiwyg.component';
 import { FormsModule } from '@angular/forms';
-import { SharedModule } from '../../shared/shared.module';
 
 const entryComponents = [];
 

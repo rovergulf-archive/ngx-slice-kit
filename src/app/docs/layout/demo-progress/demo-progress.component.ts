@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-demo-progress',
     templateUrl: './demo-progress.component.html',
-    styleUrls: ['./demo-progress.component.scss']
+    styleUrls: ['../../demo.module.scss']
 })
 export class DemoProgressComponent implements OnInit {
 

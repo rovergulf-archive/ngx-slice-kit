@@ -1,41 +1,45 @@
-<div>
-    <h1>SDK Icons</h1>
+<lib-demo-page [page]="page">
 
-    <p>Default icons</p>
-    <div class="flex-row">
-        <div class="flex-row xm-3">
-            <sdk-icon></sdk-icon>
+    <!-- multi -->
+    <ng-template #defaultRef>
+        <div class="flex-row">
+            <div class="flex-row xm-3">
+                <sdk-icon></sdk-icon>
+            </div>
+            <div class="flex-row xm-3">
+                <sdk-icon [color]="'#ff2f49'" [icon]="'add'"></sdk-icon>
+            </div>
+            <div class="flex-row xm-3">
+                <sdk-icon (click)="toggleColor()" [class.active]="toggle"
+                          [color]="toggle ? '#ff2f49' : '#78bd27'"
+                          [icon]="'add'"></sdk-icon>
+            </div>
         </div>
-        <div class="flex-row xm-3">
-            <sdk-icon [color]="'#ff2f49'" [icon]="'add'"></sdk-icon>
+    </ng-template>
+    <!-- click to resize -->
+    <ng-template #resizeRef>
+        <div class="flex-row dynamic">
+            <div class="flex-row xm-3">
+                <sdk-icon (click)="toggleSize()" [icon]="'close'" [size]="size ? 24 : 48"></sdk-icon>
+            </div>
+            <div class="flex-row xm-3">
+                <sdk-icon (click)="toggleSize()" [icon]="'folder'" [size]="size ? 24 : 48"></sdk-icon>
+            </div>
         </div>
-        <div class="flex-row xm-3">
-            <sdk-icon (click)="toggleColor()" [class.active]="toggle"
-                      [color]="toggle ? '#ff2f49' : '#78bd27'"
-                      [icon]="'add'"></sdk-icon>
+    </ng-template>
+    <!-- more -->
+    <ng-template #moreRef>
+        <div class="flex-row">
+            <div class="flex-row xm-3">
+                <sdk-icon [icon]="'file'"></sdk-icon>
+            </div>
+            <div class="flex-row xm-3">
+                <sdk-icon [icon]="'download'"></sdk-icon>
+            </div>
+            <div class="flex-row xm-3">
+                <sdk-icon [icon]="'user'"></sdk-icon>
+            </div>
         </div>
-    </div>
+    </ng-template>
 
-    <p>Click to dynamic size</p>
-    <div class="flex-row dynamic">
-        <div class="flex-row xm-3">
-            <sdk-icon (click)="toggleSize()" [icon]="'close'" [size]="size ? 24 : 48"></sdk-icon>
-        </div>
-        <div class="flex-row xm-3">
-            <sdk-icon (click)="toggleSize()" [icon]="'folder'" [size]="size ? 24 : 48"></sdk-icon>
-        </div>
-    </div>
-
-    <p>And more</p>
-    <div class="flex-row">
-        <div class="flex-row xm-3">
-            <sdk-icon [icon]="'file'"></sdk-icon>
-        </div>
-        <div class="flex-row xm-3">
-            <sdk-icon [icon]="'download'"></sdk-icon>
-        </div>
-        <div class="flex-row xm-3">
-            <sdk-icon [icon]="'user'"></sdk-icon>
-        </div>
-    </div>
-</div>
+</lib-demo-page>

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-demo-slides',
     templateUrl: './demo-slides.component.html',
-    styleUrls: ['./demo-slides.component.scss']
+    styleUrls: ['../../demo.module.scss']
 })
 export class DemoSlidesComponent implements OnInit {
 

@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SliceKitModule } from 'ngx-slice-kit';
+import { SharedModule } from '../../shared/shared.module';
 
 import { DemoNavigationRoutingModule } from './navigation-routing.module';
 
@@ -36,7 +36,7 @@ const moduleDeclarations = [
     imports: [
         CommonModule,
         DemoNavigationRoutingModule,
-        SliceKitModule,
+        SharedModule,
     ],
     declarations: moduleDeclarations,
     exports: moduleDeclarations,

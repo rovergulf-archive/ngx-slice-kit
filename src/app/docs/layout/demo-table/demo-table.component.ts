@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-demo-table',
     templateUrl: './demo-table.component.html',
-    styleUrls: ['./demo-table.component.scss']
+    styleUrls: ['../../demo.module.scss']
 })
 export class DemoTableComponent implements OnInit {
 

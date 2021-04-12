@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DemoPageModel } from '../../shared/model';
 
 @Component({
     selector: 'app-get-started',
@@ -20,14 +19,88 @@ ng add ngx-slice-kit`;
         // add ToggleModule export
         SliceKitModule,
     ],
+    exports: [
+        // export module to be available in whole application
+        SliceKitModule,
+    ]
 })
-export class DemoToggleModule {
+export class SharedModule {
+}`;
+    batchModuleExample = `import { ThemeModule, ButtonsModule, ModalsModule, DropdownsModule } from 'ngx-slice-kit';
+
+@NgModule({
+    imports: [
+        CommonModule,
+        FormsModule,
+        // theme module is required
+        ThemeModule,
+        // import feature modules
+        ButtonsModule,
+        ModalsModule,
+        DropdownsModule,
+    ],
+    // optional
+    exports: [
+        ThemeModule,
+        ButtonsModule,
+        ModalsModule,
+        DropdownsModule,
+    ]
+})
+export class SharedModule {
+}`;
+    componentModuleExample = `import {
+    ThemeModule,
+    ToggleModule,
+    ButtonModule,
+    AlertModule,
+    PopupModule,
+    InputModule,
+    DividerModule,
+} from 'ngx-slice-kit';
+
+const sliceKitImports = [
+    // theme module is required
+    ThemeModule,
+    // import component modules
+    ToggleModule,
+    ButtonModule,
+    AlertModule,
+    PopupModule,
+    InputModule,
+    DividerModule,
+];
+
+@NgModule({
+    imports: [
+        CommonModule,
+        FormsModule,
+        // add slice-kit imports
+        ...sliceKitImports
+    ],
+    // optional
+    exports: [
+        // share components through module
+        ...sliceKitImports
+    ],
+    providers: [],
+    schemas: [],
+})
+export class SharedModule {
 }`;
     themeExample = `<div sdk-theme>
     <app-header></app-header>
     <router-outlet></router-outlet>
 </div>
 `;
+    stylesExample = `@import './libs/ngx-slice-kit/src/lib/core/styles/core';`;
+    angularJson = `                        // ...
+// Double check that your core application styles file used in
+// "ng build" and/or "ng serve" commands
+                        "styles": [
+                            "src/styles.scss"
+                        ],
+                        // ...`;
 
     constructor() {
     }
