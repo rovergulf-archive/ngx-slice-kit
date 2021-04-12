@@ -1,8 +1,32 @@
+@import './libs/ngx-slice-kit/src/lib/core/styles/core';
+
 main {
-    @extend .flex-column !optional;
-    @extend .layout-start-stretch !optional;
+    @extend .flex-column;
+    @extend .layout-start-stretch;
+    width: 100%;
+    padding: 16px;
+    //overflow-x: hidden;
 
     &>* {
-        margin-bottom: 16px;
+        margin: 0 auto 16px auto;
+        width: 100%;
     }
+
+    pre {
+    }
+
+    code {
+        padding: 16px;
+    }
+
+    .fake-tab-padding {
+        padding: 0 24px;
+        @extend .flex-column;
+        @extend .layout-start-start;
+
+        lib-code-snippet {
+            width: 100%;
+        }
+    }
+
 }

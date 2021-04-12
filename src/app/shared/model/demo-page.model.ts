@@ -7,6 +7,7 @@ export class DemoPageModel {
     subtitle?: string;
     demo_name?: string;
 
+    customContentRef?: any;
     demos?: DemoExample[];
     apis?: ApiDefinition[];
     api_groups?: ApiDefinitionsGroup[];

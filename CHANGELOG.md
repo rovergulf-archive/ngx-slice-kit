@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.10.0
 
+## 13 Apr 2021
+
 ### Added
 
 ### Changed
@@ -13,6 +15,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### Removed
+
+
+## 12 Apr 2021
+
+### Added
+
+### Changed
+web:
+- updated theming guide
+- resources updated
+
+### Fixed
+
+### Removed
+
 
 ## Released [v0.9.3]
 

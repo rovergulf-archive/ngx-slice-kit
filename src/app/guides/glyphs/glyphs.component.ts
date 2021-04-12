@@ -7,7 +7,7 @@ const NOT_PUBLIC = ['inkbe', 'ambassador', 'notifications_tear', 'verified'];
 @Component({
     selector: 'app-glyphs',
     templateUrl: './glyphs.component.html',
-    styleUrls: ['./glyphs.component.scss', '../guides.component.scss']
+    styleUrls: ['./glyphs.component.scss', '../guides.module.scss']
 })
 export class GlyphsComponent implements OnInit {
 

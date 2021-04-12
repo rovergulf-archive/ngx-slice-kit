@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
+import { HighlightModule } from 'ngx-highlightjs';
 import { SliceKitModule } from 'ngx-slice-kit';
 
 import { FooterComponent } from './layout/footer/footer.component';
@@ -13,11 +13,9 @@ import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { ApiDefTableComponent } from './components/api-def-table/api-def-table.component';
 import { DemoComponent } from './components/demo/demo.component';
 import { CodeSnippetComponent } from './components/code-snippet/code-snippet.component';
-
-const entryComponents = [];
+import { ThemeColorComponent } from './components/theme-color/theme-color.component';
 
 const sharedModuleDeclarations = [
-    ...entryComponents,
     // layout
     FooterComponent,
     HeaderComponent,
@@ -26,6 +24,7 @@ const sharedModuleDeclarations = [
     ApiDefTableComponent,
     DemoComponent,
     CodeSnippetComponent,
+    ThemeColorComponent,
 ];
 
 @NgModule({
@@ -43,7 +42,6 @@ const sharedModuleDeclarations = [
         SliceKitModule,
         HighlightModule,
     ],
-    entryComponents,
     providers: [],
     schemas: [
         NO_ERRORS_SCHEMA,

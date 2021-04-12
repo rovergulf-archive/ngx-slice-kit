@@ -1,15 +1,23 @@
 <main>
-    <h2>Slice Kit Theme settings</h2>
+    <h1>Slice Kit Theme settings</h1>
 
-    <h2>Colors</h2>
+    <h3>Core styles dependency:</h3>
+    <sdk-tab-group>
+        <sdk-tab label="src/styles.scss">
+            <lib-code-snippet [value]="coreStylesExample"></lib-code-snippet>
+        </sdk-tab>
+    </sdk-tab-group>
+
+    <h3>Colors</h3>
 
     <p class="gh-url">Check <a href="https://github.com/rovergulf/ngx-slice-kit/issues/80" target="_blank">original Github issue</a> to see available CSS variables</p>
 
     <ng-container *ngTemplateOutlet="colorsExampleRef"></ng-container>
 
+    <p>Theme color values</p>
 
-    <h2>Fonts</h2>
-
+    <lib-api-definitions-table [apis]="getCurrentThemesDefs()" [valueVisible]="true"
+                               [descVisible]="false" [typeVisible]="false"></lib-api-definitions-table>
 
 </main>
 

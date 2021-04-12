@@ -5,11 +5,9 @@ import { GuidesComponent } from './guides.component';
 // ui-kit rules and docs
 import { GetStartedComponent } from './get-started/get-started.component';
 import { GlyphsComponent } from './glyphs/glyphs.component';
-import { HomeComponent } from './home/home.component';
 import { I18nComponent } from './i18n/i18n.component';
 import { ImagesGridComponent } from './images-grid/images-grid.component';
-import { SchematicsComponent } from './schematics/schematics.component';
-import { StyleGuideComponent } from './style-guide/style-guide.component';
+import { HomeComponent } from './home/home.component';
 import { ThemingComponent } from './theming/theming.component';
 
 const routes: Routes = [
@@ -23,8 +21,6 @@ const routes: Routes = [
             {path: 'glyphs', component: GlyphsComponent},
             {path: 'i18n', component: I18nComponent},
             {path: 'adaptive-grid', component: ImagesGridComponent},
-            {path: 'schematics', component: SchematicsComponent},
-            {path: 'style-guide', component: StyleGuideComponent},
             {path: 'theming', component: ThemingComponent},
             {path: '', redirectTo: 'home', pathMatch: 'full'},
         ]

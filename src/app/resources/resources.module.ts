@@ -2,12 +2,12 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { SharedModule } from '../shared/shared.module';
 import { ResourcesRoutingModule } from './resources-routing.module';
 
 import { AboutComponent } from './about/about.component';
 import { ResourcesComponent } from './resources.component';
 import { RoadmapComponent } from './roadmap/roadmap.component';
-import { SliceDesignComponent } from './slice-design/slice-design.component';
 
 const entryComponents = [];
 
@@ -16,14 +16,14 @@ const moduleDeclarations = [
     AboutComponent,
     ResourcesComponent,
     RoadmapComponent,
-    SliceDesignComponent,
 ];
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        ResourcesRoutingModule
+        ResourcesRoutingModule,
+        SharedModule,
     ],
     declarations: moduleDeclarations,
     exports: moduleDeclarations,

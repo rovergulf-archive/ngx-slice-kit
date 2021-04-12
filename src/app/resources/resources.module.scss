@@ -1,12 +1,27 @@
-.view {
-  padding: 20px;
-}
+@import './libs/ngx-slice-kit/src/lib/core/styles/core';
 
-h1 {
-  margin-bottom: 16px;
-}
+main {
+    @extend .flex-column;
+    @extend .layout-start-stretch;
+    padding: 16px;
 
-h3 {
-  margin: 8px 0;
-}
+    &>* {
+        margin-bottom: 16px;
+    }
 
+    h1 {
+        font-size: 40px;
+    }
+
+    a {
+        transition: all .25s ease;
+        &:hover {
+            color: var(--primary-a100-rgb);
+        }
+    }
+
+    .disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+}

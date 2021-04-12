@@ -9,10 +9,9 @@ import { SharedModule } from '../shared/shared.module';
 import { GuidesComponent } from './guides.component';
 import { GetStartedComponent } from './get-started/get-started.component';
 import { GlyphsComponent } from './glyphs/glyphs.component';
-import { HomeComponent } from './home/home.component';
 import { I18nComponent } from './i18n/i18n.component';
+import { HomeComponent } from './home/home.component';
 import { ImagesGridComponent } from './images-grid/images-grid.component';
-import { StyleGuideComponent } from './style-guide/style-guide.component';
 import { ThemingComponent } from './theming/theming.component';
 
 const entryComponents = [];
@@ -25,7 +24,6 @@ const moduleDeclarations = [
     HomeComponent,
     I18nComponent,
     ImagesGridComponent,
-    StyleGuideComponent,
     ThemingComponent,
 ];
 

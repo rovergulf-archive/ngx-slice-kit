@@ -1,5 +1,24 @@
+@import './libs/ngx-slice-kit/src/lib/core/styles/core';
 
 .feature-list {
-  white-space: nowrap;
-  margin: 0 16px 16px 0;
+    white-space: nowrap;
+    margin: 0 16px 16px 0;
+
+    ul {
+        @extend .flex-column;
+        @extend .layout-start-stretch;
+
+        li {
+            @extend .flex-column;
+            @extend .layout-start-start;
+            padding: 8px;
+
+            a {
+                transition: all .25s ease;
+                &:hover {
+                    opacity: 0.75;
+                }
+            }
+        }
+    }
 }

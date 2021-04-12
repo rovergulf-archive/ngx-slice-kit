@@ -9,7 +9,10 @@ import { ApiDefinition } from '../../model';
 export class ApiDefTableComponent implements OnInit {
 
     @Input() apis: ApiDefinition[];
+    @Input() typeVisible: boolean = true;
+    @Input() descVisible: boolean = true;
     @Input() attrsVisible: boolean = false;
+    @Input() valueVisible: boolean = false;
 
     constructor() {
     }
