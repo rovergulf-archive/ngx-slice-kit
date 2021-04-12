@@ -5,6 +5,10 @@
         <p class="subtitle">{{page.subtitle}}</p>
     </ng-container>
 
+    <ng-container *ngIf="page.customContentRef">
+        <ng-container [ngTemplateOutlet]="page.customContentRef"></ng-container>
+    </ng-container>
+
     <!-- Usage demos -->
     <ng-container *ngIf="page.demos?.length > 0">
         <ng-container *ngFor="let d of page.demos">
