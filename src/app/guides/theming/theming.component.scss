@@ -1,41 +1,45 @@
-@use './libs/ngx-slice-kit/src/lib/core/styles/core';
+@import './libs/ngx-slice-kit/src/lib/core/styles/core';
 
 main {
 
 }
 
+.theme-colors {
+    padding: 16px;
 
-.theme-color {
-    border-radius: 8px;
-    height: 80px;
-    margin: 8px;
-    transition: all .3s ease;
-    border: 1px solid transparent;
+    .theme-color {
+        border-radius: 8px;
+        height: 80px;
+        margin: 8px;
+        transition: all .3s ease;
+        border: 1px solid transparent;
 
-    &--basic {
-        background-color: var(--background);
-        color: var(--base-text);
-        border: 1px solid var(--regular);
+        &--basic {
+            background-color: var(--background);
+            color: var(--base-text);
+            border: 1px solid var(--regular);
+        }
+
+        &--primary {
+            @extend .sdk-primary-background;
+        }
+
+        &--regular {
+            @extend .sdk-regular-background;
+        }
+
+        &--accent {
+            @extend .sdk-accent-background;
+        }
+
+        &--success {
+            @extend .sdk-success-background;
+        }
+
+        &--warn {
+            @extend .sdk-warn-background;
+        }
     }
 
-    &--primary {
-        @extend .sdk-primary-background;
-    }
 
-    &--regular {
-        @extend .sdk-regular-background;
-    }
-
-    &--accent {
-        @extend .sdk-accent-background;
-    }
-
-    &--success {
-        @extend .sdk-success-background;
-    }
-
-    &--warn {
-        @extend .sdk-warn-background;
-    }
 }
-
