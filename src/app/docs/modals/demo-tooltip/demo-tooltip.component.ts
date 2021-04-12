@@ -4,11 +4,14 @@ import { DemoPageModel } from '../../../shared/model';
 @Component({
     selector: 'app-demo-tooltip',
     templateUrl: './demo-tooltip.component.html',
-    styleUrls: ['../../demo.module.scss']
+    styleUrls: ['./demo-tooltip.component.scss', '../../demo.module.scss']
 })
 export class DemoTooltipComponent implements OnInit {
 
     @ViewChild('defaultRef', {static: true}) defaultRef: any;
+    @ViewChild('clickRef', {static: true}) clickRef: any;
+    @ViewChild('sizesRef', {static: true}) sizesRef: any;
+    @ViewChild('positionsRef', {static: true}) positionsRef: any;
 
     page: DemoPageModel;
 

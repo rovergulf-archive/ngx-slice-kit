@@ -46,3 +46,26 @@
         <span position="bottom" sdkTooltip="There are many variations of passages of Lorem Ipsum available">Tooltip-big-oversize</span>
     </div>
 </div>
+
+<!-- -->
+<ng-template #defaultRef>
+    <span delay="1000" sdkTooltip="Site fishtext">Tooltip-small</span>
+    <span delay="1000" sdkTooltip="Injected humour, or non-characteristic words etc.">Tooltip-middle</span>
+    <span delay="1000"
+          sdkTooltip="Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.">Tooltip-big-oversize</span>
+    <span [delay]="1000" sdkTooltip="little text">Tooltip-small</span>
+</ng-template>
+
+<!-- -->
+<ng-template #clickRef>
+    <span [showOnClick]="true" sdkTooltip="Fishtext hola help">Tooltip-small</span>
+    <span
+        [showOnClick]="true"
+        sdkTooltip=" It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.">Tooltip-middle</span>
+</ng-template>
+
+<!-- -->
+<ng-template #sizesRef></ng-template>
+
+<!-- -->
+<ng-template #positionsRef></ng-template>

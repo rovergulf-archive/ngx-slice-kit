@@ -7,18 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] v0.10.0
 
 ### Added
-web:
-- examples for dialog and popup (refers to #32)
-- demos for divider and checkbox, refers to [#32](https://github.com/rovergulf/ngx-slice-kit/issues/32) and [#148](https://github.com/rovergulf/ngx-slice-kit/issues/148)
 
 ### Changed
-web:
-- toggle component demo enhanced
 
 ### Fixed
-web:
-- some source code namings
-
 
 ### Removed
 
@@ -29,16 +21,22 @@ web:
 
 ### Added
 web:
-- demos for icons and segmented buttons, refers to [#32](https://github.com/rovergulf/ngx-slice-kit/issues/32) and [#148](https://github.com/rovergulf/ngx-slice-kit/issues/148)
+- examples for dialog and popup (refers to #32)
+- demos for divider and checkbox, icons and segmented buttons, refers to [#32](https://github.com/rovergulf/ngx-slice-kit/issues/32) and [#148](https://github.com/rovergulf/ngx-slice-kit/issues/148)
 
 ### Changed
 web:
+- toggle component demo enhanced
 - color guide moved to theming
 - update guide styling
 
 ### Fixed
+web:
+- some source code namings
+
 slice-kit:
 - input error caption and icon colors
+- tooltip directive shadow color
 
 ### Removed
 

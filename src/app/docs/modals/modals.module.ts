@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SliceKitModule } from 'ngx-slice-kit';
+import { SharedModule } from '../../shared/shared.module';
 
 import { DemoModalsRoutingModule } from './modals-routing.module';
 
@@ -13,7 +13,6 @@ import { DemoDialogPreview2Component } from './demo-dialog/demo-dialog-preview2/
 import { DemoPopoverComponent } from './demo-popover/demo-popover.component';
 import { DemoPopupComponent } from './demo-popup/demo-popup.component';
 import { DemoTooltipComponent } from './demo-tooltip/demo-tooltip.component';
-import { SharedModule } from "../../shared/shared.module";
 
 const entryComponents = [];
 
@@ -33,7 +32,6 @@ const moduleDeclarations = [
     imports: [
         CommonModule,
         DemoModalsRoutingModule,
-        SliceKitModule,
         SharedModule,
     ],
     declarations: moduleDeclarations,
