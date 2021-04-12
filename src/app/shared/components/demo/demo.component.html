@@ -5,6 +5,11 @@
         <p class="subtitle">{{page.subtitle}}</p>
     </ng-container>
 
+    <!-- API -->
+    <ng-container *ngIf="page.apiVisible">
+        <h3>Usage examples:</h3>
+    </ng-container>
+
     <!-- Usage demos -->
     <ng-container *ngIf="page.demos?.length > 0">
         <ng-container *ngFor="let d of page.demos">
@@ -37,52 +42,17 @@
 
     <!-- API -->
     <ng-container *ngIf="page.apiVisible">
-        <h3>{{page.demo_name}} API</h3>
-    </ng-container>
+        <sdk-divider></sdk-divider>
 
+        <h3>API Definition:</h3>
 
-    <!-- API Definition Groups -->
-    <ng-container *ngIf="page.api_groups?.length > 0">
+        <!-- API Definition Groups -->
         <ng-container *ngFor="let group of page.api_groups">
             <p *ngIf="group.name" class="api-group-title">{{group.name}}</p>
 
             <!-- API Definitions -->
             <ng-container *ngIf="group.apis?.length > 0">
-                <div class="radio-example">
-                    <table class="demo-api-definition">
-                        <thead>
-                        <tr>
-                            <th>Attribute</th>
-                            <th>Description</th>
-                            <th class="type">Type</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <ng-container *ngFor="let a of group.apis">
-                            <tr>
-                                <td class="attr">
-                                    <p>
-                                        <b>{{a.label}}</b>
-                                        <span class="required-mark" *ngIf="a.required">*</span>
-                                    </p>
-                                </td>
-                                <td class="desc">
-                                    <div class="flex-column">
-                                        <p>{{a.description}}</p>
-                                        <ng-container *ngIf="a.default_value">
-                                            <span class="spacer"></span>
-                                            <small>Default value: {{a.default_value}}</small>
-                                        </ng-container>
-                                    </div>
-                                </td>
-                                <td class="type">
-                                    <p>{{a.type}}</p>
-                                </td>
-                            </tr>
-                        </ng-container>
-                        </tbody>
-                    </table>
-                </div>
+                <lib-api-definitions-table [apis]="group.apis"></lib-api-definitions-table>
             </ng-container>
 
         </ng-container>

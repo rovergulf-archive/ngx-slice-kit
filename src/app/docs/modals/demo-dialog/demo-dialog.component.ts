@@ -44,8 +44,9 @@ export class DemoDialogComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.page = {
-            title: 'Dialog component example',
+            title: 'Dialog service example',
             subtitle: '',
+            demo_name: 'Dialog',
             demos: [
                 {
                     title: 'Default usage',
@@ -108,12 +109,79 @@ export class DemoDialogComponent {
                     },
                 }
             ],
-            apis: [
+            api_groups: [
                 {
-                    label: '',
-                    type: '',
-                    description: '',
-                }
+                    name: 'DialogService',
+                    apis: [
+                        {
+                            label: 'showDialog(component, options): Observable<any>',
+                            type: 'public method',
+                            args: [
+                                {name: 'component', type: 'Component', required: true},
+                                {name: 'options', type: 'DialogInterface'},
+                            ],
+                            description: `Open dialog window. 'component' should be specified and be available at your developed module`,
+                        },
+                        {
+                            label: '[options]',
+                            type: 'DialogInterface',
+                            description: 'Look below for DialogInterface defaults',
+                        }
+                    ],
+                },
+                {
+                    name: 'DialogInterface',
+                    apis: [
+                        {
+                            label: '[data]',
+                            type: 'any',
+                            description: `provide data in any format, default 'undefined'`,
+                        },
+                        {
+                            label: '[hideOnBackdrop]',
+                            type: 'boolean',
+                            description: `hide dialog on backdrop click, default 'true'`,
+                            default_value: true
+                        },
+                        {
+                            label: '[hideOnEscape]',
+                            type: 'boolean',
+                            description: `hide dialog on Esc keyup event, default 'true'`,
+                            default_value: true,
+                        },
+                        {
+                            label: '[borderRadius]',
+                            type: 'number',
+                            description: `specify dialog content window border-radius, default '0'`,
+                            default_value: 0,
+                        },
+                        {
+                            label: '[disableScroll]',
+                            type: 'boolean',
+                            description: `disable dialog content scroll, defaults to 'false'`,
+                        },
+                        {
+                            label: '[styles]',
+                            type: 'any',
+                            description: ``,
+                        },
+                    ],
+                },
+                {
+                    name: 'DialogComponent',
+                    apis: [
+                        {
+                            label: '[data]',
+                            type: 'any',
+                            description: 'Provided for challenged component data',
+                        },
+                        {
+                            label: '(resultEvent)',
+                            type: 'EventEmitter',
+                            description: 'Emits closed dialog event at target subscription',
+                        }
+                    ],
+                },
             ],
         };
     }

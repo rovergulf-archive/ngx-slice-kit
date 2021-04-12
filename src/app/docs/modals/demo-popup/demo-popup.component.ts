@@ -29,8 +29,9 @@ export class DemoPopupComponent implements OnInit {
 
     ngOnInit(): void {
         this.page = {
-            title: 'Popup component example',
+            title: 'Popup service example',
             subtitle: '',
+            demo_name: 'Popup',
             demos: [
                 {
                     title: 'Default usage',
@@ -77,13 +78,18 @@ export class DemoPopupComponent {
                     },
                 }
             ],
-            apis: [
+            api_groups: [
                 {
-                    label: '',
-                    type: '',
-                    description: '',
+                    name: '',
+                    apis: [
+                        {
+                            label: '',
+                            type: '',
+                            description: '',
+                        }
+                    ],
                 }
-            ],
+            ]
         };
     }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DemoPageModel } from '../../../shared/model';
+import { AlertService } from '../../../../../libs/ngx-slice-kit/src/lib/modals/alert/alert.service';
 
 @Component({
     selector: 'app-demo-tooltip',
@@ -14,12 +15,21 @@ export class DemoTooltipComponent implements OnInit {
 
     page: DemoPageModel;
 
-    constructor() {
+    constructor(
+        private alerts: AlertService,
+    ) {
+    }
+
+    clicked(): void {
+        this.alerts.success({
+            message: 'Clicked!',
+            positionY: 'bottom',
+        });
     }
 
     ngOnInit(): void {
         this.page = {
-            title: 'Tooltip component example',
+            title: 'Tooltip directive example',
             subtitle: '',
             demos: [
                 {
@@ -28,10 +38,15 @@ export class DemoTooltipComponent implements OnInit {
                     templateRef: this.defaultRef,
                     values: {
                         html: `<div class="tooltip-wrapper">
+
     <span sdkTooltip="Default tooltip">Default tooltip</span>
+
     <span delay="300" sdkTooltip="Injected humour, or non-characteristic words etc.">Delayed for 300ms</span>
+
     <span sdkTooltip="Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.">Long text</span>
+
     <span [delay]="1000" sdkTooltip="little text">Delayed for 1 second</span>
+
 </div>`,
                         module: `import { TooltipModule } from 'ngx-slice-kit';
 
@@ -73,9 +88,12 @@ export class DemoTooltipComponent {
                     templateRef: this.clickRef,
                     values: {
                         html: `<div class="tooltip-wrapper">
-    <span [showOnClick]="true" sdkTooltip="Fishtext hola help">Click me</span>
+
+    <span [showOnClick]="true" sdkTooltip="Wanna go fishing, mate?">Click me</span>
+
     <span [showOnClick]="true"
-    sdkTooltip=" It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.">Or me</span>
+    sdkTooltip="It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.">Or me</span>
+
 </div>`,
                     },
                 },
@@ -85,7 +103,9 @@ export class DemoTooltipComponent {
                     templateRef: this.positionsRef,
                     values: {
                         html: `<span offset="14" position="right" sdkTooltip="Site fish text">Right direction one</span>
-<span position="left" sdkTooltip="Do you even fish, bro?">On the left</span>
+
+<button sdk-raised-button position="left" sdkTooltip="Do you even fish, bro?">On the left</button>
+
 <span position="bottom" sdkTooltip="It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.">Down to the ground, if you are sitting right</span>`,
                     },
                 },
@@ -98,8 +118,19 @@ export class DemoTooltipComponent {
                             label: '[sdkTooltip]',
                             type: 'string',
                             required: true,
+                            description: 'Value tooltip would show depending on options specified',
+                        },
+                        {
+                            label: '[delay]',
+                            type: 'number',
                             description: '',
-                        }
+                        },
+                        {
+                            label: '[showOnClick]',
+                            type: 'boolean',
+                            description: '',
+                            default_value: false,
+                        },
                     ],
                 },
             ],

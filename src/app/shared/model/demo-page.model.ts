@@ -35,6 +35,5 @@ export class DemoPageModel {
         }
 
         this.apiVisible = !!this.api_groups?.find(adg => adg.apis.length > 0);
-        console.log('demo page', this.apiVisible);
     }
 }

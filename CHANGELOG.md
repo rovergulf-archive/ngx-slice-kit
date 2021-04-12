@@ -21,8 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 web:
-- examples for tooltip, dialog and popup (refers to #32)
-- demos for divider and checkbox, icons and segmented buttons, refers to [#32](https://github.com/rovergulf/ngx-slice-kit/issues/32) and [#148](https://github.com/rovergulf/ngx-slice-kit/issues/148)
+- examples for tooltip and popup (refers to #32)
+- demos for divider, checkbox, dialog, icons and segmented buttons, refers to [#32](https://github.com/rovergulf/ngx-slice-kit/issues/32) and [#148](https://github.com/rovergulf/ngx-slice-kit/issues/148)
 
 ### Changed
 web:

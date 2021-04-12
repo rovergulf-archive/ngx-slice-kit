@@ -10,6 +10,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { SidenavComponent } from './layout/sidenav/sidenav.component';
 
+import { ApiDefTableComponent } from './components/api-def-table/api-def-table.component';
 import { DemoComponent } from './components/demo/demo.component';
 import { CodeSnippetComponent } from './components/code-snippet/code-snippet.component';
 
@@ -22,6 +23,7 @@ const sharedModuleDeclarations = [
     HeaderComponent,
     SidenavComponent,
     // components
+    ApiDefTableComponent,
     DemoComponent,
     CodeSnippetComponent,
 ];
