@@ -6,7 +6,7 @@ main {
     @extend .layout-start-start;
 
     & > * {
-        margin: 16px auto 8px;
+        margin: 16px 0 8px 0;
         width: 100%;
     }
 
@@ -23,9 +23,16 @@ main {
         width: 100%;
         overflow: hidden;
 
+        &>* {
+            margin-bottom: 8px;
+        }
+
         .source-wrap {
             width: 100%;
             overflow-x: auto;
+        }
+
+        .code-example-title {
         }
 
         .code-example {
@@ -90,6 +97,11 @@ main {
             }
 
             td {
+                &.title {
+                    padding: 16px;
+                    background: rgba(var(--background-raw), 0.05);
+                }
+
                 &.attr {
                 }
 

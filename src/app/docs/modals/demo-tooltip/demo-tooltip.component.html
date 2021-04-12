@@ -1,71 +1,36 @@
-<div>
-    <h2>Tooltips on the top with 1000ms delay</h2>
-    <div class="tooltip-wrapper">
-        <span delay="1000" sdkTooltip="Site fishtext">Tooltip-small</span>
-        <span delay="1000" sdkTooltip="Injected humour, or non-characteristic words etc.">Tooltip-middle</span>
-        <span delay="1000"
-              sdkTooltip="Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.">Tooltip-big-oversize</span>
-        <span [delay]="1000" sdkTooltip="little text">Tooltip-small</span>
-    </div>
-    <h2>Tooltips on the top, open by click</h2>
-    <div class="tooltip-wrapper">
-        <span [showOnClick]="true" sdkTooltip="Fishtext hola help">Tooltip-small</span>
-        <span
-            [showOnClick]="true"
-            sdkTooltip=" It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.">Tooltip-middle</span>
-        <span
-            [showOnClick]="true"
-            sdkTooltip=" It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.">Tooltip-big-oversize</span>
-        <span [showOnClick]="true" sdkTooltip="маленький текст">Tooltip-small</span>
-    </div>
-    <h2>Tooltips left</h2>
-    <div class="tooltip-wrapper">
-        <span position="left" sdkTooltip="Site fishtext">Tooltip-small</span>
-        <span
-            position="left"
-            sdkTooltip=" It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.">Tooltip-middle</span>
-        <span
-            position="left"
-            sdkTooltip=" It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages">Tooltip-big</span>
-        <span position="left" sdkTooltip="маленький">Tooltip-small</span>
-    </div>
-    <h2>Tooltips right</h2>
-    <div class="tooltip-wrapper" style="display: flex; justify-content: space-between;">
-        <span offset="14" position="right" sdkTooltip="Site fishtext">Tooltip-small</span>
-        <span offset="14" position="right" sdkTooltip="There are many variations of passages of Lorem Ipsum available">Tooltip-big</span>
-        <span offset="14" position="right" sdkTooltip="Sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum'">Tooltip-small+</span>
-        <span offset="14" position="right" sdkTooltip="There are many variations of passages of Lorem Ipsum available">Tooltip-big oversize</span>
-    </div>
-    <h2>Tooltips bottom</h2>
-    <div class="tooltip-wrapper" style="margin-bottom: 100px">
-        <span position="bottom" sdkTooltip="Site fishtext">Tooltip-small</span>
-        <span position="bottom"
-              sdkTooltip="It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages">Tooltip-big</span>
-        <span position="bottom"
-              sdkTooltip="Sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum'">Tooltip-small+</span>
-        <span position="bottom" sdkTooltip="There are many variations of passages of Lorem Ipsum available">Tooltip-big-oversize</span>
-    </div>
-</div>
+<lib-demo [page]="page">
 
-<!-- -->
-<ng-template #defaultRef>
-    <span delay="1000" sdkTooltip="Site fishtext">Tooltip-small</span>
-    <span delay="1000" sdkTooltip="Injected humour, or non-characteristic words etc.">Tooltip-middle</span>
-    <span delay="1000"
-          sdkTooltip="Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.">Tooltip-big-oversize</span>
-    <span [delay]="1000" sdkTooltip="little text">Tooltip-small</span>
-</ng-template>
+    <!-- default examples with delay -->
+    <ng-template #defaultRef>
+        <div class="tooltip-wrapper">
+            <span sdkTooltip="Default tooltip">Default tooltip</span>
+            <span class="spacer"></span>
+            <span delay="300" sdkTooltip="Injected humour, or non-characteristic words etc.">Delayed for 300ms</span>
+            <span class="spacer"></span>
+            <span sdkTooltip="Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.">Long text</span>
+            <span class="spacer"></span>
+            <span [delay]="1000" sdkTooltip="little text">Delayed for 1 second</span>
+        </div>
+    </ng-template>
 
-<!-- -->
-<ng-template #clickRef>
-    <span [showOnClick]="true" sdkTooltip="Fishtext hola help">Tooltip-small</span>
-    <span
-        [showOnClick]="true"
-        sdkTooltip=" It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.">Tooltip-middle</span>
-</ng-template>
+    <!-- click to show -->
+    <ng-template #clickRef>
+        <div class="tooltip-wrapper">
+            <span [showOnClick]="true" sdkTooltip="Fishtext hola help">Click me</span>
+            <span class="spacer"></span>
+            <span [showOnClick]="true"
+                sdkTooltip="It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.">Or me</span>
+        </div>
+    </ng-template>
 
-<!-- -->
-<ng-template #sizesRef></ng-template>
 
-<!-- -->
-<ng-template #positionsRef></ng-template>
+    <!-- positions and offset -->
+    <ng-template #positionsRef>
+        <span offset="14" position="right" sdkTooltip="Site fish text">Right direction one</span>
+        <span class="spacer"></span>
+        <span position="left" sdkTooltip="Do you even fish, bro?">On the left</span>
+        <span class="spacer"></span>
+        <span position="bottom" sdkTooltip="It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.">Down to the ground, if you are sitting right</span>
+    </ng-template>
+
+</lib-demo>

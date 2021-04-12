@@ -1,12 +1,14 @@
 
+
+
 .tooltip-wrapper {
     display: flex;
+
+    span.spacer {
+        padding: 16px 40px;
+    }
 }
 
-span {
-    margin: 0 40px;
-}
-
-h2 {
-    margin-bottom: 24px;
+span.spacer {
+    padding: 40px;
 }

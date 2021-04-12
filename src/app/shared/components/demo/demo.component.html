@@ -35,9 +35,19 @@
         </ng-container>
     </ng-container>
 
+    <!-- API -->
+    <ng-container *ngIf="page.apiVisible">
+        <h3>{{page.demo_name}} API</h3>
+    </ng-container>
+
+
+    <!-- API Definition Groups -->
+    <ng-container *ngIf="page.api_groups?.length > 0">
+
+    </ng-container>
+
     <!-- API Definitions -->
     <ng-container *ngIf="page.apis?.length > 0">
-        <h3>{{page.demo_name}} API</h3>
         <div class="radio-example">
             <table class="demo-api-definition">
                 <thead>

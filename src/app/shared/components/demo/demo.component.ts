@@ -27,7 +27,7 @@ export class DemoComponent implements OnInit, OnDestroy {
                 return `app.component.ts`;
             case 'styles':
                 return `app.component.scss`;
-            case `app`:
+            case `html`:
                 return `app.component.html`;
             default:
                 return v;
