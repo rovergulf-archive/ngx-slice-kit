@@ -5,11 +5,6 @@
         <p class="subtitle">{{page.subtitle}}</p>
     </ng-container>
 
-    <!-- API -->
-    <ng-container *ngIf="page.apiVisible">
-        <h3>Usage examples:</h3>
-    </ng-container>
-
     <!-- Usage demos -->
     <ng-container *ngIf="page.demos?.length > 0">
         <ng-container *ngFor="let d of page.demos">

@@ -14,8 +14,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## Released [v0.9.3]
 
-## Released [v0.9.2]
+## 12 Apr 2021
+
+### Added
+
+### Changed
+slice-kit:
+-`Tabs` tab left/right padding is 16px
+-`Tabs` content padding is 0px
+
+### Fixed
+slice-kit:
+- Error color for `input`/`textarea` error caption
+
+### Removed
+
+
+## Unreleased [v0.9.2]
 
 ## 12 Apr 2021
 
