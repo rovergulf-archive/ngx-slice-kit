@@ -14,7 +14,7 @@
 }
 
 .sdk-input__label-required-mark {
-    color: var(--warn);
+    color: var(--warn-a50);
 }
 
 .sdk-input__label {
@@ -131,7 +131,7 @@
 
 .sdk-input__error {
     @extend .sdk-inputs-caption;
-    color: var(--warn-a85);
+    color: var(--warn-a90);
 
     svg {
         margin-right: 4px;
