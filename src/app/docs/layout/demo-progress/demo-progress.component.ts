@@ -59,7 +59,7 @@ export class DemoProgressComponent implements OnInit {
         ProgressModule,
     ],
 })
-export class DemoAccordionModule {
+export class DemoProgressModule {
 }`,
                         component: `import { Component } from '@angular/core';
 
@@ -90,10 +90,10 @@ export class DemoProgressComponent {
                     templateRef: this.smallRef,
                     values: {
                         html: `<div class="progress-wrapper">
-    <sdk-progress [small]="true" [value]="value2"></sdk-progress>
+    <sdk-progress [small]="true" [value]="value"></sdk-progress>
     <div class="button-wrapper">
-        <button (click)="smallValueChange(1)" color="primary" sdk-flat-button>Increase progress</button>
-        <button (click)="smallValueChange(-1)" color="primary" sdk-flat-button>Decrease progress</button>
+        <button (click)="valueChange(1)" color="primary" sdk-flat-button>Increase progress</button>
+        <button (click)="valueChange(-1)" color="primary" sdk-flat-button>Decrease progress</button>
     </div>
 </div>`,
                     },
