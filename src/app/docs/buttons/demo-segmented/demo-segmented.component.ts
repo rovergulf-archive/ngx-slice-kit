@@ -16,9 +16,6 @@ export class DemoSegmentedComponent implements OnInit {
     constructor() {
     }
 
-    // <h3>Simple button group / primary color</h3>
-    // <h3>Simple button group / regular color</h3>
-
     ngOnInit(): void {
         this.page = {
             title: 'Segmented buttons example',
@@ -40,7 +37,7 @@ export class DemoSegmentedComponent implements OnInit {
     imports: [
         CommonModule,
         FormsModule,
-        // add ButtonModule export
+        // add ButtonGroupModule export
         ButtonGroupModule,
     ],
 })
