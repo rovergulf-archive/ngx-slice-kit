@@ -20,8 +20,65 @@ ng add ngx-slice-kit`;
         // add ToggleModule export
         SliceKitModule,
     ],
+    exports: [
+        // export module to be available in whole application
+        SliceKitModule,
+    ]
 })
-export class DemoToggleModule {
+export class SharedModule {
+}`;
+    batchModuleExample = `import { ButtonsModule, ModalsModule, DropdownsModule } from 'ngx-slice-kit';
+
+@NgModule({
+    imports: [
+        CommonModule,
+        FormsModule,
+        // import slice-kit by feature modules
+        ButtonsModule,
+        ModalsModule,
+        DropdownsModule,
+    ],
+    exports: [
+        ButtonsModule,
+        ModalsModule,
+        DropdownsModule,
+    ]
+})
+export class SharedModule {
+}`;
+    componentModuleExample = `import {
+    ToggleModule,
+    ButtonModule,
+    AlertModule,
+    PopupModule,
+    InputModule,
+    DividerModule,
+} from 'ngx-slice-kit';
+
+const sliceKitImports = [
+    ToggleModule,
+    ButtonModule,
+    AlertModule,
+    PopupModule,
+    InputModule,
+    DividerModule,
+];
+
+@NgModule({
+    imports: [
+        CommonModule,
+        FormsModule,
+        // add slice-kit imports
+        ...sliceKitImports
+    ],
+    exports: [
+        // share components through module
+        ...sliceKitImports
+    ],
+    providers: [],
+    schemas: [],
+})
+export class SharedModule {
 }`;
     themeExample = `<div sdk-theme>
     <app-header></app-header>

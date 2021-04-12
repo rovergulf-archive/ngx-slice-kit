@@ -11,4 +11,14 @@ main {
         padding: 16px;
     }
 
+    .fake-tab-padding {
+        padding: 0 24px;
+        @extend .flex-column;
+        @extend .layout-start-start;
+
+        lib-code-snippet {
+            width: 100%;
+        }
+    }
+
 }

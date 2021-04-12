@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+
 ## Released [v0.9.1]
 
 ## 9 Apr 2021
@@ -34,6 +35,7 @@ slice-kit:
 
 ### Removed
 
+
 ## 8 Apr 2021
 
 ### Added
@@ -49,6 +51,7 @@ web:
 - adaptive view for demos, closes #169
 
 ### Removed
+
 
 ## Released [v0.9.0]
 
@@ -77,7 +80,8 @@ slice-kit:
 
 ### Removed
 
-## Released [v0.8.1]
+
+## Unreleased v0.8.1
 
 ## 6 Apr 2021
 
@@ -136,6 +140,7 @@ web:
 ### Fixed
 - colors for `dots`/`carousel`/`dropdowns`/`select`/`autocomplete`/`tab-group`/`alert`/`tooltip`/`slider`/`progress`
 - dropdown declaration error
+
 
 ## 2 Apr 2021
 
@@ -333,9 +338,8 @@ Fix scroll issue in `tabs` component
 
 [Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.9.0...main
 [v0.10.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.0...v0.10.0
-[v0.9.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.2...v0.9.0
-[v0.8.2]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.1...v0.8.2
-[v0.8.1]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.0...v0.8.1
+[v0.9.1]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.0...v0.9.1
+[v0.9.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.0...v0.9.0
 [v0.8.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.6.5...v0.7.0
 [v0.6.5]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.6.4...v0.6.5

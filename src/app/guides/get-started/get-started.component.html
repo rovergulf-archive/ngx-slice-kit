@@ -16,15 +16,29 @@
     <span class="spacer"></span>
 
     <h3>2. Import ngx-slice-kit to your app</h3>
-    <lib-code-snippet [value]="appModuleExample"></lib-code-snippet>
+    <sdk-tab-group>
+        <sdk-tab label="Standalone module">
+            <lib-code-snippet [value]="appModuleExample"></lib-code-snippet>
+        </sdk-tab>
+        <sdk-tab label="Feature modules">
+            <lib-code-snippet [value]="batchModuleExample"></lib-code-snippet>
+        </sdk-tab>
+        <sdk-tab label="Components">
+            <lib-code-snippet [value]="componentModuleExample"></lib-code-snippet>
+        </sdk-tab>
+    </sdk-tab-group>
 
     <span class="spacer"></span>
 
     <h3>3. Apply sdk-theme to your app:</h3>
-    <lib-code-snippet [value]="themeExample"></lib-code-snippet>
+    <div class="fake-tab-padding">
+        <lib-code-snippet [value]="themeExample"></lib-code-snippet>
+    </div>
 
     <span class="spacer"></span>
 
     <h3>4. Read <a routerLink="/docs">docs</a> and go on!</h3>
-    <a sdk-flat-button routerLink="/docs">Go to API Documentation</a>
+    <div class="fake-tab-padding">
+        <a sdk-raised-button routerLink="/docs">Go to API Documentation</a>
+    </div>
 </main>
