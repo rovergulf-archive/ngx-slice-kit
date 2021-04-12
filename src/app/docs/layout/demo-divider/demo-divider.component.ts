@@ -41,7 +41,18 @@ export class DemoDividerModule {
                     },
                 }
             ],
-            apis: [],
+            api_groups: [
+                {
+                    name: '',
+                    apis: [
+                        {
+                            label: '',
+                            type: '',
+                            description: '',
+                        }
+                    ],
+                }
+            ],
         };
     }
 

@@ -54,11 +54,16 @@ export class DemoAccordionComponent {
                     },
                 }
             ],
-            apis: [
+            api_groups: [
                 {
-                    label: '',
-                    type: '',
-                    description: '',
+                    name: '',
+                    apis: [
+                        {
+                            label: '',
+                            type: '',
+                            description: '',
+                        }
+                    ],
                 }
             ],
         };

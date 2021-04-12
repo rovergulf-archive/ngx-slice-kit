@@ -1,5 +1,6 @@
 import { DemoExample } from './demo-component.model';
 import { ApiDefinition } from './api-definition.model';
+import { ApiDefinitionsGroup } from './api-group.model';
 
 export class DemoPageModel {
     title: string;
@@ -21,30 +22,19 @@ export class DemoPageModel {
 
         if (this.apis?.length > 0) {
             this.apis = this.apis.map(ad => new ApiDefinition(ad as ApiDefinition));
+            this.api_groups = [
+                {
+                    name: '',
+                    apis: this.apis,
+                },
+            ];
         }
-
-        this.api_groups = [
-            {
-                name: '',
-                apis: this.apis,
-            },
-        ];
-        this.api_groups = this.api_groups.map(adg => new ApiDefinitionsGroup(adg as ApiDefinitionsGroup));
-
-        this.apiVisible = !!this.api_groups.find(adg => adg.apis.length > 0);
-    }
-}
-
-export class ApiDefinitionsGroup {
-    name: string;
-    apis: ApiDefinition[];
-
-    constructor(src: ApiDefinitionsGroup) {
-        Object.assign(this, src);
 
         if (this.apis?.length > 0) {
-            this.apis = this.apis.map(a => new ApiDefinition(a as ApiDefinition));
+            this.api_groups = this.api_groups.map(adg => new ApiDefinitionsGroup(adg as ApiDefinitionsGroup));
         }
-    }
 
+        this.apiVisible = !!this.api_groups?.find(adg => adg.apis.length > 0);
+        console.log('demo page', this.apiVisible);
+    }
 }

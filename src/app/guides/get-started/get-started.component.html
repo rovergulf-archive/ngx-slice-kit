@@ -17,13 +17,13 @@
 
     <h3>2. Import ngx-slice-kit to your app</h3>
     <sdk-tab-group>
-        <sdk-tab label="Standalone module">
+        <sdk-tab label="app.module.ts (standalone)">
             <lib-code-snippet [value]="appModuleExample"></lib-code-snippet>
         </sdk-tab>
-        <sdk-tab label="Feature modules">
+        <sdk-tab label="app.module.ts (feature)">
             <lib-code-snippet [value]="batchModuleExample"></lib-code-snippet>
         </sdk-tab>
-        <sdk-tab label="Components">
+        <sdk-tab label="app.module.ts (components)">
             <lib-code-snippet [value]="componentModuleExample"></lib-code-snippet>
         </sdk-tab>
     </sdk-tab-group>
@@ -31,9 +31,17 @@
     <span class="spacer"></span>
 
     <h3>3. Apply sdk-theme to your app:</h3>
-    <div class="fake-tab-padding">
-        <lib-code-snippet [value]="themeExample"></lib-code-snippet>
-    </div>
+        <sdk-tab-group>
+            <sdk-tab label="src/app/app.component.html">
+                <lib-code-snippet [value]="themeExample"></lib-code-snippet>
+            </sdk-tab>
+            <sdk-tab label="src/styles.scss">
+                <lib-code-snippet [value]="stylesExample"></lib-code-snippet>
+            </sdk-tab>
+            <sdk-tab label="angular.json">
+                <lib-code-snippet [value]="angularJson"></lib-code-snippet>
+            </sdk-tab>
+        </sdk-tab-group>
 
     <span class="spacer"></span>
 

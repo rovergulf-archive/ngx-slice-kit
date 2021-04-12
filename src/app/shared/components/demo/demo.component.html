@@ -43,47 +43,51 @@
 
     <!-- API Definition Groups -->
     <ng-container *ngIf="page.api_groups?.length > 0">
+        <ng-container *ngFor="let group of page.api_groups">
+            <p *ngIf="group.name" class="api-group-title">{{group.name}}</p>
 
+            <!-- API Definitions -->
+            <ng-container *ngIf="group.apis?.length > 0">
+                <div class="radio-example">
+                    <table class="demo-api-definition">
+                        <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Description</th>
+                            <th class="type">Type</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <ng-container *ngFor="let a of group.apis">
+                            <tr>
+                                <td class="attr">
+                                    <p>
+                                        <b>{{a.label}}</b>
+                                        <span class="required-mark" *ngIf="a.required">*</span>
+                                    </p>
+                                </td>
+                                <td class="desc">
+                                    <div class="flex-column">
+                                        <p>{{a.description}}</p>
+                                        <ng-container *ngIf="a.default_value">
+                                            <span class="spacer"></span>
+                                            <small>Default value: {{a.default_value}}</small>
+                                        </ng-container>
+                                    </div>
+                                </td>
+                                <td class="type">
+                                    <p>{{a.type}}</p>
+                                </td>
+                            </tr>
+                        </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </ng-container>
+
+        </ng-container>
     </ng-container>
 
-    <!-- API Definitions -->
-    <ng-container *ngIf="page.apis?.length > 0">
-        <div class="radio-example">
-            <table class="demo-api-definition">
-                <thead>
-                <tr>
-                    <th>Attribute</th>
-                    <th>Description</th>
-                    <th class="type">Type</th>
-                </tr>
-                </thead>
-                <tbody>
-                <ng-container *ngFor="let a of page.apis">
-                    <tr>
-                        <td class="attr">
-                            <p>
-                                <b>{{a.label}}</b>
-                                <span class="required-mark" *ngIf="a.required">*</span>
-                            </p>
-                        </td>
-                        <td class="desc">
-                            <div class="flex-column">
-                                <p>{{a.description}}</p>
-                                <ng-container *ngIf="a.default_value">
-                                    <span class="spacer"></span>
-                                    <small>Default value: {{a.default_value}}</small>
-                                </ng-container>
-                            </div>
-                        </td>
-                        <td class="type">
-                            <p>{{a.type}}</p>
-                        </td>
-                    </tr>
-                </ng-container>
-                </tbody>
-            </table>
-        </div>
-    </ng-container>
 </main>
 
 <!-- include ng template refs -->

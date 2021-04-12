@@ -4,6 +4,7 @@
 main {
     @extend .flex-column;
     @extend .layout-start-start;
+    padding-bottom: 80px;
 
     & > * {
         margin: 16px 0 8px 0;
@@ -46,6 +47,11 @@ main {
                 margin-bottom: 8px;
             }
         }
+    }
+
+    .api-group-title {
+        font-weight: 500;
+        font-size: 16px;
     }
 
     table.demo-api-definition {

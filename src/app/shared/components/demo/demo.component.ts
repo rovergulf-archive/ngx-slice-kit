@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DemoExample, DemoPageModel } from '../../model';
+import { BehaviorSubject } from 'rxjs';
 
 type demoTabs = `component` | `module` | `html` | `scss`;
 
@@ -10,7 +11,15 @@ type demoTabs = `component` | `module` | `html` | `scss`;
 })
 export class DemoComponent implements OnInit, OnDestroy {
 
-    @Input() page: DemoPageModel;
+    $page: BehaviorSubject<DemoPageModel> = new BehaviorSubject<any>(undefined);
+
+    @Input() set page(src: DemoPageModel) {
+        this.$page.next(new DemoPageModel(src));
+    }
+
+    get page(): DemoPageModel {
+        return this.$page.getValue();
+    }
 
     constructor() {
     }

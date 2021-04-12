@@ -61,7 +61,6 @@ export class DemoTooltipComponent {
                         styles: `.tooltip-wrapper {
     display: flex;
 
-
     span {
         margin: 0 40px;
     }
@@ -91,12 +90,18 @@ export class DemoTooltipComponent {
                     },
                 },
             ],
-            apis: [
+            api_groups: [
                 {
-                    label: '',
-                    type: '',
-                    description: '',
-                }
+                    name: 'sdkTooltip directive',
+                    apis: [
+                        {
+                            label: '[sdkTooltip]',
+                            type: 'string',
+                            required: true,
+                            description: '',
+                        }
+                    ],
+                },
             ],
         };
     }
