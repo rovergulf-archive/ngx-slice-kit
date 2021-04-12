@@ -22,6 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 web:
 - pagination component demo
+- sidenav component demo
+- demo component stackblitz url
 
 ### Changed
 web:

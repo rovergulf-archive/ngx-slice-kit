@@ -21,15 +21,24 @@
             <div class="demo-container">
 
                 <!-- ng template ref -->
-                <p>Demo:</p>
-                <div class="code-example" *ngIf="d.templateRef">
-                    <ng-container [ngTemplateOutlet]="d.templateRef"></ng-container>
-                </div>
+                <ng-container *ngIf="!page.hideDemo">
+                    <p>{{page.demoTitle}}</p>
+                    <div class="code-example" *ngIf="d.templateRef">
+                        <ng-container [ngTemplateOutlet]="d.templateRef"></ng-container>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="page.stackblitz_url">
+                    <span class="stackblitz-url">
+                        <a sdk-base-button target="_blank" href="{{page.stackblitz_url}}">View demo on stackblitz</a>
+                    </span>
+                </ng-container>
 
                 <span class="spacer"></span>
 
                 <!-- Source code -->
-                <p>Source code:</p>
+                <p *ngIf="!page.hideSourceTitle">{{page.sourceTitle}}</p>
+
                 <sdk-tab-group>
                     <sdk-tab *ngFor="let v of getValues(d)" label="{{getValueTabName(v)}}">
                         <lib-code-snippet [value]="d.values[v]"></lib-code-snippet>
