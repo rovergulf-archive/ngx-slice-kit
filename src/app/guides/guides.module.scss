@@ -8,8 +8,16 @@ main {
     //overflow-x: hidden;
 
     &>* {
-        margin: 0 auto 16px auto;
-        width: 100%;
+        margin: 0 0 16px 0;
+
+        &:not(img) {
+            width: 100%;
+        }
+    }
+
+    &>img {
+        align-self: flex-start;
+        justify-self: flex-start;
     }
 
     pre {
