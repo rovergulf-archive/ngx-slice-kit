@@ -6,7 +6,6 @@
 @import 'variables';
 
 
-
 /**
  * slice-kit colors
  */
@@ -42,7 +41,7 @@ body {
     display: inline-block;
     border-radius: 6px;
     background-color: var(--background-a90);
-    box-shadow: 0 1px 3px var(--base-a60-rgb), 0 0 0 var(--base-a60-rgb);
+    box-shadow: 0 1px 3px rgba(11, 11, 11, 0.6), 0 0 0 rgba(11, 11, 11, 0.6);
     //color: var(--regular-text);
     color: var(--base);
     position: absolute;
@@ -63,47 +62,39 @@ body {
         border: 6px solid black;
         transform-origin: 0 0;
     }
-}
 
-.sdk-tooltip--bottom {
-    &:after {
+    &--bottom:after {
         margin-left: -0.5em;
         top: 1px;
         left: 50%;
         border-color: var(--background-a90) var(--background-a90) transparent transparent;
         transform: rotate(-45deg);
-        box-shadow: 1px -1px 2px -1px var(--base-a60-rgb), 0 0 0 var(--base-a60-rgb);
+        box-shadow: 1px -1px 2px -1px rgba(11, 11, 11, 0.6), 0 0 0 rgba(11, 11, 11, 0.6);
     }
-}
 
-.sdk-tooltip--top {
-    &:after {
+    &--top:after {
         margin-left: -0.5em;
         bottom: -11px;
         left: 50%;
         border-color: transparent transparent var(--background-a90) var(--background-a90);
         transform: rotate(-45deg);
-        box-shadow: -2px 2px 2px -1px var(--base-a60-rgb), 0 0 0 var(--base-a60-rgb);
+        box-shadow: -2px 2px 2px -1px rgba(26, 26, 26, 0.6), 0 0 0 rgba(26, 26, 26, 0.6);
     }
-}
 
-.sdk-tooltip--right {
-    &:after {
+    &--right:after {
         top: 50%;
         left: -7px;
         border-color: var(--background-a90) transparent transparent var(--background-a90);
         transform: rotate(-45deg);
-        box-shadow: -1px -1px 2px -1px var(--base-a60-rgb), 0 0 0 var(--base-a60-rgb);
+        box-shadow: -1px -1px 2px -1px rgba(11, 11, 11, 0.6), 0 0 0 rgba(11, 11, 11, 0.6);
     }
-}
 
-.sdk-tooltip--left {
-    &:after {
+    &--left:after {
         top: 50%;
         right: -3px;
         border-color: transparent var(--background-a90) var(--background-a90) transparent;
         transform: rotate(-45deg);
-        box-shadow: 1px 1px 2px -1px var(--base-a60-rgb), 0 0 0 var(--base-a60-rgb);
+        box-shadow: 1px 1px 2px -1px rgba(11, 11, 11, 0.6), 0 0 0 rgba(11, 11, 11, 0.6);
     }
 }
 

@@ -6,8 +6,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.10.0
 
-## 10 Apr 2021
-
 ### Added
 
 ### Changed
@@ -16,7 +14,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-## Released [v0.9.1]
+
+## Released [v0.9.2]
+
+## 12 Apr 2021
+
+### Added
+web:
+- examples for tooltip and popup (refers to #32)
+- demos for divider, checkbox, dialog, icons and segmented buttons, refers to [#32](https://github.com/rovergulf/ngx-slice-kit/issues/32) and [#148](https://github.com/rovergulf/ngx-slice-kit/issues/148)
+
+### Changed
+web:
+- toggle component demo enhanced
+- color guide moved to theming
+- update guide styling
+- `ApiDefinitionsGroup` model added
+
+### Fixed
+web:
+- some source code namings
+
+slice-kit:
+- input error caption and icon colors
+- tooltip directive shadow color
+
+### Removed
+
+
+## Unreleased v0.9.1
 
 ## 9 Apr 2021
 
@@ -34,6 +60,7 @@ slice-kit:
 
 ### Removed
 
+
 ## 8 Apr 2021
 
 ### Added
@@ -50,6 +77,7 @@ web:
 
 ### Removed
 
+
 ## Released [v0.9.0]
 
 ## 8 Apr 2021
@@ -58,6 +86,7 @@ web:
 web:
 - updated demo component
 - demo component copy snippet method
+- textarea demo
 
 
 slice-kit:
@@ -77,7 +106,8 @@ slice-kit:
 
 ### Removed
 
-## Released [v0.8.1]
+
+## Unreleased v0.8.1
 
 ## 6 Apr 2021
 
@@ -136,6 +166,7 @@ web:
 ### Fixed
 - colors for `dots`/`carousel`/`dropdowns`/`select`/`autocomplete`/`tab-group`/`alert`/`tooltip`/`slider`/`progress`
 - dropdown declaration error
+
 
 ## 2 Apr 2021
 
@@ -333,9 +364,8 @@ Fix scroll issue in `tabs` component
 
 [Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.9.0...main
 [v0.10.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.0...v0.10.0
-[v0.9.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.2...v0.9.0
-[v0.8.2]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.1...v0.8.2
-[v0.8.1]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.0...v0.8.1
+[v0.9.2]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.0...v0.9.2
+[v0.9.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.0...v0.9.0
 [v0.8.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.6.5...v0.7.0
 [v0.6.5]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.6.4...v0.6.5

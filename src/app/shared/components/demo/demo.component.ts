@@ -1,17 +1,26 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DemoExample, DemoPageModel } from '../../model';
-import { Subscribable, Subscription, timer } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 type demoTabs = `component` | `module` | `html` | `scss`;
 
 @Component({
-    selector: 'lib-demo',
+    selector: 'lib-demo-page',
     templateUrl: './demo.component.html',
     styleUrls: ['./demo.component.scss']
 })
 export class DemoComponent implements OnInit, OnDestroy {
 
-    @Input() page: DemoPageModel;
+    $page: BehaviorSubject<DemoPageModel> = new BehaviorSubject<any>(undefined);
+
+    @Input() set page(src: DemoPageModel) {
+        const page = new DemoPageModel(src);
+        this.$page.next(page);
+    }
+
+    get page(): DemoPageModel {
+        return this.$page.getValue();
+    }
 
     constructor() {
     }
@@ -28,8 +37,10 @@ export class DemoComponent implements OnInit, OnDestroy {
                 return `app.component.ts`;
             case 'styles':
                 return `app.component.scss`;
-            default:
+            case `html`:
                 return `app.component.html`;
+            default:
+                return v;
         }
     }
 

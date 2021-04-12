@@ -1,5 +1,7 @@
-<section class="view">
+<lib-demo-page [page]="page">
 
-    <button (click)="openDialog()" sdk-button>Open example dialog</button>
+    <ng-template #defaultRef>
+        <button (click)="showDialog()" sdk-base-button>Open example dialog</button>
+    </ng-template>
 
-</section>
+</lib-demo-page>

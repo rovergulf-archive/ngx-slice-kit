@@ -1,8 +1,13 @@
-<main>
+<main *ngIf="page">
     <h2 class="title">{{page.title}}</h2>
 
     <ng-container *ngIf="page.subtitle">
         <p class="subtitle">{{page.subtitle}}</p>
+    </ng-container>
+
+    <!-- API -->
+    <ng-container *ngIf="page.apiVisible">
+        <h3>Usage examples:</h3>
     </ng-container>
 
     <!-- Usage demos -->
@@ -10,11 +15,15 @@
         <ng-container *ngFor="let d of page.demos">
             <h3>{{d.title}}</h3>
 
+            <ng-container *ngIf="d.description">
+                <p>{{d.description}}</p>
+            </ng-container>
+
             <div class="demo-container">
 
                 <!-- ng template ref -->
                 <p>Demo:</p>
-                <div class="example" *ngIf="d.templateRef">
+                <div class="code-example" *ngIf="d.templateRef">
                     <ng-container [ngTemplateOutlet]="d.templateRef"></ng-container>
                 </div>
 
@@ -31,45 +40,24 @@
         </ng-container>
     </ng-container>
 
-    <!-- API Definitions -->
-    <ng-container *ngIf="page.apis?.length > 0">
-        <h3>{{page.demo_name}} API</h3>
-        <div class="radio-example">
-            <table class="demo-api-definition">
-                <thead>
-                <tr>
-                    <th>Attribute</th>
-                    <th>Description</th>
-                    <th class="type">Type</th>
-                </tr>
-                </thead>
-                <tbody>
-                <ng-container *ngFor="let a of page.apis">
-                    <tr>
-                        <td class="attr">
-                            <p>
-                                <b>{{a.label}}</b>
-                                <span class="required-mark" *ngIf="a.required">*</span>
-                            </p>
-                        </td>
-                        <td class="desc">
-                            <div class="flex-column">
-                                <p>{{a.description}}</p>
-                                <ng-container *ngIf="a.default_value">
-                                    <span class="spacer"></span>
-                                    <small>Default value: {{a.default_value}}</small>
-                                </ng-container>
-                            </div>
-                        </td>
-                        <td class="type">
-                            <p>{{a.type}}</p>
-                        </td>
-                    </tr>
-                </ng-container>
-                </tbody>
-            </table>
-        </div>
+    <!-- API -->
+    <ng-container *ngIf="page.apiVisible">
+        <sdk-divider></sdk-divider>
+
+        <h3>API Definition:</h3>
+
+        <!-- API Definition Groups -->
+        <ng-container *ngFor="let group of page.api_groups">
+            <p *ngIf="group.name" class="api-group-title">{{group.name}}</p>
+
+            <!-- API Definitions -->
+            <ng-container *ngIf="group.apis?.length > 0">
+                <lib-api-definitions-table [apis]="group.apis"></lib-api-definitions-table>
+            </ng-container>
+
+        </ng-container>
     </ng-container>
+
 </main>
 
 <!-- include ng template refs -->

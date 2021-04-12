@@ -36,11 +36,11 @@ export class DemoTextareaComponent implements OnInit {
     imports: [
         CommonModule,
         FormsModule,
-        // add TextareaModule export
+        // add TextareaModule to app imports
         TextareaModule,
     ],
 })
-export class DemoToggleModule {
+export class DemoTextareaModule {
 }`,
                     },
                 },

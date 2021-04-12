@@ -1,18 +1,13 @@
-<section class="view flex-column layout-start-stretch">
-
-    <h1 class="sdk-h2">Segmented (grouped) buttons</h1>
-
-    <div>
-        <h3>Simple button group / primary color</h3>
-
+<lib-demo-page [page]="page">
+    <ng-template #defaultRef>
         <sdk-button-group>
             <button sdk-flat-button>Button one</button>
             <button sdk-flat-button>Button two</button>
             <button sdk-flat-button>Button three</button>
         </sdk-button-group>
+    </ng-template>
 
-        <h3>Simple button group / regular color</h3>
-
+    <ng-template #regularRef>
         <sdk-button-group color="regular">
             <button sdk-flat-button color="regular">Button one</button>
             <button sdk-flat-button color="regular">Button two</button>
@@ -20,6 +15,5 @@
             <button sdk-flat-button color="regular">Button four</button>
             <button sdk-flat-button color="regular">Button five</button>
         </sdk-button-group>
-    </div>
-
-</section>
+    </ng-template>
+</lib-demo-page>

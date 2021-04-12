@@ -1,10 +1,29 @@
-export class ApiDefinition {
+export type apiDefinitionSource = string | ApiDefinitionSource;
+
+export class ApiDefinitionSource {
     label: string;
     type: string;
     description?: string;
-    values?: string[];
+    url?: string;
     required?: boolean;
-    default_value?: any;
+    args?: string;
+    values?: any[];
+
+    constructor(src: ApiDefinitionSource) {
+        Object.assign(this, src);
+    }
+}
+
+export class ApiDefinition {
+    label: string;
+    type: string;
+    description?: string = '';
+    args?: any[];
+    values?: any[];
+    required?: boolean = false;
+    default_value?: any = undefined;
+
+    argsVisible?: boolean;
 
     constructor(src: ApiDefinition) {
         Object.assign(this, src);

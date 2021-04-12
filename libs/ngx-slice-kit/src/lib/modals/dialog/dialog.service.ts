@@ -103,8 +103,8 @@ export class DialogService {
     onEscape(): void {
         if (this.refs && this.refs.length) {
             const dialog = this.refs[this.refs.length - 1];
-            if (dialog.instance.hideOnEscape) {
-                dialog.instance.closed.emit(null);
+            if (dialog.instance?.hideOnEscape) {
+                dialog.instance?.closed.emit(null);
             }
         }
     }

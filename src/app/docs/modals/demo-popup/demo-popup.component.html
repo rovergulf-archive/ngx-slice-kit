@@ -1,5 +1,7 @@
-<section class="view">
+<lib-demo-page [page]="page">
 
-    <button (click)="openPopup()" sdk-raised-button>Open example popup</button>
+    <ng-template #defaultRef>
+        <button (click)="showPopup()" sdk-raised-button>Open example popup</button>
+    </ng-template>
 
-</section>
+</lib-demo-page>

@@ -1,13 +1,32 @@
-.view {
-  width: 100%;
-  padding: 20px;
-}
+@use './libs/ngx-slice-kit/src/lib/core/styles/core';
 
-h1 {
-  margin-bottom: 8px;
-}
+main {
+    @extend .flex-column;
+    @extend .layout-start-stretch;
+    width: 100%;
+    padding: 16px;
+    //overflow-x: hidden;
 
-h3, h4 {
-  margin: 8px 0;
-}
+    &>* {
+        margin: 0 auto 16px auto;
+        width: 100%;
+    }
 
+    pre {
+    }
+
+    code {
+        padding: 16px;
+    }
+
+    .fake-tab-padding {
+        padding: 0 24px;
+        @extend .flex-column;
+        @extend .layout-start-start;
+
+        lib-code-snippet {
+            width: 100%;
+        }
+    }
+
+}

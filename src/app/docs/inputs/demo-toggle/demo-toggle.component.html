@@ -1,7 +1,7 @@
-<lib-demo [page]="page">
+<lib-demo-page [page]="page">
 
     <ng-template #defaultRef>
-        <sdk-toggle></sdk-toggle>
+        <sdk-toggle [(ngModel)]="active"></sdk-toggle>
     </ng-template>
 
     <ng-template #smallRef>
@@ -13,4 +13,4 @@
     </ng-template>
 
 
-</lib-demo>
+</lib-demo-page>

@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { AlertOptions, AlertService } from 'ngx-slice-kit';
+import { DemoPageModel } from '../../../shared/model';
 
 @Component({
     selector: 'app-demo-alerts',
@@ -7,6 +8,10 @@ import { AlertOptions, AlertService } from 'ngx-slice-kit';
     styleUrls: ['./demo-alerts.component.scss', '../../docs.module.scss']
 })
 export class DemoAlertsComponent implements OnInit, OnDestroy {
+
+    @ViewChild('defaultRef', {static: true}) defaultRef: any;
+
+    page: DemoPageModel;
 
     firstCount: number = 0;
     secondCount: number = 0;
@@ -77,6 +82,52 @@ export class DemoAlertsComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        this.page = {
+            title: 'Alert component example',
+            subtitle: '',
+            demos: [
+                {
+                    title: 'Default usage',
+                    description: '',
+                    templateRef: this.defaultRef,
+                    values: {
+                        html: '',
+                        module: `import { AlertModule } from 'ngx-slice-kit';
+
+@NgModule({
+    imports: [
+        CommonModule,
+        FormsModule,
+        // add AlertModule to app imports
+        AlertModule,
+    ],
+})
+export class DemoAlertModule {
+}`,
+                        component: `import { Component } from '@angular/core';
+
+@Component({
+    selector: 'app-demo-accordion',
+    templateUrl: './demo-accordion.component.html',
+    styleUrls: ['./demo-accordion.component.scss']
+})
+export class DemoAccordionComponent {
+
+    constructor() {
+    }
+
+}`,
+                    },
+                }
+            ],
+            apis: [
+                {
+                    label: '',
+                    type: '',
+                    description: '',
+                }
+            ],
+        };
     }
 
     ngOnDestroy(): void {

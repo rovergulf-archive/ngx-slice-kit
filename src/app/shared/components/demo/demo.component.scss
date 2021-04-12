@@ -1,12 +1,13 @@
 //@import '~highlight.js/styles/github.css';
-@use './libs/ngx-slice-kit/src/lib/core/styles/core';
+@import './libs/ngx-slice-kit/src/lib/core/styles/core';
 
 main {
     @extend .flex-column;
     @extend .layout-start-start;
+    padding-bottom: 80px;
 
     & > * {
-        margin: 16px auto 8px;
+        margin: 16px 0 8px 0;
         width: 100%;
     }
 
@@ -23,16 +24,24 @@ main {
         width: 100%;
         overflow: hidden;
 
+        &>* {
+            margin-bottom: 8px;
+        }
+
         .source-wrap {
             width: 100%;
             overflow-x: auto;
         }
 
-        .example {
+        .code-example-title {
+        }
+
+        .code-example {
             @extend .flex-column;
             @extend .layout-start-start;
             padding: 16px;
             background-color: rgba(var(--regular-raw), 0.1);
+            min-height: 48px;
 
             &>* {
                 margin-bottom: 8px;
@@ -40,65 +49,15 @@ main {
         }
     }
 
-    table.demo-api-definition {
-        width: 100%;
-        padding: 0;
-        border: none;
-        border-collapse: collapse;
-        border-spacing: 0;
-        border-radius: 4px;
+    .api-group-title {
+        font-weight: 500;
+        font-size: 16px;
+    }
 
-        td, th {
-            padding: 8px;
-            border-right: 1px solid var(--background-a90);
-
-            &:last-child {
-                border-right: none;
-            }
-
-            &:first-child {
-                white-space: nowrap;
-            }
-
-            &.wide {
-                width: 100%;
-            }
-
-            &.no-wrap {
-                white-space: nowrap;
-            }
-
-            .required-mark {
-                color: var(--warn-rgb);
-            }
-        }
-
-        tr {
-            border-bottom: 1px solid var(--background-a90);
-        }
-
-        thead {
-            font-weight: 500;
-            font-size: 18px;
-        }
-
-        tbody {
-
-            tr:last-child {
-                border-bottom: none;
-            }
-
-            td {
-                &.attr {
-                }
-
-                &.desc {
-                }
-
-                &.type {
-                    color: var(--base-a70);
-                }
-            }
-        }
+    sdk-divider {
+        width: 80%;
+        align-self: center;
+        justify-self: center;
+        margin-bottom: 32px;
     }
 }
