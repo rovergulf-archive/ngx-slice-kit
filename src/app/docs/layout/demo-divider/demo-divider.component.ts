@@ -32,7 +32,7 @@ export class DemoDividerComponent implements OnInit {
     imports: [
         CommonModule,
         FormsModule,
-        // add DividerModule export
+        // add DividerModule to app imports
         DividerModule,
     ],
 })

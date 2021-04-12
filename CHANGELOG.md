@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 web:
+- examples for dialog and popup (refers to #32)
 - demos for divider and checkbox, refers to [#32](https://github.com/rovergulf/ngx-slice-kit/issues/32) and [#148](https://github.com/rovergulf/ngx-slice-kit/issues/148)
 
 ### Changed
@@ -86,6 +87,7 @@ web:
 web:
 - updated demo component
 - demo component copy snippet method
+- textarea demo
 
 
 slice-kit:

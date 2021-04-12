@@ -1,4 +1,4 @@
-<main>
+<main *ngIf="page">
     <h2 class="title">{{page.title}}</h2>
 
     <ng-container *ngIf="page.subtitle">
@@ -9,6 +9,10 @@
     <ng-container *ngIf="page.demos?.length > 0">
         <ng-container *ngFor="let d of page.demos">
             <h3>{{d.title}}</h3>
+
+            <ng-container *ngIf="d.description">
+                <p>{{d.description}}</p>
+            </ng-container>
 
             <div class="demo-container">
 

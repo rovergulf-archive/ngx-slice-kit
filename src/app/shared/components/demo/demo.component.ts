@@ -1,6 +1,5 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DemoExample, DemoPageModel } from '../../model';
-import { Subscribable, Subscription, timer } from 'rxjs';
 
 type demoTabs = `component` | `module` | `html` | `scss`;
 
@@ -28,8 +27,10 @@ export class DemoComponent implements OnInit, OnDestroy {
                 return `app.component.ts`;
             case 'styles':
                 return `app.component.scss`;
-            default:
+            case `app`:
                 return `app.component.html`;
+            default:
+                return v;
         }
     }
 
