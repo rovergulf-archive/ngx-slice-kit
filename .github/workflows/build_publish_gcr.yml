@@ -3,9 +3,7 @@ name: Build and Publish to GCR
 # Documentation:
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
 
-on:
-  push:
-    tags: [ '*' ]
+on: workflow_dispatch
 
 env:
   IMAGE: ${{ secrets.OCI_REGISTRY_IMAGE }}

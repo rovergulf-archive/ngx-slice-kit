@@ -40,7 +40,7 @@ export class ThemingComponent implements OnInit {
                 themesDefinitions.push(new ApiDefinition({
                     label: k,
                     type: 'rgb-raw value',
-                    value: currentTheme[k],
+                    value: `rgb(${currentTheme[k]})`,
                 }));
             }
         });

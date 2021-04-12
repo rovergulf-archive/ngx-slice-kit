@@ -1,20 +1,43 @@
-<div>
-    <h2 class="sdk-h2">Progress</h2>
-    <div class="progress-wrapper">
-        <sdk-progress [value]="value"></sdk-progress>
-        <div class="button-wrapper">
-            <button (click)="valueChange(5)" color="primary" sdk-flat-button>Increase progress</button>
-            <button (click)="valueChange(-5)" color="primary" sdk-flat-button>Decrease progress</button>
+<lib-demo-page [page]="page">
+    <ng-template #defaultRef>
+        <div class="progress-wrapper">
+            <sdk-progress [value]="value"></sdk-progress>
+            <div class="button-wrapper">
+                <button (click)="valueChange(5)" color="primary" sdk-flat-button>Increase progress</button>
+                <button (click)="valueChange(-5)" color="primary" sdk-flat-button>Decrease progress</button>
+            </div>
         </div>
-    </div>
-    <div class="progress-wrapper">
-        <sdk-progress [small]="true" [value]="value2"></sdk-progress>
-        <div class="button-wrapper">
-            <button (click)="smallValueChange(1)" color="primary" sdk-flat-button>Increase progress</button>
-            <button (click)="smallValueChange(-1)" color="primary" sdk-flat-button>Decrease progress</button>
+    </ng-template>
+
+    <ng-template #smallRef>
+        <div class="progress-wrapper">
+            <sdk-progress [small]="true" [value]="smallValue"></sdk-progress>
+            <div class="button-wrapper">
+                <button (click)="smallValueChange(1)" color="primary" sdk-flat-button>Increase progress</button>
+                <button (click)="smallValueChange(-1)" color="primary" sdk-flat-button>Decrease progress</button>
+            </div>
         </div>
-    </div>
-</div>
+    </ng-template>
+
+</lib-demo-page>
+
+<!--<div>-->
+<!--    <h2 class="sdk-h2">Progress</h2>-->
+<!--    <div class="progress-wrapper">-->
+<!--        <sdk-progress [value]="value"></sdk-progress>-->
+<!--        <div class="button-wrapper">-->
+<!--            <button (click)="valueChange(5)" color="primary" sdk-flat-button>Increase progress</button>-->
+<!--            <button (click)="valueChange(-5)" color="primary" sdk-flat-button>Decrease progress</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="progress-wrapper">-->
+<!--        <sdk-progress [small]="true" [value]="value2"></sdk-progress>-->
+<!--        <div class="button-wrapper">-->
+<!--            <button (click)="smallValueChange(1)" color="primary" sdk-flat-button>Increase progress</button>-->
+<!--            <button (click)="smallValueChange(-1)" color="primary" sdk-flat-button>Decrease progress</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <!--<lib-demo-page [page]="page">-->
 <!--    <ng-template #defaultRef></ng-template>-->
