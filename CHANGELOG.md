@@ -24,6 +24,8 @@ web:
 - pagination component demo
 - progress component demo
 - slider component demo
+- sidenav component demo
+- demo component stackblitz url
 
 ### Changed
 web:
