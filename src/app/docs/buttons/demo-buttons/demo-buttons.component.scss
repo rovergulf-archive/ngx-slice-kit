@@ -1,21 +1,13 @@
 .view {
-  padding: 16px;
+    padding: 16px;
 
-  h2 {
-    margin-bottom: 24px;
-  }
+    h2 {
+        margin-bottom: 24px;
+    }
 }
 
 .example {
-  button, a {
-    margin:0 16px 16px 0;
-  }
-
-  &.full-width {
     button, a {
-      margin: 0 0 16px 0;
+        margin: 8px;
     }
-  }
-
-  margin: 16px;
 }
