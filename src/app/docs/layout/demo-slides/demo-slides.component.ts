@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { DemoPageModel } from '../../../shared/model';
 
 @Component({
     selector: 'app-demo-slides',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['../../demo.module.scss']
 })
 export class DemoSlidesComponent implements OnInit {
+
+    @ViewChild('defaultRef', {static: true}) defaultRef: any;
+
+    page: DemoPageModel;
 
     firstValue: number = 20;
     secValue: number = 60;

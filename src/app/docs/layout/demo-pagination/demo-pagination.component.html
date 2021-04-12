@@ -1,16 +1,14 @@
-<div>
-    <h2 class="sdk-h2">Pagination</h2>
+<lib-demo-page [page]="page">
+    <ng-template #defaultRef>
+        <sdk-pagination (changed)="setPage($event)"
+                        [count]="params.count"
+                        [limit]="params.limit"
+                        [page]="params.page"></sdk-pagination>
+    </ng-template>
 
-    <h3 class="sdk-h3">Pagination regular</h3>
-    <sdk-pagination (changed)="setPage($event)"
-                    [count]="count"
-                    [limit]="10"
-                    [page]="page"></sdk-pagination>
-
-    <h3 class="sdk-h3">Pagination small</h3>
-    <sdk-pagination (changed)="setPage($event)"
-                    [count]="count"
-                    [limit]="10"
-                    [page]="page"
-                    [small]="true"></sdk-pagination>
-</div>
+    <ng-template #smallRef>
+        <sdk-pagination (changed)="setPage($event)"
+                        [count]="params.count" [limit]="params.limit"
+                        [page]="params.page" [small]="true"></sdk-pagination>
+    </ng-template>
+</lib-demo-page>

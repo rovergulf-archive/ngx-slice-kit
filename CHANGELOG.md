@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 12 Apr 2021
 
 ### Added
+web:
+- pagination component demo
 
 ### Changed
 web:
