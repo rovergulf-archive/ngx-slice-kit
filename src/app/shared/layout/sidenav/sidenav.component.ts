@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-sidenav',
@@ -9,7 +10,11 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
     routes: any[] = [];
 
-    constructor() {
+    rovergulfUrl: any;
+
+    constructor(
+        private sanitizer: DomSanitizer,
+    ) {
     }
 
 
@@ -39,6 +44,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
+        this.rovergulfUrl = this.sanitizer.bypassSecurityTrustUrl('https://rovergulf.net');
     }
 
 }
