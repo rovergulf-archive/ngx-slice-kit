@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { AlertOptions, AlertService } from 'ngx-slice-kit';
-import { DemoPageModel } from '../../../shared/model';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AlertOptions, AlertService} from 'ngx-slice-kit';
+import {DemoPageModel} from '../../../shared/model';
 
 @Component({
     selector: 'app-demo-alerts',
@@ -9,38 +9,60 @@ import { DemoPageModel } from '../../../shared/model';
 })
 export class DemoAlertsComponent implements OnInit, OnDestroy {
 
-    @ViewChild('defaultRef', {static: true}) defaultRef: any;
+    @ViewChild('sucErrRef', {static: true}) sucErrRef: any;
+    @ViewChild('actionRef', {static: true}) actionRef: any;
+    @ViewChild('positionsRef', {static: true}) positionsRef: any;
 
     page: DemoPageModel;
 
     firstCount: number = 0;
     secondCount: number = 0;
     options: AlertOptions[] = [
+        { // 0
+            title: 'Event was successful',
+            message: 'Hundreds of thousands take root and flourish bits of moving fluff gathered by gravity venture how far away. ',
+        },
         { // 1
             title: 'Event was successful',
-            message: 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy.',
+            message: 'Hundreds of thousands take root and flourish bits of moving fluff gathered by gravity venture how far away. ',
             positionX: 'left'
         },
         { // 2
-            message: 'Veel desktop publishing-pakketten en webpagina-editors gebruiken Lorem Ipsum nu als hun standaard modeltekst, en een zoekopdracht naar \'lorem ipsum\' zal veel websites ontdekken die nog in de kinderschoenen staan.',
-            title: 'Fout'
-        },
-        {message: 'Default one with icon', title: 'Orange star', customIcon: 'assets/icons/star_orange.svg'}, // 3
-        {message: 'Demo', title: 'Title', customIcon: 'assets/icons/star_orange.svg', action: true}, // 4
-        {message: '5th Game', title: 'Title', customIcon: 'assets/icons/star_orange.svg', action: true}, // 5
-        {message: 'Game 6', title: 'Title', small: true}, // 6
-        {message: 'Message unknown', title: 'Title 7', small: true}, // 7
-        {message: 'Game 8', title: 'Title 8', small: true, positionX: 'center'}, // 8
-        {
-            message: 'Game 9',
-            title: 'Title',
-            small: true,
+            title: 'Event was successful',
+            message: 'Hundreds of thousands take root and flourish bits of moving fluff gathered by gravity venture how far away. ',
             positionX: 'center',
+        },
+        { // 3
+            title: 'Event was successful',
+            message: 'Hundreds of thousands take root and flourish bits of moving fluff gathered by gravity venture how far away. ',
+            positionY: 'bottom'
+        },
+        { // 4
+            title: 'Event was successful',
+            message: 'Hundreds of thousands take root and flourish bits of moving fluff gathered by gravity venture how far away. ',
+            positionX: 'left',
             positionY: 'bottom',
-            customIcon: 'assets/icons/star_orange.svg'
-        }, // 9
-        {message: 'Alert number 10', title: 'Title', small: true, customIcon: 'assets/icons/star_orange.svg'}, // 10
-        {message: 'Game 11', title: 'Title', small: true, positionX: 'left', positionY: 'bottom'}, // 11
+        },
+        { // 5
+            title: 'Event was successful',
+            message: 'Hundreds of thousands take root and flourish bits of moving fluff gathered by gravity venture how far away. ',
+            positionX: 'center',
+            positionY: 'bottom'
+        },
+        { // 6
+            title: 'Success',
+            message: 'Realm of the galaxies decipherment venture take root and flourish permanence of the stars hearts of the stars. '
+        },
+        { // 7
+            title: 'Error',
+            message: 'Cosmic ocean Apollonius of Perga rich in mystery tingling of the spine colonies dream of the mind\'s eye.'
+        },
+        { // 8
+            title: 'Bebep bop zeeep',
+            message: 'Kindling the energy hidden in matter consciousness preserve and cherish that pale blue dot from which we spring encyclopaedia galactica colonies.',
+            action: true,
+            actionText: 'Accept'
+        },
     ];
 
     constructor(
@@ -87,11 +109,24 @@ export class DemoAlertsComponent implements OnInit, OnDestroy {
             subtitle: '',
             demos: [
                 {
-                    title: 'Default usage',
+                    title: 'Success & Error alerts',
                     description: '',
-                    templateRef: this.defaultRef,
+                    templateRef: this.sucErrRef,
                     values: {
-                        html: '',
+                        html: `<div class="example flex-row layout-start-center">
+    <button (click)="showSuccess(options[0])" sdk-flat-button>
+        Success alert
+    </button>
+    <button (click)="showError(options[1])" sdk-flat-button>
+        Error alert
+    </button>
+</div>`,
+                        styles: `.example {
+    button:not(:last-child) {
+        margin-right: 8px;
+    }
+}
+`,
                         module: `import { AlertModule } from 'ngx-slice-kit';
 
 @NgModule({
@@ -105,28 +140,238 @@ export class DemoAlertsComponent implements OnInit, OnDestroy {
 export class DemoAlertModule {
 }`,
                         component: `import { Component } from '@angular/core';
+import { AlertOptions, AlertService } from 'ngx-slice-kit';
 
 @Component({
-    selector: 'app-demo-accordion',
-    templateUrl: './demo-accordion.component.html',
-    styleUrls: ['./demo-accordion.component.scss']
+    selector: 'app-demo-alerts',
+    templateUrl: './demo-alerts.component.html',
+    styleUrls: ['./demo-alerts.component.scss']
 })
-export class DemoAccordionComponent {
+export class DemoAlertsComponent {
+
+    options: AlertOptions[] = [
+        {
+            title: 'Success',
+            message: 'Realm of the galaxies decipherment venture take root and flourish permanence of the stars hearts of the stars.'
+        },
+        {
+            title: 'Error',
+            message: 'Cosmic ocean Apollonius of Perga rich in mystery tingling of the spine colonies dream of the mind's eye.'
+        }
 
     constructor() {
+        public alertService: AlertService
+    }
+
+    showSuccess(opts): void {
+        this.alertService.success(opts);
+    }
+
+    showError(opts): void {
+        this.alertService.error(opts);
     }
 
 }`,
                     },
-                }
-            ],
-            apis: [
+                },
                 {
-                    label: '',
-                    type: '',
+                    title: 'Alerts with additional action',
                     description: '',
-                }
+                    templateRef: this.actionRef,
+                    values: {
+                        html: `<div class="example flex-row layout-start-center">
+    <button (click)="showCustomAlert(options[8])"
+            sdk-flat-button>
+        Alert with action
+    </button>
+</div>`,
+                        component: `import { Component } from '@angular/core';
+import { AlertOptions, AlertService } from 'ngx-slice-kit';
+
+@Component({
+    selector: 'app-demo-alerts',
+    templateUrl: './demo-alerts.component.html',
+    styleUrls: ['./demo-alerts.component.scss']
+})
+export class DemoAlertsComponent {
+
+    options: AlertOptions = {
+        title: 'Bebep bop zeeep',
+        message: 'Kindling the energy hidden in matter consciousness preserve and cherish that pale blue dot from which we spring encyclopaedia galactica colonies.',
+        action: true,
+        actionText: 'Accept'
+    },
+
+    constructor() {
+        public alertService: AlertService
+    }
+
+    showCustomAlert(opts): void {
+        opts.type = 'default';
+        this.alertService.error(opts);
+    }
+
+}`,
+                    },
+                },
+                {
+                    title: 'Alert positions demonstration',
+                    description: '',
+                    templateRef: this.positionsRef,
+                    values: {
+                    html: `<div class="example flex-row layout-start-center">
+    <button (click)="slowAlert(options[0])" sdk-flat-button>
+        Alert top right
+    </button>
+    <button (click)="showAlert(options[1])" sdk-flat-button>
+        Alert top left
+    </button>
+    <button (click)="showAlert(options[2])" sdk-flat-button>
+        Alert top center
+    </button>
+    <button (click)="showAlert(options[3])" sdk-flat-button>
+        Alert bottom right
+    </button>
+    <button (click)="showAlert(options[4])" sdk-flat-button>
+        Alert bottom left
+    </button>
+    <button (click)="showAlert(options[5])" sdk-flat-button>
+        Alert bottom center
+    </button>
+</div>`,
+                        component: `import { Component } from '@angular/core';
+import { AlertOptions, AlertService } from 'ngx-slice-kit';
+
+@Component({
+    selector: 'app-demo-alerts',
+    templateUrl: './demo-alerts.component.html',
+    styleUrls: ['./demo-alerts.component.scss']
+})
+export class DemoAlertsComponent {
+
+    options: AlertOptions[] = [
+        {
+            title: 'Event was successful',
+            message: 'Hundreds of thousands take root and flourish bits of moving fluff gathered by gravity venture how far away.',
+            positionX: 'right' // by default, also available "left" | "center"
+            positionY: 'top' // by default, also available "bottom"
+        },
+
+    constructor() {
+        public alertService: AlertService
+    }
+
+    showAlert(opts): void {
+        this.alertService.showAlert(opts);
+    }
+
+}`,
+                    },
+                },
             ],
+            api_groups: [
+                {
+                    name: 'AlertService',
+                    apis: [
+                        {
+                            label: 'showAlert(options): void',
+                            type: 'public method',
+                            args: [
+                                {name: 'options', type: 'AlertOptions'},
+                            ],
+                            description: `Create and show alert block.`,
+                        },
+                        {
+                            label: 'success(options): void',
+                            type: 'public method',
+                            args: [
+                                {name: 'options', type: 'AlertOptions'},
+                            ],
+                            description: `Create and show alert block with [type] as "success"`,
+                        },
+                        {
+                            label: 'error(options): void',
+                            type: 'public method',
+                            args: [
+                                {name: 'options', type: 'AlertOptions'},
+                            ],
+                            description: `Create and show alert block with [type] as "error"`,
+                        },
+                        {
+                            label: 'action(options): Observable<any>',
+                            type: 'public method',
+                            args: [
+                                {name: 'options', type: 'AlertOptions'},
+                            ],
+                            description: `Create and show alert block with [action] as true`,
+                        },
+                        {
+                            label: '[options]',
+                            type: 'AlertOptions',
+                            description: 'Look below for AlertOptions defaults',
+                        }
+                    ],
+                },
+                {
+                    name: 'AlertOptions',
+                    apis: [
+                        {
+                            label: '[title]',
+                            type: 'string',
+                            description: ``,
+                            default_value: 'Unexpected error',
+                        },
+                        {
+                            label: '[message]',
+                            type: 'string',
+                            description: ``,
+                            default_value: 'Something went wrong',
+                        },
+                        {
+                            label: '[timeout]',
+                            type: 'number',
+                            description: `Time after which the alert will be removed`,
+                            default_value: '5000',
+                        },
+                        {
+                            label: '[type]',
+                            type: 'AlertType',
+                            description: `Available types: "error" | "success" | "default"`,
+                            default_value: 'error',
+                        },
+                        {
+                            label: '[small]',
+                            type: 'boolean',
+                            description: ``,
+                            default_value: 'false',
+                        },
+                        {
+                            label: '[action]',
+                            type: 'boolean',
+                            description: `Add additional action button for alert panel`,
+                            default_value: 'false',
+                        },
+                        {
+                            label: '[actionText]',
+                            type: 'string',
+                            description: ``,
+                            default_value: 'Done.',
+                        },
+                        {
+                            label: '[positionX]',
+                            type: 'AlertXPosition',
+                            description: `Available positions: "left" | "right" | "center"`,
+                            default_value: 'right',
+                        },
+                        {
+                            label: '[positionY]',
+                            type: 'AlertXPosition',
+                            description: `Available positions: "top" | "bottom"`,
+                            default_value: 'top.',
+                        }
+                    ],
+                },
+            ]
         };
     }
 

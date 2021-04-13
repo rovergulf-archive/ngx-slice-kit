@@ -1,1 +1,5 @@
-
+.example {
+    button:not(:last-child) {
+        margin: 8px;
+    }
+}

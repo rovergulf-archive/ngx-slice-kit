@@ -6,9 +6,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.10.0
 
+## 14 Apr 2021
+
+### Added
+
+### Changed
+
+### Fixed
+
+### Removed
+
+## Released [v0.9.4]
+
 ## 13 Apr 2021
 
 ### Added
+slice-kit:
+- access modifiers for `AlertService` methods
+- `AlertOptions` action property is false by default
+
+web:
+- alert demos
 
 ### Changed
 
@@ -402,8 +420,9 @@ Fix scroll issue in `tabs` component
 - updated Angular `core` and `cli` versions up to latest 11.1+ closes #3
 
 
-[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.9.3...main
-[v0.10.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.3...v0.10.0
+[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.9.4...main
+[v0.10.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.4...v0.10.0
+[v0.9.4]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.3..v0.9.4
 [v0.9.3]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.0..v0.9.3
 [v0.9.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.0...v0.9.0
 [v0.8.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.7.0...v0.8.0

@@ -9,7 +9,7 @@ export class AlertOptions {
     type?: AlertType = 'error';
     customIcon?: string;
     small?: boolean = false;
-    action?: boolean;
+    action?: boolean = false;
     actionText?: string = 'Done.';
     positionX?: AlertXPosition = 'right';
     positionY?: AlertYPosition = 'top';
