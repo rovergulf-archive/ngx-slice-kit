@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
 import { DemoExample, DemoPageModel } from '../../model';
 
@@ -22,7 +23,9 @@ export class DemoComponent implements OnInit, OnDestroy {
         return this.$page.getValue();
     }
 
-    constructor() {
+    constructor(
+        private sanitizer: DomSanitizer,
+    ) {
     }
 
     getValues?(demo: DemoExample): string[] {
@@ -45,6 +48,7 @@ export class DemoComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        this.page.stackblitz_url = this.sanitizer.bypassSecurityTrustUrl(this.page.stackblitz_url);
     }
 
     ngOnDestroy(): void {
