@@ -22,9 +22,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 web:
 - enhanced theme palette guide
+- guide theme palette updater
 
 ngx-slice-kit:
 - HexToRgba theme method
+- `ThemeService` public interfaces expanded and updated
 
 ### Changed
 ngx-slice-kit:

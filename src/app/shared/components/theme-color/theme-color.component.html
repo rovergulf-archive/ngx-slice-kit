@@ -1,6 +1,6 @@
 <main *ngIf="color">
-    <div class="color sdk-{{color.name}}-background" sdkTooltip="Click to toggle expandable color palette" delay="800"
-         (click)="showPalette = !showPalette">
+    <div class="color" sdkTooltip="Click to toggle expandable color palette" delay="800"
+         (click)="showPalette = !showPalette" [style]="{backgroundColor: color.rgb, color: color.text}">
         <p>{{color.name}}</p>
     </div>
 

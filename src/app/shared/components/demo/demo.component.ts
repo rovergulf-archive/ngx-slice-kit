@@ -48,7 +48,7 @@ export class DemoComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.page.stackblitz_url = this.sanitizer.bypassSecurityTrustUrl(this.page.stackblitz_url);
+        this.page.stackblitz_safe_url = this.sanitizer.bypassSecurityTrustUrl(this.page.stackblitz_url);
     }
 
     ngOnDestroy(): void {

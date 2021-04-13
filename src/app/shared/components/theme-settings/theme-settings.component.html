@@ -14,10 +14,12 @@
     <lib-api-definitions-table [apis]="getCurrentThemesDefs()" [valueVisible]="true"
                                [descVisible]="false" [typeVisible]="false"></lib-api-definitions-table>
 
-    <h3>Register new theme</h3>
+    <ng-container *ngIf="theme.name === 'custom'">
 
-    <lib-gen-theme (created)="onNewThemePush($event)"></lib-gen-theme>
+    </ng-container>
+    <h3>Customize theme</h3>
 
+    <lib-gen-theme (changes)="onThemeEmit($event)"></lib-gen-theme>
 </main>
 
 

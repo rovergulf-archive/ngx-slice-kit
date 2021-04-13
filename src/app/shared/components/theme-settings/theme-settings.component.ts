@@ -1,7 +1,8 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ColorProperty, Theme, ThemeService } from 'ngx-slice-kit';
+import { Theme, ThemeService } from 'ngx-slice-kit';
 import { ApiDefinition } from '../../model';
 import { baseColors, colors } from '../../../../../libs/ngx-slice-kit/src/lib/core/theme/theme.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'lib-theme-settings',
@@ -10,7 +11,15 @@ import { baseColors, colors } from '../../../../../libs/ngx-slice-kit/src/lib/co
 })
 export class ThemeSettingsComponent implements OnInit, OnDestroy {
 
-    @Input() theme: Theme;
+    private $theme: BehaviorSubject<Theme> = new BehaviorSubject<any>(undefined);
+
+    @Input() set theme(theme: Theme) {
+        this.$theme.next(theme);
+    }
+
+    get theme(): Theme {
+        return this.$theme.getValue();
+    }
 
     constructor(
         public themeService: ThemeService
@@ -39,9 +48,14 @@ export class ThemeSettingsComponent implements OnInit, OnDestroy {
         return themesDefinitions.sort((a, b) => a.label < b.label ? -1 : a.label > b.label ? 1 : 0);
     }
 
-    onNewThemePush(theme: Theme): void {
-        this.themeService.registerTheme(theme);
-        this.themeService.setTheme(theme.name);
+    onThemeEmit(theme: Theme): void {
+        this.$theme.next(new Theme({...theme, name: this.theme.name}));
+        // this.themeService.registerTheme(theme);
+        // this.themeService.setTheme(theme.name);
+    }
+
+    applyTheme(): void {
+        this.themeService.setTheme(this.theme.name);
     }
 
     ngOnInit(): void {
