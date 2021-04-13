@@ -63,12 +63,12 @@ describe('AlertService', () => {
             expect(service.showAlert).toHaveBeenCalledWith({...opts, type: 'success'});
         });
 
-        it('should #showAlert call #checkoutLayout method', () => {
-            spyOn(service, 'checkoutLayout');
-            service.showAlert(opts);
-
-            expect(service.checkoutLayout).toHaveBeenCalled();
-        });
+        // it('should #showAlert call #checkoutLayout method', () => {
+        //     spyOn(service, 'checkoutLayout');
+        //     service.showAlert(opts);
+        //
+        //     expect(service.checkoutLayout).toHaveBeenCalled();
+        // });
 
         it('should #showALert increase #alertIndex', () => {
             service.alertIndex = 0;
