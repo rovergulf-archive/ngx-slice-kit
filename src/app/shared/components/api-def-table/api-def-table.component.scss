@@ -28,37 +28,50 @@ table.demo-api-definition {
             white-space: nowrap;
         }
 
-        .required-mark {
-            color: var(--warn-rgb);
-        }
-
         &.title {
             padding: 16px;
-            background: rgba(var(--background-raw), 0.05);
             alignment: center;
         }
 
         &.attr {
-            background-color: rgba(var(--primary-raw), 0.05);
             min-width: 20%;
         }
 
         &.desc {
             width: 66%;
+        }
 
+        &.type {
+            white-space: nowrap;
+        }
+
+        &.value {
+            width: 50%;
+            text-align: center;
+        }
+    }
+
+    td {
+        .required-mark {
+            color: var(--warn-rgb);
+        }
+
+        &.title {
+            background: rgba(var(--background-raw), 0.05);
+        }
+
+        &.attr {
+            background-color: rgba(var(--primary-raw), 0.05);
+        }
+
+        &.desc {
             small {
                 color: var(--base-a70);
             }
         }
 
         &.type {
-            white-space: nowrap;
             color: var(--base-a70);
-        }
-
-        &.value {
-            width: 50%;
-            text-align: center;
         }
     }
 

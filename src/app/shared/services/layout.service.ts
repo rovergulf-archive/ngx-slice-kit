@@ -8,80 +8,84 @@ const DARK_THEME_NAME = 'dark';
 export type AvailableThemes = 'light' | 'dark';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class LayoutService {
 
-  private $cookieName: BehaviorSubject<string> = new BehaviorSubject<string>('sdk-theme');
-  private $mobileLayout: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private $sidenavOpened: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private $themeName: BehaviorSubject<string> = new BehaviorSubject<string>(this.getDefaultThemeName());
+    private $cookieName: BehaviorSubject<string> = new BehaviorSubject<string>('sdk-theme');
+    private $mobileLayout: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    private $sidenavOpened: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    private $themeName: BehaviorSubject<string> = new BehaviorSubject<string>(this.getDefaultThemeName());
 
-  get cookieName(): string {
-    return this.$cookieName.getValue();
-  }
+    get cookieName(): string {
+        return this.$cookieName.getValue();
+    }
 
-  set cookieName(n: string) {
-    this.$cookieName.next(n);
-  }
+    set cookieName(n: string) {
+        this.$cookieName.next(n);
+    }
 
-  get mobileLayout(): boolean {
-    return this.$mobileLayout.getValue();
-  }
+    get mobileLayout(): boolean {
+        return this.$mobileLayout.getValue();
+    }
 
-  set mobileLayout(state: boolean) {
-    this.$mobileLayout.next(state);
-  }
+    set mobileLayout(state: boolean) {
+        this.$mobileLayout.next(state);
+    }
 
-  get sidenavOpened(): boolean {
-    return this.$sidenavOpened.getValue();
-  }
+    get sidenavOpened(): boolean {
+        return this.$sidenavOpened.getValue();
+    }
 
-  set sidenavOpened(state: boolean) {
-    this.$sidenavOpened.next(state);
-  }
+    set sidenavOpened(state: boolean) {
+        this.$sidenavOpened.next(state);
+    }
 
-  get themeName(): any {
-    return this.$themeName.getValue();
-  }
+    get themeName(): any {
+        return this.$themeName.getValue();
+    }
 
-  set themeName(t: any) {
-    this.cookieService.put(this.cookieName, t);
+    set themeName(t: any) {
+        this.cookieService.put(this.cookieName, t);
 
-    this.themeService.setTheme(t);
-    this.$themeName.next(t);
-  }
+        this.themeService.setTheme(t);
+        this.$themeName.next(t);
+    }
 
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: any,
-    private layoutControl: LayoutControlService,
-    private themeService: ThemeService,
-    private cookieService: CookieService
-  ) {
-  }
+    constructor(
+        @Inject(PLATFORM_ID) private platformId: any,
+        private layoutControl: LayoutControlService,
+        private themeService: ThemeService,
+        private cookieService: CookieService
+    ) {
+    }
 
-  getDefaultThemeName(): any {
-    const saved = this.cookieService.get(this.cookieName);
-    return saved ?? DEFAULT_THEME_NAME;
-  }
+    getDefaultThemeName(): any {
+        const saved = this.cookieService.get(this.cookieName);
+        return saved ?? DEFAULT_THEME_NAME;
+    }
 
-  toggleSidenav(): void {
-    this.sidenavOpened = !this.sidenavOpened;
-  }
+    public toggleSidenav(): void {
+        this.sidenavOpened = !this.sidenavOpened;
+    }
 
-  hideSidenav(): void {
-    this.sidenavOpened = false;
-  }
+    public hideSidenav(): void {
+        this.sidenavOpened = false;
+    }
 
-  toggleTheme(): void {
-    this.themeName = this.themeName === 'light' ? 'dark' : 'light';
-  }
+    public toggleTheme(): void {
+        this.themeName = this.themeName === 'light' ? 'dark' : 'light';
+    }
 
-  registerService(serviceName: string): void {
-    this.cookieName = `${serviceName}-theme`;
-  }
+    public setTheme(t: string): void {
+        this.themeName = t;
+    }
 
-  nextTheme(): void {
-  }
+    public registerService(serviceName: string): void {
+        this.cookieName = `${serviceName}-theme`;
+    }
+
+    nextTheme(): void {
+    }
 
 }
