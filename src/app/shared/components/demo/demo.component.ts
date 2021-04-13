@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { DemoExample, DemoPageModel } from '../../model';
 import { BehaviorSubject } from 'rxjs';
+import { DemoExample, DemoPageModel } from '../../model';
 
 type demoTabs = `component` | `module` | `html` | `scss`;
 

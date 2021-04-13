@@ -1,0 +1,26 @@
+@import './libs/ngx-slice-kit/src/lib/core/styles/core';
+
+main {
+    @extend .flex-column;
+    @extend .layout-start-stretch;
+    padding: 16px 0;
+
+    &>* {
+        margin-bottom: 16px;
+    }
+
+    .theme-colors {
+        @extend .flex-column;
+        @extend .layout-start-center;
+        align-self: center;
+        justify-self: center;
+        width: 100%;
+        max-width: 800px;
+        padding: 16px;
+
+        lib-theme-color {
+            margin: 4px;
+            width: 100%;
+        }
+    }
+}

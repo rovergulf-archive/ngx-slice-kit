@@ -11,7 +11,7 @@ export class ApiDefTableComponent implements OnInit {
     @Input() apis: ApiDefinition[];
     @Input() typeVisible: boolean = true;
     @Input() descVisible: boolean = true;
-    @Input() attrsVisible: boolean = false;
+    @Input() argsVisible: boolean = false;
     @Input() valueVisible: boolean = false;
 
     constructor() {

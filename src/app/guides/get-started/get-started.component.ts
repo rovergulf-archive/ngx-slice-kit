@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+export const angularJsonExampleRef = `                        // ...
+// Double check that your core application styles file used in
+// "ng build" and/or "ng serve" commands
+                        "styles": [
+                            "src/styles.scss"
+                        ],
+                        // ...`;
+
 @Component({
     selector: 'app-get-started',
     templateUrl: './get-started.component.html',
@@ -94,13 +102,7 @@ export class SharedModule {
 </div>
 `;
     stylesExample = `@import './libs/ngx-slice-kit/src/lib/core/styles/core';`;
-    angularJson = `                        // ...
-// Double check that your core application styles file used in
-// "ng build" and/or "ng serve" commands
-                        "styles": [
-                            "src/styles.scss"
-                        ],
-                        // ...`;
+    angularJson = angularJsonExampleRef;
 
     constructor() {
     }
