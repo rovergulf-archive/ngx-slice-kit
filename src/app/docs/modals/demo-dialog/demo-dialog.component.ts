@@ -135,30 +135,32 @@ export class DemoDialogComponent {
                         {
                             label: '[data]',
                             type: 'any',
-                            description: `provide data in any format, default 'undefined'`,
+                            description: `provide data in any format`,
+                            default_value: 'undefined',
                         },
                         {
                             label: '[hideOnBackdrop]',
                             type: 'boolean',
-                            description: `hide dialog on backdrop click, default 'true'`,
+                            description: `hide dialog on backdrop click`,
                             default_value: true
                         },
                         {
                             label: '[hideOnEscape]',
                             type: 'boolean',
-                            description: `hide dialog on Esc keyup event, default 'true'`,
+                            description: `hide dialog on Esc keyup event`,
                             default_value: true,
                         },
                         {
                             label: '[borderRadius]',
                             type: 'number',
-                            description: `specify dialog content window border-radius, default '0'`,
+                            description: `specify dialog content window border-radius`,
                             default_value: 0,
                         },
                         {
                             label: '[disableScroll]',
                             type: 'boolean',
-                            description: `disable dialog content scroll, defaults to 'false'`,
+                            description: `disable dialog content scroll`,
+                            default_value: false,
                         },
                         {
                             label: '[styles]',
