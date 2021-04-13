@@ -5,7 +5,15 @@
 }
 
 .input-container {
-    margin: 16px auto 24px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .container-half {
+        width: 50%;
+        min-width: 320px;
+    }
 
     sdk-input {
         margin: 0 16px 16px 0;

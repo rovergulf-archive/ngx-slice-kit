@@ -30,7 +30,7 @@ import { LayoutControlService } from '../../core/layout-control/layout-control.s
     encapsulation: ViewEncapsulation.None,
 })
 export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, AfterContentInit, AfterViewInit {
-    private req: boolean;
+    private req: boolean = false;
 
     @Input() set required(val: any) {
         this.req = val === '' || val === true;

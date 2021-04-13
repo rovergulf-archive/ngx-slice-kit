@@ -25,6 +25,7 @@ web:
 - enhanced theme palette guide
 - guide theme palette updater
 - sanitized url for Sidenav and DemoExample components
+- `input` demos
 
 ngx-slice-kit:
 - HexToRgba theme method
