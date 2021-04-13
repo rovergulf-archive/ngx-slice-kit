@@ -18,6 +18,10 @@ main {
         white-space: pre-wrap;
     }
 
+    .stackblitz-url {
+        max-width: 480px;
+    }
+
     .demo-container {
         @extend .flex-column;
         @extend .layout-start-stretch;

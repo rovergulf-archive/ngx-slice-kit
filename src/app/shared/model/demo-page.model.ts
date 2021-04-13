@@ -7,12 +7,18 @@ export class DemoPageModel {
     subtitle?: string;
     demo_name?: string;
 
+    stackblitz_url?: string;
+    demoTitle?: string;
+    sourceTitle?: string;
+
     customContentRef?: any;
     demos?: DemoExample[];
     apis?: ApiDefinition[];
     api_groups?: ApiDefinitionsGroup[];
 
     apiVisible?: boolean;
+    hideDemo?: boolean = false;
+    hideSourceTitle?: boolean = false;
 
     constructor(src: DemoPageModel) {
         Object.assign(this, src);
@@ -36,5 +42,13 @@ export class DemoPageModel {
         }
 
         this.apiVisible = !!this.api_groups?.find(adg => adg.apis.length > 0);
+
+        if (!this.demoTitle) {
+            this.demoTitle = `Demo:`;
+        }
+
+        if (!this.sourceTitle) {
+            this.sourceTitle = `Source code:`;
+        }
     }
 }

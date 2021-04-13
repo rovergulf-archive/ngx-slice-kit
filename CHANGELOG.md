@@ -6,18 +6,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.10.0
 
-## 14 Apr 2021
-
-### Added
-
-### Changed
-
-### Fixed
-
-### Removed
-
-## Released [v0.9.4]
-
 ## 13 Apr 2021
 
 ### Added
@@ -40,6 +28,8 @@ web:
 ### Added
 web:
 - pagination component demo
+- sidenav component demo
+- demo component stackblitz url
 - progress component demo
 - slider component demo
 
