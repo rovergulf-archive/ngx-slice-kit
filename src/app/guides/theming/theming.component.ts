@@ -25,9 +25,12 @@ export class ThemingComponent implements OnInit, OnDestroy {
     ) {
     }
 
+    addTheme(): void {
+        this.themeService.registerTheme(new Theme({...defaultColors, name: 'new_theme'}));
+    }
+
     ngOnInit(): void {
         this.themes = this.themeService.themes;
-        // this.themes = [...this.themeService.themes, new Theme({name: 'custom', ...defaultColors})];
     }
 
     ngOnDestroy(): void {

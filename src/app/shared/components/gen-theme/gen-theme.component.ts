@@ -1,7 +1,8 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HexToRgb, RgbaToHex, Theme, ThemeService } from 'ngx-slice-kit';
 import { defaultColors } from '../../../../../libs/ngx-slice-kit/src/lib/core/theme/theme.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'lib-gen-theme',
@@ -10,23 +11,27 @@ import { defaultColors } from '../../../../../libs/ngx-slice-kit/src/lib/core/th
 })
 export class GenThemeComponent implements OnInit, OnDestroy {
 
+    $theme: BehaviorSubject<Theme> = new BehaviorSubject<Theme>(new Theme({
+        name: 'custom',
+        ...defaultColors
+    }));
+
+    @Input() set theme(t: Theme) {
+        this.$theme.next(new Theme(t));
+    }
+
+    get theme(): Theme {
+        return this.$theme.getValue();
+    }
+
     @Output() changes: EventEmitter<any> = new EventEmitter<any>();
 
     form: FormGroup;
-
-    theme: Theme = new Theme({
-        name: 'custom',
-        ...defaultColors
-    });
 
     constructor(
         private fb: FormBuilder,
         private themeService: ThemeService,
     ) {
-    }
-
-    get active(): boolean {
-        return this.themeService.currentTheme.name === this.theme.name;
     }
 
     getFormControls(): any[] {
@@ -52,9 +57,10 @@ export class GenThemeComponent implements OnInit, OnDestroy {
             }
         });
         theme.name = values.name;
+        // theme.base_text = theme.background;
 
-        this.theme = new Theme(theme);
         this.changes.emit(new Theme(theme));
+        this.form.markAsPristine();
     }
 
     onValueChange(ev: string, control: string): void {
