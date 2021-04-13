@@ -28,19 +28,19 @@ export class AlertService {
     ) {
     }
 
-    success(options?: AlertOptions): void {
+    public success(options?: AlertOptions): void {
         this.showAlert({...options, type: 'success'});
     }
 
-    error(options?: AlertOptions): void {
+    public error(options?: AlertOptions): void {
         this.showAlert({...options, type: 'error'});
     }
 
-    action(options?: AlertOptions): Observable<any> {
+    public action(options?: AlertOptions): Observable<any> {
         return of(this.showAlert({...options, action: true}));
     }
 
-    checkoutLayout(): void {
+    private checkoutLayout(): void {
         this.mobileLayout = this.document.body.clientWidth < this.layoutControl.mobileLayoutWidth;
         if (this.layoutSub?.closed) {
             this.layoutSub = fromEvent(window, 'resize').subscribe(res => {
@@ -49,7 +49,7 @@ export class AlertService {
         }
     }
 
-    showAlert(options?: AlertOptions): void {
+    public showAlert(options?: AlertOptions): void {
         if (isPlatformServer(this.platformId)) {
             return;
         }
