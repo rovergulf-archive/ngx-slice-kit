@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 web:
 - enhanced theme palette guide
 - guide theme palette updater
+- sanitized url for Sidenav and DemoExample components
 
 ngx-slice-kit:
 - HexToRgba theme method
