@@ -13,6 +13,7 @@ export const defaultColors = {
     base: defaultBaseRgb,
     background: defaultBackgroundRgb,
     regular: defaultRegularRgb,
+    regular_text: defaultBaseRgb,
     primary: defaultPrimaryRgb,
     primary_text: defaultBackgroundRgb,
     success: defaultSuccessRgb,

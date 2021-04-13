@@ -11,6 +11,7 @@ export const themeDark: Theme = {
     base_text: defaultTextRgb,
     background: defaultBackgroundRgb,
     regular: defaultRegularRgb,
+    regular_text: defaultBaseRgb,
     primary: defaultColors.primary,
     primary_text: defaultBaseRgb,
     success: defaultColors.success,
