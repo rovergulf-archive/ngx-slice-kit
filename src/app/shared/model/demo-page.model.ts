@@ -1,3 +1,4 @@
+import { SafeUrl } from '@angular/platform-browser';
 import { DemoExample } from './demo-component.model';
 import { ApiDefinition } from './api-definition.model';
 import { ApiDefinitionsGroup } from './api-group.model';
@@ -8,6 +9,7 @@ export class DemoPageModel {
     demo_name?: string;
 
     stackblitz_url?: string;
+    stackblitz_safe_url?: SafeUrl;
     demoTitle?: string;
     sourceTitle?: string;
 

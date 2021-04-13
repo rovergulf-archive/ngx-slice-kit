@@ -1,0 +1,57 @@
+@import './libs/ngx-slice-kit/src/lib/core/styles/core';
+
+main {
+    @extend .flex-column;
+    @extend .layout-start-stretch;
+
+    &>* {
+        &:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+
+    .color {
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: $standardShadow;
+        transition: all .4s ease;
+        text-align: center;
+        cursor: pointer;
+
+        p {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        &:hover {
+            box-shadow: $expandedShadow;
+        }
+    }
+
+    .palette {
+        @extend .flex-column;
+        @extend .layout-start-stretch;
+
+        ul {
+            position: absolute;
+            z-index: -1;
+            padding: 4px 12px;
+            visibility: hidden;
+            top: -100%;
+
+            &.active {
+                transition: all .3s ease;
+                @extend .flex-column;
+                @extend .layout-start-stretch;
+                z-index: 1;
+                top: 0;
+                visibility: visible;
+            }
+
+            li {
+                padding: 4px;
+                text-align: center;
+            }
+        }
+    }
+}

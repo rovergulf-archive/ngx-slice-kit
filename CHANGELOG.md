@@ -16,7 +16,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-## Released [v0.9.4]
+## Released [v0.9.5]
+
+## 13 Apr 2021
+
+### Added
+web:
+- enhanced theme palette guide
+- guide theme palette updater
+- sanitized url for Sidenav and DemoExample components
+
+ngx-slice-kit:
+- HexToRgba theme method
+- `ThemeService` public interfaces expanded and updated
+
+### Changed
+ngx-slice-kit:
+- theme model color handling updated
+
+### Fixed
+
+### Removed
+
+
+## Unreleased v0.9.4
 
 ## 13 Apr 2021
 
@@ -420,9 +443,9 @@ Fix scroll issue in `tabs` component
 - updated Angular `core` and `cli` versions up to latest 11.1+ closes #3
 
 
-[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.9.4...main
-[v0.10.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.4...v0.10.0
-[v0.9.4]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.3..v0.9.4
+[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.9.5...main
+[v0.10.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.5...v0.10.0
+[v0.9.5]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.3..v0.9.5
 [v0.9.3]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.0..v0.9.3
 [v0.9.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.0...v0.9.0
 [v0.8.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.7.0...v0.8.0

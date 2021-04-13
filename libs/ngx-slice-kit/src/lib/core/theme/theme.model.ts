@@ -52,19 +52,19 @@ export class ColorProperty {
         // find color values
         const rgbVal = this.value.split(sep(this.value)).map(i => parseInt(i, 10));
         const bgVal = this.background.split(sep(this.background)).map(i => parseInt(i, 10));
-        const rgbMixin = mixinRgba(rgbVal, bgVal, this.alpha / 100);
-        const bgMixin = mixinRgba(bgVal, rgbVal, this.alpha / 100);
+        const rgbMixin = MixinRgba(rgbVal, bgVal, this.alpha / 100);
+        const bgMixin = MixinRgba(bgVal, rgbVal, this.alpha / 100);
 
         // declare rgb values
-        this.rgb = numArrayToRgbString(rgbMixin);
-        this.hex = rgbaToHex(this.rgb);
-        this.background = numArrayToRgbString(bgMixin);
+        this.rgb = NumArrayToRgbString(rgbMixin);
+        this.hex = RgbaToHex(this.rgb);
+        this.background = NumArrayToRgbString(bgMixin);
 
         // check if text value is available
         if (this.text_value?.length > 0) {
             const textVal = this.text_value.split(sep(this.text_value)).map(i => parseInt(i, 10));
-            const textMixin = mixinRgba(textVal, bgVal, 0.9);
-            this.text = numArrayToRgbString(textMixin);
+            const textMixin = MixinRgba(textVal, bgVal, 0.9);
+            this.text = NumArrayToRgbString(textMixin);
         }
     }
 }
@@ -88,25 +88,36 @@ export class Theme {
     accent_text?: string;
     warn_text?: string;
 
+    colors?: Set<ColorProperty>;
+
     constructor(t?: Theme) {
         Object.assign(this, defaultColors, t);
+
+        this.colors = new Set<ColorProperty>();
+        for (const color of [...baseColors, ...colors]) {
+            const rgb = this[color];
+
+            const textColor = `${color}_text`;
+            const colorProp = new ColorProperty({
+                name: color,
+                text_value: this[textColor],
+                alpha: alphaLimit,
+                value: rgb,
+                background: rgb === this.background ? this.base : this.background,
+            });
+            this.colors.add(colorProp);
+        }
     }
 
     public props?(): ColorProperty[] {
         const results = [];
 
+        for (const c of this.colors) {
+            results.push(c);
+        }
+
         for (const color of [...baseColors, ...colors]) {
             const rgb = this[color];
-
-            const textColor = `${color}_text`;
-            const colorProp = {
-                name: color,
-                text_value: this[textColor],
-                alpha: 100,
-                value: rgb,
-                background: rgb === this.background ? this.base : this.background,
-            };
-            results.push(new ColorProperty(colorProp));
 
             for (let alpha = alphaStep; alpha <= alphaLimit; alpha += alphaStep) {
                 results.push(new ColorProperty({
@@ -130,18 +141,18 @@ const trim = (str: string): string => {
     return str?.replace(/^\s+|\s+$/gm, '');
 };
 
-export const mixinRgba = (base: number[], added: number[], alpha: number): number[] => {
+export const MixinRgba = (base: number[], added: number[], alpha: number): number[] => {
     const r3 = Math.round(((1 - alpha) * added[0]) + (alpha * base[0]));
     const g3 = Math.round(((1 - alpha) * added[1]) + (alpha * base[1]));
     const b3 = Math.round(((1 - alpha) * added[2]) + (alpha * base[2]));
     return [r3, g3, b3];
 };
 
-export const numArrayToRgbString = (rgb: number[]): string => {
+export const NumArrayToRgbString = (rgb: number[]): string => {
     return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
 };
 
-export const rgbaToHex = (rgba: string): string => {
+export const RgbaToHex = (rgba: string): string => {
     if (!rgba) {
         return '';
     }
@@ -171,3 +182,9 @@ export const rgbaToHex = (rgba: string): string => {
     return ('#' + outParts.join(''));
 };
 
+export const HexToRgb = (hex: string): number[] => {
+    const r = parseInt(hex.substr(1, 2), 16);
+    const g = parseInt(hex.substr(3, 2), 16);
+    const b = parseInt(hex.substr(5, 2), 16);
+    return [r, g, b];
+};

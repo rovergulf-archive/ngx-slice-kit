@@ -30,7 +30,7 @@
 
                 <ng-container *ngIf="page.stackblitz_url">
                     <span class="stackblitz-url">
-                        <a sdk-base-button target="_blank" href="{{page.stackblitz_url}}">View demo on stackblitz</a>
+                        <a sdk-base-button target="_blank" [href]="page.stackblitz_safe_url">View demo on stackblitz</a>
                     </span>
                 </ng-container>
 
