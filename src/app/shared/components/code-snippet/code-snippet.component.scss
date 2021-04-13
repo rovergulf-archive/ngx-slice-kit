@@ -3,7 +3,7 @@
 .source-code {
     position: relative;
     width: 100%;
-    padding: 22px 16px 0 16px;
+    padding: 28px 16px 0 16px;
 
     code {
         z-index: 1;
@@ -15,8 +15,8 @@
         position: absolute;
         background: rgba(var(--base-raw), 0.1);
         z-index: 2;
-        top: 0;
-        right: 4px;
+        top: 4px;
+        right: 16px;
         font-size: 12px;
         padding: 4px 8px 4px 2px;
         border-radius: 2px;
