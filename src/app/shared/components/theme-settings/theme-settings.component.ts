@@ -39,8 +39,9 @@ export class ThemeSettingsComponent implements OnInit, OnDestroy {
         return themesDefinitions.sort((a, b) => a.label < b.label ? -1 : a.label > b.label ? 1 : 0);
     }
 
-    fillColorPalettes(): void {
-
+    onNewThemePush(theme: Theme): void {
+        this.themeService.registerTheme(theme);
+        this.themeService.setTheme(theme.name);
     }
 
     ngOnInit(): void {

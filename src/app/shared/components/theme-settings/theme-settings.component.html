@@ -4,13 +4,19 @@
 
         <div class="theme-colors">
             <ng-container *ngFor="let c of theme.colors">
-                <lib-theme-color [color]="c"></lib-theme-color>
+                <ng-container *ngIf="c.name !== 'background'">
+                    <lib-theme-color [color]="c"></lib-theme-color>
+                </ng-container>
             </ng-container>
         </div>
 
     <p>Theme color values</p>
     <lib-api-definitions-table [apis]="getCurrentThemesDefs()" [valueVisible]="true"
                                [descVisible]="false" [typeVisible]="false"></lib-api-definitions-table>
+
+    <h3>Register new theme</h3>
+
+    <lib-gen-theme (created)="onNewThemePush($event)"></lib-gen-theme>
 
 </main>
 

@@ -18,6 +18,11 @@ main {
         text-align: center;
         cursor: pointer;
 
+        p {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
         &:hover {
             box-shadow: $expandedShadow;
         }

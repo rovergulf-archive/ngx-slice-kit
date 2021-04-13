@@ -1,0 +1,6 @@
+@import './libs/ngx-slice-kit/src/lib/core/styles/core';
+
+main {
+    @extend .flex-column;
+    @extend .layout-start-stretch;
+}
