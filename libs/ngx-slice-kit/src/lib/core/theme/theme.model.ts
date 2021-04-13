@@ -182,3 +182,9 @@ export const RgbaToHex = (rgba: string): string => {
     return ('#' + outParts.join(''));
 };
 
+export const HexToRgb = (hex: string): number[] => {
+    const r = parseInt(hex.substr(1, 2), 16);
+    const g = parseInt(hex.substr(3, 2), 16);
+    const b = parseInt(hex.substr(5, 2), 16);
+    return [r, g, b];
+};
