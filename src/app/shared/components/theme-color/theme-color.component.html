@@ -1,3 +1,16 @@
-<main>
+<main *ngIf="color">
+    <div class="color" sdkTooltip="Click to toggle expandable color palette" delay="800"
+         (click)="showPalette = !showPalette" [style]="{backgroundColor: color.rgb, color: color.text}">
+        <p>{{color.name}}</p>
+    </div>
 
+    <div class="palette" *ngIf="palette?.length">
+        <ul [class.active]="showPalette">
+            <ng-container *ngFor="let p of palette">
+                <li [style]="{backgroundColor: p.rgb, color: p.text}">
+                    <small>{{p.name}}</small>
+                </li>
+            </ng-container>
+        </ul>
+    </div>
 </main>

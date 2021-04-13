@@ -1,0 +1,60 @@
+<main>
+
+    <p>Colors</p>
+
+        <div class="theme-colors">
+            <ng-container *ngFor="let c of theme.colors">
+                <ng-container *ngIf="c.name !== 'background'">
+                    <lib-theme-color [color]="c"></lib-theme-color>
+                </ng-container>
+            </ng-container>
+        </div>
+
+    <p>Theme color values</p>
+    <lib-api-definitions-table [apis]="getCurrentThemesDefs()" [valueVisible]="true"
+                               [descVisible]="false" [typeVisible]="false"></lib-api-definitions-table>
+
+    <ng-container *ngIf="theme.name === 'custom'">
+
+    </ng-container>
+    <h3>Customize theme</h3>
+
+    <lib-gen-theme (changes)="onThemeEmit($event)"></lib-gen-theme>
+</main>
+
+
+
+<ng-template #colorsExampleRef>
+    <div class="theme-colors flex-row flex-wrap layout-center-center">
+        <!-- var(--basic) -->
+        <div class="theme-color sdk-base-background flex-column layout-center-center sdk-xm-3">
+            <h3>Basic</h3>
+        </div>
+
+        <!-- var(--regular) -->
+        <div class="theme-color sdk-regular-background flex-column layout-center-center sdk-xm-3">
+            <div class="theme-color__inner flex-row layout-center-stretch"></div>
+            <h3>Regular</h3>
+        </div>
+
+        <!-- var(--primary) -->
+        <div class="theme-color sdk-primary-background flex-column layout-center-center sdk-xm-3">
+            <h3>Primary</h3>
+        </div>
+
+        <!-- var(--accent) -->
+        <div class="theme-color sdk-accent-background flex-column layout-center-center sdk-xm-3">
+            <h3>Accent</h3>
+        </div>
+
+        <!-- var(--success) -->
+        <div class="theme-color sdk-success-background flex-column layout-center-center sdk-xm-3">
+            <h3>Success</h3>
+        </div>
+
+        <!-- var(--warn) -->
+        <div class="theme-color sdk-warn-background flex-column layout-center-center sdk-xm-3">
+            <h3>Warn</h3>
+        </div>
+    </div>
+</ng-template>

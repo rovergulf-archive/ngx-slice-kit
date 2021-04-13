@@ -1,0 +1,29 @@
+@import './libs/ngx-slice-kit/src/lib/core/styles/core';
+
+main {
+    @extend .flex-column;
+    @extend .layout-start-stretch;
+
+    form {
+        max-width: 320px;
+        @extend .flex-column;
+        @extend .layout-start-start;
+
+        .form-elem {
+            @extend .flex-row;
+            @extend .layout-start-center;
+            width: 100%;
+            margin-bottom: 4px;
+            padding: 4px;
+            border-radius: 2px;
+
+            &>:first-child {
+                padding-right: 16px;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

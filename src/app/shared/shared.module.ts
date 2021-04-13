@@ -14,6 +14,8 @@ import { ApiDefTableComponent } from './components/api-def-table/api-def-table.c
 import { DemoComponent } from './components/demo/demo.component';
 import { CodeSnippetComponent } from './components/code-snippet/code-snippet.component';
 import { ThemeColorComponent } from './components/theme-color/theme-color.component';
+import { ThemeSettingsComponent } from './components/theme-settings/theme-settings.component';
+import { GenThemeComponent } from './components/gen-theme/gen-theme.component';
 
 const sharedModuleDeclarations = [
     // layout
@@ -24,7 +26,9 @@ const sharedModuleDeclarations = [
     ApiDefTableComponent,
     DemoComponent,
     CodeSnippetComponent,
+    GenThemeComponent,
     ThemeColorComponent,
+    ThemeSettingsComponent,
 ];
 
 @NgModule({

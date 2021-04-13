@@ -10,7 +10,7 @@ import { themeDark } from './lib/theme-dark';
     providedIn: 'root'
 })
 export class ThemeService {
-    themes: Theme[] = [new Theme(themeLight), new Theme(themeDark)];
+    private $themes: BehaviorSubject<Theme[]> = new BehaviorSubject<Theme[]>([new Theme(themeLight), new Theme(themeDark)]);
     private $currentTheme = new BehaviorSubject<Theme>(this.getDefaultTheme());
 
     constructor(
@@ -19,30 +19,38 @@ export class ThemeService {
     ) {
     }
 
-    get currentTheme(): Theme {
+    public get themes(): Theme[] {
+        return this.$themes.getValue();
+    }
+
+    public get themesObservable(): Observable<Theme[]> {
+        return this.$themes.asObservable();
+    }
+
+    public get currentTheme(): Theme {
         return this.$currentTheme.getValue();
     }
 
-    set currentTheme(t: Theme) {
+    public set currentTheme(t: Theme) {
         this.$currentTheme.next(new Theme(t));
     }
 
-    get themeName(): string {
+    public get themeName(): string {
         return this.$currentTheme.getValue().name;
     }
 
-    get currentThemeObservable(): Observable<Theme> {
+    public get currentThemeObservable(): Observable<Theme> {
         return this.$currentTheme.asObservable();
     }
 
-    get darkness(): boolean {
+    public get darkness(): boolean {
         return this.themeName === DARK_THEME;
     }
 
     /**
      * check if there is saved theme, then looks it up at theme repository
      */
-    getDefaultTheme(): Theme {
+    public getDefaultTheme(): Theme {
         return this.findTheme(themeLight.name);
     }
 
@@ -50,14 +58,14 @@ export class ThemeService {
      * Find theme by specified theme
      * Always returns 'light' theme if no results
      */
-    findTheme(name: string): Theme {
+    public findTheme(name: string): Theme {
         return this.themes.find(t => t.name === name) || themeLight;
     }
 
     /**
      * returns current theme index
      */
-    getCurrentThemeIndex(): number {
+    public getCurrentThemeIndex(): number {
         return this.themes.findIndex(t => t.name === this.currentTheme.name);
     }
 
@@ -65,7 +73,7 @@ export class ThemeService {
      * Switch to next theme, find current index
      * and if (current + 1) is out of index expression just go to themes[0]
      */
-    nextTheme(): void {
+    public nextTheme(): void {
         const currentIndex = this.getCurrentThemeIndex();
         const isLast = currentIndex === (this.themes.length - 1);
         this.currentTheme = isLast ? this.themes[0] : this.themes[currentIndex + 1];
@@ -76,7 +84,7 @@ export class ThemeService {
      *
      * @param name is required
      */
-    setTheme(name: string): void {
+    public setTheme(name: string): void {
         const t = this.findTheme(name);
         if (t.name !== name) {
             console.warn('Specified theme name not found: ', name);
@@ -89,7 +97,7 @@ export class ThemeService {
      *
      * @param propName is required
      */
-    getProperty(propName: string): string {
+    public getProperty(propName: string): string {
         const theme = this.currentTheme;
         if (theme.hasOwnProperty(propName)) {
             return this.currentTheme[propName];
@@ -103,14 +111,15 @@ export class ThemeService {
      * @param theme contains new Theme references
      * cannot be named as `light`, `dark` or any default themes
      */
-    registerTheme(theme: Theme): void {
+    public registerTheme(theme: Theme): void {
         if (!!this.themes.find(t => t.name === theme.name)) {
-            theme.name = `custom_${theme.name}_${this.themes.length + 1}`;
+            console.error('Theme with specified name already exists');
+            return;
         }
-        this.themes.push(new Theme(theme));
+        this.$themes.next([...this.themes, theme]);
     }
 
-    updateTheme(t: Theme): void {
+    public updateTheme(t: Theme): void {
         const theme = this.findTheme(t.name);
         if (theme.name === t.name) {
             this.currentTheme = new Theme(t);

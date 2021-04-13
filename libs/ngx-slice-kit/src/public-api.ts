@@ -18,7 +18,18 @@ export { SliceKitModule } from './lib/slice-kit.module';
 export { ThemeModule } from './lib/core/theme/theme.module';
 export { ThemeService } from './lib/core/theme/theme.service';
 export { ThemeDirective } from './lib/core/theme/theme.directive';
-export { ThemeBaseColors, ThemeColors } from './lib/core/theme/theme.model';
+export {
+    // models
+    Theme,
+    ColorProperty,
+    ThemeBaseColors,
+    ThemeColors,
+    // methods
+    MixinRgba,
+    NumArrayToRgbString,
+    RgbaToHex,
+    HexToRgb
+} from './lib/core/theme/theme.model';
 export { themeDark } from './lib/core/theme/lib/theme-dark';
 export { themeLight } from './lib/core/theme/lib/theme-light';
 
