@@ -6,11 +6,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.10.0
 
-## 13 Apr 2021
+## 14 Apr 2021
 
 ### Added
 
 ### Changed
+
+### Fixed
+
+### Removed
+
+
+## 13 Apr 2021
+
+### Added
+web:
+- enhanced theme palette guide
+
+### Changed
+ngx-slice-kit:
+- theme model color handling updated
 
 ### Fixed
 
