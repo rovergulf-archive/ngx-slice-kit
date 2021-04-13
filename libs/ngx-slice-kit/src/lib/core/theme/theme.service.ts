@@ -113,11 +113,11 @@ export class ThemeService {
      */
     public registerTheme(theme: Theme): void {
         if (!!this.themes.find(t => t.name === theme.name)) {
-            console.error('Theme with specified name already exists');
-            return;
+            theme.name = `custom_${theme.name}_${this.themes.length + 1}`;
         }
-        this.$themes.next([...this.themes, theme]);
+        this.themes.push(new Theme(theme));
     }
+
 
     public updateTheme(t: Theme): void {
         const theme = this.findTheme(t.name);
