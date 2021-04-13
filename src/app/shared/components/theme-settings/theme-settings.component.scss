@@ -9,6 +9,10 @@ main {
         margin-bottom: 16px;
     }
 
+    h3 {
+        font-weight: 500;
+    }
+
     .theme-colors {
         @extend .flex-column;
         @extend .layout-start-center;

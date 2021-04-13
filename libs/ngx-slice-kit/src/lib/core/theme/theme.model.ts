@@ -11,8 +11,10 @@ export type ThemeColors = 'regular' | 'primary' | 'success' | 'accent' | 'warn';
 
 export const defaultColors = {
     base: defaultBaseRgb,
+    base_text: defaultBackgroundRgb,
     background: defaultBackgroundRgb,
     regular: defaultRegularRgb,
+    regular_text: defaultBaseRgb,
     primary: defaultPrimaryRgb,
     primary_text: defaultBackgroundRgb,
     success: defaultSuccessRgb,

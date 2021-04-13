@@ -2,7 +2,8 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Theme, ThemeService } from 'ngx-slice-kit';
 import { ApiDefinition } from '../../model';
 import { baseColors, colors } from '../../../../../libs/ngx-slice-kit/src/lib/core/theme/theme.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, timer } from 'rxjs';
+import { LayoutService } from '../../services';
 
 @Component({
     selector: 'lib-theme-settings',
@@ -22,7 +23,8 @@ export class ThemeSettingsComponent implements OnInit, OnDestroy {
     }
 
     constructor(
-        public themeService: ThemeService
+        public themeService: ThemeService,
+        private layout: LayoutService
     ) {
     }
 
@@ -30,7 +32,15 @@ export class ThemeSettingsComponent implements OnInit, OnDestroy {
         return [...baseColors, ...colors];
     }
 
+    get active(): boolean {
+        return this.themeService.currentTheme.name === this.theme.name;
+    }
+
     apply(): void {
+        const existing = this.themeService.findTheme(this.theme.name);
+        if (!existing || existing.name !== this.theme.name) {
+            this.themeService.registerTheme(this.theme);
+        }
         this.themeService.setTheme(this.theme.name);
     }
 
