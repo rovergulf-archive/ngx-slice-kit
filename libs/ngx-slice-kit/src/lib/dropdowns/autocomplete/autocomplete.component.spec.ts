@@ -170,10 +170,6 @@ describe('AutocompleteComponent', () => {
             expect(autocompleteEl.classList.contains('disabled')).not.toBeTrue();
         });
 
-        it('should #enableNullValue be false by default"', () => {
-            expect(component.enableNullValue).toBeFalse();
-        });
-
         it('should #currentValues be undefined by default', () => {
             expect(component.currentValues).toBeUndefined();
         });
@@ -213,23 +209,6 @@ describe('AutocompleteComponent', () => {
             });
 
             component.clearValue(new MouseEvent('click'));
-        });
-
-        it('should #hasValueToDrop() return true if #enableNullValue as true and #isInactive() is false', () => {
-            component.enableNullValue = true;
-            component.currentValue = stubOptionA;
-            fixture.detectChanges();
-            expect(component.hasValuesToDrop()).toBe(true);
-        });
-
-        it('should .icon-chevron not be displayed if #hasValueToDrop() is true and .icon-clear should be', () => {
-            component.enableNullValue = true;
-            component.currentValue = stubOptionA;
-            fixture.detectChanges();
-            const chevronEl = autocompleteEl.querySelector('.icon-chevron');
-            const clearEl = autocompleteEl.querySelector('.icon-clear');
-            expect(clearEl).toBeTruthy();
-            expect(chevronEl).not.toBeTruthy();
         });
 
         it('should .icon-chevron be displayed if #hasValueToDrop() is false and .icon-clear not', () => {
@@ -435,48 +414,53 @@ describe('AutocompleteComponent', () => {
             expect(component.resultEvent.complete).toHaveBeenCalled();
         });
 
-        /*
-        *   Test writeValue method with different value types;
-        */
+        it('should #isInactive() return "true" if currentValue does not have value', () => {
+            expect(component.isInactive()).toBeTrue();
+        });
 
-        describe('test writeValue() with value as set of options', () => {
-            let stubValues;
+        it('should #isInactive() return "false" if currentValue has value', () => {
+            component.currentValue = stubOptionA;
+            expect(component.isInactive()).toBeFalse();
+        });
 
-            beforeEach(() => {
-                component.options = options;
-                component.multi = true;
-                stubValues = new Set([stubOptionA, stubOptionB]);
+        it('should #getOptions() return options with correct selected property', () => {
+            component.options = options;
+            const expectedOptionsList = [...options].map((el, index) => {
+                el.selected = index === testIndexA;
+                return el;
             });
+            component.currentValue = stubOptionA;
 
-            it('should #writeValue() set value to #currentValues', () => {
-                component.writeValue(stubValues);
-                fixture.detectChanges();
+            fixture.detectChanges();
+            expect(component.getOptions()).toEqual(expectedOptionsList);
+        });
 
-                expect(component.currentValues).toEqual(stubValues);
-            });
+        it('should #selected() return #currentValue.label', () => {
+            const option = stubOptionA;
+            const expectedSelectedString = `${option.label}`;
+            component.currentValue = option;
+            fixture.detectChanges();
 
-            it('should #writeValue() call #onChange() with value as object', () => {
-                const expectedResult = component.options.filter(o => stubValues.has(o));
-                spyOn(component, 'onChange');
-                component.writeValue(stubValues);
-                fixture.detectChanges();
+            expect(component.selected()).toBe(expectedSelectedString);
+        });
 
-                expect(component.onChange).toHaveBeenCalledWith(expectedResult);
-            });
+        it('should #onResult() call #writeValue() and pass option', () => {
+            spyOn(component, 'addValue');
+            spyOn(component, 'writeValue');
+            component.onResult(stubOptionA);
 
-            it('should #writeValue() emit result event with value as object', () => {
-                const expectedResult = component.options.filter(o => stubValues.has(o));
-                let result;
+            expect(component.writeValue).toHaveBeenCalledWith(stubOptionA);
+            expect(component.addValue).not.toHaveBeenCalled();
+        });
 
-                component.resultEvent.subscribe(res => {
-                    result = res;
-                });
+        it('should #clearValue() should reset #currentValue', () => {
+            component.currentValue = stubOptionA;
+            fixture.detectChanges();
+            expect(component.currentValue).toEqual(stubOptionA);
 
-                component.writeValue(stubValues);
-                fixture.detectChanges();
-
-                expect(result).toEqual(expectedResult);
-            });
+            component.clearValue(new MouseEvent('click'));
+            fixture.detectChanges();
+            expect(component.currentValue).toBeUndefined();
         });
 
         describe('test writeValue() with value as OptionModel', () => {
@@ -512,132 +496,6 @@ describe('AutocompleteComponent', () => {
 
                 component.writeValue(stubValue);
                 fixture.detectChanges();
-            });
-        });
-
-        /*
-         *  Tests with different component.multi value;
-        */
-
-        describe('with component.multi as "true"', () => {
-            beforeEach(() => {
-                component.multi = true;
-                component.ngOnInit();
-            });
-
-            it('should ngOnInit set #enableNullValue as "true"', () => {
-                expect(component.enableNullValue).toBeTrue();
-            });
-
-            it('should #currentValues be empty after ngOnInit', () => {
-                expect(component.currentValues.size).toBe(  0);
-            });
-
-            it('should #isInactive() return "true" if currentValues does not have elements', () => {
-                expect(component.isInactive()).toBeTrue();
-            });
-
-            it('should #isInactive() return "false" if currentValues has elements', () => {
-                component.currentValues.add(stubOptionA);
-                expect(component.isInactive()).toBeFalse();
-            });
-
-            it('should #getOptions() return options with correct selected property', () => {
-                component.options = options;
-                const expectedOptionsList = [...options].map((el, index) => {
-                    el.selected = index === testIndexA || index === testIndexB;
-                    return el;
-                });
-                component.currentValues.add(stubOptionA);
-                component.currentValues.add(stubOptionB);
-
-                fixture.detectChanges();
-                expect(component.getOptions()).toEqual(expectedOptionsList);
-            });
-
-            it('should #selected() return options labels as join in string', () => {
-                const expectedSelectedString = `${stubOptionA.label}, ${stubOptionB.label}`;
-                component.currentValues.add(stubOptionA);
-                component.currentValues.add(stubOptionB);
-                fixture.detectChanges();
-
-                expect(component.selected()).toBe(expectedSelectedString);
-            });
-
-            it('should #onResult() call #addValue() and pass option', () => {
-                spyOn(component, 'addValue');
-                spyOn(component, 'writeValue');
-                component.onResult(stubOptionA);
-
-                expect(component.addValue).toHaveBeenCalledWith(stubOptionA);
-                expect(component.writeValue).not.toHaveBeenCalled();
-            });
-
-            it('should #clearValue() should reset #currentValues', () => {
-                component.currentValues.add(stubOptionA);
-                component.currentValues.add(stubOptionB);
-                fixture.detectChanges();
-                expect(component.currentValues.size).toBe(2);
-
-                component.clearValue(new MouseEvent('click'));
-                fixture.detectChanges();
-                expect(component.currentValues.size).toBe(0);
-            });
-        });
-
-        describe('with component.multi as "false"', () => {
-            beforeEach(() => {
-                component.multi = false;
-                component.ngOnInit();
-            });
-
-            it('should #isInactive() return "true" if currentValue does not have value', () => {
-                expect(component.isInactive()).toBeTrue();
-            });
-
-            it('should #isInactive() return "false" if currentValue has value', () => {
-                component.currentValue = stubOptionA;
-                expect(component.isInactive()).toBeFalse();
-            });
-
-            it('should #getOptions() return options with correct selected property', () => {
-                component.options = options;
-                const expectedOptionsList = [...options].map((el, index) => {
-                    el.selected = index === testIndexA;
-                    return el;
-                });
-                component.currentValue = stubOptionA;
-
-                fixture.detectChanges();
-                expect(component.getOptions()).toEqual(expectedOptionsList);
-            });
-
-            it('should #selected() return #currentValue.label', () => {
-                const option = stubOptionA;
-                const expectedSelectedString = `${option.label}`;
-                component.currentValue = option;
-                fixture.detectChanges();
-
-                expect(component.selected()).toBe(expectedSelectedString);
-            });
-
-            it('should #onResult() call #writeValue() and pass option', () => {
-                spyOn(component, 'addValue');
-                spyOn(component, 'writeValue');
-                component.onResult(stubOptionA);
-
-                expect(component.writeValue).toHaveBeenCalledWith(stubOptionA);
-                expect(component.addValue).not.toHaveBeenCalled();
-            });
-
-            it('should #clearValue() should reset #currentValue', () => {
-                component.currentValue = stubOptionA;
-                fixture.detectChanges();
-                expect(component.currentValue).toEqual(stubOptionA);
-
-                component.clearValue(new MouseEvent('click'));
-                fixture.detectChanges();
-                expect(component.currentValue).toBeUndefined();
             });
         });
     });
@@ -703,7 +561,7 @@ describe('AutocompleteComponent', () => {
                 triggerRect: component.autocomplete.nativeElement.getBoundingClientRect(),
                 fitWidth: true,
                 hideBackdrop: true,
-                multi: component.multi,
+                multi: false,
                 parentElem: component.autocomplete.nativeElement,
             };
 
