@@ -25,6 +25,7 @@ export class DemoAutocompleteComponent implements OnInit {
     val2: OptionModel;
     val3: OptionModel;
     val4: OptionModel;
+
     // val5: OptionModel;
 
     constructor() {
@@ -92,6 +93,7 @@ export class DemoAutocompleteComponent implements OnInit {
 export class AutocompleteModule {
 }`,
                         component: `import { Component } from '@angular/core';
+import { OptionModel } from 'ngx-slice-kit';
 
 const OPTIONS: OptionModel[] = [
     {value: 1, label: 'Red Dead Redemption 2'},
@@ -158,6 +160,11 @@ export class DemoAutocompleteComponent {
                 {
                     name: 'AutocompleteComponent',
                     apis: [
+                        {
+                            label: '[options]',
+                            type: 'OptionModel[]',
+                            description: 'Options list of autocomplete dropdown'
+                        },
                         {
                             label: '[placeholder]',
                             type: 'string',
