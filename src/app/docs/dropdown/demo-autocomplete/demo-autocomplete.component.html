@@ -1,55 +1,90 @@
 <lib-demo-page [page]="page">
     <ng-template #defaultRef>
-
-    </ng-template>
-<!--    <ng-template #defaultRef></ng-template>-->
-<!--    <ng-template #defaultRef></ng-template>-->
-<!--    <ng-template #defaultRef></ng-template>-->
-</lib-demo-page>
-
-<main>
-    <header>
-        <h1>Autocompletes</h1>
-    </header>
-
-    <section>
-        <div>
-            <h3>Default autocomplete</h3>
-            <div class="example flex-row layout-start-center">
-                <div class="autocomplete-container">
-                    <sdk-autocomplete label="Favourite game" [options]="options1"
-                                      (valueChanges)="onValueChange1($event)" [(ngModel)]="val1" placeholder="Find option"
-                                      (resultEvent)="checkSelect('val1', $event)"></sdk-autocomplete>
-                </div>
+        <div class="autocomplete-container">
+            <div class="wrapper">
+                <sdk-autocomplete [options]="options1"
+                                  [(ngModel)]="val1"
+                                  (valueChanges)="onValueChange($event, 'options1')"
+                                  placeholder="Find option"
+                                  label="Favourite game"></sdk-autocomplete>
             </div>
-            <h3>Small with icon (no label)</h3>
-            <div class="example flex-row layout-start-center">
-                <div class="autocomplete-container">
-                    <sdk-autocomplete [options]="options2" (valueChanges)="onValueChange2($event)" icon="star"
-                                      placeholder="Find option"
-                                      [(ngModel)]="val2" [small]="true"
-                                      (resultEvent)="checkSelect('val2', $event)"></sdk-autocomplete>
-                </div>
-            </div>
-            <h3>With Caption</h3>
-            <div class="example flex-row layout-start-center">
-                <div class="autocomplete-container">
-                    <sdk-autocomplete [options]="options4" (valueChanges)="onValueChange4($event)"
-                                      placeholder="Find option"
-                                      [(ngModel)]="val4" [caption]="'Example caption'" label="Caption example"
-                                      (resultEvent)="checkSelect('val4', $event)"></sdk-autocomplete>
-                </div>
-            </div>
-            <h3>With error</h3>
-            <div class="example flex-row layout-start-center">
-                <div class="autocomplete-container">
-                    <sdk-autocomplete [options]="options5" (valueChanges)="onValueChange5($event)"
-                                      placeholder="Find option"
-                                      [(ngModel)]="val5" error="Error example"
-                                      (resultEvent)="checkSelect('val5', $event)"></sdk-autocomplete>
-                </div>
+            <div class="wrapper">
+                <sdk-autocomplete [small]="true"
+                                  [options]="options2"
+                                  [(ngModel)]="val2"
+                                  (valueChanges)="onValueChange($event, 'options2')"
+                                  placeholder="Find option"
+                                  label="Favourite game"></sdk-autocomplete>
             </div>
         </div>
-    </section>
-</main>
+    </ng-template>
+
+    <ng-template #captionRef>
+        <div class="autocomplete-container">
+            <div class="wrapper">
+                <sdk-autocomplete [options]="options3"
+                                  [caption]="'Example caption'"
+                                  [(ngModel)]="val3"
+                                  (valueChanges)="onValueChange($event, 'options3')"
+                                  placeholder="Find option"
+                                  label="Caption example"></sdk-autocomplete>
+            </div>
+            <div class="wrapper">
+                <sdk-autocomplete [options]="options4"
+                                  [(ngModel)]="val4"
+                                  (valueChanges)="onValueChange($event, 'options4')"
+                                  error="Error example"
+                                  placeholder="Find option"
+                                  label="Error example"></sdk-autocomplete>
+            </div>
+        </div>
+    </ng-template>
+</lib-demo-page>
+
+<!--<main>-->
+<!--    <header>-->
+<!--        <h1>Autocompletes</h1>-->
+<!--    </header>-->
+
+<!--    <section>-->
+<!--        <div>-->
+<!--            <h3>Default autocomplete</h3>-->
+<!--            <div class="example flex-row layout-start-center">-->
+<!--                <div class="autocomplete-container">-->
+<!--                    <sdk-autocomplete label="Favourite game" [options]="options1"-->
+<!--                                      (valueChanges)="onValueChange1($event)" [(ngModel)]="val1"-->
+<!--                                      placeholder="Find option"-->
+<!--                                      (resultEvent)="checkSelect('val1', $event)"></sdk-autocomplete>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <h3>Small with icon (no label)</h3>-->
+<!--            <div class="example flex-row layout-start-center">-->
+<!--                <div class="autocomplete-container">-->
+<!--                    <sdk-autocomplete [options]="options2" (valueChanges)="onValueChange2($event)" icon="star"-->
+<!--                                      placeholder="Find option"-->
+<!--                                      [(ngModel)]="val2" [small]="true"-->
+<!--                                      (resultEvent)="checkSelect('val2', $event)"></sdk-autocomplete>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <h3>With Caption</h3>-->
+<!--            <div class="example flex-row layout-start-center">-->
+<!--                <div class="autocomplete-container">-->
+<!--                    <sdk-autocomplete [options]="options4" (valueChanges)="onValueChange4($event)"-->
+<!--                                      placeholder="Find option"-->
+<!--                                      [(ngModel)]="val4" [caption]="'Example caption'" label="Caption example"-->
+<!--                                      (resultEvent)="checkSelect('val4', $event)"></sdk-autocomplete>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <h3>With error</h3>-->
+<!--            <div class="example flex-row layout-start-center">-->
+<!--                <div class="autocomplete-container">-->
+<!--                    <sdk-autocomplete [options]="options5" (valueChanges)="onValueChange5($event)"-->
+<!--                                      placeholder="Find option"-->
+<!--                                      [(ngModel)]="val5" error="Error example"-->
+<!--                                      (resultEvent)="checkSelect('val5', $event)"></sdk-autocomplete>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--</main>-->
 

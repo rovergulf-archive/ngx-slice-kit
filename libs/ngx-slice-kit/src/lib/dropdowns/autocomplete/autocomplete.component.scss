@@ -176,8 +176,12 @@
 }
 
 .interface-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
     transition: all 0.2s;
-    //height: 24px;
 
     &.active {
         transform: scaleY(-1);
