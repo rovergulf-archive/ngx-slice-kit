@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { OptionModel } from 'ngx-slice-kit';
 import { OPTIONS1, OPTIONS2, OPTIONS3, OPTIONS4, OPTIONS5 } from '../../../shared/values/dropdowns.values';
+import { DemoPageModel } from '../../../shared/model';
 
 @Component({
     selector: 'app-demo-autocomplete',
@@ -8,6 +9,10 @@ import { OPTIONS1, OPTIONS2, OPTIONS3, OPTIONS4, OPTIONS5 } from '../../../share
     styleUrls: ['./demo-autocomplete.component.scss', '../../docs.module.scss']
 })
 export class DemoAutocompleteComponent implements OnInit {
+
+    @ViewChild('defaultRef', {static: true}) defaultRef: any;
+
+    page: DemoPageModel;
 
     options1: OptionModel[] = OPTIONS1;
     options2: OptionModel[] = OPTIONS2;
@@ -61,6 +66,25 @@ export class DemoAutocompleteComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.page = {
+            title: 'Autocomplete component examples',
+            subtitle: '',
+            demos: [
+                {
+                    title: '',
+                    description: '',
+                    templateRef: this.defaultRef,
+                    values: {
+                        html: ``,
+                        styles: ``,
+                        module: ``,
+                        component: ``,
+                    }
+                }
+            ],
+            api_groups: []
+        };
+
         // this.val1 = this.options1[0];
     }
 
