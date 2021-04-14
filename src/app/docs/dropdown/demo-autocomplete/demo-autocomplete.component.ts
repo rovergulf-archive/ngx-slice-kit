@@ -171,6 +171,11 @@ export class DemoAutocompleteComponent {
                             description: `-`,
                         },
                         {
+                            label: '[label]',
+                            type: 'string',
+                            description: `-`,
+                        },
+                        {
                             label: '[caption]',
                             type: 'string',
                             description: `-`,
