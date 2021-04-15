@@ -151,12 +151,14 @@ export class DemoSelectComponent {
     <div class="wrapper">
         <sdk-select [options]="options1"
                     [(ngModel)]="val1"
+                    [enableNullValue]="true"
                     caption="Example caption"
                     label="Pick material"></sdk-select>
     </div>
     <div class="wrapper">
         <sdk-select [options]="options2"
                     [(ngModel)]="val2"
+                    [enableNullValue]="true"
                     [error]="'Example error'"
                     label="Pick material"></sdk-select>
     </div>
@@ -172,7 +174,6 @@ export class DemoSelectComponent {
     <div class="wrapper">
         <sdk-select [options]="options1"
                     [(ngModel)]="val1"
-                    [enableNullValue]="true"
                     [multi]="true"
                     label="Multi-value select"
                     placeholder="Placeholder text"></sdk-select>
@@ -260,14 +261,14 @@ export class DemoSelectComponent implements OnInit {
                         {
                             label: '[enableNullValue]',
                             type: 'boolean',
-                            description: `-`,
-                            default_value: 'false'
+                            description: `Allows to reset the option value`,
+                            default_value: 'If [multi]: true. Other cases: false'
                         },
                         {
                             label: '[multi]',
                             type: 'boolean',
                             description: `-`,
-                            default_value: 'false'
+                            default_value: 'Allows multiple options to be selected'
                         },
                         {
                             label: '[disabled]',

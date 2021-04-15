@@ -20,12 +20,14 @@
             <div class="wrapper">
                 <sdk-select [options]="options3"
                             [(ngModel)]="singleVal3"
+                            [enableNullValue]="true"
                             caption="Example caption"
                             label="Pick material"></sdk-select>
             </div>
             <div class="wrapper">
                 <sdk-select [options]="options4"
                             [(ngModel)]="singleVal4"
+                            [enableNullValue]="true"
                             [error]="'Example error'"
                             label="Pick material"></sdk-select>
             </div>
@@ -37,7 +39,6 @@
             <div class="wrapper">
                 <sdk-select [options]="options5"
                             [(ngModel)]="multiValues1"
-                            [enableNullValue]="true"
                             [multi]="true"
                             label="Multi-value select"
                             placeholder="Placeholder text"></sdk-select>
