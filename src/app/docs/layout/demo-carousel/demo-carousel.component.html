@@ -1,119 +1,55 @@
-<div class="demo-carousel-container">
-    <h2>Carousel</h2>
-    <h3>Slider 9/3 + dots + infinity + offset</h3>
-    <div class="lotr-block">
-        <sdk-carousel [dots]="true"
-                      [infinity]="carousel1Config.infinity"
-                      [offset]="carousel1Config.offset"
-                      [pauseByHover]="carousel1Config.pauseByHover"
-                      [slidesToScroll]="carousel1Config.slidesToScroll"
-                      [slidesToShow]="carousel1Config.slidesToShow"
-                      [timeout]="carousel1Config.timeout">
-            <sdk-slide *ngFor="let url of lotrPostersUrl">
-                <div class="lotr-slide">
-                    <img [src]="url" alt="Lord of the rings: fellowship of the ring">
-                </div>
-            </sdk-slide>
-        </sdk-carousel>
-    </div>
+<lib-demo-page [page]="page">
+    <ng-template #defaultRef>
+        <div class="carousel-container default">
+            <sdk-carousel [dots]="config1.dots"
+                          [infinity]="config1.infinity"
+                          [offset]="config1.offset"
+                          [pauseByHover]="config1.pauseByHover"
+                          [slidesToScroll]="config1.slidesToScroll"
+                          [slidesToShow]="config1.slidesToShow"
+                          [timeout]="config1.timeout">
+                <sdk-slide *ngFor="let url of posterUrls1">
+                    <div class="carousel-slide">
+                        <img [src]="url" alt="Lord of the rings: fellowship of the ring">
+                    </div>
+                </sdk-slide>
+            </sdk-carousel>
+        </div>
+    </ng-template>
 
-    <h3>Slider 8/3 without timeout + infinity + dots + offset</h3>
-    <div class="lotr-block">
-        <sdk-carousel [dots]="true"
-                      [infinity]="carousel2Config.infinity"
-                      [offset]="carousel2Config.offset"
-                      [pauseByHover]="carousel2Config.pauseByHover"
-                      [slidesToScroll]="carousel2Config.slidesToScroll"
-                      [slidesToShow]="carousel2Config.slidesToShow"
-                      [timeout]="carousel2Config.timeout">
-            <sdk-slide *ngFor="let url of lotrPostersUrl.slice(0, 8)">
-                <div class="lotr-slide">
-                    <img [src]="url" alt="Lord of the rings: fellowship of the ring">
-                </div>
-            </sdk-slide>
-        </sdk-carousel>
-    </div>
+    <ng-template #wideRef>
+        <div class="carousel-container wide">
+            <sdk-carousel [arrows]="config4.arrows"
+                          [infinity]="config4.infinity"
+                          [offset]="config4.offset"
+                          [slidesToScroll]="config4.slidesToScroll"
+                          [slidesToShow]="config4.slidesToShow"
+                          [timeout]="config4.timeout">
+                <sdk-slide *ngFor="let url of posterUrls1.concat(posterUrls2)">
+                    <div class="carousel-slide">
+                        <img [src]="url" alt="Lord of the rings: fellowship of the ring">
+                    </div>
+                </sdk-slide>
+            </sdk-carousel>
+        </div>
+    </ng-template>
 
-    <h3>Slider 8/2 without timeout without dots without arrows + infinity + offset</h3>
-    <div class="lotr-block">
-        <sdk-carousel [arrows]="carousel3Config.arrows"
-                      [infinity]="carousel3Config.infinity"
-                      [offset]="carousel3Config.offset"
-                      [pauseByHover]="carousel3Config.pauseByHover"
-                      [slidesToScroll]="carousel3Config.slidesToScroll"
-                      [slidesToShow]="carousel3Config.slidesToShow"
-                      [timeout]="carousel3Config.timeout">
-            <sdk-slide *ngFor="let url of lotrPostersUrl.slice(0, 8)">
-                <div class="lotr-slide">
-                    <img [src]="url" alt="Lord of the rings: fellowship of the ring">
-                </div>
-            </sdk-slide>
-        </sdk-carousel>
-    </div>
-
-    <h3>Slider 8/2 big without timeout without dots + arrows + infinity + offset</h3>
-    <div class="lotr-block">
-        <sdk-carousel [arrows]="carousel4Config.arrows"
-                      [infinity]="carousel4Config.infinity"
-                      [offset]="carousel4Config.offset"
-                      [pauseByHover]="carousel4Config.pauseByHover"
-                      [slidesToScroll]="carousel4Config.slidesToScroll"
-                      [slidesToShow]="carousel4Config.slidesToShow"
-                      [timeout]="carousel4Config.timeout">
-            <sdk-slide *ngFor="let url of lotrPostersUrl.slice(0, 8)">
-                <div class="lotr-slide">
-                    <img [src]="url" alt="Lord of the rings: fellowship of the ring">
-                </div>
-            </sdk-slide>
-        </sdk-carousel>
-    </div>
-
-    <h3>Slider 6/3 without timeout without infinity without dots without arrows + offset</h3>
-    <div class="lotr-block">
-        <sdk-carousel [arrows]="carousel5Config.arrows"
-                      [infinity]="carousel5Config.infinity"
-                      [offset]="carousel5Config.offset"
-                      [pauseByHover]="carousel5Config.pauseByHover"
-                      [slidesToScroll]="carousel5Config.slidesToScroll"
-                      [slidesToShow]="carousel5Config.slidesToShow"
-                      [timeout]="carousel5Config.timeout">
-            <sdk-slide *ngFor="let url of [1,2,3,4,5,6]">
-                <div>
-                    <h3>Test custom block title</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ea tempora veniam?</p>
-                    <h4 style="margin: 16px 0 8px">Subtitle</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus dolor earum error hic id,
-                        laudantium mollitia nobis, non odio optio unde vero voluptatibus.</p>
-                </div>
-            </sdk-slide>
-        </sdk-carousel>
-    </div>
-
-    <h3>Slider 5/1 full width + arrows + dots + infinity + timeout="10000"</h3>
-    <div class="lotr-block">
-        <sdk-carousel [arrows]="carousel6Config.arrows"
-                      [dots]="true"
-                      [infinity]="carousel6Config.infinity"
-                      [offset]="carousel6Config.offset"
-                      [pauseByHover]="carousel6Config.pauseByHover"
-                      [slidesToScroll]="carousel6Config.slidesToScroll"
-                      [slidesToShow]="carousel6Config.slidesToShow"
-                      [timeout]="carousel6Config.timeout">
-            <sdk-slide>
-                <img alt="" src="https://onlinepngtools.com/images/examples-onlinepngtools/purple-flowers.png">
-            </sdk-slide>
-            <sdk-slide>
-                <img alt="" src="https://upload.wikimedia.org/wikipedia/commons/6/69/600x400_kastra.jpg">
-            </sdk-slide>
-            <sdk-slide>
-                <img alt="" src="https://www.otdihhorvatija.ru/izobrazheniya/apartments/Zelic_6f2a5599bc8b.jpg">
-            </sdk-slide>
-            <sdk-slide>
-                <img alt="" src="https://cdn.flickeringmyth.com/wp-content/uploads/2019/02/star-wars-600x400.jpg">
-            </sdk-slide>
-            <sdk-slide>
-                <img alt="" src="https://pluggedin.ru/images/star-wars-battlefront-02-600x400-file.jpg">
-            </sdk-slide>
-        </sdk-carousel>
-    </div>
-</div>
+    <ng-template #singleRef>
+        <div class="carousel-container single">
+            <sdk-carousel [arrows]="config6.arrows"
+                          [dots]="config6.dots"
+                          [infinity]="config6.infinity"
+                          [offset]="config6.offset"
+                          [pauseByHover]="config6.pauseByHover"
+                          [slidesToScroll]="config6.slidesToScroll"
+                          [slidesToShow]="config6.slidesToShow"
+                          [timeout]="config6.timeout">
+                <sdk-slide *ngFor="let url of posterUrls2">
+                    <div class="carousel-slide">
+                        <img alt="" [src]="url">
+                    </div>
+                </sdk-slide>
+            </sdk-carousel>
+        </div>
+    </ng-template>
+</lib-demo-page>
