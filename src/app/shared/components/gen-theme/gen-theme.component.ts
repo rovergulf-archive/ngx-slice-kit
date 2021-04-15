@@ -25,8 +25,10 @@ export class GenThemeComponent implements OnInit, OnDestroy {
     }
 
     @Output() changes: EventEmitter<any> = new EventEmitter<any>();
+    @Output() apply: EventEmitter<any> = new EventEmitter<any>();
 
     form: FormGroup;
+    private ifChangesNotEmitted: boolean = true;
 
     constructor(
         private fb: FormBuilder,
@@ -60,6 +62,7 @@ export class GenThemeComponent implements OnInit, OnDestroy {
         // theme.base_text = theme.background;
 
         this.changes.emit(new Theme(theme));
+        this.ifChangesNotEmitted = false;
         this.form.markAsPristine();
     }
 

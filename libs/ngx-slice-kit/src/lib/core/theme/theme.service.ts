@@ -115,12 +115,18 @@ export class ThemeService {
         if (!!this.themes.find(t => t.name === theme.name)) {
             theme.name = `custom_${theme.name}_${this.themes.length + 1}`;
         }
-        this.themes.push(new Theme(theme));
+        this.$themes.next([...this.themes, new Theme(theme)]);
     }
 
 
     public updateTheme(t: Theme): void {
         const theme = this.findTheme(t.name);
+        const themes = this.themes;
+        const index = themes.indexOf(theme);
+        if (index >= 0) {
+            themes[index] = t;
+        }
+        this.$themes.next(themes);
         if (theme.name === t.name) {
             this.currentTheme = new Theme(t);
         }

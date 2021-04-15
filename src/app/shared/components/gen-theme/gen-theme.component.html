@@ -11,6 +11,11 @@
 
         <span class="spacer"></span>
 
-        <button type="submit" sdk-raised-button [disabled]="form.pristine">Update theme palette</button>
+        <div class="flex-row layout-center-center">
+            <button type="submit" sdk-raised-button [disabled]="form.pristine">Update palette</button>
+            <span class="spacer"></span>
+            <!-- uncomment this when tabs wold be work fine with *ngFor directive -->
+<!--            <button type="button" (click)="apply.emit()" sdk-raised-button color="regular" [disabled]="ifChangesNotEmitted">Apply palette to current theme</button>-->
+        </div>
     </form>
 </main>
