@@ -66,8 +66,6 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     @Input() placeholder = '';
     @Input() disabled: boolean;
     @Input() small: boolean = false;
-    @Input() multi: boolean = false;
-    @Input() enableNullValue: boolean = false;
     @Input() icon: string;
     @Input() caption: string = '';
 
@@ -103,13 +101,13 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
 
     getOptions(): OptionModel[] {
         return [...this.options].map(o => {
-            o.selected = this.multi ? this.currentValues?.has(o) : this.currentValue === o;
+            o.selected = this.currentValue === o;
             return o;
         });
     }
 
     isInactive(): boolean {
-        return this.multi ? !this.currentValues?.size : !this.currentValue;
+        return !this.currentValue;
     }
 
     hasValuesToDrop(): boolean {
@@ -141,24 +139,12 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     }
 
     selected(): string {
-        if (this.multi) {
-            const selectedOptions = [];
-            this.currentValues?.forEach(o => {
-                selectedOptions.push(o.label);
-            });
-            return selectedOptions.length ? selectedOptions.join(', ') : '';
-        } else {
-            return this.currentValue?.label ?? '';
-        }
+        return this.currentValue?.label ?? '';
     }
 
     onResult(option: OptionModel): void {
         this.onTouched();
-        if (this.multi) {
-            this.addValue(option);
-        } else {
-            this.writeValue(option);
-        }
+        this.writeValue(option);
     }
 
     writeValue(val): void {
@@ -184,7 +170,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     clearValue(e): void {
         e.stopPropagation();
         this.valueChanges.emit(null);
-        this.multi ? this.currentValues?.clear() : this.currentValue = undefined;
+        this.currentValue = undefined;
         this.writeValue(undefined);
     }
 
@@ -251,7 +237,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
         const opts: DropdownOptions = {
             triggerRect: this.autocomplete.nativeElement.getBoundingClientRect(),
             fitWidth: true,
-            multi: this.multi,
+            multi: false,
             hideBackdrop: true,
             parentElem: this.autocomplete.nativeElement,
         };
@@ -267,11 +253,6 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     }
 
     ngOnInit(): void {
-        if (this.multi) {
-            this.enableNullValue = true;
-            this.currentValues = new Set<OptionModel>();
-        }
-
         // this.setInputSubscription();
     }
 

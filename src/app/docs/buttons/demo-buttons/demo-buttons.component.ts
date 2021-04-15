@@ -47,6 +47,11 @@ export class DemoButtonsComponent implements OnInit {
         <a sdk-base-button routerLink=".">Link</a>
     </div>
 </div>`,
+                        styles: `.example {
+    button, a {
+        margin: 8px;
+    }
+}`,
                         module: `import { ButtonModule } from 'ngx-slice-kit';
 
 @NgModule({
@@ -59,11 +64,6 @@ export class DemoButtonsComponent implements OnInit {
 })
 export class DemoButtonModule {
 }`,
-                        styles: `.example {
-    button, a {
-        margin: 8px;
-    }
-}`
                     },
                 },
                 {
