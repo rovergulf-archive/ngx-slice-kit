@@ -26,7 +26,7 @@ export const OPTIONS3: OptionModel[] = [
     {value: 2, label: 'Lord Of The Rings'},
     {value: 3, label: 'Call Of Cthulhu'},
     {value: 4, label: 'Wiedzmin'},
-    {value: 5, label: 'A Clockwork Orange'}
+    {value: 5, label: 'Crime and punishment'}
 ];
 
 export const OPTIONS4: OptionModel[] = [
