@@ -112,21 +112,17 @@ export class DemoDialogComponent {
             api_groups: [
                 {
                     name: 'DialogService',
+                    argsVisible: true,
                     apis: [
                         {
-                            label: 'showDialog(component, options): Observable<any>',
-                            type: 'public method',
+                            label: 'showDialog(component, options?)',
+                            type: 'Observable<any>',
                             args: [
                                 {name: 'component', type: 'Component', required: true},
                                 {name: 'options', type: 'DialogInterface'},
                             ],
                             description: `Open dialog window. 'component' should be specified and be available at your developed module`,
                         },
-                        {
-                            label: '[options]',
-                            type: 'DialogInterface',
-                            description: 'Look below for DialogInterface defaults',
-                        }
                     ],
                 },
                 {
@@ -179,7 +175,7 @@ export class DemoDialogComponent {
                         },
                         {
                             label: '(resultEvent)',
-                            type: 'EventEmitter',
+                            type: 'EventEmitter<any>',
                             description: 'Emits closed dialog event at target subscription',
                         }
                     ],
