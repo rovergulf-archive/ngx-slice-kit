@@ -6,13 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.10.0
 
-## 14 Apr 2021
+## 15 Apr 2021
 
 ### Added
 
 ### Changed
+web:
+- theming guide updated, prepared global theme updating method
 
 ### Fixed
+ngx-slice-kit:
+- `ThemeService` theme update method 
 
 ### Removed
 
