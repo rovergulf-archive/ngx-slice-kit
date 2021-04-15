@@ -20,7 +20,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 15 Apr 2021
 
 ### Added
+web:
 - popup service api documentation
+- `Carousel` demo
 
 ### Changed
 - api table updated to handle methods description and their arguments

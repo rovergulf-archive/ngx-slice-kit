@@ -13,7 +13,7 @@ import { defaultColors } from '../../../../libs/ngx-slice-kit/src/lib/core/theme
 })
 export class ThemingComponent implements OnInit, OnDestroy {
 
-    coreStylesExample = `@import './libs/ngx-slice-kit/src/lib/core/styles/core';`;
+    coreStylesExample = `@import '~ngx-slice-kit/src/lib/core/styles/core';`;
     angularJson = angularJsonExampleRef;
 
     themesDefinitions: ApiDefinition[];
