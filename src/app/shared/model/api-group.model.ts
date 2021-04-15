@@ -5,6 +5,7 @@ export class ApiDefinitionsGroup {
     apis: ApiDefinition[];
 
     argsVisible?: boolean;
+    headerLabel?: 'Attribute' | 'Method';
 
     constructor(src: ApiDefinitionsGroup) {
         Object.assign(this, src);

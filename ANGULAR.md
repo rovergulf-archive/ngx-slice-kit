@@ -1,6 +1,11 @@
 # SliceKit
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
+## Install dependencies
+Run `npm install` in repository root
+
+## Running ngx-slice-kit in watch mode
+
+Run `ng build ngx-slice-kit --watch` to build dist and watch file changes
 
 ## Development server
 
@@ -13,10 +18,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running ngx-slice-kit in watch mode
-
-Run `ng build ngx-slice-kit --watch` to build dist and watch file changes
 
 ## Running unit tests
 

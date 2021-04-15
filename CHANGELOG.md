@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] v0.10.0
+## [Unreleased] v1.0.0
 
 ## 16 Apr 2021
 
@@ -15,6 +15,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### Removed
+
+
+## 15 Apr 2021
+
+### Added
+- popup service api documentation
+
+### Changed
+- api table updated to handle methods description and their arguments
+
+### Fixed
+- alerts and dialog services demos
+
+### Removed
+
 
 ## Released [v0.9.6]
 
@@ -28,13 +43,10 @@ web:
 ngx-slice-kit:
 - `Dropdown directive` can't be "multi" anymore
 
-### Changed
-
 ### Fixed
 ngx-slice-kit:
 - `ThemeService` theme update method
 
-### Removed
 
 ## 14 Apr 2021
 
@@ -50,6 +62,7 @@ ngx-slice-kit:
 ### Changed
 ngx-slice-kit:
 - `.sdk-caption` color: --base-a40
+
 
 ## Released [v0.9.5]
 
@@ -70,10 +83,6 @@ ngx-slice-kit:
 ngx-slice-kit:
 - theme model color handling updated
 
-### Fixed
-
-### Removed
-
 
 ## Unreleased v0.9.4
 
@@ -86,12 +95,6 @@ slice-kit:
 
 web:
 - alert demos
-
-### Changed
-
-### Fixed
-
-### Removed
 
 
 ## 12 Apr 2021
@@ -109,16 +112,10 @@ web:
 - updated theming guide
 - resources updated
 
-### Fixed
-
-### Removed
-
 
 ## Released [v0.9.3]
 
 ## 12 Apr 2021
-
-### Added
 
 ### Changed
 slice-kit:
@@ -128,8 +125,6 @@ slice-kit:
 ### Fixed
 slice-kit:
 - Error color for `textarea` error caption
-
-### Removed
 
 
 ## Unreleased [v0.9.2]
@@ -156,8 +151,6 @@ slice-kit:
 - input error caption and icon colors
 - tooltip directive shadow color
 
-### Removed
-
 
 ## Unreleased v0.9.1
 
@@ -173,10 +166,6 @@ slice-kit:
 - button shadows with dark theme is black now
 - `base-button` and `stroked-button` has background by hover
 
-### Fixed
-
-### Removed
-
 
 ## 8 Apr 2021
 
@@ -187,12 +176,8 @@ slice-kit:
 web:
 - `lib-code-snippet` component for code highlighted examples
 
-### Changed
-
 ### Fixed
 - adaptive view for demos, closes #169
-
-### Removed
 
 
 ## Released [v0.9.0]
@@ -220,8 +205,6 @@ slice-kit:
 - `sdk-tabs-group` change detection
 - `sdk-tab` can work with *ngFor now
 - `sdk-divider` color
-
-### Removed
 
 
 ## Unreleased v0.8.1
@@ -479,8 +462,9 @@ Fix scroll issue in `tabs` component
 - updated Angular `core` and `cli` versions up to latest 11.1+ closes #3
 
 
-[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.9.5...main
-[v0.10.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.5...v0.10.0
+[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.9.6...main
+[v1.0.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.6...v1.0.0
+[v0.9.6]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.5..v0.9.6
 [v0.9.5]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.3..v0.9.5
 [v0.9.3]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.0..v0.9.3
 [v0.9.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.8.0...v0.9.0

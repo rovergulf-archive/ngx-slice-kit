@@ -60,7 +60,7 @@
 
             <!-- API Definitions -->
             <ng-container *ngIf="group.apis?.length > 0">
-                <lib-api-definitions-table [apis]="group.apis"></lib-api-definitions-table>
+                <lib-api-definitions-table [apis]="group.apis" [argsVisible]="group.argsVisible"></lib-api-definitions-table>
             </ng-container>
 
         </ng-container>

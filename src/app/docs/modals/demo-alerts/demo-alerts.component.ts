@@ -272,26 +272,27 @@ export class DemoAlertsComponent {
             api_groups: [
                 {
                     name: 'AlertService',
+                    argsVisible: true,
                     apis: [
                         {
-                            label: 'showAlert(options): void',
-                            type: 'public method',
+                            label: 'showAlert(options)',
+                            type: 'void',
                             args: [
                                 {name: 'options', type: 'AlertOptions'},
                             ],
                             description: `Create and show alert block.`,
                         },
                         {
-                            label: 'success(options): void',
-                            type: 'public method',
+                            label: 'success(options)',
+                            type: 'void',
                             args: [
                                 {name: 'options', type: 'AlertOptions'},
                             ],
                             description: `Create and show alert block with [type] as "success"`,
                         },
                         {
-                            label: 'error(options): void',
-                            type: 'public method',
+                            label: 'error(options)',
+                            type: 'void',
                             args: [
                                 {name: 'options', type: 'AlertOptions'},
                             ],
@@ -299,16 +300,11 @@ export class DemoAlertsComponent {
                         },
                         {
                             label: 'action(options): Observable<any>',
-                            type: 'public method',
+                            type: 'void',
                             args: [
                                 {name: 'options', type: 'AlertOptions'},
                             ],
                             description: `Create and show alert block with [action] as true`,
-                        },
-                        {
-                            label: '[options]',
-                            type: 'AlertOptions',
-                            description: 'Look below for AlertOptions defaults',
                         }
                     ],
                 },

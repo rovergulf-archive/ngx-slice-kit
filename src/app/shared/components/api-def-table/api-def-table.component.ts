@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiDefinition } from '../../model';
 
+type headerLabel = 'Attribute' | 'Method';
+
 @Component({
     selector: 'lib-api-definitions-table',
     templateUrl: './api-def-table.component.html',

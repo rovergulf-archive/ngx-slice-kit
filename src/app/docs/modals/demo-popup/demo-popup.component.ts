@@ -80,15 +80,48 @@ export class DemoPopupComponent {
             ],
             api_groups: [
                 {
-                    name: '',
+                    name: 'PopupService',
+                    argsVisible: true,
                     apis: [
                         {
-                            label: '',
-                            type: '',
-                            description: '',
-                        }
+                            label: 'showPopup(options?)',
+                            type: 'Observable<boolean>',
+                            args: [
+                                {name: 'options', type: 'PopupInterface'},
+                            ],
+                            description: `Open popup dialog. Options is not required. Returns 'true' if confirmed, 'false' if not.`,
+                        },
                     ],
-                }
+                },
+                {
+                    name: 'PopupInterface',
+                    apis: [
+                        {
+                            label: 'message',
+                            type: 'string',
+                            description: 'Message to show in popup dialog',
+                            default_value: 'Are you sure?',
+                        },
+                        {
+                            label: 'title',
+                            type: 'string',
+                            description: 'Title to show in popup dialog',
+                            default_value: 'Confirm action',
+                        },
+                        {
+                            label: 'ok',
+                            type: 'string',
+                            description: 'Confirm button label',
+                            default_value: 'Ok'
+                        },
+                        {
+                            label: 'cancel',
+                            type: 'string',
+                            description: 'Cancel button label',
+                            default_value: 'Cancel'
+                        },
+                    ],
+                },
             ]
         };
     }

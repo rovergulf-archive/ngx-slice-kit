@@ -1,8 +1,8 @@
 <table class="demo-api-definition">
     <thead>
     <tr>
-        <th class="attr">Attribute</th>
-        <th *ngIf="typeVisible" class="type">Type</th>
+        <th class="attr">{{argsVisible ? 'Method' : 'Attribute'}}</th>
+        <th *ngIf="typeVisible" class="type">{{argsVisible ? 'Returns' : 'Type'}}</th>
         <th *ngIf="argsVisible" class="type">Arguments</th>
         <th *ngIf="descVisible" class="desc">Description</th>
         <th *ngIf="valueVisible" class="value">Value</th>
@@ -22,7 +22,7 @@
             </td>
             <td *ngIf="argsVisible" class="type">
                 <div class="flex-column layout-start-start">
-                    <small *ngFor="let arg of a.args">{{arg.name}}:{{arg.type}}</small>
+                    <small *ngFor="let arg of a.args">{{arg.name}}: {{arg.type}}</small>
                 </div>
             </td>
             <td *ngIf="descVisible" class="desc">
