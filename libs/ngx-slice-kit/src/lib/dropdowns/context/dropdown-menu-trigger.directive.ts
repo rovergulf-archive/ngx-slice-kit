@@ -12,9 +12,9 @@ import { OptionsService } from '../options.service';
 export class DropdownMenuTriggerDirective implements OnInit, OnDestroy {
 
     @Input() options: OptionModel[];
-    @Input() config: DropdownOptions;
     @Input() fitWidth: boolean;
-    @Input() multi: boolean;
+    // @Input() config: DropdownOptions;
+    // @Input() multi: boolean;
 
     @Output() resultEvent: EventEmitter<any> = new EventEmitter<any>();
     @Output() opened: EventEmitter<any> = new EventEmitter<any>();
@@ -47,7 +47,7 @@ export class DropdownMenuTriggerDirective implements OnInit, OnDestroy {
         const opts: DropdownOptions = {
             triggerRect: this.el.nativeElement.getBoundingClientRect(),
             fitWidth: this.fitWidth,
-            multi: this.multi
+            multi: false
         };
 
         this.dropdownService.showDropdown(opts).subscribe(res => {
