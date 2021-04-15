@@ -9,7 +9,7 @@ import { DOCUMENT, isPlatformServer } from '@angular/common';
 })
 export class PopupService {
 
-    keyupSub: Subscription;
+    private keyupSub: Subscription;
     opened: boolean = false;
 
     constructor(
