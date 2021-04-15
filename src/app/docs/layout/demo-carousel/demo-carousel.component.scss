@@ -27,6 +27,19 @@
     }
 }
 
+.credits {
+    text-align: right;
+    padding: 0 24px;
+    font-size: 14px;
+    a {
+        transition: all 0.4s;
+        color: var(--primary);
+        &:hover {
+            color: var(--primary-a80);
+        }
+    }
+}
+
 
 // ---------------------------------- media ----------------------------------
 
