@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.10.0
 
+## 16 Apr 2021
+
+### Added
+
+### Changed
+
+### Fixed
+
+### Removed
+
+
 ## 15 Apr 2021
 
 ### Added
@@ -19,6 +30,7 @@ ngx-slice-kit:
 - `ThemeService` theme update method 
 
 ### Removed
+
 
 ## Released [v0.9.5]
 
