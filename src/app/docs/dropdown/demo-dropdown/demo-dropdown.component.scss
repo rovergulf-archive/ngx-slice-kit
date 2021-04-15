@@ -1,3 +1,11 @@
-.skip-space {
-  min-height: 600px;
+.dropdown-container {
+    p[sdkDropdownMenuTrigger] {
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .wrapper {
+        margin: 16px;
+    }
 }
