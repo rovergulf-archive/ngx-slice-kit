@@ -5,9 +5,6 @@ name: Build and Publish to GCR
 
 on: workflow_dispatch
 
-env:
-  IMAGE: ${{ secrets.OCI_REGISTRY_IMAGE }}
-
 jobs:
   setup-build-publish:
     name: Setup, Build, and Publish
@@ -28,14 +25,7 @@ jobs:
       - run: gcloud --quiet auth configure-docker
 
       # Build the Docker image
-      - name: Build
-        run: |-
-          VERSION=$(cat package.json | grep version | awk '{print $2}' | tr -d \"\,)
-          docker build --no-cache -t $IMAGE:$VERSION -t $IMAGE:latest .
-
-      # Push the Docker image to Google Container Registry
-      - name: Publish
-        run: |-
-          VERSION=$(cat package.json | grep version | awk '{print $2}' | tr -d \"\,)
-          docker push $IMAGE:$VERSION
-          docker push $IMAGE:latest
+      - name: Build and Publish
+        run: ./scripts/build_and_publish_gcr.sh
+        env:
+          REGISTRY_IMAGE: ${{ secrets.OCI_REGISTRY_IMAGE }}
