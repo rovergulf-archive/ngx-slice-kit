@@ -3,7 +3,7 @@
     <div class="flex-row layout-center-center">
         <h3>Colors</h3>
         <span class="spacer flex-grow-1"></span>
-        <button sdk-base-button [small]="true" (click)="apply()" [disabled]="active">Use this theme</button>
+        <button sdk-base-button [small]="true" (click)="apply()" [disabled]="active">{{active ? 'Current theme' : 'Use this theme'}}</button>
     </div>
 
         <div class="theme-colors">
@@ -18,12 +18,9 @@
     <lib-api-definitions-table [apis]="getCurrentThemesDefs()" [valueVisible]="true"
                                [descVisible]="false" [typeVisible]="false"></lib-api-definitions-table>
 
-    <ng-container *ngIf="theme.name === 'custom'">
-
-    </ng-container>
     <h3>Customize theme:</h3>
 
-    <lib-gen-theme [theme]="theme" (changes)="onThemeEmit($event)"></lib-gen-theme>
+    <lib-gen-theme [theme]="theme" (apply)="apply()" (changes)="onThemeEmit($event)"></lib-gen-theme>
 </main>
 
 

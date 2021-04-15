@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Theme, ThemeService } from 'ngx-slice-kit';
 import { ApiDefinition } from '../../model';
 import { baseColors, colors } from '../../../../../libs/ngx-slice-kit/src/lib/core/theme/theme.model';
-import { BehaviorSubject, timer } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { LayoutService } from '../../services';
 
 @Component({
@@ -38,10 +38,14 @@ export class ThemeSettingsComponent implements OnInit, OnDestroy {
 
     apply(): void {
         const existing = this.themeService.findTheme(this.theme.name);
-        if (!existing || existing.name !== this.theme.name) {
+        const ifNotExists = !existing || existing.name !== this.theme.name;
+
+        if (ifNotExists) {
             this.themeService.registerTheme(this.theme);
+            this.themeService.setTheme(this.theme.name);
         }
-        this.themeService.setTheme(this.theme.name);
+
+        this.themeService.updateTheme(this.theme);
     }
 
     getCurrentThemesDefs(): ApiDefinition[] {
