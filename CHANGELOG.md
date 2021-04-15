@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v0.10.0
 
-## 14 Apr 2021
+## 16 Apr 2021
 
 ### Added
 
@@ -16,13 +16,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-## Unreleased [v0.9.6]
+## Released [v0.9.6]
 
 ## 15 Apr 2021
 
 ### Added
 web:
 - `Dropdown` directive demo
+- theming guide updated, prepared global theme updating method
 
 ngx-slice-kit:
 - `Dropdown directive` can't be "multi" anymore
@@ -30,6 +31,8 @@ ngx-slice-kit:
 ### Changed
 
 ### Fixed
+ngx-slice-kit:
+- `ThemeService` theme update method
 
 ### Removed
 
