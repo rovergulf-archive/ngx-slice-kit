@@ -14,7 +14,6 @@ export class DropdownMenuTriggerDirective implements OnInit, OnDestroy {
     @Input() options: OptionModel[];
     @Input() fitWidth: boolean;
     // @Input() config: DropdownOptions;
-    // @Input() multi: boolean;
 
     @Output() resultEvent: EventEmitter<any> = new EventEmitter<any>();
     @Output() opened: EventEmitter<any> = new EventEmitter<any>();
@@ -53,7 +52,6 @@ export class DropdownMenuTriggerDirective implements OnInit, OnDestroy {
         this.dropdownService.showDropdown(opts).subscribe(res => {
             this.isOpened = false;
             this.closed.emit();
-            // this.optionsService.options = null;
 
             if (res) {
                 this.resultEvent.emit(res);

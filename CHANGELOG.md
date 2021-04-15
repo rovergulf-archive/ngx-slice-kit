@@ -16,6 +16,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## Unreleased [v0.9.6]
+
+## 15 Apr 2021
+
+### Added
+web:
+- `Dropdown` directive demo
+
+ngx-slice-kit:
+- `Dropdown directive` can't be "multi" anymore
+
+### Changed
+
+### Fixed
+
+### Removed
+
+## 14 Apr 2021
+
+### Added
+web:
+- `Autocomplete` demo
+- `Select` demo
+
+ngx-slice-kit:
+- `Autocomplete` can't be "multi" anymore
+- remove tests with `multi` prop from `autocomplete` tests
+
+### Changed
+ngx-slice-kit:
+- `.sdk-caption` color: --base-a40
+
 ## Released [v0.9.5]
 
 ## 13 Apr 2021
