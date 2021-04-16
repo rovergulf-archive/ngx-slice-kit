@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-export const angularJsonExampleRef = `                        // ...
+export const angularJsonExampleRef = `// ...
 // Double check that your core application styles file used in
 // "ng build" and/or "ng serve" commands
-                        "styles": [
-                            "src/styles.scss"
-                        ],
-                        // ...`;
+"styles": [
+    "src/styles.scss"
+],
+// ...`;
 
 @Component({
     selector: 'app-get-started',
@@ -101,7 +101,7 @@ export class SharedModule {
     <router-outlet></router-outlet>
 </div>
 `;
-    stylesExample = `@import './libs/ngx-slice-kit/src/lib/core/styles/core';`;
+    stylesExample = `@import '~ngx-slice-kit/src/lib/core/styles/core';`;
     angularJson = angularJsonExampleRef;
 
     constructor() {

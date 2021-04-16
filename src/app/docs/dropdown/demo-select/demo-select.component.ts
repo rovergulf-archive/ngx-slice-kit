@@ -125,7 +125,7 @@ const OPTIONS: OptionModel[] = [
 ];
 
 @Component({
-    selector: 'app-demo-dropdown',
+    selector: 'app-demo-select',
     templateUrl: './demo-select.component.html',
     styleUrls: ['./demo-select.component.scss']
 })
@@ -200,7 +200,7 @@ const OPTIONS: OptionModel[] = [
 ];
 
 @Component({
-    selector: 'app-demo-dropdown',
+    selector: 'app-demo-select',
     templateUrl: './demo-select.component.html',
     styleUrls: ['./demo-select.component.scss']
 })
