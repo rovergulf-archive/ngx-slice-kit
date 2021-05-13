@@ -1,4 +1,4 @@
-import 'zone.js/dist/zone-node';
+import 'zone.js/node';
 import * as prometheus from 'prom-client';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
