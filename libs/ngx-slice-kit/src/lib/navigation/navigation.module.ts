@@ -4,6 +4,7 @@ import { NavMenuModule } from './nav-menu/nav-menu.module';
 import { NavTabsModule } from './nav-tabs/nav-tabs.module';
 import { SidenavModule } from './sidenav/sidenav.module';
 import { TabsModule } from './tabs/tabs.module';
+import { BasicTabModule } from './basic-tab/basic-tab.module';
 
 
 const modules = [
@@ -11,6 +12,7 @@ const modules = [
     NavTabsModule,
     SidenavModule,
     TabsModule,
+    BasicTabModule,
 ];
 
 @NgModule({
