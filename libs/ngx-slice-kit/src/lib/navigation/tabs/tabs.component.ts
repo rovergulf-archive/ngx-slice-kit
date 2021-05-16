@@ -58,7 +58,7 @@ export class TabsComponent extends BasicTabComponent {
 
     constructor(
         public themeService: ThemeService,
-        private cdRef: ChangeDetectorRef
+        protected cdRef: ChangeDetectorRef
     ) {
         super(themeService, cdRef);
     }

@@ -11,12 +11,13 @@ import {
     QueryList,
     ViewChild
 } from '@angular/core';
-import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
-import {BehaviorSubject, fromEvent, Subscription} from 'rxjs';
-import {delay, filter, throttleTime} from 'rxjs/operators';
-import {ThemeService} from '../../core/theme/theme.service';
-import {slideInAnimation} from '../../core/animations/slide-in';
-import {TabLinkDirective} from './tab-link.directive';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { BehaviorSubject, fromEvent, Subscription } from 'rxjs';
+import { delay, filter, throttleTime } from 'rxjs/operators';
+import { ThemeService } from '../../core/theme/theme.service';
+import { slideInAnimation } from '../../core/animations/slide-in';
+import { TabLinkDirective } from './tab-link.directive';
+import { BasicTabComponent } from '../basic-tab/basic-tab.component';
 
 @Component({
     selector: 'sdk-nav-tab-group',
@@ -26,44 +27,46 @@ import {TabLinkDirective} from './tab-link.directive';
         slideInAnimation
     ]
 })
-export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit, AfterViewChecked, OnDestroy {
+// export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit, AfterViewChecked, OnDestroy {
+export class NavTabsComponent extends BasicTabComponent {
 
-    @ContentChildren(TabLinkDirective) linkTabs!: QueryList<TabLinkDirective>;
+    @ContentChildren(TabLinkDirective) tabs!: QueryList<TabLinkDirective>;
 
-    @Input() activeTabStyle: string = 'border'; // also 'fill' can be used
-    @Input() animation: boolean = false;
+    // @Input() activeTabStyle: string = 'border'; // also 'fill' can be used
+    // @Input() animation: boolean = false;
+    //
+    // @ViewChild('parent', {static: true}) containerElement;
+    // @ViewChild('tabs', {static: true}) tabsWrapperElement;
+    // @ViewChild('arrowLeft', {static: true}) arrowLeftElement;
+    // @ViewChild('arrowRight', {static: true}) arrowRightElement;
 
-    @ViewChild('parent', {static: true}) containerElement;
-    @ViewChild('tabs', {static: true}) tabsWrapperElement;
-    @ViewChild('arrowLeft', {static: true}) arrowLeftElement;
-    @ViewChild('arrowRight', {static: true}) arrowRightElement;
-
-    subscription: Subscription = new Subscription();
-
-    tabsViewElements: HTMLElement[];
-    curTab: HTMLElement;
-    tabGroup: TabLinkDirective[] = [];
-    containerWidth: number;
-    tabsWrapperWidth: number;
-    allTabsWidth: number = 0;
-    arrowWidth: number = 40;
-    isArrows: boolean;
-    tabsScrollRect: ClientRect;
-    curTabClientRect: ClientRect;
-    containerRect: ClientRect;
-
-    containerPosition$ = new BehaviorSubject(null);
-
-    slideMeasure: { width: any, left: any } = {
-        width: 0,
-        left: 0
-    };
+    // subscription: Subscription = new Subscription();
+    //
+    // tabsViewElements: HTMLElement[];
+    // curTab: HTMLElement;
+    // tabGroup: TabLinkDirective[] = [];
+    // containerWidth: number;
+    // tabsWrapperWidth: number;
+    // allTabsWidth: number = 0;
+    // arrowWidth: number = 40;
+    // isArrows: boolean;
+    // tabsScrollRect: ClientRect;
+    // curTabClientRect: ClientRect;
+    // containerRect: ClientRect;
+    //
+    // containerPosition$ = new BehaviorSubject(null);
+    //
+    // slideMeasure: { width: any, left: any } = {
+    //     width: 0,
+    //     left: 0
+    // };
 
     constructor(
         public themeService: ThemeService,
-        private cdRef: ChangeDetectorRef,
+        protected cdRef: ChangeDetectorRef,
         private router: Router,
     ) {
+        super(themeService, cdRef);
     }
 
     selectTab(): void {
@@ -166,68 +169,68 @@ export class NavTabsComponent implements OnInit, AfterContentInit, AfterViewInit
         return outlet.activatedRouteData.index === undefined ? -1 : outlet.activatedRouteData.index;
     }
 
-    ngOnInit(): void {
-        this.containerElement = this.containerElement.nativeElement || this.containerElement;
-        this.tabsWrapperElement = this.tabsWrapperElement.nativeElement || this.tabsWrapperElement;
-        this.arrowLeftElement = this.arrowLeftElement.nativeElement || this.arrowLeftElement;
-        this.arrowRightElement = this.arrowRightElement.nativeElement || this.arrowRightElement;
-        this.setSizes();
+    // ngOnInit(): void {
+    //     this.containerElement = this.containerElement.nativeElement || this.containerElement;
+    //     this.tabsWrapperElement = this.tabsWrapperElement.nativeElement || this.tabsWrapperElement;
+    //     this.arrowLeftElement = this.arrowLeftElement.nativeElement || this.arrowLeftElement;
+    //     this.arrowRightElement = this.arrowRightElement.nativeElement || this.arrowRightElement;
+    //     this.setSizes();
+    //
+    //     this.subscription = this.containerPosition$.pipe(delay(400)).subscribe(() => this.changeRects());
+    //
+    //     const subResize = fromEvent(window, 'resize')
+    //         .subscribe(() => {
+    //             this.setSizes();
+    //             this.isArrows = this.allTabsWidth > this.containerWidth;
+    //             if (!this.isArrows) {
+    //                 const x = Math.abs(parseFloat(this.tabsWrapperElement.style.left)) || 0;
+    //                 this.tabsWrapperElement.style.left = '0px';
+    //                 if (x !== 0) {
+    //                     this.slideMeasure.left = `${parseFloat(this.slideMeasure.left) + x}px`;
+    //                 }
+    //             }
+    //         });
+    //     const subRouter = this.router.events
+    //         .pipe(
+    //             filter((event: NavigationEnd) => event instanceof NavigationEnd)
+    //         )
+    //         .subscribe(() => {
+    //             this.selectTab();
+    //         });
+    //     const subRightArrow = fromEvent(this.arrowRightElement, 'click')
+    //         .pipe(throttleTime(500))
+    //         .subscribe(() => {
+    //             this.scrollRight();
+    //         });
+    //     const subLeftArrow = fromEvent(this.arrowLeftElement, 'click')
+    //         .pipe(throttleTime(500))
+    //         .subscribe(() => {
+    //             this.scrollLeft();
+    //         });
+    //
+    //     this.subscription.add(subResize);
+    //     this.subscription.add(subRouter);
+    //     this.subscription.add(subRightArrow);
+    //     this.subscription.add(subLeftArrow);
+    // }
 
-        this.subscription = this.containerPosition$.pipe(delay(400)).subscribe(() => this.changeRects());
+    // ngAfterContentInit(): void {
+    //     this.tabGroup = [];
+    //     this.tabs.forEach(tabInstance => this.tabGroup.push(tabInstance));
+    //     this.selectTab();
+    // }
 
-        const subResize = fromEvent(window, 'resize')
-            .subscribe(() => {
-                this.setSizes();
-                this.isArrows = this.allTabsWidth > this.containerWidth;
-                if (!this.isArrows) {
-                    const x = Math.abs(parseFloat(this.tabsWrapperElement.style.left)) || 0;
-                    this.tabsWrapperElement.style.left = '0px';
-                    if (x !== 0) {
-                        this.slideMeasure.left = `${parseFloat(this.slideMeasure.left) + x}px`;
-                    }
-                }
-            });
-        const subRouter = this.router.events
-            .pipe(
-                filter((event: NavigationEnd) => event instanceof NavigationEnd)
-            )
-            .subscribe(() => {
-                this.selectTab();
-            });
-        const subRightArrow = fromEvent(this.arrowRightElement, 'click')
-            .pipe(throttleTime(500))
-            .subscribe(() => {
-                this.scrollRight();
-            });
-        const subLeftArrow = fromEvent(this.arrowLeftElement, 'click')
-            .pipe(throttleTime(500))
-            .subscribe(() => {
-                this.scrollLeft();
-            });
-
-        this.subscription.add(subResize);
-        this.subscription.add(subRouter);
-        this.subscription.add(subRightArrow);
-        this.subscription.add(subLeftArrow);
-    }
-
-    ngAfterContentInit(): void {
-        this.tabGroup = [];
-        this.linkTabs.forEach(tabInstance => this.tabGroup.push(tabInstance));
-        this.selectTab();
-    }
-
-    ngAfterViewInit(): void {
-        this.tabsViewElements = Array.from(this.tabsWrapperElement.children);
-        this.setTabSizes();
-        this.isArrows = this.allTabsWidth > this.containerWidth;
-    }
-
-    ngAfterViewChecked(): void {
-        this.cdRef.detectChanges();
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
-    }
+    // ngAfterViewInit(): void {
+    //     this.tabsViewElements = Array.from(this.tabsWrapperElement.children);
+    //     this.setTabSizes();
+    //     this.isArrows = this.allTabsWidth > this.containerWidth;
+    // }
+    //
+    // ngAfterViewChecked(): void {
+    //     this.cdRef.detectChanges();
+    // }
+    //
+    // ngOnDestroy(): void {
+    //     this.subscription.unsubscribe();
+    // }
 }
