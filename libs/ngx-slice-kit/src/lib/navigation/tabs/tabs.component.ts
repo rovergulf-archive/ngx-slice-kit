@@ -63,27 +63,7 @@ export class TabsComponent extends TabsGroupComponent implements AfterContentIni
             selectedTab.slideDirection = selectedTab.index > prevTabIndex ? 'slideLeft' : 'slideRight';
         }
 
-        setTimeout(() => {
-            this.curTab = this.containerElement.querySelector(`.sdk-tab-container__tab--active`);
-            this.curTabClientRect = this.curTab.getBoundingClientRect();
-
-            // if current element not fully visible
-            if (this.isArrows) {
-                if ((this.curTabClientRect.left - this.arrowWidth) < this.containerRect.left) {
-                    const visiblePart = this.curTabClientRect.right - this.arrowWidth - this.containerRect.left;
-                    const hiddenPart = this.curTabClientRect.width - visiblePart;
-                    const additionalPadding = 40;
-                    this.scrollLeft(hiddenPart + additionalPadding);
-                }
-                if ((this.curTabClientRect.right + this.arrowWidth) > this.containerRect.right) {
-                    const visiblePart = this.containerRect.right - this.arrowWidth - this.curTabClientRect.left;
-                    const hiddenPart = this.curTabClientRect.width - visiblePart;
-                    const additionalPadding = 40;
-                    this.scrollRight(hiddenPart + additionalPadding);
-                }
-            }
-            this.setUnderlineMeasure();
-        });
+        super.selectTab();
     }
 
     ngAfterContentInit(): void {

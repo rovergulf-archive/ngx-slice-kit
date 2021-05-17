@@ -60,8 +60,28 @@ export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewCheck
     }
 
 
-    selectTab(selectedTab, index): any {
-        // Implemented in child classes
+    selectTab(selectedTab = null, index = null): any {
+        setTimeout(() => {
+            this.curTab = this.containerElement.querySelector(`.sdk-tab-container__tab--active`);
+            this.curTabClientRect = this.curTab.getBoundingClientRect();
+
+            // if current element not fully visible
+            if (this.isArrows) {
+                if ((this.curTabClientRect.left - this.arrowWidth) < this.containerRect.left) {
+                    const visiblePart = this.curTabClientRect.right - this.arrowWidth - this.containerRect.left;
+                    const hiddenPart = this.curTabClientRect.width - visiblePart;
+                    const additionalPadding = 40;
+                    this.scrollLeft(hiddenPart + additionalPadding);
+                }
+                if ((this.curTabClientRect.right + this.arrowWidth) > this.containerRect.right) {
+                    const visiblePart = this.containerRect.right - this.arrowWidth - this.curTabClientRect.left;
+                    const hiddenPart = this.curTabClientRect.width - visiblePart;
+                    const additionalPadding = 40;
+                    this.scrollRight(hiddenPart + additionalPadding);
+                }
+            }
+            this.setUnderlineMeasure();
+        });
     }
 
     scrollRight(step = null): void {
@@ -168,10 +188,6 @@ export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewCheck
         this.subscription.add(subLeftArrow);
     }
 
-    setSpecialSubscriptions(): void {
-        // Implemented in child classes
-    }
-
     ngOnInit(): void {
         this.containerElement = this.containerElement.nativeElement || this.containerElement;
         this.tabsWrapperElement = this.tabsWrapperElement.nativeElement || this.tabsWrapperElement;
@@ -179,7 +195,6 @@ export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewCheck
         this.arrowRightElement = this.arrowRightElement.nativeElement || this.arrowRightElement;
         this.setSizes();
         this.setSubscriptions();
-        this.setSpecialSubscriptions();
     }
 
 
