@@ -4,19 +4,20 @@ import {
     ChangeDetectorRef,
     Component,
     Input,
-    OnDestroy,
+    OnDestroy, OnInit,
     QueryList,
     ViewChild
 } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, fromEvent, Subscription } from 'rxjs';
 import { TabComponent } from '../tabs/tab/tab.component';
 import { ThemeService } from '../../core/theme/theme.service';
+import { delay, throttleTime } from 'rxjs/operators';
 
 @Component({
     template: '',
     styleUrls: ['./tabs-group.component.css']
 })
-export class TabsGroupComponent implements AfterViewInit, AfterViewChecked, OnDestroy {
+export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
     tabs: QueryList<any>;
 
     @Input() activeTabStyle: string = 'border';
@@ -56,7 +57,7 @@ export class TabsGroupComponent implements AfterViewInit, AfterViewChecked, OnDe
 
 
     selectTab(selectedTab, index): any {
-        // Released in child classes
+        // Implemented in child classes
     }
 
     scrollRight(step = null): void {
@@ -130,6 +131,53 @@ export class TabsGroupComponent implements AfterViewInit, AfterViewChecked, OnDe
         this.tabsScrollRect = this.tabsWrapperElement.getBoundingClientRect();
         this.curTabClientRect = this.curTab.getBoundingClientRect();
     }
+
+    setSubscriptions(): void {
+        this.subscription = this.containerPosition$.pipe(delay(400)).subscribe(() => this.changeRects());
+
+        const subResize = fromEvent(window, 'resize')
+            .subscribe(() => {
+                this.setSizes();
+                this.isArrows = this.allTabsWidth > this.containerWidth;
+                if (!this.isArrows) {
+                    const x = Math.abs(parseFloat(this.tabsWrapperElement.style.left)) || 0;
+                    this.tabsWrapperElement.style.left = '0px';
+                    if (x !== 0) {
+                        this.slideMeasure.left = `${parseFloat(this.slideMeasure.left) + x}px`;
+                    }
+                }
+            });
+
+        const subRightArrow = fromEvent(this.arrowRightElement, 'click')
+            .pipe(throttleTime(500))
+            .subscribe(() => {
+                this.scrollRight();
+            });
+        const subLeftArrow = fromEvent(this.arrowLeftElement, 'click')
+            .pipe(throttleTime(500))
+            .subscribe(() => {
+                this.scrollLeft();
+            });
+
+        this.subscription.add(subResize);
+        this.subscription.add(subRightArrow);
+        this.subscription.add(subLeftArrow);
+    }
+
+    setSpecialSubscriptions(): void {
+        // Implemented in child classes
+    }
+
+    ngOnInit(): void {
+        this.containerElement = this.containerElement.nativeElement || this.containerElement;
+        this.tabsWrapperElement = this.tabsWrapperElement.nativeElement || this.tabsWrapperElement;
+        this.arrowLeftElement = this.arrowLeftElement.nativeElement || this.arrowLeftElement;
+        this.arrowRightElement = this.arrowRightElement.nativeElement || this.arrowRightElement;
+        this.setSizes();
+        this.setSubscriptions();
+        this.setSpecialSubscriptions();
+    }
+
 
     ngAfterViewInit(): void {
         console.log(this.tabs, this.tabs.first instanceof TabComponent, 'tabs');

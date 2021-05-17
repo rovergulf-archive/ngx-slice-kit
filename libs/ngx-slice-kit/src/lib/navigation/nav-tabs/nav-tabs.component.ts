@@ -24,7 +24,7 @@ import { TabsGroupComponent } from '../tabs-group/tabs-group.component';
     ]
 })
 
-export class NavTabsComponent extends TabsGroupComponent implements OnInit, AfterContentInit {
+export class NavTabsComponent extends TabsGroupComponent implements AfterContentInit {
 
     @ContentChildren(TabLinkDirective) tabs!: QueryList<TabLinkDirective>;
     tabGroup: TabLinkDirective[] = [];
@@ -66,31 +66,7 @@ export class NavTabsComponent extends TabsGroupComponent implements OnInit, Afte
         });
     }
 
-    getRouteAnimation(outlet: RouterOutlet): number {
-        return outlet.activatedRouteData.index === undefined ? -1 : outlet.activatedRouteData.index;
-    }
-
-    ngOnInit(): void {
-        this.containerElement = this.containerElement.nativeElement || this.containerElement;
-        this.tabsWrapperElement = this.tabsWrapperElement.nativeElement || this.tabsWrapperElement;
-        this.arrowLeftElement = this.arrowLeftElement.nativeElement || this.arrowLeftElement;
-        this.arrowRightElement = this.arrowRightElement.nativeElement || this.arrowRightElement;
-        this.setSizes();
-
-        this.subscription = this.containerPosition$.pipe(delay(400)).subscribe(() => this.changeRects());
-
-        const subResize = fromEvent(window, 'resize')
-            .subscribe(() => {
-                this.setSizes();
-                this.isArrows = this.allTabsWidth > this.containerWidth;
-                if (!this.isArrows) {
-                    const x = Math.abs(parseFloat(this.tabsWrapperElement.style.left)) || 0;
-                    this.tabsWrapperElement.style.left = '0px';
-                    if (x !== 0) {
-                        this.slideMeasure.left = `${parseFloat(this.slideMeasure.left) + x}px`;
-                    }
-                }
-            });
+    setSpecialSubscriptions(): void {
         const subRouter = this.router.events
             .pipe(
                 filter((event: NavigationEnd) => event instanceof NavigationEnd)
@@ -98,21 +74,12 @@ export class NavTabsComponent extends TabsGroupComponent implements OnInit, Afte
             .subscribe(() => {
                 this.selectTab();
             });
-        const subRightArrow = fromEvent(this.arrowRightElement, 'click')
-            .pipe(throttleTime(500))
-            .subscribe(() => {
-                this.scrollRight();
-            });
-        const subLeftArrow = fromEvent(this.arrowLeftElement, 'click')
-            .pipe(throttleTime(500))
-            .subscribe(() => {
-                this.scrollLeft();
-            });
 
-        this.subscription.add(subResize);
         this.subscription.add(subRouter);
-        this.subscription.add(subRightArrow);
-        this.subscription.add(subLeftArrow);
+    }
+
+    getRouteAnimation(outlet: RouterOutlet): number {
+        return outlet.activatedRouteData.index === undefined ? -1 : outlet.activatedRouteData.index;
     }
 
     ngAfterContentInit(): void {

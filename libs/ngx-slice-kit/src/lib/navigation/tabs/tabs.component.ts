@@ -18,7 +18,7 @@ import { TabsGroupComponent } from '../tabs-group/tabs-group.component';
     templateUrl: './tabs.component.html',
     styleUrls: ['./tabs.component.scss']
 })
-export class TabsComponent extends TabsGroupComponent implements OnInit, AfterContentInit {
+export class TabsComponent extends TabsGroupComponent implements AfterContentInit {
 
     @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
     tabGroup: TabComponent[] = [];
@@ -84,43 +84,6 @@ export class TabsComponent extends TabsGroupComponent implements OnInit, AfterCo
             }
             this.setUnderlineMeasure();
         });
-    }
-
-    ngOnInit(): void {
-        this.containerElement = this.containerElement.nativeElement || this.containerElement;
-        this.tabsWrapperElement = this.tabsWrapperElement.nativeElement || this.tabsWrapperElement;
-        this.arrowLeftElement = this.arrowLeftElement.nativeElement || this.arrowLeftElement;
-        this.arrowRightElement = this.arrowRightElement.nativeElement || this.arrowRightElement;
-        this.setSizes();
-
-        this.subscription = this.containerPosition$.pipe(delay(400)).subscribe(() => this.changeRects());
-
-        const subResize = fromEvent(window, 'resize')
-            .subscribe(() => {
-                this.setSizes();
-                this.isArrows = this.allTabsWidth > this.containerWidth;
-                if (!this.isArrows) {
-                    const x = Math.abs(parseFloat(this.tabsWrapperElement.style.left)) || 0;
-                    this.tabsWrapperElement.style.left = '0px';
-                    if (x !== 0) {
-                        this.slideMeasure.left = `${parseFloat(this.slideMeasure.left) + x}px`;
-                    }
-                }
-            });
-        const subRightArrow = fromEvent(this.arrowRightElement, 'click')
-            .pipe(throttleTime(500))
-            .subscribe(() => {
-                this.scrollRight();
-            });
-        const subLeftArrow = fromEvent(this.arrowLeftElement, 'click')
-            .pipe(throttleTime(500))
-            .subscribe(() => {
-                this.scrollLeft();
-            });
-
-        this.subscription.add(subResize);
-        this.subscription.add(subRightArrow);
-        this.subscription.add(subLeftArrow);
     }
 
     ngAfterContentInit(): void {
