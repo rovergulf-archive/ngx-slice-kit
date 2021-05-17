@@ -16,6 +16,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## Released [v0.10.0]
+
+## 17 May 2021
+
+### Added
+`TabGroupComponent` as parent for `tabs` and `nav-tabs`
+Images for `nav-tabs` demo
+
+### Fixed
+`sdk-tab-group` ExpressionChangedAfterItHasBeenCheckedError
+
+### Removed
+Duplicate code from `nav-tabs` and `tabs`
+
 ## Released [v0.9.7]
 
 ## 11 May 2021

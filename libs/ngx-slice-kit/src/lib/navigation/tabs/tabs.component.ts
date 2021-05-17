@@ -3,14 +3,11 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChildren,
-    OnInit,
     QueryList,
     ViewChild,
 } from '@angular/core';
 import { TabComponent } from './tab/tab.component';
 import { ThemeService } from '../../core/theme/theme.service';
-import { fromEvent } from 'rxjs';
-import { delay, throttleTime } from 'rxjs/operators';
 import { TabsGroupComponent } from '../tabs-group/tabs-group.component';
 
 @Component({
@@ -69,13 +66,14 @@ export class TabsComponent extends TabsGroupComponent implements AfterContentIni
     ngAfterContentInit(): void {
         this.tabGroup = [];
         this.tabs.forEach(tabInstance => this.tabGroup.push(tabInstance));
-        this.selectTab(this.tabs.first, 0);
 
         this.tabs.changes.subscribe(res => {
             this.tabGroup = [];
             res.forEach(tabInstance => this.tabGroup.push(tabInstance));
         });
 
-        this.cdRef.detectChanges();
+        setTimeout(() => {
+            this.selectTab(this.tabs.first, 0);
+        });
     }
 }

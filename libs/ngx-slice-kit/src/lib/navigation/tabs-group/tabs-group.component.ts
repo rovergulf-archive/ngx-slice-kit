@@ -9,7 +9,6 @@ import {
     ViewChild
 } from '@angular/core';
 import { BehaviorSubject, fromEvent, Subscription } from 'rxjs';
-import { TabComponent } from '../tabs/tab/tab.component';
 import { ThemeService } from '../../core/theme/theme.service';
 import { delay, throttleTime } from 'rxjs/operators';
 import { slideInAnimation } from '../../core/animations/slide-in';
@@ -199,7 +198,6 @@ export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewCheck
 
 
     ngAfterViewInit(): void {
-        console.log(this.tabs, this.tabs.first instanceof TabComponent, 'tabs');
         this.tabsViewElements = Array.from(this.tabsWrapperElement.children);
         this.setTabSizes();
         this.isArrows = this.allTabsWidth > this.containerWidth;

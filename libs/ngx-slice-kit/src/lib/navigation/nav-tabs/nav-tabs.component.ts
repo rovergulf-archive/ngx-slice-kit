@@ -3,13 +3,11 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChildren,
-    OnInit,
     QueryList,
     ViewChild
 } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { fromEvent } from 'rxjs';
-import { delay, filter, throttleTime } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 import { ThemeService } from '../../core/theme/theme.service';
 import { slideInAnimation } from '../../core/animations/slide-in';
 import { TabLinkDirective } from './tab-link.directive';
