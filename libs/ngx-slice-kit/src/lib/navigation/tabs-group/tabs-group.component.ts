@@ -12,10 +12,14 @@ import { BehaviorSubject, fromEvent, Subscription } from 'rxjs';
 import { TabComponent } from '../tabs/tab/tab.component';
 import { ThemeService } from '../../core/theme/theme.service';
 import { delay, throttleTime } from 'rxjs/operators';
+import { slideInAnimation } from '../../core/animations/slide-in';
 
 @Component({
     template: '',
-    styleUrls: ['./tabs-group.component.css']
+    styleUrls: ['./tabs-group.component.css'],
+    animations: [
+        slideInAnimation
+    ]
 })
 export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
     tabs: QueryList<any>;
