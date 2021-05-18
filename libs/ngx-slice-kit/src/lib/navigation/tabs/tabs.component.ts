@@ -2,7 +2,7 @@ import {
     AfterContentInit,
     ChangeDetectorRef,
     Component,
-    ContentChildren,
+    ContentChildren, OnInit,
     QueryList,
     ViewChild,
 } from '@angular/core';
@@ -15,7 +15,7 @@ import { TabsGroupComponent } from '../tabs-group/tabs-group.component';
     templateUrl: './tabs.component.html',
     styleUrls: ['./tabs.component.scss']
 })
-export class TabsComponent extends TabsGroupComponent implements AfterContentInit {
+export class TabsComponent extends TabsGroupComponent implements OnInit, AfterContentInit {
 
     @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
     tabGroup: TabComponent[] = [];
@@ -61,6 +61,10 @@ export class TabsComponent extends TabsGroupComponent implements AfterContentIni
         }
 
         super.selectTab();
+    }
+
+    ngOnInit(): void {
+        super.ngOnInit();
     }
 
     ngAfterContentInit(): void {

@@ -119,7 +119,7 @@ describe('NavTabsComponent', () => {
     });
 
     it('should linkTabs length be equal count of #sdkTabLink\'s inside nav-tabs component', () => {
-        expect(component.linkTabs.length).toEqual(linksCount);
+        expect(component.tabs.length).toEqual(linksCount);
     });
 
     it('should be called #selectTab method after component content init', () => {
@@ -132,7 +132,7 @@ describe('NavTabsComponent', () => {
 
     it('should linkTabs length be equal tabGroup length after component content init', () => {
         component.ngAfterContentInit();
-        expect(component.linkTabs.length).toEqual(component.tabGroup.length);
+        expect(component.tabs.length).toEqual(component.tabGroup.length);
     });
 
     it('should #setTabSizes be called after component view init', () => {

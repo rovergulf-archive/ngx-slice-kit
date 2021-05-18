@@ -85,7 +85,9 @@ describe('TabsComponent', () => {
         component.ngAfterContentInit();
         fixture.detectChanges();
 
-        expect(component.selectTab).toHaveBeenCalled();
+        setTimeout(() => {
+            expect(component.selectTab).toHaveBeenCalled();
+        }, 0);
     });
 
     it('should tabs length be equal tabGroup length after component content init', () => {
