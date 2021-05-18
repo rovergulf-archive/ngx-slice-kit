@@ -1,7 +1,7 @@
 <section class="flex-column layout-start-stretch">
     <h2>Nav tabs</h2>
     <div class="example flex-column layout-start-stretch" he>
-        <sdk-nav-tab-group [animation]="true">
+        <sdk-nav-tab-group [animation]="true" [minHeight]="1200">
             <a sdkTabLink *ngFor="let link of links"
                [disabled]="link.disabled"
                [routerLink]="link.src"

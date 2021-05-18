@@ -2,7 +2,7 @@ import {
     AfterContentInit,
     ChangeDetectorRef,
     Component,
-    ContentChildren,
+    ContentChildren, Input,
     QueryList,
     ViewChild
 } from '@angular/core';
@@ -31,6 +31,8 @@ export class NavTabsComponent extends TabsGroupComponent implements AfterContent
     @ViewChild('tabs', {static: true}) tabsWrapperElement;
     @ViewChild('arrowLeft', {static: true}) arrowLeftElement;
     @ViewChild('arrowRight', {static: true}) arrowRightElement;
+
+    @Input() minHeight: number = 0;
 
     constructor(
         public themeService: ThemeService,
