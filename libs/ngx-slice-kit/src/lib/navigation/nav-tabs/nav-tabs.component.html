@@ -30,7 +30,7 @@
         </button>
     </div>
 
-    <section class="sdk-nav-tab__content" [@routeAnimations]="animation && getRouteAnimation(router)">
+    <section class="sdk-nav-tab__content" [style.minHeight.px]="minHeight" [@routeAnimations]="animation && getRouteAnimation(router)">
         <router-outlet #router="outlet"></router-outlet>
     </section>
 </div>

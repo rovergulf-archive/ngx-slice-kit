@@ -16,6 +16,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## Released [v0.10.0]
+
+## 17 May 2021
+
+### Added
+`TabGroupComponent` as parent for `tabs` and `nav-tabs`
+Images for `nav-tabs` demo
+
+### Fixed
+`sdk-tab-group` ExpressionChangedAfterItHasBeenCheckedError
+
+### Removed
+Duplicate code from `nav-tabs` and `tabs`
+
 ## Released [v0.9.7]
 
 ## 11 May 2021
@@ -472,7 +486,8 @@ Fix scroll issue in `tabs` component
 
 
 [Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.9.6...main
-[v1.0.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.7...v1.0.0
+[v1.0.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.10.0...v1.0.0
+[v0.10.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.7...v0.10.0
 [v0.9.7]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.6...v0.9.7
 [v0.9.6]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.5..v0.9.6
 [v0.9.5]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.3..v0.9.5

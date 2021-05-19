@@ -1,6 +1,6 @@
 {
   "name": "slice-kit",
-  "version": "v0.9.6",
+  "version": "v0.10.0",
   "maintainers": [
     {
       "name": "Rovergulf Engineers Team",
@@ -40,7 +40,7 @@
     "@angular/platform-server": "~12.0.0",
     "@angular/router": "~12.0.0",
     "@angular/service-worker": "~12.0.0",
-    "@nguniversal/express-engine": "^11.2.0",
+    "@nguniversal/express-engine": "^12.0.0",
     "@types/highlightjs": "^9.12.1",
     "express": "^4.15.2",
     "rxjs": "~6.6.6",
@@ -51,10 +51,10 @@
     "@angular-devkit/build-angular": "~12.0.0",
     "@angular/cli": "~12.0.0",
     "@angular/compiler-cli": "~12.0.0",
-    "@nguniversal/builders": "^11.2.1",
+    "@nguniversal/builders": "^12.0.0",
     "@types/express": "^4.17.0",
-    "@types/jasmine": "~3.7.2",
-    "@types/node": "^15.0.3",
+    "@types/jasmine": "~3.7.4",
+    "@types/node": "^15.3.0",
     "codecov": "^3.8.2",
     "codelyzer": "^6.0.2",
     "cookie-parser": "^1.4.5",
