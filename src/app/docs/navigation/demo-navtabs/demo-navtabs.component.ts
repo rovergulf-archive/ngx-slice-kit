@@ -23,7 +23,8 @@ export class DemoNavtabsComponent implements OnInit {
         {src: 'demo-eighth', label: 'Double dare you once again'},
     ];
 
-    constructor() {}
+    constructor() {
+    }
 
     ngOnInit(): void {
         this.page = {
@@ -35,7 +36,7 @@ export class DemoNavtabsComponent implements OnInit {
                     description: '',
                     templateRef: this.basicRef,
                     values: {
-                        html: `<section class="flex-column layout-start-stretch">
+                        html: `<section class="flex-column tabs-container">
     <h2>Nav tabs</h2>
     <div class="example flex-column layout-start-stretch">
         <sdk-nav-tab-group [animation]="true" [minHeight]="1048">
@@ -46,16 +47,61 @@ export class DemoNavtabsComponent implements OnInit {
         </sdk-nav-tab-group>
     </div>
 </section>`,
+                        styles: `.tabs-container {
+    width: 100%;
+}
+`,
+                        ['demo.module.ts']: `import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+// Your page components imports...
+
+const components = [
+  DemoPageOneComponent,
+  DemoPageTwoComponent,
+  DemoPageThreeComponent,
+  DemoPageFourComponent,
+  DemoPageFiveComponent,
+];
+
+@NgModule({
+  declarations: components,
+  exports: components,
+  imports: [
+    CommonModule,
+    // Your routing module for components of nav-tabs
+    DemoRoutingModule,
+  ]
+})
+export class DemoModule { }`,
+                        ['demo-routing.module.ts']: `import { NgModule } from '@angular/core';
+// Your page components imports...
+
+const routes: Routes = [
+  {path: 'demo-first', component: DemoPageOneComponent, data: {index: 1}},
+  {path: 'demo-second', component: DemoPageTwoComponent, data: {index: 2}},
+  {path: 'demo-third', component: DemoPageThreeComponent, data: {index: 3}},
+  {path: 'demo-fourth', component: DemoPageFourComponent, data: {index: 4}},
+  {path: 'demo-fifth', component: DemoPageFiveComponent, data: {index: 5}},
+  {path: 'demo-sixth', component: DemoPageOneComponent, data: {index: 6}},
+  {path: 'demo-seventh', component: DemoPageTwoComponent, data: {index: 7}},
+  {path: 'demo-eighth', component: DemoPageThreeComponent, data: {index: 8}},
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class DemoRoutingModule {
+}`,
                         module: `import { NavTabsModule } from 'ngx-slice-kit';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        // add your routing module
-        SomeRoutingModule
         // add NavTabsModule to app imports
         NavTabsModule,
+        DemoModule,
     ],
 })
 export class DemoNavTabsModule {
@@ -87,7 +133,30 @@ export class DemoNavtabsComponent {
                     },
                 }
             ],
-            apis: [
+            api_groups: [
+                {
+                    name: 'NavTabsComponent',
+                    apis: [
+                        {
+                            label: 'activeTabStyle',
+                            type: 'string',
+                            description: `Sets the way the element is highlighted. Valid values: "border" | "fill"`,
+                            default_value: 'border'
+                        },
+                        {
+                            label: 'animation',
+                            type: 'boolean',
+                            description: `-`,
+                            default_value: 'false'
+                        },
+                        {
+                            label: 'minHeight',
+                            type: 'number',
+                            description: 'Set min height of container',
+                            default_value: 0
+                        }
+                    ]
+                }
             ]
         };
     }

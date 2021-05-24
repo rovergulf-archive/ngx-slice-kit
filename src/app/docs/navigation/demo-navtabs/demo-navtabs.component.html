@@ -1,8 +1,8 @@
 <lib-demo-page [page]="page">
     <ng-template #basicRef>
-        <section class="flex-column layout-start-stretch">
+        <section class="tabs-container">
             <h2>Nav tabs</h2>
-            <div class="example flex-column layout-start-stretch">
+            <div>
                 <sdk-nav-tab-group [animation]="true" [minHeight]="1048">
                     <a sdkTabLink *ngFor="let link of links"
                        [disabled]="link.disabled"
