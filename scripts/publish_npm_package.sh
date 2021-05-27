@@ -18,9 +18,6 @@ mkdir -p dist/ngx-slice-kit/schematics
 cp -a libs/ngx-slice-kit/src/lib/core/styles/. dist/ngx-slice-kit/lib/core/styles || exit 4
 log_success "[$(date)] ng build finished"
 
-npm run build --prefix libs/ngx-slice-kit || exit 1
-log_success "[$(date)] npm build finished"
-
 log_info "[$(date)] publish ${REGISTRY_IMAGE} registry image"
 cd dist/ngx-slice-kit && npm publish --access public && cd ../.. || exit 5
 log_success "[$(date)] ${PACKAGE_NAME}@${VERSION} successfully published!"
