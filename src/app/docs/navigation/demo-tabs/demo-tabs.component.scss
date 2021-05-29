@@ -2,15 +2,10 @@
   margin-bottom: 24px;
 }
 
-.tab-wrapper {
-    padding: 24px;
+.tabs-container {
+    width: 100%;
 }
 
-li {
-  display: flex;
-  margin-bottom: 16px;
-
-  div {
-    width: 200px;
-  }
+.tab-wrapper {
+    padding: 24px;
 }

@@ -15,7 +15,7 @@ import { slideInAnimation } from '../../core/animations/slide-in';
 
 @Component({
     template: '',
-    styleUrls: ['./tabs-group.component.css'],
+    styleUrls: ['./tabs-group.component.scss'],
     animations: [
         slideInAnimation
     ]

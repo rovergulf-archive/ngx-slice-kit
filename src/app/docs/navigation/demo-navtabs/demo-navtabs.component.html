@@ -1,11 +1,15 @@
-<section class="flex-column layout-start-stretch">
-    <h2>Nav tabs</h2>
-    <div class="example flex-column layout-start-stretch" he>
-        <sdk-nav-tab-group [animation]="true" [minHeight]="1200">
-            <a sdkTabLink *ngFor="let link of links"
-               [disabled]="link.disabled"
-               [routerLink]="link.src"
-               [label]="link.label"></a>
-        </sdk-nav-tab-group>
-    </div>
-</section>
+<lib-demo-page [page]="page">
+    <ng-template #basicRef>
+        <section class="tabs-container">
+            <h2>Nav tabs</h2>
+            <div>
+                <sdk-nav-tab-group [animation]="true" [minHeight]="1048">
+                    <a sdkTabLink *ngFor="let link of links"
+                       [disabled]="link.disabled"
+                       [routerLink]="link.src"
+                       [label]="link.label"></a>
+                </sdk-nav-tab-group>
+            </div>
+        </section>
+    </ng-template>
+</lib-demo-page>
