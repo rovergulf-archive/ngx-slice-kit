@@ -11,6 +11,61 @@ export class DemoTabsComponent implements OnInit, OnDestroy {
     @ViewChild('basicRef', {static: true}) basicRef: any;
 
     page: DemoPageModel;
+    tabs: any[] = [
+        {
+            label: 'Color Tab',
+            title: 'Pick color',
+            data: [
+                { value: 0, name: 'Red'},
+                { value: 1, name: 'Blue'},
+                { value: 2, name: 'Green'},
+            ]
+        },
+        {
+            label: 'Disable tab',
+            disabled: true
+        },
+        {
+            label: 'Fruit Tab',
+            title: 'Pick fruit',
+            data: [
+                { value: 0, name: 'Mango'},
+                { value: 1, name: 'Banana'},
+                { value: 2, name: 'Mandarin'},
+            ]
+        },
+        {
+            label: 'Drink Tab',
+            title: 'Pick drink',
+            data: [
+                { value: 0, name: 'Milkshake'},
+                { value: 1, name: 'Kombucha'},
+                { value: 2, name: 'Smoothie'},
+            ]
+        },
+        {
+            label: 'Another disable Tab',
+            disabled: true
+        },
+        {
+            label: 'Game Tab',
+            title: 'Pick game',
+            data: [
+                { value: 0, name: 'Streets of Rage'},
+                { value: 1, name: 'Earthworm Jim'},
+                { value: 2, name: 'Zero Tolerance'},
+            ]
+        },
+        {
+            label: 'Movie Tab',
+            title: 'Pick movie',
+            data: [
+                { value: 0, name: 'God Father'},
+                { value: 1, name: 'Forrest Gump'},
+                { value: 2, name: 'Lord Of The Rings'},
+            ]
+        },
+    ];
 
     constructor() {}
 
@@ -24,152 +79,17 @@ export class DemoTabsComponent implements OnInit, OnDestroy {
                     description: '',
                     templateRef: this.basicRef,
                     values: {
-                        html: `<div>
+                        html: `<section class="tabs-container">
     <h1>Tabs</h1>
     <sdk-tab-group [animation]="true">
-        <sdk-tab label="Tab 1" icon="star">
+        <sdk-tab *ngFor="let tab of tabs" [label]="tab.label" [disabled]="tab.disabled">
             <div class="tab-wrapper">
-                <h2 class="demo-tabs__title">Pick color</h2>
-                <sdk-radio [data]="[{value: 0, name: 'red'}, {value: 1, name: 'blue'}, {value: 2, name: 'green'}]">
-                </sdk-radio>
-                <h2 class="demo-tabs__title">Pick fruit</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'mango'}, {value: 1, name: 'banana'}, {value: 2, name: 'mandarin'}]"></sdk-radio>
-                <h2 class="demo-tabs__title">Pick drink</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'milkshake'}, {value: 1, name: 'kombucha'}, {value: 2, name: 'smoothie'}]"></sdk-radio>
-            </div>
-        </sdk-tab>
-        <sdk-tab label="Disabled Tab" [disabled]="true"></sdk-tab>
-        <sdk-tab label="Super-mega-uber-extra-duper-long-tab">
-            <div class="tab-wrapper">
-                <h2 class="demo-tabs__title">Pick color</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'red'}, {value: 1, name: 'blue'}, {value: 2, name: 'green'}]"></sdk-radio>
-                <h2 class="demo-tabs__title">Pick fruit</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'mango'}, {value: 1, name: 'banana'}, {value: 2, name: 'mandarin'}]"></sdk-radio>
-                <h2 class="demo-tabs__title">Pick drink</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'milkshake'}, {value: 1, name: 'kombucha'}, {value: 2, name: 'smoothie'}]"></sdk-radio>
-            </div>
-        </sdk-tab>
-        <sdk-tab label="Another-one-super-duper-extra-long-tab">
-            <div class="tab-wrapper">
-                <h2 class="demo-tabs__title">Pick color</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'red'}, {value: 1, name: 'blue'}, {value: 2, name: 'green'}]"></sdk-radio>
-                <h2 class="demo-tabs__title">Pick fruit</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'mango'}, {value: 1, name: 'banana'}, {value: 2, name: 'mandarin'}]"></sdk-radio>
-                <h2 class="demo-tabs__title">Pick drink</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'milkshake'}, {value: 1, name: 'kombucha'}, {value: 2, name: 'smoothie'}]"></sdk-radio>
-            </div>
-        </sdk-tab>
-        <sdk-tab label="Test tab">
-            <div class="tab-wrapper">
-                <h2 class="demo-tabs__title">Pick color</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'red'}, {value: 1, name: 'blue'}, {value: 2, name: 'green'}]"></sdk-radio>
-                <h2 class="demo-tabs__title">Pick fruit</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'mango'}, {value: 1, name: 'banana'}, {value: 2, name: 'mandarin'}]"></sdk-radio>
-                <h2 class="demo-tabs__title">Pick drink</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'milkshake'}, {value: 1, name: 'kombucha'}, {value: 2, name: 'smoothie'}]"></sdk-radio>
-            </div>
-        </sdk-tab>
-        <sdk-tab label="Next tab">
-            <div class="tab-wrapper">
-                <h2 class="demo-tabs__title">Pick color</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'red'}, {value: 1, name: 'blue'}, {value: 2, name: 'green'}]"></sdk-radio>
-                <h2 class="demo-tabs__title">Pick fruit</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'mango'}, {value: 1, name: 'banana'}, {value: 2, name: 'mandarin'}]"></sdk-radio>
-                <h2 class="demo-tabs__title">Pick drink</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'milkshake'}, {value: 1, name: 'kombucha'}, {value: 2, name: 'smoothie'}]"></sdk-radio>
-            </div>
-        </sdk-tab>
-        <sdk-tab label="Tab Tab Tab Tab Tab Tab Tab Tab Tab Tab5" icon="arrow-right">
-            <div class="tab-wrapper">
-                <h2 class="demo-tabs__title">Pick color</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'red'}, {value: 1, name: 'blue'}, {value: 2, name: 'green'}]"></sdk-radio>
-                <h2 class="demo-tabs__title">Pick fruit</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'mango'}, {value: 1, name: 'banana'}, {value: 2, name: 'mandarin'}]"></sdk-radio>
-                <h2 class="demo-tabs__title">Pick drink</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'milkshake'}, {value: 1, name: 'kombucha'}, {value: 2, name: 'smoothie'}]"></sdk-radio>
-            </div>
-        </sdk-tab>
-        <sdk-tab label="Tab 2">
-            <div class="tab-wrapper">
-                <h2 class="demo-tabs__title">Pick color</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'red'}, {value: 1, name: 'blue'}, {value: 2, name: 'green'}]"></sdk-radio>
-                <h2 class="demo-tabs__title">Pick fruit</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'mango'}, {value: 1, name: 'banana'}, {value: 2, name: 'mandarin'}]"></sdk-radio>
-                <h2 class="demo-tabs__title">Pick drink</h2>
-                <sdk-radio
-                    [data]="[{value: 0, name: 'milkshake'}, {value: 1, name: 'kombucha'}, {value: 2, name: 'smoothie'}]"></sdk-radio>
-            </div>
-        </sdk-tab>
-        <sdk-tab label="Tab 2 very long sheeeit">
-            <div class="tab-wrapper">
-                <h2 class="demo-tabs__title">Pick movies</h2>
-                <ul>
-                    <li>
-                        <div>Lord of the rings</div>
-                        <div>
-                            <sdk-checkbox></sdk-checkbox>
-                        </div>
-                    </li>
-                    <li>
-                        <div>Star wars</div>
-                        <div>
-                            <sdk-checkbox></sdk-checkbox>
-                        </div>
-                    </li>
-                    <li>
-                        <div>Pulp fiction</div>
-                        <div>
-                            <sdk-checkbox></sdk-checkbox>
-                        </div>
-                    </li>
-                    <li>
-                        <div>Watchmen</div>
-                        <div>
-                            <sdk-checkbox></sdk-checkbox>
-                        </div>
-                    </li>
-                    <li>
-                        <div>Joker</div>
-                        <div>
-                            <sdk-checkbox></sdk-checkbox>
-                        </div>
-                    </li>
-                    <li>
-                        <div>Gladiator</div>
-                        <div>
-                            <sdk-checkbox></sdk-checkbox>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </sdk-tab>
-        <sdk-tab label="Tab 3">
-            <div>
-                <h1>Title 3</h1>
-                Content 3
+                <h2 class="demo-tabs__title">{{tab.title}}</h2>
+                <sdk-radio [data]="tab.data"></sdk-radio>
             </div>
         </sdk-tab>
     </sdk-tab-group>
-</div>`,
+</section>`,
                         module: `import { TabsModule } from 'ngx-slice-kit';
 
 @NgModule({
@@ -182,6 +102,17 @@ export class DemoTabsComponent implements OnInit, OnDestroy {
 })
 export class DemoTabsModule {
 }`,
+                        styles: `.demo-tabs__title {
+  margin-bottom: 24px;
+}
+
+.tabs-container {
+    width: 100%;
+}
+
+.tab-wrapper {
+    padding: 24px;
+}`,
                         component: `import { Component } from '@angular/core';
 
 @Component({
@@ -191,6 +122,62 @@ export class DemoTabsModule {
 })
 export class DemoTabsComponent {
 
+    tabs: any[] = [
+        {
+            label: 'Color Tab',
+            title: 'Pick color',
+            data: [
+                { value: 0, name: 'Red'},
+                { value: 1, name: 'Blue'},
+                { value: 2, name: 'Green'},
+            ]
+        },
+        {
+            label: 'Disable tab',
+            disabled: true
+        },
+        {
+            label: 'Fruit Tab',
+            title: 'Pick fruit',
+            data: [
+                { value: 0, name: 'Mango'},
+                { value: 1, name: 'Banana'},
+                { value: 2, name: 'Mandarin'},
+            ]
+        },
+        {
+            label: 'Drink Tab',
+            title: 'Pick drink',
+            data: [
+                { value: 0, name: 'Milkshake'},
+                { value: 1, name: 'Kombucha'},
+                { value: 2, name: 'Smoothie'},
+            ]
+        },
+        {
+            label: 'Another disable Tab',
+            disabled: true
+        },
+        {
+            label: 'Game Tab',
+            title: 'Pick game',
+            data: [
+                { value: 0, name: 'Streets of Rage'},
+                { value: 1, name: 'Earthworm Jim'},
+                { value: 2, name: 'Zero Tolerance'},
+            ]
+        },
+        {
+            label: 'Movie Tab',
+            title: 'Pick movie',
+            data: [
+                { value: 0, name: 'God Father'},
+                { value: 1, name: 'Forrest Gump'},
+                { value: 2, name: 'Lord Of The Rings'},
+            ]
+        },
+    ];
+
     constructor() {
     }
 
@@ -198,7 +185,24 @@ export class DemoTabsComponent {
                     },
                 }
             ],
-            apis: [
+            api_groups: [
+                {
+                    name: 'TabsComponent',
+                    apis: [
+                        {
+                            label: 'activeTabStyle',
+                            type: 'string',
+                            description: `Sets the way the element is highlighted. Valid values: "border" | "fill"`,
+                            default_value: 'border'
+                        },
+                        {
+                            label: 'animation',
+                            type: 'boolean',
+                            description: `-`,
+                            default_value: 'false'
+                        }
+                    ]
+                }
             ]
         };
     }
