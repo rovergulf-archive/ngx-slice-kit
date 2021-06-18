@@ -67,7 +67,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.6.0",
     "karma-opera-launcher": "^1.0.0",
-    "ng-packagr": "^12.0.3",
+    "ng-packagr": "^12.0.6",
     "ngx-cookie": "^5.0.2",
     "ngx-cookie-backend": "^5.0.2",
     "ngx-highlightjs": "^4.1.4",
