@@ -4,5 +4,7 @@
                       [color]="copied ? 'var(--success-rgb)' : 'transparent'"></sdk-icon>
         <ng-container>Copy snippet</ng-container>
     </span>
-    <code [highlight]="value"></code>
+    <pre>
+        <code [highlight]="value"></code>
+    </pre>
 </div>
