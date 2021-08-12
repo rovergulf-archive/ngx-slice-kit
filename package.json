@@ -44,7 +44,7 @@
     "@types/highlightjs": "^9.12.1",
     "express": "^4.15.2",
     "rxjs": "~6.6.6",
-    "tslib": "^2.3.0",
+    "tslib": "^2.3.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
