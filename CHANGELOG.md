@@ -6,15 +6,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v1.0.0
 
-## 16 Apr 2021
+## 30 Aug 2021
 
 ### Added
+- prepared nav-menu demo example
 
 ### Changed
 
 ### Fixed
 
 ### Removed
+
+
+## 29 Aug 2021
+
+### Added
+- prepared nav-menu demo example
+
 
 ## Released [v0.10.0]
 
