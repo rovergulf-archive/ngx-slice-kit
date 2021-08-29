@@ -41,6 +41,7 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
                 coreLibraryLoader: () => import('highlight.js/lib/core'),
                 languages: {
                     typescript: () => import('highlight.js/lib/languages/typescript'),
+                    html: () => import('highlight.js/lib/languages/vbscript-html'),
                     scss: () => import('highlight.js/lib/languages/scss'),
                     css: () => import('highlight.js/lib/languages/css'),
                 }
