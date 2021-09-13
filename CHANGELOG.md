@@ -6,16 +6,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v1.0.0
 
-## 30 Aug 2021
+## 14 Aug 2021
 
 ### Added
-- prepared nav-menu demo example
 
 ### Changed
 
 ### Fixed
 
 ### Removed
+
+
+## Released [v0.11.0]
+
+## 13 Aug 2021
+
+### Changed
+- Updated dependencies
+
+
+## 30 Aug 2021
+
+### Added
+- prepared nav-menu demo example
 
 
 ## 29 Aug 2021
@@ -493,8 +506,9 @@ Fix scroll issue in `tabs` component
 - updated Angular `core` and `cli` versions up to latest 11.1+ closes #3
 
 
-[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.9.6...main
-[v1.0.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.10.0...v1.0.0
+[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.11.0...main
+[v1.0.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.11.0...v1.0.0
+[v0.11.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.10.0...v0.11.0
 [v0.10.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.7...v0.10.0
 [v0.9.7]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.6...v0.9.7
 [v0.9.6]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.5..v0.9.6
