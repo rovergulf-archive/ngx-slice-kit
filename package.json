@@ -71,7 +71,7 @@
     "ngx-cookie": "^5.0.2",
     "ngx-cookie-backend": "^5.0.2",
     "ngx-highlightjs": "^5.0.0",
-    "prom-client": "^13.1.0",
+    "prom-client": "^14.0.0",
     "protractor": "~7.0.0",
     "ts-node": "~10.2.1",
     "tslint": "~6.1.0",
