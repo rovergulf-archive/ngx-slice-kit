@@ -39,6 +39,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         if (isPlatformBrowser(this.platformId)) {
+            // detect system default theme
+            // const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
+            // if (darkThemeMq.matches) {
+            //     // Theme set to dark.
+            // } else {
+            //     // Theme set to light.
+            // }
+
             this.layout.cookieName = THEME_NAME;
             this.layout.themeName = this.cookieService.get(THEME_NAME) || 'light';
 
