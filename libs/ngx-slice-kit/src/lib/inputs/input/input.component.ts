@@ -151,7 +151,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
     private setSizeClass(): void {
         const availableSizeClasses = ['wide', 'full-width'];
         if (availableSizeClasses.includes(this.size)) {
-            this.renderer.addClass(this.inputElementRef.nativeElement.parentElement, `sdk-input-wrap--${this.size}`);
+            this.renderer.addClass(this.elementRef.nativeElement, `sdk-input--${this.size}`);
         }
     }
 
