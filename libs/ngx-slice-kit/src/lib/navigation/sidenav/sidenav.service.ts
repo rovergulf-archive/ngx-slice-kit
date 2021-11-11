@@ -8,41 +8,41 @@ import { SidenavOptions, SidenavState } from './sidenav.options';
 })
 export class SidenavService {
 
-    sidenavOpened$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-    options$: BehaviorSubject<SidenavOptions> = new BehaviorSubject(new SidenavOptions({}));
+    public sidenavOpened$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+    public options$: BehaviorSubject<SidenavOptions> = new BehaviorSubject(new SidenavOptions({}));
 
     constructor() {
     }
 
-    get options(): SidenavOptions {
+    public get options(): SidenavOptions {
         return this.options$.getValue();
     }
 
-    set options(value: SidenavOptions) {
+    public set options(value: SidenavOptions) {
         this.options$.next(value);
     }
 
-    get optionsObservable(): Observable<boolean> {
+    public get optionsObservable(): Observable<boolean> {
         return this.sidenavOpened$.asObservable();
     }
 
-    get isOpened(): boolean {
+    public get isOpened(): boolean {
         return this.sidenavOpened$.getValue();
     }
 
-    set isOpened(value: boolean) {
+    public set isOpened(value: boolean) {
         this.sidenavOpened$.next(value);
     }
 
-    get openedState(): SidenavState {
+    public get openedState(): SidenavState {
         return this.isOpened ? 'opened' : 'closed';
     }
 
-    get openedObservableState(): Observable<boolean> {
+    public get openedObservableState(): Observable<boolean> {
         return this.sidenavOpened$.asObservable();
     }
 
-    updateOptions(o: SidenavOptions): void {
+    public updateOptions(o: SidenavOptions): void {
         this.options = Object.assign(this.options, o);
     }
 

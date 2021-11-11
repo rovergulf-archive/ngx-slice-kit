@@ -29,12 +29,12 @@ export class LayoutControlService {
     ) {
     }
 
-    get trapped(): any {
+    public get trapped(): any {
         const elements = this.$focusTrap.getValue();
         return elements.length ? elements[0] : undefined;
     }
 
-    get focusTrap(): any[] {
+    public get focusTrap(): any[] {
         return this.$focusTrap.getValue();
     }
 
@@ -59,7 +59,7 @@ export class LayoutControlService {
         this.$mobileLayoutWidth.next(w);
     }
 
-    focus(elem: any): void {
+    public focus(elem: any): void {
         this.$focusTrap.next([elem, ...this.$focusTrap.getValue()]);
     }
 

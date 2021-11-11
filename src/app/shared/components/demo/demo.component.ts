@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
 import { DemoExample, DemoPageModel } from '../../model';
@@ -10,7 +10,7 @@ type demoTabs = `component` | `module` | `html` | `scss`;
     templateUrl: './demo.component.html',
     styleUrls: ['./demo.component.scss']
 })
-export class DemoComponent implements OnInit, OnDestroy {
+export class DemoComponent implements OnInit {
 
     $page: BehaviorSubject<DemoPageModel> = new BehaviorSubject<any>(undefined);
 
@@ -49,9 +49,6 @@ export class DemoComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.page.stackblitz_safe_url = this.sanitizer.bypassSecurityTrustUrl(this.page.stackblitz_url);
-    }
-
-    ngOnDestroy(): void {
     }
 
 }

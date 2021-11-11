@@ -7,10 +7,10 @@ import {Component, DebugElement, ElementRef, OnInit, Renderer2} from '@angular/c
 import {Theme} from './theme.model';
 
 const rendererMock =  {
-    createElement: () => {
+    createElement: (): HTMLElement => {
         return document.createElement('style');
     },
-    setAttribute: (el, attr, value) => {
+    setAttribute: (el, attr, value): any => {
         return el.setAttribute(attr, value);
     }
 };
@@ -130,29 +130,25 @@ describe('ThemeDirective', () => {
         const mangoTheme = new Theme({...themeService.themes[0], name: 'mango'});
 
         directive.updateTheme(apricotTheme);
-        const apricotStyles = document.head.querySelectorAll('[sdk-theme]')[0];
-        expect(apricotStyles.getAttribute('sdk-theme')).toEqual('apricot');
+        const apricotStyles = document.head.querySelectorAll('[sdkTheme]')[0];
+        expect(apricotStyles.getAttribute('sdkTheme')).toEqual('apricot');
 
         directive.updateTheme(mangoTheme);
-        const mangoStyles = document.head.querySelectorAll('[sdk-theme]')[0];
-        expect(mangoStyles.getAttribute('sdk-theme')).toEqual('mango');
+        const mangoStyles = document.head.querySelectorAll('[sdkTheme]')[0];
+        expect(mangoStyles.getAttribute('sdkTheme')).toEqual('mango');
 
-        expect(document.head.querySelectorAll('[sdk-theme]').length).toEqual(1);
+        expect(document.head.querySelectorAll('[sdkTheme]').length).toEqual(1);
     });
 });
 
 export class MockElementRef extends ElementRef {
-    nativeElement = {};
+    public nativeElement = {};
 }
 
 @Component({
     template: `
-        <div sdk-theme>
+        <div sdkTheme>
             <p>acca dacca</p>
         </div>>`
 })
-class TestComponent implements OnInit {
-
-    ngOnInit(): void {
-    }
-}
+class TestComponent {}

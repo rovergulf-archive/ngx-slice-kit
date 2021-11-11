@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 
 const AVAILABLE_SIZE_CLASS_NAMES = [
     'wide',
@@ -15,7 +15,7 @@ const BUTTON_CLASS_NAMES = [
 ];
 
 @Component({
-    // tslint:disable-next-line:component-selector
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: '[sdk-base-button], [sdk-flat-button], [sdk-raised-button], [sdk-stroked-button], [sdk-round-button], [sdk-icon-button]',
     // templateUrl: './button.component.html',
     template: `
@@ -24,14 +24,15 @@ const BUTTON_CLASS_NAMES = [
     styleUrls: ['./button.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class ButtonComponent implements OnInit, OnDestroy {
+export class ButtonComponent implements OnInit {
 
-    @Input() color: string = 'primary';
-    @Input() size: 'wide' | 'full-width';
-    @Input() @HostBinding('class.disabled') disabled: boolean;
-    @Input() small: boolean;
-    // @Input() style: any;
-    // @Input() className: string;
+    @Input() public color: string = 'primary';
+    @Input() public size: 'wide' | 'full-width';
+    @Input() public small: boolean;
+    @Input() @HostBinding('class.disabled')
+    public disabled: boolean;
+    // @Input() public style: any;
+    // @Input() public className: string;
 
     constructor(
         private elementRef: ElementRef,
@@ -55,18 +56,18 @@ export class ButtonComponent implements OnInit, OnDestroy {
     }
 
     @HostListener('keypress', ['$event'])
-    onKeyup(ev: KeyboardEvent): void {
+    public onKeyup(ev: KeyboardEvent): void {
         if (ev.code === 'Space' || ev.key === 'Space' || ev.code === 'Enter' || ev.key === 'Enter') {
             ev.preventDefault();
             ev.stopPropagation();
         }
     }
 
-    hasHostAttribute(attr: string): boolean {
+    public hasHostAttribute(attr: string): boolean {
         return this.elementRef.nativeElement.hasAttribute(attr);
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         /**
          * set button size if specified
          */
@@ -85,8 +86,5 @@ export class ButtonComponent implements OnInit, OnDestroy {
         if (this.small) {
             this.renderer.addClass(this.elementRef.nativeElement, `sdk-button--small`);
         }
-    }
-
-    ngOnDestroy(): void {
     }
 }

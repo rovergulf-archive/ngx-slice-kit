@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DemoPageModel } from '../../../shared/model';
 
 @Component({
@@ -6,7 +6,7 @@ import { DemoPageModel } from '../../../shared/model';
     templateUrl: './demo-icon.component.html',
     styleUrls: ['./demo-icon.component.scss']
 })
-export class DemoIconComponent implements OnInit, OnDestroy {
+export class DemoIconComponent implements OnInit {
 
     @ViewChild('defaultRef', {static: true}) defaultRef: any;
     @ViewChild('resizeRef', {static: true}) resizeRef: any;
@@ -179,9 +179,6 @@ export class DemoIconComponent {
                 },
             ]
         };
-    }
-
-    ngOnDestroy(): void {
     }
 
 }

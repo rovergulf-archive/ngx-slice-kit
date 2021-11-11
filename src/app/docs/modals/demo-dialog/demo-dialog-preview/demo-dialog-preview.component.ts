@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 import { AlertService, DialogService } from 'ngx-slice-kit';
 import { DemoDialogPreview2Component } from '../demo-dialog-preview2/demo-dialog-preview2.component';
@@ -8,7 +8,7 @@ import { DemoDialogPreview2Component } from '../demo-dialog-preview2/demo-dialog
     templateUrl: './demo-dialog-preview.component.html',
     styleUrls: ['./demo-dialog-preview.component.scss']
 })
-export class DemoDialogPreviewComponent implements OnInit, OnDestroy {
+export class DemoDialogPreviewComponent {
 
     @Output() resultEvent = new EventEmitter();
 
@@ -34,12 +34,6 @@ export class DemoDialogPreviewComponent implements OnInit, OnDestroy {
                 });
             }
         });
-    }
-
-    ngOnInit(): void {
-    }
-
-    ngOnDestroy(): void {
     }
 
 }

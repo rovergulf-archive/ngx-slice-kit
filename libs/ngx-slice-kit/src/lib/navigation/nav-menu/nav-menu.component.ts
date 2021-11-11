@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChildren, OnInit, QueryList, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, QueryList, ViewEncapsulation } from '@angular/core';
 import { NavMenuItemComponent } from './nav-menu-item/nav-menu-item.component';
 
 @Component({
@@ -10,19 +10,16 @@ import { NavMenuItemComponent } from './nav-menu-item/nav-menu-item.component';
     styleUrls: ['./nav-menu.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class NavMenuComponent implements OnInit, AfterContentInit {
+export class NavMenuComponent implements AfterContentInit {
 
-    @ContentChildren(NavMenuItemComponent) menuItems!: QueryList<NavMenuItemComponent>;
+    @ContentChildren(NavMenuItemComponent) public menuItems!: QueryList<NavMenuItemComponent>;
 
-    menuGroup = [];
+    public menuGroup = [];
 
     constructor() {
     }
 
-    ngOnInit(): void {
-    }
-
-    ngAfterContentInit(): void {
+    public ngAfterContentInit(): void {
         this.menuItems.forEach(tabInstance => this.menuGroup.push(tabInstance));
     }
 

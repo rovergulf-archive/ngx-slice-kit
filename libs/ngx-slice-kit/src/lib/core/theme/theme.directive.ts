@@ -7,18 +7,18 @@ import { ThemeService } from './theme.service';
 import { LayoutControlService } from '../layout-control/layout-control.service';
 
 @Directive({
-    selector: '[sdk-theme]'
+    selector: '[sdkTheme]'
 })
 export class ThemeDirective implements OnInit, OnDestroy {
 
     /**
      * Whether the styles are scoped or not.
      */
-    @Input() scoped = false;
+    @Input() public scoped = false;
     /**
      * specify selected theme or use default.
      */
-    @Input('sdk-theme') theme: string;
+    @Input('sdkTheme') public theme: string;
 
     private sub: Subscription;
 
@@ -34,7 +34,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
     /**
      * Update the theme on the scoped element.
      */
-    updateTheme(theme: Theme): void {
+    public updateTheme(theme: Theme): void {
         const element = this.getElement();
 
         element.className = `sdk-theme-${theme.name}`; // probably unsafe
@@ -44,7 +44,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
             element.classList.add(this.layoutControl.getPlatformClass());
         }
 
-        const oldStyles = this.document.head.querySelectorAll('[sdk-theme]');
+        const oldStyles = this.document.head.querySelectorAll('[sdkTheme]');
         if (oldStyles?.length > 0) {
             this.document.head.removeChild(oldStyles[0]);
         }
@@ -65,7 +65,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
             }
         }
         styles.innerHTML += `}`;
-        this.renderer.setAttribute(styles, 'sdk-theme', theme.name);
+        this.renderer.setAttribute(styles, 'sdkTheme', theme.name);
 
         this.document.head.appendChild(styles);
     }
@@ -73,11 +73,11 @@ export class ThemeDirective implements OnInit, OnDestroy {
     /**
      * Element to attach the styles to.
      */
-    getElement(): any {
+    public getElement(): any {
         return this.scoped ? this.elementRef.nativeElement : this.document.body;
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.sub = this.themeService.currentThemeObservable
             .subscribe((theme: Theme) => this.updateTheme(theme));
 
@@ -88,7 +88,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
         }
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.sub?.unsubscribe();
     }
 

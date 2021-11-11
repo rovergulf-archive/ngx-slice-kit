@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { timer } from 'rxjs';
 
 @Component({
@@ -6,7 +6,7 @@ import { timer } from 'rxjs';
     templateUrl: './code-snippet.component.html',
     styleUrls: ['./code-snippet.component.scss']
 })
-export class CodeSnippetComponent implements OnInit, OnDestroy {
+export class CodeSnippetComponent {
 
     @Input() value: string;
     copied: boolean;
@@ -27,12 +27,6 @@ export class CodeSnippetComponent implements OnInit, OnDestroy {
         }, err => {
             console.error('Async: Could not copy text: ', err);
         });
-    }
-
-    ngOnInit(): void {
-    }
-
-    ngOnDestroy(): void {
     }
 
 }

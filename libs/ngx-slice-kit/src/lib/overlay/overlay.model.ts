@@ -1,54 +1,54 @@
 import { EventEmitter } from '@angular/core';
 
 export class OverlayModel {
-    resultEvent: EventEmitter<any>;
-    options?: OverlayOptions;
+    public resultEvent: EventEmitter<any>;
+    public options?: OverlayOptions;
 }
 
 export class OverlayOptions {
-    index?: number = 100;
-    data?: any = null;
-    component?: any;
-    triggerRect?: ClientRect;
-    fitWidth?: boolean;
-    positionStrategy?: OverlayStickPosition; // undefined, or 'none' which is default
-    sizeStrategy?: OverlaySize; // which is fit screen height/width
-    overlayStrategy?: OverlayStrategy = `overlay`;
+    public index?: number = 100;
+    public data?: any = null;
+    public component?: any;
+    public triggerRect?: ClientRect;
+    public fitWidth?: boolean;
+    public positionStrategy?: OverlayStickPosition; // undefined, or 'none' which is default
+    public sizeStrategy?: OverlaySize; // which is fit screen height/width
+    public overlayStrategy?: OverlayStrategy = `overlay`;
 
 
     /**
      * hide overlay on backdrop click, default 'true'
      */
-    hideOnBackdrop?: boolean = true;
-    hideOnScroll?;
-    hideOnWindowResize?;
+    public hideOnBackdrop?: boolean = true;
+    public hideOnScroll?;
+    public hideOnWindowResize?;
 
     /**
      * hide overlay on Esc (Enter ?, Space ?) keyup event, default 'true' with result
      */
-    hideOnEscape?: boolean = true;
+    public hideOnEscape?: boolean = true;
 
     /**
      * fill backdrop with shadowed background, default 'true'
      */
-    backdropVisible?: boolean = true;
+    public backdropVisible?: boolean = true;
 
     /**
      * hide overlay on router change event, default 'true'
      */
-    hideOnRouteChange?: boolean = true;
+    public hideOnRouteChange?: boolean = true;
 
     /**
      * specify overlay content window border-radius, default '0'
      */
-    borderRadius?: number = 0;
+    public borderRadius?: number = 0;
 
     /**
      * disable overlay content scroll, defaults to 'false'
      */
-    disableScroll?: boolean = false;
+    public disableScroll?: boolean = false;
 
-    styles?: any;
+    public styles?: any;
 }
 
 export type OverlayStickPosition = `center` | `top` | `bottom` | `right` | `left` | `target`;

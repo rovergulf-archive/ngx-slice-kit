@@ -12,11 +12,11 @@ export const DEFAULT_ALERT_LIMIT = 25;
 })
 export class AlertService {
 
-    alertRefs = new Map<string, ComponentRef<AlertsComponent>>();
-    layoutSub: Subscription;
+    public alertRefs = new Map<string, ComponentRef<AlertsComponent>>();
+    public layoutSub: Subscription;
 
-    mobileLayout: boolean;
-    alertIndex = 0;
+    public mobileLayout: boolean;
+    public alertIndex = 0;
 
     constructor(
         @Inject(DOCUMENT) private document: any,

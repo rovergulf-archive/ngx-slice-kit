@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DemoPageModel } from '../../../shared/model';
 import { AlertService } from '../../../../../libs/ngx-slice-kit/src/lib/modals/alert/alert.service';
 
@@ -7,7 +7,7 @@ import { AlertService } from '../../../../../libs/ngx-slice-kit/src/lib/modals/a
     templateUrl: './demo-toggle.component.html',
     styleUrls: ['../../demo.module.scss']
 })
-export class DemoToggleComponent implements OnInit, OnDestroy {
+export class DemoToggleComponent implements OnInit {
 
     @ViewChild('defaultRef', {static: true}) defaultRef: any;
     @ViewChild('smallRef', {static: true}) smallRef: any;
@@ -111,9 +111,6 @@ export class DemoToggleComponent {
                 },
             ],
         };
-    }
-
-    ngOnDestroy(): void {
     }
 
 }

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Inject, Input, OnDestroy, OnInit, Output, PLATFORM_ID, } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Inject, Input, OnDestroy, Output, PLATFORM_ID, } from '@angular/core';
 import { DropdownService } from '../dropdown.service';
 import { DropdownOptions } from '../dropdown.model';
 import { OptionModel } from '../dropdown-option.model';
@@ -9,18 +9,18 @@ import { OptionsService } from '../options.service';
 @Directive({
     selector: '[sdkDropdownMenuTrigger]'
 })
-export class DropdownMenuTriggerDirective implements OnInit, OnDestroy {
+export class DropdownMenuTriggerDirective implements OnDestroy {
 
-    @Input() options: OptionModel[];
-    @Input() fitWidth: boolean;
-    // @Input() config: DropdownOptions;
+    @Input() public options: OptionModel[];
+    @Input() public fitWidth: boolean;
+    // @Input() public config: DropdownOptions;
 
-    @Output() resultEvent: EventEmitter<any> = new EventEmitter<any>();
-    @Output() opened: EventEmitter<any> = new EventEmitter<any>();
-    @Output() closed: EventEmitter<any> = new EventEmitter<any>();
+    @Output() public resultEvent: EventEmitter<any> = new EventEmitter<any>();
+    @Output() public opened: EventEmitter<any> = new EventEmitter<any>();
+    @Output() public closed: EventEmitter<any> = new EventEmitter<any>();
 
-    sub: Subscription;
-    isOpened: boolean;
+    public sub: Subscription;
+    public isOpened: boolean;
 
     constructor(
         @Inject(PLATFORM_ID) private platformId: any,
@@ -30,7 +30,8 @@ export class DropdownMenuTriggerDirective implements OnInit, OnDestroy {
     ) {
     }
 
-    @HostListener('click') open(): void | undefined {
+    @HostListener('click')
+    public open(): void | undefined {
         if (isPlatformServer(this.platformId)) {
             return;
         }
@@ -59,10 +60,7 @@ export class DropdownMenuTriggerDirective implements OnInit, OnDestroy {
         });
     }
 
-    ngOnInit(): void {
-    }
-
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.resultEvent.complete();
         this.opened.complete();
         this.closed.complete();

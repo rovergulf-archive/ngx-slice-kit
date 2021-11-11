@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, HostListener, InjectionToken, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, InjectionToken, Input, OnDestroy, Output } from '@angular/core';
 import { BehaviorSubject, interval } from 'rxjs';
 import { AlertOptions } from './alert.model';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -18,40 +18,40 @@ export const ALERTS_CONTAINER_CLASSNAME = new InjectionToken<string>('sdk-alerts
         ])
     ],
 })
-export class AlertsComponent implements OnInit, OnDestroy {
+export class AlertsComponent implements OnDestroy {
 
     // sub: Subscription;
-    $alerts: BehaviorSubject<AlertOptions[]> = new BehaviorSubject<AlertOptions[]>([]);
+    public $alerts: BehaviorSubject<AlertOptions[]> = new BehaviorSubject<AlertOptions[]>([]);
 
-    @Input() set options(options: AlertOptions) {
+    @Input() public set options(options: AlertOptions) {
         const refs = [...this.$alerts.getValue(), new AlertOptions(options)];
         this.$alerts.next(refs);
     }
 
-    get options(): AlertOptions {
+    public get options(): AlertOptions {
         const alertRefs = this.$alerts.getValue();
         return alertRefs[0];
     }
 
-    @Output() closed = new EventEmitter<any>();
-    @HostListener('[@state]') state: any = 'closed';
+    @Output() public closed = new EventEmitter<any>();
+    @HostListener('[@state]') public state: any = 'closed';
 
-    @HostBinding('class') get classNames(): string {
+    @HostBinding('class') public get classNames(): string {
         return `${ALERTS_CONTAINER_CLASSNAME} ${ALERTS_CONTAINER_CLASSNAME}--${this.options.refName}`;
     }
 
-    get alerts(): AlertOptions[] {
+    public get alerts(): AlertOptions[] {
         return this.$alerts.getValue();
     }
 
-    set alerts(alerts: AlertOptions[]) {
+    public set alerts(alerts: AlertOptions[]) {
         this.$alerts.next(alerts);
     }
 
     constructor() {
     }
 
-    onClose(ev): void {
+    public onClose(ev): void {
         const alerts = this.alerts;
         alerts.splice(ev, 1);
         this.alerts = alerts;
@@ -61,7 +61,7 @@ export class AlertsComponent implements OnInit, OnDestroy {
         }
     }
 
-    closeAll(): void {
+    public closeAll(): void {
         interval(10).pipe(
             takeWhile(() => this.alerts.length > 0, false)
         ).subscribe(
@@ -69,10 +69,7 @@ export class AlertsComponent implements OnInit, OnDestroy {
         );
     }
 
-    ngOnInit(): void {
-    }
-
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.state = 'closed';
         // this.sub?.unsubscribe();
     }

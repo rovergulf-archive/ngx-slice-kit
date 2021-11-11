@@ -63,7 +63,6 @@
     "@typescript-eslint/eslint-plugin": "5.3.0",
     "@typescript-eslint/parser": "5.3.0",
     "codecov": "^3.8.2",
-    "codelyzer": "^6.0.2",
     "eslint": "^8.1.0",
     "highlight.js": "^11.0.1",
     "jasmine-core": "~3.10.1",
@@ -82,7 +81,6 @@
     "prom-client": "^14.0.0",
     "protractor": "~7.0.0",
     "ts-node": "~10.4.0",
-    "tslint": "~6.1.0",
     "typescript": "~4.4.4"
   }
 }

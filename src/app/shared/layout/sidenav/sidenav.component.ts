@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 
 const rovergulfUrl = 'https://rovergulf.net';
@@ -8,7 +8,7 @@ const rovergulfUrl = 'https://rovergulf.net';
     templateUrl: './sidenav.component.html',
     styleUrls: ['./sidenav.component.scss']
 })
-export class SidenavComponent implements OnInit, OnDestroy {
+export class SidenavComponent implements OnInit {
 
     routes: any[] = [];
 
@@ -44,8 +44,5 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
     get rovergulfUrl(): SafeUrl {
         return this.sanitizer.bypassSecurityTrustUrl(rovergulfUrl);
-    }
-
-    ngOnDestroy(): void {
     }
 }

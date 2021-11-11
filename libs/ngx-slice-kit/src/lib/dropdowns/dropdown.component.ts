@@ -29,15 +29,15 @@ const DEFAULT_DROPDOWN_OFFSET = 256;
 })
 export class DropdownComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    @ViewChild('dropdown', {static: false}) dropdownElement: ElementRef;
-    @Output() resultEvent: EventEmitter<any> = new EventEmitter<any>();
-    @Input() config: DropdownOptions;
+    @ViewChild('dropdown', {static: false}) public dropdownElement: ElementRef;
+    @Output() public resultEvent: EventEmitter<any> = new EventEmitter<any>();
+    @Input() public config: DropdownOptions;
 
-    sub: Subscription;
-    currentOption: OptionModel;
-    inverted: boolean;
-    rects: { bottom?, top?, left?, width? } = {};
-    highlightedIndex: number;
+    public sub: Subscription;
+    public currentOption: OptionModel;
+    public inverted: boolean;
+    public rects: { bottom?, top?, left?, width? } = {};
+    public highlightedIndex: number;
 
     constructor(
         @Inject(DOCUMENT) private document: any,
@@ -47,27 +47,27 @@ export class DropdownComponent implements OnInit, AfterViewInit, OnDestroy {
     ) {
     }
 
-    onOptionMouseEnter(o: OptionModel, index: number): void {
+    public onOptionMouseEnter(o: OptionModel, index: number): void {
         this.currentOption = o;
         this.highlightedIndex = index;
     }
 
-    onOptionMouseLeave(): void {
+    public onOptionMouseLeave(): void {
         this.currentOption = undefined;
         this.highlightedIndex = undefined;
     }
 
-    select(ev: any, option: OptionModel): void {
+    public select(ev: any, option: OptionModel): void {
         this.onResult(option);
     }
 
-    onResult(res?: OptionModel): void {
+    public onResult(res?: OptionModel): void {
         this.resultEvent.emit(res);
         this.resultEvent.complete();
         this.sub?.unsubscribe();
     }
 
-    nextOption(direction: 'up' | 'down'): void {
+    public nextOption(direction: 'up' | 'down'): void {
         if (!this.highlightedIndex && this.highlightedIndex !== 0) {
             const selected = this.optionsService.options.find(o => o.selected);
             if (!!selected) {
@@ -94,7 +94,7 @@ export class DropdownComponent implements OnInit, AfterViewInit, OnDestroy {
         setTimeout(() => this.autoScroll(direction));
     }
 
-    autoScroll(direction: 'up' | 'down'): void {
+    public autoScroll(direction: 'up' | 'down'): void {
         const dropdownPaddingTop = 8;
         /**
          * okay that padding is constant at the top and the bottom of the element,
@@ -128,7 +128,7 @@ export class DropdownComponent implements OnInit, AfterViewInit, OnDestroy {
     /**
      * click outside subscription if backdrop disabled. also dropdown must be attached during input
      */
-    initClickOutsideSub(): void {
+    public initClickOutsideSub(): void {
         this.renderer.listen('window', 'click', event => {
             const isParent = this.config.parentElem?.contains(event.target);
             const isDropdown = this.elem.nativeElement.contains(event.target);
@@ -141,7 +141,7 @@ export class DropdownComponent implements OnInit, AfterViewInit, OnDestroy {
     /**
      * detect relative position to prevent dropdown being hidden over `overflow: none`
      */
-    getDropdownRects(): void {
+    public getDropdownRects(): void {
         const windowHeight = window.innerHeight;
         const pixelsLeft = windowHeight - this.config.triggerRect.height - this.config.triggerRect.top;
         const rects = this.dropdownElement.nativeElement.getBoundingClientRect();
@@ -171,7 +171,7 @@ export class DropdownComponent implements OnInit, AfterViewInit, OnDestroy {
      * - if `rects.top` calculated there is enough place to drop it down,
      *  if it hits `rects.bottom` – show it above the element
      */
-    setDropdownPosition(): void {
+    public setDropdownPosition(): void {
         if (this.rects.width) {
             this.renderer.setStyle(this.dropdownElement.nativeElement, `width`, `${this.rects.width}px`);
         }
@@ -189,7 +189,7 @@ export class DropdownComponent implements OnInit, AfterViewInit, OnDestroy {
     /**
      * detect window resize and scroll to prevent failed dropdown position
      */
-    initClosingSubscriptions(): void {
+    public initClosingSubscriptions(): void {
         this.sub = fromEvent(window, 'scroll').pipe(
             take(1)
         ).subscribe(() => {
@@ -206,7 +206,7 @@ export class DropdownComponent implements OnInit, AfterViewInit, OnDestroy {
     /**
      * keyboard events
      */
-    initKeydownSubscription(): void {
+    public initKeydownSubscription(): void {
         this.sub.add(
             fromEvent(this.document, 'keydown').subscribe((e: KeyboardEvent) => {
                 switch (e.key || e.code) {
@@ -237,7 +237,7 @@ export class DropdownComponent implements OnInit, AfterViewInit, OnDestroy {
         );
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.initClosingSubscriptions();
         this.initKeydownSubscription();
         if (this.config && this.config.hideBackdrop) {
@@ -245,12 +245,12 @@ export class DropdownComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.getDropdownRects();
         this.setDropdownPosition();
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.sub?.unsubscribe();
         this.currentOption = undefined;
         this.highlightedIndex = undefined;

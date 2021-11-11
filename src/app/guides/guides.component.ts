@@ -1,19 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-guides',
     templateUrl: './guides.component.html',
     styleUrls: ['./guides.component.scss']
 })
-export class GuidesComponent implements OnInit, OnDestroy {
-
+export class GuidesComponent {
     constructor() {
     }
-
-    ngOnInit(): void {
-    }
-
-    ngOnDestroy(): void {
-    }
-
 }

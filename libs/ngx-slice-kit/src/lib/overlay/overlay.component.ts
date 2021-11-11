@@ -26,16 +26,16 @@ import { DOCUMENT } from '@angular/common';
 })
 export class OverlayComponent implements OnInit, OnDestroy, OverlayModel {
 
-    sub: Subscription;
-    className: string = ``;
-    br: string = `0`;
-    rects: { top, bottom, right, left, width, height, x, y };
+    public sub: Subscription;
+    public className: string = ``;
+    public br: string = `0`;
+    public rects: { top, bottom, right, left, width, height, x, y };
 
-    @Input() options: OverlayOptions;
-    @ViewChild(OverlayDirective, {static: true}) modalDirective: OverlayDirective;
-    @ViewChild('overlay', {static: true}) overlayElem: ElementRef;
-    @HostBinding('attr.state') state: 'opened' | 'closed' = 'closed';
-    @Output() resultEvent: EventEmitter<any> = new EventEmitter<any>();
+    @Input() public options: OverlayOptions;
+    @ViewChild(OverlayDirective, {static: true}) public modalDirective: OverlayDirective;
+    @ViewChild('overlay', {static: true}) public overlayElem: ElementRef;
+    @HostBinding('attr.state') public state: 'opened' | 'closed' = 'closed';
+    @Output() public resultEvent: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(
         @Inject(DOCUMENT) private document: any,
@@ -45,7 +45,7 @@ export class OverlayComponent implements OnInit, OnDestroy, OverlayModel {
     ) {
     }
 
-    loadComponent(): void {
+    public loadComponent(): void {
         const componentFactory = this.cfResolver.resolveComponentFactory(this.options.component);
 
         const viewRef = this.modalDirective.viewContainerRef;
@@ -58,12 +58,12 @@ export class OverlayComponent implements OnInit, OnDestroy, OverlayModel {
         });
     }
 
-    onResult(res?: any): void {
+    public onResult(res?: any): void {
         this.resultEvent.next(res);
         this.resultEvent.complete();
     }
 
-    onBackdrop(): void {
+    public onBackdrop(): void {
         if (this.options.hideOnBackdrop) {
             this.onResult();
         }
@@ -75,7 +75,7 @@ export class OverlayComponent implements OnInit, OnDestroy, OverlayModel {
      * - if `rects.top` calculated there is enough place to drop it down,
      *  if it hits `rects.bottom` – show it above the element
      */
-    setDropdownPosition(): void {
+    public setDropdownPosition(): void {
         if (this.rects.width) {
             this.renderer.setStyle(this.overlayElem.nativeElement, `width`, `${this.rects.width}px`);
         }
@@ -90,7 +90,7 @@ export class OverlayComponent implements OnInit, OnDestroy, OverlayModel {
         this.renderer.setStyle(this.overlayElem.nativeElement, `opacity`, 1);
     }
 
-    hideOnRouterEvents(): void {
+    public hideOnRouterEvents(): void {
         const sub = this.router.events.pipe(
             filter(event => event instanceof NavigationStart)
         ).subscribe(() => {
@@ -104,7 +104,7 @@ export class OverlayComponent implements OnInit, OnDestroy, OverlayModel {
     /**
      * detect window resize and scroll to prevent failed dropdown position
      */
-    initClosingSubscriptions(): void {
+    public initClosingSubscriptions(): void {
         if (this.options.hideOnScroll) {
             const sub = fromEvent(window, 'scroll').pipe(
                 take(1)
@@ -127,7 +127,7 @@ export class OverlayComponent implements OnInit, OnDestroy, OverlayModel {
     /**
      * keyboard events
      */
-    initKeydownSubscription(): void {
+    public initKeydownSubscription(): void {
         this.sub.add(
             fromEvent(this.document, 'keydown').subscribe((e: KeyboardEvent) => {
                 switch (e.key || e.code) {
@@ -143,7 +143,7 @@ export class OverlayComponent implements OnInit, OnDestroy, OverlayModel {
         );
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.state = 'opened';
         if (this.options.borderRadius > 0) {
             this.br = `${this.options.borderRadius}px`;
@@ -154,9 +154,8 @@ export class OverlayComponent implements OnInit, OnDestroy, OverlayModel {
         this.hideOnRouterEvents();
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.resultEvent?.complete();
         this.sub?.unsubscribe();
     }
-
 }

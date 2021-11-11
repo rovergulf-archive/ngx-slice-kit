@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DemoPageModel } from '../../../shared/model';
 
 @Component({
@@ -6,7 +6,7 @@ import { DemoPageModel } from '../../../shared/model';
     templateUrl: './demo-radio.component.html',
     styleUrls: ['../../demo.module.scss']
 })
-export class DemoRadioComponent implements OnInit, OnDestroy {
+export class DemoRadioComponent implements OnInit {
 
     @ViewChild('defaultRef', {static: true}) defaultRef: any;
     @ViewChild('headerRef', {static: true}) headerRef: any;
@@ -132,9 +132,6 @@ export class DemoRadioModule {
                 },
             ],
         };
-    }
-
-    ngOnDestroy(): void {
     }
 
 }

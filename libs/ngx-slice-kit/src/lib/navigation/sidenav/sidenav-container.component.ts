@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SidenavService } from './sidenav.service';
 import { SidenavMode, SidenavOptions } from './sidenav.options';
 
@@ -7,15 +7,15 @@ import { SidenavMode, SidenavOptions } from './sidenav.options';
     templateUrl: './sidenav-container.component.html',
     styleUrls: ['./sidenav-container.component.scss'],
 })
-export class SidenavContainerComponent implements OnInit, OnDestroy {
+export class SidenavContainerComponent implements OnInit {
 
-    @Input() hasBackdrop: boolean = false;
+    @Input()public  hasBackdrop: boolean = false;
 
-    @Input() set mode(mode: SidenavMode) {
+    @Input()public  set mode(mode: SidenavMode) {
         this.sidenavService.updateOptions({mode});
     }
 
-    get mode(): SidenavMode {
+    public get mode(): SidenavMode {
         return this.sidenavService.options.mode;
     }
 
@@ -24,17 +24,13 @@ export class SidenavContainerComponent implements OnInit, OnDestroy {
     ) {
     }
 
-    closeSide(): void {
+    public closeSide(): void {
         this.sidenavService.isOpened = false;
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.sidenavService.options = new SidenavOptions({
             mode: this.mode
         });
-    }
-
-    ngOnDestroy(): void {
-
     }
 }

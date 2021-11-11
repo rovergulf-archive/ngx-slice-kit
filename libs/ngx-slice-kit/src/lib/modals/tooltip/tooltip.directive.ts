@@ -6,19 +6,19 @@ import {first} from 'rxjs/operators';
     selector: '[sdkTooltip]'
 })
 export class TooltipDirective implements OnInit {
-    @Input() showOnClick: boolean = false;
-    @Input() delay: string | number;
-    @Input('sdkTooltip') message: string;
-    @Input() position: string = 'top';
-    @Input() offset: number = 12;
+    @Input() public showOnClick: boolean = false;
+    @Input() public delay: string | number;
+    @Input('sdkTooltip') public message: string;
+    @Input() public position: string = 'top';
+    @Input() public offset: number = 12;
 
-    tooltip: HTMLElement;
-    tooltipContent: HTMLElement;
-    triggerElement: HTMLElement;
+    public tooltip: HTMLElement;
+    public tooltipContent: HTMLElement;
+    public triggerElement: HTMLElement;
 
-    showTimeout;
+    public showTimeout;
 
-    sub: Subscription;
+    public sub: Subscription;
 
     constructor(
         private el: ElementRef,
@@ -27,14 +27,14 @@ export class TooltipDirective implements OnInit {
     }
 
     @HostListener('mouseenter')
-    onMouseEnter(): void {
+    public onMouseEnter(): void {
         if (!this.tooltip && !this.showOnClick) {
             this.show();
         }
     }
 
     @HostListener('click')
-    onClick(): void {
+    public onClick(): void {
         if (!this.tooltip && this.showOnClick) {
             this.show();
         }
@@ -42,7 +42,7 @@ export class TooltipDirective implements OnInit {
 
     @HostListener('mousewheel')
     @HostListener('mouseleave')
-    onMouseLeave(): void {
+    public onMouseLeave(): void {
         if (this.tooltip) {
             this.hide();
         } else {
@@ -52,7 +52,7 @@ export class TooltipDirective implements OnInit {
         }
     }
 
-    show(): void {
+    public show(): void {
         this.showTimeout = timer(Number(this.delay));
 
         this.sub = this.showTimeout.pipe(first()).subscribe(() => {
@@ -63,7 +63,7 @@ export class TooltipDirective implements OnInit {
         });
     }
 
-    hide(): void {
+    public hide(): void {
         this.renderer.removeClass(this.tooltip, 'sdk-tooltip-show');
         this.renderer.removeChild(document.body, this.tooltip);
         this.tooltip = null;
@@ -73,7 +73,7 @@ export class TooltipDirective implements OnInit {
         // }, Number(this.delay));
     }
 
-    create(): void {
+    public create(): void {
         this.tooltip = this.renderer.createElement('div');
         this.tooltipContent = this.renderer.createElement('p');
         this.renderer.appendChild(
@@ -89,7 +89,7 @@ export class TooltipDirective implements OnInit {
         this.renderer.addClass(this.tooltipContent, 'sdk-tooltip__content');
     }
 
-    setPosition(): void {
+    public setPosition(): void {
         const hostPos = this.triggerElement.getBoundingClientRect();
         const tooltipPos = this.tooltip.getBoundingClientRect();
         const tooltipHeight = this.tooltip.offsetHeight;
@@ -166,13 +166,13 @@ export class TooltipDirective implements OnInit {
         this.renderer.setStyle(this.tooltip, 'left', `${left}px`);
     }
 
-    changePosition(oldPosition, newPosition): void {
+    public changePosition(oldPosition, newPosition): void {
         this.position = newPosition;
         this.renderer.removeClass(this.tooltip, `sdk-tooltip--${oldPosition}`);
         this.renderer.addClass(this.tooltip, `sdk-tooltip--${newPosition}`);
     }
 
-    checkOversize(options, dimension, isDirectionForward = true): boolean {
+    public checkOversize(options, dimension, isDirectionForward = true): boolean {
         const documentPos = document.body.getBoundingClientRect();
         if (isDirectionForward) {
             return options.hostPosition + options.hostSize + options.tooltipSize + this.offset <= documentPos[dimension];
@@ -181,7 +181,7 @@ export class TooltipDirective implements OnInit {
         }
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.triggerElement = this.el.nativeElement || this.el;
     }
 }

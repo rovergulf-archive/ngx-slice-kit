@@ -37,15 +37,15 @@ const alphaLimit = 100;
 const alphaStep = 10;
 
 export class ColorProperty {
-    value: string;
-    text_value?: string;
-    background: string;
-    name: string;
-    text?: string;
-    prop?: string;
-    alpha?: number;
-    rgb?: string;
-    hex?: string;
+    public value: string;
+    public text_value?: string;
+    public background: string;
+    public name: string;
+    public text?: string;
+    public prop?: string;
+    public alpha?: number;
+    public rgb?: string;
+    public hex?: string;
 
     constructor(cp?: ColorProperty) {
         Object.assign(this, cp);
@@ -72,25 +72,25 @@ export class ColorProperty {
 }
 
 export class Theme {
-    name: string;
+    public name: string;
 
     // there goes RGB colors palette string values
-    base?: string;
-    background?: string;
-    regular?: string;
-    primary?: string;
-    success?: string;
-    accent?: string;
-    warn?: string;
+    public base?: string;
+    public background?: string;
+    public regular?: string;
+    public primary?: string;
+    public success?: string;
+    public accent?: string;
+    public warn?: string;
     // text keys
-    base_text?: string;
-    regular_text?: string;
-    primary_text?: string;
-    success_text?: string;
-    accent_text?: string;
-    warn_text?: string;
+    public base_text?: string;
+    public regular_text?: string;
+    public primary_text?: string;
+    public success_text?: string;
+    public accent_text?: string;
+    public warn_text?: string;
 
-    colors?: Set<ColorProperty>;
+    public colors?: Set<ColorProperty>;
 
     constructor(t?: Theme) {
         Object.assign(this, defaultColors, t);

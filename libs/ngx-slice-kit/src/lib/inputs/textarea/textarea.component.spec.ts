@@ -285,13 +285,13 @@ describe('TextareaComponent', () => {
     });
 
     it('should #registerOnTouched set #onTouched', () => {
-        const fn = () => 'test';
+        const fn = (): string => 'test';
         component.registerOnTouched(fn);
         expect(component.onTouched).toEqual(fn);
     });
 
     it('should #regiserOnChange set #onChange', () => {
-        const fn = () => 'test';
+        const fn = (): string => 'test';
         component.registerOnChange(fn);
         expect(component.onChange).toEqual(fn);
     });

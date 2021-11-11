@@ -1,21 +1,21 @@
 import { EventEmitter } from '@angular/core';
 
 export class AlertOptions {
-    $action?: EventEmitter<any>;
+    public $action?: EventEmitter<any>;
 
-    message: string = 'Something went wrong';
-    title?: string = 'Unexpected error';
-    timeout?: number = 5000;
-    type?: AlertType = 'error';
-    customIcon?: string;
-    small?: boolean = false;
-    action?: boolean = false;
-    actionText?: string = 'Done.';
-    positionX?: AlertXPosition = 'right';
-    positionY?: AlertYPosition = 'top';
-    refName?: string = 'top-right';
-    index?: number;
-    active?: boolean;
+    public message: string = 'Something went wrong';
+    public title?: string = 'Unexpected error';
+    public timeout?: number = 5000;
+    public type?: AlertType = 'error';
+    public customIcon?: string;
+    public small?: boolean = false;
+    public action?: boolean = false;
+    public actionText?: string = 'Done.';
+    public positionX?: AlertXPosition = 'right';
+    public positionY?: AlertYPosition = 'top';
+    public refName?: string = 'top-right';
+    public index?: number;
+    public active?: boolean;
 
     constructor(opts?: AlertOptions) {
         Object.assign(this, opts);
@@ -35,8 +35,8 @@ export class AlertOptions {
 }
 
 export class AlertResponse {
-    index?: number;
-    actionTriggered?: boolean;
+    public index?: number;
+    public actionTriggered?: boolean;
 }
 
 export type AlertType = 'error' | 'success' | 'default';

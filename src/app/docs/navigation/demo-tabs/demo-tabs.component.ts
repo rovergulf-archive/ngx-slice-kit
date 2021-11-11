@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DemoPageModel } from '../../../shared/model';
 
 @Component({
@@ -6,7 +6,7 @@ import { DemoPageModel } from '../../../shared/model';
     templateUrl: './demo-tabs.component.html',
     styleUrls: ['./demo-tabs.component.scss', '../../docs.module.scss'],
 })
-export class DemoTabsComponent implements OnInit, OnDestroy {
+export class DemoTabsComponent implements OnInit {
 
     @ViewChild('basicRef', {static: true}) basicRef: any;
 
@@ -206,6 +206,4 @@ export class DemoTabsComponent {
             ]
         };
     }
-
-    ngOnDestroy(): void {}
 }

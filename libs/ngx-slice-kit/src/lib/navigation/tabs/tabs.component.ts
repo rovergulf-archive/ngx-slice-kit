@@ -17,13 +17,13 @@ import { TabsGroupComponent } from '../tabs-group/tabs-group.component';
 })
 export class TabsComponent extends TabsGroupComponent implements OnInit, AfterContentInit {
 
-    @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
-    tabGroup: TabComponent[] = [];
+    @ContentChildren(TabComponent) public tabs: QueryList<TabComponent>;
+    public tabGroup: TabComponent[] = [];
 
-    @ViewChild('container', {static: true}) containerElement;
-    @ViewChild('tabs', {static: true}) tabsWrapperElement;
-    @ViewChild('arrowLeft', {static: true}) arrowLeftElement;
-    @ViewChild('arrowRight', {static: true}) arrowRightElement;
+    @ViewChild('container', {static: true}) public containerElement;
+    @ViewChild('tabs', {static: true}) public tabsWrapperElement;
+    @ViewChild('arrowLeft', {static: true}) public arrowLeftElement;
+    @ViewChild('arrowRight', {static: true}) public arrowRightElement;
 
     constructor(
         public themeService: ThemeService,
@@ -32,7 +32,7 @@ export class TabsComponent extends TabsGroupComponent implements OnInit, AfterCo
         super(themeService, cdRef);
     }
 
-    selectTab(selectedTab, index): any {
+    public selectTab(selectedTab, index): any {
         if (selectedTab.active) {
             return;
         }
@@ -63,11 +63,11 @@ export class TabsComponent extends TabsGroupComponent implements OnInit, AfterCo
         super.selectTab();
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         super.ngOnInit();
     }
 
-    ngAfterContentInit(): void {
+    public ngAfterContentInit(): void {
         this.tabGroup = [];
         this.tabs.forEach(tabInstance => this.tabGroup.push(tabInstance));
         this.selectTab(this.tabs.first, 0);

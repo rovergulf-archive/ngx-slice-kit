@@ -1,8 +1,8 @@
 export class SidenavOptions {
-    mode?: SidenavMode = 'side';
-    width?: number = 320;
-    opened?: boolean = false;
-    style?: any;
+    public mode?: SidenavMode = 'side';
+    public width?: number = 320;
+    public opened?: boolean = false;
+    public style?: any;
 
     constructor(o: SidenavOptions) {
         Object.assign(this, o);

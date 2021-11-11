@@ -537,6 +537,6 @@ describe('NavTabsComponent', () => {
         <router-outlet #routerStub="outlet"></router-outlet>`,
 })
 class TestComponent {
-    @ViewChild('routerStub', {static: true}) routerStub;
-    links = links;
+    @ViewChild('routerStub', {static: true}) public routerStub;
+    public links = links;
 }

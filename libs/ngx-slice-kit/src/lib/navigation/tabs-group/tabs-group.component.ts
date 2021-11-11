@@ -21,33 +21,33 @@ import { slideInAnimation } from '../../core/animations/slide-in';
     ]
 })
 export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
-    tabs: QueryList<any>;
+    public tabs: QueryList<any>;
 
-    @Input() activeTabStyle: string = 'border';
-    @Input() animation: boolean = false;
+    @Input() public activeTabStyle: string = 'border';
+    @Input() public animation: boolean = false;
 
-    @ViewChild('container', {static: true}) containerElement;
-    @ViewChild('tabs', {static: true}) tabsWrapperElement;
-    @ViewChild('arrowLeft', {static: true}) arrowLeftElement;
-    @ViewChild('arrowRight', {static: true}) arrowRightElement;
+    @ViewChild('container', {static: true}) public containerElement;
+    @ViewChild('tabs', {static: true}) public tabsWrapperElement;
+    @ViewChild('arrowLeft', {static: true}) public arrowLeftElement;
+    @ViewChild('arrowRight', {static: true}) public arrowRightElement;
 
-    subscription: Subscription = new Subscription();
+    public subscription: Subscription = new Subscription();
 
-    tabsViewElements: HTMLElement[];
-    curTab: HTMLElement;
-    tabGroup: any[] = [];
-    containerWidth: number;
-    tabsWrapperWidth: number;
-    allTabsWidth: number = 0;
-    arrowWidth: number = 40;
-    isArrows: boolean;
-    tabsScrollRect: ClientRect;
-    curTabClientRect: ClientRect;
-    containerRect: ClientRect;
+    public tabsViewElements: HTMLElement[];
+    public curTab: HTMLElement;
+    public tabGroup: any[] = [];
+    public containerWidth: number;
+    public tabsWrapperWidth: number;
+    public allTabsWidth: number = 0;
+    public arrowWidth: number = 40;
+    public isArrows: boolean;
+    public tabsScrollRect: ClientRect;
+    public curTabClientRect: ClientRect;
+    public containerRect: ClientRect;
 
-    containerPosition$ = new BehaviorSubject(null);
+    public containerPosition$ = new BehaviorSubject(null);
 
-    slideMeasure: { width: any, left: any } = {
+    public slideMeasure: { width: any, left: any } = {
         width: 0,
         left: 0
     };
@@ -59,7 +59,7 @@ export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewCheck
     }
 
 
-    selectTab(selectedTab = null, index = null): any {
+    public selectTab(selectedTab = null, index = null): void {
         setTimeout(() => {
             this.curTab = this.containerElement.querySelector(`.sdk-tab-container__tab--active`);
             this.curTabClientRect = this.curTab.getBoundingClientRect();
@@ -83,7 +83,7 @@ export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewCheck
         });
     }
 
-    scrollRight(step = null): void {
+    public scrollRight(step = null): void {
         let x: number = parseInt(this.tabsWrapperElement.style.left, 10) || 0;
         const defaultStep = this.containerRect.width / 100 * 30;
         let scrollStep = defaultStep;
@@ -100,7 +100,7 @@ export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewCheck
         this.moveContainer(x);
     }
 
-    scrollLeft(step = null): void {
+    public scrollLeft(step = null): void {
         let x: number = parseInt(this.tabsWrapperElement.style.left, 10) || 0;
         const defaultStep = this.containerRect.width / 100 * 30;
         let scrollStep = defaultStep;
@@ -116,7 +116,7 @@ export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewCheck
         this.moveContainer(x);
     }
 
-    moveContainer(x): void {
+    public moveContainer(x): void {
         let newX: number = x;
         if (Math.abs(x) + this.containerWidth - (this.arrowLeftElement.offsetWidth * 2) > this.allTabsWidth) {
             newX = this.containerWidth - (this.arrowLeftElement.offsetWidth * 2) - this.allTabsWidth;
@@ -125,19 +125,19 @@ export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewCheck
         this.containerPosition$.next(true);
     }
 
-    setUnderlineMeasure(): void {
+    public setUnderlineMeasure(): void {
         this.curTabClientRect = this.curTab.getBoundingClientRect();
         this.slideMeasure.width = `${this.curTabClientRect.width}px`;
         this.slideMeasure.left = `${this.curTab.offsetLeft}px`;
     }
 
-    setSizes(): void {
+    public setSizes(): void {
         this.containerRect = this.containerElement.getBoundingClientRect();
         this.containerWidth = this.containerRect.width;
         this.tabsWrapperWidth = this.containerWidth - (this.isArrows ? (this.arrowWidth * 2) : 0);
     }
 
-    setTabSizes(): void {
+    public setTabSizes(): void {
         this.allTabsWidth = 0;
         this.tabsViewElements.forEach(tab => {
             const tabWidth = tab.offsetWidth;
@@ -150,12 +150,12 @@ export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewCheck
         this.tabsScrollRect = this.tabsWrapperElement.getBoundingClientRect();
     }
 
-    changeRects(): void {
+    public changeRects(): void {
         this.tabsScrollRect = this.tabsWrapperElement.getBoundingClientRect();
         this.curTabClientRect = this.curTab.getBoundingClientRect();
     }
 
-    setSubscriptions(): void {
+    public setSubscriptions(): void {
         this.subscription = this.containerPosition$.pipe(delay(400)).subscribe(() => this.changeRects());
 
         const subResize = fromEvent(window, 'resize')
@@ -187,7 +187,7 @@ export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewCheck
         this.subscription.add(subLeftArrow);
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.containerElement = this.containerElement.nativeElement || this.containerElement;
         this.tabsWrapperElement = this.tabsWrapperElement.nativeElement || this.tabsWrapperElement;
         this.arrowLeftElement = this.arrowLeftElement.nativeElement || this.arrowLeftElement;
@@ -197,17 +197,17 @@ export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewCheck
     }
 
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.tabsViewElements = Array.from(this.tabsWrapperElement.children);
         this.setTabSizes();
         this.isArrows = this.allTabsWidth > this.containerWidth;
     }
 
-    ngAfterViewChecked(): void {
+    public ngAfterViewChecked(): void {
         this.cdRef.detectChanges();
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 }

@@ -1,13 +1,13 @@
 import { OptionModel } from './dropdown-option.model';
 
 export class DropdownOptions {
-    triggerRect?: ClientRect;
-    options?: OptionModel[];
-    fitWidth?: boolean;
-    multi?: boolean;
-    hideBackdrop?: boolean;
-    parentElem?: any;
-    filterFunc?: () => OptionModel[]; // TBD v2
-    returnFunc?: () => any; // TBD v2
+    public triggerRect?: ClientRect;
+    public options?: OptionModel[];
+    public fitWidth?: boolean;
+    public multi?: boolean;
+    public hideBackdrop?: boolean;
+    public parentElem?: any;
+    public filterFunc?: () => OptionModel[]; // TBD v2
+    public returnFunc?: () => any; // TBD v2
 }
 

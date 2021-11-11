@@ -1,4 +1,4 @@
-import { Component, forwardRef, HostBinding, HostListener, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, HostBinding, HostListener, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -13,21 +13,23 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
         }
     ]
 })
-export class CheckboxComponent implements ControlValueAccessor, OnInit {
+export class CheckboxComponent implements ControlValueAccessor {
 
-    checked: boolean = false;
-    @Input() small: boolean = false;
-    @Input() required: boolean = false;
-    @Input() @HostBinding('class.disabled') disabled: boolean = false;
+    public checked: boolean = false;
+    @Input() public small: boolean = false;
+    @Input() public required: boolean = false;
+    @Input() @HostBinding('class.disabled')
+    public disabled: boolean = false;
 
-    @Input() @HostBinding('class.sdk-input--warn') error: string = undefined;
+    @Input() @HostBinding('class.sdk-input--warn')
+    public error: string = undefined;
 
     constructor() {
     }
 
     @HostListener('click')
     @HostListener('keyup.enter')
-    onclick(): void {
+    public onclick(): void {
         if (this.disabled) {
             return;
         }
@@ -36,29 +38,25 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
         this.onChange(this.checked);
     }
 
-    writeValue(value): void {
+    public writeValue(value): void {
         this.checked = value;
     }
 
-    onChange(value): void {
+    public onChange(value): void {
     }
 
-    onTouched(): void {
+    public onTouched(): void {
     }
 
-    registerOnChange(fn): void {
+    public registerOnChange(fn): void {
         this.onChange = fn;
     }
 
-    registerOnTouched(fn): void {
+    public registerOnTouched(fn): void {
         this.onTouched = fn;
     }
 
-    setDisabledState(isDisabled: boolean): void {
+    public setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
     }
-
-    ngOnInit(): void {
-    }
-
 }

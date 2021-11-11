@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AlertOptions, AlertService} from 'ngx-slice-kit';
 import {DemoPageModel} from '../../../shared/model';
 
@@ -7,7 +7,7 @@ import {DemoPageModel} from '../../../shared/model';
     templateUrl: './demo-alerts.component.html',
     styleUrls: ['./demo-alerts.component.scss', '../../docs.module.scss']
 })
-export class DemoAlertsComponent implements OnInit, OnDestroy {
+export class DemoAlertsComponent implements OnInit {
 
     @ViewChild('sucErrRef', {static: true}) sucErrRef: any;
     @ViewChild('actionRef', {static: true}) actionRef: any;
@@ -369,9 +369,6 @@ export class DemoAlertsComponent {
                 },
             ]
         };
-    }
-
-    ngOnDestroy(): void {
     }
 
 }

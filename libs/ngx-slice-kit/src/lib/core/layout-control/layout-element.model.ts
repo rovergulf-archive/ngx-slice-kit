@@ -2,21 +2,21 @@ import { EventEmitter, OnInit, Output } from '@angular/core';
 import { LayoutControlService } from './layout-control.service';
 
 export class LayoutElement implements OnInit {
-    hash?: string;
-    state?: 'opened' | 'closed' | 'active' | 'overlay' = 'closed';
+    public hash?: string;
+    public state?: 'opened' | 'closed' | 'active' | 'overlay' = 'closed';
 
-    @Output() closed = new EventEmitter<any>();
+    @Output() public closed = new EventEmitter<any>();
 
     constructor(
         private layoutControl: LayoutControlService
     ) {
     }
 
-    get elementHash(): string {
+    public get elementHash(): string {
         return this.hash;
     }
 
-    getOuterHeight(el, margin?): number {
+    public getOuterHeight(el, margin?): number {
         let height = el.offsetHeight;
 
         if (margin) {
@@ -27,7 +27,7 @@ export class LayoutElement implements OnInit {
         return height;
     }
 
-    getHeight(el): number {
+    public getHeight(el): number {
         let height = el.offsetHeight;
         const style = getComputedStyle(el);
 
@@ -37,7 +37,7 @@ export class LayoutElement implements OnInit {
         return height;
     }
 
-    getWidth(el): number {
+    public getWidth(el): number {
         let width = el.offsetWidth;
         const style = getComputedStyle(el);
 
@@ -47,7 +47,7 @@ export class LayoutElement implements OnInit {
         return width;
     }
 
-    getInnerHeight(el): number {
+    public getInnerHeight(el): number {
         let height = el.offsetHeight;
         const style = getComputedStyle(el);
 
@@ -55,7 +55,7 @@ export class LayoutElement implements OnInit {
         return height;
     }
 
-    getOffset(el): {
+    public getOffset(el): {
         top: number,
         left: number
     } {
@@ -68,7 +68,7 @@ export class LayoutElement implements OnInit {
     }
 
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.hash = this.layoutControl.generateLayoutElementHash();
     }
 

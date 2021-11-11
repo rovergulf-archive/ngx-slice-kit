@@ -1,26 +1,24 @@
 export class LayoutOptions {
-    overlayIndex?: number = 1000;
-    hideOnEscape?: boolean = false;
-    hideOnBackdrop?: boolean = false;
-    pruneSpaceKey?: boolean = true;
-    pruneTabKey?: boolean = true;
-    pruneEscapeKey?: boolean = true;
-    pruneEnterKey?: boolean = true;
+    public overlayIndex?: number = 1000;
+    public hideOnEscape?: boolean = false;
+    public hideOnBackdrop?: boolean = false;
+    public pruneSpaceKey?: boolean = true;
+    public pruneTabKey?: boolean = true;
+    public pruneEscapeKey?: boolean = true;
+    public pruneEnterKey?: boolean = true;
 
-    get pruneAnyKey(): boolean {
+    public get pruneAnyKey(): boolean {
         return this.pruneEnterKey && this.pruneSpaceKey && this.pruneTabKey && this.pruneEscapeKey;
     }
 
-    incrementIndex(): void {
+    public incrementIndex(): void {
         this.overlayIndex += 1;
     }
 
-    decrementIndex(): void {
+    public decrementIndex(): void {
         if (this.overlayIndex === 1000) {
             return;
         }
         this.overlayIndex -= 1;
     }
-
-
 }

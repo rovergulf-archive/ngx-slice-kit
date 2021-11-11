@@ -1,7 +1,7 @@
 export class OptionModel {
-    value?: any;
-    label?: any;
-    image?: string;
-    disabled?: boolean;
-    selected?: boolean;
+    public value?: any;
+    public label?: any;
+    public image?: string;
+    public disabled?: boolean;
+    public selected?: boolean;
 }

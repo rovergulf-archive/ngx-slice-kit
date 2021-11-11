@@ -12,7 +12,7 @@ export class I17rPipe implements PipeTransform {
     ) {
     }
 
-    transform(value: string, lang?: string): string {
+    public transform(value: string, lang?: string): string {
         if (!lang || !lang.length) {
             lang = this.i17r.currentLang;
         }

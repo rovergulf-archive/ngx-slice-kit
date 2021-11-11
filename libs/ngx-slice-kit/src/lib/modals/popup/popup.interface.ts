@@ -1,6 +1,6 @@
 export class PopupInterface {
-    title?: string = 'Confirm action';
-    message?: string = 'Are you sure?';
-    ok?: string = 'Ok';
-    cancel?: string = 'Cancel';
+    public title?: string = 'Confirm action';
+    public message?: string = 'Are you sure?';
+    public ok?: string = 'Ok';
+    public cancel?: string = 'Cancel';
 }

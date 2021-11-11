@@ -11,7 +11,7 @@ export class MarkdownService {
     ) {
     }
 
-    test(str: string): SafeHtml {
+    public test(str: string): SafeHtml {
         return this.sanitizer.bypassSecurityTrustHtml(str);
     }
 }

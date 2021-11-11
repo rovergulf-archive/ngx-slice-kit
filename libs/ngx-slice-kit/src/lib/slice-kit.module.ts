@@ -47,7 +47,7 @@ const kitExports = [
     ]
 })
 export class SliceKitModule {
-    static forRoot(options: ThemeOptions): ModuleWithProviders<SliceKitModule> {
+    public static forRoot(options: ThemeOptions): ModuleWithProviders<SliceKitModule> {
         return {
             ngModule: SliceKitModule,
             providers: [

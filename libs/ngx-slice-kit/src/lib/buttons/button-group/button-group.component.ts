@@ -6,7 +6,6 @@ import {
     EventEmitter,
     HostListener,
     Input,
-    OnInit,
     Output,
     QueryList,
     Renderer2,
@@ -19,20 +18,21 @@ import { ThemeColors } from '../../core/theme/theme.model';
     templateUrl: './button-group.component.html',
     styleUrls: ['./button-group.component.scss']
 })
-export class ButtonGroupComponent implements OnInit, AfterContentInit {
+export class ButtonGroupComponent implements AfterContentInit {
 
-    @ContentChildren(ButtonComponent, {read: ElementRef}) btnGroup!: QueryList<ElementRef>;
+    @ContentChildren(ButtonComponent, {read: ElementRef}) public btnGroup!: QueryList<ElementRef>;
 
-    @Input() color: ThemeColors = 'primary';
+    @Input() public color: ThemeColors = 'primary';
 
-    @Output() clicked: EventEmitter<any> = new EventEmitter();
+    @Output() public clicked: EventEmitter<any> = new EventEmitter();
 
     constructor(
         private renderer: Renderer2,
     ) {
     }
 
-    @HostListener('click', ['$event']) onClick(event): void {
+    @HostListener('click', ['$event'])
+    public onClick(event): void {
         const target = event.target;
 
         if (target.tagName !== 'BUTTON') {
@@ -45,14 +45,11 @@ export class ButtonGroupComponent implements OnInit, AfterContentInit {
         this.clicked.emit({element: event.target, index: target.getAttribute('btn-group-index')});
     }
 
-    removeActiveClass(element): void {
+    public removeActiveClass(element): void {
         this.renderer.removeClass(element, 'active');
     }
 
-    ngOnInit(): void {
-    }
-
-    ngAfterContentInit(): void {
+    public ngAfterContentInit(): void {
         this.btnGroup.forEach((btn, index) => {
             this.renderer.setAttribute(btn.nativeElement, 'btn-group-index', `${index}`);
         });

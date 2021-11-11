@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LayoutControlService, ThemeService } from 'ngx-slice-kit';
@@ -9,7 +9,7 @@ import { LayoutService } from '../../services';
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
     constructor(
         public themeService: ThemeService,
@@ -22,8 +22,4 @@ export class HeaderComponent implements OnInit {
     toggleTheme(): void {
         this.layoutService.themeName = this.layoutService.themeName === 'light' ? 'dark' : 'light';
     }
-
-    ngOnInit(): void {
-    }
-
 }

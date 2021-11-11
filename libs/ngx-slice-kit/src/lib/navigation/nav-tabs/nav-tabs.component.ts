@@ -24,15 +24,15 @@ import { TabsGroupComponent } from '../tabs-group/tabs-group.component';
 
 export class NavTabsComponent extends TabsGroupComponent implements AfterContentInit {
 
-    @ContentChildren(TabLinkDirective) tabs!: QueryList<TabLinkDirective>;
-    tabGroup: TabLinkDirective[] = [];
+    @ContentChildren(TabLinkDirective) public  tabs!: QueryList<TabLinkDirective>;
+    public tabGroup: TabLinkDirective[] = [];
 
-    @ViewChild('parent', {static: true}) containerElement;
-    @ViewChild('tabs', {static: true}) tabsWrapperElement;
-    @ViewChild('arrowLeft', {static: true}) arrowLeftElement;
-    @ViewChild('arrowRight', {static: true}) arrowRightElement;
+    @ViewChild('parent', {static: true}) public containerElement;
+    @ViewChild('tabs', {static: true}) public tabsWrapperElement;
+    @ViewChild('arrowLeft', {static: true}) public arrowLeftElement;
+    @ViewChild('arrowRight', {static: true}) public arrowRightElement;
 
-    @Input() minHeight: number = 0;
+    @Input() public minHeight: number = 0;
 
     constructor(
         public themeService: ThemeService,
@@ -42,7 +42,7 @@ export class NavTabsComponent extends TabsGroupComponent implements AfterContent
         super(themeService, cdRef);
     }
 
-    setSubscriptions(): void {
+    public setSubscriptions(): void {
         super.setSubscriptions();
         const subRouter = this.router.events
             .pipe(
@@ -55,11 +55,11 @@ export class NavTabsComponent extends TabsGroupComponent implements AfterContent
         this.subscription.add(subRouter);
     }
 
-    getRouteAnimation(outlet: RouterOutlet): number {
+    public getRouteAnimation(outlet: RouterOutlet): number {
         return outlet.activatedRouteData.index === undefined ? -1 : outlet.activatedRouteData.index;
     }
 
-    ngAfterContentInit(): void {
+    public ngAfterContentInit(): void {
         this.tabGroup = [];
         this.tabs.forEach(tabInstance => this.tabGroup.push(tabInstance));
         this.selectTab();

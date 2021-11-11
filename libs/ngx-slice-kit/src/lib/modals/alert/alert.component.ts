@@ -20,22 +20,22 @@ import { AlertOptions } from './alert.model';
 })
 export class AlertComponent implements OnInit, OnDestroy {
 
-    @Input() index: number = 0;
-    @Input() options: AlertOptions;
-    @Output() closed = new EventEmitter<any>();
-    @Output() action = new EventEmitter<any>(); // emits alert index
-    @HostListener('[@state]') state: any = 'closed';
+    @Input() public index: number = 0;
+    @Input() public options: AlertOptions;
+    @Output() public closed = new EventEmitter<any>();
+    @Output() public action = new EventEmitter<any>(); // emits alert index
+    @HostListener('[@state]') public state: any = 'closed';
 
-    sub: Subscription;
-    closeTimer: Observable<any>;
-    isPurging: boolean;
+    public sub: Subscription;
+    public closeTimer: Observable<any>;
+    public isPurging: boolean;
 
     constructor(
         private elementRef: ElementRef
     ) {
     }
 
-    close(action?: boolean): void {
+    public close(action?: boolean): void {
         if (this.options.action) {
             this.options.$action?.emit(action);
             this.options.$action?.complete();
@@ -43,7 +43,7 @@ export class AlertComponent implements OnInit, OnDestroy {
         this.closed.emit(this.index);
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.state = 'opened';
 
         this.closeTimer = timer(this.options.timeout);
@@ -52,7 +52,7 @@ export class AlertComponent implements OnInit, OnDestroy {
         });
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.state = 'closed';
         this.sub?.unsubscribe();
         this.closeTimer = undefined;

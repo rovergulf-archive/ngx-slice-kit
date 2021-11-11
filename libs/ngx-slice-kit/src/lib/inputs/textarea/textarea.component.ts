@@ -19,38 +19,45 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
     private req: boolean;
     private res: boolean;
 
-    @Input() set required(val: any) {
+    @Input() public set required(val: any) {
         this.req = val === '' || val === true;
     }
 
-    get required(): any {
+    public get required(): any {
         return this.req;
     }
 
-    @Input() placeholder: string = '';
-    @Input() tabindex: number = undefined;
-    @Input() minHeight: number = 76;
-    @Input() maxHeight: number = 280;
-    @Input() small: boolean;
-    @Input() label: string;
-    @Input() caption: string;
-    @Input() resizable: boolean = true;
+    @Input()
+    public placeholder: string = '';
 
-    @Input() @HostBinding('class.sdk-textarea--warn') error: string;
-    @Input() @HostBinding('class.disabled') disabled: boolean;
-    @Input() @HostBinding('class.full-width') fullWidth: boolean = false;
+    @Input() public tabindex: number = undefined;
+    @Input() public minHeight: number = 76;
+    @Input() public maxHeight: number = 280;
+    @Input() public small: boolean;
+    @Input() public label: string;
+    @Input() public caption: string;
+    @Input() public resizable: boolean = true;
 
-    @Output() focusEvent: EventEmitter<any> = new EventEmitter();
-    @Output() blurEvent: EventEmitter<any> = new EventEmitter();
+    @Input() @HostBinding('class.sdk-textarea--warn')
+    public error: string;
 
-    @ViewChild('clone', {static: false}) elementClone: ElementRef;
-    @ViewChild('textarea', {static: true}) textarea: ElementRef;
+    @Input() @HostBinding('class.disabled')
+    public disabled: boolean;
 
-    value: string = undefined;
-    focused: boolean = false;
-    rows: number = 3;
+    @Input() @HostBinding('class.full-width')
+    public fullWidth: boolean = false;
 
-    textareaId: string = this.layoutControlService.generateLayoutElementHash();
+    @Output() public focusEvent: EventEmitter<any> = new EventEmitter();
+    @Output() public blurEvent: EventEmitter<any> = new EventEmitter();
+
+    @ViewChild('clone', {static: false}) public elementClone: ElementRef;
+    @ViewChild('textarea', {static: true}) public textarea: ElementRef;
+
+    public value: string = undefined;
+    public focused: boolean = false;
+    public rows: number = 3;
+
+    public textareaId: string = this.layoutControlService.generateLayoutElementHash();
 
     constructor(
         private layoutControlService: LayoutControlService,
@@ -59,7 +66,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
     ) {
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         if (this.disabled && this.resizable) {
             this.resizable = false;
         }
@@ -70,7 +77,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
         }
     }
 
-    onFocus(): void {
+    public onFocus(): void {
         const event = {
             target: this.elementRef.nativeElement,
             eventName: 'focus',
@@ -80,7 +87,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
         this.focusEvent.emit(event);
     }
 
-    onBlur(): void {
+    public onBlur(): void {
         const event = {
             target: this.elementRef.nativeElement,
             eventName: 'blur',
@@ -90,40 +97,40 @@ export class TextareaComponent implements ControlValueAccessor, OnInit, OnDestro
         this.blurEvent.emit(event);
     }
 
-    change(target): void {
+    public change(target): void {
         this.writeValue(target.value);
         this.onTouched();
         this.elementClone.nativeElement.innerText = target.value.replace(/\n^ *$/gm, '\n-');
     }
 
-    writeValue(value: any): void {
+    public writeValue(value: any): void {
         this.value = value;
         this.onChange(this.value);
     }
 
-    onChange(value): void {
+    public onChange(value): void {
     }
 
-    onTouched(): void {
+    public onTouched(): void {
     }
 
-    isEmpty(): boolean {
+    public isEmpty(): boolean {
         return !this.value || this.value.length < 1;
     }
 
-    registerOnChange(fn): void {
+    public registerOnChange(fn): void {
         this.onChange = fn;
     }
 
-    registerOnTouched(fn): void {
+    public registerOnTouched(fn): void {
         this.onTouched = fn;
     }
 
-    setDisabledState?(isDisabled: boolean): void {
+    public setDisabledState?(isDisabled: boolean): void {
         this.disabled = isDisabled;
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.focusEvent.complete();
         this.blurEvent.complete();
     }

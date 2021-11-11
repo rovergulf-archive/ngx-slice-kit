@@ -1,37 +1,33 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 
 @Component({
     selector: 'sdk-dots',
     templateUrl: './dots.component.html',
     styleUrls: ['./dots.component.scss']
 })
-export class DotsComponent implements OnInit, OnChanges, AfterViewInit {
+export class DotsComponent implements OnInit, OnChanges {
 
-    @Input() count: number = 0;
-    @Input() activeIndex: number = 0;
-    @Input() small: boolean = false;
+    @Input() public count: number = 0;
+    @Input() public activeIndex: number = 0;
+    @Input() public small: boolean = false;
 
-    @Output() selected = new EventEmitter();
+    @Output() public selected = new EventEmitter();
 
-    dots = [];
+    public dots = [];
 
     constructor() {
     }
 
-    clickHandler(index: number): void {
+    public clickHandler(index: number): void {
         this.selected.emit(index);
         this.activeIndex = index;
     }
 
-    ngOnChanges(changes): void {
+    public ngOnChanges(changes): void {
         this.dots = new Array(this.count);
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.dots = new Array(Number(this.count));
     }
-
-    ngAfterViewInit(): void {
-    }
-
 }

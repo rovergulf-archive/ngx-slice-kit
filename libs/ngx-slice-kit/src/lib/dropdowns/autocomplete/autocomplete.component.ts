@@ -7,7 +7,6 @@ import {
     Inject,
     Input,
     OnDestroy,
-    OnInit,
     Output,
     PLATFORM_ID,
     Renderer2,
@@ -35,58 +34,60 @@ import { LayoutControlService } from '../../core/layout-control/layout-control.s
         }
     ]
 })
-export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDestroy {
+export class AutocompleteComponent implements ControlValueAccessor, OnDestroy {
 
     private $options: BehaviorSubject<OptionModel[]> = new BehaviorSubject<OptionModel[]>(null);
     private req: boolean;
 
-    @Input() set options(o: OptionModel[]) {
+    @Input() public set options(o: OptionModel[]) {
         this.$options.next(o);
         if (this.isOpen) {
             this.optionsService.options = this.getOptions();
         }
     }
 
-    get options(): OptionModel[] {
+    public get options(): OptionModel[] {
         return this.$options.getValue();
     }
 
-    @Input() set required(val: any) {
+    @Input() public set required(val: any) {
         this.req = val === '' || val === true;
     }
 
-    get required(): any {
+    public get required(): any {
         return this.req;
     }
 
-    sub: Subscription;
-    @ViewChild('autocomplete', {static: true}) autocomplete: ElementRef;
-    @ViewChild('input', {static: true}) inputElementRef: ElementRef;
-    @Input() label = '';
-    @Input() placeholder = '';
-    @Input() disabled: boolean;
-    @Input() small: boolean = false;
-    @Input() icon: string;
-    @Input() caption: string = '';
+    public sub: Subscription;
+    @ViewChild('autocomplete', {static: true}) public autocomplete: ElementRef;
+    @ViewChild('input', {static: true}) public inputElementRef: ElementRef;
+    @Input() public label = '';
+    @Input() public placeholder = '';
+    @Input() public disabled: boolean;
+    @Input() public small: boolean = false;
+    @Input() public icon: string;
+    @Input() public caption: string = '';
 
-    @Output() focusEvent: EventEmitter<any> = new EventEmitter();
-    @Output() blurEvent: EventEmitter<any> = new EventEmitter();
-    @Output() resultEvent: EventEmitter<any> = new EventEmitter();
-    @Output() valueChanges: EventEmitter<any> = new EventEmitter();
+    @Output() public focusEvent: EventEmitter<any> = new EventEmitter();
+    @Output() public blurEvent: EventEmitter<any> = new EventEmitter();
+    @Output() public resultEvent: EventEmitter<any> = new EventEmitter();
+    @Output() public valueChanges: EventEmitter<any> = new EventEmitter();
 
-    @Input() @HostBinding('class.invalid') error: string = undefined;
+    @Input() @HostBinding('class.invalid')
+    public error: string = undefined;
 
-    @Input() @HostBinding('class.disabled') get isDisabled(): boolean {
+    @Input() @HostBinding('class.disabled')
+    public get isDisabled(): boolean {
         return this.disabled;
     }
 
-    isOpen: boolean;
-    focused: boolean;
-    currentValue: OptionModel;
-    currentValues: Set<OptionModel>;
-    uid: string;
+    public isOpen: boolean;
+    public focused: boolean;
+    public currentValue: OptionModel;
+    public currentValues: Set<OptionModel>;
+    public uid: string;
 
-    value: string = '';
+    public value: string = '';
 
     constructor(
         @Inject(DOCUMENT) private document: any,
@@ -99,55 +100,55 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
         this.uid = layoutControlService.generateLayoutElementHash();
     }
 
-    getOptions(): OptionModel[] {
+    public getOptions(): OptionModel[] {
         return [...this.options].map(o => {
             o.selected = this.currentValue === o;
             return o;
         });
     }
 
-    isInactive(): boolean {
+    public isInactive(): boolean {
         return !this.currentValue;
     }
 
-    hasValuesToDrop(): boolean {
+    public hasValuesToDrop(): boolean {
         return !this.isInactive();
     }
 
-    onOpen(): void {
+    public onOpen(): void {
         this.isOpen = true;
         this.emitFocus();
     }
 
-    onClose(): void {
+    public onClose(): void {
         this.isOpen = false;
         this.emitBlur();
     }
 
-    emitBlur(): void {
+    public emitBlur(): void {
         if (this.focused) {
             this.focused = false;
             this.blurEvent.emit();
         }
     }
 
-    emitFocus(): void {
+    public emitFocus(): void {
         if (!this.focused) {
             this.focused = true;
             this.focusEvent.emit();
         }
     }
 
-    selected(): string {
+    public selected(): string {
         return this.currentValue?.label ?? '';
     }
 
-    onResult(option: OptionModel): void {
+    public onResult(option: OptionModel): void {
         this.onTouched();
         this.writeValue(option);
     }
 
-    writeValue(val): void {
+    public writeValue(val): void {
         if (val?.size > 0) {
             this.currentValues = val;
             const multipleResult = this.options.filter(o => this.currentValues.has(o));
@@ -160,39 +161,39 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
         }
     }
 
-    addValue(o: OptionModel): void {
+    public addValue(o: OptionModel): void {
         const alreadySelected = this.currentValues.has(o);
         o.selected = !alreadySelected;
         alreadySelected ? this.currentValues.delete(o) : this.currentValues.add(o);
         this.writeValue(this.currentValues);
     }
 
-    clearValue(e): void {
+    public clearValue(e): void {
         e.stopPropagation();
         this.valueChanges.emit(null);
         this.currentValue = undefined;
         this.writeValue(undefined);
     }
 
-    onChange(value): void {
+    public onChange(value): void {
     }
 
-    onTouched(): void {
+    public onTouched(): void {
     }
 
-    registerOnChange(fn: any): void {
+    public registerOnChange(fn: any): void {
         this.onChange = fn;
     }
 
-    registerOnTouched(fn: any): void {
+    public registerOnTouched(fn: any): void {
         this.onTouched = fn;
     }
 
-    setDisabledState?(isDisabled: boolean): void {
+    public setDisabledState?(isDisabled: boolean): void {
         this.disabled = isDisabled;
     }
 
-    setInputSubscription(): void {
+    public setInputSubscription(): void {
         this.sub = fromEvent(this.inputElementRef.nativeElement, `keyup`).pipe(
             debounceTime(500)
         ).subscribe((e: any) => {
@@ -210,7 +211,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
         });
     }
 
-    onInput(ev: any): void {
+    public onInput(ev: any): void {
         if (ev.code === 'ArrowUp' ||
             ev.code === 'ArrowDown' ||
             ev.code === 'Escape' ||
@@ -223,7 +224,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
         this.valueChanges.emit(value);
     }
 
-    showDropdown(): void {
+    public showDropdown(): void {
         if (isPlatformServer(this.platformId)) {
             return;
         }
@@ -252,11 +253,11 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
         });
     }
 
-    ngOnInit(): void {
-        // this.setInputSubscription();
-    }
+    // public ngOnInit(): void {
+    //     // this.setInputSubscription();
+    // }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.sub?.unsubscribe();
         this.blurEvent.complete();
         this.focusEvent.complete();

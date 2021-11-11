@@ -1,18 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'sdk-loading',
     templateUrl: './loading.component.html',
     styleUrls: ['./loading.component.scss']
 })
-export class LoadingComponent implements OnInit {
+export class LoadingComponent {
 
-    loader: string = 'default';
+    public loader: string = 'default';
 
     constructor() {
     }
-
-    ngOnInit(): void {
-    }
-
 }

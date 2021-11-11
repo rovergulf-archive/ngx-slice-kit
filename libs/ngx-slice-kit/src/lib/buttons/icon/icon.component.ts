@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, Input, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { GLYPHS } from './icon.glyphs';
 import { BehaviorSubject } from 'rxjs';
@@ -17,32 +17,32 @@ const INKBE_COEFF = 70 / 32;
     styleUrls: ['./icon.component.scss'],
     encapsulation: ViewEncapsulation.None,
 })
-export class IconComponent implements OnInit, OnDestroy, AfterContentInit {
+export class IconComponent implements OnInit, AfterContentInit {
 
     private $color: BehaviorSubject<string> = new BehaviorSubject<string>(DEFAULT_COLOR);
     private $size: BehaviorSubject<number> = new BehaviorSubject<number>(DEFAULT_SIZE);
-    svg: SafeHtml;
     private preparing: boolean;
+    public svg: SafeHtml;
 
-    @Input() icon: string = DEFAULT_ICON;
-    @Input() image: string;
-    @Input() inline: boolean = true;
+    @Input() public icon: string = DEFAULT_ICON;
+    @Input() public image: string;
+    @Input() public inline: boolean = true;
 
-    @Input() set size(size: number) {
+    @Input() public set size(size: number) {
         this.$size.next(size);
         this.renderComponentSvg(); // is it even good?
     }
 
-    get size(): number {
+    public get size(): number {
         return this.$size.getValue();
     }
 
-    @Input('color') set color(c: string) {
+    @Input() public set color(c: string) {
         this.$color.next(c);
         this.renderComponentSvg();
     }
 
-    get color(): string {
+    public get color(): string {
         return this.$color.getValue();
     }
 
@@ -53,7 +53,7 @@ export class IconComponent implements OnInit, OnDestroy, AfterContentInit {
     ) {
     }
 
-    prepareSymbol(name: string, color?: string): string {
+    public prepareSymbol(name: string, color?: string): string {
         if (this.preparing) {
             return;
         }
@@ -78,26 +78,26 @@ export class IconComponent implements OnInit, OnDestroy, AfterContentInit {
         return symbol;
     }
 
-    createIcon(symbol: string): void {
+    public createIcon(symbol: string): void {
         this.renderer.createElement('svg', symbol);
     }
 
-    createSafeHtml(symbol: string): SafeHtml {
+    public createSafeHtml(symbol: string): SafeHtml {
         return this.sanitizer.bypassSecurityTrustHtml(symbol);
     }
 
-    renderComponentSvg(): void {
+    public renderComponentSvg(): void {
         this.svg = this.createSafeHtml(this.prepareSymbol(this.icon, this.color));
     }
 
-    setIconColor(color: string): void {
+    public setIconColor(color: string): void {
         if (color && color.length > 0) {
             const symbol = this.elementRef.nativeElement.querySelector(`[class="icon"]`);
             this.renderer.setAttribute(symbol, 'fill', color);
         }
     }
 
-    ngAfterContentInit(): void {
+    public ngAfterContentInit(): void {
         const svg = this.elementRef.nativeElement.querySelector(`[fill="var(--base)"]`);
         if (svg) {
             this.renderer.setAttribute(svg, 'height', `${this.size}px`);
@@ -106,13 +106,10 @@ export class IconComponent implements OnInit, OnDestroy, AfterContentInit {
         }
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         if (!this.icon) {
             this.icon = 'ngx-slice';
         }
         this.svg = this.createSafeHtml(this.prepareSymbol(this.icon, this.color));
-    }
-
-    ngOnDestroy(): void {
     }
 }
