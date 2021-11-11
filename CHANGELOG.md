@@ -25,7 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `sdk-theme` attribute now is `sdkTheme`
 
 ### Changed
-- Updated radio, input, select offset styles
+- Updated radio, input, select offset styles.
+- Few tests changed.
 
 
 ## 4 Nov 2021

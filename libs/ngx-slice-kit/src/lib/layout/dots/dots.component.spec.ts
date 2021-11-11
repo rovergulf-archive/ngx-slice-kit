@@ -40,7 +40,6 @@ describe('DotsComponent', () => {
         const t = 4;
         component.count = t;
         component.ngOnInit();
-        component.ngAfterViewInit();
         fixture.detectChanges();
         let els = dotsEl.querySelectorAll('.sdk-dots__dot');
 
@@ -68,7 +67,6 @@ describe('DotsComponent', () => {
         spyOn(component, 'clickHandler');
         component.count = 4;
         component.ngOnInit();
-        component.ngAfterViewInit();
         fixture.detectChanges();
         const el: HTMLElement = dotsEl.querySelectorAll('.sdk-dots__dot')[1] as HTMLElement; // second dot
 
@@ -81,7 +79,6 @@ describe('DotsComponent', () => {
         spyOn(component.selected, 'emit');
         component.count = 4;
         component.ngOnInit();
-        component.ngAfterViewInit();
         fixture.detectChanges();
         const el: HTMLElement = dotsEl.querySelector('.sdk-dots__dot'); // first dot
 

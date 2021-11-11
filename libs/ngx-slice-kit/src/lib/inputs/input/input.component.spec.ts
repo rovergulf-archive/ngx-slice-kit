@@ -29,7 +29,7 @@ describe('InputComponent', () => {
 
     it('should the state be small if property #small set as #true', () => {
         component.small = true;
-        const smallHeightSize = 32;
+        const smallHeightSize = 30;
         const smallFontSize = 15;
 
         fixture.detectChanges();
@@ -144,20 +144,20 @@ describe('InputComponent', () => {
         expect(input.querySelector('.sdk-input-wrap--wide')).not.toBeTruthy();
     });
 
-    it('should be added size class "sdk-input-wrap--wide" if property #size set as "wide"', () => {
+    it('should be added size class "sdk-input--wide" if property #size set as "wide"', () => {
         component.size = 'wide';
         fixture.detectChanges();
         component.ngOnInit();
-        expect(input.querySelector('.sdk-input-wrap--wide')).toBeTruthy();
-        expect(input.querySelector('.sdk-input-wrap--full-width')).not.toBeTruthy();
+        expect(input.classList.contains('sdk-input--wide')).toBeTruthy();
+        expect(input.classList.contains('sdk-input--full-width')).not.toBeTruthy();
     });
 
-    it('should be added size class "sdk-input-wrap--full-width" if property "size" set as "full-width', () => {
+    it('should be added size class "sdk-input--full-width" if property "size" set as "full-width"', () => {
         component.size = 'full-width';
         fixture.detectChanges();
         component.ngOnInit();
-        expect(input.querySelector('.sdk-input-wrap--wide')).not.toBeTruthy();
-        expect(input.querySelector('.sdk-input-wrap--full-width')).toBeTruthy();
+        expect(input.classList.contains('sdk-input--wide')).not.toBeTruthy();
+        expect(input.classList.contains('sdk-input--full-width')).toBeTruthy();
     });
 
     it('should #caption display if user set', () => {

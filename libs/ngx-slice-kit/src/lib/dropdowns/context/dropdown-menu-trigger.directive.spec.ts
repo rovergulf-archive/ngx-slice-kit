@@ -68,7 +68,6 @@ describe('DropdownMenuTriggerDirective', () => {
         spyOn(directive.resultEvent, 'complete');
 
         fixture.detectChanges();
-        directive.ngOnInit();
         directive.ngOnDestroy();
 
         expect(directive.closed.complete).toHaveBeenCalled();
