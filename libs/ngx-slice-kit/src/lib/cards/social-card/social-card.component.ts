@@ -1,16 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'sdk-social-card',
     templateUrl: './social-card.component.html',
     styleUrls: ['./social-card.component.scss']
 })
-export class SocialCardComponent implements OnInit {
+export class SocialCardComponent {
 
     constructor() {
     }
-
-    ngOnInit(): void {
-    }
-
 }

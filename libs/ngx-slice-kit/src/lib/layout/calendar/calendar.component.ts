@@ -1,16 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'sdk-calendar',
     templateUrl: './calendar.component.html',
     styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent {
 
     constructor() {
     }
-
-    ngOnInit(): void {
-    }
-
 }

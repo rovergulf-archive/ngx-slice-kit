@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, OnInit } from '@angular/core';
+import { Component, ElementRef, HostBinding } from '@angular/core';
 
 @Component({
     selector: 'sdk-slide',
@@ -6,16 +6,13 @@ import { Component, ElementRef, HostBinding, OnInit } from '@angular/core';
     template: `<ng-content></ng-content>`,
     styleUrls: ['./slide.component.scss']
 })
-export class SlideComponent implements OnInit {
+export class SlideComponent {
 
     constructor(
         public el: ElementRef,
     ) {
     }
 
-    @HostBinding('class') slide = 'sdk-slide';
-
-    ngOnInit(): void {
-    }
-
+    @HostBinding('class')
+    public slide = 'sdk-slide';
 }

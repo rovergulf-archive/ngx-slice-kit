@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 export const angularJsonExampleRef = `// ...
 // Double check that your core application styles file used in
@@ -13,7 +13,7 @@ export const angularJsonExampleRef = `// ...
     templateUrl: './get-started.component.html',
     styleUrls: ['./get-started.component.scss', '../guides.module.scss']
 })
-export class GetStartedComponent implements OnInit {
+export class GetStartedComponent {
 
     ngExample = `ng add @angular/cdk
 ng add ngx-slice-kit`;
@@ -96,7 +96,7 @@ const sliceKitImports = [
 })
 export class SharedModule {
 }`;
-    themeExample = `<div sdk-theme>
+    themeExample = `<div sdkTheme>
     <app-header></app-header>
     <router-outlet></router-outlet>
 </div>
@@ -105,9 +105,6 @@ export class SharedModule {
     angularJson = angularJsonExampleRef;
 
     constructor() {
-    }
-
-    ngOnInit(): void {
     }
 
 }

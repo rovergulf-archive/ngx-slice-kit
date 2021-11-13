@@ -12,7 +12,7 @@ export type AvailableThemes = 'light' | 'dark';
 })
 export class LayoutService {
 
-    private $cookieName: BehaviorSubject<string> = new BehaviorSubject<string>('sdk-theme');
+    private $cookieName: BehaviorSubject<string> = new BehaviorSubject<string>('sdkTheme');
     private $mobileLayout: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     private $sidenavOpened: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     private $themeName: BehaviorSubject<string> = new BehaviorSubject<string>(this.getDefaultThemeName());

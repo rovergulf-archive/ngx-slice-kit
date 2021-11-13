@@ -1,16 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-demo-shopping-card',
     templateUrl: './demo-shopping-card.component.html',
     styleUrls: ['./demo-shopping-card.component.scss']
 })
-export class DemoShoppingCardComponent implements OnInit {
-
+export class DemoShoppingCardComponent {
     constructor() {
     }
-
-    ngOnInit(): void {
-    }
-
 }

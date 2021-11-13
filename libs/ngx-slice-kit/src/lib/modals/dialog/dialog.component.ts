@@ -34,21 +34,21 @@ import { DOCUMENT, isPlatformBrowser, isPlatformServer } from '@angular/common';
 })
 export class DialogComponent implements OnInit, OnDestroy {
 
-    @Input() id: number;
-    @Input() data: any;
-    @Input() hideOnEscape: boolean = true;
-    @Input() hideOnBackdrop: boolean = true;
-    @Input() borderRadius: number = 0;
-    @Input() disableScroll: boolean;
-    @Input() component: any;
-    @ViewChild(DialogDirective, {static: true}) modalDirective: DialogDirective;
+    @Input() public id: number;
+    @Input() public data: any;
+    @Input() public hideOnEscape: boolean = true;
+    @Input() public hideOnBackdrop: boolean = true;
+    @Input() public borderRadius: number = 0;
+    @Input() public disableScroll: boolean;
+    @Input() public component: any;
+    @ViewChild(DialogDirective, {static: true}) public modalDirective: DialogDirective;
 
-    @HostBinding('attr.state') state: 'opened' | 'closed' = 'closed';
+    @HostBinding('attr.state') public state: 'opened' | 'closed' = 'closed';
 
-    @Output() closed = new EventEmitter();
+    @Output() public closed = new EventEmitter();
 
-    br: string = '0';
-    escapeSub: Subscription;
+    public br: string = '0';
+    public escapeSub: Subscription;
 
     constructor(
         @Inject(DOCUMENT) private document: any,
@@ -58,7 +58,7 @@ export class DialogComponent implements OnInit, OnDestroy {
     ) {
     }
 
-    loadComponent(): void {
+    public loadComponent(): void {
         const componentFactory = this.cfResolver.resolveComponentFactory(this.component);
 
         const viewRef = this.modalDirective.viewContainerRef;
@@ -72,18 +72,18 @@ export class DialogComponent implements OnInit, OnDestroy {
         });
     }
 
-    onSuccess(result: any): void {
+    public onSuccess(result: any): void {
         this.closed.next(result);
         this.closed.complete();
     }
 
-    onBackdrop(): void {
+    public onBackdrop(): void {
         if (this.hideOnBackdrop) {
             this.onSuccess(null);
         }
     }
 
-    hideOnRouterEvents(): void {
+    public hideOnRouterEvents(): void {
         const sub = this.router.events.pipe(
             filter(event => event instanceof NavigationStart)
         ).subscribe(() => {
@@ -93,7 +93,7 @@ export class DialogComponent implements OnInit, OnDestroy {
         this.escapeSub ? this.escapeSub.add(sub) : this.escapeSub = sub;
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         if (isPlatformBrowser(this.platformId)) {
             this.state = 'opened';
             if (this.borderRadius > 0) {
@@ -106,7 +106,7 @@ export class DialogComponent implements OnInit, OnDestroy {
         }
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.closed.complete();
         if (this.escapeSub) {
             this.escapeSub.unsubscribe();

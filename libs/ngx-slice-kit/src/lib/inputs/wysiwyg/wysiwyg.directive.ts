@@ -1,11 +1,10 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-    selector: '[libWysiwyg]'
+    selector: '[sdkWysiwyg]'
 })
 export class WysiwygDirective {
 
     constructor() {
     }
-
 }

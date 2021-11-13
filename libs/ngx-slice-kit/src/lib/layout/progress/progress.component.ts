@@ -1,18 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'sdk-progress',
     templateUrl: './progress.component.html',
     styleUrls: ['./progress.component.scss']
 })
-export class ProgressComponent implements OnInit {
+export class ProgressComponent {
 
-    val: number = 0;
-    @Input() small: boolean = false;
-    @Input() max: number = 100;
-    @Input() min: number = 0;
+    public val: number = 0;
+    @Input() public small: boolean = false;
+    @Input() public max: number = 100;
+    @Input() public min: number = 0;
 
-    @Input() set value(val) {
+    @Input() public set value(val) {
         if (val > this.max) {
             this.val = 100;
         } else if (val < this.min) {
@@ -28,16 +28,12 @@ export class ProgressComponent implements OnInit {
         }
     }
 
-    get value(): number {
+    public get value(): number {
         return this.val;
     }
 
-    @Output() progressEnd = new EventEmitter();
+    @Output() public progressEnd = new EventEmitter();
 
     constructor() {
     }
-
-    ngOnInit(): void {
-    }
-
 }

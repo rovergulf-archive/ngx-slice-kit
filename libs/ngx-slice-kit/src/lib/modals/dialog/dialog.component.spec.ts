@@ -255,5 +255,5 @@ describe('DialogComponent', () => {
     `
 })
 class TestComponent {
-    @Output() resultEvent = new EventEmitter();
+    @Output() public resultEvent = new EventEmitter();
 }

@@ -1,11 +1,11 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
     selector: 'app-demo-dialog-preview2',
     templateUrl: './demo-dialog-preview2.component.html',
     styleUrls: ['./demo-dialog-preview2.component.scss']
 })
-export class DemoDialogPreview2Component implements OnInit, OnDestroy {
+export class DemoDialogPreview2Component {
 
     @Output() resultEvent = new EventEmitter();
 
@@ -14,12 +14,6 @@ export class DemoDialogPreview2Component implements OnInit, OnDestroy {
 
     close(result: any): void {
         this.resultEvent.emit(result);
-    }
-
-    ngOnInit(): void {
-    }
-
-    ngOnDestroy(): void {
     }
 
 }

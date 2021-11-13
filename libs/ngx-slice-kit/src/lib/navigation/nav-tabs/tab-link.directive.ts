@@ -4,12 +4,12 @@ import { Directive, HostBinding, Input } from '@angular/core';
     selector: '[sdkTabLink]'
 })
 export class TabLinkDirective {
-    @Input() label: string;
-    @Input() routerLink: string;
-    @Input() disabled: boolean = false;
+    @Input() public label: string;
+    @Input() public routerLink: string;
+    @Input() public disabled: boolean = false;
 
     @HostBinding('class')
-    elementClass = 'sdk-tab-container__tab';
+    public elementClass = 'sdk-tab-container__tab';
 
 
     constructor() {

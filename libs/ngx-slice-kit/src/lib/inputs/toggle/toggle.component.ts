@@ -15,18 +15,26 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class ToggleComponent implements OnInit {
 
-    @HostBinding('class.sdk-switch--on') on: boolean = false;
-    @HostBinding('class.sdk-switch--small') @Input() small: boolean = false;
-    @HostBinding('class.disabled') @Input() disabled: boolean = false;
+    @HostBinding('class.sdk-switch--on')
+    public on: boolean = false;
 
-    @Input() isActive: boolean = false;
+    @HostBinding('class.sdk-switch--small')
+    @Input()
+    public small: boolean = false;
+
+    @HostBinding('class.disabled')
+    @Input()
+    public disabled: boolean = false;
+
+    @Input()
+    public isActive: boolean = false;
 
     constructor() {
     }
 
     @HostListener('click')
     @HostListener('keyup.enter')
-    onclick(): void {
+    public onclick(): void {
         if (this.disabled) {
             return;
         }
@@ -36,25 +44,25 @@ export class ToggleComponent implements OnInit {
         this.onTouched();
     }
 
-    writeValue(value): void {
+    public writeValue(value): void {
         this.on = value;
     }
 
-    onChange(value): void {
+    public onChange(value): void {
     }
 
-    onTouched(): void {
+    public onTouched(): void {
     }
 
-    registerOnChange(fn): void {
+    public registerOnChange(fn): void {
         this.onChange = fn;
     }
 
-    registerOnTouched(fn): void {
+    public registerOnTouched(fn): void {
         this.onTouched = fn;
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.on = this.isActive;
     }
 

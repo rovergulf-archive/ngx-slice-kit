@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Theme, ThemeService } from 'ngx-slice-kit';
 import { ApiDefinition } from '../../model';
 import { baseColors, colors } from '../../../../../libs/ngx-slice-kit/src/lib/core/theme/theme.model';
@@ -10,7 +10,7 @@ import { LayoutService } from '../../services';
     templateUrl: './theme-settings.component.html',
     styleUrls: ['./theme-settings.component.scss']
 })
-export class ThemeSettingsComponent implements OnInit, OnDestroy {
+export class ThemeSettingsComponent {
 
     private $theme: BehaviorSubject<Theme> = new BehaviorSubject<any>(undefined);
 
@@ -71,11 +71,4 @@ export class ThemeSettingsComponent implements OnInit, OnDestroy {
     applyTheme(): void {
         this.themeService.setTheme(this.theme.name);
     }
-
-    ngOnInit(): void {
-    }
-
-    ngOnDestroy(): void {
-    }
-
 }

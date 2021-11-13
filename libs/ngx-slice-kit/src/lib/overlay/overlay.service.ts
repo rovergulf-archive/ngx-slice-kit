@@ -71,7 +71,7 @@ export class OverlayService {
         return result.asObservable();
     }
 
-    escapeListener(): void {
+    private escapeListener(): void {
         if (this.escapeSub && !this.escapeSub.closed) {
             return;
         }
@@ -89,7 +89,7 @@ export class OverlayService {
         });
     }
 
-    onResultKey(emitValue?: any): void {
+    private onResultKey(emitValue?: any): void {
         if (this.refs && this.refs.length) {
             const dialog = this.refs[this.refs.length - 1];
             if (dialog.instance.hideOnEscape) {

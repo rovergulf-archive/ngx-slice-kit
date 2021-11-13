@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ApiDefinition } from '../../model';
 
 type headerLabel = 'Attribute' | 'Method';
@@ -8,7 +8,7 @@ type headerLabel = 'Attribute' | 'Method';
     templateUrl: './api-def-table.component.html',
     styleUrls: ['./api-def-table.component.scss']
 })
-export class ApiDefTableComponent implements OnInit {
+export class ApiDefTableComponent {
 
     @Input() apis: ApiDefinition[];
     @Input() typeVisible: boolean = true;
@@ -17,9 +17,6 @@ export class ApiDefTableComponent implements OnInit {
     @Input() valueVisible: boolean = false;
 
     constructor() {
-    }
-
-    ngOnInit(): void {
     }
 
 }

@@ -5,7 +5,7 @@
          (click)="select(item.value)"
          (keyup.enter)="select(item.value)"
          [tabindex]="tabindex">
-        <div class="sdk-radio__indicator" [class.sdk-radio__indicator--selected]='item.value == value'>
+        <div class="sdk-radio__indicator" [class.sdk-radio__indicator--selected]='item.value === value'>
             <div class="sdk-radio__indicator-inner"></div>
         </div>
         <span class="sdk-radio__text">{{item.name}}</span>

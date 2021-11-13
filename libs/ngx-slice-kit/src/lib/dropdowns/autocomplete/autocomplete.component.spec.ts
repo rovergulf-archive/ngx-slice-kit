@@ -405,7 +405,6 @@ describe('AutocompleteComponent', () => {
             spyOn(component.resultEvent, 'complete');
 
             fixture.detectChanges();
-            component.ngOnInit();
             component.ngOnDestroy();
 
             expect(component.valueChanges.complete).toHaveBeenCalled();

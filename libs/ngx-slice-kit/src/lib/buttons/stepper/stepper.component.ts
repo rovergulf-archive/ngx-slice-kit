@@ -1,16 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'sdk-stepper',
     templateUrl: './stepper.component.html',
     styleUrls: ['./stepper.component.scss']
 })
-export class StepperComponent implements OnInit {
+export class StepperComponent {
 
     constructor() {
     }
-
-    ngOnInit(): void {
-    }
-
 }

@@ -5,7 +5,8 @@ import { LoadingComponent } from './loading.component';
     selector: '[sdkLoading]'
 })
 export class LoadingDirective {
-    @Input() loader: string;
+    @Input()
+    public loader: string;
 
     constructor(
         private vcRef: ViewContainerRef,
@@ -13,13 +14,12 @@ export class LoadingDirective {
     ) {
     }
 
-    @Input('sdkLoading') set ngIf(val: any) {
+    @Input('sdkLoading')
+    public set ngIf(val: any) {
         if (!val) {
             const factory = this.resolver.resolveComponentFactory(LoadingComponent);
 
             this.vcRef.createComponent(factory);
         }
     }
-
-
 }

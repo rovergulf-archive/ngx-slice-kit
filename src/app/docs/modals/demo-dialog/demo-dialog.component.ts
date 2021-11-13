@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlertService, DialogService } from 'ngx-slice-kit';
 
 import { DemoDialogPreviewComponent } from './demo-dialog-preview/demo-dialog-preview.component';
@@ -9,7 +9,7 @@ import { DemoPageModel } from '../../../shared/model';
     templateUrl: './demo-dialog.component.html',
     styleUrls: ['../../demo.module.scss']
 })
-export class DemoDialogComponent implements OnInit, OnDestroy {
+export class DemoDialogComponent implements OnInit {
 
     @ViewChild('defaultRef', {static: true}) defaultRef: any;
 
@@ -182,9 +182,6 @@ export class DemoDialogComponent {
                 },
             ],
         };
-    }
-
-    ngOnDestroy(): void {
     }
 
 }

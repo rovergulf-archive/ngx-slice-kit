@@ -66,5 +66,5 @@ describe('NavigationScrollDirective', () => {
 });
 
 class MockElementRef implements ElementRef {
-    nativeElement = {};
+    public nativeElement = {};
 }

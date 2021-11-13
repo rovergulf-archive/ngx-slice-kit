@@ -86,7 +86,7 @@ export class DialogService {
         return result.asObservable();
     }
 
-    escapeListener(): void {
+    public escapeListener(): void {
         if (this.escapeSub && !this.escapeSub.closed) {
             return;
         }
@@ -100,7 +100,7 @@ export class DialogService {
         });
     }
 
-    onEscape(): void {
+    public onEscape(): void {
         if (this.refs && this.refs.length) {
             const dialog = this.refs[this.refs.length - 1];
             if (dialog.instance?.hideOnEscape) {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -13,26 +13,23 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
         ])
     ]
 })
-export class PopupComponent implements OnInit, OnDestroy {
+export class PopupComponent implements OnDestroy {
 
-    @Input() id: number = 1000;
-    @Input() title;
-    @Input() message;
-    @Input() ok = 'Ok';
-    @Input() cancel = 'Cancel';
-    @Output() closed = new EventEmitter();
+    @Input() public id: number = 1000;
+    @Input() public title;
+    @Input() public message;
+    @Input() public ok = 'Ok';
+    @Input() public cancel = 'Cancel';
+    @Output() public closed = new EventEmitter();
 
-    onSuccess(bool: boolean): void {
+    public onSuccess(bool: boolean): void {
         this.closed.emit(bool);
     }
 
     constructor() {
     }
 
-    ngOnInit(): void {
-    }
-
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.closed.complete();
     }
 

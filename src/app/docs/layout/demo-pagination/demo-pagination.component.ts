@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DemoPageModel } from '../../../shared/model';
 import { AlertService } from '../../../../../libs/ngx-slice-kit/src/lib/modals/alert/alert.service';
 
@@ -7,7 +7,7 @@ import { AlertService } from '../../../../../libs/ngx-slice-kit/src/lib/modals/a
     templateUrl: './demo-pagination.component.html',
     styleUrls: ['../../demo.module.scss']
 })
-export class DemoPaginationComponent implements OnInit, OnDestroy {
+export class DemoPaginationComponent implements OnInit {
 
     @ViewChild('defaultRef', {static: true}) defaultRef: any;
     @ViewChild('smallRef', {static: true}) smallRef: any;
@@ -128,9 +128,6 @@ export class DemoPaginationComponent {
                 }
             ],
         };
-    }
-
-    ngOnDestroy(): void {
     }
 
 }

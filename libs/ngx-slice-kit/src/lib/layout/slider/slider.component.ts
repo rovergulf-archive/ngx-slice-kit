@@ -19,44 +19,44 @@ import {Subscription} from 'rxjs';
 })
 export class SliderComponent implements OnInit, AfterViewInit {
 
-    @ViewChild('thumb', {static: true}) thumb: ElementRef;
-    @ViewChild('addThumb', {static: false}) addThumb: ElementRef;
-    @ViewChild('thumbMultiple', {static: false}) thumbMultiple: ElementRef;
-    @ViewChild('track', {static: true}) track: ElementRef;
+    @ViewChild('thumb', {static: true}) public thumb: ElementRef;
+    @ViewChild('addThumb', {static: false}) public addThumb: ElementRef;
+    @ViewChild('thumbMultiple', {static: false}) public thumbMultiple: ElementRef;
+    @ViewChild('track', {static: true}) public track: ElementRef;
 
-    @Input() max: number = 100;
-    @Input() min: number = 0;
-    @Input() step: number = 1;
-    @Input() color: string = 'var(--primary)';
-    @Input() value: any;
-    @Input() disabled: boolean = false;
-    @Input() multiple: boolean = false;
-    @Input() small: boolean = false;
+    @Input() public max: number = 100;
+    @Input() public min: number = 0;
+    @Input() public step: number = 1;
+    @Input() public color: string = 'var(--primary)';
+    @Input() public value: any;
+    @Input() public disabled: boolean = false;
+    @Input() public multiple: boolean = false;
+    @Input() public small: boolean = false;
 
-    isDrag: boolean = false;
-    isMultipleDrag: boolean = false;
-    trackRects: ClientRect;
-    thumbCoords: number;
-    multiThumbCoords: number;
+    public isDrag: boolean = false;
+    public isMultipleDrag: boolean = false;
+    public trackRects: ClientRect;
+    public thumbCoords: number;
+    public multiThumbCoords: number;
 
-    interValue: number = 0;
-    gradientSize: number;
-    gradientLeftOffset: number;
-    subscription: Subscription = new Subscription();
+    public interValue: number = 0;
+    public gradientSize: number;
+    public gradientLeftOffset: number;
+    public subscription: Subscription = new Subscription();
 
-    thumbSize: number;
-    thumbClickOffset: number;
-    multiThumbClickOffset: number;
+    public thumbSize: number;
+    public thumbClickOffset: number;
+    public multiThumbClickOffset: number;
 
-    @Output() changed = new EventEmitter();
-    @Output() moved = new EventEmitter();
+    @Output() public changed = new EventEmitter();
+    @Output() public moved = new EventEmitter();
 
     constructor(
         private renderer: Renderer2,
     ) {
     }
 
-    grab(prop, event): void {
+    public grab(prop, event): void {
         this[prop] = true;
         if (prop === 'isDrag') {
             this.thumbClickOffset = event.layerX;
@@ -67,13 +67,13 @@ export class SliderComponent implements OnInit, AfterViewInit {
     }
 
     @HostListener('document:pointerup')
-    drop(): void {
+    public drop(): void {
         this.isDrag = false;
         this.isMultipleDrag = false;
     }
 
     @HostListener('document:pointermove', ['$event'])
-    pointerMove(e: PointerEvent): void {
+    public pointerMove(e: PointerEvent): void {
         if (this.isDrag) {
             this.thumbCoords = this.getCoords(e.clientX - this.thumbClickOffset);
             if (this.thumbCoords < this.multiThumbCoords + (this.thumbSize / this.trackRects.width * 100)) {
@@ -102,7 +102,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
         }
     }
 
-    getCoords(mouseX: number): number {
+    public getCoords(mouseX: number): number {
         this.trackRects = this.track.nativeElement.getBoundingClientRect();
         if (mouseX < this.trackRects.left) {
             mouseX = this.trackRects.left;
@@ -117,7 +117,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
         return (mouseX - this.trackRects.left) / this.trackRects.width * 100;
     }
 
-    moveThumb(e: MouseEvent): void {
+    public moveThumb(e: MouseEvent): void {
         const target: HTMLElement = e.target as HTMLElement;
 
         if (target.classList.contains('sdk-slider__thumb')) {
@@ -156,7 +156,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
         this.moved.emit();
     }
 
-    setGradient(thumbCoords: number, fromLeft?: boolean): void {
+    public setGradient(thumbCoords: number, fromLeft?: boolean): void {
         if (fromLeft) {
             this.gradientLeftOffset = thumbCoords;
         } else {
@@ -164,7 +164,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
         }
     }
 
-    selectTargetBlock(
+    public selectTargetBlock(
         clickCoords: number,
         firstThumb: { thumb: ElementRef, coords: number, position: string },
         secThumb: { thumb: ElementRef, coords: number, position: string }
@@ -172,7 +172,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
         return Math.abs(clickCoords - firstThumb.coords) < Math.abs(clickCoords - secThumb.coords) ? firstThumb : secThumb;
     }
 
-    calcValue(thumbCoords: number, rangeSide?: 'min' | 'max'): void {
+    public calcValue(thumbCoords: number, rangeSide?: 'min' | 'max'): void {
         const diff = this.max - this.min;
 
         this.interValue = Math.round(diff / 100 * thumbCoords);
@@ -181,7 +181,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
         this.setValue(newValue, rangeSide);
     }
 
-    setValue(newValue: number, rangeSide?: 'max' | 'min'): void {
+    public setValue(newValue: number, rangeSide?: 'max' | 'min'): void {
         if (this.multiple) {
             if (rangeSide === 'max') {
                 if (this.value.max !== newValue) {
@@ -203,7 +203,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
         }
     }
 
-    setInitialThumbCoords(): void {
+    public setInitialThumbCoords(): void {
         this.trackRects = this.track.nativeElement.getBoundingClientRect();
         // const padding = this.thumbSize;
         const diff = this.max - this.min;
@@ -224,7 +224,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
         this.renderer.setStyle(this.thumb.nativeElement, 'left', valuePercent + '%');
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.trackRects = this.track.nativeElement.getBoundingClientRect();
         this.thumbSize = this.multiple ? 12 : this.small ? 24 : 32;
 
@@ -255,7 +255,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
         }
     }
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.thumbCoords = this.getCoords(this.thumb.nativeElement.getBoundingClientRect().left + this.thumbSize);
         if (this.multiple) {
             this.multiThumbCoords = this.getCoords(this.thumbMultiple.nativeElement.getBoundingClientRect().left);

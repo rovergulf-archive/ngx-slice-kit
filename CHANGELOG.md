@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v1.0.0
 
-## 5 Nov 2021
+## 13Nov 2021
 
 ### Added
 
@@ -18,6 +18,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## Released [v0.12.0]
+
+## 12 Nov 2021
+
+### Breaking
+- `sdk-theme` attribute now is `sdkTheme`
+
+### Changed
+- Updated radio, input, select offset styles.
+- Few tests changed.
+
 
 ## 4 Nov 2021
 

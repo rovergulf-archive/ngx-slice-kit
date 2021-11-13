@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Theme, ThemeService } from 'ngx-slice-kit';
 import { ApiDefinition } from '../../shared/model';
 import { LayoutService } from '../../shared/services';
@@ -11,7 +11,7 @@ import { defaultColors } from '../../../../libs/ngx-slice-kit/src/lib/core/theme
     templateUrl: './theming.component.html',
     styleUrls: ['./theming.component.scss', '../guides.module.scss']
 })
-export class ThemingComponent implements OnInit, OnDestroy {
+export class ThemingComponent implements OnInit {
 
     coreStylesExample = `@import '~ngx-slice-kit/src/lib/core/styles/core';`;
     angularJson = angularJsonExampleRef;
@@ -31,9 +31,6 @@ export class ThemingComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.themes = this.themeService.themes;
-    }
-
-    ngOnDestroy(): void {
     }
 
 }

@@ -5,20 +5,16 @@ import { Component, Input, OnInit } from '@angular/core';
     templateUrl: './tab.component.html',
     styleUrls: ['./tab.component.scss']
 })
-export class TabComponent implements OnInit {
+export class TabComponent {
 
-    @Input() index: number;
-    @Input() label: string;
-    @Input() icon: string;
-    @Input() slideDirection: string = '';
-    @Input() active: boolean = false;
-    @Input() hiding: boolean = false;
-    @Input() disabled: boolean = false;
+    @Input() public index: number;
+    @Input() public label: string;
+    @Input() public icon: string;
+    @Input() public slideDirection: string = '';
+    @Input() public active: boolean = false;
+    @Input() public hiding: boolean = false;
+    @Input() public disabled: boolean = false;
 
     constructor() {
     }
-
-    ngOnInit(): void {
-    }
-
 }

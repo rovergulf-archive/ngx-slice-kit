@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { fromEvent, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -15,7 +15,7 @@ const THEME_NAME = 'slice-theme';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
 
     sub: Subscription;
     @ViewChild('wrap', {static: true}) container;
@@ -68,8 +68,4 @@ export class AppComponent implements OnInit, OnDestroy {
             this.sub.add(routerSub);
         }
     }
-
-    ngOnDestroy(): void {
-    }
-
 }

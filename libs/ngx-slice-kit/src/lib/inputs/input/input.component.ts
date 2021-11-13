@@ -1,5 +1,5 @@
 import {
-    AfterContentInit, AfterViewInit,
+    AfterContentInit,
     Component,
     ElementRef,
     EventEmitter,
@@ -29,43 +29,45 @@ import { LayoutControlService } from '../../core/layout-control/layout-control.s
     ],
     encapsulation: ViewEncapsulation.None,
 })
-export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, AfterContentInit, AfterViewInit {
+export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, AfterContentInit {
     private req: boolean = false;
 
-    @Input() set required(val: any) {
+    @Input() public set required(val: any) {
         this.req = val === '' || val === true;
     }
 
-    get required(): any {
+    public get required(): any {
         return this.req;
     }
 
-    @Input() type: string = 'text';
-    @Input() autocomplete: string = 'off';
-    @Input() placeholder: string = '';
-    @Input() tabindex: number = undefined;
+    @Input() public type: string = 'text';
+    @Input() public autocomplete: string = 'off';
+    @Input() public placeholder: string = '';
+    @Input() public tabindex: number = undefined;
     // @Input() valueMask: string = undefined;
-    @Input() autofocus: boolean = false;
-    @Input() min: number;
-    @Input() max: number;
-    @Input() icon: string;
-    @Input() iconPosition: 'right' | 'left' = 'left';
-    @Input() small: boolean = false;
-    @Input() size: 'wide' | 'full-width';
-    @Input() caption: string;
-    @Input() label: string;
+    @Input() public autofocus: boolean = false;
+    @Input() public min: number;
+    @Input() public max: number;
+    @Input() public icon: string;
+    @Input() public iconPosition: 'right' | 'left' = 'left';
+    @Input() public small: boolean = false;
+    @Input() public size: 'wide' | 'full-width';
+    @Input() public caption: string;
+    @Input() public label: string;
 
-    @Input() @HostBinding('class.sdk-input--warn') error: string = undefined;
-    @Input() @HostBinding('class.disabled') disabled: boolean = false;
+    @Input() @HostBinding('class.sdk-input--warn')
+    public error: string = undefined;
+    @Input() @HostBinding('class.disabled')
+    public disabled: boolean = false;
 
-    @Output() focusEvent: EventEmitter<any> = new EventEmitter();
-    @Output() blurEvent: EventEmitter<any> = new EventEmitter();
+    @Output() public focusEvent: EventEmitter<any> = new EventEmitter();
+    @Output() public blurEvent: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild('input', {static: true}) inputElementRef: ElementRef;
-    value: any = undefined;
-    focused: boolean = false;
+    @ViewChild('input', {static: true}) public inputElementRef: ElementRef;
+    public value: any = undefined;
+    public focused: boolean = false;
 
-    inputId: string = this.layoutControlService.generateLayoutElementHash();
+    public inputId: string = this.layoutControlService.generateLayoutElementHash();
 
     constructor(
         private layoutControlService: LayoutControlService,
@@ -75,11 +77,11 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
     ) {
     }
 
-    get iconPositionClass(): string {
+    public get iconPositionClass(): string {
         return this.icon ? `sdk-input__input--icon-${this.iconPosition}` : '';
     }
 
-    emitFocus(): void {
+    public emitFocus(): void {
         const event = {
             target: this.elementRef.nativeElement,
             eventName: 'focus',
@@ -89,7 +91,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
         this.focusEvent.emit(event);
     }
 
-    emitBlur(): void {
+    public emitBlur(): void {
         const event = {
             target: this.elementRef.nativeElement,
             eventName: 'blur',
@@ -99,32 +101,32 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
         this.blurEvent.emit(event);
     }
 
-    get iconUrl(): string {
+    public get iconUrl(): string {
         return this.icon ? `url(${this.icon})` : '';
     }
 
-    focus(): void {
+    public focus(): void {
         this.focused = true;
         this.inputElementRef.nativeElement.focus();
     }
 
-    blur(): void {
+    public blur(): void {
         this.focused = false;
         this.inputElementRef.nativeElement.blur();
     }
 
-    change(target): void {
+    public change(target): void {
         this.writeValue(target.value);
         this.onTouched();
     }
 
-    onChange(value): void {
+    public onChange(value): void {
     }
 
-    onTouched(): void {
+    public onTouched(): void {
     }
 
-    writeValue(value: any): void {
+    public writeValue(value: any): void {
         if (this.type === 'number') {
             if (value < this.min) {
                 value = this.min;
@@ -136,41 +138,38 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy, 
         this.onChange(this.value);
     }
 
-    registerOnChange(fn): void {
+    public registerOnChange(fn): void {
         this.onChange = fn;
     }
 
-    registerOnTouched(fn): void {
+    public registerOnTouched(fn): void {
         this.onTouched = fn;
     }
 
-    setDisabledState?(isDisabled: boolean): void {
+    public setDisabledState?(isDisabled: boolean): void {
         this.disabled = isDisabled;
     }
 
     private setSizeClass(): void {
         const availableSizeClasses = ['wide', 'full-width'];
         if (availableSizeClasses.includes(this.size)) {
-            this.renderer.addClass(this.inputElementRef.nativeElement.parentElement, `sdk-input-wrap--${this.size}`);
+            this.renderer.addClass(this.elementRef.nativeElement, `sdk-input--${this.size}`);
         }
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         if (!!this.size) {
             this.setSizeClass();
         }
     }
 
-    ngAfterContentInit(): void {
+    public ngAfterContentInit(): void {
         if (this.autofocus && !this.disabled) {
             this.inputElementRef.nativeElement.focus();
         }
     }
 
-    ngAfterViewInit(): void {
-    }
-
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.focusEvent.complete();
         this.blurEvent.complete();
     }

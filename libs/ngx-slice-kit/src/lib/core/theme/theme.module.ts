@@ -12,7 +12,7 @@ import { themeDark } from './lib/theme-dark';
     exports: [ThemeDirective]
 })
 export class ThemeModule {
-    static forRoot(options?: ThemeOptions): ModuleWithProviders<ThemeModule> {
+    public static forRoot(options?: ThemeOptions): ModuleWithProviders<ThemeModule> {
         return {
             ngModule: ThemeModule,
             providers: [

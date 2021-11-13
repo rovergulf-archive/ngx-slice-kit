@@ -68,7 +68,6 @@ describe('DropdownMenuTriggerDirective', () => {
         spyOn(directive.resultEvent, 'complete');
 
         fixture.detectChanges();
-        directive.ngOnInit();
         directive.ngOnDestroy();
 
         expect(directive.closed.complete).toHaveBeenCalled();
@@ -144,19 +143,19 @@ describe('DropdownMenuTriggerDirective', () => {
            (resultEvent)="firstResult($event)">Choose game: {{result1}}</p>>`
 })
 class TestComponent {
-    result1: any = '';
-    options1: OptionModel[] = options;
+    public result1: any = '';
+    public options1: OptionModel[] = options;
 
     constructor() {
     }
 
-    openHandler(): void {
+    public openHandler(): void {
     }
 
-    closedHandler(): void {
+    public closedHandler(): void {
     }
 
-    firstResult(ev: any): void {
+    public firstResult(ev: any): void {
         this.result1 = ev.label;
     }
 }

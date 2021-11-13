@@ -28,10 +28,10 @@ import { filter } from 'rxjs/operators';
 })
 export class NavMenuGroupComponent implements OnInit, AfterContentInit {
 
-    @Input() label: string;
-    @Input() isOpen: boolean = false;
-    isActive: boolean = false;
-    deepLvl: number = 1;
+    @Input() public label: string;
+    @Input() public isOpen: boolean = false;
+    public isActive: boolean = false;
+    public deepLvl: number = 1;
 
     constructor(
         private router: Router,
@@ -39,11 +39,11 @@ export class NavMenuGroupComponent implements OnInit, AfterContentInit {
     ) {
     }
 
-    toggle(): void {
+    public toggle(): void {
         this.isOpen = !this.isOpen;
     }
 
-    checkIsActive(src: string): void {
+    public checkIsActive(src: string): void {
         const i = src.indexOf('?');
         const search = i > 0 ? src.substring(0, i) : src;
         const elements = this.el.nativeElement.querySelectorAll(`[href]`);
@@ -60,11 +60,11 @@ export class NavMenuGroupComponent implements OnInit, AfterContentInit {
         this.isOpen = this.isOpen || this.isActive;
     }
 
-    getIconColor(): string {
+    public getIconColor(): string {
         return this.isActive ? 'var(--primary)' : 'var(--base)';
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((e: RouterEvent) => {
             // oh i'm not really sure if it is a good way
             // but it is the only and simplest I can afford today -_-
@@ -73,7 +73,7 @@ export class NavMenuGroupComponent implements OnInit, AfterContentInit {
         });
     }
 
-    ngAfterContentInit(): void {
+    public ngAfterContentInit(): void {
         let parent = this.el.nativeElement.parentElement.closest('sdk-nav-menu-group');
         while (parent) {
             this.deepLvl++;

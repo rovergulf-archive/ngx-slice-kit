@@ -34,40 +34,42 @@ import { OptionsService } from '../options.service';
 export class SelectComponent implements ControlValueAccessor, OnInit, OnDestroy {
     private req: boolean;
 
-    @Input() set required(val: any) {
+    @Input() public set required(val: any) {
         this.req = val === '' || val === true;
     }
 
-    get required(): any {
+    public get required(): any {
         return this.req;
     }
 
-    @ViewChild('select', {static: true}) selectElem: ElementRef;
+    @ViewChild('select', {static: true}) public selectElem: ElementRef;
 
-    @Input() options: OptionModel[] = [];
-    @Input() label = '';
-    @Input() placeholder = '';
-    @Input() disabled: boolean;
-    @Input() small: boolean = false;
-    @Input() multi: boolean = false;
-    @Input() enableNullValue: boolean = false;
-    @Input() icon: string;
-    @Input() caption: string = '';
+    @Input() public options: OptionModel[] = [];
+    @Input() public label = '';
+    @Input() public placeholder = '';
+    @Input() public disabled: boolean;
+    @Input() public small: boolean = false;
+    @Input() public multi: boolean = false;
+    @Input() public enableNullValue: boolean = false;
+    @Input() public icon: string;
+    @Input() public caption: string = '';
 
-    @Output() focusEvent: EventEmitter<any> = new EventEmitter();
-    @Output() blurEvent: EventEmitter<any> = new EventEmitter();
-    @Output() resultEvent: EventEmitter<any> = new EventEmitter();
+    @Output() public focusEvent: EventEmitter<any> = new EventEmitter();
+    @Output() public blurEvent: EventEmitter<any> = new EventEmitter();
+    @Output() public resultEvent: EventEmitter<any> = new EventEmitter();
 
-    @Input() @HostBinding('class.invalid') error: string = undefined;
+    @Input() @HostBinding('class.invalid')
+    public error: string = undefined;
 
-    @Input() @HostBinding('class.disabled') get isDisabled(): boolean {
+    @Input() @HostBinding('class.disabled')
+    public get isDisabled(): boolean {
         return this.disabled;
     }
 
-    isOpen: boolean;
-    focused: boolean;
-    currentValue: OptionModel;
-    currentValues: Set<OptionModel>;
+    public isOpen: boolean;
+    public focused: boolean;
+    public currentValue: OptionModel;
+    public currentValues: Set<OptionModel>;
 
     constructor(
         @Inject(DOCUMENT) private document: any,
@@ -77,46 +79,46 @@ export class SelectComponent implements ControlValueAccessor, OnInit, OnDestroy 
     ) {
     }
 
-    getOptions(): OptionModel[] {
+    public getOptions(): OptionModel[] {
         return [...this.options].map(o => {
             o.selected = this.multi ? this.currentValues?.has(o) : this.currentValue === o;
             return o;
         });
     }
 
-    isInactive(): boolean {
+    public isInactive(): boolean {
         return this.multi ? !this.currentValues?.size : !this.currentValue;
     }
 
-    hasValuesToDrop(): boolean {
+    public hasValuesToDrop(): boolean {
         return this.enableNullValue && !this.isInactive();
     }
 
-    onOpen(ev?): void {
+    public onOpen(ev?): void {
         this.isOpen = true;
         this.emitFocus();
     }
 
-    onClose(ev?): void {
+    public onClose(ev?): void {
         this.isOpen = false;
         this.emitBlur();
     }
 
-    emitBlur(): void {
+    public emitBlur(): void {
         if (this.focused) {
             this.focused = false;
             this.blurEvent.emit();
         }
     }
 
-    emitFocus(): void {
+    public emitFocus(): void {
         if (!this.focused) {
             this.focused = true;
             this.focusEvent.emit();
         }
     }
 
-    selected(): string {
+    public selected(): string {
         if (this.multi) {
             const selectedOptions = [];
             this.currentValues?.forEach(o => {
@@ -128,7 +130,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit, OnDestroy 
         }
     }
 
-    onResult(option: OptionModel): void {
+    public onResult(option: OptionModel): void {
         this.onTouched();
         if (this.multi) {
             this.addValue(option);
@@ -137,7 +139,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit, OnDestroy 
         }
     }
 
-    writeValue(val): void {
+    public writeValue(val): void {
         if (val?.size > 0) {
             this.currentValues = val;
             const multipleResult = this.options.filter(o => this.currentValues.has(o));
@@ -150,38 +152,38 @@ export class SelectComponent implements ControlValueAccessor, OnInit, OnDestroy 
         }
     }
 
-    addValue(o: OptionModel): void {
+    public addValue(o: OptionModel): void {
         const alreadySelected = this.currentValues.has(o);
         o.selected = !alreadySelected;
         alreadySelected ? this.currentValues.delete(o) : this.currentValues.add(o);
         this.writeValue(this.currentValues);
     }
 
-    clearValue(e): void {
+    public clearValue(e): void {
         e.stopPropagation();
         this.multi ? this.currentValues?.clear() : this.currentValue = undefined;
         this.writeValue(undefined);
     }
 
-    onChange(value): void {
+    public onChange(value): void {
     }
 
-    onTouched(): void {
+    public onTouched(): void {
     }
 
-    registerOnChange(fn: any): void {
+    public registerOnChange(fn: any): void {
         this.onChange = fn;
     }
 
-    registerOnTouched(fn: any): void {
+    public registerOnTouched(fn: any): void {
         this.onTouched = fn;
     }
 
-    setDisabledState?(isDisabled: boolean): void {
+    public setDisabledState?(isDisabled: boolean): void {
         this.disabled = isDisabled;
     }
 
-    showDropdown(): void {
+    public showDropdown(): void {
         if (isPlatformServer(this.platformId)) {
             return;
         }
@@ -208,17 +210,16 @@ export class SelectComponent implements ControlValueAccessor, OnInit, OnDestroy 
         });
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         if (this.multi) {
             this.enableNullValue = true;
             this.currentValues = new Set<OptionModel>();
         }
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.blurEvent.complete();
         this.focusEvent.complete();
         this.resultEvent.complete();
     }
-
 }

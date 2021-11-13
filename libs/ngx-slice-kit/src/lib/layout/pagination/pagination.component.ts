@@ -7,21 +7,21 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class PaginationComponent implements OnInit {
 
-    @Input() page: number;
-    @Input() count: number;
-    @Input() limit: number;
-    @Input() small: boolean;
+    @Input() public page: number;
+    @Input() public count: number;
+    @Input() public limit: number;
+    @Input() public small: boolean;
 
-    @Output() changed = new EventEmitter();
+    @Output() public changed = new EventEmitter();
 
-    rightArrowHovered: boolean = false;
-    leftArrowHovered: boolean = false;
-    pageCount: number;
+    public rightArrowHovered: boolean = false;
+    public leftArrowHovered: boolean = false;
+    public pageCount: number;
 
     constructor() {
     }
 
-    pageChange(page): void {
+    public pageChange(page): void {
         if (this.page === page) {
             return;
         }
@@ -31,7 +31,7 @@ export class PaginationComponent implements OnInit {
         this.changed.emit(page);
     }
 
-    createPageArray(): Page[] {
+    public createPageArray(): Page[] {
         switch (this.page) {
             case 1:
                 return [
@@ -98,11 +98,11 @@ export class PaginationComponent implements OnInit {
         }
     }
 
-    getPageCount(): number {
+    public getPageCount(): number {
         return Math.ceil(this.count / this.limit);
     }
 
-    getPages(): Page[] {
+    public getPages(): Page[] {
         let pages = [];
         const pageCount = this.getPageCount();
         if (pageCount > 5) {
@@ -116,7 +116,7 @@ export class PaginationComponent implements OnInit {
         return pages;
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.pageCount = this.getPageCount();
     }
 }

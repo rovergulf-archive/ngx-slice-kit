@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { SidenavService } from './sidenav.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
@@ -23,9 +23,9 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
         ]),
     ]
 })
-export class SidenavContentComponent implements OnInit, OnDestroy {
+export class SidenavContentComponent {
 
-    @HostBinding('@state') get state(): any {
+    @HostBinding('@state')public  get state(): any {
         return {
             value: this.sidenavService.openedState,
             params: {
@@ -34,17 +34,11 @@ export class SidenavContentComponent implements OnInit, OnDestroy {
         };
     }
 
-    get marginLeft(): number {
+    public get marginLeft(): number {
         return this.sidenavService.options.mode === 'over' ? 0 : this.sidenavService.options.width;
     }
 
     constructor(
         public sidenavService: SidenavService
     ) { }
-
-    ngOnInit(): void {
-    }
-
-    ngOnDestroy(): void {
-    }
 }

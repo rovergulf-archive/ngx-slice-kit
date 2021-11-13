@@ -10,7 +10,7 @@ import { DOCUMENT, isPlatformServer } from '@angular/common';
 export class PopupService {
 
     private keyupSub: Subscription;
-    opened: boolean = false;
+    public opened: boolean = false;
 
     constructor(
         @Inject(DOCUMENT) private document: any,
@@ -21,7 +21,7 @@ export class PopupService {
     ) {
     }
 
-    showPopup(options: PopupInterface = {}): Observable<boolean> {
+    public showPopup(options: PopupInterface = {}): Observable<boolean> {
         if (isPlatformServer(this.platformId)) {
             return;
         }
