@@ -12,7 +12,7 @@ source ./scripts/util.sh
 rm -rf dist/ngx-slice-kit 2>&1
 
 log_info "[$(date)] start building ngx-slice-kit"
-ng build ngx-slice-kit --prod || exit 3
+ng build ngx-slice-kit --configuration production || exit 3
 mkdir -p dist/ngx-slice-kit/lib/core/styles
 mkdir -p dist/ngx-slice-kit/schematics
 cp -a libs/ngx-slice-kit/src/lib/core/styles/. dist/ngx-slice-kit/lib/core/styles || exit 4
