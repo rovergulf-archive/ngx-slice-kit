@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v1.0.0
 
-## 14Nov 2021
+## 14 Nov 2021
 
 ### Added
 
@@ -19,7 +19,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Released [v0.12.0]
 
-## 13Nov 2021
+## 13 Nov 2021
+
+### Changed
+- SCSS `/` operator was replaced by `math.div`
+
+
+## Released [v0.12.0-next]
+
+## 13 Nov 2021
 
 ### Changed
 - SCSS `/` operator was replaced by `math.div`
@@ -532,7 +540,8 @@ Fix scroll issue in `tabs` component
 
 [Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.12.0...main
 [v1.0.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.12.0...v1.0.0
-[v0.12.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.11.0...v0.12.0
+[v0.12.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.12.0-next...v0.12.0
+[v0.12.0-next]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.11.0...v0.12.0-next
 [v0.11.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.10.0...v0.11.0
 [v0.10.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.7...v0.10.0
 [v0.9.7]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.9.6...v0.9.7
