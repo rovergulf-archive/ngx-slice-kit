@@ -130,14 +130,14 @@ export class DemoProgressComponent {
     }
 
     valueChange(n: number): void {
-        if (this.value + n < 0) {
+        if (this.value + n < 0 || this.value + n > 100) {
             return;
         }
         this.value += n;
     }
 
     smallValueChange(n: number): void {
-        if (this.smallValue + n < 0) {
+        if (this.smallValue + n < 0 || this.smallValue + n > 100) {
             return;
         }
         this.smallValue += n;
