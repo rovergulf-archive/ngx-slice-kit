@@ -9,7 +9,7 @@
         "@angular/cdk": "^13.0.0"
     },
     "ng-add": {
-        "save": "devDependencies"
+        "save": "dependencies"
     },
     "license": "MIT",
     "homepage": "https://github.com/rovergulf/ngx-slice-kit",
