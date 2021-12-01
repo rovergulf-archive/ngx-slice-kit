@@ -6,11 +6,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v1.0.0
 
-## 14 Nov 2021
+## 2 Dec 2021
 
 ### Added
 
 ### Changed
+
+### Fixed
+
+### Removed
+
+
+## 1 Dec 2021
+
+### Added
+
+### Changed
+- Update dependencies
 
 ### Fixed
 
@@ -26,12 +38,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## Released [v0.12.0-next]
-
-## 13 Nov 2021
-
-### Changed
-- SCSS `/` operator was replaced by `math.div`
-
 
 ## 12 Nov 2021
 
