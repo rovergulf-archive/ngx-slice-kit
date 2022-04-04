@@ -77,7 +77,7 @@
     "ng-packagr": "^13.0.2",
     "ngx-cookie": "^5.0.2",
     "ngx-cookie-backend": "^5.0.2",
-    "ngx-highlightjs": "^5.0.0",
+    "ngx-highlightjs": "^6.1.2",
     "prom-client": "^14.0.0",
     "protractor": "~7.0.0",
     "ts-node": "~10.4.0",
