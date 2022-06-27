@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { HexToRgb, RgbaToHex, Theme, ThemeService } from 'ngx-slice-kit';
 import { defaultColors } from '../../../../../libs/ngx-slice-kit/src/lib/core/theme/theme.model';
 import { BehaviorSubject } from 'rxjs';
@@ -27,11 +27,11 @@ export class GenThemeComponent implements OnInit, OnDestroy {
     @Output() changes: EventEmitter<any> = new EventEmitter<any>();
     @Output() apply: EventEmitter<any> = new EventEmitter<any>();
 
-    form: FormGroup;
+    form: UntypedFormGroup;
     private ifChangesNotEmitted: boolean = true;
 
     constructor(
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
         private themeService: ThemeService,
     ) {
     }
