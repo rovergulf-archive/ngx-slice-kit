@@ -543,7 +543,7 @@ Fix scroll issue in `tabs` component
 - updated Angular `core` and `cli` versions up to latest 11.1+ closes #3
 
 
-[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.12.0...main
+[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.13.0...main
 [v1.0.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.13.0...v1.0.0
 [v0.13.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.12.0...v0.13.0
 [v0.12.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.12.0-next...v0.12.0
