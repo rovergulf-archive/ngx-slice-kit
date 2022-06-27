@@ -9,10 +9,11 @@ set -e
 source ./scripts/util.sh
 
 VERSION=$(cat package.json | grep version | awk '{print $2}' | tr -d \"\,)
+REGISTRY_IMAGE=ghcr.io/rovergulf/ngx-slice-kit
 
-log_info "[$(date +%T)] start deploying ${REGISTRY_IMAGE} image"
+log_info "[$(date +%T)] start deploying ${REGISTRY_IMAGE}:${VERSION} image"
 docker build --no-cache -t $REGISTRY_IMAGE:$VERSION -t $REGISTRY_IMAGE:latest . --file=Dockerfile || exit 2
 log_info "[$(date +%T)] Image ${REGISTRY_IMAGE} has built. deploying:"
 docker push $REGISTRY_IMAGE:$VERSION || exit 3
 docker push $REGISTRY_IMAGE:latest || exit 4
-log_success "[$(date +%T)] deploying registry image completed. Run started at [${RUN_START}]"
+log_success "[$(date +%T)] deploying registry image (${REGISTRY_IMAGE}:${VERSION}) completed. Run started at [${RUN_START}]"

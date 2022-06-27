@@ -6,8 +6,8 @@ RUN npm install -g @angular/cli
 WORKDIR /app
 ADD . /app
 RUN npm install
-RUN ng build ngx-slice-kit --configuration production
-RUN npm run build:ssr --configuration production
+RUN npm run build:kit
+RUN npm run build:ssr
 
 FROM node:alpine
 
