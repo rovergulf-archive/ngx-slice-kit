@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] v1.0.0
 
-## 2 Dec 2021
+## 28 Jun 2022
 
 ### Added
 
@@ -16,17 +16,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## Released [v0.13.0]
 
-## 1 Dec 2021
-
-### Added
+## 27 Jun 2022
 
 ### Changed
 - Update dependencies
 
-### Fixed
 
-### Removed
+## 1 Dec 2021
+
+### Changed
+- Update dependencies
 
 
 ## Released [v0.12.0]
@@ -544,8 +545,9 @@ Fix scroll issue in `tabs` component
 - updated Angular `core` and `cli` versions up to latest 11.1+ closes #3
 
 
-[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.12.0...main
-[v1.0.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.12.0...v1.0.0
+[Unreleased]: https://github.com/rovergulf/ngx-slice-kit/v0.13.0...main
+[v1.0.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.13.0...v1.0.0
+[v0.13.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.12.0...v0.13.0
 [v0.12.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.12.0-next...v0.12.0
 [v0.12.0-next]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.11.0...v0.12.0-next
 [v0.11.0]: https://github.com/rovergulf/ngx-slice-kit/compare/v0.10.0...v0.11.0
