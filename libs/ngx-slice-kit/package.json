@@ -1,6 +1,6 @@
 {
     "name": "ngx-slice-kit",
-    "version": "0.13.0",
+    "version": "0.14.0",
     "schematics": "./schematics/collection.json",
     "peerDependencies": {
         "@angular/common": "^14.0.0",

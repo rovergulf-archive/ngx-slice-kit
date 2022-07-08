@@ -1,6 +1,6 @@
 {
   "name": "slice-kit",
-  "version": "v0.13.0",
+  "version": "v0.14.0",
   "maintainers": [
     {
       "name": "Rovergulf Engineers Team",
@@ -59,28 +59,28 @@
     "@nguniversal/builders": "^14.0.2",
     "@types/express": "^4.17.12",
     "@types/jasmine": "~4.0.2",
-    "@types/node": "^17.0.4",
+    "@types/node": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
     "codecov": "^3.8.2",
     "eslint": "^8.18.0",
     "highlight.js": "^11.0.1",
-    "jasmine-core": "~4.1.1",
+    "jasmine-core": "~4.2.0",
     "jasmine-spec-reporter": "~7.0.0",
-    "karma": "~6.3.3",
+    "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-firefox-launcher": "^2.1.1",
-    "karma-jasmine": "~5.0.1",
+    "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.0.0",
     "karma-opera-launcher": "^1.0.0",
     "ng-packagr": "^14.0.2",
     "ngx-cookie": "^5.0.2",
     "ngx-cookie-backend": "^5.0.2",
-    "ngx-highlightjs": "^6.1.2",
+    "ngx-highlightjs": "^7.0.0",
     "prom-client": "^14.0.0",
     "protractor": "~7.0.0",
     "ts-node": "~10.8.0",
-    "typescript": "~4.6.4"
+    "typescript": "~4.7.4"
   }
 }
