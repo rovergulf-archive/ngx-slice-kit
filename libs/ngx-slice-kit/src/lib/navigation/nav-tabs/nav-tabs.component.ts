@@ -2,7 +2,7 @@ import {
     AfterContentInit,
     ChangeDetectorRef,
     Component,
-    ContentChildren, Input,
+    ContentChildren, EventEmitter, Input, Output,
     QueryList,
     ViewChild
 } from '@angular/core';

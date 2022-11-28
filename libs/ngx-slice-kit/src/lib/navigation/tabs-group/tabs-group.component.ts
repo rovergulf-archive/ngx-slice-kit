@@ -2,9 +2,9 @@ import {
     AfterViewChecked,
     AfterViewInit,
     ChangeDetectorRef,
-    Component,
+    Component, EventEmitter,
     Input,
-    OnDestroy, OnInit,
+    OnDestroy, OnInit, Output,
     QueryList,
     ViewChild
 } from '@angular/core';
@@ -25,6 +25,7 @@ export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewCheck
 
     @Input() public activeTabStyle: string = 'border';
     @Input() public animation: boolean = false;
+    @Output() public activeIndex: EventEmitter<number> = new EventEmitter<number>();
 
     @ViewChild('container', {static: true}) public containerElement;
     @ViewChild('tabs', {static: true}) public tabsWrapperElement;
@@ -63,6 +64,7 @@ export class TabsGroupComponent implements OnInit, AfterViewInit, AfterViewCheck
         setTimeout(() => {
             this.curTab = this.containerElement.querySelector(`.sdk-tab-container__tab--active`);
             this.curTabClientRect = this.curTab.getBoundingClientRect();
+            this.activeIndex.emit(index);
 
             // if current element not fully visible
             if (this.isArrows) {
