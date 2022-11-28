@@ -4,6 +4,9 @@
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rovergulf/ngx-slice-kit/@angular/core)
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rovergulf/ngx-slice-kit/@angular/cdk)
 
+# OBSOLETE
+# DO NOT USE IN PRODUCTION
+
 # NGX Slice Design Kit
 
 ### npm package
